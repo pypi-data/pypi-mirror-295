@@ -1,0 +1,63 @@
+# uncomment and configure the monitor where the panel will start
+# you can get monitor info using wlr-randr
+#[monitor]
+#width = 2560
+#height = 1080
+#name = "DP-1"
+
+[dpms]
+enabled = true
+timeout_all = 3600
+timeout_single = 1800
+
+[bottom]
+position = "BOTTOM"
+Exclusive = "False"
+
+[views]
+tilling = "True"
+maximize_views_on_expo = "True"
+
+[left]
+position = "BOTTOM"
+Exclusive = "False"
+
+[right]
+position = "BOTTOM"
+Exclusive = "False"
+
+[top]
+position = "TOP"
+Exclusive = "True"
+
+[window_title_lenght]
+size = 48
+
+[top_background]
+position = "BOTTOM"
+Exclusive = "False"
+
+[change_icon_title]
+firefoxdeveloperedition = "firefox-developer-edition"
+gnome-terminal-server = "gnome-terminal"
+codium-insiders-url-handler = "vscodium"
+wlroots = "wayland"
+com.obsproject.Studio = "com.obsproject.Studio"
+
+[left_side_gestures]
+right_click = "python /opt/waypanel/scripts/workspaces.py"
+left_click = ""
+middle_click = "kitty"
+
+[center_side_gestures]
+right_click = "python /opt/waypanel/scripts/workspaces.py"
+left_click = ""
+middle_click = "kitty"
+
+[right_side_gestures]
+right_click = "python /opt/waypanel/scripts/workspaces.py"
+left_click = ""
+middle_click = "kitty"
+
+[take_note_app]
+cmd = "sleek"
