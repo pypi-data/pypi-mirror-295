@@ -1,0 +1,18 @@
+action_id: trunk-upgrade-available
+date: 2023-10-14 19:22:51
+run: trunk upgrade --notify --allow-daemon-start=false
+run_from: ""
+trigger: schedule 1h
+result:
+  exit_code: 0
+  out: "notifications_to_delete:\n  - trunk-check-upgrade\n  - trunk-upgrade\n"
+  err: ""
+timestamp: 1697311371
+full_timestamp:
+  nanos: 121951000
+  seconds: 1697311371
+trunk_version: 1.17.0
+action_output:
+  notifications_to_delete:
+    - trunk-check-upgrade
+    - trunk-upgrade

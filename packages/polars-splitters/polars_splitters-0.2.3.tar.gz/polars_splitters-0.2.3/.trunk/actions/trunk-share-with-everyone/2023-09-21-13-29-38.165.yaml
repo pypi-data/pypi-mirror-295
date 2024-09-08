@@ -1,0 +1,28 @@
+action_id: trunk-share-with-everyone
+date: 2023-09-21 13:29:38
+run: trunk config share --notify --allow-daemon-start=false
+run_from: ""
+trigger: schedule 24h
+result:
+  exit_code: 0
+  out: "notifications:\n  - commands:\n      - run: trunk config share\n        title: Share trunk config\n    id: trunk-share-with-everyone\n    message: Remove trunk from your local git ignores\n    priority: low\n    rendered: \"\\x1b[90mRun \\x1b[0m\\x1b[96mtrunk config share\\x1b[0m\\x1b[90m to allow committing your trunk config for your teammates to use\\n\\x1b[0m\"\n    title: Share trunk config\n"
+  err: ""
+timestamp: 1695302978
+full_timestamp:
+  nanos: 165867000
+  seconds: 1695302978
+trunk_version: 1.16.0
+action_output:
+  notifications:
+    - commands:
+        - run: trunk config share
+          title: Share trunk config
+      full_timestamp:
+        nanos: 165867000
+        seconds: 1695302978
+      id: trunk-share-with-everyone
+      message: Remove trunk from your local git ignores
+      priority: low
+      rendered: "\x1b[90mRun \x1b[0m\x1b[96mtrunk config share\x1b[0m\x1b[90m to allow committing your trunk config for your teammates to use\n\x1b[0m"
+      timestamp: 1695302978
+      title: Share trunk config
