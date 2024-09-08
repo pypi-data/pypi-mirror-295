@@ -1,0 +1,187 @@
+<style>
+#swm-settings label p {
+    font-weight: normal;
+}
+.filter-container {
+    border: 0px solid gray;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.filter-label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: no;
+    padding: 0 5px;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.flavor-table {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: #FAFFFF;
+}
+.flavor-table-header {
+    border: 1px solid gray;
+    background-color: #FAFFFB;
+}
+.flavor-row-selected {
+  background-color: #8888FF;
+}
+.hidden {
+    display: none;
+}
+table {
+    border-collapse: collapse;
+    transition: all 0.3s ease;
+}
+</style>
+
+
+<div class='form-group' id='swm-settings' style="background-color:#f0f5f5; padding: 10px;">
+
+    <p>
+        <label for="files">Select notebooks local directory: </label>
+        <br>
+        <input type="file" accept=".ipynb" id="files" name="files[]" multiple style="display: none;"/>
+        <input type="button" value="Browse..." onclick="document.getElementById('files').click();" />
+        <div style="margin:20px">
+            <pre id="filelist" style="display:none; background-color:#FAFFFB"></pre>
+        </div>
+    </p>
+    <script>
+        document.getElementById('files').addEventListener('change', function(e) {
+          var list = document.getElementById('filelist');
+          list.innerHTML = '';
+          for (var i = 0; i < this.files.length; i++) {
+              var reader = new FileReader();
+              reader.readAsBinaryString(this.files[i]);
+              reader.addEventListener("load", e => {
+                form_html = document.getElementById('spawn_form');
+                const notebook_file_content = document.createElement("input");
+                notebook_file_content.type = "hidden";
+                notebook_file_content.name = "input_files_data[]";
+                notebook_file_content.id = "input_files_data[]";
+                notebook_file_content.value = e.target.result;
+              });
+              list.innerHTML += (i + 1) + '. ' + this.files[i].name + '\n';
+          }
+          if (list.innerHTML == '') {
+              list.style.display = 'none';
+          } else {
+              list.innerHTML = "<p>These files will be uploaded before server will start,<br>and will be downloaded after the server will stop:</p>" + list.innerHTML
+              list.style.display = 'block';
+          }
+        });
+
+        function toggleDiv() {
+            var table = document.getElementById('filterTable');
+            table.classList.toggle('hidden');
+
+            var filter_label = document.querySelector('.filter-label');
+            if (table.classList.contains('hidden')) {
+                filter_label.textContent = 'Filter ⏷';
+            } else {
+                filter_label.textContent = 'Filter ⏶';
+            }
+        }
+
+        var selected_flavor_row;
+        var selected_flavor_name;
+        function toggleRowSelection(row, flavor_name) {
+            if (selected_flavor_row) {
+                selected_flavor_row.classList.remove('flavor-row-selected');
+            }
+            row.classList.add('flavor-row-selected');
+            selected_flavor_row = row;
+            selected_flavor_name = flavor_name;
+            document.getElementById('selected_flavor_name').value = selected_flavor_name;
+        }
+
+        function filterNames() {
+            const filterValue = document.getElementById('nameFilter').value.toLowerCase();
+            const table = document.getElementById('flavorTable');
+            const rows = table.getElementsByTagName('tr');
+            for (let i = 1; i < rows.length; i++) {
+                const name_cell = rows[i].getElementsByTagName('td')[0];
+                const name = name_cell.textContent.toLowerCase();
+
+                if (name.includes(filterValue)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+    <p>
+        <label for="files">Select instance type:</label>
+    </p>
+
+    <div class="filter-container" id="filterContainer">
+        <span class="filter-label" onclick="toggleDiv()">Filter ⏷</span>
+        <table id="filterTable" class="hidden" style="background-color:#e4ece8; border-collapse: collapse;">
+            <tr>
+                <td style="margin-left: 5px">
+                    <label for="nameFilter">Flavor name:&nbsp;</label><input type="text" oninput="filterNames()" size="20" maxlength="50" id="nameFilter">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-left: 10px">
+
+    {% for provider_name, provider in providers.items() %}
+        <label>{{ provider_name.capitalize() }}</label>
+        <div style="margin-left: 10px">
+            <table id="flavorTable" class="flavor-table">
+                <tr class="flavor-table-header">
+                    <td>Name</td> <td>Storage</td> <td>Memory</td> <td>CPUs</td> <td>Price</td>
+                </tr>
+
+                {% for it in provider.instance_types %}
+                    {% set ns = namespace(storage="0", memory="0", cpus="0") %}
+                    {% for res in it.resources %}
+                        {% if res.name == "storage" %}
+                            {% set ns.storage = res.count %}
+                        {% endif %}
+                        {% if res.name == "mem" %}
+                            {% set ns.memory = res.count %}
+                        {% endif %}
+                        {% if res.name == "cpus" %}
+                            {% set ns.cpus = res.count %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ "<tr onclick=\"toggleRowSelection(this, '" ~ it.flavor_name ~ "')\">" }}
+                        <td>
+                            {{ it.flavor_name }}
+                        </td>
+                        <td>
+                            {{ ns.storage }}
+                        </td>
+                        <td>
+                            {{ ns.memory }}
+                        </td>
+                        <td>
+                            {{ ns.cpus }}
+                        </td>
+                        <td>
+                            {{ it.price }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type="hidden" id="selected_flavor_name" name="selected_flavor_name" />
+        </div>
+
+    {% endfor %}
+
+    </div>
+
+</div>
