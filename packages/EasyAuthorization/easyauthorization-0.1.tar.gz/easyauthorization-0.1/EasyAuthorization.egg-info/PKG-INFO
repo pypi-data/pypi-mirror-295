@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: EasyAuthorization
+Version: 0.1
+Summary: A package for managing a simplex json-stored login/register system.
+Requires-Dist: colorama
