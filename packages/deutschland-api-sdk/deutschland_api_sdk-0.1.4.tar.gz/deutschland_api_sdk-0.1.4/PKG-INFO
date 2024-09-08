@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: deutschland-api-sdk
+Version: 0.1.4
+Summary: Client SDK to access the Deutschland API
+Author-email: Christoph Kappestein <christoph.kappestein@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/apioo/deutschland-api-sdk-python
+Project-URL: Issues, https://github.com/apioo/deutschland-api-sdk-python/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Code Generators
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: sdkgen-client
+
+
+# DeutschlandAPI SDK
+
+This SDK helps to access the [DeutschlandAPI](https://deutschland-api.dev)
+
+## Usage
+
+The following example shows how you initialize the client:
+
+```python
+from sdk.client import Client
+
+client = Client.buildAnonymous()
+collection = client.state().getAll();
+
+for state in collection.entries:
+    print(state.name)
+
+```
+
+More information about the complete API at:
+https://app.typehub.cloud/d/deutschland-api/sdk

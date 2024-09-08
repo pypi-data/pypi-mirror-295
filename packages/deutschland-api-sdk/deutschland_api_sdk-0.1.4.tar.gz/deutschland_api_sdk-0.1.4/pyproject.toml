@@ -1,0 +1,31 @@
+[project]
+name = "deutschland-api-sdk"
+version = "0.1.4"
+authors = [
+  { name="Christoph Kappestein", email="christoph.kappestein@gmail.com" },
+]
+description = "Client SDK to access the Deutschland API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Code Generators",
+]
+dependencies = [
+    "sdkgen-client"
+]
+
+[project.urls]
+Homepage = "https://github.com/apioo/deutschland-api-sdk-python"
+Issues = "https://github.com/apioo/deutschland-api-sdk-python/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["sdk"]
+package-dir = {"" = "src"}
