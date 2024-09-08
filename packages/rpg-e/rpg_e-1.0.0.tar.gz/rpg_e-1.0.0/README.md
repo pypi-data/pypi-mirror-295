@@ -1,0 +1,117 @@
+# RPG-Engine
+RPG-Engine (RPG-E) is a simple python module to make rpg like boards with npcs, interactable objects, and more to come.
+
+## Table of Contents
+* [Install](#install)
+* [Quick Start](#quick-start)
+* [Docs](#docs)
+* [Contribute](#contribute)
+
+
+
+
+## Install
+To install you can use pip
+
+```
+pip3 install rpg-e
+```
+
+## Quick Start
+After you install RPG-E from pip and have setup your project you can import what you need from the ```rpg_e.game``` Module.
+
+```py
+from rpg_e.game import Game, Color, Point
+```
+
+Before you can start building your game you first need to setup the ```Game``` object.
+
+Note: all of these properties have defaults, you are not required to set them unless you want to change the default.
+
+```py
+from rpg_e.game import Game, Color, Point
+
+game = Game()
+
+# width is how long the game board will be
+# Default: 100
+game.width = 100 
+
+# height is how tall the game board will be
+# Default: 100
+game.height = 100
+
+# view_distance is how far the player can see in either direction,
+# Default: 9
+game.view_distance = 9
+
+# PLAYER.color can be used to change the color of the player
+# Default: Color.BLUE
+game.PLAYER.color = Color.BLUE
+
+# PLAYER.position can be used to change the default position of the player
+# Default: Point(0, 0)
+game.PLAYER.position = Point(0, 0)
+```
+
+After you set all the ```Game```'s settings to your liking, you can run the ```setup()``` function which will start the game-loop.
+
+```py
+from rpg_e.game import Game, Color, Point
+
+game = Game()
+
+# This will start the main loop
+game.setup()
+```
+
+## Docs
+This is where you can figure out how to do almost anything with RPG-E.
+
+### Tile
+The `Tile` is any object that is in your game, a player, water, path, any object that can be drawn on screen.
+
+The `Tile` has a variety of diffrent properties listed here:
+
+`char` is the charcter that will be displayed in the game world. Default: `█`.
+
+`color` is the color the `Tile` will be displayed as in the game world. Default: `Color.WHITE`.
+
+### Player
+The `Player` is a slightly modified version of the `Tile`, The `Player` will have all the properties listed [here](#tile)
+
+Here are the `Player`'s unique properties:
+
+`position` is the point at where the `Player` is placed in the game world. Default: `Point(0,0)`.
+
+### HUD
+To start modifying the hud, you must first get a `game` setup, if you havent done so already see [Quick Start](#quick-start). 
+
+After you have setup your game you can add hud elements with `add_hud_element()`.
+
+```py
+from rpg_e.game import Game, Color, Point
+
+game = Game()
+
+def move_player_left():
+    # this would move the player
+    return
+
+# add_hud_element takes in 3 paramters 
+
+# key: str - What the user will type to execute the function
+
+# desc: str - Describe what function does to player
+
+# function: function - Code to execute when player types in key
+
+game.add_hud_element("a", "Move Left", move_player_left)
+
+game.setup()
+```
+
+
+
+## Contribute
+Pull requests and Issues are more than welcome, whether it's as simple updating and refining the [Documentation](#docs) or fixing bugs and adding new features.

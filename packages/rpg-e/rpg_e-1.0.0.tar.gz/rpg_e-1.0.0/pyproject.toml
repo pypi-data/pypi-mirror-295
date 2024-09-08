@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "rpg-e"
+version = "1.0.0"
+description = ""
+authors = ["Ethan Illingsworth <illingsworth.ethan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+colorama = "^0.4.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
