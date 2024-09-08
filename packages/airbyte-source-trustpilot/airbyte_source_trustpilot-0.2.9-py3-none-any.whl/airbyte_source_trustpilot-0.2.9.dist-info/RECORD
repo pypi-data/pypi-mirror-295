@@ -1,0 +1,11 @@
+source_trustpilot/__init__.py,sha256=5l7LiFYJbicvgIoDSxBzN-LMw8UE6x8lI_wJoMKzJb4,132
+source_trustpilot/manifest.yaml,sha256=UX2j6jHR_M2uNoXtK0vcZfbZRk80RX6YszfmQHo54p8,11437
+source_trustpilot/run.py,sha256=7MY929cvARDbIN8nZqZd3MEkfh6nGCnHBP7M0HLGPeE,242
+source_trustpilot/schemas/business_units.json,sha256=uXy_zpn-4PWocfJAY-pfV-f9vWez1hJGS4OmmOK8874,1602
+source_trustpilot/schemas/configured_business_units.json,sha256=Jh330PMjiomPzGUCMOgcO2cCWT0PWBt1FV-jbW47LLA,1612
+source_trustpilot/schemas/private_reviews.json,sha256=JLkcdVrn5wkS1REGvnO2pngT6lfhfAVBIMxYUUDlIA4,6018
+source_trustpilot/source.py,sha256=Wnj7n3AiP7GOfyMarGC_vtesWbERtxSYnD_vSaVkXRI,479
+airbyte_source_trustpilot-0.2.9.dist-info/METADATA,sha256=iP679uFeLe2g8ARcndSFTyO0gMCHESyZMNzxd0n-HKI,5315
+airbyte_source_trustpilot-0.2.9.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+airbyte_source_trustpilot-0.2.9.dist-info/entry_points.txt,sha256=Nx5JQTLdyNKrgDCm0KzgUrdioDLxRrzv-l_okoQO-EU,63
+airbyte_source_trustpilot-0.2.9.dist-info/RECORD,,
