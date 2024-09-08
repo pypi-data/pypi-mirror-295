@@ -1,0 +1,2 @@
+[console_scripts]
+k8s-monitor = k8s_monitor.cli:cli
