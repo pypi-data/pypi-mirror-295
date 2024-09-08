@@ -1,0 +1,91 @@
+Metadata-Version: 2.3
+Name: literotica-dl2
+Version: 0.0.3
+Summary: A tool to download stories from Literotica
+Project-URL: Documentation, https://github.com/ShamoliShah/literotica-dl2#readme
+Project-URL: Issues, https://github.com/ShamoliShah/literotica-dl2/issues
+Project-URL: Source, https://github.com/ShamoliShah/literotica-dl2
+Author-email: Shamoli Shah <64245803+shamolishah@users.noreply.github.com>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: beautifulsoup4
+Requires-Dist: fake-useragent
+Requires-Dist: html5lib
+Requires-Dist: markdownify
+Requires-Dist: requests
+Requires-Dist: requests-cache
+Requires-Dist: typer
+Description-Content-Type: text/markdown
+
+# literotica_dl2
+### Since [literotica_dl](https://github.com/fuzzyfiend/literotica_dl) is abandoned I have created this new version
+A tool to download stories from Literotica.
+
+[![PyPI - Version](https://img.shields.io/pypi/v/literotica-dl2.svg)](https://pypi.org/project/literotica-dl2)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/literotica-dl2.svg)](https://pypi.org/project/literotica-dl2)
+
+-----
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Example Usage](#example)
+- [License](#license)
+
+## Installation
+I highly recommend you use pipx
+```console
+pipx install literotica-dl2
+```
+otherwise you can use pip
+```console
+pip install literotica-dl2
+```
+
+## Details
+You must specify whether to download stories or author works or poetry.
+* Stories are identified as the url stub following the /s/ directory in the url
+    * https://www.literotica.com/s/a-my-name-is-alice
+    * story stub is a-my-name-is-alice
+* Authors are identified as the url stub following /authors/ and before /works/
+    * https://www.literotica.com/authors/Emmah/works/stories
+    * author stub is Emmah
+
+By default this program will write works to a new folder called `output`. This can be overridden by specifying the `--output` flag.
+
+By default this program will write works in Text format. This can be changed by specifying `--output-format md` flag.
+
+## Example Usage
+# Examples
+```console
+# Downloading an authors works via the author stub
+literotica_dl2 author Emmah
+
+# Downloading an story via the story stub
+literotica_dl2 story a-my-name-is-alice
+
+# Downloading an poem via the poem stub
+literotica_dl2 poetry acceptance-finding-my-way
+
+# Mirroring the author to a specific directory with markdown format
+literotica_dl2 author --output archive --output-format md Emmah
+```
+
+# Getting Help
+Once installed the help can be called 
+```console
+literotica_dl2 --help
+```
+## License
+
+`literotica-dl2` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
