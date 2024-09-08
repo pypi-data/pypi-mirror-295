@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: beancount-importer-rules
+Version: 0.1.5
+Summary: Beancount importer rules engine
+Author-Email: Zeno Jiricek <airtonix@users.noreply.github.com>
+License: MIT
+Requires-Python: >=3.12
+Requires-Dist: beancount-parser>=1.2.3
+Requires-Dist: beancount-black>=1.0.4
+Requires-Dist: jinja2>=3.1.4
+Requires-Dist: pyyaml>=6.0.2
+Requires-Dist: pydantic>=2.8.2
+Requires-Dist: pytz>=2024.1
+Requires-Dist: click>=8.1.7
+Requires-Dist: rich>=13.8.0
+Requires-Dist: types-PyYAML>=6.0.12.20240808
+Requires-Dist: types-Pygments>=2.18.0.20240506
+Requires-Dist: types-regex>=2024.7.24.20240726
+Requires-Dist: arrow>=1.3.0
+Description-Content-Type: text/markdown
+
+# beancount-import-rules
+
+beancount-import-rules is a simple, declarative, smart, and easy-to-use library for importing extracted transactions.
+
+It generates Beancount transactions based on predefined rules.
+
+
+## Install
+
+```sh
+pip install beancount-import-rules
+```
+
+or
+
+```sh
+pdm install beancount-import-rules
+```
+
+or
+
+```sh
+poetry add beancount-import-rules
+```
+
+For more information see the [documentation](https://zenobi-us.github.io/beancount-import-rules/latest/).
