@@ -1,0 +1,45 @@
+{
+    "_comment": "Star ring - smart curtain switch",
+    "_blakadder": "",
+    "_shopping": "https://moeshouse.com/products/zigbee-star-ring-curtain-switch",
+    "_source": "https://github.com/zigbeefordomoticz/z4d-certified-devices/issues/71",
+    "Identifier": [
+        [ "TS0601", "_TZE204_srmahpwl" ]
+    ],
+
+    "Ep": {
+        "01": {
+            "0000": "",
+            "0004": "",
+            "0005": "",
+            "ef00": "",
+            "0019": "",
+            "000a": "",
+            "Type": "SwitchCalibration/Curtain"
+        }
+    },
+    "Type": "",
+    "ClusterToBind": [ ],
+    "ConfigureReporting": {
+    },
+    "TUYA_REGISTRATION": 19,
+    "TUYA_MAGIC_READ_ATTRIBUTES": true,
+    "TY_DATA_QUERY": true,
+    "TS0601_DP": {
+        "01": { "sensor_type": "curtain_state", "action_type": "CurtainState"},
+        "02": { "sensor_type": "curtain_level", "EvalExp": "int(value)", "action_type": "CurtainLevel" },
+        "07": { "sensor_type": "curtain_calibration", "action_type": "CurtainCalibration"},
+        "08": { "sensor_type": "curtain_motor_steering", "action_type": "CurtainMotorSteering" },
+        "0e": { "store_tuya_attribute": "calibration_value"}
+    },
+    "ReadAttributes": {
+        "0000": [ "0004", "0005", "0000", "0001", "0007", "ffe2", "ffe4", "ffdf", "fffe" ],
+        "0019": [],
+        "ef00": []
+    },
+    "Param": {
+        "CurtainMotorSteering": 0,
+        "CurtainQuickCalibration": 0
+    },
+    "BatteryDevice": 1
+}
