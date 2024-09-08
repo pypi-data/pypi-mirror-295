@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: multilogin
+Version: 0.5.1
+Summary: 
+Author: teocns
+Author-email: teocns@gmail.com
+Requires-Python: >=3.11,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: fire (>=0.6.0,<0.7.0)
+Requires-Dist: pydantic
+Requires-Dist: pydantic-settings (>=2.3.4,<3.0.0)
+Requires-Dist: requests
+Requires-Dist: rich (>=13.8.0,<14.0.0)
+Requires-Dist: urllib3 (>=2.2.2,<3.0.0)
+Description-Content-Type: text/markdown
+
+
+## Overview
+
+A Python SDK and CLI client for interacting with the agent and the APIs.
+
+
+---
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install multilogin
+```
+
+---
+
+## Examples
+
+> For full commands list, run `mlx --help`
+
+### CLI and SDK Comparison
+
+| CLI Command                          | SDK Equivalent Code                                                                 |
+|--------------------------------------|-------------------------------------------------------------------------------------|
+| `mlx whoami`                         | `api.workspace.get()`                                                               |
+| `mlx ping`                           | `launcher.ping()`                                                                   |
+| `mlx sessions`                       | `session.request("get", f"{config.launcher_v1}/profile/statuses").json()["data"]`  |
+
+### CLI
+
+The MLX CLI provides a command-line interface to interact with the MLX agent. Below are some common commands:
+
+- **Check Current User**: To see the current user, run:
+  ```bash
+  mlx whoami
+  ```
+
+- **Test Connectivity**: To test the connectivity with the launcher, use:
+  ```bash
+  mlx ping
+  ```
+
+- **List Sessions**: To list all sessions, execute:
+  ```bash
+  mlx sessions
+  ```
+
+- **Start a Profile**: To start a specific profile by ID, use:
+  ```bash
+  mlx start-profile <profile_id>
+  ```
+
+- **Stop All Profiles**: To stop all profiles of specified types, use:
+  ```bash
+  mlx stop-all --types <type1,type2>
+  ```
+
+### SDK
+
+The MLX SDK allows you to programmatically interact with the MLX services. Here's a quick example:
+
+```python
+from mlx.api.launcher import LauncherApi
+
+launcher = LauncherApi()  # Uses MLX_USERNAME and MLX_PASSWORD environment variables - alternatively MLX_TOKEN
+
+launcher.ping()  # "pong" if successful, raise if the agent is not reachable
+
+# Launch quick profile
+# Pass parameters to override the default body defined in...
+# mlx/models/profile.py::Profile::__default__
+
+res = launcher.quick({
+    "parameters": {
+        "flags": {
+            "proxy_masking": "custom",
+        }
+    }
+})
+```
+
+---
+
+## Environment Variables
+
+The following environment variables can be set to configure both SDK and CLI operations:
+
+- `MLX_USERNAME`: Username for MLX authentication.
+- `MLX_PASSWORD`: Password for MLX authentication.
+- `MLX_TOKEN`: Token for MLX authentication.
+...
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow the guidelines outlined in the [CONTRIBUTING](https://github.com/uvflow/mlx-py/tree/main/CONTRIBUTING.md) file.
+
+---
+
+## License
+
+This project is released under the [MIT](https://github.com/uvflow/mlx-py/tree/main/LICENSE) License. For more details, refer to the [LICENSE](https://github.com/uvflow/mlx-py/tree/main/LICENSE) file.
+
+
