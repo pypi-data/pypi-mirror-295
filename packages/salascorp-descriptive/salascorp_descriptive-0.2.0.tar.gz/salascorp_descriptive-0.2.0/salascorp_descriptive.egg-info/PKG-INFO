@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: salascorp-descriptive
+Version: 0.2.0
+Summary: implifies descriptive analysis before building propensity models. It offers key features like descriptive stats, distribution tests, interactive visualizations, and variable transformations. Ideal for streamlining data prep and gaining insights before launching predictive models.
+Home-page: https://github.com/salascorp/salascorp_descriptive.git
+Author: Oscar Ancizar Salas
+Author-email: salascorp@gmail.com
+License-File: LICENSE
