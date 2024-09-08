@@ -1,0 +1,133 @@
+[project]
+    authors = [
+        { name = "Tomas Sebestik", email = "tomas.sebestik@espressif.com" },
+        { name = "Espressif Systems" },
+    ]
+    classifiers = [
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: POSIX",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: MacOS :: MacOS X",
+        "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+    ]
+    dependencies = ["commitizen>=3.21.3"]
+    description = "Commitizen tools plugin with Espressif code style"
+    # dynamic = ["version"]
+    license         = { file = "LICENSE" }
+    name            = "czespressif"
+    readme          = "README.md"
+    requires-python = ">=3.9"
+    version         = "0.2.2"
+
+    [project.optional-dependencies]
+        dev = [
+            "twine~=5.1.1",
+            "pre-commit~=3.3.0",
+            "pip-tools~=7.3",
+            "pytest-cov~=4.1.0",
+            "pytest~=7.4.0",
+            "just-bin~=1.26.0",
+        ]
+        test = ["pytest-cov~=4.1.0", "pytest~=7.4.0"]
+
+    [project.entry-points."commitizen.plugin"]
+        czespressif = "czespressif:CzPluginEspressif"
+
+[project.urls]
+    Changelog = "https://github.com/espressif/cz-plugin-espressif/blob/master/CHANGELOG.md"
+    Homepage  = "https://github.com/espressif/cz-plugin-espressif/"
+    Source    = "https://github.com/espressif/cz-plugin-espressif/"
+    Tracker   = "https://github.com/espressif/cz-plugin-espressif/issues/"
+
+[build-system]
+    build-backend = "setuptools.build_meta"
+    requires      = ["setuptools-scm>=8.0", "setuptools>=60"]
+
+[tool.setuptools.packages.find]
+    where = ["."]
+
+[tool.setuptools.package-data]
+    czespressif = ["*.py", "templates/*"]
+
+[tool.setuptools_scm]
+    fallback_version = "1.0.0"
+    local_scheme     = "no-local-version"
+    version_scheme   = "post-release"
+    write_to         = "czespressif/_version.py" # Writes the version to this file
+
+[tool.codespell]
+    skip = 'tests/*'
+
+[tool.pylint]
+    [tool.pylint.MASTER]
+        ignore-paths = ["tests/.*"]
+    [tool.pylint.'BASIC']
+        variable-rgx = "[a-z_][a-z0-9_]{1,30}$"
+    [tool.pylint.'MESSAGES CONTROL']
+        disable = [
+            "duplicate-code",
+            "fixme",
+            "import-error",
+            "import-outside-toplevel",
+            "logging-fstring-interpolation",
+            "missing-class-docstring",
+            "missing-function-docstring",
+            "missing-module-docstring",
+            "no-name-in-module",
+            "too-few-public-methods",
+            "too-many-branches",
+            "too-many-locals",
+            "too-many-return-statements",
+            "too-many-instance-attributes",
+            "too-many-statements",
+            "ungrouped-imports",
+        ]
+    [tool.pylint.'FORMAT']
+        max-line-length = 160
+
+[tool.ruff]
+    exclude        = ["tests/.*"]
+    line-length    = 160
+    lint.select    = ["B", "E", "F", "I", "S", "W"]
+    target-version = "py39"
+
+    [tool.ruff.format]
+        quote-style = "single"
+
+    [tool.ruff.lint.isort]
+        force-single-line   = true
+        lines-between-types = 1
+
+[tool.mypy]
+    ignore_missing_imports = true
+    python_version         = "3.9"
+    strict                 = false
+
+[tool.pytest.ini_options]
+    addopts          = "-s --log-cli-level DEBUG --cov=sample_python_app --cov-report=term"
+    python_classes   = ["Test*"]
+    python_files     = ["test_*.py"]
+    python_functions = ["test_*"]
+    testpaths        = ["tests"]
+
+[tool.coverage.run]
+    omit = ["*/tests/*", "__*__.py"]
+
+[tool.yamlfix]
+    comments_min_spaces_from_content = 1
+    line_length                      = 200
+    preserve_quotes                  = true
+    section_whitelines               = 1
+    sequence_style                   = "keep_style"
+    whitelines                       = 1
+
+[tool.commitizen]
+    annotated_tag = true
+    bump_message  = "change: bump release version to v$new_version"
+    name          = "czespressif"
