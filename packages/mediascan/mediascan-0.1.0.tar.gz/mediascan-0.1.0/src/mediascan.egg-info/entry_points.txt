@@ -1,0 +1,3 @@
+[console_scripts]
+mediascan = mediascan.__main__:main
+
