@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: dream-platform-client
+Version: 0.1
+Summary: A Python client to interact with the DataPlatform API.
+Home-page: https://github.com/jacksonlmakl/DataPlatform
+Author: Jackson Makl
+Author-email: jlm487@georgetown.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: pandas
+
+# DataPlatform Client
+
+This Python package provides a client for interacting with the DataPlatform API, allowing users to securely retrieve tables, update policy settings, and add new users to an account.
+
+## Installation
+
+Install the package using pip:
+
+```bash
+pip install dataPlatformClient
