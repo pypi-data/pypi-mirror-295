@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+backtest_equities/__init__.py
+backtest_equities/backtest_equities.py
+backtest_equities/run.py
+backtest_equities/support_functions.py
+backtest_equities.egg-info/PKG-INFO
+backtest_equities.egg-info/SOURCES.txt
+backtest_equities.egg-info/dependency_links.txt
+backtest_equities.egg-info/top_level.txt
+tests/test_1.py
