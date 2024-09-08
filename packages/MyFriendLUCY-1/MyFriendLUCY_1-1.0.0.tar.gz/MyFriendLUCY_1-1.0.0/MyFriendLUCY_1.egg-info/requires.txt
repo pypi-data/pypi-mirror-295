@@ -1,0 +1,7 @@
+tensorflow>=2.0
+pandas
+ccxt
+pandas-ta
+numpy
+joblib
+scikit-learn
