@@ -1,0 +1,3 @@
+[console_scripts]
+add-staves=add_staves.main:app
+
