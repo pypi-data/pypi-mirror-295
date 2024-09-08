@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: bwninja
+Version: 1.2.8
+Summary: A modern replacement for iftop
+Author-email: Tom Flanagan <tom@zkpq.ca>
+Project-URL: Homepage, https://bwninja.zkpq.ca
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console :: Curses
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Telecommunications Industry
+Classifier: License :: Free For Educational Use
+Classifier: License :: Free For Home Use
+Classifier: License :: Free for non-commercial use
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: System :: Networking :: Monitoring
+Classifier: Topic :: Utilities
+Description-Content-Type: text/markdown
+Requires-Dist: blessed
+Requires-Dist: bcc!=0.1.10,>=0.26.0
+Requires-Dist: pandas
+
+# Bandwidth Ninja (bwninja)
+
+A modern replacement for `iftop`
+
+Why?
+- Colors!
+- More easily readable UI
+- Can track all interfaces
+- Less overhead (uses eBPF to collect metrics, and does not need to copy and process packets in userspace)
+
+
+## Install
+
+```sh
+pip install bwninja
+```
+
+### bcc
+
+`bwninja` requires `python3-bpfcc` which does not seem to have a correct package in pip/pypi.
+
+See the official install documentation here: https://github.com/iovisor/bcc/blob/master/INSTALL.md
+
+
+
+
+## Run
+
+`bwninja` requires root access to the network interfaces.
+
+```sh
+bwninja # bwninja will try to escalate itself.
+
+python -m bwninja.tui # same. if bin script was not installed
+
+sudo bwninja # will work only if bwninja was installed as a system package
+```
