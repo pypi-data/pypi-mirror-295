@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+setup.py
+ArabicTagger/CRF.py
+ArabicTagger/NER.py
+ArabicTagger/Tagger.py
+ArabicTagger/__init__.py
+ArabicTagger/utils.py
+ArabicTagger.egg-info/PKG-INFO
+ArabicTagger.egg-info/SOURCES.txt
+ArabicTagger.egg-info/dependency_links.txt
+ArabicTagger.egg-info/requires.txt
+ArabicTagger.egg-info/top_level.txt
+ArabicTagger/models/CRF_model_1.pkl
+ArabicTagger/models/CRF_model_2.pkl
+ArabicTagger/tags/tags1.pkl
+ArabicTagger/tags/tags2.pkl
