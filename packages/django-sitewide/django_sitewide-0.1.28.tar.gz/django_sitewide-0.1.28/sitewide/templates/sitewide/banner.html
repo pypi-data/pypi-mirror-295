@@ -1,0 +1,3 @@
+{% load static %}
+            <div class="banner {% if sitewide.sidebar.show %}sidebar_show{% else %}sidebar_hide{% endif %}" {% if sitewide.banner.image.path %}style="background-image: url({% static sitewide.banner.image.path %})"{% endif %}>
+            </div>{% endif %}

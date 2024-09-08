@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{% static sitewide.favicon %}" type="image/png" />
+        {% include "sitewide/stylesheets.html" %}
+        {% block appcss %}{% endblock %}
+        {% block head %}{% endblock %}
+        <title>{{ sitewide.titles.page }} | {{ sitewide.project }}</title>
+    </head>
+    <body>
+        {% if sitewide.sidebar.show %}{% include "sitewide/sidebar.html" %}{% endif %}
+        {% if sitewide.header.show %}{% include "sitewide/header.html" %}{% endif %}
+        <main>
+            {% block banner %}{% if sitewide.banner.show %}{% include "sitewide/banner.html" %}{% endif %}{% endblock %}
+            {% if sitewide.main %}{% for sect in sitewide.main.sections %}{% include "sitewide/section.html" with section=sect %}{% endfor %}{% else %}<div class="main {% if sitewide.sidebar.show %}sidebar_show{% else %}sidebar_hide{% endif %}">
+                <div class="contents mgns-tb20px">
+                    {% block main %}{% endblock %}
+                </div>
+            </div>{% endif %}
+        </main>
+        {% if sitewide.footer.show %}{% include "sitewide/footer.html" %}{% endif %}
+    </body>
+    <script src="{% static 'js/sidebar.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</html>

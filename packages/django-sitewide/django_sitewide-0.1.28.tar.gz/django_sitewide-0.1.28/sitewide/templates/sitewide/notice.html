@@ -1,0 +1,4 @@
+        <div class="msgbox">
+            {% if type == "note" %}<div><span class="icon">&#xe032;</span>Note</div>{% elif type == "hint" %}<div><span class="icon">&#xe0f0;</span>Hint</div>{% elif type == "info" %}<div><span class="icon">&#xe160;</span>Info</div>{% elif type == "warn" %}<div><span class="icon">&#xe002;</span>Warning!</div>{% elif type == "error" %}<div><span class="icon">&#xe000;</span>Oops!</div>{% endif %}
+            <div class="msg">{{ message }}</div>
+        </div>
