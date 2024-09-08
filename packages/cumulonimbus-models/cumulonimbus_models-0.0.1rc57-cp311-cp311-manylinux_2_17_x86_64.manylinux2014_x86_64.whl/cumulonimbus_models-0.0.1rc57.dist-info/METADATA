@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: cumulonimbus-models
+Version: 0.0.1rc57
+Author-email: Guy Wilson <guywilsonjr@gmail.com>
+Maintainer-email: Guy Wilson <guywilsonjr@gmail.com>
+Project-URL: Repository, https://github.com/guywilsonjr/CumulonimbusModels
+Project-URL: Issues, https://github.com/guywilsonjr/CumulonimbusModels/issues
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic >=2.8.2
+Requires-Dist: pydantic-settings >=2.4.0
+Provides-Extra: dev
+Requires-Dist: pydantic >=2.8.2 ; extra == 'dev'
+Requires-Dist: pydantic-settings >=2.4.0 ; extra == 'dev'
+Requires-Dist: setuptools-scm ; extra == 'dev'
+Requires-Dist: uv ; extra == 'dev'
+Requires-Dist: tox-uv ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: cibuildwheel ; extra == 'dev'
+Requires-Dist: pydantic ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+
+# CumulonimbusModels
+Shared models for the CumulonimbusInfrastructure Project
