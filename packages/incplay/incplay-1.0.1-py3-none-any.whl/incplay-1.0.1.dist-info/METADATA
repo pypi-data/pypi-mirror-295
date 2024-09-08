@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: incplay
+Version: 1.0.1
+Summary: A simple commandline app for searching and looking up opensource vulnerabilities
+Home-page: https://github.com/zolinalexey/incplay
+Download-URL: https://github.com/zolinalexey/incplay/archive/1.0.1.tar.gz
+Author: INCOM, LLC
+Author-email: zolinalexey@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: onvif-zeep
+Requires-Dist: opencv-python
+Requires-Dist: requests
+
