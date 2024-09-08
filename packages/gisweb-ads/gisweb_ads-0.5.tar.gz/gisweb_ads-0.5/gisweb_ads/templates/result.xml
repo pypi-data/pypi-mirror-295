@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Body>
+        <inserimentoResponse xmlns="http://tempuri.org/">
+            <InserimentoResult>
+                <lngDocID>35804340</lngDocID>
+                <lngErrNumber>0</lngErrNumber>
+                <strErrString>Esito positivo dell\xe2\x80\x99operazione richiesta.</strErrString>
+            </InserimentoResult>
+        </inserimentoResponse>
+    </soapenv:Body>
+</soapenv:Envelope>
