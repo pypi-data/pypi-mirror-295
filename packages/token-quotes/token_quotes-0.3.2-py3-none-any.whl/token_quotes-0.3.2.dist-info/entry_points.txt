@@ -1,0 +1,3 @@
+[console_scripts]
+token-quotes=token_quotes.cli:main
+
