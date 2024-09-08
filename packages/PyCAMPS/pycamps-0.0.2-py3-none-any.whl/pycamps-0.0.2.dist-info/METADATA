@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: PyCAMPS
+Version: 0.0.2
+Summary: Centralized Automated Modeling of Power Systems in Python
+License: MIT
+Author: Anish Ravichandran
+Author-email: anishrav@mit.edu
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: matplotlib (==3.9.2)
+Requires-Dist: mpmath (==1.3.0)
+Requires-Dist: numpy (==2.1.0)
+Requires-Dist: pytest (==8.3.2)
+Requires-Dist: scipy (==1.14.1)
+Requires-Dist: sympy (==1.13.2)
+Description-Content-Type: text/markdown
+
+# PyCAMPS
+
+PyCAMPS is a Python library for building, solving, analyzing, and simulating power systems, all with a user-friendly GUI.
+
+## Installation
+
+Here's how you can install PyCAMPS for development:
+
+```bash
+git clone https://github.com/mit-eesg/PyCAMPS.git
+cd PyCAMPS
+python setup.py install
+```
+
+## Usage
+
+For a basic example of how to use PyCAMPS, check out our [examples](backend/Scenarios/).
+
+
+## License
+
+PyCAMPS is licensed under the MIT license. See [LICENSE](LICENSE) for details.
+
