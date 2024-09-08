@@ -1,0 +1,50 @@
+[project]
+name = "bb7"
+version = "0.3.0"
+description = "A TDD coding bot"
+authors = [
+    { name = "Drunkwcodes", email = "drunkwcodes@gmail.com" },
+]
+dependencies = [
+    "rich>=13.7.1",
+    "ollama>=0.3.1",
+    "click>=8.1.7",
+    "pytest>=8.3.2",
+    "gTTS>=2.5.3",
+    "pygame>=2.6.0",
+    "prompt-toolkit>=3.0.47",
+    "platformdirs>=4.3.1",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/drunkwcodes/bb7"
+Issues = "https://github.com/drunkwcodes/bb7/issues"
+
+[project.scripts]
+bb7 = "bb7.cli:main"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=24.8.0",
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.31",
+    "towncrier>=24.7.1",
+    "ruff>=0.5.7",
+    "coverage>=7.6.1",
+    "isort>=5.13.2",
+    "ipython>=8.26.0",
+]
