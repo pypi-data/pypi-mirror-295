@@ -1,0 +1,4 @@
+graft hora
+
+# Exclude virtual environment
+prune venv
