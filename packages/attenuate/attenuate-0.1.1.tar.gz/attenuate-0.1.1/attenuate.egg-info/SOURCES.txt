@@ -1,0 +1,11 @@
+LICENSE.md
+README.md
+pyproject.toml
+setup.py
+attenuate/__init__.py
+attenuate/model.py
+attenuate.egg-info/PKG-INFO
+attenuate.egg-info/SOURCES.txt
+attenuate.egg-info/dependency_links.txt
+attenuate.egg-info/requires.txt
+attenuate.egg-info/top_level.txt
