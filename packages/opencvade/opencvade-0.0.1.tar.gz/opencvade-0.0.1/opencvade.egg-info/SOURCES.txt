@@ -1,0 +1,17 @@
+README.md
+setup.py
+libname/__init__.py
+libname/hello.py
+libname/models/NVIDIAOpticalFlowSDK-edb50da3cf849840d680249aa6dbef248ebce2ca.zip
+libname/models/ffmpeg_version.cmake
+libname/models/ippicv_2021.11.0_win_intel64_20240201_general.zip
+libname/models/opencv_3rdparty-contrib_xfeatures2d_boostdesc_20161012.zip
+libname/models/opencv_3rdparty-contrib_xfeatures2d_vgg_20160317.zip
+libname/models/opencv_videoio_ffmpeg.dll
+libname/models/opencv_videoio_ffmpeg_64.dll
+libname/models/zero_copy_stream_impl_lite.cc
+opencvade.egg-info/PKG-INFO
+opencvade.egg-info/SOURCES.txt
+opencvade.egg-info/dependency_links.txt
+opencvade.egg-info/requires.txt
+opencvade.egg-info/top_level.txt
