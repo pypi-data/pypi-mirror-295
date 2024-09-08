@@ -1,0 +1,14 @@
+# Sphinx inventory version 2
+# Project: extras
+# Version: stable
+# The remainder of this file is compressed using zlib.
+torch.optim.lr_scheduler.LRScheduler py:class 1 https://pytorch.org/docs/stable/_modules/torch/optim/lr_scheduler.html -
+torchvision.transforms py:module 1 https://pytorch.org/vision/stable/transforms.html -
+torchvision.models.mobilenetv2.MobileNetV2 py:class 1 https://pytorch.org/vision/stable/_modules/torchvision/models/mobilenetv2.html -
+torchvision.models.vgg.VGG py:class 1 https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html -
+optimizer_step py:method 1 api/lightning.pytorch.core.LightningModule.html#$ -
+json.encoder.JSONEncoder py:class 1 https://docs.python.org/3/library/json.html#json.JSONEncoder -
+numpy.bool_ py:class 1 https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.bool -
+numpy.float32 py:class 1 https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32 -
+numpy.float64 py:class 1 https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64 -
+numpy.uint64 py:class 1 https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint64 -
