@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+tcpw/__init__.py
+tcpw/__main__.py
+tcpw/tcpw
+tcpw.egg-info/PKG-INFO
+tcpw.egg-info/SOURCES.txt
+tcpw.egg-info/dependency_links.txt
+tcpw.egg-info/entry_points.txt
+tcpw.egg-info/requires.txt
+tcpw.egg-info/top_level.txt

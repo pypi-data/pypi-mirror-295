@@ -1,0 +1,2 @@
+[console_scripts]
+tcpw = tcpw.__main__:main
