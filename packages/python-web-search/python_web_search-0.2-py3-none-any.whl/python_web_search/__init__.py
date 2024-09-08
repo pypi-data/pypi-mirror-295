@@ -1,0 +1,1 @@
+from python_web_search import search
