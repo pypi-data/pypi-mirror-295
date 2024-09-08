@@ -1,0 +1,3 @@
+[console_scripts]
+hello = web_search:hello
+search = web_search:search
