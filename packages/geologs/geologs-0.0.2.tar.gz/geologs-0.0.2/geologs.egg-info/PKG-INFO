@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: geologs
+Version: 0.0.2
+Summary: Slack bot to watch log files and run basic server commands
+Author-email: gyndlf <james@zingel.co.nz>
+License: MIT
+Project-URL: repository, https://github.com/gyndlf/geologs
+Keywords: slack,log,bot
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: slack_bolt<=2.0
+Requires-Dist: aiohttp<=4.0
+
+![https://pypi.org/project/geologs](https://img.shields.io/pypi/v/geologs.svg)
+
+# Geologs - Slack Bot
+
+- Runs basic system commands and pipes the output to slack
+- Watches specified log files and parses new lines before posting them in a specific slack channel
+
+Pull requests welcome.
+
+
+## Installation
+``
+pip install geologs
+``
+
+Configure `config.toml` to point to the log files of choice
+
