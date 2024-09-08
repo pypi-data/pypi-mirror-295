@@ -1,0 +1,13 @@
+pglock/__init__.py,sha256=ycYxIeqRnnGQiRsQfytW5_D9q8PgQykTcFh6kPePpH0,904
+pglock/config.py,sha256=GvaLSsfiU1c11hurOKWNV_lLX4S2GEknCAjq7maWyK4,1767
+pglock/core.py,sha256=spwNvxxZHGfT3itvybIgIAS6tDb0unadtTugMRnpiOk,22528
+pglock/management/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pglock/management/commands/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pglock/management/commands/pglock.py,sha256=xiT-oxoRjTywGa-vMF721VWGEhrc-wq639eepkueCpc,5490
+pglock/models.py,sha256=pO7rdFv3R-eEQv9lm6ZTktJXLlYYitcyWQUTjr2ywxs,9698
+pglock/utils.py,sha256=CDhobDNUuRR03KvrhNUJk_iSPex8Q2O3I7nz7UvqCpg,930
+pglock/version.py,sha256=AHkWDwe1JCypJkQz4NqRbAQxPROuQ4jRchtUG-_s5Os,80
+django_pglock-1.6.1.dist-info/LICENSE,sha256=Eyu37TIZx5RXU0VXGeWMcho9vQSv9CNmPYThDIgErOk,1456
+django_pglock-1.6.1.dist-info/METADATA,sha256=OS9Ovc9Z0w33jp2mb5OQjaTsy_Po9gD8cYxot642xcU,5794
+django_pglock-1.6.1.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+django_pglock-1.6.1.dist-info/RECORD,,
