@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: knn_fishmlserv
+Version: 0.1.3
+Summary: Default template for PDM package
+Author-email: kim <lsiwh32749@gmail.com>
+License: MIT
+Requires-Python: ==3.10.*
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.0.3
+Requires-Dist: pyarrow>=17.0.0
+Requires-Dist: fastparquet>=2024.2.0
+Requires-Dist: note>=0.5.2
+Requires-Dist: scikit-learn>=1.5.1
+Requires-Dist: matplotlib>=3.7.5
+
+# knn_fishmlserv
+
+# command
+```bash
+물고기의 길이를 입력하세요: 33
+물고기의 무게를 입력하세요: 33
+이 녀석은 바로 도미
+정답을 입력하세요: 도미
+물고기의 길이를 입력하세요: 22
+물고기의 무게를 입력하세요: 22
+이 녀석은 바로 도미
+정답을 입력하세요: 도미
+나가기를 원하면 'exit'를 입력하세요: exit
+```
+
