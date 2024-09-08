@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: ypostgres_lib
+Version: 2.4.0
+Summary: helper functions for when I need talk to Postgres
+Home-page: https://github.com/yactouat/ypostgres_lib
+Author: yactouat
+Author-email: yactouat@yactouat.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: psycopg2-binary
+
+# ypostgres_lib
