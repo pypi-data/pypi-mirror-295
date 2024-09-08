@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "noideacore"
+version = "1.3.6"
+description = ""
+authors = ["No1d3a"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mysql-connector-repackaged = "^0.3.1"
+pycryptodomex="3.20.0"
+python_dateutil="2.8.2"
+mysql-connector-python="^8.4.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
