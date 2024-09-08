@@ -1,0 +1,38 @@
+Metadata-Version: 2.3
+Name: mridumanda_shvedt
+Version: 0.6
+Summary: A minimal console based weather application.
+Project-URL: Documentation, https://github.com/Shvetank Dattatreya/mridumanda#readme
+Project-URL: Issues, https://github.com/Shvetank Dattatreya/mridumanda/issues
+Project-URL: Source, https://github.com/Shvetank Dattatreya/mridumanda
+Author-email: Shvetank Dattatreya <dshvetank@gmail.com>
+License-Expression: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: requests>=2.31.0
+Description-Content-Type: text/markdown
+
+# Mridu Manda
+
+Mridu-Manda is a minimal console application that shows weather and is based on the OpenWeatherMap API.
+
+## Features
+
+- Shows temperature, humidity, weather conditions
+
+## Note
+
+Please manually add your api key from OpenWeatherMap as a environment variable with the variable name `api_key`
+
+## Version 0.6 -- Latest Release
+
+- Uploaded to PyPI, so you can download with `pip` easily
+- Structured the display for better readability
