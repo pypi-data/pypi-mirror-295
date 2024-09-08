@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: py3dtf
+Version: 0.3.1
+Summary: Simple 3D Transforms in Python
+Author: Daniel Dugas
+Requires-Python: >=3.6
+Requires-Dist: matplotlib
+Requires-Dist: numpy
