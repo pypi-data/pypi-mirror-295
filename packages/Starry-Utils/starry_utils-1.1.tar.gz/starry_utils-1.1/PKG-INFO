@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: Starry-Utils
+Version: 1.1
+Summary: Utils for Star-Cogs.
+Home-page: https://github.com/LeDeathAmongst/Star_Utils
+Author: Star
+Author-email: skylar.rae.val@proton.me
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9.1
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: sentry_sdk
+Requires-Dist: colorama
+
+# Star_Utils - Shared tools
+### Made Initially by AAA3A for [AAA3A-cogs](https://github.com/AAA3A-AAA3A/AAA3A-cogs), modified by Star for [Star-Cogs](https://github.com/LeDeathAmongst/Star-Cogs)
+
+The "Star_Utils" sub-folder is a PIP package, automatically downloaded by all my cogs.
+
+For more info (docs, contributing, contact), please check the Star-Cogs repository.
+
+Thanks to Vexed for the code and the documentation to use Telemetry with Sentry (https://github.com/Vexed01/vex-cog-utils/blob/ba8adb3d270c968bc7ff3e3b977ac90ff752dca3/vexcogutils/sentry.py)!
+
+## Install
+
+Type the following command in your console:
+
+```
+python -m pip install git+https://github.com/LeDeathAmongst/AAA3A_utils.git
+```
