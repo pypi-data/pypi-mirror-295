@@ -1,0 +1,17 @@
+.flake8
+.gitignore
+.gitlab-ci.yml
+LICENSE
+README.md
+pyproject.toml
+lintian_codeclimate/__init__.py
+lintian_codeclimate/__main__.py
+lintian_codeclimate/_version.py
+lintian_codeclimate/parser.py
+lintian_codeclimate.egg-info/PKG-INFO
+lintian_codeclimate.egg-info/SOURCES.txt
+lintian_codeclimate.egg-info/dependency_links.txt
+lintian_codeclimate.egg-info/requires.txt
+lintian_codeclimate.egg-info/top_level.txt
+lintian_codeclimate/tests/__init__.py
+lintian_codeclimate/tests/test_parser.py
