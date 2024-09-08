@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: sdss-lvmcam
+Version: 0.4.14
+Summary: The package for lvmcam
+Home-page: https://github.com/sdss/lvmcam
+License: BSD-3-Clause
+Keywords: astronomy,software
+Author: Florian Briegel
+Author-email: briegel@mpia.de
+Maintainer: Florian Briegel
+Maintainer-email: briegel@mpia.de
+Requires-Python: >=3.8,<4
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: sdss-araviscam (>=0.2.4,<0.3.0)
+Requires-Dist: sdss-basecam (>=0.8.0,<0.9.0)
+Requires-Dist: sdss-lvmtipo (>=0.2.0,<0.3.0)
+Project-URL: Documentation, https://sdss-lvmcam.readthedocs.org
+Project-URL: Repository, https://github.com/sdss/lvmcam
+Description-Content-Type: text/markdown
+
+# lvmcam
+
+![Versions](https://img.shields.io/badge/python->3.8-blue)
+[![Lint](https://github.com/sdss/lvmcam/actions/workflows/lint.yml/badge.svg)](https://github.com/sdss/lvmcam/actions/workflows/lint.yml)
+[![Documentation Status](https://readthedocs.org/projects/sdss-lvmcam/badge/?version=latest)](https://sdss-lvmcam.readthedocs.io/en/latest/?badge=latest)
+[![codecov](https://codecov.io/gh/sdss/lvmcam/branch/main/graph/badge.svg)](https://codecov.io/gh/sdss/lvmcam)
+
+Auto-guider (AG) camera control actor.
+
