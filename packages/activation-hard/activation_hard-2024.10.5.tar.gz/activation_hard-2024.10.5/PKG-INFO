@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: activation-hard
+Version: 2024.10.5
+Summary: 权限激活相关
+Home-page: https://github.com/data-infra/cube-studio
+Author: tencent
+Author-email: pengluan@tencent.com
+Requires-Python: >=3.6
+Requires-Dist: PySnooper
+Requires-Dist: kubernetes
+Requires-Dist: cryptography
