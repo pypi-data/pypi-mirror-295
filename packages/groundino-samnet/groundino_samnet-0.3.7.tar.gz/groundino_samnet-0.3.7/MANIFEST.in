@@ -1,0 +1,7 @@
+# Incluir archivos YAML en el paquete segment_anything2
+include src/segment_anything2/sam2_config/*.yaml
+
+# Incluir todos los archivos .md en el directorio src
+include README.md
+include LICENSE
+include description.md
