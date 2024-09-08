@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/repzip/__init__.py
+src/repzip/__main__.py
+src/repzip.egg-info/PKG-INFO
+src/repzip.egg-info/SOURCES.txt
+src/repzip.egg-info/dependency_links.txt
+src/repzip.egg-info/entry_points.txt
+src/repzip.egg-info/top_level.txt
