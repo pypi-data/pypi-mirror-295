@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuthBase</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>AuthBase</h1>
+      <p>Email-only authentication for FastAPI webapps.</p>
+    </header>
+
+    
+    
+    <style>
+    #hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    #text-box,
+    #image-box {
+        flex: 1;
+        padding: 20px;
+    }
+
+    #image-box img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #333;
+        border-radius: 2em;
+    }
+
+    #text-box {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    #text-box p:first-child {
+        padding-bottom: 0.5em;
+    }
+    #text-box p:last-child {
+        padding-top: 0.5em;
+    }
+
+    /* Media query for mobile screens */
+    @media (max-width: 768px) {
+        #hero {
+            flex-direction: column;
+        }
+    }
+</style>
+<div id="hero">
+    <div id="text-box">
+        <p>Simple, Open&#8209;Source, Email&#8209;Only Authentication for Your
+                FastAPI Prototype, Proof of Concept, or MVP.</p>
+        <p><a class="button" href="How_It_Works.html">Learn More</a></p>
+    </div>
+    <div id="image-box">
+        <img src="authbase.webp" />
+    </div>
+</div>
+
+
+    <footer>
+      
+    </footer>
+  </div>
+</body>
+
+</html>

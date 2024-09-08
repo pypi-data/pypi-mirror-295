@@ -1,0 +1,234 @@
+:root {
+  --raw-main-color: 0, 123, 255; /* Professional blue */
+  --raw-darker-color: 0, 86, 179; /* Darker blue */
+  --raw-lighter-color: 30, 144, 255; /* Bright blue */
+  --main-color: rgb(var(--raw-main-color));
+  --darker-color: rgb(var(--raw-darker-color));
+  --lighter-color: rgb(var(--raw-lighter-color));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+pre {
+  padding: 1em;
+  border: 1px solid #999;
+  background-color: #eee;
+  overflow-x: auto;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f7f7f7;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #777;
+}
+
+header img {
+  vertical-align: middle;
+}
+
+nav {
+  margin: 20px 0;
+  text-align: center;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--darker-color);
+}
+
+section {
+  padding: 20px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #ddd;
+  font-size: 0.9em;
+  color: #777;
+}
+
+.center {
+  text-align: center;
+}
+
+button.link {
+  color: var(--main-color);
+  padding: 0;
+  margin: 0;
+  display: inline;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+}
+
+button, a.button {
+  margin: 0;
+  padding: 10px 20px;
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* Global Form Styles */
+
+form {
+  max-width: 600px; /* Keeps the form sleek */
+  margin: 1em auto; /* Center form on page */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  border: 1px solid #888;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Open Sans', sans-serif;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333; /* Neutral color for labels */
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Slightly rounded edges */
+  font-size: 16px;
+  background-color: #f9f9f9; /* Soft background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color); /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(var(--raw-primary-color), 0.5); /* Slight glow effect */
+  outline: none; /* Remove default focus */
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 120px;
+}
+
+/* Submit Button Styles */
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  input, textarea {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
+
+/* Dark Mode Compatibility */
+@media (prefers-color-scheme: dark) {
+  form {
+    background: rgba(20, 20, 20, 0.9); /* Darker form background */
+    color: #ccc;
+  }
+
+  input, textarea {
+    background-color: #333; /* Dark input background */
+    color: #ccc;
+    border: 1px solid #555;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--lighter-color);
+    box-shadow: 0 0 5px rgba(var(--raw-lighter-color), 0.7);
+  }
+
+  button[type="submit"] {
+    background-color: var(--lighter-color);
+  }
+
+  button[type="submit"]:hover {
+    background-color: var(--main-color);
+  }
+}

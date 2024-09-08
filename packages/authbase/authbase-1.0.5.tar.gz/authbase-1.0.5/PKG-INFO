@@ -1,0 +1,20 @@
+Metadata-Version: 2.3
+Name: authbase
+Version: 1.0.5
+Summary: Bootstrap is to frontend as AuthBase is to backend. A boilerplate that provides email-only user auth and email functionality.
+Project-URL: Homepage, https://github.com/mizuki-hikaru/authbase
+Project-URL: Issues, https://github.com/mizuki-hikaru/authbase/issues
+Author-email: Mizuki Hikaru <mizuki@hikaru.org>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: fastapi[standard]
+Requires-Dist: mistletoe
+Requires-Dist: smtp-emailer
+Description-Content-Type: text/markdown
+
+# AuthBase
+
+Documentation is at [https://authbase.org](https://authbase.org).
