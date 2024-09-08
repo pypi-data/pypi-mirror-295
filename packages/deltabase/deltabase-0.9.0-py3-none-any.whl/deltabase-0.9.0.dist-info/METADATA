@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: deltabase
+Version: 0.9.0
+Summary: 
+Author: uname-n
+Author-email: noreply@github.com
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: ai
+Provides-Extra: magic
+Provides-Extra: salesforce
+Requires-Dist: deltalake (>=0.19.0,<0.20.0)
+Requires-Dist: ipython (>=8.26.0,<9.0.0) ; extra == "magic" or extra == "ai"
+Requires-Dist: openai (>=1.43.0,<2.0.0) ; extra == "ai"
+Requires-Dist: pandas (>=2.2.2,<3.0.0) ; extra == "salesforce"
+Requires-Dist: polars (>=1.6.0,<2.0.0)
+Requires-Dist: simple-salesforce (>=1.12.6,<2.0.0) ; extra == "salesforce"
+Description-Content-Type: text/markdown
+
+<h1 align="center">
+  <img src="./docs/assets/banner.svg" alt="banner">
+  <br>
+</h1>
+
+<p align="center">
+  <a href="https://uname-n.github.io/deltabase">documentation (wip)</a>
+</p>
+
+**DeltaBase** is a lightweight, comprehensive solution for managing Delta Tables in both local and cloud environments. Built on the high-performance frameworks [**polars**](https://github.com/pola-rs/polars) and [**deltalake**](https://github.com/delta-io/delta-rs), DeltaBase streamlines data operations with features like upsert, delete, commit, and version control. Designed for data engineers, analysts, and developers, it ensures data consistency, efficient versioning, and seamless integration into your workflows.
+
+## Setup
+To install **deltabase**, run the following command:
+```bash
+pip install deltabase
+```
+
+## Usage
+```python
+from deltabase import delta
+
+# connect to a delta source
+db:delta = delta.connect(path="mydelta")
+
+# upsert records into a table 
+db.upsert(table="mytable", primary_key="id", data=[
+    {"id": 1, "name": "alice"}
+])
+
+# commit table to delta source
+db.commit(table="mytable")
+
+# read records from sql context
+result = db.sql("select * from mytable")
+print(result) # output: [{"id": 1, "name": "alice"}]
+```
+
+## Magic
+**deltabase** provides **magic** for **Jupyter Notebooks** to allow for seamless transitions between **python**, **sql**, and **ai**. [(see example)](https://github.com/uname-n/deltabase/blob/master/examples/magic.ipynb)
