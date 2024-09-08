@@ -1,0 +1,6 @@
+appdirs
+numpy<2
+torch>=2.4.0
+einops
+huggingface_hub
+pytest
