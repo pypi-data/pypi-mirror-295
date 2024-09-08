@@ -1,0 +1,88 @@
+Metadata-Version: 2.1
+Name: ddeutil-observe
+Version: 0.0.2
+Summary: Lightweight observation web application
+Author-email: ddeutils <korawich.anu@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/ddeutils/ddeutil-observe/
+Project-URL: Source Code, https://github.com/ddeutils/ddeutil-observe/
+Keywords: data,observe,utility,webserver,fastapi
+Classifier: Topic :: Utilities
+Classifier: Natural Language :: English
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fmtutil
+Requires-Dist: ddeutil-io
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: fastapi==0.114.0
+Requires-Dist: uvicorn==0.30.6
+Requires-Dist: jinja2==3.1.4
+Requires-Dist: sqlalchemy==2.0.32
+Requires-Dist: python-multipart==0.0.9
+Requires-Dist: email-validator==2.2.0
+Requires-Dist: pyjwt==2.9.0
+Requires-Dist: bcrypt==3.2.2
+Provides-Extra: test
+Requires-Dist: httpx==0.27.2; extra == "test"
+Requires-Dist: aiosqlite==0.20.0; extra == "test"
+
+# Observe Web App
+
+[![test](https://github.com/ddeutils/ddeutil-observe/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ddeutils/ddeutil-observe/actions/workflows/tests.yml)
+[![pypi version](https://img.shields.io/pypi/v/ddeutil-observe)](https://pypi.org/project/ddeutil-observe/)
+[![python support version](https://img.shields.io/pypi/pyversions/ddeutil-observe)](https://pypi.org/project/ddeutil-observe/)
+[![size](https://img.shields.io/github/languages/code-size/ddeutils/ddeutil-observe)](https://github.com/ddeutils/ddeutil-observe)
+[![gh license](https://img.shields.io/github/license/ddeutils/ddeutil-observe)](https://github.com/ddeutils/ddeutil-observe/blob/main/LICENSE)
+[![code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+The **Lightweight observation web application** project was created for easy to
+make a observation web application that getting log, or trigger status from any
+data framework formats and endpoint APIs, it project will focus on the
+`ddeutil-workflow` data orchestration tool.
+
+> [!WARNING]
+> This project is the best fit with `ddeutil-workflow` package. The first propose
+> is monitor and observe from worker nodes that deploy workflow application.
+
+## Installation
+
+```shell
+pip install ddeutil-observe
+```
+
+> I added this feature to the main milestone.
+>
+> **Docker Images** supported:
+>
+> | Docker Image               | Python Version | Support |
+> |----------------------------|----------------|---------|
+> | ddeutil-observe:latest     | `3.9`          | :x:     |
+> | ddeutil-observe:python3.10 | `3.10`         | :x:     |
+> | ddeutil-observe:python3.11 | `3.11`         | :x:     |
+> | ddeutil-observe:python3.12 | `3.12`         | :x:     |
+
+## Getting Started
+
+This project implement the best scalable FastAPI web application structure.
+
+## Configuration
+
+| Environment              | Component | Default  | Description                              |
+|--------------------------|-----------|----------|------------------------------------------|
+| `OBSERVE_LOG_DEBUG_MODE` | Log       | true     | Logging mode of this observe application |
+
+## Deployment
+
+```shell
+(env) $ uvicorn src.ddeutil.observe.app:app --host 127.0.0.1 --port 88
+```
