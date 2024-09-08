@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: dandy
+Version: 0.0.2
+Summary: Intelligence Bot Framework
+Home-page: https://github.com/stratusadv/dandy
+Author: Nathan Johnson
+Author-email: info@stratusadv.com
+License: MIT
+Keywords: dandy,ai,llm,agent,prompt,gpt
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.11
+License-File: LICENSE.md
+
+Dandy is a framework for developing programmatic intelligent bots and workflows. It's opinionated, magical, and designed to be incredibly pythonic.
