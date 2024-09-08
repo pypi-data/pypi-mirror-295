@@ -1,0 +1,90 @@
+Metadata-Version: 2.1
+Name: wyn-wav2lip
+Version: 0.1.7
+Summary: A simple package to run Wav2Lip for lip synchronization with quality enhancements.
+Author: Your Name
+Author-email: your.email@example.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: basicsr (==1.4.2)
+Requires-Dist: batch_face (>=1.0.4,<2.0.0)
+Requires-Dist: configparser (>=5.3.0,<6.0.0)
+Requires-Dist: gfpgan (>=1.3.8,<2.0.0)
+Requires-Dist: torch (>=2.0,<3.0)
+Description-Content-Type: text/markdown
+
+# Wav2Lip Package
+
+Wav2Lip is a Python package that simplifies the setup and execution of the [Wav2Lip](https://github.com/anothermartz/Easy-Wav2Lip) model, a deep learning tool for lip synchronization with enhanced quality options.
+
+```
+wav2lip_project/
+├── wav2lip/
+│   ├── __init__.py
+│   └── wav2lip.py  # Refactored class-based script with the correct name
+├── pyproject.toml  # Poetry configuration file
+├── README.md  # Project description and usage instructions
+├── LICENSE  # License file (e.g., MIT License)
+├── tests/
+│   └── test_wav2lip.py  # Unit tests for the package
+├── dist/  # Will contain build files after 'poetry build'
+├── .gitignore  # Files to ignore in version control (optional)
+└── setup.cfg  # Optional: You can include a setup.cfg for backward compatibility
+```
+
+## Features
+
+ setup for Google Colab environments.
+- Supports multiple quality settings (Fast, Improved, Enhanced).
+- Integrated with GFPGAN for face upscaling.
+- Easy configuration through INI files for customizable options.
+
+## Installation
+
+To install the Wav2Lip package, you can use [Poetry](https://python-poetry.org/) to manage dependencies.
+
+```bash
+pip install wav2lip
+```
+
+## Usage
+
+Here's an example of how to use the `Wav2Lip` package:
+
+```python
+from wyn_wav2lip.wav2lip import *
+
+# Initialize Wav2Lip
+wav2lip = Wav2Lip()
+
+# Setup environment (ensure that you have GPU enabled)
+wav2lip.setup()
+
+# Run: requires 2 input args: 
+# - an image
+# - a voice file
+wav2lip.run(video_file="/content/yiqiao3.jpg", vocal_file="/content/Easy-Wav2Lip/output.mp3")
+```
+
+### Options
+
+You can specify different options for the model, such as:
+
+- **Quality**: `"Fast"`, `"Improved"`, or `"Enhanced"`.
+- **Output Height**: `"half resolution"`, `"full resolution"`, or `"480"`.
+- **Padding and Mask**: Customize mouth tracking, padding, and mask settings.
+
+## Contributing
+
+Feel free to open issues or contribute by submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
