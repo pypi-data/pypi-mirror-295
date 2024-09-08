@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+tests/test_overwrite_and_merge.py
+tests/test_text_range.py
+token_tools/__init__.py
+token_tools/token.py
+token_tools/token_funcs.py
+token_tools.egg-info/PKG-INFO
+token_tools.egg-info/SOURCES.txt
+token_tools.egg-info/dependency_links.txt
+token_tools.egg-info/requires.txt
+token_tools.egg-info/top_level.txt
