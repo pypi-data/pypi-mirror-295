@@ -1,0 +1,28 @@
+{
+  "title": "Lang Schema",
+  "description": "Schema for lang file",
+  "type": "object",
+  "properties": {
+    "tlang": {
+      "title": "Tlang",
+      "description": "Scope 'tlang' of lang item",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "title": "Command",
+          "description": "Scope 'command' of lang item",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "set": {
+              "title": "set",
+              "description": "value of lang item type 'set'",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
