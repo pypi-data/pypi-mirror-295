@@ -1,0 +1,3 @@
+[console_scripts]
+argparse-tui=argparse_tui.__main__:main
+
