@@ -1,0 +1,43 @@
+Metadata-Version: 2.3
+Name: dual
+Version: 0.3.0
+Summary: `dual` is a package for dual problem.
+Project-URL: homepage, https://github.com/SaitoTsutomu/dual
+Author-email: Saito Tsutomu <tsutomu7@hotmail.co.jp>
+License: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+
+# dual
+
+`dual` is a package for dual problem.
+
+## Installation
+
+```
+pip install dual
+```
+
+## Example
+
+```python
+from dual import dual
+
+print(dual("""\
+min c^T x
+A x >= b
+x >= 0
+"""))
+```
+
+```
+max b^T y
+A^T y <= c
+y >= 0
+```
