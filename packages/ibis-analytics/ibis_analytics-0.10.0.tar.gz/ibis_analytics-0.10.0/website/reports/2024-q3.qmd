@@ -1,0 +1,796 @@
+# Ibis analytics report -- 2024 Q3
+
+I gave an overview of the metrics via the dashboard internally in Voltron Data, but realized written and ad-hoc code might be better. And all of this data is public anyway.
+
+::: {.callout-important title="Data from September 4, 2024"}
+The PyPI databases is usually about a day behind, and the rest of the data may be a few days behind.
+:::
+
+## Connecting to data
+
+We import stuff and setup things:
+
+::: {.callout-important title="Using Ibis as the interface for DuckDB and ClickHouse" }
+Don't let the engine dictate the interface! We use Ibis with two backends:
+
+1. DuckDB: for our ETL from GitHub, GoatCounter (documentation), and Zulip.
+   a. JSON files ingested for GitHub and Zulip
+   b. Gzipped CSV file for GoatCounter
+   c. Delta Lake tables locally or in GCS
+2. ClickHouse: their existing ETL'ed and aggregated PyPI database (thanks ClickHouse team!).
+
+![TODO: add source w/ link](../layers.png)
+:::
+
+```{python}
+import ibis
+
+import ibis.selectors as s
+import plotly.express as px
+
+from ibis_analytics.tables import (
+    ch_con,
+    pulls_t,
+    stars_t,
+    forks_t,
+    issues_t,
+    commits_t,
+    watchers_t,
+    downloads_t,
+    docs_t,
+    zulip_members_t,
+    zulip_messages_t,
+)
+
+ibis.options.interactive = True
+ibis.options.repr.interactive.max_rows = 40
+ibis.options.repr.interactive.max_columns = None
+
+px.defaults.template = "plotly_dark"
+```
+
+## GitHub
+
+Overall, Ibis is trending very positively. Our main proxy for popularity is stars, though we can get more meaningful metrics from issues and pull requests.
+
+### Stars
+
+```{python}
+t = stars_t
+t.schema()
+```
+
+Our cumulative stargazers over time:
+
+```{python}
+px.line(
+    t.order_by("starred_at"),
+    x="starred_at",
+    y="total_stars",
+
+)
+```
+
+Rolling 28 day:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["starred_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+We can assume the first major spike is from Wes McKinney's initial launch of the Ibis project.
+
+Zooming in on the on the last 2 years:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["starred_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .filter(ibis._["timestamp"] > ibis.now() - ibis.interval(days=365 * 2))
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Quarterly stars bar chart:
+
+```{python}
+px.bar(
+    t.mutate(timestamp=t["starred_at"].truncate("Q"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count()),
+    x="timestamp",
+    y="total",
+)
+```
+
+Yearly:
+
+```{python}
+px.bar(
+    t.mutate(timestamp=t["starred_at"].truncate("Y"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count()),
+    x="timestamp",
+    y="total",
+)
+```
+
+## Issues
+
+```{python}
+t = issues_t
+t.schema()
+```
+
+Issues are a good proxy for user engagement and the health of the project.
+
+Our cumulative issues over time:
+
+```{python}
+px.line(
+    t.order_by("created_at"),
+    x="created_at",
+    y="total_issues",
+)
+```
+
+Rolling 28 day:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Zooming in on the on the last 2 years:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .filter(ibis._["timestamp"] > ibis.now() - ibis.interval(days=365 * 2))
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Quarterly issues bar chart:
+
+```{python}
+px.bar(
+    t.mutate(timestamp=t["created_at"].truncate("Q"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count()),
+    x="timestamp",
+    y="total",
+)
+```
+
+Yearly:
+
+```{python}
+px.bar(
+    t.filter(t["is_first_issue"] == True)
+    .mutate(timestamp=t["created_at"].truncate("Q"))
+    .group_by("timestamp", "state")
+    .agg(total=ibis._.count())
+    .filter(
+        ibis._["timestamp"] > ibis.date(2022, 1, 1),
+    )
+    .order_by("timestamp", ibis.desc("total")),
+    x="timestamp",
+    y="total",
+    color="state",
+)
+```
+
+R28 first issues:
+
+```{python}
+px.line(
+    t.filter(t["is_first_issue"] == True)
+    .mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .filter(
+        ibis._["timestamp"] > ibis.date(2018, 1, 1),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+## Pull Requests
+
+Pull requests are a good proxy for developer engagement and the health of the project.
+
+```{python}
+t = pulls_t
+t.schema()
+```
+
+First pull requests:
+
+```{python}
+px.bar(
+    t.filter(t["is_first_pull"] == True)
+    .mutate(timestamp=t["created_at"].truncate("M"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    #.filter(
+    #    ibis._["timestamp"] > ibis.date(2022, 1, 1),
+    #)
+    .order_by("timestamp", ibis.desc("total")),
+    x="timestamp",
+    y="total",
+)
+```
+
+R28 first pull requests:
+
+```{python}
+px.line(
+    t.filter(t["is_first_pull"] == True)
+    .mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .filter(
+        ibis._["timestamp"] > ibis.date(2018, 1, 1),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Our cumulative pull requests over time:
+
+```{python}
+px.line(
+    t.order_by("created_at"),
+    x="created_at",
+    y="total_pulls",
+)
+```
+
+Rolling 28 day:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Zooming in on the on the last 2 years:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["created_at"].truncate("D"))
+    .group_by("timestamp")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .filter(ibis._["timestamp"] > ibis.now() - ibis.interval(days=365 * 2))
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Quarterly pull requests bar chart:
+
+```{python}
+px.bar(
+    t.mutate(timestamp=t["created_at"].truncate("W"))
+    .group_by("timestamp", "login")
+    .agg(total=ibis._.count())
+    .filter(ibis._["timestamp"] > ibis.date(2022, 1, 1))
+    .order_by("timestamp", ibis.desc("total")),
+    x="timestamp",
+    y="total",
+    color="login",
+)
+```
+
+Yearly:
+
+```{python}
+px.bar(
+    t.mutate(timestamp=t["created_at"].truncate("Y"))
+    .group_by("timestamp", "login")
+    .agg(total=ibis._.count()),
+    x="timestamp",
+    y="total",
+    color="state",
+)
+```
+
+
+## PyPI downloads
+
+Downloads are a good proxy for user engagement and the health of the project.
+
+::: {.callout-note title="conda downloads"}
+We do not have conda downloads available in the Ibis analytics project. Overall, conda downloads are a small fraction of PyPI downloads.
+:::
+
+```{python}
+t = downloads_t
+
+t.schema()
+```
+
+Rolling 28 day:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["date"].cast("timestamp"))
+    .group_by("timestamp")
+    .agg(total=ibis._["count"].sum())
+    .select(
+        "timestamp",
+        r28=ibis._["total"]
+        .sum()
+        .over(ibis.window(order_by="timestamp", preceding=28, following=0)),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+Broken down by major version:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["date"].cast("timestamp"), version=t["version"].split(".")[0])
+    .filter(~ibis._["version"].startswith("v"))
+    .group_by("timestamp", "version")
+    .agg(total=ibis._["count"].sum())
+    .select(
+        "timestamp",
+        "version",
+        r28=ibis._["total"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp", group_by="version", preceding=28, following=0
+            )
+        ),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+    color="version",
+)
+```
+
+We can filter out to >= major version 3:
+
+```{python}
+px.line(
+    t.mutate(timestamp=t["date"].cast("timestamp"), version=t["version"].split(".")[0])
+    .filter(~ibis._["version"].startswith("v"))
+    .filter(ibis._["version"].cast("int") >= 3)
+    .group_by("timestamp", "version")
+    .agg(total=ibis._["count"].sum())
+    .select(
+        "timestamp",
+        "version",
+        r28=ibis._["total"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp", group_by="version", preceding=28, following=0
+            )
+        ),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+    color="version",
+)
+```
+
+## Documentation
+
+::: {.callout-caution title="Data quality issues"}
+Data only goes back to March 2022.
+
+From September 2023 - January 2024, with our move to Quarto, we dropped GoatCounter code from the documentation for all pages except the homepage. During this time, views for the homepage did not increase significantly. Once it did, the issue was identified and fixed.
+
+Pages have moved around. The homepage used to be versioned pages.
+:::
+
+```{python}
+t = docs_t
+t.schema()
+```
+
+Top N pages by views:
+
+```{python}
+px.bar(
+    t.group_by("path").agg(views=ibis._.count()).order_by(ibis.desc("views")).limit(20),
+    x="path",
+    y="views",
+    log_y=True,
+)
+```
+
+Rolling 28 day:
+
+```{python}
+px.line(
+    t.mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+    )
+    .group_by("timestamp")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+)
+```
+
+By top N paths:
+
+```{python}
+c = px.line(
+    t.mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+    )
+    .group_by("timestamp", "path")
+    .agg(total=ibis._.count())
+    .order_by(ibis.desc("total"))
+    .select(
+        "timestamp",
+        "path",
+        r28=ibis._["total"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="path",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+    color="path",
+)
+
+# move legend to the bottom
+c.update_layout(
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+)
+```
+
+By the first part of the path:
+
+```{python}
+l = (
+    t.mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        path_root=t["path"].split("/")[1],
+    )
+    .group_by("timestamp", "path")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        "path",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="path",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp")
+)
+l
+```
+
+```{python}
+c = px.line(
+    l,
+    x="timestamp",
+    y="r28",
+    color="path",
+)
+
+# no legend
+c.update_layout(showlegend=False)
+```
+
+
+```{python}
+l = (
+    t.filter(t["path"].split("/")[1].startswith("posts"))
+    .mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        path=t["path"].split("/")[2],
+    )
+    .group_by("timestamp", "path")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        "path",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="path",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp")
+)
+l
+```
+
+```{python}
+c = px.line(
+    l.filter(l["timestamp"] > ibis.date(2024, 1, 1)),
+    x="timestamp",
+    y="r28",
+    color="path",
+)
+c
+```
+
+```{python}
+c = px.line(
+    l.filter(l["timestamp"] > ibis.date(2024, 1, 1)).filter(
+        ~l["path"].startswith("farewell")
+    ),
+    x="timestamp",
+    y="r28",
+    log_y=True,
+    color="path",
+)
+
+# move legend to bottom
+c.update_layout(
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+)
+c
+```
+
+```{python}
+l = (
+    t.filter((t["path"].contains("-for-")) & ~t["path"].contains("posts"))
+    .mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        path=t["path"].re_extract(r"/ibis-for-([^/]+)-users", index=1),
+    )
+    .filter(ibis._["path"].length() < 10)
+    .filter(ibis._["path"] != "")
+    .group_by("timestamp", "path")
+    .agg(total=ibis._.count())
+    .select(
+        "timestamp",
+        "path",
+        r28=ibis._["total"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="path",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by(ibis.desc("timestamp"))
+)
+l
+```
+
+```{python}
+c = px.line(
+    l.filter(
+        l["timestamp"] > "2024-01-01",
+    ),
+    x="timestamp",
+    y="r28",
+    color="path",
+)
+c
+```
+
+
+Rolling docs by referrer:
+
+```{python}
+l = (
+    t.mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        referrer=t["referrer"].split("/")[0],
+    )
+    .group_by("timestamp", "referrer")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        "referrer",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="referrer",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp")
+)
+
+c = px.line(
+    l.filter(
+        l["timestamp"] > "2024-01-01",
+    ),
+    x="timestamp",
+    y="r28",
+    color="referrer",
+)
+
+# no legend
+c.update_layout(showlegend=False)
+c
+```
+
+first visit vs non first visit bar
+
+```{python}
+px.line(
+    t.mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        first_visit=t["first_visit"].cast("int"),
+    )
+    .group_by("timestamp", "first_visit")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        "first_visit",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="first_visit",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp")
+    .filter(ibis._["timestamp"] > ibis.date(2024, 1, 1)),
+    x="timestamp",
+    y="r28",
+    color="first_visit",
+)
+```
+
+filter to only path = "/" for first_vist
+
+```{python}
+px.line(
+    t.filter(t["path"] == "/why")
+    .mutate(
+        timestamp=t["timestamp"].cast("timestamp").truncate("D"),
+        first_visit=t["first_visit"].cast("int"),
+    )
+    .group_by("timestamp", "first_visit")
+    .agg(docs=ibis._.count())
+    .select(
+        "timestamp",
+        "first_visit",
+        r28=ibis._["docs"]
+        .sum()
+        .over(
+            ibis.window(
+                order_by="timestamp",
+                group_by="first_visit",
+                preceding=28,
+                following=0,
+            )
+        ),
+    )
+    .order_by("timestamp"),
+    x="timestamp",
+    y="r28",
+    color="first_visit",
+)
+```

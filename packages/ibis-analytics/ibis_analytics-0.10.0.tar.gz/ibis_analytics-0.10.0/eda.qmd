@@ -1,0 +1,164 @@
+```{python}
+import ibis
+
+import ibis.selectors as s
+import plotly.express as px
+import ibis_analytics.metrics as metrics
+
+from ibis_analytics.etl.extract import (
+    zulip_members as extract_zulip_members,
+    zulip_messages as extract_zulip_messages,
+)
+from ibis_analytics.etl.transform import (
+    zulip_members as transform_zulip_members,
+    zulip_messages as transform_zulip_messages,
+)
+
+from ibis_analytics.tables import (
+    ch_con,
+    pulls_t,
+    stars_t,
+    forks_t,
+    issues_t,
+    commits_t,
+    watchers_t,
+    downloads_t,
+    docs_t,
+    zulip_members_t,
+    zulip_messages_t,
+)
+
+ibis.options.interactive = True
+ibis.options.repr.interactive.max_rows = 40
+ibis.options.repr.interactive.max_columns = None
+
+px.defaults.template = "plotly_dark"
+```
+
+
+```{python}
+import ibis
+import gcsfs
+import pandas as pd
+
+from deltalake import DeltaTable
+
+ibis.options.interactive = True
+```
+
+```{python}
+fs = gcsfs.GCSFileSystem(token="anon")
+ibis.get_backend().register_filesystem(fs)
+```
+
+```{python}
+t = DeltaTable("gs://ibis-analytics/penguins.delta")
+t.to_pyarrow_table()
+```
+
+```{python}
+ibis.read_delta("gs://ibis-analytics/penguins.delta")
+```
+
+```{python}
+t = docs_t
+t
+```
+
+```{python}
+t.schema()
+```
+
+```{python}
+t.count()
+```
+
+```{python}
+paths = t.distinct(on="path")["path"].to_pyarrow().to_pylist()
+paths
+```
+
+```{python}
+len(paths)
+```
+
+
+```{python}
+t = (
+    t.mutate(timestamp=t["timestamp"].truncate("D"))
+    .relocate("extracted_at", "timestamp")
+    .group_by("timestamp")
+    .agg(count=ibis._.count())
+    .order_by(ibis.desc("timestamp"))
+)
+```
+
+```{python}
+px.bar(
+    t,
+    x="timestamp",
+    y="count",
+)
+```
+
+```{python}
+ch_con.list_tables()
+```
+
+```{python}
+t = ch_con.table("pypi_downloads_per_day_by_version_by_python").filter(
+    ibis._["project"] == "ibis-framework"
+)
+t
+```
+
+```{python}
+t
+```
+
+```{python}
+t.group_by("date", "python_minor").agg(count=ibis._["count"].sum()).order_by(
+    ibis.desc("date"), ibis.desc("count")
+)
+```
+
+```{python}
+ch_con.table(
+    "pypi_downloads_per_day_by_version_by_installer_by_type_by_country_mv"
+).schema()
+```
+
+
+```{python}
+t = downloads_t
+t
+```
+
+```{python}
+t.schema()
+```
+
+```{python}
+downloads_t.group_by("date").agg(count=downloads_t["count"].sum()).order_by(
+    ibis.desc("count")
+)
+```
+
+```{python}
+metrics.total(pulls_t)
+```
+
+```{python}
+t = extract_zulip_messages()
+t
+```
+
+```{python}
+t = transform_zulip_messages(t)
+t
+```
+
+```{python}
+t.alias("t").sql("select * from t")
+```
+
