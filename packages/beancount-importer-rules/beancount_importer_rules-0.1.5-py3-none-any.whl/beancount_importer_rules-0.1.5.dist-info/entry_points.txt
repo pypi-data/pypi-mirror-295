@@ -1,0 +1,3 @@
+[console_scripts]
+beancount-import = beancount_importer_rules.cli:cli
+
