@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+collegamento/__init__.py
+collegamento/files_variant.py
+collegamento.egg-info/PKG-INFO
+collegamento.egg-info/SOURCES.txt
+collegamento.egg-info/dependency_links.txt
+collegamento.egg-info/requires.txt
+collegamento.egg-info/top_level.txt
+collegamento/client_server/__init__.py
+collegamento/client_server/client.py
+collegamento/client_server/server.py
+collegamento/client_server/utils.py
+tests/test_file_variant.py
+tests/test_simple.py
