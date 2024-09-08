@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: DeepDR
+Version: 1.0
+Summary: A deep learning library for drug response prediction
+Author: Zhengxiang Jiang, and Pengyong Li
+Author-email: 21009101410@xidian.edu.cn
+License: Apache 2.0
+Keywords: Drug response,Deep learning,Python library
+Requires-Dist: torch (>=1.10.0)
+Requires-Dist: torchvision (>=0.11.0)
+Requires-Dist: torchaudio (>=0.10.0)
+Requires-Dist: joblib
+Requires-Dist: rdkit
+Requires-Dist: openpyxl
+Requires-Dist: pubchempy
+Requires-Dist: wandb
+Requires-Dist: torch-geometric (>=2.0.3)
+Requires-Dist: torch-scatter
+Requires-Dist: torch-sparse
+Requires-Dist: torch-cluster
+Requires-Dist: torch-spline-conv
+
