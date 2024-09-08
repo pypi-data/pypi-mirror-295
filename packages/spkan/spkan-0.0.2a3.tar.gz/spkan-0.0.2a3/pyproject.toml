@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools >= 61.0", "torch", "wheel", "pybind11", "ninja"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spkan"
+version = "0.0.2a3"
+authors = [
+  { name="Mellon M. Zhang", email="meilongz@gatech.edu" },
+]
+description = "A drop-in replacement for sparse convolutions using Kolmogorov-Arnold Networks"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.7",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ['kan', 'sparse', 'convolutions', 'kolmogorov-arnold', 'submanifold']
+
+[project.urls]
+Homepage = "https://github.com/meilongzhang/spkan"
+Issues = "https://github.com/meilongzhang/spkan/issues"
