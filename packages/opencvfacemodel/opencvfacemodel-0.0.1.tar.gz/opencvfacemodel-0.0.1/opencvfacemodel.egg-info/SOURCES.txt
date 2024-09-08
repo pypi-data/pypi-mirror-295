@@ -1,0 +1,10 @@
+README.md
+setup.py
+libname/__init__.py
+libname/hello.py
+libname/models/face_landmark_model.dat
+opencvfacemodel.egg-info/PKG-INFO
+opencvfacemodel.egg-info/SOURCES.txt
+opencvfacemodel.egg-info/dependency_links.txt
+opencvfacemodel.egg-info/requires.txt
+opencvfacemodel.egg-info/top_level.txt
