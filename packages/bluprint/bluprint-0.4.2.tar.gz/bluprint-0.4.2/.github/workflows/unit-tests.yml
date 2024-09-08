@@ -1,0 +1,62 @@
+name: Unit tests
+
+on:
+  workflow_call:
+    inputs:
+      PYTHON_VERSION:
+        required: true
+        type: string
+      UV_VERSION:
+        required: true
+        type: string
+      R_VERSION:
+        required: true
+        type: string
+    secrets:
+      CODECOV_TOKEN:
+        required: true
+
+jobs:
+
+  test-pipeline:
+    name: Run with code coverage
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: True
+
+      - name: Install and setup Python, uv, virtual env
+        uses: ./.github/actions/install-python
+        with:
+          PYTHON_VERSION: ${{ inputs.PYTHON_VERSION }}
+          UV_VERSION: ${{ inputs.UV_VERSION }}
+
+      - name: Install and setup R and packages
+        uses: ./.github/actions/install-r
+        with:
+          R_VERSION: ${{ inputs.R_VERSION }}
+
+      - name: Run unit tests
+        run: |
+          echo "Showing path:"
+          echo "$PATH"
+          export PATH=$PATH:/home/runner/.pyenv/bin
+          echo "Showing options from R"
+          Rscript -e 'options("repos")'
+          Rscript -e 'options("HTTPUserAgent")'
+          Rscript -e 'options("download.file.extra")'
+          make test
+        env:
+          PY_COLORS: 1
+
+      - name: Report
+        run: |
+          make report-coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

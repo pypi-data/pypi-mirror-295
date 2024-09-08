@@ -1,0 +1,33 @@
+---
+title: "Quarto Example"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+For a demonstration of accessing and running an external function, see @add-one-example:
+
+```{python}
+#| label: add-one-example
+#| fig-cap: "Load and run a function from project package."
+
+from {{placeholder_name}}.example import add_one
+add_one(3.14)
+```
+
+Load configuration and print data:
+
+```{python}
+from bluprint.config import load_data_yaml
+
+data = load_data_yaml()
+
+# Print file name
+print(data['example'])
+
+# Print file contents
+with open(data['example'], 'r') as example_file:
+  for line in example_file:
+    print(line.strip().replace(',', '\t'))
+```
