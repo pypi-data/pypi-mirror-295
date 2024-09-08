@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: OGDUtils
+Version: 2.1.0
+Summary: A package with utilities for working with output data from the Open Game Data core
+Author: John McCloskey, Mia Xiao, Renee Li
+Author-email: Luke Swanson <superscription58@gmail.com>
+Project-URL: Homepage, https://github.com/opengamedata/OGDUtils
+Project-URL: Bug Tracker, https://github.com/opengamedata/OGDUtils/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ipywidgets==8.0.*
+Requires-Dist: numpy==2.1.*
+Requires-Dist: pandas==2.2.*
+Requires-Dist: scikit-learn==1.5.*
+
+# OGDUtils
+
+This project contains several utilities developed to ease the process of working with data from the OpenGameData core.
+There are a set of `general` utilities, which include importing of files into a standard pandas environment, and some basic organization of large datasets.
+In addition, some games have specific utility packages, typically developed as part of existing analysis projects.
+These projects are typically made available in the `opengamedata-samples` repository.
+
+**Warning:** Outside the import utilities, this package has very little active support.
+We make no guarantees anything else in the package works or is of practical use;
+most of the utilities included here are just to increase the odds of success for anyone trying to work with older analysis files from `opengamedata-samples`.
