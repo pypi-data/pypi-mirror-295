@@ -1,0 +1,10 @@
+polars_splitters/__init__.py,sha256=8ELCaaO1pw7oZ-gwjakHmKZe6U6Ct9Y2xovVqsqCRZ8,30
+polars_splitters/core/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+polars_splitters/core/splitters.py,sha256=lIdpR00p2C_pSA31zuV-9smlAJ7mqjoqDpoyLKVCZKc,10767
+polars_splitters/utils/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+polars_splitters/utils/guardrails.py,sha256=twSmDbu4ZQH87zbX5QUoWsOCG6ctPmqerkJVGvP991g,8015
+polars_splitters/utils/type_enforcers.py,sha256=ywIxYNqny8hiKmKFowITA8n1Z_1nTSGzn6lEvFmLbYY,870
+polars_splitters/utils/wrapping_helpers.py,sha256=KOequLc6SwvW-YZBVqg1Zq5EK0aqdqN1XemQh8RoCAQ,952
+polars_splitters-0.2.3.dist-info/METADATA,sha256=EMmLqVDonYaguiBa9zzdW7h-CYCCBSlwnZ_MIfkNvDw,1537
+polars_splitters-0.2.3.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+polars_splitters-0.2.3.dist-info/RECORD,,
