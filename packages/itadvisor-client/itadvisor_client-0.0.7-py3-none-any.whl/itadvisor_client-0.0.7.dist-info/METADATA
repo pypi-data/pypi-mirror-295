@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: itadvisor_client
+Version: 0.0.7
+Summary: A python client for the Schneider Electric application IT Advisor.
+Author-email: David Romero <dromero@dromero.dev>
+Project-URL: Homepage, https://github.com/dl-romero/itadvisor_client
+Project-URL: Issues, https://github.com/dl-romero/itadvisor_client/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# ITAdvisor Client
+An unoffical ITAdvisor API Client.
+
+## Documentation
+import itadvisor_client
