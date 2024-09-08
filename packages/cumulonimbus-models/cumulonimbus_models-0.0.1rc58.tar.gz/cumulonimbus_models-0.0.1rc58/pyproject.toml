@@ -1,0 +1,137 @@
+[project]
+
+name = "cumulonimbus-models"
+requires-python = ">=3.10"
+dynamic = ["dependencies", "version", "optional-dependencies"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+readme = "README.md"
+authors = [
+    { name = "Guy Wilson", email = "guywilsonjr@gmail.com" },
+]
+maintainers = [
+    { name = "Guy Wilson", email = "guywilsonjr@gmail.com" },
+]
+
+
+
+
+[project.urls]
+Repository = "https://github.com/guywilsonjr/CumulonimbusModels"
+Issues = "https://github.com/guywilsonjr/CumulonimbusModels/issues"
+
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8", "pydantic", "mypy", "pydantic-settings"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.mypy]
+plugins = [
+    "pydantic.mypy"
+]
+mypy_path = "src"
+files = ["src"]
+cache_dir = '/dev/null'
+strict = true
+disallow_any_unimported = true
+disallow_any_expr = true
+disallow_any_decorated = true
+# disallow_any_explicit = true
+disallow_subclassing_any = true
+disallow_untyped_decorators = true
+warn_unreachable = true
+show_error_context = true
+show_error_code_links = true
+warn_incomplete_stub = true
+pretty = true
+
+
+
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies.dev]
+file = ["requirements.txt", "requirements-dev.txt", "requirements-sa.txt", "requirements-test.txt"]
+
+[[tool.mypy.overrides]]
+module = ["cumulonimbus_models.settings"]
+disallow_any_explicit = false
+
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+
+[tool.setuptools_scm]
+git_describe_command = "git describe --abbrev=0"
+local_scheme = "no-local-version"
+version_scheme = "only-version"
+
+
+
+[tool.tox]
+legacy_tox_ini = """
+[gh]
+python =
+    3.12 = py312
+    3.11 = py311
+    3.10 = py310
+
+[tox]
+envlist = mypy,py31{0,1,2}-{pytest}-{sdist,wheel}
+
+[testenv]
+parallel_show_output = true
+use_frozen_constraints = true
+recreate = true
+
+
+[testenv:mypy]
+skip_install = true
+deps =
+    -rrequirements-sa.txt
+commands =
+    mypy
+
+[testenv:py31{0,1,2}-{pytest}-{sdist,wheel}]
+depends =
+    mypy
+deps =
+    -rrequirements-test.txt
+commands =
+    pytest
+
+[testenv:py31{0,1,2}-{pytest}-wheel]
+package = wheel
+"""
+
+[pytest]
+log_cli = true
+pythonpath = "src"
+
+[tool.pytest.ini_options]
+
+console_output_style = "progress-even-when-capture-no"
+addopts = "-svvv --cov=src --cov-report=html --cov-report=term-missing --log-cli-level=INFO"
+log_cli_level = "INFO"
+testpaths = ["tests"]
+pythonpath = "src"
+
+[tool.cibuildwheel]
+build = "cp31{0,1,2}-*"
+build-frontend = "build[uv]"
+archs = ["x86_64"]
+skip = ["*musllinux*", "pp*"]
+
+[tool.uv.pip]
