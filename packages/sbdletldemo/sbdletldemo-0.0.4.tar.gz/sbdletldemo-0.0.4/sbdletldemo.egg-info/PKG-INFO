@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: sbdletldemo
+Version: 0.0.4
+Summary: Package of SBDL app
+Author: Aakash Verma
+Author-email: akash967049@gmail.com
+Keywords: python,etl,boiler,local,databricks
+
+SPARK ETL BOILER CODE
+
+This is an etl app .It follows entity architecture.
+It should be used as boiler code for developing etl tasks.
+ADD new entity, registery, source, target according to requirenments
