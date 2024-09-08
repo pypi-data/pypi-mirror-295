@@ -1,0 +1,3 @@
+[console_scripts]
+source-pardot=source_pardot.run:run
+
