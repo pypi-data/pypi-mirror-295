@@ -1,0 +1,3 @@
+[console_scripts]
+source-bigcommerce=source_bigcommerce.run:run
+
