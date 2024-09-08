@@ -1,0 +1,3 @@
+[console_scripts]
+knn_fishml = knn_fishmlserv.main:fish_classifier.run
+ping = knn_fishmlserv.main:ping
