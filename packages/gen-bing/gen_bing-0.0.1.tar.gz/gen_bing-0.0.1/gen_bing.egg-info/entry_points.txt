@@ -1,0 +1,2 @@
+[console_scripts]
+bing-create = bing_create.main:main
