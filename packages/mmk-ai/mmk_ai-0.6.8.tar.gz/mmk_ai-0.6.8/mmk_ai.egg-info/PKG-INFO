@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: mmk_ai
+Version: 0.6.8
+Summary: A custom AI library for data preprocessing, visualization, model training, and evaluation.
+Home-page: https://github.com/mmustafakapici/mmk_ai
+Author: Mustafa Kapıcı
+Author-email: m.mustafakapici@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn
+Requires-Dist: seaborn
+Requires-Dist: plotly
+Requires-Dist: joblib
+Requires-Dist: tqdm
+Requires-Dist: optuna
+
+# mmk_ai
+
+mmk_ai is a custom AI library designed for data preprocessing, visualization, model training, and evaluation. 
+
+## Installation
+
+To install this library, run:
+
+```bash
+pip install mmk_ai
