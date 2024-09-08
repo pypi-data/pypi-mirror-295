@@ -1,0 +1,17 @@
+importlib-resources
+lxml
+matplotlib
+mlflow==2.7.1
+nltk
+numpy
+pandas
+plotly
+rdkit==2023.3.3
+scikit-learn
+scipy
+sentence-transformers==2.7.0
+stanza
+tokenizers
+tqdm
+xmlschema
+zipp
