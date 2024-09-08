@@ -1,0 +1,188 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+
+[tool.poetry]
+authors = ["Joren Hammudoglu <jhammudoglu@gmail.com>"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering",
+  "Typing :: Stubs Only",
+  "Typing :: Typed",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+description = "Type stubs for SciPy"
+documentation = "https://github.com/jorenham/scipy-stubs?tab=readme-ov-file#scipy-stubs"
+license = "BSD-3-Clause"
+name = "scipy-stubs"
+packages = [{include = "scipy-stubs"}]
+readme = "README.md"
+repository = "https://github.com/jorenham/scipy-stubs/"
+version = "1.4.1a3"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/jorenham/scipy-stubs/issues"
+"Changelog" = "https://github.com/jorenham/scipy-stubs/releases"
+
+[tool.poetry.dependencies]
+python = "^3.10.1"
+optype = "^0.6.1"
+scipy = "^1.14.1"
+
+[tool.poetry.group.lint.dependencies]
+basedmypy = "^2.6.0"
+basedpyright = "^1.17.2"
+ruff = "^0.6.4"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.28.0"
+pre-commit = "^3.8.0"
+
+[tool.poe.executor]
+type = "poetry"
+
+[tool.poe.tasks]
+lint = "ruff check"
+verifytypes = "basedpyright --ignoreexternal --verifytypes scipy-stubs"
+
+[tool.poe.tasks.stubtest]
+cmd = "stubtest --mypy-config-file=pyproject.toml --allowlist=tests/stubtest/allowlist.txt $modules"
+args = [
+  {name = "modules", positional = true, multiple = true, default = "scipy"},
+]
+
+
+[tool.mypy]
+disable_bytearray_promotion = true
+disable_memoryview_promotion = true
+disallow_any_explicit = false  # no other way to type e.g. `float64 <: number[Any]`
+disallow_untyped_defs = false  # TODO
+disallow_incomplete_defs = false  # TODO
+warn_unused_ignores = true
+
+
+[tool.pyright]
+include = ["scipy-stubs"]
+exclude = [".cache"]
+ignore = [".venv"]
+pythonPlatform = "All"
+pythonVersion = "3.10"
+stubPath = "."
+typeCheckingMode = "strict"
+venv = ".venv"
+venvPath = "."
+
+deprecateTypingAliases = true
+enableTypeIgnoreComments = false
+reportIgnoreCommentWithoutRule = true
+reportImplicitRelativeImport = true
+reportInvalidCast = true
+reportPrivateUsage = false
+reportUnnecessaryTypeIgnoreComment = true
+reportUnsafeMultipleInheritance = true
+
+
+[tool.ruff]
+builtins = ["reveal_locals", "reveal_type"]
+exclude = ["scipy-pyright", ".venv"]
+force-exclude = true
+target-version = "py310"
+# https://typing.readthedocs.io/en/latest/guides/writing_stubs.html#maximum-line-length
+line-length = 130
+src = ["scipy-stubs"]
+
+[tool.ruff.format]
+line-ending = "lf"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+ignore = [
+  "E741",
+  "COM812", # ruff format compat
+  "ANN", # TODO
+  "PYI054", # numeric-literal-too-long
+]
+preview = true
+select = [
+  "E",
+  "W",
+  "I",
+  "UP",
+  "ANN",
+  "COM",
+  "EXE",
+  "ICN",
+  "INP",
+  "PYI",
+  "Q",
+  "TID",
+  "TCH",
+  "ERA",
+  "PGH",
+  "RUF",
+  "PLC0105",
+  "PLC0131",
+  "PLC0132",
+  "PLC0414",
+  "PLE0303",
+  "PLE0304",
+  "PLE0305",
+  "PLE0307",
+  "PLE0308",
+  "PLE0309",
+  "PLE0604",
+  "PLE0605",
+  "PLE1132",
+]
+
+[tool.ruff.lint.flake8-import-conventions]
+banned-from = [
+  "numpy",
+  "numpy.dtypes",
+  "numpy.exceptions",
+  "numpy.emath",
+  "numpy.fft",
+  "numpy.linalg",
+  "numpy.ma",
+  "numpy.polynomial",
+  "numpy.random",
+  "numpy.rec",
+  "numpy.typing",
+  "numpy.strings",
+  "optype",
+  "optype.numpy",
+  "optype.typing",
+]
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+"numpy" = "np"
+"numpy.polynomial" = "npp"
+"numpy.typing" = "npt"
+"optype" = "op"
+"optype.numpy" = "onpt"
+"scipy" = "sp"
+"scipy._typing" = "spt"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["scipy"]
+no-lines-before = ["typing", "first-party", "local-folder"]
+section-order = [
+  "standard-library",
+  "typing",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+split-on-trailing-comma = true
+
+[tool.ruff.lint.isort.sections]
+typing = ["collections.abc", "types", "typing", "typing_extensions"]
+
+[tool.ruff.lint.flake8-annotations]
+allow-star-arg-any = true
+mypy-init-return = true

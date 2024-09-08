@@ -1,0 +1,86 @@
+from collections.abc import Callable, Mapping, Sequence
+from types import ModuleType
+from typing import Any, ClassVar, Final, Literal, NamedTuple, TypeAlias
+from typing_extensions import LiteralString, override
+
+import optype as op
+from scipy._typing import Untyped, UntypedCallable
+
+_SectionKey: TypeAlias = LiteralString
+_SectionValue: TypeAlias = str | list[str] | dict[str, list[str]]
+
+class Reader:
+    def __init__(self, /, data: str | list[str]) -> None: ...
+    def __getitem__(self, n: op.CanIndex, /) -> str: ...
+    def reset(self) -> None: ...
+    def read(self) -> str: ...
+    def seek_next_non_empty_line(self) -> None: ...
+    def eof(self) -> bool: ...
+    def read_to_condition(self, condition_func: Callable[[str], object]) -> list[str]: ...
+    def read_to_next_empty_line(self) -> list[str]: ...
+    def read_to_next_unindented_line(self) -> list[str]: ...
+    def peek(self, n: int = 0) -> str: ...
+    def is_empty(self) -> bool: ...
+
+class ParseError(Exception): ...
+
+class Parameter(NamedTuple):
+    name: str
+    type: str
+    desc: str
+
+class NumpyDocString(Mapping[_SectionKey, _SectionValue]):
+    empty_description: ClassVar[str] = ".."
+    sections: ClassVar[dict[_SectionKey, _SectionValue]]
+    def __init__(self, /, docstring: str, config: dict[str, Any] | None = None) -> None: ...
+    @override
+    def __getitem__(self, key: _SectionKey, /) -> _SectionValue: ...
+    def __setitem__(self, key: _SectionKey, val: _SectionValue, /) -> None: ...
+    @override
+    def __iter__(self, /) -> op.CanIterSelf[_SectionKey]: ...
+    @override
+    def __len__(self, /) -> int: ...
+
+class FunctionDoc(NumpyDocString):
+    def __init__(
+        self,
+        /,
+        func: UntypedCallable,
+        role: Literal["func", "meth"] = "func",
+        doc: str | None = None,
+        config: dict[str, Any] | None = None,
+    ) -> None: ...
+    def get_func(self) -> UntypedCallable: ...
+
+class ObjDoc(NumpyDocString):
+    def __init__(self, /, obj: object, doc: str | None = None, config: dict[str, Any] | None = None) -> None: ...
+
+class ClassDoc(NumpyDocString):
+    extra_public_methods: ClassVar[Sequence[str]]
+    show_inherited_members: Final[bool]
+
+    def __init__(
+        self,
+        /,
+        cls: type,
+        doc: str | None = None,
+        modulename: str = "",
+        func_doc: type[FunctionDoc] = ...,
+        config: Untyped | None = None,
+    ) -> None: ...
+    @property
+    def methods(self) -> list[str]: ...
+    @property
+    def properties(self) -> list[str]: ...
+
+def strip_blank_lines(l: list[str]) -> list[str]: ...
+def dedent_lines(lines: op.CanIter[op.CanIterSelf[str]]) -> str: ...
+def get_doc_object(
+    obj: type | ModuleType | Callable[..., object] | object,
+    what: Literal["class", "module", "function", "object"] | None = None,
+    doc: str | None = None,
+    config: dict[str, Any] | None = None,
+    class_doc: type[ClassDoc] = ...,
+    func_doc: type[FunctionDoc] = ...,
+    obj_doc: type[ObjDoc] = ...,
+) -> NumpyDocString: ...
