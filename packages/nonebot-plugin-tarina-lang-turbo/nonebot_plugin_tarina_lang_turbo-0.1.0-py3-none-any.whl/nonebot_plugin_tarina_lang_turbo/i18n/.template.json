@@ -1,0 +1,4 @@
+{
+    "$schema": ".template.schema.json",
+    "scopes": [{ "scope": "tlang", "types": [{ "subtype": "command", "types": ["set"] }] }]
+}
