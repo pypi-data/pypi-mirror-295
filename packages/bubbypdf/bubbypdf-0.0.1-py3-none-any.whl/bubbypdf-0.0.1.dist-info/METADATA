@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: bubbypdf
+Version: 0.0.1
+Summary: A script that merges pdf files
+Home-page: https://github.com/FrenchCommando/bubbypdf
+Author: FrenchCommando
+Author-email: martialren@gmail.com
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# bubbypdf
+
+merge pdf files from folder
+
+https://github.com/FrenchCommando/bubbypdf
+
+## Usage
+
+### using pip
+- pip install bubbypdf
+  - run in cmd (merges files from folder into `merged.pdf`): bubbypdf
+  
+## Contribution
+Anything is always welcome
+
+
+[Github](https://github.com/FrenchCommando/bubbypdf)
