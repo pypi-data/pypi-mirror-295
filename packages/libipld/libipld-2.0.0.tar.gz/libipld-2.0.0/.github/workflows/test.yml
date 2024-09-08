@@ -1,0 +1,27 @@
+name: Unit tests
+
+on: [ pull_request ]
+
+permissions:
+  contents: read
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository.
+        uses: actions/checkout@v4
+
+      - name: Set up Python.
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies.
+        run: |
+          pip install -r pytests/requirements.txt
+          pip install -v -e .
+
+      - name: Run Tests.
+        run: pytest
