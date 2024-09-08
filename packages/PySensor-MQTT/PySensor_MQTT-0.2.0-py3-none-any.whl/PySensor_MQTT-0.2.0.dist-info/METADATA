@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: PySensor-MQTT
+Version: 0.2.0
+Summary: Biblioteca para simulação de sensores e publicação via MQTT
+Home-page: https://github.com/raunick/sensor_library_mqtt
+Author: Raunick Vileforte Vieira Generoso
+Author-email: raunickbhdesign@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE
+Requires-Dist: paho-mqtt
+
