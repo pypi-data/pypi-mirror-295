@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: Darrell
+Version: 0.1.0
+Summary: Darrell - Open Source Analytics Stack
+Home-page: https://github.com/bootstrapital/darrell
+Author: Chris Davis
+Author-email: chris@bootstrapital.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: click
+Requires-Dist: dbt-core
+Requires-Dist: dbt-duckdb
+
+# Darrell
+
+## What is Darrell?
+An open source analytics stack for nimble data teams that wraps dbt and Evidence BI.
+
+## How does it work?
+More details coming soon.
