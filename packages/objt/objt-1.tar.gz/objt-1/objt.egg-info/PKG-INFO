@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: objt
+Version: 1
+Summary: objects threads
+Author-email: Bart Thate <rssbotd@gmail.com>
+License: Public Domain
+Project-URL: home, https://pypi.org/project/objt
+Project-URL: bugs, https://github.com/rssbotd/objt/issues
+Project-URL: source, https://github.com/rssbotd/objt
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: Public Domain
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst
+
+README
+######
+
+NAME
+
+::
+
+    OBJT - objects threads
+
+
+SYNOPSIS
+
+::
+
+    >>> from objt import launch
+    >>> launch(print, "yoo!")
+    yoo!
+
+
+INSTALL
+
+::
+
+    $ pip install objt
+
+
+DESCRIPTION
+
+::
+
+    OBJT is a package that provides thread services.
+
+
+COPYRIGHT
+
+::
+
+    OBJR is Public Domain.

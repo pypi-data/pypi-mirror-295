@@ -1,0 +1,51 @@
+[build-system]
+requires = [
+    "setuptools>=43.0.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "objt"
+description = "objects threads"
+version = "1"
+authors = [
+    {name = "Bart Thate", email = "rssbotd@gmail.com"},
+]
+readme = "README.rst"
+license = {text="Public Domain"}
+classifiers = [ 
+    'Development Status :: 3 - Alpha',
+    'License :: Public Domain',
+    'Operating System :: Unix',
+    'Programming Language :: Python',
+    'Topic :: Utilities'
+]
+
+
+[project.urls]
+"home" = "https://pypi.org/project/objt"
+"bugs" = "https://github.com/rssbotd/objt/issues"
+"source" = "https://github.com/rssbotd/objt"
+
+
+[tool.setuptools]
+packages = [
+    'objt',
+]
+zip-safe=true
+
+
+[tool.setuptools.data-files]
+"share/doc/objt" = [
+    "README.rst"
+]
+
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+       "env*",
+       "html*",
+       "test*"
+      ]
