@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: streamlit_nivo_sankey
+Version: 1.0.0
+Summary: A Streamlit component for Nivo Sankey diagrams.
+Home-page: 
+Author: Zhixuan Qi
+Author-email: zhixuanqi@outlook.com
+Requires-Python: >=3.7
+Description-Content-Type: text/plain
+License-File: LICENSE
+Requires-Dist: streamlit>=0.63
+Provides-Extra: devel
+Requires-Dist: wheel; extra == "devel"
+Requires-Dist: pytest==7.4.0; extra == "devel"
+Requires-Dist: playwright==1.39.0; extra == "devel"
+Requires-Dist: requests==2.31.0; extra == "devel"
+Requires-Dist: pytest-playwright-snapshot==1.0; extra == "devel"
+Requires-Dist: pytest-rerunfailures==12.0; extra == "devel"
+
+# streamlit-nivo-sankey
+[![Build and Publish](https://github.com/Navxihziq/streamlit-nivo-sankey/actions/workflows/python-publish.yml/badge.svg)](https://github.com/Navxihziq/streamlit-nivo-sankey/actions/workflows/python-publish.yml)
+
+This is a Streamlit component that lets you create Nivo Sankey diagrams. Please check out Nivo's amazing page on [Sankey](https://nivo.rocks/sankey/) for more information.
+
+This project is still in early development. More granular control, testing, and documentation, and development guide will come soon. Stay tuned!
+
+## Installation instructions
+
+```sh
+pip install streamlit-nivo-sankey
+```
+
+## Basic Usage Example
+
+```python
+import streamlit as st
+
+from streamlit_nivo_sankey import st_nivo_sankey
+
+data = {
+    "nodes": [
+        {"id": "a", "nodeColor": "hsl(160, 70%, 50%)"},
+        {"id": "b", "nodeColor": "hsl(160, 70%, 50%)"},
+        {"id": "c", "nodeColor": "hsl(160, 70%, 50%)"},
+    ],
+    "links": [
+        {"source": "a", "target": "b", "value": 1},
+        {"source": "a", "target": "c", "value": 5},
+    ]
+}
+value = st_nivo_sankey(data)    # returns clicked node/link and value
+```
+
+![image](./assets/demo-1.png)

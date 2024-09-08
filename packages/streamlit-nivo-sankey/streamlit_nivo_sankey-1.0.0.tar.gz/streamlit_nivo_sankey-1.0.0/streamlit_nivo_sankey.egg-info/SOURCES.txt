@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+streamlit_nivo_sankey/__init__.py
+streamlit_nivo_sankey.egg-info/PKG-INFO
+streamlit_nivo_sankey.egg-info/SOURCES.txt
+streamlit_nivo_sankey.egg-info/dependency_links.txt
+streamlit_nivo_sankey.egg-info/requires.txt
+streamlit_nivo_sankey.egg-info/top_level.txt
+streamlit_nivo_sankey/frontend/build/asset-manifest.json
+streamlit_nivo_sankey/frontend/build/bootstrap.min.css
+streamlit_nivo_sankey/frontend/build/index.html
+streamlit_nivo_sankey/frontend/build/static/js/main.fc4a5a57.js
+streamlit_nivo_sankey/frontend/build/static/js/main.fc4a5a57.js.LICENSE.txt
+streamlit_nivo_sankey/frontend/build/static/js/main.fc4a5a57.js.map
