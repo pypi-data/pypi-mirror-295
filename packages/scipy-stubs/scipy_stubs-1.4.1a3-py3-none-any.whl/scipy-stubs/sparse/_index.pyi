@@ -1,0 +1,6 @@
+import optype.numpy as onpt
+from scipy._typing import Untyped
+
+class IndexMixin:
+    def __getitem__(self, key: onpt.AnyIntegerArray, /) -> Untyped: ...
+    def __setitem__(self, key: onpt.AnyIntegerArray, x: Untyped, /) -> None: ...
