@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: mocap-hands
+Version: 3.0.5
+Summary: Motion capture operation for hands for moveai's engine.
+Keywords: MotionOps,Moveai
+Author: move.ai
+Author-email: info@move.ai
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: mocap-base (>=1.1.6,<2.0.0)
+Requires-Dist: mocap_settings (>=1.1.0,<2.0.0)
+Requires-Dist: smplx (>=0.1.28,<0.2.0)
+Requires-Dist: torch (==1.13.0)
+Requires-Dist: torchvision (==0.14.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Requires-Dist: update (>=0.0.1,<0.0.2)
+Description-Content-Type: text/markdown
+
+# mocap-hands
+
+# Description
+
+Motion capture operation for hands for moveai's engine.
+
+# Installation
+
+`pip install mocap-hands`
+
+# License
+
+A valid license is needed to run this project. Please contact [support\@move.ai](mailto:support@move.ai) or visit https://move.ai if you need a license.
+
+# Support
+
+Please contact support@move.ai for any technical queries.
