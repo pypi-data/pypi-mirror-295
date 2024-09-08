@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: hello_world_installer_test
+Version: 0.1.0
+Summary: A package that prints 'Hello World' during installation
+Home-page: https://github.com/yourusername/hello_world_installer_test
+Author: Your Name
+Author-email: your.email@example.com
+Description-Content-Type: text/markdown
+
+# Hello World Installer
+
+This package prints "Hello World" during installation.
+
+## Installation
+
+```bash
+pip install hello_world_installer_test
