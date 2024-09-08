@@ -1,0 +1,55 @@
+Metadata-Version: 2.3
+Name: pyalgo-tools
+Version: 0.1.0
+Summary: Algorithm of etc.
+Project-URL: homepage, https://github.com/SaitoTsutomu/pyalgo-tools
+Author-email: Saito Tsutomu <tsutomu7@hotmail.co.jp>
+License: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Requires-Python: >=3.12
+Requires-Dist: numpy>=2.1.1
+Description-Content-Type: text/markdown
+
+# pyalgo-tools
+
+pyalgo-tools is a collection of various algorithms.
+
+## Example ドント方式で議席数を計算
+
+```python
+print(dhondt(100, [45, 12, 34]))
+```
+
+```
+[50 13 37]
+```
+
+## Example 指定した合計となる部分集合の列挙
+
+```python
+ary = [2, 1, 4, 3, 2]
+for subset in enum_sub(ary, 4):
+    print(f"sum({subset}) = {sum(subset)}")
+```
+
+```
+sum([2, 2]) = 4
+sum([1, 3]) = 4
+sum([4]) = 4
+```
+
+## Example 2つの円の重なる面積
+
+```python
+print(round(circle_overlap_area(0, 2, 1, 0, 1, 2), 4))
+```
+
+```
+3.1416
+```
+
