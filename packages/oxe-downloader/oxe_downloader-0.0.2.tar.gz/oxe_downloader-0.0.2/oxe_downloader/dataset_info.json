@@ -1,0 +1,216 @@
+{
+    "datasets": [
+        {
+            "name": "fractal20220817_data",
+            "version": "0.1.0"
+        },
+        {
+            "name": "kuka",
+            "version": "0.1.0"
+        },
+        {
+            "name": "bridge",
+            "version": "0.1.0"
+        },
+        {
+            "name": "taco_play",
+            "version": "0.1.0"
+        },
+        {
+            "name": "jaco_play",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_cable_routing",
+            "version": "0.1.0"
+        },
+        {
+            "name": "roboturk",
+            "version": "0.1.0"
+        },
+        {
+            "name": "nyu_door_opening_surprising_effectiveness",
+            "version": "0.1.0"
+        },
+        {
+            "name": "viola",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_autolab_ur5",
+            "version": "0.1.0"
+        },
+        {
+            "name": "toto",
+            "version": "0.1.0"
+        },
+        {
+            "name": "language_table",
+            "version": "0.0.1"
+        },
+        {
+            "name": "columbia_cairlab_pusht_real",
+            "version": "0.1.0"
+        },
+        {
+            "name": "stanford_kuka_multimodal_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "nyu_rot_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "stanford_hydra_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "austin_buds_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "nyu_franka_play_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "maniskill_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "cmu_franka_exploration_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "ucsd_kitchen_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "ucsd_pick_and_place_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "austin_sailor_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "austin_sirius_dataset_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "bc_z",
+            "version": "0.1.0"
+        },
+        {
+            "name": "usc_cloth_sim_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utokyo_pr2_opening_fridge_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utokyo_pr2_tabletop_manipulation_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utokyo_saytap_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utokyo_xarm_pick_and_place_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utokyo_xarm_bimanual_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "robo_net",
+            "version": "1.0.0"
+        },
+        {
+            "name": "berkeley_mvp_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_rpt_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "kaist_nonprehensile_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "stanford_mask_vit_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "tokyo_u_lsmo_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "dlr_sara_pour_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "dlr_sara_grid_clamp_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "dlr_edan_shared_control_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "asu_table_top_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "stanford_robocook_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "eth_agent_affordances",
+            "version": "0.1.0"
+        },
+        {
+            "name": "imperialcollege_sawyer_wrist_cam",
+            "version": "0.1.0"
+        },
+        {
+            "name": "iamlab_cmu_pickup_insert_converted_externally_to_rlds",
+            "version": "0.1.0"
+        },
+        {
+            "name": "uiuc_d3field",
+            "version": "0.1.0"
+        },
+        {
+            "name": "utaustin_mutex",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_fanuc_manipulation",
+            "version": "0.1.0"
+        },
+        {
+            "name": "cmu_play_fusion",
+            "version": "0.1.0"
+        },
+        {
+            "name": "cmu_stretch",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_gnm_recon",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_gnm_cory_hall",
+            "version": "0.1.0"
+        },
+        {
+            "name": "berkeley_gnm_sac_son",
+            "version": "0.1.0"
+        }
+    ]
+}
