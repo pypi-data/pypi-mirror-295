@@ -1,0 +1,3 @@
+[console_scripts]
+source-gnews=source_gnews.run:run
+
