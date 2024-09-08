@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "freertos-visualizer"  # Keep the package name with dashes, but not for the package directory
+version = "0.1.4"
+description = "A Python tool for real-time FreeRTOS task state visualization"
+authors = ["Hariharan Ragothaman <hariharanragothaman@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/hariharanragothaman/freeRTOS-visualizer"
+repository = "https://github.com/hariharanragothaman/freeRTOS-visualizer"
+keywords = ["FreeRTOS", "visualizer", "real-time", "Python"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyserial = "^3.5"
+PyQt5 = "^5.15"
+matplotlib = "^3.4"
+
+[tool.poetry.scripts]
+rtos-visualize = "freertos_visualizer.visualize:main"  # Updated to match the correct module
