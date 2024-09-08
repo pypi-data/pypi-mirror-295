@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Digital-Down-Python
+Version: 1.0.0
+Summary: Multimedia Programs
+Home-page: https://github.com/Digital-Down/Digital_Down_Python
+License: Custom (See Package for Details)
+Keywords: Digital Down,Audio Processing,Animation
+Platform: any
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: soundfile
+Requires-Dist: opencv-python
+
+Audio Processing, Video Animation
