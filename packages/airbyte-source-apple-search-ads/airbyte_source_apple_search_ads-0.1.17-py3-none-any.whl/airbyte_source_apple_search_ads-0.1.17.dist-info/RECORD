@@ -1,0 +1,15 @@
+source_apple_search_ads/__init__.py,sha256=mce-4APBA3_AuUUMBJDFHviZO7iOsD73_EL7ZPei9Os,140
+source_apple_search_ads/manifest.yaml,sha256=Er3F2JssABo_prC5Vhfsg5-1hnOOZ-oQwvQTsp1e4uo,6790
+source_apple_search_ads/run.py,sha256=IaPG1y0kuMXsvvizFTfL5OO4HiWdfmsCqAdJnPXwpHU,256
+source_apple_search_ads/schemas/adgroups.json,sha256=46jKw-RgGK_fwgYoPiZa-u1wOcEAGWNRBtneOIh7VUs,4684
+source_apple_search_ads/schemas/adgroups_report_daily.json,sha256=rKW8qDBB_5RV-N2NCmSi-_DY-t6vHJkjh949Q46zjTI,3458
+source_apple_search_ads/schemas/campaigns.json,sha256=uMj3yGp_yIlTbheV051s9nLYYGHgCtya7fPSbDZOsyg,2238
+source_apple_search_ads/schemas/campaigns_report_daily.json,sha256=s08JuHjsNBHYtkxzoFKzZwsXbOrLCC2XG4fkkmLenjY,4166
+source_apple_search_ads/schemas/keywords.json,sha256=PjHG-DQv3JBJ2k29TMmU_6N1JGQ86yepAJ8E2vgpsLU,728
+source_apple_search_ads/schemas/keywords_report_daily.json,sha256=7o-m-z6aXtL0yaoC2UxFBu0uPWevgqKM3qdQtxcIWSs,3972
+source_apple_search_ads/source.py,sha256=-oqBbunOpUT4Ef_cEfPF-y6w1HhSQkag2MOPA1gogWQ,483
+source_apple_search_ads/spec.yaml,sha256=99Xr-iTdSmU_R2oDA65C1J7-mTatbvLoqlih1IeWvU8,1539
+airbyte_source_apple_search_ads-0.1.17.dist-info/METADATA,sha256=fEW0_eJQzIMOT5mvUNfCZrHW6O9deydiMyEeTx0QEo0,5410
+airbyte_source_apple_search_ads-0.1.17.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+airbyte_source_apple_search_ads-0.1.17.dist-info/entry_points.txt,sha256=Neh6wewzhZ9_XMDIJyF_DOyJO_e0v_2fmbSR6Q-EiDA,75
+airbyte_source_apple_search_ads-0.1.17.dist-info/RECORD,,
