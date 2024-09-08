@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+alphasquared/__init__.py
+alphasquared/alphasquared.py
+alphasquared_py.egg-info/PKG-INFO
+alphasquared_py.egg-info/SOURCES.txt
+alphasquared_py.egg-info/dependency_links.txt
+alphasquared_py.egg-info/requires.txt
+alphasquared_py.egg-info/top_level.txt
+tests/__init__.py
+tests/test_alphasquared.py
