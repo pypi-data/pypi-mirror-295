@@ -1,0 +1,2 @@
+[console_scripts]
+gen_bing = Bing.cli:cli_cmd
