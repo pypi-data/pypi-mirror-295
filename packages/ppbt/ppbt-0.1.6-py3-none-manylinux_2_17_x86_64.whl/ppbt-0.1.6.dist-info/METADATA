@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: ppbt
+Version: 0.1.6
+Summary: Portable Python Build Toolchain
+Home-page: https://github.com/saltstack/ppbt
+Author: Daniel A. Wozniak
+Author-email: <daniel.wozniak@broadcom.com>
+License: Apache License 2.0
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+**P**ortable **P**ython **B**uild **T**oolchain
