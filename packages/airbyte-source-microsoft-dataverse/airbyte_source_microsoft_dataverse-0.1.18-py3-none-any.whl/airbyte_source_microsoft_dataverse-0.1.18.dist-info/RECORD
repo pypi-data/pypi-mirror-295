@@ -1,0 +1,10 @@
+source_microsoft_dataverse/__init__.py,sha256=xy7FvZqZBBL0_I7mMd5ex5llLWTllG3HRt836ktTD7Q,148
+source_microsoft_dataverse/dataverse.py,sha256=HOQoA571fpy0Bxk4W9l3DttxX34sKkOjTWYeuwZ0uUA,2521
+source_microsoft_dataverse/run.py,sha256=hPGT5kR0LB6ZdKtLmwfLHymdF4EsDaFM2EC4J5ZAr3A,267
+source_microsoft_dataverse/source.py,sha256=7Z6f-FE9P2ycZlgdo5fVNYTlVKjKBiKqll3CMjp8IW4,4435
+source_microsoft_dataverse/spec.yaml,sha256=GmPlzh34HTII0aUW9XUbLxUk3VPEdvQ6E4iIKz4YMiA,1147
+source_microsoft_dataverse/streams.py,sha256=3PhAYr4kM2GjW4jPd-XGIwg0jqiECUyKUK9AJB9JQiw,6168
+airbyte_source_microsoft_dataverse-0.1.18.dist-info/METADATA,sha256=ali-zzX6H32F_Y18CXAQLNnEiQd0siX72ibUCP8S7Qk,5474
+airbyte_source_microsoft_dataverse-0.1.18.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+airbyte_source_microsoft_dataverse-0.1.18.dist-info/entry_points.txt,sha256=CFEv3NkGV7JlqCcJeXMac5pLipIzJg6omte8L0pV7ns,81
+airbyte_source_microsoft_dataverse-0.1.18.dist-info/RECORD,,
