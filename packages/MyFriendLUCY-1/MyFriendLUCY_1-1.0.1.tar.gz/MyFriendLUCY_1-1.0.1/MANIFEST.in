@@ -1,0 +1,5 @@
+include LUCY/*.h5
+include LUCY/*.pkl
+include README.md
+include LUCY/*.csv
+include LUCY/*.npy
