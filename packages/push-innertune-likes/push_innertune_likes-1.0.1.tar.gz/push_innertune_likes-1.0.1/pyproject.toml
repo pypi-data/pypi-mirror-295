@@ -1,0 +1,22 @@
+[project]
+authors = [{name = "Nicholas Mira", email = "nicholasmira@gmail.com"}]
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = ["ytmusicapi==1.8.*"]
+description = "A basic Python script to extract liked songs from InnerTune (via an exported backup), and push those likes to YouTube Music (via ytmusicapi)."
+keywords = ["innertune"]
+license = { file = "LICENSE" }
+name = "push_innertune_likes"
+readme = "README.md"
+version = "1.0.1"
+
+[project.optional-dependencies]
+dev = ["pre-commit"]
+
+[project.scripts]
+push_innertune_likes = "push_innertune_likes:main"
+
+[project.urls]
+Homepage = "https://github.com/nicholasmira/Push-InnerTune-Likes"
+
+[tool.isort]
+profile = "black"
