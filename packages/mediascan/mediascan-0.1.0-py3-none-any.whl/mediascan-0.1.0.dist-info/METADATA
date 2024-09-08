@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: mediascan
+Version: 0.1.0
+Summary: A Python package for scanning and organizing media files.
+Home-page: http://github.com/philiporange/mediascan
+Author: Philip Orange
+Author-email: git@philiporange.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: appdirs
+Requires-Dist: loguru
+Requires-Dist: python-dotenv
+Requires-Dist: pyyaml
+Requires-Dist: redislite
+Requires-Dist: requests
+
+# MediaScan
+
+MediaScan is a Python tool for organizing media files. It scans directories, interprets file names, and organizes movies and TV shows into a structured library.
+
+## Features
+
+- Automatically categorizes movies and TV shows
+- Supports various naming conventions and file formats
+- Configurable output directory structure
+- Multiple actions: link, copy, or move files
+- TMDb integration for title matching (optional)
+
+## Installation
+
+```bash
+pip install mediascan
+```
+
+## Usage
+
+### Command Line Interface
+
+Generate a default config file:
+
+```bash
+mediascan --generate-config
+```
+
+Run MediaScan:
+
+```bash
+mediascan --input-dir ~/Downloads --output-dir ~/MediaLibrary --action link
+```
+
+### Python
+
+```python
+from mediascan import MediaScan
+
+scanner = MediaScan(
+    input_dir="~/Downloads",
+    output_dir="~/MediaLibrary",
+    action="link",
+)
+
+scanner.scan()
+```
+
+## License
+
+CC0. Do whatever.
+
+
