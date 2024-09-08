@@ -1,0 +1,27 @@
+Metadata-Version: 2.3
+Name: reldplayer
+Version: 0.2.1
+Summary: a superset to pyldplayer
+Author-email: ZackaryW <36378555+ZackaryW@users.noreply.github.com>
+License-File: LICENSE
+Requires-Python: >=3.8
+Requires-Dist: psutil>=6.0.0
+Requires-Dist: pyautogui>=0.9.54
+Requires-Dist: pygetwindow>=0.0.9
+Requires-Dist: pyldplayer>=3.0.4
+Requires-Dist: pywin32>=306
+Requires-Dist: screeninfo>=0.8.1
+Description-Content-Type: text/markdown
+
+# reldplayer
+
+a superset to [pyldplayer](https://github.com/ZackaryW/pyldplayer)
+
+## Install
+```bash
+pip install reldplayer
+```
+
+## WIP
+- docstrings will be added in a later version
+- sphinx setup will be added in a later version
