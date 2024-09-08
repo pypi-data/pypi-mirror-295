@@ -1,0 +1,47 @@
+Metadata-Version: 2.3
+Name: chancy
+Version: 0.10.6
+Summary: A simple and flexible job queue for Python
+Project-URL: Repository, https://github.com/tktech/chancy
+Author-email: Tyler Kennedy <tk@tkte.ch>
+Requires-Python: >=3.11
+Requires-Dist: psycopg[pool]>=3.2.1
+Provides-Extra: cli
+Requires-Dist: click; extra == 'cli'
+Provides-Extra: cron
+Requires-Dist: croniter>=2.0.5; extra == 'cron'
+Provides-Extra: web
+Requires-Dist: starlette>=0.37.2; extra == 'web'
+Requires-Dist: uvicorn[standard]>=0.30.1; extra == 'web'
+Description-Content-Type: text/markdown
+
+# Chancy
+
+![Chancy Logo](misc/logo_small.png)
+
+A postgres-backed task queue for Python.
+
+## Key Features
+
+- Support for job priorities, retries, timeouts, scheduling,
+  global rate limits, memory limits, and more.
+- Configurable job retention for easy debugging and tracking
+- Minimal dependencies (only psycopg3 required)
+- asyncio & sync APIs for easy integration with existing codebases
+- Plugins for workflows, cron jobs, and more
+
+## Documentation
+
+Check out the getting-started guide and the API documentation at
+https://tkte.ch/chancy/.
+
+## Similar Work
+
+Many similar projects exist. Some of them are:
+
+- https://worker.graphile.org/ (Node.js)
+- https://riverqueue.com/ (Go)
+- https://github.com/acaloiaro/neoq (Go)
+- https://github.com/contribsys/faktory (Go)
+- https://github.com/sorentwo/oban (Elixir)
+- https://github.com/procrastinate-org/procrastinate (Python)
