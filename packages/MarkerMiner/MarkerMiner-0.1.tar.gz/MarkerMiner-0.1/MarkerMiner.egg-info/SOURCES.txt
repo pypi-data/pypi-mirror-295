@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+MarkerMiner/MarkerMiner.pyd
+MarkerMiner/__init__.py
+MarkerMiner.egg-info/PKG-INFO
+MarkerMiner.egg-info/SOURCES.txt
+MarkerMiner.egg-info/dependency_links.txt
+MarkerMiner.egg-info/top_level.txt
