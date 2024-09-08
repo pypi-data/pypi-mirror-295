@@ -1,0 +1,11 @@
+xia_module/__init__.py,sha256=xmW5oyEj1KJ-EKTcYheZn-xLJQEylKMYOkBAQysq2Jw,131
+xia_module/module.py,sha256=kpTgugThmxoziLG09R0I7Wrohe97YG87JeIHWJmcqlc,10602
+xia_module/cicd/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+xia_module/cicd/github.py,sha256=zVP2VOvSnHMnbXr_LtJEnkcWnaYC1uJCMyPMJdUoleQ,6220
+xia_module/templates/module/main.tf,sha256=VRII60LIfJRiBIrKeEv27lznPx9ItVa9ky9eSzEBOxg,207
+xia_module/templates/module/variables.tf,sha256=otLLOb8c-kcup0SQ1mg0Pc-SfqVEkKbwHFzLuulfb10,219
+xia_module-0.0.23.dist-info/LICENSE,sha256=RJDBG1pyQlnqJqp7zHghqWIOzrnMJSSiw_voH1hh06Q,1062
+xia_module-0.0.23.dist-info/METADATA,sha256=v0_MwdnoLz0mpnLIO3nKvVoRkM_zqVjq8CsyFok0I-Q,282
+xia_module-0.0.23.dist-info/WHEEL,sha256=eOLhNAGa2EW3wWl_TU484h7q1UNgy0JXjjoqKoxAAQc,92
+xia_module-0.0.23.dist-info/top_level.txt,sha256=iuh1EfcoXgS3LuAwM1LNHqz38ph-TbY4SWZ6D-cFNsU,11
+xia_module-0.0.23.dist-info/RECORD,,
