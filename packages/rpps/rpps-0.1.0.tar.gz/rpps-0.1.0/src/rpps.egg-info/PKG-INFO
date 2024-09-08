@@ -1,0 +1,100 @@
+Metadata-Version: 2.1
+Name: rpps
+Version: 0.1.0
+Summary: RF Parameter Processor Suite
+Author-email: Anonoei <dev@anonoei.com>
+Project-URL: Homepage, https://github.com/anonoei/RPPS
+Project-URL: Documentation, https://anonoei.github.io/RPPS/
+Project-URL: Repository, https://github.com/Anonoei/RPPS.git
+Project-URL: Issues, https://github.com/Anonoei/RPPS/issues
+Project-URL: Source, https://github.com/anonoei/RPPS
+Keywords: anonoei,dsp,sdr
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyboiler-anonoei
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Provides-Extra: dev
+Requires-Dist: twine; extra == "dev"
+Requires-Dist: build; extra == "dev"
+Requires-Dist: bumpver; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pdoc3; extra == "dev"
+
+# RPPS
+ RF Parameter Processor Suite
+
+RPPS is a generic signal processor/generator library.
+
+ - [Documentation](https://anonoei.github.io/RPPS/)
+ - [PyPI](https://pypi.org/project/rpps/)
+
+## Example Usage
+```
+import rpps as rp
+
+def main():
+    mod = rp.mod.name("QPSK", 0) # Use QPSK modulation, with mapping 0
+    ecc = rp.coding.name("BLK", "Repetition", 3) # Use Repetition coding, with rate of 2
+
+    pipeline = rp.Pipeline(mod, ecc) # Initialize a processing pipeline
+
+    enc_msg = b"Test" # Define the data to process
+    syms = pipeline.enc(enc_msg) # Encode data with ecc, and mod. Get the symbols
+    path = pipeline.meta.serialize(syms) # Serialize the symbols to file
+
+    data = pipeline.from_file(path) # Read the symbols and metadata from file, use the same pipeline processing
+    print(data) # Check decoded data is what you encoded
+
+if __name__ == "__main__":
+  main()
+```
+
+## Install
+1. Run `python3 -m pip install rpps`
+2. In your project, `import rpps as rp`
+
+## Roadmap
+ - [ ] [Interfaces](https://github.com/Anonoei/RPPS/tree/main/src/rpps/inter)
+   - [X] File
+   - [ ] (Linux only) tun/tap
+   - [ ] Socket
+ - [ ] [Pre-processing](https://github.com/Anonoei/RPPS/tree/main/src/rpps/process)
+   - [ ] Filters
+   - [ ] Pulse Shaping
+ - [ ] [Modulation](https://github.com/Anonoei/RPPS/tree/main/src/rpps/mod)
+   - [ ] PSK
+     - [X] BPSK
+     - [X] QPSK
+     - [X] 8PSK
+   - [ ] QAM
+   - [ ] APSK
+   - [ ] ASK
+   - [ ] FSK
+ - [ ] [Coding](https://github.com/Anonoei/RPPS/tree/main/src/rpps/coding)
+   - [ ] Block
+     - [X] Repetition
+     - [ ] LDPC
+     - [ ] TPC
+   - [ ] Convolutional
+     - [ ] Viterbi
+ - [ ] De-scramble
+   - [ ] v.35
+ - [ ] De-frame
+   - [ ] HDLC
+   - [ ] PPP
+
+## Contributing
+ 1. `git clone https://github.com/Anonoei/RPPS`
+ 2. `cd RPPS`
+ 3. `git branch -c feature/<your feature>`
+ 4. `python3 builder.py -b -l` build and install rpps locally
+    - This also installs deps, and dev_deps automatically
+ 5. run `python3 tests/dev.py`
+ 6. Check out the `dev` branch for latest changes
