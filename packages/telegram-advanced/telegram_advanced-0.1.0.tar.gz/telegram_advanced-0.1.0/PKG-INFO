@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: telegram_advanced
+Version: 0.1.0
+Summary: An advanced Telegram bot library
+Home-page: https://github.com/yourusername/telegram_advanced
+Author: LCF
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+
+Install the package locally:
+
+Open a terminal, navigate to the root directory of your package, and run:
+Copypip install -e .
+This installs the package in editable mode, allowing you to make changes and test them easily.
