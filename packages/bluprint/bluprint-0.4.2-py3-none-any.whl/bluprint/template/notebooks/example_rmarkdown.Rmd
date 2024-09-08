@@ -1,0 +1,27 @@
+---
+title: "example_rmarkdown"
+author: "Albert Einstein"
+date: "2023-11-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bluprint example
+
+```{r}
+library(reticulate)
+use_python(here::here(".venv/bin/python"))
+
+bluprint <- import("bluprint.config")
+data <- bluprint$load_data_yaml()
+
+data
+```
+
+```{r}
+df <- read.table(data["example"], sep = ",", header = TRUE)
+df
+```
