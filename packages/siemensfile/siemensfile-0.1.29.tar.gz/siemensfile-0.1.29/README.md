@@ -1,0 +1,73 @@
+# SIEMENSFile
+
+**SIEMENSFile** es un paquete para previsualizar, leer y procesar archivos `.dat` de Siemens y realizar reconstrucciones de imagenes de resonancia magnetica (MRI). Este paquete facilita la extraccion de datos del `rawdata` y el `metadata` y su reconstruccion preliminar en imagenes utilizando transformadas rapidas de Fourier (FFT). La unica reconstruccion implementada es la cartesiana; proximamente se implementara la reconstruccion no cartesiana.
+
+## Instalacion
+
+Puedes instalar el paquete directamente desde PyPI con el siguiente comando:
+
+```bash
+pip install siemensfile
+```
+
+# Importar la funcion siemensfile desde el paquete
+
+```bash
+from siemensfile import siemensfile
+```
+
+# Usar la funcion siemensfile para procesar un archivo .dat
+
+```bash
+[metadata, rawdata] = siemensfile(r'test/siemens_file_test_cartesian_sample.dat', reconstruction="Cartesiana")
+
+
+```
+# Resultados
+Los resultados se guardaran en la misma ubicacion donde se encuentra el archivo .dat, dentro de una carpeta llamada `output`. En esta carpeta, encontraras un archivo DICOM (.dcm) junto con las imagenes reconstruidas y el espacio K en formato .png.
+
+# Usar la funcion para mostrar la estructura de rawdata
+
+```bash
+rawdata.shape
+
+```
+
+# Usar la funcion para guardar la metadata en un archivo .json
+
+```bash
+import json
+import os
+
+def guardar_metadata_en_json(metadata, nombre_archivo):
+    """
+    Funcion para guardar el contenido de metadata en un archivo .json.
+
+    Parameters:
+    - metadata: Lista de diccionarios que contiene los metadatos.
+    - nombre_archivo: Nombre del archivo .json donde se guardara la informacion.
+    """
+    # Asegurarse de que el archivo tiene la extension .json
+    if not nombre_archivo.endswith('.json'):
+        nombre_archivo += '.json'
+
+    # Guardar metadata en un archivo .json
+    try:
+        with open(nombre_archivo, 'w') as file:
+            json.dump(metadata, file, indent=4)
+        print(f"Metadata guardada exitosamente en {nombre_archivo}")
+    except Exception as e:
+        print(f"Error al guardar metadata en el archivo .json: {str(e)}")
+
+
+guardar_metadata_en_json(metadata, "metadatos_scan")
+```
+
+# Creditos y Reconocimientos
+
+Este proyecto utiliza como base el paquete twixtools, desarrollado por Philipp Ehses. twixtools proporciona la funcionalidad central para la lectura de archivos .dat de Siemens, y este proyecto expande sus capacidades para incluir reconstrucciones de imagenes.
+
+Agradecemos enormemente a los autores y colaboradores de twixtools por su trabajo, que ha permitido el desarrollo de este paquete.
+
+Si estas buscando una solucion mas completa para leer y escribir archivos .dat de Siemens, te recomendamos que tambien consultes twixtools directamente.
+https://github.com/pehses/twixtools
