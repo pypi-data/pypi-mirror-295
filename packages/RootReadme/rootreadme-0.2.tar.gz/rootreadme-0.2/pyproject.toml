@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RootReadme"
+version = "0.2"
+readme = "readme.md"
+classifiers = ["License :: OSI Approved :: MIT License"]
+
+[project.urls]
+Repository = "https://github.com/QZLin/RootReadme.git"
+Issues = "https://github.com/QZLin/RootReadme/issues"
+
+[project.entry-points."mkdocs.plugins"]
+RootReadme = "RootReadme:RootReadme"

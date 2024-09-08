@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: RootReadme
+Version: 0.2
+Project-URL: Repository, https://github.com/QZLin/RootReadme.git
+Project-URL: Issues, https://github.com/QZLin/RootReadme/issues
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# RootReadme
+
+A mkdocs plugin redirect docs/readme.md to repository/readme.md
