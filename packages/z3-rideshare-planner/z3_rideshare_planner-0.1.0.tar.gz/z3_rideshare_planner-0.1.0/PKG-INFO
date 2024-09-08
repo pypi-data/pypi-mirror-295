@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: z3_rideshare_planner
+Version: 0.1.0
+Summary: A rideshare planner that gives an optimal plan for multiple drivers and passengers using Z3
+Home-page: https://github.com/MinghanWu039/z3_rideshare_planner
+Author: Travis Wu
+Author-email: traviswu0524@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: googlemaps
+Requires-Dist: matplotlib
+Requires-Dist: datetime
+Requires-Dist: folium
+Requires-Dist: z3-solver
+Requires-Dist: polyline
+Requires-Dist: numpy
+
+# rideshare_project
