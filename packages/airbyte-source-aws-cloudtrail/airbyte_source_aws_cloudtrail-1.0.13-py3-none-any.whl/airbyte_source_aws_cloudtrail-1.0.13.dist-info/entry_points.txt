@@ -1,0 +1,3 @@
+[console_scripts]
+source-aws-cloudtrail=source_aws_cloudtrail.run:run
+
