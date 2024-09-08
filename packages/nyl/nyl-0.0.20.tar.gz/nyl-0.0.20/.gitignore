@@ -1,0 +1,13 @@
+.nyl/
+docs/site/
+
+# Python
+__pycache__/
+*.py[cod]
+.Python
+build/
+dist/
+sdist/
+*.egg-info/
+*.egg
+.dmypy.json
