@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: zuspec-cli
+Version: 0.0.1.10755785456
+Summary: Co-specification of hardware, software, design, and test behavior
+Home-page: https://github.com/zuspec/zuspec-cli
+Author: Matthew Ballance
+Author-email: matt.ballance@gmail.com
+License: Apache 2.0
+Keywords: PSS,Functional Verification,RTL,Verilog,SystemVerilog
+License-File: LICENSE
+Requires-Dist: pytypeworks
+Requires-Dist: zuspec-dataclasses
+Requires-Dist: pyvsc-dataclasses
+Requires-Dist: fltools
+Requires-Dist: fusesoc
+Requires-Dist: pyyaml
+Requires-Dist: zuspec-arl-dm
+Requires-Dist: zuspec-arl-eval
+Requires-Dist: zuspec-fe-parser
+Requires-Dist: zuspec-parser
+
+
+  Co-specification of hardware, software, design, and test behavior
+  
