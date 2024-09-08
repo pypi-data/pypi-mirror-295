@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: slashr
+Version: 1.0.0
+Summary: \r Never lose your cursor again!
+Author: Red
+Author-email: redtonehair@gmail.com
+Keywords: python,terminal
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: colorama
+Requires-Dist: cursor
+
+# \R
+ A module for printing messages using /r
+
+## Installation
+```bash
+pip install slashr
+```
+
+## Usage
+
+### Using with
+```python
+from slashr import SlashR
+
+with SlashR() as sr:
+    for i in range(10):
+        sr.print(i)
+```
+
+### Using object
+```python
+from slashr import SlashR
+
+sr = SlashR()
+
+sr.init()
+
+for i in range(10):
+    sr.print(i)
+
+sr.exit()  # Optional if you want to stop slashr entirely
+
+```
+github: https://github.com/JustRedTTG/slashr
