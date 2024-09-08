@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+httpout/__init__.py
+httpout/__main__.py
+httpout/request.py
+httpout/response.py
+httpout/utils.py
+httpout/websocket.py
+httpout.egg-info/PKG-INFO
+httpout.egg-info/SOURCES.txt
+httpout.egg-info/dependency_links.txt
+httpout.egg-info/requires.txt
+httpout.egg-info/top_level.txt
+httpout/lib/__init__.py
+httpout/lib/http_response.py
