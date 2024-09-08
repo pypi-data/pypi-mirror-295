@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: radarx
+Version: 0.1.3.dev0
+Summary: Xarray based radar toolkit
+Author-email: Hamid Ali Syed <hamidsyed37@gmail.com>
+Maintainer-email: Hamid Ali Syed <hamidsyed37@gmail.com>
+License: MIT license
+Project-URL: bugs, https://github.com/syedhamidali/radarx/issues
+Project-URL: changelog, https://github.com/syedhamidali/radarx/blob/master/changelog.md
+Project-URL: homepage, https://github.com/syedhamidali/radarx
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+License-File: LICENSE
+License-File: AUTHORS.rst
+Provides-Extra: dev
+Requires-Dist: coverage; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pooch; extra == "dev"

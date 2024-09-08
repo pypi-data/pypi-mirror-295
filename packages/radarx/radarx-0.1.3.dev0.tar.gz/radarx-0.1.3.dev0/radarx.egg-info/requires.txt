@@ -1,0 +1,7 @@
+
+[dev]
+coverage
+mypy
+pytest
+ruff
+pooch
