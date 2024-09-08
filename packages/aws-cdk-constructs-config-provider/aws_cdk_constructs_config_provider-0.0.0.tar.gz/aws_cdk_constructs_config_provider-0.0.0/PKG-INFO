@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: aws-cdk-constructs-config-provider
+Version: 0.0.0
+Summary: 
+Author: Sergio
+Author-email: sergio.penafilgueira@fao.org
+Requires-Python: >=3.9.19,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic-settings (>=2.0.2,<3.0.0)
+Requires-Dist: python-dotenv (>=0.21.0,<0.22.0)
+Description-Content-Type: text/markdown
+
+# Config provider for aws-cdk-constructs
+
+## Usage
+
+```python
+from .environments_parameters import environments_parameters
+from ..models.app_settings import AppSettings
+from aws_cdk_constructs_config_provider import EnvironmentParameters, DefaultAccount, ConfigProvider
+
+AppConfig = ConfigProvider[AppSettings, DefaultAccount]
+
+envs = EnvironmentParameters[DefaultAccount].model_validate(environments_parameters)
+appConfig = ConfigProvider[AppSettings, DefaultAccount](environments_parameters=envs, settings=AppSettings, relative_path='.')
+```
+
+## Development
+
+any commit will trigger the semantic release versioning and changelog generation. Please follow the semantic release commit message format.

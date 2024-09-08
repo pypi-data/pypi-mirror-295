@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "aws-cdk-constructs-config-provider"
+version = "0.0.0"
+description = ""
+authors = ["Sergio <sergio.penafilgueira@fao.org>","Matteo <matteo.terrinoni@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9.19"
+python-dotenv = "^0.21.0"
+pydantic-settings = "^2.0.2"
+
+[tool.poetry.group.dev.dependencies]
+python-semantic-release = "^9.8.8"
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+
+[tool.semantic_release]
+version_variable = [
+    "aws_cdk_constructs_config_provider/__init__.py:__version__"
+]
+version_pattern = [
+    "README.md:rev: v{version}",
+    "docs/CONTRIBUTING.md:tryceratops, version {version}"
+]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+branch = "main"
+version_source = "tag"
+upload_to_pypi = true
+hvcs = "bitbucket"
+upload_to_PyPI = true
+upload_to_release = true
+major_on_zero = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
