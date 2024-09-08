@@ -1,0 +1,4 @@
+[console_scripts]
+aba-run=aba_cli_scrapper.__main__:app_t
+text-mode=aba_cli_scrapper.__main__:app
+
