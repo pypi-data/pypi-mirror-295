@@ -1,0 +1,24 @@
+name: Install Python
+description: Action for installing Python and uv
+
+inputs:
+  PYTHON_VERSION:
+    description: "Version of Python to install"
+    required: true
+  UV_VERSION:
+    description: "Version of uv to install"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.PYTHON_VERSION }}
+
+    - name: Install uv and package dependencies
+      run: |
+        curl --proto '=https' --tlsv1.2 -LsSf https://github.com/astral-sh/uv/releases/download/${{ inputs.UV_VERSION }}/uv-installer.sh | sh
+        make install
+      shell: bash
