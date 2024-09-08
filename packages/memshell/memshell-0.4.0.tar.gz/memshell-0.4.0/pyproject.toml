@@ -1,0 +1,40 @@
+[project]
+name = "memshell"
+version = "0.4.0"
+description = "Interactive shell object that remembers previous commands, path and env variables"
+authors = [
+    { name = "Anthony Post", email = "post.anthony@icloud.com" },
+]
+dependencies = []
+requires-python = ">=3.7"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.6.1",
+]
+
+[tool.ruff.lint]
+select = [
+    "ALL",
+]
+ignore = [
+    "D",
+    "COM812",
+    "ISC001",
+    "S603",
+    "T201",
+    "BLE001",
+]
