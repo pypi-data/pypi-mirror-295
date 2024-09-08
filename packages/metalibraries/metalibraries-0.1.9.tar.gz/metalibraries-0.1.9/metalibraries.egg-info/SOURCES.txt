@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+metalibraries/__init__.py
+metalibraries/metalibraries.py
+metalibraries.egg-info/PKG-INFO
+metalibraries.egg-info/SOURCES.txt
+metalibraries.egg-info/dependency_links.txt
+metalibraries.egg-info/top_level.txt
