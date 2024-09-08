@@ -1,0 +1,6 @@
+black
+click
+isort
+Django>=3.2
+django-ninja
+uvicorn
