@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: youtube-analyzer
+Version: 0.2.4
+Summary: Analize vídeos do youtube
+Author: PauloCesar-dev404
+Author-email: paulocesar0073dev404@gmail.com
+License: MIT
+Project-URL: Código Fonte, https://raw.githubusercontent.com/PauloCesar-dev404/youtube_analyzer/main/youtube_analyzer-0.2.4.tar.gz
+Project-URL: lib, https://raw.githubusercontent.com/PauloCesar-dev404/youtube_analyzer/main/youtube_analyzer-0.2.4-py3-none-any.whl
+Project-URL: GitHub, https://github.com/PauloCesar-dev404/youtube_analyzer
+Project-URL: Bugs/Melhorias, https://github.com/PauloCesar-dev404/youtube_analyzer/issues
+Project-URL: Documentação, https://github.com/PauloCesar-dev404/youtube_analyzer/wiki
+Keywords: youtube
+Platform: any
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: colorama
+Requires-Dist: beautifulsoup4
+Requires-Dist: emoji
+
+
+<div align="center">
+        <h1>youtube-analyzer</h1>
+
+
+![Versão](https://img.shields.io/badge/version-0.2.4-orange)
+![Licença](https://img.shields.io/badge/license-MIT-orange)
+[![Sponsor](https://img.shields.io/badge/💲Donate-yellow)](https://apoia.se/paulocesar-dev404)
+[![Sponsor](https://img.shields.io/badge/Documentation-green)](https://github.com/PauloCesar-dev404/youtube_analyzer/wiki)
+</div>
+
+Obtenha detalhes de vídeos do youtube usando esta lib
+---
+- [x] Obter detalhes de um vídeo
+- [x] obter legendas
+- [x] Analizar playlists
+- [x] Obter detalhes de uris de Vídeos
+- [x] Download de Videos
+- [x] Download de Audio
