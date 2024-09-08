@@ -1,0 +1,27 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*.*.*
+      - v*.*.*-rc*
+jobs:
+  test:
+    name: Tox
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+    with:
+      ref: ${{ github.ref_name }}
+  release:
+    name: Release
+    needs: [ test ]
+    uses: ./.github/workflows/release.yml
+    secrets: inherit
+    permissions:
+      id-token: write
+      contents: read
+    with:
+      tag_name: ${{ github.ref_name }}
+    if: github.ref_type == 'tag'
