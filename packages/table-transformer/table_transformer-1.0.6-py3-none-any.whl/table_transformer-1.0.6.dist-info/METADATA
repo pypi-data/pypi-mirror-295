@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: table_transformer
+Version: 1.0.6
+Summary: Table Transformer
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torchvision (~=0.19.1)
+Requires-Dist: numpy (~=2.1.1)
+Requires-Dist: pandas (==2.2.2)
+Requires-Dist: torch (~=2.4.1)
+Requires-Dist: matplotlib (~=3.9.2)
+Requires-Dist: seaborn (~=0.13.2)
+Requires-Dist: PyMuPDF (==1.24.10)
+Requires-Dist: scikit-image (==0.24.0)
+Requires-Dist: pathlib (~=1.0.1)
+Requires-Dist: pycocotools (~=2.0.7)
+Requires-Dist: editdistance (==0.8.1)
+Requires-Dist: scipy (~=1.14.1)
+Requires-Dist: Cython (==0.29.33)
+Requires-Dist: packaging (~=23.1)
+Requires-Dist: tqdm (==4.66.5)
+Requires-Dist: Pillow (~=9.5.0)
+Requires-Dist: wheel (~=0.40.0)
+Requires-Dist: easyocr (~=1.7.1)
+
+# Table Transformer Library
+
+Original repository: https://github.com/microsoft/table-transformer
+
+## Introduction
+This is the Table Transformer Model developed by Brandon Smock et al. of Microsoft AI. This repository consists of **Table Structure Recognition (TATR)** for detecting and extracting table infomation into popular formats such as CSV or HTML table, plus text recognition using EasyOCR.
+
+## Installation
+```
+pip install table-transformer
+```
+
+## Usage
+
+The full model usage can be found here:
+
+```
+from table_transformer import TableExtractionPipeline
+
+pipe = TableExtractionPipeline(det_device="cpu", str_device="cpu",
+                 det_model_path=".\path\to\pubtables1m_detection_detr_r18.pth",
+                 str_model_path=".\path\to\TATR-v1.1-Pub-msft.pth")
+
+img = "\path\to\image.jpg"
+
+table_objects, table_cells_coordinates, table_cells_text = pipe(img)
+
+print(table_cells_text[0])  # Should be DataFrame
+```
+
+
+## Evaluation
+
+With structure recognition, the original author has evaluated the v1.0 model on PubTables-1M with great results. With other datasets such as PubTabNet, the score is quite good.
+
+You can check out the score and run the evaluation with your own dataset in [this](https://colab.research.google.com/drive/1-1yRr9djVi5OxITrSf3iZsg__MNE5hN5?usp=sharing) link.
+
+## Version history
+- v1.0.6: Added Table Detection, ending up with a full Table Extraction Pipeline, fixed bug.
+- v1.0.3: Removed unnecessary code and added new functionalities.
+- v1.0.2: Initial version.
