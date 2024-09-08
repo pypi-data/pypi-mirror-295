@@ -1,0 +1,18 @@
+[project]
+name = "cjk6_source_ci_secrets"
+version = "0.0.1"
+authors = [
+  { name="Christian Kang", email="christiankang56@gmail.com" },
+]
+description = "Package to test ci_secrets"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/cjk6-source/ci_secrets"
+Issues = "https://github.com/cjk6-source/ci_secrets/issues"
