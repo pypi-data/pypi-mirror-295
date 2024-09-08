@@ -1,0 +1,75 @@
+# See https://setuptools.readthedocs.io/en/latest/build_meta.html
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ddi_fw"
+version = "0.0.10"
+description = "Do not use :)"
+readme = "README.md"
+authors = [
+    { name = "Kıvanç Bayraktar", email = "bayraktarkivanc@gmail.com" }
+]
+maintainers = [
+    { name = "Kıvanç Bayraktar", email = "bayraktarkivanc@gmail.com" }
+]
+
+# See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#classifiers
+# Search tags using the controlled vocabulary at https://pypi.org/classifiers
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: Pytest",
+    "Framework :: tox",
+    "Framework :: Sphinx",
+    "Programming Language :: Python",
+	"Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+	"Topic :: Scientific/Engineering :: Medical Science Apps."
+]
+keywords = [
+    "Machine Learning",
+]
+
+# License Information. This can be any valid SPDX identifiers that can be resolved
+# with URLs like https://spdx.org/licenses/MIT
+# See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
+license = { file = "LICENSE" }
+
+requires-python = ">=3.8"
+dependencies = [
+"lxml==4.9.3"
+,"matplotlib"
+,"mlflow==2.7.1"
+,"nltk==3.8.1"
+,"numpy"
+,"pandas"
+,"plotly"
+,"rdkit==2023.3.3"
+,"scikit-learn"
+,"scipy"
+,"sentence-transformers==2.7.0"
+,"tokenizers"
+,"tqdm"
+,"xmlschema"
+,"zipp"
+]
+ 
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+# this implicitly sets `packages = ":find"`
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+
+# See https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+[tool.setuptools.package-data]
+"*" = ["*.*"]
