@@ -1,0 +1,22 @@
+trunk_cli_version: 1.16.0
+title: Check [[on-demand] [prettier:format:README.md:HEAD]]
+report:
+  - linter:
+      command: |
+        /Users/jonas.miguel/.cache/trunk/tools/prettier/3.0.3-080f9895f1002e729a5037b05f24821f/node_modules/.bin/prettier -w README.md
+      stdin_path: (none)
+      run_from: /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/2Fztof/zCFkIm
+      timeout: 10m
+      rerun: (cd /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/2Fztof/zCFkIm; env -i PATH=/Users/jonas.miguel/.cache/trunk/tools/prettier/3.0.3-080f9895f1002e729a5037b05f24821f/node_modules/.bin:/Users/jonas.miguel/.cache/trunk/tools/node/18.12.1-0b4efc9f16ac765fb5b3c9eaa6dda615/bin:/Users/jonas.miguel/.cache/trunk/tools/node/18.12.1-0b4efc9f16ac765fb5b3c9eaa6dda615:/Users/jonas.miguel/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/jonas.miguel/.fig/bin:/Users/jonas.miguel/.local/bin HOME=/Users/jonas.miguel NODE_PATH=/Users/jonas.miguel/.cache/trunk/tools/prettier/3.0.3-080f9895f1002e729a5037b05f24821f/node_modules /Users/jonas.miguel/.cache/trunk/tools/prettier/3.0.3-080f9895f1002e729a5037b05f24821f/node_modules/.bin/prettier -w README.md)
+      affects_cache:
+        []
+      direct_configs:
+        []
+      exit_status: exited
+      exit_code: 0
+      stdout: |
+        README.md 16ms
+
+      stderr: (none)
+    parser: |
+      (none)

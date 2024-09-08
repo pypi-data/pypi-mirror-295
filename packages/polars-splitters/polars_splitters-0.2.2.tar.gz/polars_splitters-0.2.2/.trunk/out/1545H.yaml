@@ -1,0 +1,22 @@
+trunk_cli_version: 1.17.0
+title: Check [[on-demand] [taplo:format:pyproject.toml:HEAD]]
+report:
+  - linter:
+      command: |
+        /Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f/taplo format pyproject.toml
+      stdin_path: (none)
+      run_from: /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/pmfXkf
+      timeout: 10m
+      rerun: (cd /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/pmfXkf; env -i PATH=/Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f:/Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f HOME=/Users/jonas.miguel /Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f/taplo format pyproject.toml)
+      affects_cache:
+        []
+      direct_configs:
+        []
+      exit_status: exited
+      exit_code: 0
+      stdout: (none)
+      stderr: |
+         INFO taplo:format_files:collect_files: found files total=1 excluded=0 cwd="/private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/pmfXkf"
+
+    parser: |
+      (none)

@@ -1,0 +1,14 @@
+action_id: trunk-fmt-pre-commit
+date: 2023-10-29 16:17:16
+run: trunk fmt -t "git-commit" --index-file '${env.GIT_INDEX_FILE}' --upstream=HEAD
+run_from: ""
+trigger: pre-commit
+result:
+  exit_code: 0
+  out: ""
+  err: ""
+timestamp: 1698596236
+full_timestamp:
+  nanos: 843679000
+  seconds: 1698596236
+trunk_version: 1.17.0

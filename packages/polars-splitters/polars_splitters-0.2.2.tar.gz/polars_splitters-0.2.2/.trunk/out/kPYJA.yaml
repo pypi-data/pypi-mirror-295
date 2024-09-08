@@ -1,0 +1,180 @@
+trunk_cli_version: 1.16.0
+title: taplo exited with exit_code=1
+report:
+  - taplo exited with exit_code=1
+  - linter:
+      command: |
+        /Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f/taplo format pyproject.toml
+      stdin_path: (none)
+      run_from: /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U
+      timeout: 10m
+      rerun: (cd /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U; env -i PATH=/Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f:/Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f HOME=/Users/jonas.miguel /Users/jonas.miguel/.cache/trunk/tools/taplo/0.8.1-d3fadec29ee3e78cd9466beeb1d48a8f/taplo format pyproject.toml)
+      affects_cache:
+        []
+      direct_configs:
+        []
+      exit_status: exited
+      exit_code: 1
+      stdout: (none)
+      stderr: |
+         INFO taplo:format_files:collect_files: found files total=1 excluded=0 cwd="/private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U"
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:3:11
+          │
+        3 │ iniconfig==2.0.0
+          │           ^ expected value
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:3:12
+          │
+        3 │ iniconfig==2.0.0
+          │            ^^^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:3:15
+          │
+        3 │ iniconfig==2.0.0
+          │               ^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:3:16
+          │
+        3 │ iniconfig==2.0.0
+          │                ^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:5:8
+          │
+        5 │ loguru==0.7.2
+          │        ^ expected value
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:5:9
+          │
+        5 │ loguru==0.7.2
+          │         ^^^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:5:12
+          │
+        5 │ loguru==0.7.2
+          │            ^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:5:13
+          │
+        5 │ loguru==0.7.2
+          │             ^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:7:11
+          │
+        7 │ packaging==24.1
+          │           ^ expected value
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:7:12
+          │
+        7 │ packaging==24.1
+          │            ^^^^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:9:8
+          │
+        9 │ pluggy==1.5.0
+          │        ^ expected value
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:9:9
+          │
+        9 │ pluggy==1.5.0
+          │         ^^^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:9:12
+          │
+        9 │ pluggy==1.5.0
+          │            ^ expected new line
+
+        error: invalid TOML
+          ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:9:13
+          │
+        9 │ pluggy==1.5.0
+          │             ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:11:8
+           │
+        11 │ polars==1.1.0
+           │        ^ expected value
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:11:9
+           │
+        11 │ polars==1.1.0
+           │         ^^^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:11:12
+           │
+        11 │ polars==1.1.0
+           │            ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:11:13
+           │
+        11 │ polars==1.1.0
+           │             ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:13:8
+           │
+        13 │ pytest==8.2.2
+           │        ^ expected value
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:13:9
+           │
+        13 │ pytest==8.2.2
+           │         ^^^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:13:12
+           │
+        13 │ pytest==8.2.2
+           │            ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:13:13
+           │
+        13 │ pytest==8.2.2
+           │             ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:17:14
+           │
+        17 │ pytest-check==2.3.1
+           │              ^ expected value
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:17:15
+           │
+        17 │ pytest-check==2.3.1
+           │               ^^^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:17:18
+           │
+        17 │ pytest-check==2.3.1
+           │                  ^ expected new line
+
+        error: invalid TOML
+           ┌─ /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/OBh48U/pyproject.toml:17:19
+           │
+        17 │ pytest-check==2.3.1
+           │                   ^ expected new line
+
+        ERROR operation failed error=some files were not formatted due to syntax errors
+
+    parser: |
+      (none)

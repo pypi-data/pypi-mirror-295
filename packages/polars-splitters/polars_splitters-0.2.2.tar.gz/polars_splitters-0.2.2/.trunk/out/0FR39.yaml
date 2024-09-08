@@ -1,0 +1,20 @@
+trunk_cli_version: 1.17.0
+title: Check [[on-demand] [black:format:polars_splitters/core/splitters.py:HEAD]]
+report:
+  - linter:
+      command: |
+        /Users/jonas.miguel/.cache/trunk/tools/black/23.9.1-3454c5106b2e9b26a9016b8d53541edc/bin/black --quiet --line-length=120 polars_splitters/core/splitters.py
+      stdin_path: (none)
+      run_from: /private/tmp/trunk-503/sMMhmH
+      timeout: 10m
+      rerun: (cd /private/tmp/trunk-503/sMMhmH; env -i PATH=/Users/jonas.miguel/.cache/trunk/tools/black/23.9.1-3454c5106b2e9b26a9016b8d53541edc/bin:/Users/jonas.miguel/.cache/trunk/tools/black/23.9.1-3454c5106b2e9b26a9016b8d53541edc/Scripts:/Users/jonas.miguel/.cache/trunk/tools/python/3.10.8-214aeca7186675d6b0eef99195843b4a/bin:/Users/jonas.miguel/.cache/trunk/tools/python/3.10.8-214aeca7186675d6b0eef99195843b4a HOME=/Users/jonas.miguel VIRTUAL_ENV=/Users/jonas.miguel/.cache/trunk/tools/black/23.9.1-3454c5106b2e9b26a9016b8d53541edc PYTHONUTF8=1 /Users/jonas.miguel/.cache/trunk/tools/black/23.9.1-3454c5106b2e9b26a9016b8d53541edc/bin/black --quiet --line-length=120 polars_splitters/core/splitters.py)
+      affects_cache:
+        - pyproject.toml
+      direct_configs:
+        []
+      exit_status: exited
+      exit_code: 0
+      stdout: (none)
+      stderr: (none)
+    parser: |
+      (none)

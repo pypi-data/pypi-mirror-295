@@ -1,0 +1,20 @@
+trunk_cli_version: 1.17.0
+title: Check [[on-demand] [isort:format:polars_splitters/core/splitters.py:HEAD]]
+report:
+  - linter:
+      command: |
+        /Users/jonas.miguel/.cache/trunk/tools/isort/5.12.0-b79a6c9581b64bbc1871af2c308978e9/bin/isort -q --overwrite-in-place polars_splitters/core/splitters.py
+      stdin_path: (none)
+      run_from: /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/SaAoA9
+      timeout: 10m
+      rerun: (cd /private/var/folders/qh/2k5gcmgx3hl6wxjp2qtjz3dr0000gq/T/trunk-503/SaAoA9; env -i PATH=/Users/jonas.miguel/.cache/trunk/tools/isort/5.12.0-b79a6c9581b64bbc1871af2c308978e9/bin:/Users/jonas.miguel/.cache/trunk/tools/isort/5.12.0-b79a6c9581b64bbc1871af2c308978e9/Scripts:/Users/jonas.miguel/.cache/trunk/tools/python/3.10.8-214aeca7186675d6b0eef99195843b4a/bin:/Users/jonas.miguel/.cache/trunk/tools/python/3.10.8-214aeca7186675d6b0eef99195843b4a VIRTUAL_ENV=/Users/jonas.miguel/.cache/trunk/tools/isort/5.12.0-b79a6c9581b64bbc1871af2c308978e9 PYTHONUTF8=1 HOME=/Users/jonas.miguel /Users/jonas.miguel/.cache/trunk/tools/isort/5.12.0-b79a6c9581b64bbc1871af2c308978e9/bin/isort -q --overwrite-in-place polars_splitters/core/splitters.py)
+      affects_cache:
+        - pyproject.toml
+      direct_configs:
+        - .isort.cfg
+      exit_status: exited
+      exit_code: 0
+      stdout: (none)
+      stderr: (none)
+    parser: |
+      (none)

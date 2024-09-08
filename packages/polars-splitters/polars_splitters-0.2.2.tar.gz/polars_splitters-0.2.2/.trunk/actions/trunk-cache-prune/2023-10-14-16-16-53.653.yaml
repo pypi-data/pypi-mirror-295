@@ -1,0 +1,14 @@
+action_id: trunk-cache-prune
+date: 2023-10-14 16:16:53
+run: trunk cache prune --allow-daemon-start=false
+run_from: ""
+trigger: schedule 24h
+result:
+  exit_code: 0
+  out: "\x1b[1m\x1b[30m\x1b[107m  PRUNE  \x1b[0m\n\n \x1b[1m\x1b[4mPath\x1b[22m\x1b[24m                                                     \x1b[1m\x1b[4mFiles Removed\x1b[22m\x1b[24m  \x1b[1m\x1b[4mBytes Removed\x1b[22m\x1b[24m  \x1b[1m\x1b[4mFiles Remaining\x1b[22m\x1b[24m  \x1b[1m\x1b[4mBytes Remaining\x1b[22m\x1b[24m\r\n /Users/jonas.miguel/.cache/trunk/repos                   2907           4 MB           0                0 B            \r\n  /eebd2b5bd6efc64597b8723c02a6b2c6/out                                                                                 \r\n /tmp/trunk-503                                           0              0 B            1                630 KB         \n\n\x1b[1m\x1b[92m✔ Removed 2907 files totaling 4 MB\x1b[0m\n"
+  err: ""
+timestamp: 1697300213
+full_timestamp:
+  nanos: 653881000
+  seconds: 1697300213
+trunk_version: 1.16.0

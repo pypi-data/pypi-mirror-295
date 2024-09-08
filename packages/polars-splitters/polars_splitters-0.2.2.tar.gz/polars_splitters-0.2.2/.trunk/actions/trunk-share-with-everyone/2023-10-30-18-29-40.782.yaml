@@ -1,0 +1,17 @@
+action_id: trunk-share-with-everyone
+date: 2023-10-30 18:29:40
+run: trunk config share --notify --allow-daemon-start=false
+run_from: ""
+trigger: schedule 24h
+result:
+  exit_code: 0
+  out: "notifications_to_delete:\n  - trunk-share-with-everyone\n"
+  err: ""
+timestamp: 1698690580
+full_timestamp:
+  nanos: 782938000
+  seconds: 1698690580
+trunk_version: 1.16.0
+action_output:
+  notifications_to_delete:
+    - trunk-share-with-everyone
