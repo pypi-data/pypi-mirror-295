@@ -1,0 +1,2 @@
+[console_scripts]
+slack-helpers = slack_helpers.cli:main
