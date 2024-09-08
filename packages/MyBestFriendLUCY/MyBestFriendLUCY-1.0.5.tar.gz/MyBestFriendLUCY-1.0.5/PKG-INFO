@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: MyBestFriendLUCY
+Version: 1.0.5
+Summary: Ethereum Price Prediction Package for Short-Term Trading
+Home-page: https://github.com/yourusername/LUCY-1986-2009-project-ethereum-market-prediction-unit-limit_uncertainty,control_yourself--OurFriendLucy
+Author: Isaiah
+Author-email: isaiahjpeterson007@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# My ETH Predictor
+
+This package helps predict Ethereum prices using an LSTM model and various technical indicators like RSI, EMA, MACD, and Bollinger Bands. This is LUCY or limiting uncertainty, control yourself.
+
+## Installation
+

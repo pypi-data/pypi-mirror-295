@@ -1,0 +1,6 @@
+include LUCY/eth_lstm_best_strong_greatest_model.h5
+include LUCY/scaler_custom.pkl
+include README.md
+include LUCY/eth_price_data.csv
+include LUCY/X.npy
+include LUCY/Y.npy
