@@ -1,0 +1,150 @@
+Metadata-Version: 2.1
+Name: kontext-copilot
+Version: 0.3.1
+Summary: Kontext Copilot is an AI empowered assistant for data analytics that can run on your local computer.
+Home-page: https://kontext.tech/copilot
+License: MIT
+Author: Kontext
+Author-email: enquiry@kontext.tech
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: alembic (>=1.13.2,<2.0.0)
+Requires-Dist: colorlog (>=6.8.2,<7.0.0)
+Requires-Dist: duckdb (>=1.0.0,<2.0.0)
+Requires-Dist: duckdb-engine (>=0.13.1,<0.14.0)
+Requires-Dist: fastapi (>=0.111.0,<0.112.0)
+Requires-Dist: pre-commit (>=3.7.1,<4.0.0)
+Requires-Dist: pyarrow (>=17.0.0,<18.0.0)
+Requires-Dist: pydantic (>=2.8.2,<3.0.0)
+Requires-Dist: pyodbc (>=5.1.0,<6.0.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Requires-Dist: sqlalchemy (>=2.0.31,<3.0.0)
+Requires-Dist: typing-extensions (>=4.10.0,<5.0.0)
+Project-URL: Repository, https://github.com/kontext-tech/kontext-copilot
+Description-Content-Type: text/markdown
+
+# Kontext Copilot
+
+Kontext Copilot is an AI empowered assistant for data analytics that runs on your local computer.
+
+## Prerequisites
+
+-  Python 3.9+
+-  [Ollama](https://ollama.com/) or other compatible LLM serving tools. Ollama is recommended for the current release.
+
+## Installation
+
+```
+pip install kontext-copilot
+```
+
+Launch the tool:
+
+```
+kontext-copilot
+```
+
+> For more details about installation, refer to [**Kontext Copilot Installation**](https://kontext.tech/article/1385/kontext-copilot-installation)
+
+## Get started
+
+Kontext Copilot is still at early stage. Please follow the guide below to evaluate the tool and to provide feedbacks.
+
+[**Get started with Kontext Copilot**](https://kontext.tech/article/1386/get-started-with-kontext-copilot)
+
+![kontext-copilot-example](https://cdn.kontext.tech/Images/ai/kontext-copilot-light.gif)
+
+## Change logs
+
+[**Change logs**](./CHANGELOG.md)
+
+## For developers and contributors
+
+This section shows you how to setup local environment to participate in development of kontext-copilot.
+
+> Note - repo
+
+### Setup Python environment
+
+Create virtual environment. Please use **Python 3.9**.
+
+```
+python -m venv .venv
+```
+
+Activate the virtual environment.
+
+For Windows:
+
+```
+.\.venv\Scripts\activate
+```
+
+For UNIX-alike systems:
+
+```
+source ./.venv/bin/activate
+```
+
+Upgrade `pip`:
+
+```
+python -m pip install --upgrade pip
+```
+
+Install poetry:
+
+```
+pip install poetry
+```
+
+Refer to [https://python-poetry.org/docs/](https://python-poetry.org/docs/) for details about Poetry.
+
+Install packages:
+
+```
+poetry install
+```
+
+### Install pre-commit & Commitizen
+
+```
+poetry add pre-commit
+```
+
+Install `pre-commit` hook scripts:
+
+```
+pre-commit install
+pre-commit install --hook-type commit-msg --hook-type pre-push
+```
+
+(Optional) Run against all files:
+
+```
+pre-commit run --all-files
+```
+
+### Commit
+
+Use the following command line to commit changes:
+
+```
+cz c
+```
+
+### Build package
+
+```
+poetry build
+```
+
+### Initialize local database
+
+Run VS Code task `alembic: upgrade to head`
+
