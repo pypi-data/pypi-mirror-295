@@ -1,0 +1,12 @@
+source_amplitude/__init__.py,sha256=8921rbyD0YPvYmrc2S2uHLDN1uxEuMMKpCqjQwJCqyw,130
+source_amplitude/components.py,sha256=KhIc4-_RQqtX5U1hZWSc3igQEhYgYQ_wDZy2AXNiaak,4554
+source_amplitude/manifest.yaml,sha256=HSLCiTsyup2bGtylpS823m9OYfMrT-zhDjUyRVOrZmY,12757
+source_amplitude/run.py,sha256=_VHR4SaZZdh0GWCqG94jE0sHa0WFTd5-z-smfiDMToA,239
+source_amplitude/schemas/events.json,sha256=HngGV0IURbXOzIMYAkVVS70RyKH_OKQaQCEl5Eqt-kM,8041
+source_amplitude/source.py,sha256=8kgYIFvHQBdayN1PyLj-MtJm7b4u94cCp8FoE0Qd9UI,1595
+source_amplitude/spec.yaml,sha256=0tswPn3Ehc8F03S8DDv023qY8WuhRoMM2-yucn-a2Hg,1836
+source_amplitude/streams.py,sha256=eG0FwTorAzdwLXjF_H-iPuaX_Ftd_kKrTFJ1ReOmork,9154
+airbyte_source_amplitude-0.6.6.dist-info/METADATA,sha256=CQPZZ3QnpmvRmOnw0UIn_4lTpKP6MIguqp02wk3swmo,5222
+airbyte_source_amplitude-0.6.6.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+airbyte_source_amplitude-0.6.6.dist-info/entry_points.txt,sha256=iI8uhRtRLCcAAthxQPQczMQDI4rcT2KqLe9MjQ-gaaM,61
+airbyte_source_amplitude-0.6.6.dist-info/RECORD,,
