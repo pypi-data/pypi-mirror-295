@@ -1,0 +1,2 @@
+[console_scripts]
+repzip = repzip.__main__:main
