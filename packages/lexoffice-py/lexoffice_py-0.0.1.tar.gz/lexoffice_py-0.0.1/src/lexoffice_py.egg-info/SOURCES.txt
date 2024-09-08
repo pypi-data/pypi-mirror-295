@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/client.py
+src/custom_types.py
+src/errors.py
+src/lexoffice_py.egg-info/PKG-INFO
+src/lexoffice_py.egg-info/SOURCES.txt
+src/lexoffice_py.egg-info/dependency_links.txt
+src/lexoffice_py.egg-info/top_level.txt
