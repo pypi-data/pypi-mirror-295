@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+Bing/__init__.py
+Bing/bing.py
+Bing/cli.py
+gen_bing.egg-info/PKG-INFO
+gen_bing.egg-info/SOURCES.txt
+gen_bing.egg-info/dependency_links.txt
+gen_bing.egg-info/entry_points.txt
+gen_bing.egg-info/requires.txt
+gen_bing.egg-info/top_level.txt
+tests/__init__.py
+tests/bing_test.py
