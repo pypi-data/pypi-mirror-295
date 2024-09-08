@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/SWEvolML.egg-info/PKG-INFO
+src/SWEvolML.egg-info/SOURCES.txt
+src/SWEvolML.egg-info/dependency_links.txt
+src/SWEvolML.egg-info/entry_points.txt
+src/SWEvolML.egg-info/requires.txt
+src/SWEvolML.egg-info/top_level.txt
+src/swevolml/GML.py
+src/swevolml/__init__.py
+src/swevolml/graphtest.py

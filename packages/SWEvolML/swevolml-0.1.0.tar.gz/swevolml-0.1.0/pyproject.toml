@@ -1,0 +1,27 @@
+[project]
+name = "SWEvolML"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "GITSangWoo", email = "dogcenta@gmail.com"},
+]
+dependencies = [
+    "pandas>=2.2.2",
+    "scikit-learn>=1.5.1",
+    "plotext>=5.2.8",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+gml="swevolml.GML:main"
+
+[tool.pdm]
+distribution = true
+
+[project.urls]
+Homepage = "https://github.com/GITSangWoo/SWEvolML"
+Issues = "https://github.com/GITSangWoo/SWEvolML/issues"
+
+
