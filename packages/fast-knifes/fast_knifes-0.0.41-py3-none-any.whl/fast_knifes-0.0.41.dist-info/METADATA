@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: fast-knifes
+Version: 0.0.41
+Summary: Fast Swiss Army Knife
+Home-page: https://github.com/
+Author: knifes
+Author-email: author@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: attrs
+Requires-Dist: cattrs
+Requires-Dist: anyio
+Requires-Dist: typer
+Requires-Dist: python-dotenv
+
+`pip install fast-knifes --index-url https://pypi.python.org/simple -U`
