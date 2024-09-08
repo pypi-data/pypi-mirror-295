@@ -1,0 +1,3 @@
+[console_scripts]
+rtos-visualize=freertos_visualizer.visualize:main
+
