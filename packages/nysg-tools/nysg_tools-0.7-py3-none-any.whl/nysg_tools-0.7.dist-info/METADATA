@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: nysg-tools
+Version: 0.7
+Summary: Una colección de herramientas utiles para los laboratorios de la UBA FCEN
+Home-page: https://github.com/Noya-santiago/nysg_tools
+Author: Santiago Noya
+Author-email: noyasantiagomail@gmail.com
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+
+# Labo-Tools 
+
+Una colección de funciones utiles para los laboratorios de Física de la UBA.
+
+## Install
+
+```sh
+python -m pip install labotools-nysg
+```
+
+## Usage
+
+```py
+import labotools-nysg as ny
+```
+
+## Licensing
+The code in this project is licensed under MIT license.
+
