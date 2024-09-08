@@ -1,0 +1,43 @@
+Metadata-Version: 2.3
+Name: friday-logger
+Version: 0.0.13
+Project-URL: Documentation, https://github.com/kvqn/friday#readme
+Project-URL: Issues, https://github.com/kvqn/friday/issues
+Project-URL: Source, https://github.com/kvqn/friday
+Author-email: Guneet Aggarwal <guneetaggarwal@gmail.com>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: requests
+Description-Content-Type: text/markdown
+
+# friday
+
+[![PyPI - Version](https://img.shields.io/pypi/v/friday-logger.svg)](https://pypi.org/project/friday-logger)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/friday-logger.svg)](https://pypi.org/project/friday-logger)
+
+---
+
+## Table of Contents
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install friday-logger
+```
+
+## License
+
+`friday-logger` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
