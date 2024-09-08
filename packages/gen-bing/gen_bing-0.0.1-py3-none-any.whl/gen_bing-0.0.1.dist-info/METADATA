@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: gen_bing
+Version: 0.0.1
+Summary: First Library.
+Home-page: https://github.com/jonesroot/gen_bing
+Author: Lucifer
+Author-email: ikyodeos01@gmail.com
+Project-URL: Documentation, https://github.com/jonesroot/gen_bing
+Project-URL: Source, https://github.com/jonesroot/gen_bing
+Keywords: gabut
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiofiles >=23.2.1
+Requires-Dist: httpx[http2]
+
+# Gen Bing
+
+A Python library for generating and saving images using Bing's Image Creator.
+
+## Installation
+
+```bash
+pip install gen-bing
+
+from Bing.bing import AsyncImageGenerator
+
+async def main():
+    generator = AsyncImageGenerator(auth_cookie_u="YOUR_U_COOKIE", auth_cookie_srchhpgusr="YOUR_SRPCHPGUSR_COOKIE")
+    images = await generator.generate_images(prompt="beautiful landscape", num_images=5)
+    await generator.save_images(images, output_dir="images/")
+
+import asyncio
+asyncio.run(main())
+
+
+from Bing.bing import SyncImageGenerator
+
+generator = SyncImageGenerator(auth_cookie_u="YOUR_U_COOKIE", auth_cookie_srchhpgusr="YOUR_SRPCHPGUSR_COOKIE")
+images = generator.generate_images(prompt="beautiful landscape", num_images=5)
+generator.save_images(images, output_dir="images/")
+```
