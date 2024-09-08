@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+env.yml
+pyproject.toml
+images/coparison_colors.png
+src/zot2sioyek/__init__.py
+src/zot2sioyek/zot2sioyek.py
+src/zot2sioyek.egg-info/PKG-INFO
+src/zot2sioyek.egg-info/SOURCES.txt
+src/zot2sioyek.egg-info/dependency_links.txt
+src/zot2sioyek.egg-info/entry_points.txt
+src/zot2sioyek.egg-info/requires.txt
+src/zot2sioyek.egg-info/top_level.txt

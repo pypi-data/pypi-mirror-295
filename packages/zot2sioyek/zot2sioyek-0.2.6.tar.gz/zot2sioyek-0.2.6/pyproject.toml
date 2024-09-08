@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"  # If not defined, then legacy behavior can happen.
+
+
+[project]
+name = "zot2sioyek"  # REQUIRED, is the only field that cannot be marked as dynamic.
+version = "0.2.6"
+description = "Script with managing utils of zotero database fratures to sioyek PDF reader."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+keywords = ["sioyek", "zotero", "PDF", "reader", "highlights"]
+authors = [
+  {name = "Eduardo Toledo Campos", email = "eduardotcampos@usp.br" }
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Database",
+  "Development Status :: 3 - Alpha",
+]
+dependencies = [
+    'pyzotero',
+    'pymupdf',
+    'PyQt5',
+    'regex',
+    'sioyek',
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/eduardotlc/zot2sioyek"
+"Bug Reports" = "https://github.com/eduardotlc/zot2sioyek/issues"
+"Source" = "https://github.com/eduardotlc/zot2sioyek/"
+
+
+[project.scripts]
+zot2sioyek = "zot2sioyek.zot2sioyek:main"
