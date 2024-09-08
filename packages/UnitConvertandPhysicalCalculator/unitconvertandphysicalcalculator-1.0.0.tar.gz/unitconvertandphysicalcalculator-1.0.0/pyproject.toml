@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=71.4.2",'wheel']
+build-backend = "setuptools.build_meta"
+[project]
+name = "UnitConvertandPhysicalCalculator"
+version = "1.0.0"
+authors = [
+  { name="chay", email="lichenyi_2020@qq.com" },
+]
+description = "A simple converter and a Physical quantity calculator."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/lichenyichay/Unit-Converter"
+Issues = "https://github.com/lichenyichay/Unit-Converter/issues"

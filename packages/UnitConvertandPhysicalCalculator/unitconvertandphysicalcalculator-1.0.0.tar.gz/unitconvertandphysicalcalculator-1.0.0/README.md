@@ -1,0 +1,87 @@
+# Unit-Converter 单位换算与物理公式库
+## 目录
+Line 13 作者信息
+
+Line 18 功能概述
+
+Line 21 长度单位换算函数
+
+Line 53 物理量换算函数
+
+Line 85 通用单位转换器 UnitConverter
+
+## 作者信息
+作者：Chay
+时间：2024年9月5日 22:47
+版本：Alpha 1.0.0
+
+## 功能概述
+本库提供了一系列长度单位换算函数以及物理量换算函数，旨在方便用户在不同单位间进行转换以及进行基本的物理计算。
+
+## 长度单位换算函数
+### 毫米(mm)到其他单位的转换
+mmtocm(x: float) -> float：将毫米转换为厘米。
+mmtodm(x: float) -> float：将毫米转换为分米。
+mmtom(x: float) -> float：将毫米转换为米。
+mmtokm(x: float) -> float：将毫米转换为千米。
+### 厘米(cm)到其他单位的转换
+cmtodm(x: float) -> float：将厘米转换为分米。
+cmtom(x: float) -> float：将厘米转换为米。
+cmtokm(x: float) -> float：将厘米转换为千米。
+cmtomm(x: float) -> float：将厘米转换为毫米（虽然看似逆向转换，但提供了完整性）。
+### 分米(dm)到其他单位的转换
+dmtom(x: float) -> float：将分米转换为米。
+dmtokm(x: float) -> float：将分米转换为千米。
+dmtomm(x: float) -> float：将分米转换为毫米。
+dmtocm(x: float) -> float：将分米转换为厘米。
+### 米(m)到其他单位的转换
+mtokm(x: float) -> float：将米转换为千米。
+mtomm(x: float) -> float：将米转换为毫米。
+mtocm(x: float) -> float：将米转换为厘米（注意与mmtocm函数名相同，但功能不同）。
+mtodm(x: float) -> float：将米转换为分米。
+### 千米(km)到其他单位的转换
+kmtomm(x: float) -> float：将千米转换为毫米。
+kmtocm(x: float) -> float：将千米转换为厘米。
+kmtodm(x: float) -> float：将千米转换为分米。
+kmtom(x: float) -> float：将千米转换为米。
+### 微米和纳米单位转换
+μmtomm(x: float) -> float：将微米转换为毫米。
+mmtoμm(x: float) -> float：将毫米转换为微米。
+nmtoμm(x: float) -> float：将纳米转换为微米。
+μmtonm(x: float) -> float：将微米转换为纳米。
+
+## 物理量换算函数
+### 密度 ρ
+函数定义：def ρ(V=0.0, m=0.0, g=9.8, h=0.0, p=0.0, Ffu=0.0) -> float:
+功能说明：计算密度。支持多种计算方式：
+如果给定体积 V 和质量 m，则直接计算密度（ρ = m/V）。
+如果给定压强 p、重力加速度 g 和高度 h，则计算流体密度（ρ = p / (g * h)）。
+如果给定流体浮力 Ffu、重力加速度 g 和体积 V，则通过浮力计算密度（ρ = Ffu / (g * V)）。
+如果参数无效，则抛出 ValueError 异常。
+### 质量 m
+函数定义：def m(G=0.0, g=9.8, V=0.0, ρ=0.0) -> float:
+功能说明：计算质量。支持多种计算方式：
+如果给定重力 G 和重力加速度 g，则计算质量（m = G/g）。
+如果给定体积 V 和密度 ρ，则计算质量（m = ρ * V）。
+如果参数无效，则抛出 ValueError 异常。
+### 体积 Vtiji
+函数定义：def Vtiji(m=0.0, ρ=0.0, g=9.8, Ffu=0.0) -> float:
+功能说明：根据质量和密度或其他物理量计算体积。支持多种计算方式：
+如果给定质量 m 和密度 ρ，则计算体积（V = m/ρ）。
+如果给定流体浮力 Ffu、重力加速度 g 和密度 ρ，则通过浮力计算体积（此处逻辑可能需要根据实际物理公式调整）。
+如果参数无效，则抛出 ValueError 异常。
+### 速度 Vsudu
+函数定义：def Vsudu(Slu=0.0, t=0.0) -> float:
+功能说明：计算流速。如果给定流过的距离 Slu 和时间 t，则计算流速（Vs = Slu/t）。如果参数无效，则抛出 ValueError 异常。
+### 压强 p
+函数定义：def p(F=0.0, S=0.0, ρ=0.0, g=9.8, h=0.0) -> float:
+功能说明：计算压强。支持多种计算方式：
+如果给定力 F 和受力面积 S，则计算压强（p = F/S）。
+如果给定密度 ρ、高度 h 和重力加速度 g，则计算流体压强（p = ρ * g * h）。
+如果参数无效，则抛出 ValueError 异常。
+### 电流 I、电压 U、电阻 R 和功率 Pgong
+这些函数（I, U, R, Pgong）分别用于计算电流、电压、电阻和功率，根据欧姆定律（U = I * R）和功率公式（Pgong = U * I）实现。它们各自接收不同的参数组合，并根据提供的参数计算相应的物理量。如果参数无效，则抛出 ValueError 异常。
+
+## 通用单位转换器 UnitConverter
+函数定义：def UnitConverter(mode: int, args: dict) -> float:
+功能说明：根据提供的模式（1-33）和参数，执行长度单位换算或其他可能的物理量换算。
