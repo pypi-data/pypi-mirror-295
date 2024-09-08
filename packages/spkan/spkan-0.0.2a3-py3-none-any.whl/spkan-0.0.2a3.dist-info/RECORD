@@ -1,0 +1,14 @@
+spkan/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+spkan/conv.py,sha256=5uCL5q4X5_xP5dFbnFIzuHuCSj_JYDuoS1prmubQKwc,38194
+spkan/cuda_tools.py,sha256=3zjRcu3ilVtPO_yymhKSjJenHYxxV4ihiDJNRjQaHeg,2740
+spkan/tests.py,sha256=KfewXk7DlhMlELl0k8UKF6xk1wmh-l1VYaDJ8Cphkbo,9047
+spkan/modules/second_neck.py,sha256=uo5R7TOg0lhawkNk9mdKKQsw44QmyUuE1iMaJ5Uftw8,12306
+spkan/ops/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+spkan/ops/bsplines.cu,sha256=NFM3t6d2fklK4C6cDfGhgCQzWRBnrDA-p2-Eicf_ecA,14461
+spkan/ops/bsplines_g.cpp,sha256=YEAdRz8VqQvWaPhIBDezsf0IVRyxp9YraHoo4DYvstw,7915
+spkan/ops/setup.py,sha256=_84-VhAu9XRDbBSnma3W8I_qsKko_NGYgFiDTP55NbI,381
+spkan-0.0.2a3.dist-info/LICENSE,sha256=qMvypLXQDndkHDFrQafAdzDqp_pnbykIvZ3WvOVBH1M,1069
+spkan-0.0.2a3.dist-info/METADATA,sha256=kKh1Zs7aWw5B6SbhZ3PiXVzsLyDz5Uua1Ilx7R56kCw,1855
+spkan-0.0.2a3.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+spkan-0.0.2a3.dist-info/top_level.txt,sha256=RhtH7BUq8DDLYGNh_AcCEPnvQwfPVePEV4V57jWXBEI,6
+spkan-0.0.2a3.dist-info/RECORD,,
