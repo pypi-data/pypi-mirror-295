@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: aa-ravworks-exporter
+Version: 0.5.1
+Summary: Ravworks config exporter for AllianceAuth
+Keywords: allianceauth,ravworks,allianceauth_ravworks,ravworks_exporter,ravworks_config,eveonline
+Author-email: Matteo Ghia <matteo.ghia@yahoo.it>
+Requires-Python: ~=3.8
+Description-Content-Type: text/markdown
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 4
+Classifier: Framework :: Django :: 4.2
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Dist: allianceauth~=4.0
+Project-URL: Changelog, https://github.com/Maestro-Zacht/aa-ravworks-exporter/releases
+Project-URL: Homepage, https://github.com/Maestro-Zacht/aa-ravworks-exporter
+Project-URL: Source, https://github.com/Maestro-Zacht/aa-ravworks-exporter
+Project-URL: Tracker, https://github.com/Maestro-Zacht/aa-ravworks-exporter/issues
+
+# AllianceAuth Ravworks Exporter
+
+This is a plugin for [AllianceAuth](https://gitlab.com/allianceauth/allianceauth) that exports ESI data to a config file for [Ravworks](https://ravworks.com/).
+
+## Prerequisites
+
+This plugin requires a working AllianceAuth installation with v3 as a minimum version. See the [AllianceAuth installation instructions](https://allianceauth.readthedocs.io/en/latest/installation/index.html) for more information.
+
+Data from ESI are not directly fetched by this application, instead it relies on other AllianceAuth plugins. Currently the following plugins are supported:
+
+Skills:
+
+- [MemberAudit](https://apps.allianceauth.org/apps/detail/aa-memberaudit)
+- [CorpTools](https://apps.allianceauth.org/apps/detail/allianceauth-corptools)
+
+Structures:
+
+- [aa-structures](https://apps.allianceauth.org/apps/detail/aa-structures)
+- [CorpTools](https://apps.allianceauth.org/apps/detail/allianceauth-corptools)
+
+If there are multiple plugins for the same functionality, only 1 is needed. If no plugin is installed, that functionality will be unavailable.
+
+## Installation
+
+1. Install the package with pip:
+
+    ```bash
+    pip install aa-ravworks-exporter
+    ```
+
+2. Add `'ravworks_exporter',` to your `INSTALLED_APPS` in `local.py`
+
+## Basic usage
+
+1. Download the config file from Ravworks website. This apps doesn't directly create the config files but rather update existing ones with data from ESI.
+2. Use it in the form in this plugin page on AllianceAuth.
+3. Download the update config file and use it on Ravworks website.
+
