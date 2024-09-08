@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: numpy2ometiff
+Version: 0.1.0
+Summary: A Python library to write NumPy arrays to OME-TIFF format.
+Author: Tristan Whitmarsh
+Author-email: tw401@cam.ac.uk
+License: BSD 3-Clause License
+Keywords: OME TIFF NumPy microscopy
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: tifffile
