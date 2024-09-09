@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: competitive-programming-lib
+Version: 0.1.0
+Summary: A library of algorithms and data structures for competitive programming
+Home-page: https://github.com/yourusername/competitive-programming-lib
+Author: Your Name
+Author-email: your.email@example.com
+License: UNKNOWN
+Description: # Competitive Programming Library
+        
+        A comprehensive library of algorithms and data structures commonly used in competitive programming.
+        
+        ## Installation
+        
+        You can install the package using pip:
+        ```
+        pip install competitive-programming-lib
+        ```
+        
+        
+        ## Usage
+        
+        Here's a quick example of how to use some of the algorithms:
+        
+        ```python
+        from competitive_programming_lib import CompetitiveProgrammingLib as cpl
+        
+        # Dijkstra's Algorithm
+        graph = {
+            0: {1: 4, 2: 1},
+            1: {3: 1},
+            2: {1: 2, 3: 5},
+            3: {}
+        }
+        distances, predecessors = cpl.dijkstra(graph, 0)
+        print("Shortest distances from node 0:", distances)
+        
+        # More examples...
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
