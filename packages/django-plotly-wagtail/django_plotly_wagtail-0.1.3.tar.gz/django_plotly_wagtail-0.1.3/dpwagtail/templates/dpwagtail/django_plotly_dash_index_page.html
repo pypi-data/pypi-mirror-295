@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+
+{%load wagtailcore_tags dpwagtail %}
+
+{%block body_class %}template-homepage{%endblock%}
+
+{%block content%}
+
+{{page.description|richtext}}
+
+<div class="container">
+  {%for dpd_page in dpd_pages%}
+    <div class="card shadow-sm">
+      {%dpd_page_short_listing dpd_page%}
+    </div>
+  {%endfor%}
+</div>
+{%endblock%}
