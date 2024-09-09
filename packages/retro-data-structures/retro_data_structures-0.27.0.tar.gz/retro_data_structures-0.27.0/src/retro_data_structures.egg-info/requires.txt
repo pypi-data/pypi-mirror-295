@@ -1,0 +1,9 @@
+construct>=2.10.0
+lzokay
+pycryptodome
+typing-extensions>=4.0.0
+
+[test]
+nod
+pytest
+pytest-cov
