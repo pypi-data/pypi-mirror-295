@@ -1,0 +1,4 @@
+numpy>=1.18.5
+pandas>=2.0.0
+pymatgen>=2023.8.10
+gemmi

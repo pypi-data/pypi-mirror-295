@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+pyecif/ECIFPandasTools.py
+pyecif/__init__.py
+pyecif.egg-info/PKG-INFO
+pyecif.egg-info/SOURCES.txt
+pyecif.egg-info/dependency_links.txt
+pyecif.egg-info/requires.txt
+pyecif.egg-info/top_level.txt
+tests/__init__.py
+tests/test_ECIFPandasTools.py
