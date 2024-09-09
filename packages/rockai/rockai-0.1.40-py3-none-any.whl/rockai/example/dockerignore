@@ -1,0 +1,7 @@
+# ignore environments
+env
+.vscode
+__pycache__
+.env
+.gitignore
+.git*
