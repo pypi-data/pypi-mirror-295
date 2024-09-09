@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: CSEGPTV1
+Version: 0.1.0
+Summary: A Google Custom Search and Google Sheets integration for querying and logging results
+Home-page: https://github.com/Quaero-1/quaero
+Author: Sulyman Anjolaoluwa
+Author-email: quaero24@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: gspread
+Requires-Dist: oauth2client
+Requires-Dist: python-dotenv
+
+# Quaero Search
+
+Quaero Search integrates Google Custom Search API with Google Sheets for querying search results and logging them. It uses Google Sheets to track user credits and records search queries.
+
+## Installation
+
+```bash
+pip install CSEGPTV1

@@ -1,0 +1,10 @@
+.env
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+CSEGPTV1.egg-info/PKG-INFO
+CSEGPTV1.egg-info/SOURCES.txt
+CSEGPTV1.egg-info/dependency_links.txt
+CSEGPTV1.egg-info/requires.txt
+CSEGPTV1.egg-info/top_level.txt
