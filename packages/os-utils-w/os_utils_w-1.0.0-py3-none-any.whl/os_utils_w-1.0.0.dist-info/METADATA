@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: os_utils_w
+Version: 1.0.0
+Summary: A light weight command line menu that supports Windows, MacOS, and Linux
+Author: kyw
+Author-email: 
+Keywords: python
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+
+
+# My Package
+
+
+
+A brief description of what my package does.
+
+
+
+## Installation
+
+
+
+To install my package, simply run:
+
+
+
+```bash
+
+pip install your_package_name
+
+Usage
+
+Here's how to use my package:
+
+
+
+python
+
+from my_package import some_function
+
+
+
+result = some_function('some arguments')
+
+print(result)
+
+Contributing
+
+Please contribute to this project by following the guidelines in CONTRIBUTING.md.
+
+
+
+
+
