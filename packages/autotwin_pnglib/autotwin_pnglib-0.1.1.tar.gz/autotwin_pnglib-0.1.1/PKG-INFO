@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: autotwin_pnglib
+Version: 0.1.1
+Summary: Petri Net Model Generation Library for Auto-Twin
+License: BSD-3-Clause
+Keywords: auto-twin,system discovery,Petri net
+Author: Wei Cheng
+Author-email: wei.cheng.me@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Manufacturing
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: PySCIPOpt (>=5.1.1,<6.0.0)
+Requires-Dist: SNAKES (>=0.9.33,<0.10.0)
+Requires-Dist: autotwin_gmglib (>=0.1.4,<0.2.0)
+Requires-Dist: autotwin_pmswsgi (>=0.1.4,<0.2.0)
+Requires-Dist: matplotlib (>=3.8.3,<4.0.0)
+Requires-Dist: neo4j (>=5.17.0,<6.0.0)
+Requires-Dist: networkx (>=3.2.1,<4.0.0)
+Requires-Dist: numpy (>=1.26.4,<2.0.0)
+Requires-Dist: pandas (>=2.2.1,<3.0.0)
+Requires-Dist: pygraphviz (>=1.12,<2.0)
+Requires-Dist: scipy (>=1.13.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+[![PyPI - License](https://img.shields.io/pypi/l/autotwin_pnglib)](https://github.com/AutotwinEU/petri_net_model_gen/blob/master/LICENSE) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/autotwin_gmglib)](https://www.python.org/downloads/) [![PyPI - Version](https://img.shields.io/pypi/v/autotwin_pnglib)](https://pypi.org/project/autotwin_pnglib/)
+
+# Petri Net Model Generation Library for Auto-Twin
+
+## Introduction
+
+The Petri Net Model Generation Library is a Python package designed to create, manipulate, and export Petri net models to a Neo4j database.
+
+## Installation
+
+To facilitate installation, the PMS WSGI is released as a Python module, `autotwin_pmswsgi`, in the PyPI repository.
+
+`autotwin_pnglib` has implicit dependencies on `autotwin_gmglib` and the optimization solver [SCIP](https://scipopt.org/). These dependencies cannot be automatically resolved by `pip` and must be installed manually.
+
+1. Install `autotwin_gmglib` by following the instructions provided [here](https://github.com/AutotwinEU/proc-mining-serv/blob/main/README.md).
+2. Install SCIP by following the instructions [here](https://www.scipopt.org/doc/html/INSTALL.php). Using the precompiled binary for version 9.1.0 is sufficient.
+
+Once `autotwin_gmglib` and SCIP are installed, you can easily install the other required Python packages with:
+
+`pip install -r requirements.txt `
+

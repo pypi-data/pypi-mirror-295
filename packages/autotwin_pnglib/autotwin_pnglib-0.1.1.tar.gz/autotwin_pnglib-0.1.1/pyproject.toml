@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "autotwin_pnglib"
+version = "0.1.1"
+description = "Petri Net Model Generation Library for Auto-Twin"
+license = "BSD-3-Clause"
+authors = [
+    "Wei Cheng <wei.cheng.me@gmail.com>"
+]
+readme = "README.md"
+keywords = ["auto-twin", "system discovery", "Petri net"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Manufacturing",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only"
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+neo4j = "^5.17.0"
+numpy = "^1.26.4"
+pandas = "^2.2.1"
+networkx = "^3.2.1"
+pygraphviz = "^1.12"
+matplotlib = "^3.8.3"
+scipy = "^1.13.0"
+SNAKES = "^0.9.33"
+PySCIPOpt = "^5.1.1"
+autotwin_gmglib = "^0.1.4"
+autotwin_pmswsgi = "^0.1.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
