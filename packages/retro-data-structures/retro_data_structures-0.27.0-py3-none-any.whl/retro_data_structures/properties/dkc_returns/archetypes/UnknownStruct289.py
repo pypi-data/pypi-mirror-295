@@ -1,0 +1,111 @@
+# Generated File
+from __future__ import annotations
+
+import dataclasses
+import struct
+import typing
+import typing_extensions
+
+from retro_data_structures import json_util
+from retro_data_structures.game_check import Game
+from retro_data_structures.properties.base_property import BaseProperty
+from retro_data_structures.properties.field_reflection import FieldReflection
+from retro_data_structures.properties.dkc_returns.archetypes.VolcanoBossBodyPartStructA import VolcanoBossBodyPartStructA
+
+if typing.TYPE_CHECKING:
+    class UnknownStruct289Json(typing_extensions.TypedDict):
+        volcano_boss_body_part_struct_a: json_util.JsonObject
+        selection_chance: float
+    
+
+@dataclasses.dataclass()
+class UnknownStruct289(BaseProperty):
+    volcano_boss_body_part_struct_a: VolcanoBossBodyPartStructA = dataclasses.field(default_factory=VolcanoBossBodyPartStructA, metadata={
+        'reflection': FieldReflection[VolcanoBossBodyPartStructA](
+            VolcanoBossBodyPartStructA, id=0x28f49a53, original_name='VolcanoBossBodyPartStructA', from_json=VolcanoBossBodyPartStructA.from_json, to_json=VolcanoBossBodyPartStructA.to_json
+        ),
+    })
+    selection_chance: float = dataclasses.field(default=50.0, metadata={
+        'reflection': FieldReflection[float](
+            float, id=0x1b030466, original_name='SelectionChance'
+        ),
+    })
+
+    @classmethod
+    def game(cls) -> Game:
+        return Game.DKC_RETURNS
+
+    @classmethod
+    def from_stream(cls, data: typing.BinaryIO, size: int | None = None, default_override: dict | None = None) -> typing_extensions.Self:
+        property_count = struct.unpack(">H", data.read(2))[0]
+        if (result := cls._fast_decode(data, property_count)) is not None:
+            return result
+
+        present_fields = default_override or {}
+        for _ in range(property_count):
+            property_id, property_size = struct.unpack(">LH", data.read(6))
+            start = data.tell()
+            try:
+                property_name, decoder = _property_decoder[property_id]
+                present_fields[property_name] = decoder(data, property_size)
+            except KeyError:
+                raise RuntimeError(f"Unknown property: 0x{property_id:08x}")
+            assert data.tell() - start == property_size
+
+        return cls(**present_fields)
+
+    @classmethod
+    def _fast_decode(cls, data: typing.BinaryIO, property_count: int) -> typing_extensions.Self | None:
+        if property_count != 2:
+            return None
+    
+        property_id, property_size = struct.unpack(">LH", data.read(6))
+        assert property_id == 0x28f49a53
+        volcano_boss_body_part_struct_a = VolcanoBossBodyPartStructA.from_stream(data, property_size)
+    
+        property_id, property_size = struct.unpack(">LH", data.read(6))
+        assert property_id == 0x1b030466
+        selection_chance = struct.unpack('>f', data.read(4))[0]
+    
+        return cls(volcano_boss_body_part_struct_a, selection_chance)
+
+    def to_stream(self, data: typing.BinaryIO, default_override: dict | None = None) -> None:
+        default_override = default_override or {}
+        data.write(b'\x00\x02')  # 2 properties
+
+        data.write(b'(\xf4\x9aS')  # 0x28f49a53
+        before = data.tell()
+        data.write(b'\x00\x00')  # size placeholder
+        self.volcano_boss_body_part_struct_a.to_stream(data)
+        after = data.tell()
+        data.seek(before)
+        data.write(struct.pack(">H", after - before - 2))
+        data.seek(after)
+
+        data.write(b'\x1b\x03\x04f')  # 0x1b030466
+        data.write(b'\x00\x04')  # size
+        data.write(struct.pack('>f', self.selection_chance))
+
+    @classmethod
+    def from_json(cls, data: json_util.JsonValue) -> typing_extensions.Self:
+        json_data = typing.cast("UnknownStruct289Json", data)
+        return cls(
+            volcano_boss_body_part_struct_a=VolcanoBossBodyPartStructA.from_json(json_data['volcano_boss_body_part_struct_a']),
+            selection_chance=json_data['selection_chance'],
+        )
+
+    def to_json(self) -> json_util.JsonObject:
+        return {
+            'volcano_boss_body_part_struct_a': self.volcano_boss_body_part_struct_a.to_json(),
+            'selection_chance': self.selection_chance,
+        }
+
+
+def _decode_selection_chance(data: typing.BinaryIO, property_size: int):
+    return struct.unpack('>f', data.read(4))[0]
+
+
+_property_decoder: typing.Dict[int, typing.Tuple[str, typing.Callable[[typing.BinaryIO, int], typing.Any]]] = {
+    0x28f49a53: ('volcano_boss_body_part_struct_a', VolcanoBossBodyPartStructA.from_stream),
+    0x1b030466: ('selection_chance', _decode_selection_chance),
+}
