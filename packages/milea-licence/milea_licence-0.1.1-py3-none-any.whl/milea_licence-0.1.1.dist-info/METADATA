@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: milea-licence
+Version: 0.1.1
+Summary: Milea Framework - Milea Licence Module
+Author: red-pepper-services
+Author-email: pypi@schiegg.at
+License: MIT
+Requires-Dist: milea-base >=0.4
+
