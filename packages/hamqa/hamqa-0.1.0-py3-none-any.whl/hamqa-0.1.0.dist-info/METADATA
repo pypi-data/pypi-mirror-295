@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: hamqa
+Version: 0.1.0
+Summary: Home Assistant MQTT autodiscovery sensor registration and publishing library
+Author: Hristo Valev
+Author-email: blank@blank.blank
+Requires-Python: >=3.8
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: paho-mqtt (>=2.1.0,<3.0.0)
