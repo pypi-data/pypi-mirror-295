@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        {% if favicon %}
+            <link rel="icon" href="{{ favicon }}">
+        {% endif %}
+
+        {% if theme %}
+            <link rel="stylesheet" href="{{ theme }}" />
+        {% endif %}
+
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+
+        <ul>
+        {%+ for s in slideshows %}
+            <li><a href="{{ s.location }}" target="_blank">{{ s.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <p>Slides last build at <code>{{ build_datetime.strftime('%Y-%m-%d %H:%M:%S') }}</code>.</p>
+    </body>
+</html>
