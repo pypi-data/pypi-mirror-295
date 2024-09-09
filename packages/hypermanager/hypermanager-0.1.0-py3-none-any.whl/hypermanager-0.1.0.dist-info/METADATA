@@ -1,0 +1,14 @@
+Metadata-Version: 2.3
+Name: hypermanager
+Version: 0.1.0
+Summary: Add your description here
+Author-email: Evan-Kim2028 <ekcopersonal@gmail.com>
+Requires-Python: >=3.8
+Requires-Dist: hypersync>=0.8.3
+Requires-Dist: polars>=1.6.0
+Requires-Dist: pyarrow>=17.0.0
+Description-Content-Type: text/markdown
+
+# hypermanager-py
+
+Stay tuned...
