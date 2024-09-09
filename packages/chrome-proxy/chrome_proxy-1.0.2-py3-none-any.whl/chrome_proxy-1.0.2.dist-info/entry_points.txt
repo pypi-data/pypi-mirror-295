@@ -1,0 +1,3 @@
+[console_scripts]
+chrome-proxy = chrome_proxy.chrome_manager:main
+
