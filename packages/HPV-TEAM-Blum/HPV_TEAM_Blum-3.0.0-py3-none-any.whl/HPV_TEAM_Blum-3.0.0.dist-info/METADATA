@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: HPV_TEAM_Blum
+Version: 3.0.0
+Summary: Многофункциональный, кроссплатформенный, многопоточный Blum AutoBot, с поддержкой прокси и защитой от блокировок
+Home-page: https://t.me/HPV_TEAM
+Author: A_KTO_Tbl
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.6
+Requires-Dist: colorama
+Requires-Dist: cloudscraper==1.2.71
+Requires-Dist: requests==2.31.0
+Requires-Dist: pysocks==1.7.1
+
