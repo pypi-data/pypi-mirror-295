@@ -1,0 +1,2 @@
+[console_scripts]
+predictor = fishknn.predict:fish_pred
