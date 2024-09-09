@@ -1,0 +1,19 @@
+.gitignore
+CODE_OF_CONDUCT.md
+LICENSE
+Levin_2000_Filling N-sided Holes Using Combined Subdivision Schemes.pdf
+README.md
+iso.png
+pyproject.toml
+side.png
+.github/workflows/python-package.yml
+.github/workflows/python-publish.yml
+src/subdivision_hole_filler/__init__.py
+src/subdivision_hole_filler/_version.py
+src/subdivision_hole_filler/hole_filler.py
+src/subdivision_hole_filler.egg-info/PKG-INFO
+src/subdivision_hole_filler.egg-info/SOURCES.txt
+src/subdivision_hole_filler.egg-info/dependency_links.txt
+src/subdivision_hole_filler.egg-info/requires.txt
+src/subdivision_hole_filler.egg-info/top_level.txt
+tests/test_6sided_hole.py

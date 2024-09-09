@@ -1,0 +1,34 @@
+[project]
+name = "subdivision-hole-filler"
+authors = [
+  { name="HUANG Lihao", email="huang-lihao@outlook.com" },
+]
+description = "A python package to fill N-sided holes using combined subdivision schemes, based on Catmull-Clark subdivison."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [ # Optional
+    "matplotlib",
+    "numpy",
+    "scipy",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/huang-lihao/subdivision-hole-filler"
+"Bug Tracker" = "https://github.com/huang-lihao/subdivision-hole-filler/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "src/subdivision_hole_filler/_version.py"
+local_scheme = "no-local-version"
