@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: dwarf_rotator
+Version: 0.1.1
+Summary: Proxy helper, store and rotate proxies.
+Author: yeegie
+Author-email: lotus9200@gmail.com
+Requires-Dist: annotated-types==0.7.0
+Requires-Dist: iniconfig==2.0.0
+Requires-Dist: packaging==24.1
+Requires-Dist: pluggy==1.5.0
+Requires-Dist: pydantic==2.8.2
+Requires-Dist: pydantic_core==2.20.1
+Requires-Dist: pytest==8.3.2
+Requires-Dist: setuptools==74.1.2
+Requires-Dist: typing_extensions==4.12.2
+
+# ProxyRotator
