@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: amplify-bbopt
+Version: 0.2.3
+Summary: An Amplify-based library to facilitate black-box optimization
+Author-email: Fixstars Amplify Corporation <y_matsuda@fixstars.com>
+Maintainer-email: Yoshiki Matsuda <y_matsuda@fixstars.com>, Yuki Minamoto <yuki.minamoto@fixstars.com>
+License: MIT License
+        
+        Copyright (c) 2024 Fixstars Amplify Corporation
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Changelog, https://amplify.fixstars.com/docs/amplify-bbopt/v0/changelog.html
+Project-URL: Documentation, https://amplify.fixstars.com/docs/amplify-bbopt/v0/
+Project-URL: Homepage, https://amplify.fixstars.com/
+Project-URL: Tutorial, https://amplify.fixstars.com/demo
+Keywords: amplify,black-box optimization,Bayesian optimization
+Classifier: Environment :: Console
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: amplify >=1.2.0
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: torch
+Requires-Dist: plotly
+Requires-Dist: nbformat >=4.2.0
+
+# Amplify-BBOpt
+
+Amplify-BBOpt is a Python package to facilitate the execution of black-box optimization developed by [Fixstars Amplify](https://amplify.fixstars.com/en).
+
+- Documentation:  
+ https://amplify.fixstars.com/docs/amplify-bbopt/v0/
+- Contributing (bug reports, improvements):  
+ https://amplify.fixstars.com/en/contact
+
+Amplify-BBOpt is built around the [Amplify SDK](https://amplify.fixstars.com/en/docs/amplify/). Annealing-based black-box optimization methods, FMQA and kernel-QA, are available in conjunction with quantum annealing machines and Ising machines (hence using Amplify SDK). Important features include (but not limited to):
+
+* Easy to run and change methods
+* Applicability to high-dimensional problems
+* Consideration of constraints
+* Multi-objective optimization
