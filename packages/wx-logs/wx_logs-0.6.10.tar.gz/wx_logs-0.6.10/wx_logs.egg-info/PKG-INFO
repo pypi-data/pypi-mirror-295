@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: wx-logs
+Version: 0.6.10
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Tom Hayden
+Author-email: thayden@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+
+A weather logging library, useful for processing and analyzing weather data.
+
