@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/decorations/__init__.py
+src/decorations/__main__.py
+src/decorations.egg-info/PKG-INFO
+src/decorations.egg-info/SOURCES.txt
+src/decorations.egg-info/dependency_links.txt
+src/decorations.egg-info/top_level.txt
