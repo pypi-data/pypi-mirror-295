@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: cameo-botrun-prompt-tools
+Version: 1.0.2
+Summary: cameo_botrun_prompt_tools
+Home-page: https://github.com/bohachu/cameo_botrun_prompt_tools
+Author: elantievs
+Author-email: elantievs@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
+# cameo_botrun_prompt_tools
+這個套件提供了一系列工具，方便使用者產生與波特人相關的提示詞。
+
+## 安裝
+使用 pip 安裝套件：
+```
+pip install cameo_botrun_prompt_tools
+```
+
+
+## 使用範例
+
+### print_button() 和 print_link() 函數
+`print_button()` 和 `print_link()` 函數可以用來生成含有@begin @end的按鈕和連結文字。
+
+```python
+from cameo_botrun_prompt_tools import print_button, print_link
+
+print_button("點擊我", "這是一個按鈕")
+print_link("https://www.example.com", "訪問範例網站")
+
+# 上面程式會輸出以下文字
+# @begin button("點擊我") 這是一個按鈕 @end
+# @begin link("https://www.example.com") 訪問範例網站 @end
+```
+
+
