@@ -1,0 +1,4 @@
+[console_scripts]
+spineps=spineps.entrypoint:entry_point
+spineps_=spineps.entrypoint:entrypoint_no_checks
+
