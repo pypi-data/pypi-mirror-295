@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: Mensajes-Jeshua
+Version: 6.0
+Summary: Un paquete para saludar y despedir.
+Home-page: 
+Author: Jesús Marín
+Author-email: jesusmarin@ejemplo.com
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Utilities
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=2.1.1
+
+# Mensajes
+
+El paquete de mensajerÃ­a para pruebas de Jeshua.
