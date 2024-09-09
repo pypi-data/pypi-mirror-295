@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+rage_toolkit/__init__.py
+rage_toolkit/cite_evaluation.py
+rage_toolkit/cite_evaluation_utils.py
+rage_toolkit/types.py
+rage_toolkit.egg-info/PKG-INFO
+rage_toolkit.egg-info/SOURCES.txt
+rage_toolkit.egg-info/dependency_links.txt
+rage_toolkit.egg-info/requires.txt
+rage_toolkit.egg-info/top_level.txt
