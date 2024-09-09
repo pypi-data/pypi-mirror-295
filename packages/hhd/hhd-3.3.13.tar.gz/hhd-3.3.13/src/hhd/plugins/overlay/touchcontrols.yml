@@ -1,0 +1,11 @@
+touchscreen:
+  type: container
+  title: "Touchscreen"
+  children:
+    disable:
+      type: bool
+      title: "Disable Touchscreen (Until Restart)"
+
+    gestures_disable:
+      type: bool
+      title: "Disable Touch Gestures (Until Restart)"
