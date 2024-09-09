@@ -1,0 +1,209 @@
+Metadata-Version: 2.1
+Name: nace
+Version: 0.0.12
+Summary: A re-implementation of NACE, as a pypi package, with a cleaner more general interface.
+Author: ucabdv1
+Author-email: ucabdv1@ucl.ac.uk
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numba>=0.60.0
+
+
+An observational learner, creating a model of the world from subsequent observations, which can resolve  
+conflicting information, and plan many steps ahead, in an extremely sample efficient manner.  
+
+# Background
+
+This project builds upon an implementation of [X's NACE work](https://github.com/patham9/NACE) (Paper under review) observational 
+learner, which in turn was based on  [Berick Cook's AIRIS](https://gist.github.com/patham9/ac25f7c85c82cebc0cb816823a4a6499), with added 
+support for partial observability, capabilities to handle non-deterministic and 
+non-stationary environments, as well as changes external to the agent. X achieved this by 
+incorporating relevant components of Non-Axiomatic Logic (NAL).
+
+The aim of this project is to convert the above work, into a foundation that extra experiments can be performed on.
+
+# Examples
+
+```python
+
+import sys
+import nace
+
+print("Welcome to NACE!")
+
+# This example uses the code from the original nace.world_module which hard codes 
+# effects of actions on the 'world'. This complicates the example code, but
+# ensures that the use of global variables do not let the planning code to 'cheat'.
+
+if __name__ == "__main__":
+    # Configure hypotheses to use Euclidean space properties if desired
+    nace.hypothesis.Hypothesis_UseMovementOpAssumptions(
+        nace.world_module.left,
+        nace.world_module.right,
+        nace.world_module.up,
+        nace.world_module.down,
+        nace.world_module.drop,
+        "DisableOpSymmetryAssumption" in sys.argv,
+    )
+    nace.world_module.set_traversable_board_value(' ')
+    # set the mapping of the movements, the rest are expected to be learnt. (these could be learnt from watching gym
+    # action and this and last worlds.)
+    nace.world_module.set_full_action_list(
+        [nace.world_module.up, nace.world_module.right, nace.world_module.down, nace.world_module.left])
+
+    view_dist_x = 3
+    view_dist_y = 2
+    num_time_steps = 300
+
+    print(
+        """ 
+        (1) Food collecting         +1 for food (f) 
+        (2) cup on table challenge  
+        (3) doors and keys          +1 for battery (b)  max score==2
+        (4) food collecting with moving object  
+        (5) pong  
+        (6) bring eggs to chicken  
+        (7) soccer                  +1 per goal
+        (8) shock world  
+        (9) interactive world """)
+
+    _challenge = input()
+
+    if _challenge == "1":
+        view_dist_x = 3
+        view_dist_y = 2
+
+    if _challenge == "2":
+        nace.world_module.World_objective = nace.world_module.World_CupIsOnTable
+        num_time_steps = 1000
+
+    if _challenge == "6":
+        nace.world_module.set_full_action_list(
+            [nace.world_module.up, nace.world_module.right, nace.world_module.down,
+             nace.world_module.left, nace.world_module.pick,
+             ])
+
+    external_world_nace_format, _, __, ___ = nace.world_module.build_initial_world_object(
+        _challenge=_challenge,
+        unobserved_code="."
+    )
+    external_npworld = nace.world_module_numpy.NPWorld(
+        with_observed_time=False,
+        name="external_npworld",
+        view_dist_x=100,
+        view_dist_y=100)
+    agent_xy_loc, modified_count, _pre_action_world = external_npworld.update_world_from_ground_truth_nace_format(
+        external_world_nace_format[nace.world_module.BOARD])  # pass in only the board
+    external_npworld.multiworld_print([{"World": external_npworld}])
+    global_agent = nace.agent_module.Agent(agent_xy_loc, 0, [])
+    stepper = nace.stepper_v4.StepperV4()
+    status = {"score": {"v": 0}}
+    last_score = 0.0
+    print_workings = True
+
+    for time_counter in range(num_time_steps):
+        action, behaviour = stepper.get_next_action(
+            None,
+            agent_xy_loc,
+            print_debug_info=print_workings,
+            available_actions=nace.world_module.get_full_action_list(),
+            view_dist_x=view_dist_x,
+            view_dist_y=view_dist_y
+            )
+        print("About to enact action ", action, behaviour)
+        agent_xy_loc, external_world_nace_format, _ = nace.world_module._act(
+            agent_xy_loc,
+            external_world_nace_format,
+            action,
+            inject_key=None,
+            external_reward_for_last_action=None)
+
+        # copy state from nace format into NPformat
+        new_xy_loc, ____, _____ = external_npworld.update_world_from_ground_truth_nace_format(
+            external_world_nace_format[nace.world_module.BOARD])  # pass in only the board
+        # let stepper update it's internal world state
+        stepper.set_world_ground_truth_state(external_npworld, new_xy_loc, time_counter)
+        # let stepper get the latest agent state
+        status = stepper.set_agent_ground_truth_state(
+            xy_loc=agent_xy_loc,
+            score=external_world_nace_format[nace.world_module.VALUES][0],
+            values_exc_score=external_world_nace_format[nace.world_module.VALUES][1:]
+        )
+
+        if status["score"]["v"] > last_score:
+            print("Status:", status, "on task", _challenge, "time", time_counter)
+            last_score = status["score"]["v"]  # place breakpoint here to observe when score increases
+        stepper.predict_and_observe(print_out_world_and_plan=print_workings)
+
+    print("Status:", status, "on task", _challenge, "time", time_counter)
+
+
+```
+
+
+# Internal Data Structures 
+
+These took me a while to get my head round, so I made notes while I did in order to
+understand the code. This may be useful for you as well.
+
+```
+ 
+  = Rule Object =:
+  Action_Value_Precondition:                                            Prediction:    State Value Deltas
+  Action   State   Preconditions (old world)                            y  x  board    score     key
+           values  precondition0    precondition1    precondition2            value    delta     delta 
+           excl    y  x             y  x
+           score
+  ((left,  (0,),  (0, 0, ' '),     (0, 1, 'x'),     (0, 2, 'u')),      (0, 0, 'x',     (0,       0))),
+  ((right, (0,),  (0, -1, 'x'),    (0, 0, 'o')),                       (0, 0, 'o',     (0,       0))),
+  
+  The following Action_Value_Precondition:
+  ((right, (0,),  (0, -1, 'x'),    (0, 0, 'o'))
+  can be read: Match if there is a 'o' at the focus point, and a 'x' to the left of it, and the action is right.
+  
+  The following Action_Value_Precondition, Prediction:
+  ((left,  (0,),  (0, 0, ' '),     (0, 1, 'x'),     (0, 2, 'u')),      (0, 0, 'x',     (0,       0))),
+  can be read: Match if there is a ' ' at the focus point, 
+                        and a 'x' to the right of it, 
+                        and a 'u' to the right of the 'x',
+                        and the action is left
+                And the prediction after the action is:
+                        the 'x' will appear at 0,0 relative to the focus point.
+                        and there is no change to our score
+
+  The following Action_Value_Precondition, Prediction:
+  ((right, (0,), (0, -1, 'x'), (0, 0, 'f')), (0, 0, 'x', (1, 0))),
+  can be read: Match if there is a 'f' at the focus point, 
+                        and a 'x' to the left of it, 
+                        and the action is right
+                And the prediction after the action is:
+                        the 'x' will appear at 0,0 relative to the focus point.
+                        the first State Delta (score) will be +1
+                        the first State Delta (key) will be +0
+  
+  
+  Rule_Evidence Object Dictionary
+                                 positive       negative
+                                 evidence       evidence
+                                 counter        counter
+  { ((right, ... ))       :    ( 1,             0                ) }
+  
+ { ((left, (), (0, 0, ' '), (0, 1, 'x')), (0, 0, 'x', (0,))): (1,0) }    
+  
+  Positive Evidence, and Negative Evidence can be used to calculate:
+        Frequency         = positive_count / (positive_count + negative_count)
+        Confidence        = (positive_count + negative_count) / (positive_count + negative_count + 1)
+        Truth_expectation = confidence * (frequency - 0.5) + 0.5
+
+  Location:  
+    xy_loc tuple (x,y) not (0,0) is top left
+  
+  
+  State Values 
+  tuple of values, the first is score, the second is number of keys held.
+  
+  
+```
