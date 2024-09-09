@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: md410-common
+Version: 0.4.0
+Summary: Common libraries for applications related to Lions MD410
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: boto3 >=1.35.10
+Requires-Dist: docker >=7.1.0
+Requires-Dist: filetype >=1.2.0
+Requires-Dist: pymongo >=4.8.0
+Requires-Dist: python-dotenv
+Requires-Dist: rich-click >=1.8.3
+Requires-Dist: rich >=13.8.0
+Requires-Dist: sendgrid >=6.11.0
+
+# Introduction
+
+Common libraries for applications related to the Lions MD410.
