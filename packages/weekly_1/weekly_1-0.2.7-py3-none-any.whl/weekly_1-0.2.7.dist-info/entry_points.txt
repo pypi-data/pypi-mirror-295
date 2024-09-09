@@ -1,0 +1,3 @@
+[console_scripts]
+guess-fish = weekly_1.fish_ml:guess_fish
+plot = weekly_1.plot:plot_data
