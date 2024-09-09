@@ -1,0 +1,34 @@
+CHANGES
+=======
+
+0.1.1.dev6
+----------
+
+* Refactor usage of ecu\_supplier
+* Make powertrain-build not overlap with pybuild in site-packages
+* Bug fix - always set zc\_dids in compisition\_yaml
+* Allow multiple elements for ZC ports
+* Fixes for ZC diagnostics
+* TL\_Lookup1D and TL\_Lookup2D json entries bug fix
+* Adding dependency scan
+* Add new includes config for tree structure include
+* Add feature for ZC DIDs and DTCs
+* Fixes in ZC check\_signal\_property function
+
+0.1.0
+-----
+
+* Updates to deployment docs/files
+* Adding blackduck token to secrets
+* Update PyPi secret to handle official PyPi
+
+0.0.1
+-----
+
+* Updates making pypi upload possible
+* Update pypi secret and add job using it
+* Add secret for uploading to TestPyPi
+* Copy from Volvo Cars local project
+* Add tox jobs
+* Add initial jobs for check and gate
+* Added .gitreview
