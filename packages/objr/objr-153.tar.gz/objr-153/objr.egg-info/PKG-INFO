@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: objr
+Version: 153
+Summary: objects runtime
+Author-email: Bart Thate <rssbotd@gmail.com>
+License: Public Domain
+Project-URL: home, https://pypi.org/rssbotd/objr
+Project-URL: bugs, https://github.com/rssbotd/objr/issues
+Project-URL: source, https://github.com/rssbotd/objr
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: Public Domain
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst
+
+README
+######
+
+NAME
+
+::
+
+    OBJR - objects runtime
+
+
+SYNOPSIS
+
+::
+
+    >>> from objr import Reactor
+    >>> reactor.register("command", command)
+    >>> reactor.start()
+
+
+INSTALL
+
+::
+
+    $ pip install objr
+
+
+DESCRIPTION
+
+::
+
+    OBJR is a threaded, defer exceptions for later, keep on running
+    callback engine.
+
+
+COPYRIGHT
+
+::
+
+    OBJR is Public Domain.
