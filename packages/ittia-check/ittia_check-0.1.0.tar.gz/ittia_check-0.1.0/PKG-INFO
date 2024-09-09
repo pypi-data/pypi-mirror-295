@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: ittia-check
+Version: 0.1.0
+Summary: Connect to the ITTIA Check API or self-hosted ones
+Home-page: https://github.com/ittia-research/check
+License: MIT
+Keywords: fact-check,ai,llm,rag
+Author: ITTIA
+Author-email: contact@ittia.net
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: httpx (>=0.27.2,<0.28.0)
+Project-URL: Repository, https://github.com/ittia-research/check
+Description-Content-Type: text/markdown
+
+This package connects to the ITTIA Check API.
+
+More on this project and how to self-host one: https://github.com/ittia-research/check
+
+## How-to
+Demo on how to fact-check a text:
+```python
+import asyncio
+from ittia_check import Check
+
+base_url = "https://check.ittia.net"
+format = "json"  # or markdown
+
+check = Check(base_url=base_url, format=format)
+
+query = "Germany hosted the 2024 Olympics"
+
+result = asyncio.run(check(query))
+
+print(result)
+```
+
