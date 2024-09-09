@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src_py/zenetics"]
+
+[project]
+name = "zenetics"
+version = "0.0.16"
+authors = [
+  { name="Zenetics", email="contact@zenetics.io" },
+]
+description = "Zenetics SDK"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "requests==2.32.3",
+  "openai==1.35.13",
+  "wrapt==1.16.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/zenetics/zenetics-sdk"
+Issues = "https://github.com/zenetics/zenetics-sdk/issues"

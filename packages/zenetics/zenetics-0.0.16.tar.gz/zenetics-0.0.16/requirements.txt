@@ -1,0 +1,6 @@
+requests==2.32.3
+openai==1.35.13
+black==24.4.2
+build==1.2.1
+bumpversion==0.6.0
+wrapt==1.16.0
