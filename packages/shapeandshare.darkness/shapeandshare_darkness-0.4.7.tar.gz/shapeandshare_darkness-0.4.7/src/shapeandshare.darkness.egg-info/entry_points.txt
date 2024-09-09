@@ -1,0 +1,3 @@
+[console_scripts]
+darkness-state = shapeandshare.darkness.server.api.state.main:main
+darknesss-chrono = shapeandshare.darkness.server.workers.chrono.main:main
