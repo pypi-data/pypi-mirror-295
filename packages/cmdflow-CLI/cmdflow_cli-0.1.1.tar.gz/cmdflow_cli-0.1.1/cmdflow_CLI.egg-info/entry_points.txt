@@ -1,0 +1,2 @@
+[console_scripts]
+cmdflow = cmdflow_CLI.CLI:main_entry_point
