@@ -1,0 +1,6 @@
+
+
+Elapsed time: 3521.7710077762604 seconds
+
+
+DescribeResult(nobs=10000, minmax=(array([0., 0.]), array([1000.,  885.])), mean=array([140.1622,  99.6546]), variance=array([8739.82307347, 5853.44824366]), skewness=array([0.50391599, 1.8090679 ]), kurtosis=array([1.13422431, 4.92520477]))
