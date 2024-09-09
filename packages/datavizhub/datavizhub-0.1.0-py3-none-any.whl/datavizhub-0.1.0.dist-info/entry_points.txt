@@ -1,0 +1,5 @@
+[console_scripts]
+detect_significant_changes=samples.detect_significant_changes:main
+find-missing-frames=samples.find_missing_frames:main
+rtvideo=samples.rtvideo:main
+
