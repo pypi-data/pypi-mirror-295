@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: poetry-docker-plugin
+Version: 0.5.2
+Summary: A poetry plugin for configure and build docker images.
+Home-page: https://github.com/vagmcs/poetry-docker-plugin
+License: MIT
+Keywords: poetry,packaging,docker
+Author: Evangelos Michelioudakis
+Author-email: vagmcs@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Version Control :: Git
+Classifier: Topic :: System :: Archiving :: Packaging
+Classifier: Topic :: System :: Installation/Setup
+Classifier: Topic :: System :: Software Distribution
+Requires-Dist: gitpython (>=3.1.31,<4.0.0)
+Requires-Dist: poetry (>=1.2.0,<2.0.0)
+Project-URL: Documentation, https://github.com/vagmcs/poetry-docker-plugin
+Project-URL: Repository, https://github.com/vagmcs/poetry-docker-plugin
+Description-Content-Type: text/markdown
+
+# Poetry Docker Plugin
+
+[![License: LGPL v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://mit-license.org)
+![PyPI](https://img.shields.io/pypi/v/poetry-docker-plugin?color=gree&label=pypi%20package)
+![PyPI](https://img.shields.io/pypi/pyversions/poetry-docker-plugin?color=gree)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+[Poetry](https://python-poetry.org) docker plugin is an extension for configuring and building docker images directly from the comfort of your `pyproject.toml` configuration.
+
+The key features are:
+
+* Easy and similar to Dockerfile syntax support.
+* Easily generate dockerfiles, build them and push them to any registry.
+* Multiple docker image support. You can declare and build multiple images from a single project.
+* Supports configuration variables on image declaration that can be set at runtime.
+* Multi-platform build support.
+
+---
+
+**Documentation**: <a href="https://vagmcs.github.io/poetry-docker-plugin" target="_blank">https://vagmcs.github.io/poetry-docker-plugin </a>
+
+---
+
+## Installation
+
+In order to install the plugin you need to have installed a poetry version `>=1.2.0` and type:
+
+```bash
+poetry self add poetry-docker-plugin
+```
+
+## License
+
+This project is licensed under the terms of the MIT license.
