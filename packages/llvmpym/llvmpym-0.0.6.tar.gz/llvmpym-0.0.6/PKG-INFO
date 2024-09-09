@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: llvmpym
+Version: 0.0.6
+Summary: LLVM python binding
+Author-Email: Meow King <mr.meowking@anche.no>
+License: MIT License
+        
+        Copyright (c) 2024 Meow King <mr.meowking@anche.no>
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+        ---
+        
+        This project includes code from the LLVM Project, which is licensed under the
+        Apache License v2.0 with LLVM Exceptions. The full text of the LLVM license is
+        placed in LICENSE.LLVM under the project root directory.
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Project-URL: Homepage, https://github.com/Ziqi-Yang/llvmpym
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
+# LLVMPY Meow!
+
+llvmpym is a python library that provides LLVM binding. It bases on the LLVM C API.  
+
+This project is still in a very early stage  
+
+
+Target LLVM version: `18.1.8`  
+
+## Documentation
+
+[link](https://ziqi-yang.github.io/llvmpym/)  
+
+Past versions of document can be downloaded on the Release Page.
+
+## Related Projects
+
+[lliv](https://codeberg.org/meow_king/lliv): An interactive LLVM IR viewer based on llvmpym.
+
