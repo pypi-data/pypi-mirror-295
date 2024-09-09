@@ -1,0 +1,22 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "cliapi"
+version = "1.1"
+description = "Cliapi 是一个专为 Python 初学者设计的 WEB 包，目的是让学者能够以非常简单的方式搭建一个 WEB 服务，进而提高对 Python 的兴趣，步入 Python 世界。"
+dependencies = ["arts>=2024.7.30"]
+keywords = ["tornado", "flask", "fastapi", "django", "cliapi"]
+
+
+readme = "README.md"
+authors = [{name = "江南雨上", email = "lcctoor@outlook.com"}]
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+
+
+
+
+[project.urls]
+Source = "https://github.com/lcctoor/arts/tree/main/arts/cliapi"
