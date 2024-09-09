@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["jassor", "jassor.utils"]
+exclude = [".gitignore"]
+
+[project]
+name = "jassor"
+version = "0.1.0"
+urls = { project_source = "https://github.com/name-used/jassor" }
+authors = [
+    { name = 'jassor', email = 'lq.jassor@gmail.com' }
+]
+description = "utils of jassor"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GNU General Public License v3.0" }
+keywords = [
+    'jassor',
+    'utils',
+]
+classifiers = [
+    'Intended Audience :: Developers',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3'
+]
+dependencies = [
+    'numpy',
+    'opencv-python',
+    'tqdm'
+]
