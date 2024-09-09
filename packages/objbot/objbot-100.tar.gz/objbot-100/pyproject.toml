@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "objbot"
+description = "objects bot"
+version = "100"
+authors = [
+    {name = "Bart Thate", email = "rssbotd@gmail.com" },
+]
+readme = "README.rst"
+license = { text="Public Domain"}
+dependencies = [
+    "objx",
+    "objr",
+    "objt",
+    "objw",
+    "objz"
+]
+classifiers=[
+    'Development Status :: 3 - Alpha',
+    'License :: Public Domain',
+    'Operating System :: Unix',
+    'Programming Language :: Python',
+    'Topic :: Utilities'
+]
+
+
+[project.optional-dependencies]
+dev = []
+
+
+[project.urls]
+"home" = "https://pypi.org/project/objbot"
+"bugs" = "https://github.com/rssbotd/objbot/issues"
+"source" = "https://github.com/rssbotd/objbot"
+
+
+[tool.setuptools]
+py-modules = []
+script-files = [
+    "bin/objbot",
+    "bin/objbotc",
+    "bin/objbotd",
+    "bin/objbots"
+]
+packages = [
+   "objbot",
+   "objbot.modules"
+]
+zip-safe = true
+
+
+[tool.setuptools.data-files]
+"share/doc/objbot/" = [
+    "README.rst",
+]
+
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+    "env*",
+    "html*",
+    "test*"
+]
