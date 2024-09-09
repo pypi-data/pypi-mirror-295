@@ -1,0 +1,11 @@
+## Release Notes
+
+### ci: fix create release.
+
+CI:
+
+- Modify the GitHub Actions workflow to generate release notes in a separate file and use it for the release body.
+
+---------
+
+Signed-off-by: 5hojib <yesiamshojib@gmail.com>
