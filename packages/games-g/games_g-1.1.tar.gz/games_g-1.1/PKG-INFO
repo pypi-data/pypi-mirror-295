@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: games_g
+Version: 1.1
+Summary: Console Based Guess the Number and Snake and Ladder Game.
+Author: Ghanshyam Vaja
+Author-email: ghanshyamvaja11@gmail.com
+License: MIT
+Keywords: gmaes_g,g games
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: pyttsx3>=2.90
+Requires-Dist: pyaudio>=1.0
+
+first Intial Module created by Ghanshyam Vaja.It is Combination of 2 Games Guess The Number and Snake and Ladder.
+
+# How to Use this Module : 
+
+from games_g import *
+
+for Guess the Number Game Call GuessTheNumber()
+-----------------------------------------------
+GuessTheNumber()
+
+ for Snake and Ladder Game Call SnakeAndLadder()
+-------------------------------------------------
+SnakeAndLadder()
