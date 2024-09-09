@@ -1,0 +1,162 @@
+# https://peps.python.org/pep-0517/
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+# https://hatch.pypa.io/latest/config/metadata/
+[tool.hatch.version]
+source = "vcs"
+
+# read more about configuring hatch at:
+# https://hatch.pypa.io/latest/config/build/
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+sources = ["src"]
+
+# https://peps.python.org/pep-0621/
+[project]
+name = "efficientv2-unet"
+dynamic = ["version"]
+description = "A U-Net implementation of the EfficientNetV2."
+readme = "README.md"
+requires-python = ">=3.9,<3.11"
+license = { text = "BSD-3-Clause" }
+authors = [{ name = "Loïc Sauteur", email = "loic.sauteur@unibas.ch" }]
+# https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Typing :: Typed",
+]
+# add your package dependencies here
+dependencies = [
+    "numpy>1.26,<2.0",
+    "scikit-image==0.24.0",
+    "tifffile==2024.8.30",
+    "albumentations<=1.4.0", # tested 1.3.1 and 1.4.0
+    "opencv-python==4.10.0.84",
+    "pandas==2.2",
+    "notebook==7.2.2",
+    "matplotlib==3.9.2",
+    # Platform specific install
+    "tensorflow-macos==2.15.0 ; platform_system == 'Darwin' and platform_machine =='arm64'",
+    "tensorflow-metal==1.1.0 ; platform_system == 'Darwin' and platform_machine =='arm64'",
+    "tensorflow==2.15.0 ; platform_system == 'Darwin' and platform_machine != 'arm64'",
+    "tensorflow[and-cuda]==2.15.* ; platform_system == 'Linux'",
+    "tensorflow==2.10.1 ; platform_system == 'Windows'",
+    "keras==2.10.0 ; platform_system == 'Windows'",
+]
+
+# https://peps.python.org/pep-0621/#dependencies-optional-dependencies
+# "extras" (e.g. for `pip install .[test]`)
+[project.optional-dependencies]
+# add dependencies used for testing here
+test = ["pytest", "pytest-cov"]
+# add anything else you like to have in your dev environment here
+dev = [
+    "ipython",
+    "mypy",
+    "pdbpp",  # https://github.com/pdbpp/pdbpp
+    "pre-commit",
+    "rich",  # https://github.com/Textualize/rich
+    "ruff",
+]
+
+[project.urls]
+homepage = "https://github.com/DBM-MCF/efficientv2-unet"
+repository = "https://github.com/DBM-MCF/efficientv2-unet"
+
+# Entry points
+# https://peps.python.org/pep-0621/#entry-points
+# same as console_scripts entry point
+[project.scripts]
+ev2unet = "efficientv2_unet.__main__:main"
+
+# [project.entry-points."some.group"]
+# tomatoes = "efficientv2_unet:main_tomatoes"
+
+# https://docs.astral.sh/ruff
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+src = ["src"]
+
+# https://docs.astral.sh/ruff/rules
+[tool.ruff.lint]
+pydocstyle = { convention = "numpy" }
+select = [
+    "E",    # style errors
+    "W",    # style warnings
+    "F",    # flakes
+    "D",    # pydocstyle
+    "D417", # Missing argument descriptions in Docstrings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "C4",   # flake8-comprehensions
+    "B",    # flake8-bugbear
+    "A001", # flake8-builtins
+    "RUF",  # ruff-specific rules
+    "TCH",  # flake8-type-checking
+    "TID",  # flake8-tidy-imports
+]
+ignore = [
+    "D401", # First line should be in imperative mood (remove to opt in),
+    "D100", # Ignore Missing dockstring in public module
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["D", "S"]
+
+# https://docs.astral.sh/ruff/formatter/
+[tool.ruff.format]
+docstring-code-format = true
+skip-magic-trailing-comma = false  # default is false
+
+# https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+files = "src/**/"
+strict = true
+disallow_any_generics = false
+disallow_subclassing_any = false
+show_error_codes = true
+pretty = true
+
+# # module specific overrides
+# [[tool.mypy.overrides]]
+# module = ["numpy.*",]
+# ignore_errors = true
+
+# https://docs.pytest.org/
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+filterwarnings = ["error", "ignore::DeprecationWarning"]
+
+# https://coverage.readthedocs.io/
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "@overload",
+    "except ImportError",
+    "\\.\\.\\.",
+    "raise NotImplementedError()",
+    "pass",
+]
+
+[tool.coverage.run]
+source = ["efficientv2_unet"]
+
+# https://github.com/mgedmin/check-manifest#configuration
+# add files that you want check-manifest to explicitly ignore here
+# (files that are in the repo but shouldn't go in the package)
+[tool.check-manifest]
+ignore = [
+    ".pre-commit-config.yaml",
+    ".ruff_cache/**/*",
+    "tests/**/*",
+]
