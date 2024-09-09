@@ -1,0 +1,3 @@
+[console_scripts]
+moolticutepy=moolticutepy.cli:main
+
