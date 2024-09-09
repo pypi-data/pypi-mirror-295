@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: BharatFinTrack
+Version: 0.0.1
+Summary: Downloading and analyzing financial data, including indices, stocks, and mutual funds, from India, that is, Bharat.
+Author-email: Debasish Pal <bestdebasish@gmail.com>
+Project-URL: Homepage, https://github.com/debpal/BharatFinTrack
+Project-URL: Documentation, https://bharatfintrack.readthedocs.io/en/latest/
+Keywords: nse index,nse total return index,data download,data analysis
+Classifier: Development Status :: 1 - Planning
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Education
+Classifier: Topic :: Office/Business :: Financial
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# BharatFinTrack
+
+## Analysis Toolkit
+
+| Feature | Badge|
+| --- | --- |
+| Documemt | [![Documentation Status](https://readthedocs.org/projects/bharatfintrack/badge/?version=latest)](https://bharatfintrack.readthedocs.io/en/latest/?badge=latest) |
+
+
+## What is BharatFinTrack?
+BharatFinTrack is a Python package designed to simplify the process of downloading and analyzing financial data from India, that is Bharat. The current features of the package include:
+
+- **NSE Indices**
+  - Access to characteristics of indices.
+  - Download of historical daily Total Return Index (TRI) values.
+
+
+## Easy Installation
+
+To install, use pip:
+
+```bash
+pip install BharatFinTrack
+```
+
+## Quickstart
+A brief example of how to start:
+
+```python
+>>> import BharatFinTrack
+>>> nse_track = BharatFinTrack.NSETrack()
+>>> nse_track.indices_category
+['broad', 'sectoral', 'thematic', 'strategy']
+
+# get the list of downloadable indices
+>>> nse_track.downloadable_indices
+['NIFTY 500',
+ 'NIFTY 50',
+ 'NIFTY IT',
+ 'NIFTY BANK',
+ ...]
+
+# get the dictionary of indices base date
+>>> nse_track.indices_base_date
+{'NIFTY 500': '01-Jan-1995',
+ 'NIFTY 50': '03-Nov-1995',
+ 'NIFTY IT': '01-Jan-1996',
+ 'NIFTY BANK': '01-Jan-2000',
+ ...}
+```
+
+
+## Documentation
+For detailed information, see the [documentation](https://bharatfintrack.readthedocs.io/en/latest/).
+
+
+## Development status
+
+The project is in the conceptualization and planning phases.
+
+
+## License
+
+The package is released under the MIT License.
