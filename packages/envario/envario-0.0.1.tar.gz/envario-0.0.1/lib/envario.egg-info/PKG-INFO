@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: envario
+Version: 0.0.1
+Summary: Contextual environment variable management
+Home-page: http://github.com/rsgalloway/envario
+Author: Ryan Galloway
+Author-email: ryan@rsgalloway.com
+Description-Content-Type: text/markdown
+
+envario
+=======
+
+Basic contextual environment variable management system. 
+
+
+Installation
+------------
+
+The easiest way to install:
+
+```bash
+$ pip install envario
+```
