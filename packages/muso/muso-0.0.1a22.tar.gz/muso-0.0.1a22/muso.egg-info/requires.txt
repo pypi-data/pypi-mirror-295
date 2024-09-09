@@ -1,0 +1,9 @@
+aiomysql
+apispec
+marshmallow
+orjson
+psycopg[binary,pool]
+python-multipart
+starlette
+tzlocal
+uvicorn[standard]
