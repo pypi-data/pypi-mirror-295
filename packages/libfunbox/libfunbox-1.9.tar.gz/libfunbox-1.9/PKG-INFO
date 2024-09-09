@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: libfunbox
+Version: 1.9
+Summary: Orange Funbox 2.0 Wrapper
+Home-page: https://flerken.zapto.org:1115/kuba/libfunbox
+Author: kuba201
+Project-URL: Source, https://flerken.zapto.org:1115/kuba/libfunbox
+Keywords: orange,router,funbox
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: requests
+
+# LibFunbox
+LibFunbox is a API wrapper for Funbox routers from Orange (PL), it does work with my Orange Funbox 2.0 (firmware: SoftAtHome SG10_sip-pl-7.0.26.17, IPv4 Only)
