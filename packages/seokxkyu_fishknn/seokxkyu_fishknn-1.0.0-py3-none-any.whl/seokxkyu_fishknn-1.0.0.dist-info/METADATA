@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: seokxkyu_fishknn
+Version: 1.0.0
+Summary: Default template for PDM package
+Author-email: Seokxkyu <kyuseok000@gmail.com>
+License: MIT
+Requires-Python: ==3.11.*
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.2.2
+Requires-Dist: scikit-learn>=1.5.1
+
+# fishknn
+
+### Usage
+```
+$ predictor
+🐟 물고기의 길이를 입력하세요 (cm): 18.5
+🐟 물고기의 무게를 입력하세요  (g): 16
+🐟 이 물고기는 빙어입니다.
+🐟 예측이 맞습니까? (y/n): y
+🐟 예측 성공🥳
+```
