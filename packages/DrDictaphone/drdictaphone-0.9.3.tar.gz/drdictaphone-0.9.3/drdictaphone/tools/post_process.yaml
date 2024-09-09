@@ -1,0 +1,30 @@
+-
+  type: function
+  function:
+    name: ok_result
+    description: Use this function with your result if you were able to successfully proofread the text provided to you.
+    parameters:
+      type: object
+      properties:
+        result:
+          type: string
+          description: Your result from proofreading the text.
+        coherent:
+          type: boolean
+          description: Did the result consist of complete sentences?
+      required:
+        - result
+        - coherent
+-
+  type: function
+  function:
+    name: err_result
+    description: Use this function to give feedback in case you could not follow the instructions given to you.
+    parameters:
+      type: object
+      properties:
+        err:
+          type: string
+          description: Your description of the problem with the instructions.
+      required:
+        - err
