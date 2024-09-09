@@ -1,0 +1,17 @@
+dbqrqa/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+dbqrqa/builtins.py,sha256=Jq28q0UwMBiAyqoKnQAF7m-ib9trevVroAdqc3qyG3w,19806
+dbqrqa/dataset.py,sha256=ELjhH0FQRkA8odeC9jk80KueJ_gKKgCCCWsJxZBhnsU,4804
+dbqrqa/evaluation.py,sha256=ZEHC_OzuCHdHrzYJcr3VkpW--OlKUHCq69QK_cgWGpc,9288
+dbqrqa/prompts.py,sha256=O6qz3ukVjt4sGnqFgXZ5dTtUJwLRVmCXD6qUR3EPP4c,877
+dbqrqa/types.py,sha256=Zw2UgGKJDMWBIyErHXA0hjeixwPuI-BwIb5ga1sei5A,191
+dbqrqa/utils.py,sha256=Ov7xGsRPsX4yCp0pqt7uQ4QgWe96xqiPeo6m5IxCMWo,2062
+dbqrqa/tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+dbqrqa/tests/build_answers.py,sha256=OOPjGEOCfNp48inz5-sbc333WRgCB8IjNI83k1PnsZc,1061
+dbqrqa/tests/gpt_evaluation.py,sha256=aq3TsdK71fpch0FUMMxbas0MmiWIc-Ae2RCcxvCAPaI,2079
+dbqrqa/tests/test_dataset.py,sha256=wU5cJRJ_8E_qMInmQTNTa5u90Z7xymjs-r_OsWa1Npg,821
+dbqrqa/tests/test_evaluation.py,sha256=l7TR1YyD3qc1WsLkNNsoznD_LkYih2yFdCxHib44BwQ,1698
+dbqrqa-0.1.0.dist-info/LICENSE,sha256=OXLcl0T2SZ8Pmy2_dmlvKuetivmyPd5m1q-Gyd-zaYY,35149
+dbqrqa-0.1.0.dist-info/METADATA,sha256=DQMy-mZk3ZKTisbDTchL8b5rsFyNx7zIitcf3LFADzE,43293
+dbqrqa-0.1.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+dbqrqa-0.1.0.dist-info/top_level.txt,sha256=corkICLbEwVc3yNwLQD2KrJqwec-nTcP49s6vSSXpq4,7
+dbqrqa-0.1.0.dist-info/RECORD,,
