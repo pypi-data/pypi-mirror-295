@@ -1,0 +1,16 @@
+[project]
+name = "md410-common"
+version = "0.4.0"
+description = "Common libraries for applications related to Lions MD410"
+readme = "readme.md"
+requires-python = ">=3.10"
+dependencies = [
+    "boto3>=1.35.10",
+    "docker>=7.1.0",
+    "filetype>=1.2.0",
+    "pymongo>=4.8.0",
+    "python-dotenv",
+    "rich-click>=1.8.3",
+    "rich>=13.8.0",
+    "sendgrid>=6.11.0",
+]
