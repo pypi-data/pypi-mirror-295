@@ -1,0 +1,11 @@
+{
+  "Buy Products": "Queries about purchasing products, availability, pricing, buying process, shipping, delivery, and payment methods.",
+  "Other Intent": "Queries that don't fit other categories, contain multiple intents, are vague or ambiguous, or include general feedback unrelated to specific issues.",
+  "Concept Explanation": "Requests for explanations of concepts, features, or terminology related to products or services. Includes definition requests, feature clarifications, and comparisons between concepts.",
+  "How-To Instructions": "Requests for step-by-step guidance on using products or features, including setup, configuration, and best practices.",
+  "Report Errors or Bugs": "Users reporting issues, errors, or unexpected behavior in products or services, including specific error messages or malfunctions.",
+  "Update Personal Information": "Requests to modify user account details, personal information, billing data, communication preferences, or account security settings.",
+  "Code Generation": "Requests for code samples, snippets, function writing, or implementation examples related to your product or API.",
+  "Debugging & Error Analysis": "Requests for help identifying and resolving coding or integration issues, including error interpretation and code optimization.",
+  "Troubleshooting & Technical Support": "General technical issues and support requests not specific to coding, such as connectivity problems, product configuration, and performance issues."
+}
