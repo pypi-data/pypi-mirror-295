@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+curvefit_gd/__init__.py
+curvefit_gd/gradient_descent_optimizer.py
+curvefit_gd.egg-info/PKG-INFO
+curvefit_gd.egg-info/SOURCES.txt
+curvefit_gd.egg-info/dependency_links.txt
+curvefit_gd.egg-info/requires.txt
+curvefit_gd.egg-info/top_level.txt
+tests/test_function_fitter.py
