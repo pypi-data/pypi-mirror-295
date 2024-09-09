@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+Mensajes_Jeshua.egg-info/PKG-INFO
+Mensajes_Jeshua.egg-info/SOURCES.txt
+Mensajes_Jeshua.egg-info/dependency_links.txt
+Mensajes_Jeshua.egg-info/requires.txt
+Mensajes_Jeshua.egg-info/top_level.txt
+mensajes/__init__.py
+mensajes/adios/__init__.py
+mensajes/adios/despedidas.py
+mensajes/hola/__Init__.py
+mensajes/hola/saludos.py
+tests/__init__.py
+tests/test_hola.py
