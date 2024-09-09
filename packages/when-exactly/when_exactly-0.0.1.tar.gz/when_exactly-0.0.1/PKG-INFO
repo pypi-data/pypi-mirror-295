@@ -1,0 +1,17 @@
+Metadata-Version: 2.3
+Name: when-exactly
+Version: 0.0.1
+Summary: Precisely Ambiguous Dates
+Project-URL: Homepage, https://github.com/nicobako/when-exactly
+Project-URL: Issues, https://github.com/nicobako/when-exactly/issues
+Author: Nico Bako
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# When Exactly
+
+The precisely ambiguous date library.
