@@ -1,0 +1,20 @@
+[build-system]
+requires = ["flit_core"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "rjj"
+authors = [{name = "calcuis", email = "info@calcu.io"}]
+description = "rjj (read-joint-jet) is a simple cmd-based data analysis/transforming tool"
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version"]
+dependencies = ["pandas", "numpy", "scipy", "statsmodels", "matplotlib"]
+
+[project.urls]
+Homepage = "https://github.com/calcuis/rjj"
+Issues = "https://github.com/calcuis/rjj/issues"
+
+[project.scripts]
+rjj = "rjj.__init__:__init__"
