@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: say-week1-knn
+Version: 0.1.0
+Summary: Week1 program - using scikit-learn KNeighborsClassifier
+Author-email: NishNovae <raecrowned@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/NishNovae/say-week1-knn
+Project-URL: Issues, https://github.com/NishNovae/say-week1-knn/issues
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: scikit-learn>=1.3.2
+
+# knn [K-Nearest Neighbor Classifier]
+Weekly Programming no. #1: KNN
+- Using `sklearn.neighbors.KNeighborsClassifier`
+
+### 프로그램 동작 방식
+- [ ] 학습된 모델이 없는 상태에서 출발
+- [ ] 길이 `length`, 무게 `weight` 데이터를 입력 > 프로그램이 예측 값을 출력
+- [ ] 예측값 출력 후 프롬프트를 통해 사용자가 예측값의 정답 유무를 다시 입력
+- [ ] 위 과정을 반복하며 모델을 최적화
+
+## Usage
