@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: research-framework
+Version: 0.2.29
+Summary: framework base para investigación
+Home-page: https://github.com/manucouto1/research_framework
+Author: Manuel Couto Pintos
+Author-email: manuel.couto.pintos@usc.es
+License: Apache License
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+License-File: LICENSE
+Requires-Dist: python-dotenv==1.0.0
+Requires-Dist: pydantic==2.5.2
+Requires-Dist: pymongo[srv]==4.5.0
+Requires-Dist: google-api-python-client==2.97.0
+Requires-Dist: google-cloud-core==2.3.3
+Requires-Dist: google-cloud-storage==2.10.0
+Requires-Dist: pytest
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: scikit-fuzzy
+Requires-Dist: torch
+Requires-Dist: transformers[torch]
+Requires-Dist: sentence-transformers[torch]
+Requires-Dist: wandb
+Requires-Dist: atpbar
+Requires-Dist: tqdm
+Requires-Dist: rich
+Requires-Dist: fastapi==0.104.1
+Requires-Dist: boto3
+Requires-Dist: randomname
+Requires-Dist: gensim
+Requires-Dist: beir
