@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: pms-driver
+Version: 2024.6.23
+Author-email: mikigo <huangmingqiang@uniontech.com>
+License: GPL2.0
+License-File: LICENSE
+Requires-Python: >=3.7
+Requires-Dist: click
+Requires-Dist: funnylog
+Requires-Dist: requests
+Description-Content-Type: text/markdown
+
+# PMS Driver
