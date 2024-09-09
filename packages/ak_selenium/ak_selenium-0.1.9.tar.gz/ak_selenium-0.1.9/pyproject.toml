@@ -1,0 +1,26 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "ak_selenium"
+authors = [{name = "Arun Kishore", email = "pypi@rpakishore.co.in"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+requires-python = ">=3.11.0"
+dependencies=[
+    "selenium", 
+    "ak_requests >= 0.1.0",
+    "helium >= 5.1.0"
+    ]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "ipykernel"
+]
+
+[project.urls]
+Home = "https://github.com/rpakishore/ak_selenium"
