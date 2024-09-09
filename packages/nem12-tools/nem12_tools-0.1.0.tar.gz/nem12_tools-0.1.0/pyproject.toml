@@ -1,0 +1,44 @@
+[project]
+name = "nem12_tools"
+version = "0.1.0"
+description = "Generate NEM12 files for testing"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "lxml>=5.0.0",
+    "click>=8.1.2",
+    "pydantic>=2.5.0",
+]
+
+[project.scripts]
+generate = "nem12_tools.cli:generate"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.6.3",
+    "pyright>=1.1.378",
+    "ipython>=8.27.0",
+    "ipdb>=0.13.13",
+    "pytest>=8.3.2",
+    "pre-commit>=3.8.0",
+    "lxml-stubs>=0.5.1",
+]
+
+[tool.pyright]
+include = ["src"]
+exclude = [
+    "**/__pycache__",
+]
+reportMissingImports = "error"
+pythonVersion = "3.11"
+venv = ".venv"
+venvPath = "."
+
+
+[tool.ruff]
+target-version = "py311"
+line-length = 99
