@@ -1,0 +1,37 @@
+Metadata-Version: 2.3
+Name: pygpsd
+Version: 1.0.1
+Project-URL: Homepage, https://github.com/nbdy/pygpsd
+Project-URL: Documentation, https://github.com/nbdy/pygpsd/wiki
+Project-URL: Repository, https://github.com/nbdy/pygpsd.git
+Project-URL: Issues, https://github.com/nbdy/pygpsd/issues
+Author: nbdy
+Maintainer: nbdy
+License: MIT License
+License-File: LICENSE
+Keywords: client,gps,gpsd
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# pygpsd
+
+this is a library for polling gpsd with python
+
+## how to..
+
+### .. install
+
+`pip install pygpsd`
+
+### .. use
+
+```python
+from pygpsd import GPSD
+
+gpsd = GPSD()
+data = gpsd.poll()
+```
