@@ -1,0 +1,2 @@
+[console_scripts]
+dicom-echo=dicom_echo.cli:app
