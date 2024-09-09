@@ -1,0 +1,68 @@
+# Customer Segmentation Package
+
+## Overview
+
+This data analysis package provides comprehensive tools for preprocessing, feature engineering, clustering, and feature selection/reduction of data. It streamlines and automates common data analysis tasks, making it easier to prepare datasets for further analysis and machine learning. The package includes functionalities for validating data structure, handling missing values, removing outliers, scaling data, and much more.
+
+## Features
+
+- **Data Preprocessing**
+  - **Data Structure Validation:** Ensures that the dataset meets expected structural requirements.
+  - **Null Value Removal:** Identifies and removes or imputes missing values.
+  - **Outlier Removal:** Detects and removes outliers from the dataset.
+  - **Data Scaling:** Standardizes or normalizes data for consistent analysis.
+
+- **Feature Engineering**
+  - **RFM (Recency, Frequency, Monetary) Calculation:** Computes RFM metrics for customer segmentation and analysis.
+  - **Velocity Calculation:** Measures the rate of change in data over time.
+  - **Growth Calculation:** Computes the growth metrics across data points.
+
+- **Feature Selection and Reduction**
+  - **Information Gain Calculation:** Evaluates the importance of features in predicting target variables.
+  - **WOE (Weight of Evidence) and IV (Information Value) Calculation:** Assesses the predictive power of categorical features.
+  - **PCA (Principal Component Analysis):** Reduces dimensionality of data and allows for inverse transformation to original space.
+
+- **Advanced Clustering**
+  - **Best Clustering Method Selection:** Provides various clustering algorithms (e.g., KMeans, DBSCAN, EM, MeanShift, Agglomerative) and selects the most suitable one based on data characteristics.
+  
+
+## Requirements
+
+To use this package, you need to have the following installed:
+
+- Python 3.7 or higher
+- The following Python libraries:
+  - `pandas`
+  - `numpy`
+  - `scikit-learn`
+  - `scipy`
+  - `matplotlib`
+  - `seaborn`
+  - `statsmodels`
+
+You can install these dependencies using:
+
+```bash
+pip install -r requirements.txt
+
+## How to Use
+
+The main functionality of this package can be executed by calling the `main()` function. This function orchestrates all the operations provided by the package, from data preprocessing to advanced clustering and feature selection/reduction.
+
+### Example Usage
+
+1. **Import the Package:**
+
+    ```python
+    import cust_seg_gleafink as csc
+    ```
+
+2. **Run the `main()` Function:**
+
+    Simply call the `main()` function to run all functionalities:
+
+    ```python
+    csc.main()
+    ```
+
+    This will trigger the full pipeline of data preprocessing, feature engineering, clustering, and feature selection/reduction, as per the package's design.

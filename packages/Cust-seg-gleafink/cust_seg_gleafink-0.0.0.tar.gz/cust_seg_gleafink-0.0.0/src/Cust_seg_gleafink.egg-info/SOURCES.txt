@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+src/Cust_seg_gleafink.egg-info/PKG-INFO
+src/Cust_seg_gleafink.egg-info/SOURCES.txt
+src/Cust_seg_gleafink.egg-info/dependency_links.txt
+src/Cust_seg_gleafink.egg-info/top_level.txt
+src/customer_segmentation_clustering/__init__.py
+src/customer_segmentation_clustering/cluster_scoring.py
+src/customer_segmentation_clustering/data_preprocessing.py
+src/customer_segmentation_clustering/feature_engineering.py
+src/customer_segmentation_clustering/main.py
