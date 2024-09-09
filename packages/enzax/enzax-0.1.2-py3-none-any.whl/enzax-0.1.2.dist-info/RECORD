@@ -1,0 +1,15 @@
+enzax/__init__.py,sha256=QTiqcQAH0NOsHYPVdiBWRYEAboaQSOk144Z2ggppBGI,62
+enzax/kinetic_model.py,sha256=YcVioiOaEVZyvTOeAGn52o9gUEDftIABXtuonEKapbE,2698
+enzax/mcmc.py,sha256=HmB94f5AmIc4XiRbD_O6Woo5_tGUTackascJtRQkLZw,6182
+enzax/parameters.py,sha256=xaxSBlAmosSgFRGEZDlvk0LSq5cSagGVL1qIbAnEndU,1876
+enzax/rate_equation.py,sha256=BfIlN54jPrJlmTKcAhNQvaTmU-BErsOYV4Te93vD7-s,688
+enzax/steady_state.py,sha256=hK_aeh9d7Sn_03Y2JjfxTYh2Imfxt_BwzLDK7N6nTbg,1649
+enzax/examples/linear.py,sha256=orPVtuQga3kEKkVzxmJbOjDeCEEudniJBBYEbuBrLcE,4184
+enzax/examples/methionine.py,sha256=JoeD9XQIkxVlxMYvWDEsD5YHXtNSTyXOxY_EUTbjdYk,15789
+enzax/rate_equations/__init__.py,sha256=nhunHUYnu6zq7tZSngfjRmFJbdo-wTf1g6wyNN2sx1s,533
+enzax/rate_equations/drain.py,sha256=upba6b88FmAfDoF2MsJzWdgO1N7hejmC4BP6V6COwB8,788
+enzax/rate_equations/generalised_mwc.py,sha256=iGGjC9vHmXWe4mX8yNjB4tK7y1xHq3eAJsHPn2Qp1HM,3645
+enzax/rate_equations/michaelis_menten.py,sha256=ZDZUCACRvQFPLJZ9403E33HAX0Qvor2q9nkBmVByitY,6989
+enzax-0.1.2.dist-info/METADATA,sha256=uxtF1qITCAll7bsAn_Cr63yeNxiXlH681UblQDxCxx0,2820
+enzax-0.1.2.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+enzax-0.1.2.dist-info/RECORD,,
