@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: ahmpy
+Version: 0.1.1
+Summary: tools for ahm company
+Author: nameingishard
+Author-email: 2569674866@qq.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: cos-python-sdk-v5
+Requires-Dist: opencv-python>=4.10.0.84
+Requires-Dist: openpyxl>=3.0.10
+
+# 艾环梦工程科技
+
+内部使用的一些工具
+
+## 打包
+
+python -m build
+
+## 上传指令
+
+`twine upload dist/\*`
+
+上传验证采用的是 token 验证,通过在~/.pypirc 文件中配置
