@@ -1,0 +1,8 @@
+[pymodaq.extensions]
+arduino = pymodaq_plugins_arduino
+
+[pymodaq.instruments]
+arduino = pymodaq_plugins_arduino
+
+[pymodaq.plugins]
+arduino = pymodaq_plugins_arduino
