@@ -1,0 +1,2 @@
+[console_scripts]
+vegmod = vegmod.__main__:main
