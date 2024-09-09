@@ -1,0 +1,19 @@
+# Include the README file
+include README.md
+
+# Include the LICENSE file
+include LICENSE
+
+# Include the requirements file
+include requirements.txt
+
+# Include all Python files in the featurewise package and subdirectories
+recursive-include featurewise *.py
+
+# Include all Python files in the featurewise/scripts directory
+recursive-include featurewise/scripts *.py
+
+recursive-include featurewise/scripts *.png
+
+# Include the .streamlit directory and all its contents
+include .streamlit/config.toml
