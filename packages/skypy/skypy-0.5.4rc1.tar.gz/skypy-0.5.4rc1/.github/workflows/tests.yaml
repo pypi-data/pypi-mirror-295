@@ -1,0 +1,62 @@
+name: Tests
+on:
+  push:
+    branches:
+    - main
+    - module/*
+    - 'v*x'
+    tags:
+    - 'v*'
+  pull_request:
+    branches:
+    - main
+    - module/*
+    - 'v*x'
+jobs:
+  test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+
+          - name: latest supported versions
+            os: ubuntu-latest
+            python: '3.12'
+            toxenv: py312-test-all-latest-cov
+            toxposargs: --cov-report=xml:${GITHUB_WORKSPACE}/coverage.xml
+
+          - name: oldest supported versions
+            os: ubuntu-latest
+            python: '3.8'
+            toxenv: py38-test-oldest
+
+          - name: macOS latest supported
+            os: macos-latest
+            python: '3.12'
+            toxenv: py312-test-latest
+
+          - name: Windows latest supported
+            os: windows-latest
+            python: '3.12'
+            toxenv: py312-test-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install Python ${{ matrix.python }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Install Dependencies
+      run: |
+        pip install tox
+    - name: Run Tests
+      run: |
+        tox -e ${{ matrix.toxenv }} ${{ matrix.toxargs }} -- ${{ matrix.toxposargs }}
+    - if: contains(matrix.toxenv, '-cov')
+      name: Report Coverage
+      uses: codecov/codecov-action@v3
