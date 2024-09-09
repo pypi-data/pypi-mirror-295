@@ -1,0 +1,3 @@
+[console_scripts]
+gnt-monitoring=gnt_monitoring.cli:main
+
