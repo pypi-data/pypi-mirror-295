@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyflyde"
+version = "0.0.8"
+requires-python = ">= 3.9"
+authors = [
+    {name = "Vladimir Sibirov"}
+]
+description="Python SDK and runtime for Flyde - a visual flow-based programming language and IDE."
+readme="README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Typing :: Typed",
+]
+license = { file = "LICENSE" }
+
+dependencies = [
+    "pyyaml",
+]
+
+[project.scripts]
+pyflyde = "flyde.cli:main"
+
+[tool.setuptools]
+# package-dir = { "" = "flyde" }
+packages = ["flyde"]
+
+[project.optional-dependencies]
+dev = [
+    "setuptools",
+    "build",
+    "black",
+    "coverage",
+    "flake8",
+    "mypy",
+    "twine",
+    "mkdocs",
+]
