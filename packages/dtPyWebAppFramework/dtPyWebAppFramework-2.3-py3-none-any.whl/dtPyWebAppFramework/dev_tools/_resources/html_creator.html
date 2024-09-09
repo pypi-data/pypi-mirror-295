@@ -1,0 +1,144 @@
+<style>
+    #editorContainer {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    /* CodeMirror should fill the container */
+    .CodeMirror {
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    /* Buttons at the top */
+    #controls {
+        padding: 10px;
+        background-color: #f5f5f5;
+    }
+
+    button {
+        margin-right: 10px;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/html-hint.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.css">
+
+<main class="d-flex" style="height: 50%; padding: 20px" >
+
+    <div class="col-md-3" style="">
+        <div style="padding-left: 20px">
+            <strong class="mb-1">Smart Tags:</strong>
+            <ul>
+                <li><p style="font-size: 13px;"><b>{{ '{{ tool_name }}' }}</b><br>Insert the name of your Application.</p></li>
+                <li><p style="font-size: 13px;"><b>{{ '{{ is_enabled }}' }}</b><br>Is tool Enabled (True/False).</p></li>
+                <li><p style="font-size: 13px;"><b>{{ '{{ tool_short_name }}' }}</b><br>Short Name of your Application.</p></li>
+                <li><p style="font-size: 13px;"><b>{{ '{{ tool_description }}' }}</b><br>Description of your Application.</p></li>
+                <li><p style="font-size: 13px;"><b>{{ '{{ icon }}' }}</b><br>Name of Icon representing your Application.</p></li>
+                <li><p style="font-size: 13px;"><b>{{ '{{ disabled_reason }}' }}</b><br>If Application is Disabled, this is the Reason.</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8"  style="height: 100%">
+        <button onclick="clearEditor()" class="btn btn-primary display-4">Clear Editor</button>
+        <button onclick="previewCode()" class="btn btn-primary display-4">Preview</button>
+        <button onclick="updateCode()" class="btn btn-primary display-4">Update</button>
+        <br><br>
+        <div class="d-flex flex-column" style="height: 100%">
+        <div id="editorContainer" style="height: 100%">
+            <textarea id="codeEditor" name="codeEditor" class="CodeMirror"></textarea>
+        </div>
+            </div>
+    </div>
+</main>
+<!--<section data-bs-version="5.1" class="form7 cid-tyy7JKhmHi" id="form7-s" style="height: 1000px">-->
+<!--    <div class="container" style="height: 100%">-->
+<!--        <button onclick="clearEditor()" class="btn btn-primary display-4">Clear Editor</button>-->
+<!--        <button onclick="previewCode()" class="btn btn-primary display-4">Preview</button>-->
+<!--        <button onclick="updateCode()" class="btn btn-primary display-4">Update</button>-->
+<!--        <br><br>-->
+<!--        <b>Note</b>: {{ '{{ tool_name }}' }} will be replaced automatically with the name of your tool.-->
+<!--        <div class="row justify-content-center mt-4" style="height: 80%">-->
+<!--            <div id="editorContainer" style="height: 100%">-->
+<!--                &lt;!&ndash; CodeMirror Editor Container &ndash;&gt;-->
+<!--                <textarea id="codeEditor" name="codeEditor"></textarea>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<script>
+    // Initialize CodeMirror editor
+    var editor = CodeMirror.fromTextArea(document.getElementById("codeEditor"), {
+        mode: "htmlmixed",
+        theme: "material",
+        lineNumbers: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"},
+        hintOptions: {
+            schemaInfo: {
+                html: [
+                    'html', 'head', 'body', 'div', 'span', 'script', 'link', 'meta', 'title', 'style', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'img', 'br', 'hr', 'strong', 'em', 'ul', 'ol', 'li', 'form', 'input', 'textarea', 'button', 'select', 'option', 'iframe'
+                ]
+            }
+        }
+    });
+
+    const defaultCode = `<section data-bs-version="5.1" class="form7 cid-tyy7JKhmHi" id="form7-s">
+    <div class="container"  style="height: 100%">
+        <div class="mbr-section-head">
+
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>\{\{ tool_name \}\}</strong>
+            </h3>
+
+            <!--    PLACE YOUR CODE HERE   -->
+
+        </div>
+    </div>
+</section>`
+    editor.setValue(defaultCode);
+
+    // Function to clear the editor
+    function clearEditor() {
+        editor.setValue('');
+    }
+
+    function previewCode() {
+        const code = editor.getValue();
+        fetch('preview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({code: code})
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.url) {
+                    window.open(data.url, '_blank', 'width=800,height=600,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');
+                } else {
+                    alert('Failed to preview code');
+                }
+            });
+    }
+
+    function updateCode() {
+        const code = editor.getValue();
+        fetch('preview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({code: code})
+        });
+    }
+</script>

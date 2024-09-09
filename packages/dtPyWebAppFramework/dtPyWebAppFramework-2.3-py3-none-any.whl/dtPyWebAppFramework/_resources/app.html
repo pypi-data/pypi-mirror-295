@@ -1,0 +1,16 @@
+<link href="/assets/bootstrap/css/breadcrumbs.css" rel="stylesheet">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary" style="--bs-breadcrumb-margin-bottom: 0rem;">
+        <li class="breadcrumb-item">
+            <svg class="bi" width="16" height="16" fill="currentColor">
+                <use xlink:href="/assets/bootstrap/icons/bootstrap-icons.svg#house-door-fill"></use>
+            </svg>
+            <span class="visually-hidden">Home</span>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            {{ tool_name }}
+        </li>
+    </ol>
+</nav>
+
+{{ app_content }}
