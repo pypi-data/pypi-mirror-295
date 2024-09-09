@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: mpsqd
+Version: 0.1.4
+Summary: A Python package based on MPS to solve the TDSE and HEOM
+Home-page: https://github.com/qiangshi-group/MPSQD
+Author: Qiang Shi
+Author-email: qshi@iccas.ac.cn
+License: MIT
+Classifier: Development Status :: 4 - Beta 
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
