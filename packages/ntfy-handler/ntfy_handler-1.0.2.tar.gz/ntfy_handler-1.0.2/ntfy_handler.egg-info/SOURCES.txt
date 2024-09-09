@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+ntfy_handler/__init__.py
+ntfy_handler/ntfy_handler.py
+ntfy_handler.egg-info/PKG-INFO
+ntfy_handler.egg-info/SOURCES.txt
+ntfy_handler.egg-info/dependency_links.txt
+ntfy_handler.egg-info/requires.txt
+ntfy_handler.egg-info/top_level.txt
