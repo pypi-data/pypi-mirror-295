@@ -1,0 +1,6 @@
+kiwisolver
+PyIBIS-AMI>=6.2
+pyside6<6.7
+pyyaml>=6
+scikit-rf>=0.29
+typing_extensions
