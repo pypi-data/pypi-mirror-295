@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+django_rest_crypto/__init__.py
+django_rest_crypto/encrypt.py
+django_rest_crypto/middlewares.py
+django_rest_crypto/version.json
+django_rest_crypto.egg-info/PKG-INFO
+django_rest_crypto.egg-info/SOURCES.txt
+django_rest_crypto.egg-info/dependency_links.txt
+django_rest_crypto.egg-info/requires.txt
+django_rest_crypto.egg-info/top_level.txt
