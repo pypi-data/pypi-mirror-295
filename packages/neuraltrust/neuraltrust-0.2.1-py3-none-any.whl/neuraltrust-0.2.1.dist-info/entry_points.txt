@@ -1,0 +1,3 @@
+[console_scripts]
+neuraltrust=src.neuraltrust.cli.cli:main
+
