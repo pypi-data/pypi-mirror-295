@@ -1,0 +1,62 @@
+[build-system]
+requires = ['hatchling']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'mini_toolbox'
+version = '1.1.0'
+authors = [{ name = 'gnzhoutian', email = 'gnzhoutian@qq.com' }]
+description = 'Python迷你工具箱，包含简化的常用工具，旨在帮助脚本快速开发。'
+keywords = ['tools', 'toolbox', 'mini-tools', 'mini-toolbox']
+readme = 'README.md'
+requires-python = '>=3.6'
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3 :: Only',
+    'Operating System :: OS Independent',
+    'Natural Language :: Chinese (Simplified)',
+    'Topic :: Documentation :: Sphinx',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+docs = ['sphinx==4.5.0', 'sphinx-rtd-theme==1.1.1', 'myst-parser==0.16.1']
+build = ['build', 'virtualenv', 'twine', 'pytest']
+full = [
+    'pip >= 19.0.0',           # base
+    'setuptools >= 39.0.0',    # base
+    'wheel',                   # base
+    'requests >= 2.20.0',      # for api_json and dingtalk
+    'pymysql',                 # for mysql
+    'pyartifactory >= 1.11.0', # for jfrog
+    'jenkinsapi',              # for jenkins
+    'charamel',                # for jenkins
+    'python-gitlab',           # for git
+    'paramiko',                # for ssh
+    'openpyxl',                # for xlsx
+    'xlrd == 1.2.0',           # for xlsx
+    'rsa >= 4.5',              # for crypt
+    'pydes',                   # for crypt
+    'lxml',                    # for xml
+    'colorlog',                # for logger[optional]
+    'yapf',                    # for code format, not used but recommended
+    'apscheduler',             # for timing task, not used but recommended
+    'beautifulsoup4',          # for parse html, not used but recommended
+    'toml',                    # for parse config, not used but recommended
+]
+
+[project.urls]
+Homepage = 'https://pypi.org/project/mini-toolbox'
+Issues = 'https://github.com/gnzhoutian/mini_toolbox/issues'
+Repository = 'https://github.com/gnzhoutian/mini_toolbox.git'
+Changelog = 'https://mini-toolbox.readthedocs.io/latest/CHANGELOG.html'
+Documentation = 'https://mini-toolbox.readthedocs.io'
+
+[project.scripts]
+pip_list = 'mini_toolbox.pip_list:main'
+file_recoding = 'mini_toolbox.recoding:main'

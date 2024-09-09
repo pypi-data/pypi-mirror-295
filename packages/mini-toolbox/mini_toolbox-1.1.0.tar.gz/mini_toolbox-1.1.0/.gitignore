@@ -1,0 +1,11 @@
+.idea
+.CVS
+.DS_Store
+dist/
+build/
+__pycache__/
+.pytest_cache/
+.coverage/
+docs/source/modules.rst
+docs/source/mini_toolbox.*
+docs/source/*.md

@@ -1,0 +1,21 @@
+{
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        // useless
+        "dist": true,
+        "docs/build": true,
+        "docs/source/modules.rst": true,
+        "docs/source/mini_toolbox.*": true,
+        "docs/source/*.md": true,
+        ".pytest_cache": true,
+        ".coverage": true,
+        // less edit
+        "LICENSE": true,
+        ".gitignore": true,
+        "build.sh": true,
+        "docs": true,
+        "pyproject.toml": true,
+        "README.md": false,
+    },
+}
