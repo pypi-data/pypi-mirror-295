@@ -1,0 +1,12 @@
+BACpypes3
+colorama
+python-dotenv
+pytz
+aiosqlite
+
+[extras]
+pandas
+influxdb_client[async]
+rich
+pytest-asyncio
+coverage
