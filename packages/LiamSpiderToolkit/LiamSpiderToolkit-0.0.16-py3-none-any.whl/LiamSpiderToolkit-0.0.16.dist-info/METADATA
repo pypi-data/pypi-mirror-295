@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: LiamSpiderToolkit
+Version: 0.0.16
+Summary: liam`s spader package, =?unknown-8bit?b?5oiR55qE56eB5Lq66Ieq5a6a5LmJ54is6Jmr5YyFLg==?=
+Home-page: https://github.com/your-username/your-package
+Author: Liam
+Author-email: a61628904@163.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: bs4
+
+### ���������readme���������
