@@ -1,0 +1,32 @@
+---
+- hosts: 127.0.0.1
+  roles:
+    - role: collivier.xtesting
+      use_gerrit: true
+      gerrit_project: functest-xtesting
+      git_url: https://gerrit.opnfv.org/gerrit/functest-xtesting
+      docker_tags:
+        - '2024.1':
+            branch: stable/2024.1
+            dependency: '3.20'
+      builds:
+        dependency:
+          repo: _
+          dport:
+          container: alpine
+        steps:
+          - name: opnfv/xtesting
+            containers:
+              - name: xtesting
+                ref_arg: BRANCH
+                path: docker/core
+      suites:
+        - container: xtesting
+          tests:
+            - first
+            - second
+            - third
+            - fourth
+            - fifth
+            - sixth
+            - eighth
