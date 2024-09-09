@@ -1,0 +1,22 @@
+apache_primitives = {
+    "int32": "int",
+    "float32": "float",
+    "string": "string",
+    "timestamp": "date",
+    "BIGINT": "biginteger",
+    "FLOAT": "float",
+    "INTEGER": "long",
+    "VARCHAR": "string",
+    "DOUBLE": "double",
+    "DECIMAL": "bigdecimal",
+    "TIMESTAMP": "date",
+    "TIMESTAMPTZ": "date",
+    "DATE": "date",
+    "DATETIME": "date",
+    "CHAR": "byte",
+    "BOOLEAN": "boolean",
+    "VARBINARY": "string",
+    "JSON": "string",
+    "LIST": "string",
+    "MAP": "string"
+}
