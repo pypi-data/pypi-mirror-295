@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+documents/__init__.py
+optimed/__init__.py
+optimed.egg-info/PKG-INFO
+optimed.egg-info/SOURCES.txt
+optimed.egg-info/dependency_links.txt
+optimed.egg-info/requires.txt
+optimed.egg-info/top_level.txt
+optimed/wrappers/__init__.py
+optimed/wrappers/nifti.py
+optimed/wrappers/numpy.py
+optimed/wrappers/operations.py
+tests/test_nifti_utils.py
+tests/test_numpy_utils.py
+tests/test_operation_utils.py
