@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+examples/minimal_example.py
+examples/population_plots.py
+pan_biclustering/__init__.py
+pan_biclustering/hypervolume.py
+pan_biclustering/pan.py
+pan_biclustering.egg-info/PKG-INFO
+pan_biclustering.egg-info/SOURCES.txt
+pan_biclustering.egg-info/dependency_links.txt
+pan_biclustering.egg-info/requires.txt
+pan_biclustering.egg-info/top_level.txt
