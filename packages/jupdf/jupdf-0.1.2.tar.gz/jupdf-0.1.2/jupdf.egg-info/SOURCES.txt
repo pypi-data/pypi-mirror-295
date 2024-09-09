@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+jupdf/__init__.py
+jupdf/pypdfnb.py
+jupdf/pypdfnb_converter.py
+jupdf/pypdfnb_jobs.py
+jupdf/pypdfnb_parsing.py
+jupdf.egg-info/PKG-INFO
+jupdf.egg-info/SOURCES.txt
+jupdf.egg-info/dependency_links.txt
+jupdf.egg-info/requires.txt
+jupdf.egg-info/top_level.txt
+jupdf/tex/modded_eisvogel.tex
