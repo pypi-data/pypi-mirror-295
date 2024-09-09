@@ -1,0 +1,29 @@
+[project]
+name = "fishml_guess"
+version = "0.2.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "hahahellooo", email = "hahahello777@gmail.com"},
+]
+dependencies = [
+    "numpy>=2.1.1",
+    "scikit-learn>=1.5.1",
+    "pytest>=8.3.2",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[project.scripts]
+guess-fish="fish.fishml:main"
+
+[tool.pytest.ini_options]
+pythonpath = 'src'
+
+[tool.pdm]
+distribution = true
+
+[project.urls]
+Homepage="https://github.com/hahahellooo/hw_fishml"
+Issues="https://github.com/hahahellooo/hw_fishml/issues"

@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/fish/__init__.py
+src/fish/fishml.py
+src/fishml_guess/__init__.py
+src/fishml_guess.egg-info/PKG-INFO
+src/fishml_guess.egg-info/SOURCES.txt
+src/fishml_guess.egg-info/dependency_links.txt
+src/fishml_guess.egg-info/entry_points.txt
+src/fishml_guess.egg-info/requires.txt
+src/fishml_guess.egg-info/top_level.txt
+src/fishml_me/__init__.py
+tests/test_fishml.py
