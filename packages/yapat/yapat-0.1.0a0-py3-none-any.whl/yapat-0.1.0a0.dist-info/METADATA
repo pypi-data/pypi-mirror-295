@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: yapat
+Version: 0.1.0a0
+Summary: PAM annotation tool using machine learning to retrieve high-priority samples.
+Author-email: "Thiago S. Gouvêa" <thiago.gouvea@dfki.de>
+License: AGPL-3.0
+Project-URL: homepage, https://github.com/yapat-app/yapat
+Project-URL: repository, https://github.com/yapat-app/yapat
+Project-URL: documentation, https://yapat.readthedocs.io/
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: dash-bootstrap-components
+Requires-Dist: Flask-Login
+Requires-Dist: Flask-SQLAlchemy
+Requires-Dist: gunicorn
+Requires-Dist: librosa
+Requires-Dist: pandas
+Requires-Dist: python-dotenv
+Requires-Dist: scikit-learn
+Requires-Dist: scikit-maad
+Requires-Dist: tensorflow
+
