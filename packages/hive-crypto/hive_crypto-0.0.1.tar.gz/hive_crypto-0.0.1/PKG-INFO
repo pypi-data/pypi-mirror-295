@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: hive-crypto
+Version: 0.0.1
+Summary: Cryptography library for Hive
+Author-email: Gary Benson <gary@gbenson.net>
+Project-URL: Homepage, https://github.com/gbenson/hive/tree/main/libs/hive-crypto
+Project-URL: Source, https://github.com/gbenson/hive
+Description-Content-Type: text/markdown
+Requires-Dist: PyNaCl
+
+[![version badge]](https://pypi.org/project/hive-crypto/)
+
+[version badge]: https://img.shields.io/pypi/v/hive-crypto?color=limegreen
+
+# hive-crypto
+
+Cryptography library for Hive.
+
+## Installation
+
+### With PIP
+
+```sh
+pip install hive-crypto
+```
