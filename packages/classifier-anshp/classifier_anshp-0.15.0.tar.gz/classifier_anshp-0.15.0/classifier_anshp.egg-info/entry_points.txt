@@ -1,0 +1,4 @@
+[console_scripts]
+classifier-anshp = classifier_linear:clsfr
+dataset-1 = classifier_linear:dataset_1
+dataset-2 = classifier_linear:dataset_2
