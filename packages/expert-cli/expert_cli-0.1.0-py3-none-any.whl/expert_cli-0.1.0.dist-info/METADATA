@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: expert-cli
+Version: 0.1.0
+Summary: Interface into 'expert' knowledge assistant
+Author: Liam Tengelis
+Author-email: liam.tengelis@blacktuskdata.com
+Requires-Dist: expert-kb
+Requires-Dist: expert-doc
+Requires-Dist: expert-llm
+Requires-Dist: tqdm
+
