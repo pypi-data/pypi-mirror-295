@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: rms-models
+Version: 0.0.6
+Summary: Models for RMS System
+Author: AlexGat27
+Author-email: aleksandrgataulin745@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: alembic (>=1.13.2,<2.0.0)
+Requires-Dist: asyncpg (>=0.29.0,<0.30.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Requires-Dist: sqlalchemy (>=2.0.32,<3.0.0)
+Project-URL: Repository, http://git.vald.ai:8282/rms/rms_models.git
+Description-Content-Type: text/markdown
+
+
