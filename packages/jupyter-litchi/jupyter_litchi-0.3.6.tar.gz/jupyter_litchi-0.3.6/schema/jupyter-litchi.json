@@ -1,0 +1,89 @@
+{
+  "title": "Litchi",
+  "description": "AI Plugin for JupyterLab.",
+  "jupyter.lab.menus": {
+    "main": [
+      {
+        "id": "litchi-menu",
+        "label": "Litchi",
+        "rank": 80,
+        "items": [
+          {
+            "command": "litchi:chat"
+          },
+          {
+            "command": "litchi:contextual"
+          },
+          {
+            "command": "litchi:historical"
+          },
+          {
+            "command": "litchi:selected"
+          },
+          {
+            "type": "separator"
+          },
+          {
+            "command": "litchi:show-roles-toggle"
+          }
+        ]
+      }
+    ]
+  },
+  "jupyter.lab.toolbars": {
+    "Litchi": [
+      {
+        "name": "litchi-chat",
+        "command": "litchi:chat",
+        "icon": "litchi-ca",
+        "rank": 1
+      },
+      {
+        "name": "litchi-contextual",
+        "command": "litchi:contextual",
+        "icon": "litchi-ct",
+        "rank": 1
+      },
+      {
+        "name": "litchi-historical",
+        "command": "litchi:historical",
+        "icon": "litchi-ch",
+        "rank": 1
+      },
+      {
+        "name": "litchi-selected",
+        "command": "litchi:selected",
+        "icon": "litchi-cs",
+        "rank": 1
+      }
+    ]
+  },
+  "properties": {
+    "key": {
+      "type": "string",
+      "title": "Authorization Key:",
+      "description": "The AI service API key. If you use a online service as openai, you need set it",
+      "default": ""
+    },
+    "list-models": {
+      "type": "string",
+      "title": "List Models API:",
+      "description": "The AI service URL for list models. The default is ollama in localhost. If you want to connect other service, set it as your need",
+      "default": "http://localhost:11434/api/tags"
+    },
+    "chat": {
+      "type": "string",
+      "title": "Chat API:",
+      "description": "The AI service URL for chat messages. The default is ollama in localhost. If you want to connect other service, set it as your need",
+      "default": "http://localhost:11434/api/chat"
+    },
+    "system": {
+      "type": "string",
+      "title": "System Prompt:",
+      "description": "System Prompt would insert into at first of chat messages list with system role.",
+      "default": "your are a python and jupyter export"
+    }
+  },
+  "additionalProperties": true,
+  "type": "object"
+}
