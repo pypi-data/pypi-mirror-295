@@ -1,0 +1,92 @@
+KleioTranslator - server version 12.6 - build 575 2024-09-06 14:08:58
+7-9-2024 12-52
+
+Processing data file ivcc.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 8
+Obs: 
+** Processing source fonte$ivcc
+14: lista$ivc-c1
+76: viagem$ivc-francisco-xavier-his6-35
+81: viagem$ivc-francisco-xavier-his4-38
+97: viagem$ivc-simao-rodrigues-his7-35
+100: viagem$ivc-simao-rodrigues-his8-40
+105: lista$imagem-virtude-cap-2
+107: lista$ivc-bio-goncalo-da-silveira
+181: pevent$ivc-goncalo-da-silveira-his3-115
+193: viagem$imagem-virtude-v2-his1-18
+200: estadia$imagem-virtude-v2-his2-21
+215: viagem$imagem-virtude-v2-his1-22
+223: viagem$ivc-goncalo-da-silveira-his1-56
+225: estadia$ivc-goncalo-da-silveira-his2-56
+240: estadia$ivc-goncalo-da-silveira-his3-57
+259: estadia$ivc-goncalo-da-silveira-his5-61
+261: estadia$ivc-goncalo-da-silveira-his4-63
+265: viagem$ivc-goncalo-da-silveira-his5-64
+279: estadia$ivc-goncalo-da-silveira-his6-64
+285: estadia$ivc-goncalo-da-silveira-his7-67
+297: viagem$ivc-goncalo-da-silveira-his6-68
+314: estadia$ivc-goncalo-da-silveira-his7-69
+367: pevent$ivc-goncalo-da-silveira-his1-146
+384: pevent$ivc-goncalo-da-silveira-his2-80
+406: viagem$ivc-goncalo-da-silveira-his1-85
+412: pevent$ivc-goncalo-da-silveira-his2-85
+426: pevent$ivc-goncalo-da-silveira-his3-85
+450: pevent$ivc-goncalo-da-silveira-his1-91
+464: viagem$ivc-goncalo-da-silveira-his1-92
+484: estadia$ivc-goncalo-da-silveira-his2-101
+497: pevent$ivc-goncalo-da-silveira-his4-117
+509: estadia$ivc-goncalo-da-silveira-his3-118
+519: viagem$ivc-goncalo-da-silveira-his9-119
+539: pevent$ivc-goncalo-da-silveira-his5-123
+549: pevent$ivc-goncalo-da-silveira-his10-124
+553: evento$imagem-virtude-v2-his1-9
+564: evento$imagem-virtude-v2-his2-10
+581: evento$ivc-bio-goncalo-da-silveira-his8-76
+588: evento$ivc-bio-goncalo-da-silveira-his1-81
+595: evento$ivc-doc2-his6-61
+621: evento$ivc-bio-goncalo-da-silveira-his2-107
+635: carta$ivc-doc1
+650: carta$ivc-doc2
+657: carta$ivc-doc3
+679: carta$ivc-doc4
+696: lista$ivc-bio-antonio-de-almeida
+708: viagem$__ivc-antonio-de-almeida-his1-9
+710: estadia$__ivc-antonio-de-almeida-his2-9
+716: estadia$__ivc-antonio-de-almeida-his3-9
+720: estadia$__ivc-antonio-de-almeida-his4-9
+724: estadia$__ivc-antonio-de-almeida-his5-9
+740: carta$carta-antonio-almeida-1586
+*** End of File
+
+Line 167 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-alvaro-silveira) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 385 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-constantino-de-braganca) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 501 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-alvaro-silveira) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 503 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-constantino-de-braganca) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 697 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (deh-antonio-de-almeida) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 712 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-alessandro-valignano) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 718 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-michele-ruggieriv) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 722 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-michele-ruggieri) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+Line 726 "SAME AS" TO EXTERNAL REFERENCE EXPORTED (bio-matteo-ricci) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.
+
+Structure file: /usr/local/timelink/clio/src/gacto2.str
+Structure processing report: /usr/local/timelink/clio/src/gacto2.srpt
+Structure in JSON: /usr/local/timelink/clio/src/gacto2.str.json
+
+Kleio file: /kleio-home/kleio/reference_sources/varia/ivcc.cli
+Original file: /kleio-home/kleio/reference_sources/varia/ivcc.org
+Previous version: /kleio-home/kleio/reference_sources/varia/ivcc.old
+Temp file with ids: /kleio-home/kleio/reference_sources/varia/ivcc.ids
+** - /kleio-home/kleio/reference_sources/varia/ivcc.cli-renamed to- /kleio-home/kleio/reference_sources/varia/ivcc.old
+0  errors. 
+0  warnings.
+Translation finished.

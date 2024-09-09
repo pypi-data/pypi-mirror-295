@@ -1,0 +1,54 @@
+KleioTranslator - server version 12.6 - build 575 2024-09-06 14:08:58
+7-9-2024 12-52
+
+Processing data file notarial80.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: 
+Autorel: 
+Translation count: 4
+Obs: 
+** Processing source fonte$notarial80
+6: escritura$not1780-e1
+36: escritura$not1780-e2
+59: escritura$not1780-e3
+77: escritura$not1780-e4
+149: escritura$not1780-e5
+191: escritura$not1780-e6
+242: escritura$not1780-e7
+268: escritura$not1780-e8
+316: escritura$not1780-e9
+359: escritura$not1780-e10
+400: escritura$not1780-e11
+443: escritura$not1780-e12
+477: escritura$not1780-e13
+540: escritura$not1780-e14
+569: escritura$not1780-e15
+634: escritura$not1780-e16
+697: escritura$not1780-e17
+777: escritura$not1780-e18
+806: escritura$not1780-e19
+866: escritura$not1780-e20
+898: escritura$not1780-e22
+926: escritura$not1780-e21
+*** End of File
+
+
+Structure file: /usr/local/timelink/clio/src/gacto2.str
+Structure processing report: /usr/local/timelink/clio/src/gacto2.srpt
+Structure in JSON: /usr/local/timelink/clio/src/gacto2.str.json
+
+Kleio file: /kleio-home/kleio/reference_sources/notariais/notarial80.cli
+Original file: /kleio-home/kleio/reference_sources/notariais/notarial80.org
+Previous version: /kleio-home/kleio/reference_sources/notariais/notarial80.old
+Temp file with ids: /kleio-home/kleio/reference_sources/notariais/notarial80.ids
+** - /kleio-home/kleio/reference_sources/notariais/notarial80.cli-renamed to- /kleio-home/kleio/reference_sources/notariais/notarial80.old
+0  errors. 
+0  warnings.
+Translation finished.
