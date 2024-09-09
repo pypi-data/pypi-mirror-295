@@ -1,0 +1,2 @@
+[console_scripts]
+ev2unet = efficientv2_unet.__main__:main
