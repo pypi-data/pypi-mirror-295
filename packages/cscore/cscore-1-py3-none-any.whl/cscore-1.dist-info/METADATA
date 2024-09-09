@@ -1,0 +1,14 @@
+Metadata-Version: 2.3
+Name: cscore
+Version: 1
+Summary: A Python package for gene level ontology and network analysis; and other utils to support scanpy usage
+Project-URL: Homepage, https://github.com/brainfo/cscore
+Project-URL: Issues, https://github.com/brainfo/cscore/issues
+Author-email: Ruby <scilavisher@gmail.com>
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: ==3.10
+Description-Content-Type: text/markdown
+
+# C-score
