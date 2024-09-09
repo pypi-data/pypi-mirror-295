@@ -1,0 +1,133 @@
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># FastAPI WebSocker router\n\nSmall library to allow documenting WebSocket endpoints in FastAPI.\n\n## Overview\n\nThis library allows you to define websocket event handlers in the similar way one would define regular api endpoints. We\ntake somewhat opinionated approach and assume that all your events will confront to some PyDantic models, and it will be\npossible to discriminate between them (preferably, based on some field. We use `pydantic.TypeAdapter` for this).\n\nLibrary will make sure to generate OpenAPI documentation for your WebSocket handlers in a form of regular HTTP POST\nendpoints. Because OpenAPI doesn't have any specifications for WebSockets, we have to bend some rules and use regular\nroutes to document possible WebSocket messages. See \"OpenAPI limitations\" section for more details.\n\n## What this library does:\n\n1. Provides somewhat opinionated way to document WebSocket endpoints in FastAPI.\n2. Takes care of routing websocket messages to the corresponding handlers in the FastAPI-native way\n3. Allows one to natively use PyDantic models to define WebSocket message schemas\n4. Allows one to (somewhat) natively use FastAPI dependency injection\n\n## What this library does not:\n\n1. It doesn't take care of WebSockets management\n2. It doesn't provide any kind of WebSocket server or client management\n3. It doesn't handle any communications for you\n\nIn other words, you still have to take care of all the WebSocket operations you would normally do.\n\n## Usage\n\nInstallation as usual:\n\n```bash\npip install fastapi-websocket-router\n```\n\nThen you can use it in your FastAPI application:\n\n```python\nfrom typing import Literal\n\nfrom fastapi import FastAPI\nfrom fastapi_websocket_router import WSRouter\nfrom pydantic import BaseModel\n\n\n# Messages we are expecting to receive defined as PyDantic models\nclass ChatMessage(BaseModel):\n    action: Literal[\"message\"]\n    message: str\n\n\nclass ChatActivity(BaseModel):\n    action: Literal[\"activity\"]\n    activity: str\n\n\napp = FastAPI()\n\n# Router to handle WebSocket connection\nrouter = WSRouter(discriminator=\"action\")  # Discriminator is optional\n\n\n# Handlers for specific messages\n@router.receive(ChatMessage)\nasync def on_chat_message(websocket, data: ChatMessage):\n    await websocket.send_text(f\"Got message: {data.message}\")\n\n\n@router.receive(ChatActivity)\nasync def on_chat_activity(websocket, data: ChatActivity):\n    await websocket.send_text(f\"Got activity: {data.activity}\")\n\n\n# Finally, include the router in your FastAPI app (this should be the last step)\napp.include_router(router, prefix=\"/ws\")\n\n```\n\nIn the example we use `action` field as a discriminator, although the message structure is completely up to\nyou. `discriminator` property is optional, it will help PyDantic to perform some optimizations\n\n## Documenting server-side events\n\nIn cases when the WebSocket communication is bidirectional or server is emitting events, it can be desired to inform the\nclient what messages to expect. This can be achieved by providing a model(s) to the  `callbacks` parameter.\n\n```python\n\nclass Event1(BaseModel):\n    ...\n\n\nclass Event2(BaseModel):\n    ...\n\n\nclass Event3(BaseModel):\n    ...\n\n\nrouter = WSRouter(callbacks=Union[Event1, Event2])\n\n\n@router.receive(Event1, callbacks=Union[Event2, Event3])\nasync def on_event1(websocket, data: Event1):\n    ...\n\n```\n\n⚠\uFE0F Notice that those callbacks are informational only and pose no effect or restriction on the actual communication.\nServer doesn't\nhave to comply with them at all. They are there only for the documentation.\n\nCallbacks defined in the router will be shown in the entrypoint route. This is to indicate that \"once connected, client\ncan expect to receive these messages\"\n\nCallbacks defined on the event handlers will be shown in the corresponding route. This is to indicate that \"once this\nevent is received, client can expect to receive these messages\".\n\nThere is no \"predefined\" place to put events that are emitted by the server without any user interactions. It's up to\nyou to decide where to put them. Router callbacks might be a good place for that.\n\n## WebSockets limitation\n\n### Event handlers\n\nThis is the only thing we are somewhat opinionated about: event handler will always accept a single message being a\nPyDantic model built from the received ws message (one message - one model instance).\n\nNotice, that this doesn't apply to the messages emitted by the server. The library helps document them based on PyDantic\nmodels,\nbut it doesn't interfere with the actual communication in any way.\n\nEvent handler should always have next signature: `async def handler(WebSocket, BaseModel)`  (first argument is always\na `WebSocket` instance and the second one is a PyDantic model instance)\n\n### Dependency injection\n\nDue to the nature of WebSockets, only the entrypoint route (defined by the `WSRouter` itself) is able to apply\ndependency injection. In other words, it is not possible to use any dependencies or `Path/Query/Header/Body` parameters\nin\nthe event handlers.\n\nThere is a way to pass down the data from the entrypoint to the handlers using the underlying `websocket.scope` object.\nBelow is an example of how one can pass the path parameter to the event handler:\n\n```python\nasync def path_depends(\n    websocket: WebSocket,\n    item: str = Path(...),  # This is a regular FastAPI dependency, everything is possible here\n):\n    websocket.scope[\"path_item\"] = item\n\n\nrouter = WSRouter(dependencies=[Depends(path)])  # Inject dependency in the router\napp.include_router(router, prefix=\"/ws/{item}\")  # Attach router to a parametrized path\n\n\n@router.receive(ChatMessage)\nasync def on_chat_message(websocket: WebSocket, data: ChatMessage):\n    path_item = websocket.scope[\"path_item\"]  # Fetch path parameter from the scope\n    ...\n```\n\n### Subroutes\n\nIt is not possible to attach or include any subroutes in the WebSocket route. However, one can have multiple `WSRouter`\ninstances attached to different paths.\n\n## OpenAPI limitations\n\nCurrently, OpenAPI doesn't have any specification for the WebSockets. In order to include WebSocket events in the\ndocumentation we ~~abuse~~ reuse regular `POST` endpoints.\n\nThese endpoints will have \"weird\" path (router prefix + handler name) - this provides some better visibility in the\ndocumentation. Such routes, when attempted to be accessed directly, say, through the Swagegr UI, will never be found, as\nthey are not a real routes. (In reality, they are, they just \"tweaked\" to never match any path given)\n\nIt is possible to override path of each handler by providing `path` parameter in the `receive` decorator. It will be appended to the router prefix. This path can be anything - handler routes are guaranteed to never match and requested path. This is only for documentation purpose.\n\n```python\nrouter = WSRouter()\napp.include_router(router, prefix=\"/ws\")\n\n@router.receive(ChatMessage, path=\": WS Chat message\")  # Result in `/ws: WS Chat message` path in the documentation\nasync def on_chat_message(websocket, data: ChatMessage):\n    ...\n```\n\nYou can disable custom path by setting `path=\"\"`.\n\nWebSockets don't have a notion of a \"response\" similar to the http protocol, thus, by default, there will be no response\nbody in the OpenAPI specification. This can be modified with the `callbacks` parameter\n\nWe also do not support any status codes or response headers.\n\n## Connection handlers\n\nConnection handers are exposed as decorators similar to the event handlers.\n\n### `on_connect`\n\nEmitted when a new WebSocket connection is established. Typically, this is where you determine whether to allow new\nclient to connect.\n\n```python\n\n@router.on_connect\nasync def on_connect(websocket: WebSocket):\n    # One must call either accept or close on the websocket\n    await websocket.accept()\n```\n\n### `on_disconnect`\n\nEmitted when a WebSocket connection is closed by the client.\n\n```python\n\n@router.on_disconnect\nasync def on_disconnect(websocket: WebSocket, message: WebSocketDisconnect):\n    del my_connected_clients[websocket]  # I.e., remove the client from the list of connected clients\n```\n\n### `on_fallback`\n\nEmitted when we are unable to cast message to any of the known PyDantic models or there is a violation of the WebSocket\nprotocol. You will receive the original error in the third parameter of the handler. `message` will always be either a\nstring or bytes (based on what protocol you define in the `WSRouter`)\n\nIn case of validation error, you will receive original PyDantic `ValidationError` as a third parameter.\n\n```python\n\n@router.on_fallback\nasync def on_fallback(websocket: WebSocket, message: Optional[Union[str, bytes]], err: Exception):\n    ...\n\n```\n\n## Dispatcher\n\nIt is possible to override the default dispatching behaviour. This might be needed in cases when you have a more\ncomplicated handler selection logic.\n\n`mapping` is a dict that contains all registered models mapping to the corresponding handlers. `message` is a raw\nmessage received from the client (always `str` or `bytes`)\n\nAs the outcome, dispatcher most likely will call one of the handlers with the `websocket` and the deserialized message.\n\n```python\n\n# As we now use custom dispatcher, we can ignore the model assumption and use whatever we want in the arguments\n# Be aware that this handler will still be inspected by FastAPI in order to build a documentation, so make sure that the arguments are \"pydantic-compatible\"\nasync def left_handler(websocket: WebSocket, message: str):\n    print(\"Left\", message)\n\n\nasync def right_handler(websocket: WebSocket, message: str):\n    print(\"Right\", message)\n\n\nasync def dispatcher(websocket: WebSocket, mapping: dict, message: str):\n    if message.startswith(\"LEFT-\"):\n        await left_handler(websocket, message[5:])\n    else:\n        await right_handler(websocket, message[6:])\n\n\nrouter = WSRouter(dispatcher=dispatcher)\napp.include_router(router, prefix=\"/ws\")\n\n```\n\n## Binary mode\n\nBy default, router assumes that messages are strings and use `websocket.receive_text()`.\nIt is possible to switch to bytes mode by providing `as_text=False` to the `WSRouter` constructor.\nIn this case `websocket.receive_bytes()` will be used instead.\nIn default dispatcher, received bytes will be sent to the PyDantic `TypeAdapter.validate_json` method.\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision e45455283472e2b18f37886819663ff2ac2710cd)
++++ b/README.md	(date 1725790587335)
+@@ -1,5 +1,9 @@
+ # FastAPI WebSocker router
+ 
++[![PyPI - Version](https://img.shields.io/pypi/v/fastapi-ws-router.svg)](https://pypi.org/project/fastapi-ws-router)
++[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fastapi-ws-router.svg)](https://pypi.org/project/fastapi-ws-router)
++
++-----
+ Small library to allow documenting WebSocket endpoints in FastAPI.
+ 
+ ## Overview
+@@ -280,3 +284,7 @@
+ It is possible to switch to bytes mode by providing `as_text=False` to the `WSRouter` constructor.
+ In this case `websocket.receive_bytes()` will be used instead.
+ In default dispatcher, received bytes will be sent to the PyDantic `TypeAdapter.validate_json` method.
++
++## License
++
++`fastapi-ws-router` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+Index: pyproject.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[tool.poetry]\nname = \"fastapi-ws-router\"\nversion = \"0.1.0\"\ndescription = \"\"\nauthors = [\"Jack Zabolotnyi <git@mclate.com>\"]\nreadme = \"README.md\"\n\n[tool.poetry.dependencies]\npython = \"^3.12\"\nfastapi = \"^0.114.0\"\nuvicorn = \"^0.30.6\"\n\n[tool.poetry.group.dev.dependencies]\npytest=\"7.2.1\"\npytest-asyncio=\"0.20.3\"\npytest-httpx=\"0.21.3\"\npytest-lazy-fixture=\"0.6.3\"\npytest-mock=\"3.10.0\"\npytest-xdist=\"3.2.0\"\nruff = \"0.6.4\"\n\n[build-system]\nrequires = [\"poetry-core\"]\nbuild-backend = \"poetry.core.masonry.api\"\n\n[tool.ruff]\nline_length = 120\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	(revision e45455283472e2b18f37886819663ff2ac2710cd)
++++ b/pyproject.toml	(date 1725791164333)
+@@ -1,27 +1,75 @@
+-[tool.poetry]
++[build-system]
++requires = ["hatchling"]
++build-backend = "hatchling.build"
++
++[project]
+ name = "fastapi-ws-router"
+-version = "0.1.0"
+-description = ""
+-authors = ["Jack Zabolotnyi <git@mclate.com>"]
++dynamic = ["version"]
++description = ''
+ readme = "README.md"
++requires-python = ">=3.8"
++license = "MIT"
++keywords = []
++authors = [
++  { name = "Jack Zabolotnyi", email = "git@mclate.com" },
++]
++classifiers = [
++  "Development Status :: 4 - Beta",
++  "Programming Language :: Python",
++  "Programming Language :: Python :: 3.8",
++  "Programming Language :: Python :: 3.9",
++  "Programming Language :: Python :: 3.10",
++  "Programming Language :: Python :: 3.11",
++  "Programming Language :: Python :: 3.12",
++  "Programming Language :: Python :: Implementation :: CPython",
++  "Programming Language :: Python :: Implementation :: PyPy",
++]
++dependencies = [
++  "fastapi~=0.100.0",
++]
++
++[project.urls]
++Documentation = "https://github.com/mclate/fastapi-ws-router#readme"
++Issues = "https://github.com/mclate/fastapi-ws-router/issues"
++Source = "https://github.com/mclate/fastapi-ws-router"
++
++[tool.hatch.version]
++path = "src/fastapi_ws_router/__about__.py"
++
++[tool.hatch.envs.types]
++extra-dependencies = [
++  "mypy>=1.0.0",
++]
++
++[tool.hatch.envs.hatch-test]
++extra-dependencies = [
++  "httpx"
++]
+ 
+-[tool.poetry.dependencies]
+-python = "^3.12"
+-fastapi = "^0.114.0"
+-uvicorn = "^0.30.6"
++[[tool.hatch.envs.hatch-test.matrix]]
++python = ["3.12", "3.11", "3.10", "3.9", "3.8"]
+ 
+-[tool.poetry.group.dev.dependencies]
+-pytest="7.2.1"
+-pytest-asyncio="0.20.3"
+-pytest-httpx="0.21.3"
+-pytest-lazy-fixture="0.6.3"
+-pytest-mock="3.10.0"
+-pytest-xdist="3.2.0"
+-ruff = "0.6.4"
++[tool.hatch.envs.types.scripts]
++check = "mypy --install-types --non-interactive {args:src/fastapi_ws_router tests}"
+ 
+-[build-system]
+-requires = ["poetry-core"]
+-build-backend = "poetry.core.masonry.api"
++[tool.coverage.run]
++source_pkgs = ["fastapi_ws_router", "tests"]
++branch = true
++parallel = true
++omit = [
++  "src/fastapi_ws_router/__about__.py",
++]
++
++[tool.coverage.paths]
++fastapi_ws_router = ["src/fastapi_ws_router", "*/fastapi-ws-router/src/fastapi_ws_router"]
++tests = ["tests", "*/fastapi-ws-router/tests"]
++
++[tool.coverage.report]
++exclude_lines = [
++  "no cov",
++  "if __name__ == .__main__.:",
++  "if TYPE_CHECKING:",
++]
+ 
+ [tool.ruff]
+ line_length = 120
