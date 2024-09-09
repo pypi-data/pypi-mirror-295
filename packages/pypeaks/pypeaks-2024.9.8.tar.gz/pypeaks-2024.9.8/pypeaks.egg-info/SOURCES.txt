@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+pyproject.toml
+pypeaks/__init__.py
+pypeaks/data.py
+pypeaks/intervals.py
+pypeaks/slope.py
+pypeaks.egg-info/PKG-INFO
+pypeaks.egg-info/SOURCES.txt
+pypeaks.egg-info/dependency_links.txt
+pypeaks.egg-info/requires.txt
+pypeaks.egg-info/top_level.txt
+pypeaks/examples/howto.ipynb
+pypeaks/examples/howto.py
+pypeaks/examples/ji-intervals.pickle
+pypeaks/examples/sample-histogram.pickle
