@@ -1,0 +1,3 @@
+[console_scripts]
+taipan=taipan.__main__:cli
+
