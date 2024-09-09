@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itadvisor_client"
+version = "0.0.10"
+authors = [
+  { name="David Romero", email="dromero@dromero.dev" },
+]
+description = "A python client for the Schneider Electric application IT Advisor."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+dromero = "https://dromero.dev"
+LinkedIn = "https://www.linkedin.com/in/dromero1/"
+Repository = "https://github.com/dl-romero/itadvisor_client"
+Issues = "https://github.com/dl-romero/itadvisor_client/issues"

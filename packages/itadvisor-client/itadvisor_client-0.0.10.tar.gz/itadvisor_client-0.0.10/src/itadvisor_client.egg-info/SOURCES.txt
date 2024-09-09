@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/itadvisor_client/__init__.py
+src/itadvisor_client/itadvisor_client.py
+src/itadvisor_client.egg-info/PKG-INFO
+src/itadvisor_client.egg-info/SOURCES.txt
+src/itadvisor_client.egg-info/dependency_links.txt
+src/itadvisor_client.egg-info/top_level.txt
+tests/tests.py
