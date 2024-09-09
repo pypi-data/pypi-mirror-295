@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: LoadScript
+Version: 1
+Summary: A module to load and execute scripts from raw URLs.
+Home-page: https://github.com/Pulse-External-Team/LoadScript
+Author: 321Remag
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+A module to load and execute scripts from raw URLs.
