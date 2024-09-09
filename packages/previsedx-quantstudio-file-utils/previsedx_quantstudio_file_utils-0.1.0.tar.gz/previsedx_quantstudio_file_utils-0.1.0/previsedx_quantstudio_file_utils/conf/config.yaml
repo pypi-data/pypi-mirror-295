@@ -1,0 +1,91 @@
+---
+gene_file:
+  # The following specifies the Excel worksheet name from
+  # which the data records will be retrieved/parsed.
+  sheet_name: Results
+  # The following specifies the row number in the Results worksheet
+  # where the header row appears (0 based index).
+  header_row_number: 42
+  # The following specifies the row where the first data record
+  # appears in the in the Results worksheet (0 based index).
+  first_row_number: 43
+  # The following specifies the row where the last data record
+  # appears in the in the Results worksheet (0 based index).
+  last_row_number: 79
+  # The following specifies the expected column headers.
+  expected_column_headers:
+    - Well
+    - Well Position
+    - Omit
+    - Sample Name
+    - Target Name
+    - Task
+    - Reporter
+    - Quencher
+    - CT
+    - Ct Mean
+    - Ct SD
+    - Quantity
+    - Quantity Mean
+    - Quantity SD
+    - Y-Intercept
+    - R(superscript 2)
+    - Slope
+    - Efficiency
+    - Automatic Ct Threshold
+    - Ct Threshold
+    - Automatic Baseline
+    - Baseline Start
+    - Baseline End
+    - Amp Status
+    - Comments
+    - Cq Conf
+    # - HIGHSD
+    # - NOAMP
+    # - CQCONF
+    # - EXPFAIL
+
+# If the following is set to true, the positive controls
+# will be excluded from the intermediate report file.
+# If set to false, the positive controls will be included
+# in the intermediate report file.
+exclude_positive_controls: false
+
+
+input_gene_files:
+  # The following specifies file format of the input
+  # gene files.  Acceptable values are:
+  # tsv (for tab-delimited)
+  # txt (for tab-delimited)
+  # xlsx (for modern Excel)
+  # xls (for legacy Excel)
+  # format: tsv
+  # format: txt
+  # format: xlsx
+  format: xls
+
+# If processing tab-delimited input gene files,
+# if the following is set to true, then the software
+# will exec4ute dos2unix on each of the tab-delimited
+# files.
+run_dos2unix: true
+
+# The following is a listing of known standard names.
+known_sample_standard_names:
+  - STD1
+  - STD 1
+  - STD2
+  - STD 2
+  - STD3
+  - STD 3
+  - STD4
+  - STD 4
+  - STD5
+  - STD 5
+
+# The following is the list of prefixes for the controls
+control_prefixes:
+  - POS
+  - NEG
+  - EXT
+  - NTC
