@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: oauthAzureFastApi
+Version: 0.2.0
+Summary: A FastAPI module for Azure OAuth integration
+Home-page: https://github.com/yourusername/azure_oauth_fastapi
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: fastapi
+Requires-Dist: authlib
+Requires-Dist: httpx
+Requires-Dist: python-dotenv
+Requires-Dist: jose
+Requires-Dist: uvicorn
