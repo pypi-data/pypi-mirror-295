@@ -1,0 +1,4 @@
+[console_scripts]
+wait-pid-wrapper-exec=wait_pid_wrapper:exec
+wait-pid-wrapper-waitpid=wait_pid_wrapper:waitpid
+
