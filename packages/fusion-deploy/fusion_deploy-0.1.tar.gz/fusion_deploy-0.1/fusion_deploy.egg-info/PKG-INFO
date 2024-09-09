@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: fusion_deploy
+Version: 0.1
+Summary: A CLI tool to deploy Fusion 5 to GKE
+Home-page: https://github.com/lilocruz/fusion_deploy
+Author: Michael Sanchez
+Author-email: michael.sanchez@lucidworks.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+License-File: LICENSE

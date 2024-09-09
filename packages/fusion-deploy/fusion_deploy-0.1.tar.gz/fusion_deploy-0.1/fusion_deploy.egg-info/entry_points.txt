@@ -1,0 +1,2 @@
+[console_scripts]
+fusion-deploy = fusion_deploy.fusion_deploy:main
