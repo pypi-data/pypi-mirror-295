@@ -1,0 +1,20 @@
+[project]
+name = "seokxkyu_fishknn"
+version = "1.0.1"
+description = "Default template for PDM package"
+authors = [
+    {name = "Seokxkyu", email = "kyuseok000@gmail.com"},
+]
+dependencies = [
+    "pandas>=2.2.2",
+    "scikit-learn>=1.5.1",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+predictor = "fishknn.predict:fish_pred"
+
+[tool.pdm]
+distribution = true

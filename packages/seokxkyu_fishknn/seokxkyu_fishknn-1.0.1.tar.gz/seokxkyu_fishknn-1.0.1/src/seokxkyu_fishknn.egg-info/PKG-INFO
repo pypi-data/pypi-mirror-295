@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: seokxkyu_fishknn
+Version: 1.0.1
+Summary: Default template for PDM package
+Author-email: Seokxkyu <kyuseok000@gmail.com>
+License: MIT
+Requires-Python: ==3.11.*
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.2.2
+Requires-Dist: scikit-learn>=1.5.1
+
+# fishknn
+
+```
+K 최근접 이웃 알고리즘
+어떤 데이터에 대한 답을 구할 때 
+주위의 다른 데이터들(K)의 근접 거리(이웃범위)를 계산하여
+다수를 차지하는 것을 정답으로 예측
+```
+
+### 배경
+파이썬 ML scikit-learn 의 sklearn.neighbors.KNeighborsClassifier 모듈을 이용해 미리 학습된 모델을 이용해 분류(class) 예측이 가능 함을 살펴보았습니다.
+
+### 프로그램 동작 방식 
+- 학습된 모델이 없는 상태에서 출발합니다.
+- 사용자는 길이, 무게 데이터를 처음 입력하고 프로그램을 예측 값을 출력합니다 (도미, 빙어) 이때 프로그램을 학습 데이터가 없어 임의의 값을 예측합니다.
+- 사용자는 예측값의 정답 유무를 다시 입력합니다. ( 이때 프로그램을 예측 이후 정답인지 사용자에게 묻게 됩니다 )
+- 위의 과정을 반복하며 프로그램을 입력된 데이터(훈련데이터)와 정답(타켓) 데이터를 저장하고 있고 입력이 반복 되면 계속 모델을 진화 시켜 나갑니다.
+
+### Usage
+```
+$ predictor
+🐟 물고기의 길이를 입력하세요 (cm): 18.5
+🐟 물고기의 무게를 입력하세요  (g): 16
+🐟 이 물고기는 빙어입니다.
+🐟 예측이 맞습니까? (y/n): y
+🐟 예측 성공🥳
+```
