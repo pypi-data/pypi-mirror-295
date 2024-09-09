@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: OvertureMaestro
+Version: 0.0.3
+Summary: An open-source tool for downloading Overture Maps data with quality of life features
+Author-Email: Kamil Raczycki <kraczycki@kraina.ai>
+License: Apache-2.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: GIS
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.9
+Requires-Dist: overturemaps>=0.8.0
+Requires-Dist: geopandas>=0.6
+Requires-Dist: shapely>=2.0.6
+Requires-Dist: pyarrow>=16.0.0
+Requires-Dist: polars>=0.19.4
+Requires-Dist: rich>=12.0.0
+Requires-Dist: scikit-learn>=0.16
+Requires-Dist: geoarrow-rust-core>=0.2.0
+Requires-Dist: pooch>=1.6.0
+Requires-Dist: aiohttp
+Requires-Dist: fsspec
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <img width="300" src="https://raw.githubusercontent.com/kraina-ai/overturemaestro/main/docs/assets/logos/overturemaestro_logo.png"><br/>
+  <small>Generated using DALL·E 3 model with this prompt: Cute stylized conducting virtuoso using a paper map as music sheet. White background, minimalistic, vector graphics, clean background, encased in a circle. In navy and gold colours. Logo for a python library, should work well as small icon.</small>
+</p>
