@@ -1,0 +1,2 @@
+[console_scripts]
+run-FeatureRefiner = FeatureRefiner.scripts.run_app:main
