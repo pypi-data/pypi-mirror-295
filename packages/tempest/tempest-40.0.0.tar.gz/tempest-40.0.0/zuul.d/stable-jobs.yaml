@@ -1,0 +1,189 @@
+# NOTE(gmann): This file includes all stable release jobs definition.
+- job:
+    name: tempest-full-2024-1
+    parent: tempest-full-py3
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2024.1
+
+- job:
+    name: tempest-full-2023-2
+    parent: tempest-full-py3
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2023.2
+
+- job:
+    name: tempest-full-2023-1
+    parent: tempest-full-py3
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2023.1
+
+- job:
+    name: tempest-full-2024-1-extra-tests
+    parent: tempest-extra-tests
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2024.1
+
+- job:
+    name: tempest-full-2023-2-extra-tests
+    parent: tempest-extra-tests
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2023.2
+
+- job:
+    name: tempest-full-2023-1-extra-tests
+    parent: tempest-extra-tests
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2023.1
+
+- job:
+    name: tempest-slow-2024-1
+    parent: tempest-slow-py3
+    nodeset: openstack-two-node-jammy
+    override-checkout: stable/2024.1
+
+- job:
+    name: tempest-slow-2023-2
+    parent: tempest-slow-py3
+    nodeset: openstack-two-node-jammy
+    override-checkout: stable/2023.2
+
+- job:
+    name: tempest-slow-2023-1
+    parent: tempest-slow-py3
+    nodeset: openstack-two-node-jammy
+    override-checkout: stable/2023.1
+
+- job:
+    name: tempest-full-py3
+    parent: devstack-tempest
+    # This job version is to use the 'full' tox env which
+    # is available for stable/ussuri to stable/wallaby also.
+    branches:
+      - ^.*/victoria
+      - ^.*/wallaby
+    description: |
+      Base integration test with Neutron networking, horizon, swift enable,
+      and py3.
+      Former names for this job where:
+        * legacy-tempest-dsvm-py35
+        * gate-tempest-dsvm-py35
+    required-projects:
+      - openstack/horizon
+    vars:
+      tox_envlist: full
+      devstack_localrc:
+        USE_PYTHON3: true
+        FORCE_CONFIG_DRIVE: true
+        ENABLE_VOLUME_MULTIATTACH: true
+        GLANCE_USE_IMPORT_WORKFLOW: True
+      devstack_plugins:
+        neutron: https://opendev.org/openstack/neutron
+      devstack_services:
+        # Enable horizon so that we can run horizon test.
+        horizon: true
+
+- job:
+    name: tempest-multinode-full-py3
+    parent: tempest-multinode-full
+    nodeset: openstack-two-node-focal
+    # This job runs on Focal and supposed to run until unmaintained/zed.
+    branches:
+      - ^.*/victoria
+      - ^.*/wallaby
+      - ^.*/xena
+      - ^.*/yoga
+      - ^.*/zed
+    vars:
+      devstack_localrc:
+        USE_PYTHON3: true
+      devstack_plugins:
+        neutron: https://opendev.org/openstack/neutron
+      devstack_services:
+        neutron-trunk: true
+    group-vars:
+      subnode:
+        devstack_localrc:
+          USE_PYTHON3: true
+
+- job:
+    name: tempest-multinode-full
+    parent: tempest-multinode-full-base
+    nodeset: openstack-two-node-focal
+    # This job runs on Focal and on python2. This is for unmaintained/victoria to unmaintained/zed.
+    branches:
+      - ^.*/victoria
+      - ^.*/wallaby
+      - ^.*/xena
+      - ^.*/yoga
+      - ^.*/zed
+    vars:
+      devstack_localrc:
+        USE_PYTHON3: False
+    group-vars:
+      subnode:
+        devstack_localrc:
+          USE_PYTHON3: False
+
+- job:
+    name: tempest-slow-py3
+    parent: tempest-slow
+    # This job version is to use the 'slow-serial' tox env for
+    # the stable/ussuri to stable/wallaby testing.
+    branches:
+      - ^.*/victoria
+      - ^.*/wallaby
+    vars:
+      tox_envlist: slow-serial
+
+- job:
+    name: tempest-full-py3-opensuse15
+    parent: tempest-full-py3
+    nodeset: devstack-single-node-opensuse-15
+    description: |
+      Base integration test with Neutron networking and py36 running
+      on openSUSE Leap 15.x
+    voting: false
+    # This job is not used after stable/xena and can be
+    # removed once stable/xena is EOL.
+    branches:
+      - ^.*/victoria
+      - ^.*/wallaby
+      - ^.*/xena
+
+- job:
+    name: tempest-integrated-compute-centos-8-stream
+    parent: tempest-integrated-compute
+    # TODO(gmann): Make this job non voting until bug#1957941 if fixed.
+    voting: false
+    nodeset: devstack-single-node-centos-8-stream
+    branches:
+      - ^.*/wallaby
+      - ^.*/xena
+      - ^.*/yoga
+    description: |
+      This job runs integration tests for compute. This is
+      subset of 'tempest-full-py3' job and run Nova, Neutron, Cinder (except backup tests)
+      and Glance related tests. This is meant to be run on Nova gate only.
+      This version of the job also uses CentOS 8 stream.
+    vars:
+      # Required until bug/1949606 is resolved when using libvirt and QEMU
+      # >=5.0.0 with a [libvirt]virt_type of qemu (TCG).
+      configure_swap_size: 4096
+
+- job:
+    name: tempest-full-py3-centos-8-stream
+    parent: tempest-full-py3
+    # TODO(gmann): Make this job non voting until bug#1957941 if fixed.
+    voting: false
+    branches:
+      - ^.*/wallaby
+      - ^.*/xena
+      - ^.*/yoga
+    nodeset: devstack-single-node-centos-8-stream
+    description: |
+      Base integration test with Neutron networking and py36 running
+      on CentOS 8 stream
+    vars:
+      # Required until bug/1949606 is resolved when using libvirt and QEMU
+      # >=5.0.0 with a [libvirt]virt_type of qemu (TCG).
+      configure_swap_size: 4096
