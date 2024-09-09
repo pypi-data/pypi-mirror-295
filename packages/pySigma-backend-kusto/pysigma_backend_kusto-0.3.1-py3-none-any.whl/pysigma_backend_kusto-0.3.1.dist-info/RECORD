@@ -1,0 +1,13 @@
+sigma/backends/kusto/__init__.py,sha256=hdbVz5dve4aCzOXBaaGpcKLkdEV4TuaJ7EzfEKJy5C4,347
+sigma/backends/kusto/kusto.py,sha256=zVEadpEhJJsBIgT5ytPjVNAMsMyPZn8k4f7NIT9mnHw,12545
+sigma/backends/microsoft365defender/kusto.py,sha256=T-ORWg74ke-RZPSqE_QlMhpLudX1WicE-dBX-sc7YLk,12538
+sigma/pipelines/microsoft365defender/__init__.py,sha256=JqZ0A9_w13OTOEyS0h0PHv452VXsTEEhN30HFuXC-yk,206
+sigma/pipelines/microsoft365defender/finalization.py,sha256=UEySzQFSONFj-yNRqq6vEc-imt37kIsrGGynJgjhlIU,1485
+sigma/pipelines/microsoft365defender/microsoft365defender.py,sha256=K1wFnZfQtwFyBOklwoE90rjLQvWfruOAXYQ6iSeuvDU,34140
+sigma/pipelines/microsoft365defender/transformations.py,sha256=w25dpuJQ182N6dt-oxIfNX41eDN3NJ3_XVB-vaLmOQ4,511
+sigma/pipelines/sentinelasim/__init__.py,sha256=_gtWE1hUWZ9n0TNEm3DpniXIHIDxuZuhSswc9DFmdnI,162
+sigma/pipelines/sentinelasim/sentinelasim.py,sha256=Tf-tkLgwuvDGiMIxmdIQurf_vrfqFhsYtnS5eW6Yalc,25233
+pysigma_backend_kusto-0.3.1.dist-info/LICENSE,sha256=3IXI3x1RN4jDR2PonpWF1guc33zagcTgpq_VnboE3UU,7653
+pysigma_backend_kusto-0.3.1.dist-info/METADATA,sha256=cFPXl-A1Mk3w4GqlABzcqPvxv1_ZtRUPbsbIN_-p2KM,808
+pysigma_backend_kusto-0.3.1.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+pysigma_backend_kusto-0.3.1.dist-info/RECORD,,
