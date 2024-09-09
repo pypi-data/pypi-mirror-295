@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fastapi-ws-router"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Jack Zabolotnyi", email = "git@mclate.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "fastapi~=0.110.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/mclate/fastapi-ws-router#readme"
+Issues = "https://github.com/mclate/fastapi-ws-router/issues"
+Source = "https://github.com/mclate/fastapi-ws-router"
+
+[tool.hatch.version]
+path = "src/fastapi_ws_router/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+  "pytest",
+]
+
+[tool.hatch.envs.hatch-test]
+# parallel = true  # it's faster to run consequently due to a small number of tests
+extra-dependencies = [
+  "httpx"
+]
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.12", "3.11", "3.10", "3.9"]
+
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/fastapi_ws_router tests}"
+
+[[tool.hatch.envs.types.matrix]]
+python = ["3.12", "3.11", "3.10", "3.9"]
+
+[tool.coverage.run]
+source_pkgs = ["fastapi_ws_router", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/fastapi_ws_router/__about__.py",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+[tool.coverage.paths]
+fastapi_ws_router = ["src/fastapi_ws_router", "*/fastapi-ws-router/src/fastapi_ws_router"]
+tests = ["tests", "*/fastapi-ws-router/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+extend-ignore = ["UP", "FA100"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/*" = ["ARG001", "UP"]
+"example.py" = ["ARG001"]
