@@ -1,0 +1,12 @@
+requests
+pyjwt
+cryptography
+python-jose
+pydantic
+azure-cosmos
+python-dotenv
+auth0-python
+google-api-python-client
+google-auth-oauthlib
+azure-storage-blob
+slack_sdk
