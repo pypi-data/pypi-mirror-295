@@ -1,0 +1,17 @@
+[cbr_website]
+aws_enabled         = true
+gta_enabled         = true
+login_enabled       = false
+req_traces_enabled  = false
+s3_load_secrets     = true
+s3_log_requests     = true
+
+
+athena_path     = '/api'
+assets_dist     = '/dist'
+assets_root     = '/assets'
+cbr_logo        =  'cbr/cbr-logo-community.png'
+env             = 'DEV'
+
+[cbr_dev]
+capture_exceptions = true
