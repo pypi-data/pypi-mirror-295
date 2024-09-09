@@ -1,0 +1,5 @@
+[console_scripts]
+detect_significant_changes=datavizhub.samples.detect_significant_changes:main
+find-missing-frames=datavizhub.samples.find_missing_frames:main
+rtvideo=datavizhub.samples.rtvideo:main
+
