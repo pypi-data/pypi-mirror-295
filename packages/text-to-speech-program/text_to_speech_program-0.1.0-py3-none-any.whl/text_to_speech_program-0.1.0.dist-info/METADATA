@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: text-to-speech-program
+Version: 0.1.0
+Summary: A text-to-speech server and client using gtts and pydub
+Home-page: UNKNOWN
+Author: Fernando Pujaico Rivera
+Author-email: fernando.pujaico.rivera@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+License-File: LICENSE
+Requires-Dist: Flask
+Requires-Dist: gtts
+Requires-Dist: pydub
+Requires-Dist: requests
+
+UNKNOWN
+

@@ -1,0 +1,4 @@
+[console_scripts]
+tts-program-client = text_to_speech_program.client:main
+tts-program-server = text_to_speech_program.server:main
+
