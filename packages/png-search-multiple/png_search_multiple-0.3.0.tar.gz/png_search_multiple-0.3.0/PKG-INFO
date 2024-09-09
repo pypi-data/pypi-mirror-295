@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: png_search_multiple
+Version: 0.3.0
+Summary: Library for finding a list of multiple png file images within another a png image file
+Author: Scott Blackburn
+Author-email: <sblack777@hotmail.com>
+Keywords: python,image,search,png,image processing,test automation,image search
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: Pillow>=9.1.0
+
+Library for finding a list of multiple png file images within another a png image file
