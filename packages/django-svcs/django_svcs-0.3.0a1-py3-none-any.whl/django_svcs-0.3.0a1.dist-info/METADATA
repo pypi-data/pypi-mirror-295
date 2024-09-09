@@ -1,0 +1,61 @@
+Metadata-Version: 2.3
+Name: django_svcs
+Version: 0.3.0a1
+Summary: A Django integration for SVCS
+Project-URL: bugs, https://github.com/offbyone/django_svcs/issues
+Project-URL: changelog, https://github.com/offbyone/django_svcs/blob/main/CHANGELOG.md
+Project-URL: homepage, https://github.com/offbyone/django_svcs
+Author-email: Chris Rose <offline@offby1.net>
+Maintainer-email: Chris Rose <offline@offby1.net>
+License: BSD license
+License-File: AUTHORS.md
+License-File: LICENSE
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Typing :: Typed
+Requires-Python: >=3.12
+Requires-Dist: svcs
+Provides-Extra: cov
+Requires-Dist: coverage[toml]>=5.3; extra == 'cov'
+Requires-Dist: django>=5.0; extra == 'cov'
+Requires-Dist: pytest; extra == 'cov'
+Requires-Dist: pytest-xdist[psutil]; extra == 'cov'
+Provides-Extra: dev
+Requires-Dist: coverage[toml]>=5.3; extra == 'dev'
+Requires-Dist: django>=5.0; extra == 'dev'
+Requires-Dist: pytest; extra == 'dev'
+Requires-Dist: pytest-xdist[psutil]; extra == 'dev'
+Provides-Extra: docs
+Provides-Extra: tests
+Requires-Dist: django>=5.0; extra == 'tests'
+Requires-Dist: pytest; extra == 'tests'
+Requires-Dist: pytest-xdist[psutil]; extra == 'tests'
+Description-Content-Type: text/markdown
+
+---
+title: Django SVCS
+---
+
+[![image](https://img.shields.io/pypi/v/django_svcs.svg)](https://pypi.python.org/pypi/django_svcs)
+
+[![image](https://img.shields.io/travis/offbyone/django_svcs.svg)](https://travis-ci.com/offbyone/django_svcs)
+
+[![Documentation Status](https://readthedocs.org/projects/django-svcs/badge/?version=latest)](https://django-svcs.readthedocs.io/en/latest/?version=latest)
+
+A Django integration for SVCS
+
+-   Free software: BSD license
+-   Documentation: <https://django-svcs.readthedocs.io>.
+
+# Features
+
+-   TODO
+
+# Credits
+
+This package was created with
+[Cookiecutter](https://github.com/audreyr/cookiecutter) and the
+[audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage)
+project template.
