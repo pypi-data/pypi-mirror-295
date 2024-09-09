@@ -1,0 +1,235 @@
+Metadata-Version: 2.1
+Name: telegram_advanced
+Version: 0.1.4
+Summary: An advanced Telegram bot library
+Home-page: https://github.com/yourusername/telegram_advanced
+Author: LCF
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# Telegram Advanced Package Documentation
+
+## Table of Contents
+1. [Installation](#installation)
+2. [Basic Usage](#basic-usage)
+3. [Key Components](#key-components)
+   - [API](#api)
+   - [Handlers](#handlers)
+   - [Components](#components)
+   - [Management](#management)
+   - [Features](#features)
+   - [Utils](#utils)
+   - [Analytics](#analytics)
+4. [Advanced Usage](#advanced-usage)
+5. [Error Handling](#error-handling)
+
+## Installation
+
+To install the Telegram Advanced package, use pip:
+
+```bash
+pip install telegram-advanced
+```
+
+## Basic Usage
+
+Here's a simple example of how to create a bot using the Telegram Advanced package:
+
+```python
+from telegram_advanced.bot import Bot
+from telegram_advanced.handlers.message_handler import MessageHandler
+
+# Initialize the bot with your token
+bot = Bot("YOUR_BOT_TOKEN")
+
+# Define a message handler
+def echo(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+
+# Create a message handler and add it to the bot
+message_handler = MessageHandler(echo)
+bot.add_handler(message_handler)
+
+# Start the bot
+bot.start_polling()
+```
+
+## Key Components
+
+### API
+
+The `api` module contains the core functionality for interacting with the Telegram API.
+
+- `client.py`: Handles API requests and responses.
+- `types.py`: Defines Python objects that represent Telegram entities.
+- `methods.py`: Implements Telegram API methods.
+
+Example usage:
+
+```python
+from telegram_advanced.api.client import TelegramClient
+
+client = TelegramClient("YOUR_BOT_TOKEN")
+updates = client.get_updates()
+```
+
+### Handlers
+
+The `handlers` module contains classes for handling different types of updates from Telegram.
+
+- `message_handler.py`: Handles incoming messages.
+- `command_handler.py`: Handles bot commands.
+- `callback_handler.py`: Handles callback queries from inline keyboards.
+- `inline_handler.py`: Handles inline queries.
+
+Example usage:
+
+```python
+from telegram_advanced.handlers.command_handler import CommandHandler
+
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello! I'm a bot.")
+
+start_handler = CommandHandler("start", start)
+bot.add_handler(start_handler)
+```
+
+### Components
+
+The `components` module provides utility classes for working with various Telegram features.
+
+- `keyboards.py`: Creates inline and reply keyboards.
+- `media.py`: Handles photo, video, and other media types.
+- `passport.py`: Implements Telegram Passport functionality.
+- `payments.py`: Handles Telegram Payments.
+- `games.py`: Implements Telegram Games.
+
+Example usage:
+
+```python
+from telegram_advanced.components.keyboards import InlineKeyboardBuilder
+
+keyboard = InlineKeyboardBuilder()
+keyboard.add_button("Click me!", callback_data="button1")
+message = bot.send_message(chat_id, "Here's a button:", reply_markup=keyboard.build())
+```
+
+### Management
+
+The `management` module provides tools for managing Telegram groups, channels, and users.
+
+- `groups.py`: Manage group chats.
+- `channels.py`: Manage channels.
+- `users.py`: Manage user data and permissions.
+
+Example usage:
+
+```python
+from telegram_advanced.management.groups import GroupManager
+
+group_manager = GroupManager(bot)
+members = group_manager.get_chat_members(chat_id)
+```
+
+### Features
+
+The `features` module implements additional Telegram features.
+
+- `polls.py`: Create and manage polls.
+- `threads.py`: Handle message threads in groups.
+- `reactions.py`: Manage message reactions.
+- `pinned_messages.py`: Handle pinned messages.
+
+Example usage:
+
+```python
+from telegram_advanced.features.polls import PollManager
+
+poll_manager = PollManager(bot)
+poll = poll_manager.create_poll(chat_id, "What's your favorite color?", ["Red", "Blue", "Green"])
+```
+
+### Utils
+
+The `utils` module provides various utility functions and classes.
+
+- `file_handling.py`: Handle file uploads and downloads.
+- `localization.py`: Implement multi-language support.
+- `security.py`: Implement security features like rate limiting.
+- `caching.py`: Cache frequently used data.
+- `connection_pool.py`: Manage API connections efficiently.
+- `batch_processing.py`: Process updates in batches.
+- `rate_limiter.py`: Implement rate limiting for API requests.
+- `pagination.py`: Handle paginated results from the API.
+
+Example usage:
+
+```python
+from telegram_advanced.utils.file_handling import FileUploader
+
+uploader = FileUploader(bot)
+file_id = uploader.upload_photo("path/to/photo.jpg")
+```
+
+### Analytics
+
+The `analytics` module provides tools for analyzing bot usage and performance.
+
+- `statistics.py`: Collect and analyze usage statistics.
+- `peer_rating.py`: Implement a rating system for users or chats.
+
+Example usage:
+
+```python
+from telegram_advanced.analytics.statistics import UsageTracker
+
+tracker = UsageTracker(bot)
+daily_stats = tracker.get_daily_usage()
+```
+
+## Advanced Usage
+
+For more advanced usage, you can combine multiple components:
+
+```python
+from telegram_advanced.bot import Bot
+from telegram_advanced.handlers.command_handler import CommandHandler
+from telegram_advanced.components.keyboards import InlineKeyboardBuilder
+from telegram_advanced.features.polls import PollManager
+
+bot = Bot("YOUR_BOT_TOKEN")
+
+def create_poll(update, context):
+    keyboard = InlineKeyboardBuilder()
+    keyboard.add_button("Create Poll", callback_data="create_poll")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Click to create a poll:", reply_markup=keyboard.build())
+
+def poll_callback(update, context):
+    query = update.callback_query
+    if query.data == "create_poll":
+        poll_manager = PollManager(context.bot)
+        poll = poll_manager.create_poll(query.message.chat_id, "What's your favorite programming language?", ["Python", "JavaScript", "Java", "C++"])
+        query.answer("Poll created!")
+
+bot.add_handler(CommandHandler("poll", create_poll))
+bot.add_handler(CallbackQueryHandler(poll_callback))
+
+bot.start_polling()
+```
+
+## Error Handling
+
+The package includes a custom `exceptions.py` module for handling Telegram-specific errors:
+
+```python
+from telegram_advanced.exceptions import TelegramAPIError
+
+try:
+    # Some API call
+    bot.send_message(chat_id, "Hello, World!")
+except TelegramAPIError as e:
+    print(f"An error occurred: {e}")
+```
