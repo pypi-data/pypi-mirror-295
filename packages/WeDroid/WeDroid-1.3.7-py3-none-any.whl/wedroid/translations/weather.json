@@ -1,0 +1,393 @@
+{
+  "0": {
+    "title": "No Observation",
+    "icon": "11d",
+    "description": "Unable to acquire forecast.",
+    "outburst": "No Observation"
+  },
+  "200": {
+    "title": "Thunderstorm with Light Rain",
+    "icon": "11d",
+    "description": "thunderstorm with light rainfall"
+  },
+  "201": {
+    "title": "Thunderstorm with Rain",
+    "icon": "11d",
+    "description": "thunderstorm with rainfall"
+  },
+  "202": {
+    "title": "Thunderstorm with Heavy Rain",
+    "icon": "11d",
+    "description": "thunderstorm with heavy rainfall"
+  },
+  "210": {
+    "title": "Light Thunderstorm",
+    "icon": "11d",
+    "description": "light thunderstorm"
+  },
+  "211": {
+    "title": "Thunderstorm",
+    "icon": "11d",
+    "description": "thunderstorm"
+  },
+  "212": {
+    "title": "Heavy Thunderstorm",
+    "icon": "11d",
+    "description": "heavy thunderstorm"
+  },
+  "221": {
+    "title": "Ragged Thunderstorm",
+    "icon": "11d",
+    "description": "ragged thunderstorm"
+  },
+  "230": {
+    "title": "Thunderstorm with Light Drizzle",
+    "icon": "11d",
+    "description": "thunderstorm with light drizzle"
+  },
+  "231": {
+    "title": "Thunderstorm with Drizzle",
+    "icon": "11d",
+    "description": "thunderstorm with drizzle"
+  },
+  "232": {
+    "title": "Thunderstorm with Heavy Drizzle",
+    "icon": "11d",
+    "description": "thunderstorm with heavy drizzle"
+  },
+  "300": {
+    "title": "Light Intensity Drizzle",
+    "icon": "09d",
+    "description": "Light Rainfall approaching"
+  },
+  "301": {
+    "title": "Light Rain",
+    "icon": "09d",
+    "description": "Light Rainfall approaching"
+  },
+  "302": {
+    "title": "Light Rain",
+    "icon": "09d",
+    "description": "Light Rainfall approaching"
+  },
+  "310": {
+    "title": "Light Rain",
+    "icon": "09d",
+    "description": "Light Rainfall approaching"
+  },
+  "311": {
+    "title": "Light Rain",
+    "icon": "09d",
+    "description": "Light Rainfall approaching"
+  },
+  "312": {
+    "title": "Heavy Intensity Drizzle Rain",
+    "icon": "09d",
+    "description": "heavy rainfall"
+  },
+  "313": {
+    "title": "Shower Rain and Drizzle",
+    "icon": "09d",
+    "description": "shower rainfall"
+  },
+  "314": {
+    "title": "Heavy Shower Rain and Drizzle",
+    "icon": "09d",
+    "description": "heavy shower rainfall"
+  },
+  "321": {
+    "title": "Rain",
+    "icon": "09d",
+    "description": "Caution. Rainfall approaching"
+  },
+  "500": {
+    "title": "Rain",
+    "icon": "10d",
+    "description": "Caution. Rainfall approaching"
+  },
+  "501": {
+    "title": "Rain",
+    "icon": "10d",
+    "description": "Caution. Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "502": {
+    "title": "Heavy Rain",
+    "icon": "10d",
+    "description": "Caution. Heavy Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "503": {
+    "title": "Heavy Rain",
+    "icon": "10d",
+    "description": "Caution. Heavy Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "504": {
+    "title": "Heavy Rain",
+    "icon": "10d",
+    "description": "Warning. Heavy Rainfall approaching",
+    "outburst": "Damn, a storm is coming in."
+  },
+  "511": {
+    "title": "Freezing Rain",
+    "icon": "10d",
+    "description": "Warning. Freezing Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "520": {
+    "title": "Rain",
+    "icon": "10d",
+    "description": "Caution. Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "521": {
+    "title": "Rain Shower",
+    "icon": "10d",
+    "description": "Warning. Rainfall approaching",
+    "outburst": "Look's like rain."
+  },
+  "522": {
+    "title": "Heavy Rain Shower",
+    "icon": "10d",
+    "description": "Warning. Heavy Rainfall approaching",
+    "outburst": "Damn, a storm is coming in."
+  },
+  "531": {
+    "title": "Heavy Downpour",
+    "icon": "10d",
+    "description": "Warning. Heavy Downpour inbound.",
+    "outburst": "Damn, a storm is coming in."
+  },
+  "600": {
+    "title": "Snow Fall Possible",
+    "icon": "13d",
+    "description": "Caution. Snow fall possible"
+  },
+  "601": {
+    "title": "Snow Fall",
+    "icon": "13d",
+    "description": "Caution. Snow fall imminent"
+  },
+  "602": {
+    "title": "Heavy Snow Fall",
+    "icon": "13d",
+    "description": "Warning. Heavy Snow fall imminent"
+  },
+  "611": {
+    "title": "Sleet",
+    "icon": "13d",
+    "description": "Caution. Sleet imminent"
+  },
+  "612": {
+    "title": "Sleet",
+    "icon": "13d",
+    "description": "Caution. Sleet imminent"
+  },
+  "615": {
+    "title": "Sleet",
+    "icon": "13d",
+    "description": "Warning. Sleet imminent"
+  },
+  "616": {
+    "title": "Sleet",
+    "icon": "13d",
+    "description": "Warning. Sleet imminent"
+  },
+  "620": {
+    "title": "Snow Fall",
+    "icon": "13d",
+    "description": "Caution. Snow fall imminent"
+  },
+  "621": {
+    "title": "Snow Fall",
+    "icon": "13d",
+    "description": "Warning. Snow fall imminent"
+  },
+  "622": {
+    "title": "Heavy Snow Fall",
+    "icon": "13d",
+    "description": "Warning. Heavy Snow fall imminent"
+  },
+  "701": {
+    "title": "Mist Detected",
+    "icon": "50d",
+    "description": "Caution. Mist detected; reduced visibility expected"
+  },
+  "711": {
+    "title": "Smoke Detected",
+    "icon": "50d",
+    "description": "Caution. Smoke detected; reduced visibility expected"
+  },
+  "721": {
+    "title": "Haze Detected",
+    "icon": "50d",
+    "description": "Caution. Haze detected; reduced visibility expected."
+  },
+  "731": {
+    "title": "Sand and Dust Whirls",
+    "icon": "50d",
+    "description": "Caution. sand and dust whirls"
+  },
+  "741": {
+    "title": "Fog Detected",
+    "icon": "50d",
+    "description": "Caution. Fog detected; reduced visibility expected"
+  },
+  "751": {
+    "title": "Atmospheric Sand Present",
+    "icon": "50d",
+    "description": "Caution. Atmospheric sand present"
+  },
+  "761": {
+    "title": "Atmospheric Dust Present",
+    "icon": "50d",
+    "description": "Caution. Atmospheric dust present"
+  },
+  "762": {
+    "title": "Volcanic Ash Present",
+    "icon": "50d",
+    "description": "Warning. Volcanic ash present; reduced visibility expected"
+  },
+  "771": {
+    "title": "Squalls",
+    "icon": "50d",
+    "description": "squalls"
+  },
+  "781": {
+    "title": "Tornado",
+    "icon": "50d",
+    "description": "tornado"
+  },
+  "800": {
+    "title": "Clear",
+    "icon": "01",
+    "description": "Weather is currently clear"
+  },
+  "801": {
+    "title": "Clouds",
+    "icon": "02",
+    "description": "Clear with the odd scattered cloud."
+  },
+  "802": {
+    "title": "Clouds",
+    "icon": "03",
+    "description": "Mostly clear with scattered clouds."
+  },
+  "803": {
+    "title": "Cloudy",
+    "icon": "04",
+    "description": "Clouds approaching."
+  },
+  "804": {
+    "title": "Cloudy",
+    "icon": "04",
+    "description": "Clouds approaching."
+  },
+  "900": {
+    "title": "Tornado",
+    "icon": "",
+    "description": "Warning. Tornado approaching"
+  },
+  "901": {
+    "title": "Tropical Storm",
+    "icon": "",
+    "description": "Warning. Tropical Storm imminent"
+  },
+  "902": {
+    "title": "Hurricane",
+    "icon": "",
+    "description": "Warning. Hurricane approaching"
+  },
+  "903": {
+    "title": "Cold Weather",
+    "icon": "",
+    "description": "Warning. Cold weather"
+  },
+  "904": {
+    "title": "Extreme Heat",
+    "icon": "",
+    "description": "Warning. Extreme heat detected"
+  },
+  "905": {
+    "title": "Windy",
+    "icon": "",
+    "description": "windy",
+    "outburst": "Wind's howling."
+  },
+  "906": {
+    "title": "Hail",
+    "icon": "",
+    "description": "hail"
+  },
+  "951": {
+    "title": "Calm",
+    "icon": "",
+    "description": "calm"
+  },
+  "952": {
+    "title": "Light Breeze",
+    "icon": "",
+    "description": "light breeze",
+    "outburst": "Wind's howling."
+  },
+  "953": {
+    "title": "Gentle Breeze",
+    "icon": "",
+    "description": "gentle breeze",
+    "outburst": "Wind's howling."
+  },
+  "954": {
+    "title": "Moderate Breeze",
+    "icon": "",
+    "description": "moderate breeze",
+    "outburst": "Wind's howling."
+  },
+  "955": {
+    "title": "Fresh Breeze",
+    "icon": "",
+    "description": "fresh breeze",
+    "outburst": "Wind's howling."
+  },
+  "956": {
+    "title": "Strong Breeze",
+    "icon": "",
+    "description": "strong breeze",
+    "outburst": "Wind's howling."
+  },
+  "957": {
+    "title": "High Winds",
+    "icon": "",
+    "description": "Caution. High winds approaching",
+    "outburst": "Wind's howling."
+  },
+  "958": {
+    "title": "Gale Winds",
+    "icon": "",
+    "description": "Caution. Gale winds detected",
+    "outburst": "Wind's howling."
+  },
+  "959": {
+    "title": "Severe Gale Force Winds",
+    "icon": "",
+    "description": "Warning. Severe gale force winds",
+    "outburst": "Wind's howling."
+  },
+  "960": {
+    "title": "Storm",
+    "icon": "",
+    "description": "Warning. Storm approaching.",
+    "outburst": "Damn, a storm is coming in."
+  },
+  "961": {
+    "title": "Violent Storm",
+    "icon": "",
+    "description": "Warning. Violent storm approaching",
+    "outburst": "Damn, a storm is coming in."
+  },
+  "962": {
+    "title": "Hurricane",
+    "icon": "",
+    "description": "Warning. Hurricane approaching seek immediate shelter."
+  }
+}
