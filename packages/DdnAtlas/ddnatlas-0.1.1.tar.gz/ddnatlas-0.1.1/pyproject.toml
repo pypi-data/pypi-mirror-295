@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "DdnAtlas"
+version = "0.1.1"
+description = ""
+authors = ["Kenneth Stott"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.26.0"
+click = "^8.0.3"
+pyfiglet = "^0.8.post1"
+python-dotenv = "^0.19.1"
+anthropic = "^0.34.2"
+PyYAML = "^6.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ddnatlas = 'ddnatlas.cli:cli'
+
+[project.urls]
+repository = "https://github.com/kenstott/ddn-atlas"
