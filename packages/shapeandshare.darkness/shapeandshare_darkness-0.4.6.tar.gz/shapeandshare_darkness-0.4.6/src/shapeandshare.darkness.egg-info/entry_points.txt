@@ -1,0 +1,2 @@
+[console_scripts]
+darkness = shapeandshare.darkness.server.api.state.main:main
