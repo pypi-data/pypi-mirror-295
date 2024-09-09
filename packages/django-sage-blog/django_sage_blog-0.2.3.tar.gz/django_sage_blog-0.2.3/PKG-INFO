@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: django-sage-blog
+Version: 0.2.3
+Summary: Comprehensive Django package designed to seamlessly integrate blogging capabilities into your Django project.
+Home-page: https://github.com/sageteamorg/django-sage-blog
+License: MIT
+Keywords: python,blog,python-packages
+Author: Sepehr Akbarzadeh
+Author-email: sepehr@sageteam.org
+Requires-Python: >=3.10,<4.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: django (>=4.2,<5.0) ; python_version >= "3.8" and python_version < "3.10"
+Requires-Dist: django (>=4.2,<5.3) ; python_version >= "3.10"
+Requires-Dist: django-filter (>=24.2,<25.0)
+Requires-Dist: django-jsonform (>=2.22.0,<3.0.0)
+Requires-Dist: django-sage-seo (>=0.3.8,<0.4.0)
+Requires-Dist: pillow (>=10.4.0,<11.0.0)
+Requires-Dist: readtime (>=3.0.0,<4.0.0)
+Requires-Dist: sorl-thumbnail (>=12.10.0,<13.0.0)
+Requires-Dist: tqdm (>=4.66.5,<5.0.0)
+Project-URL: Documentation, https://django-sage-blog.readthedocs.io/en/latest/
+Project-URL: Issues, https://github.com/sageteamorg/django-sage-blog/issues
+Project-URL: Repository, https://github.com/sageteamorg/django-sage-blog
+Project-URL: Source Code, https://github.com/sageteamorg/django-sage-blog
+Description-Content-Type: text/markdown
+
+# django-sage-blog
+
