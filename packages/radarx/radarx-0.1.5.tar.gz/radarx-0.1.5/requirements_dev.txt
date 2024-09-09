@@ -1,0 +1,15 @@
+pip
+wheel
+watchdog
+flake8
+tox
+coverage
+Sphinx
+twine
+pytest
+black
+isort
+fsspec
+pooch
+nbval
+pytest-cov
