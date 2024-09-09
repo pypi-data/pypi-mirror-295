@@ -1,0 +1,101 @@
+Metadata-Version: 2.1
+Name: mss-python
+Version: 0.1.9
+Summary: MSS API wrapper for Python projects
+Author: Rubin Canaj
+Author-email: HGV <development@hgv.it>
+License: MIT License
+        
+        Copyright (c) 2024 Booking Südtirol
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Repository, https://github.com/bookingsuedtirol/mss-python
+Requires-Python: <4,>=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: xmltodict==0.13.0
+
+# mss-python ![PyPI](https://img.shields.io/pypi/v/mss-python)
+
+MSS API client for Python projects
+
+<!-- ## Dependencies
+
+This library requires an IANA Time Zone database to be present on the operating system (because it uses https://pkg.go.dev/time#LoadLocation). This database comes pre-installed with many Linux distros. If it’s unavailable (such as on Windows), https://pkg.go.dev/time/tzdata can be imported in the main program (which uses mss-go) instead. -->
+
+## Available methods
+
+- [x] getHotelList
+- [x] getHotelListByFilter
+- [x] getSpecialList
+- [x] getRoomList
+- [x] getWidgetConfig
+- [x] getBooking
+- [x] cancelBooking
+- [x] prepareBooking
+- [x] getAvailability
+- [x] getRoomAvailability
+- [x] getDayAvailability
+- [x] getPriceList
+- [x] createInquiry
+- [x] getLocationList
+- [x] getThemeList
+- [x] getMasterpackagesList
+- [x] notifyMasterpackages
+- [x] getLastMinuteQuotation
+- [x] validateCoupon
+- [x] getHotelPictures
+- [x] getHotelPictureGroups
+- [x] getOptionalServices
+
+## Example Execution
+
+`pip3 install -r requirements.txt`
+
+`python3 -m examples.simple.main`
+
+<!-- -
+
+TODO
+
+- [x] getInquiry - how to find booking IDs?
+
+
+- [x] getUserSources
+
+  -->
+
+<!-- Warning: Only the methods with a ✓ next to them have been tested so far.
+
+## Before running examples/tests
+
+Set the environment variables with:
+
+```Bash
+export $(make env)
+```
+
+## Examples
+
+Run `make simple` or `make advanced`
+
+## Tests
+
+Run `make test` -->

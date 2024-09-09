@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mss-python"
+description = "MSS API wrapper for Python projects"
+readme = "README.md"
+requires-python = ">=3.7, <4"
+license = { file = "LICENSE" }
+authors = [
+  { name = "HGV", email = "development@hgv.it" },
+  { name = "Rubin Canaj" },
+]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+Repository = "https://github.com/bookingsuedtirol/mss-python"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["mss_python"]
+namespaces = false
+
+[tool.setuptools_scm]
+version_file = "src/mss_python/_version.py"
