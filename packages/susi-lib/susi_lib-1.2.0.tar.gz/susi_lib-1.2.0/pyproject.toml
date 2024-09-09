@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling>=1.25.0", "hatch-vcs>=0.4.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "susi-lib"
+authors = [
+  { name="Oliver Lago", email="oliver.oli.lago@gmail.com" },
+]
+description = "Library for SuŠi organizers"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Intended Audience :: Other Audience",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/olilag/susi-lib"
+
+[project.scripts]
+susi-word-finder = "susi_lib.word_finder_cli:main"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/susi_lib/_version.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+  "/tests",
+  ".pre-commit-config.yaml",
+  ".gitattributes"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/susi_lib"]
+
+[tool.hatch.envs.dev]
+dependencies = [
+  "pre-commit",
+]
+post-install-commands = [
+  "pre-commit install",
+]
+
+[tool.hatch.envs.style]
+detached = true
+dependencies = [
+  "flake8",
+  "black",
+  "isort",
+  "pylint",
+]
+
+[tool.hatch.envs.style.scripts]
+check = [
+  "- flake8 .",
+  "- black --check --diff .",
+  "- isort --check-only --diff .",
+  "- pylint src tests"
+]
+format = [
+  "isort .",
+  "black .",
+  "check",
+]
