@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: cyclarity-sdk
+Version: 1.0.51a5
+Summary: 
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: awsiotsdk
+Requires-Dist: cwe2
+Requires-Dist: pydantic (==2.4.*)
+Requires-Dist: requests
+Description-Content-Type: text/markdown
+
+
