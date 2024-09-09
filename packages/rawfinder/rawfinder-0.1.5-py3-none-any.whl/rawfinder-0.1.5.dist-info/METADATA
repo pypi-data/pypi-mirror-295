@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: rawfinder
+Version: 0.1.5
+Summary: Raw Finder
+Home-page: https://github.com/moskrc/rawfinder
+Keywords: raw,finder,raw_finder,jpeg_raw
+Author: Vitalii Shishorin
+Author-email: moskrc@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: loguru (>=0.7.2,<0.8.0)
+Project-URL: Repository, https://github.com/moskrc/rawfinder
+Description-Content-Type: text/markdown
+
+# RawFinder - Find a corresponded raw file
+
+## What is it?
+
+This script finds corresponded RAW files for images.
+
+## How to install
+
+```bash
+$ pip install rawfinder
+```
+
+## How to use
+```bash
+$ rawfinder -h
+
+usage: rawfinder [-h] [-t TARGET] [image_dir] [raw_dir]
+
+Find corresponding raw files for images
+
+positional arguments:
+  image_dir             directory with images
+  raw_dir               directory with RAW files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TARGET, --target TARGET
+                        destination dir
+```
+
+## Example
+
+Find raw files in ~/Pictures/raw folder for jpeg files in current
+folder, copy them to `raw` folder inside current folder (name by
+default):
+
+```bash
+$ rawfinder . ~/Pictures/raw -t ./raw
+```
+
+# Development
+
+## Install
+
+```bash
+$ poetry install
+```
+
+## Tests
+
+```bash
+$ poetry run make test
+```
+
+## Linters
+
+```bash
+$ poetry run make format
+```
+
