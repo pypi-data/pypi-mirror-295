@@ -1,0 +1,131 @@
+Metadata-Version: 2.1
+Name: brahm_centre_utils
+Version: 0.1.1
+Summary: Brahm Centre internal utility functions
+Home-page: https://github.com/Brahm-Centre-SG/bc-utils-package
+Author: Nguyen An Khanh
+Author-email: ankhanh@brahmcentre.com
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+
+# brahm_centre_utils
+__init__.py: This file will be run at the initialization. It will retrieve functions for quick function calling. Instead of "from bc_utils.salesforce import query_salesforce", it can be "from brahm-centre-utils import query_salesforce"
+
+
+# Brahm-centre-utils
+
+Brahm-centre-utils is a collection of internal utility functions designed to facilitate common tasks at Brahm Centre. This package includes functions for Salesforce interactions, data processing, and more.
+
+## Installation
+
+To install Brahm-centre-utils, you need to have `pip` and `virtualenv` set up on your system.
+
+### Using pip from a local directory
+
+1. Clone the repository or download the package to your local machine.
+2. Navigate to the project directory.
+3. Run the following command to install the package:
+
+```bash
+pip install /path/to/BC-UTILS-PACKAGE
+```
+
+### Editable Mode (for development)
+
+If you are developing the package and want changes to be immediately reflected in your projects:
+
+```bash
+pip install -e /path/to/BC-UTILS-PACKAGE
+```
+
+## Usage
+
+After installing the package, you can use the functions provided by Brahm-centre-utils in your projects. Below are some examples.
+
+### Salesforce Integration
+
+#### query_salesforce
+
+This function allows you to query Salesforce data using SOQL (Salesforce Object Query Language).
+
+**Example:**
+
+```python
+from salesforce import query_salesforce
+
+# Use the function to query Salesforce
+result = query_salesforce("SELECT Id, Name FROM Account")
+print(result)
+```
+
+#### get_Id_from_SF_URL
+
+This function extracts the Salesforce ID from a given Salesforce URL.
+
+**Example:**
+
+```python
+from salesforce import get_Id_from_SF_URL
+
+# Extract Salesforce ID from URL
+sf_id = get_Id_from_SF_URL("https://example.my.salesforce.com/0015g00000WvXXq")
+print(sf_id)
+```
+
+### Common Utilities
+
+#### normalize_name
+
+This function normalizes a given name by converting it to lowercase and removing extra spaces.
+
+**Example:**
+
+```python
+from common import normalize_name
+
+# Normalize a name
+name = normalize_name(" John Doe ")
+print(name)  # Output: "john doe"
+```
+
+### Full List of Functions
+
+- `salesforce.query_salesforce`
+- `salesforce.get_Id_from_SF_URL`
+- `common.normalize_name`
+- `common.are_names_similar`
+- `common.get_unique_names`
+
+## Configuration
+
+Brahm-centre-utils requires certain environment variables for Salesforce integration. These should be stored in a `.env` file in the root of your project.
+
+### Example `.env` file
+
+```plaintext
+SF_USERNAME=your_salesforce_username
+SF_PASSWORD=your_salesforce_password
+SF_TOKEN=your_salesforce_security_token
+SF_DOMAIN=your_salesforce_domain
+```
+
+### Loading Environment Variables
+
+Ensure that you load the environment variables at the start of your script.
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+### Upload new package version
+1. Change the version number
+2. Rebuild the Distribution Files
+```bash
+python setup.py sdist bdist_wheel
+twine upload dist/*
+```
+3. Install the New Version
+```bash
+twine upload dist/*
+```
