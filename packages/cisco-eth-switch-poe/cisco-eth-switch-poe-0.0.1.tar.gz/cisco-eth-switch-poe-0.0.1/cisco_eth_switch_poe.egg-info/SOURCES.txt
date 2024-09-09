@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+cisco_eth_switch_poe/__init__.py
+cisco_eth_switch_poe/cisco_eth_switch_poe.py
+cisco_eth_switch_poe.egg-info/PKG-INFO
+cisco_eth_switch_poe.egg-info/SOURCES.txt
+cisco_eth_switch_poe.egg-info/dependency_links.txt
+cisco_eth_switch_poe.egg-info/not-zip-safe
+cisco_eth_switch_poe.egg-info/top_level.txt
+test/test_cisco_eth_switch_poe.py
