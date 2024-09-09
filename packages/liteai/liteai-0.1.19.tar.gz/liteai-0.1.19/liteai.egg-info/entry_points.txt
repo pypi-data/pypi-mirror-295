@@ -1,0 +1,2 @@
+[console_scripts]
+liteai = liteai.cli:cli

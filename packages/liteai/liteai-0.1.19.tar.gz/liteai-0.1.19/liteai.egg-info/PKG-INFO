@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: liteai
+Version: 0.1.19
+Summary: use ai lite
+Home-page: https://github.com/jerrychen1990/LiteAI
+Author: Chen Hao
+Author-email: jerrychen1990@gmail.com
+License: MIT
+License-File: LICENSE
+Requires-Dist: loguru
+Requires-Dist: pillow
+Requires-Dist: requests
+Requires-Dist: python-dotenv
+Requires-Dist: python-snippets
+Requires-Dist: openai
+Requires-Dist: zhipuai
+Requires-Dist: dashscope
+Requires-Dist: volcengine-python-sdk[ark]
+Requires-Dist: litellm
+Requires-Dist: pydub
+Requires-Dist: simpleaudio
+
+use ai lite
