@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.py
+src/mediascan/__init__.py
+src/mediascan/__main__.py
+src/mediascan/config.py
+src/mediascan/interpreter.py
+src/mediascan/logging.py
+src/mediascan/mediascan.py
+src/mediascan/tmdb.py
+src/mediascan.egg-info/PKG-INFO
+src/mediascan.egg-info/SOURCES.txt
+src/mediascan.egg-info/dependency_links.txt
+src/mediascan.egg-info/entry_points.txt
+src/mediascan.egg-info/requires.txt
+src/mediascan.egg-info/top_level.txt
