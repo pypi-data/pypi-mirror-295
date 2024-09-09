@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: django-rest-crypto
+Version: 1.0.2
+Summary: Crypto Middleware for DjangoRestFramework
+Home-page: https://github.com/suqingdong/django_rest_crypto
+Author: suqingdong
+Author-email: suqingdong1114@gmail.com
+License: BSD License
+Project-URL: Documentation, https://django_rest_crypto.readthedocs.io
+Project-URL: Tracker, https://github.com/suqingdong/django_rest_crypto/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
+Requires-Dist: django
+Requires-Dist: pycryptodomex
+
+# Crypto Middleware for DjangoRestFramework
+
+### Installation
+```bash
+python3 -m pip install django_rest_crypto
+```
+
+
+### Usage
+```python
+# settings.py
+
+MIDDLEWARES += [
+    'django_rest_crypto.middlewares.EncryptDataMiddleware',
+]
+
+
+ENCRYPT_KEY = b'1234567890ABCDE'    # 16, 24 or 32 bytes, required
+ENCRYPT_MODE = 'CBC'                # default
+
+ENCRYPT_IV = b'1234567890ABCDE'     # optional
+ENCRYPT_NONCE = b'1234567890ABCDE'  # optional
+```
+
+
