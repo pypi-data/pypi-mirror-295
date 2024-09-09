@@ -1,0 +1,16 @@
+twirp/__init__.py,sha256=Sw5oCOl5UBw2qPsvTrMQ6_PD-bXYQGdKvE3vKv8KFWU,28
+twirp/asgi.py,sha256=YuJnUvm0Ymo80FIcwuC56WkfK_5UP-9dfMRz2gohosA,7015
+twirp/async_client.py,sha256=Jv9NwKAMXNAJiI7FEdlvUiDjYhZnGQPccTZc4o13epE,1960
+twirp/base.py,sha256=Z9zMK5Y_eQDdF5tCuzDY-AvviSrioJ0OSbn5mT64_fU,4003
+twirp/client.py,sha256=symVs5q7UXcfUgFdTYQbxYyMqrWbEdZbMLHJ_qci_Vw,1691
+twirp/context.py,sha256=pMKdCdKYA8vZdejMZDiRLPytBduVEBdpnZ83bzpoog0,1979
+twirp/ctxkeys.py,sha256=JjjZjNwYiJYML_aa_ZIwVkYILUkwydeIG41bVXqYakU,205
+twirp/errors.py,sha256=d_HCIPWeK6-5gISY-VejiNKdqEWRvjKUK_3lFozA-xg,1466
+twirp/exceptions.py,sha256=N-GcV4dn0n_5gsWHejFP8QK2vAzL9kMXmuXuuOl4heE,2885
+twirp/hook.py,sha256=DX6PeuIHH9kH3Te-DTA54maRpiDvL4WPVs2Bur0EpMs,1358
+twirp/logging.py,sha256=uUa14iSUWTr_bUn83uz_0bDwGNIhenFQ_r48k-avpOI,1398
+twirp/server.py,sha256=5_eP4uxhxHzOqsbvrTARoW3tYOR4q1HNE7s9fAdI2gI,984
+twirpy-0.2.0.dev1.dist-info/METADATA,sha256=e9neSZd-N7GvR-NdcRdG0QWREh06IyMHdHVg6EUcdSQ,3189
+twirpy-0.2.0.dev1.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+twirpy-0.2.0.dev1.dist-info/licenses/LICENSE,sha256=mDozSJmBKMACRg4q_imZnSNx8ZfJZF3n7I5mv9XKm1I,1518
+twirpy-0.2.0.dev1.dist-info/RECORD,,
