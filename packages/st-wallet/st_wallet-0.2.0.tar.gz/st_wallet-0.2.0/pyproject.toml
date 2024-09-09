@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "st-wallet"
+version = "0.2.0"
+description = ""
+authors = ["Thomas <wxy_000000@qq.com>"]
+readme = "README.md"
+include = [
+    "frontend/dist/**/*",
+]
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.38.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
