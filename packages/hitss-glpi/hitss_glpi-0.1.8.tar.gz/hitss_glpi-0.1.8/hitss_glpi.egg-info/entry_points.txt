@@ -1,0 +1,3 @@
+[console_scripts]
+hitss_glpi = hitss_glpi.api:main
+
