@@ -1,0 +1,2 @@
+[console_scripts]
+read-commit = read_commit.cli:cli
