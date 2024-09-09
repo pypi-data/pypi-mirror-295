@@ -1,0 +1,36 @@
+cosmic_toolbox
+KDEpy
+matplotlib
+numpy
+pandas
+scikit-learn
+tqdm
+
+[:python_version < "3.10"]
+arviz
+scipy<1.13
+
+[:python_version >= "3.10"]
+arviz>0.17
+scipy
+
+[dev]
+twine
+pytest<7.2.0
+pytest-cov
+pytest-regtest
+tox
+flake8
+black
+isort
+sphinx
+sphinx-pynpoint-theme
+myst-parser
+
+[docs]
+sphinx<7
+sphinx-pynpoint-theme
+myst-parser
+nbsphinx
+sphinx-copybutton
+recommonmark
