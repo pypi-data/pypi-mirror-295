@@ -1,0 +1,167 @@
+Metadata-Version: 2.1
+Name: spider-cligen
+Version: 0.1.1
+Summary: A CLI tool to initialize Python projects with a standard structure.
+Home-page: https://github.com/simondev413/SpiderCLI
+Author: Simão Domingos De Oliveira António
+Author-email: simaodomingos413@gamil.com
+Project-URL: Source, https://github.com/simondev413/SpiderCLI/
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+
+Spider CLIGEN Documentation
+
+## Overview
+The **Spider CLIGEN** is a command-line tool that helps developers quickly set up different types of Python projects, including packages, web applications, mobile apps, and more. It automates the creation of project structures, virtual environments, and essential files such as `README.md`, `.gitignore`, `LICENSE`, and CI workflow files for services like GitHub Actions, GitLab CI, and CircleCI.
+
+### Main Features:
+- Create project structure based on different types of Python projects.
+- Support for multiple license types (MIT, GPLv3, Apache, BSD 3-Clause, CC0).
+- Automates the creation of a virtual environment and installation of dependencies.
+- Generates configuration files for popular CI services.
+- Automatically generates essential files like `README.md`, `.gitignore`, `LICENSE`, and more.
+
+## Usage
+
+The CLI provides the following commands:
+
+- `startproject`: Initialize a new project structure.
+- `project-types`: Display the supported project types.
+
+```bash
+$ python spider_cligen.py startproject
+```
+
+## Project Structure Creation
+
+### Function: `create_project_structure`
+
+```python
+def create_project_structure(project_type, project_name, license_type, project_owner, owner_email, ci_service):
+```
+
+#### Parameters:
+- **project_type**: The type of project (e.g., `package`, `web`, `api`).
+- **project_name**: The name of the project.
+- **license_type**: The type of license to be included (e.g., `mit`, `gplv3`, `apache`).
+- **project_owner**: Name of the project owner/author.
+- **owner_email**: Email of the project owner.
+- **ci_service**: Continuous Integration service to be configured (e.g., `github`, `gitlab`, `circleci`).
+
+#### Raises:
+- **ProjectTypeNotExitsError**: Raised when the provided project type is not supported.
+- **ContinousIntegrationServiceError**: Raised if the CI service is not supported.
+- **VenvCreateError**: Raised if the virtual environment cannot be created.
+- **RequirementsInstallationError**: Raised if requirements cannot be installed.
+- **CreateProjectStructureError**: Raised if the project structure creation fails.
+
+## File and Path Creation
+
+### Function: `create_readme`
+
+```python
+def create_readme(path, project_name):
+```
+
+Creates a `README.md` file for the project with the project name.
+
+### Function: `create_requirements`
+
+```python
+def create_requirements(path):
+```
+
+Prompts the user for required packages and creates a `requirements.txt` file.
+
+### Function: `create_gitignore`
+
+```python
+def create_gitignore(path):
+```
+
+Generates a `.gitignore` file based on predefined templates.
+
+### Function: `create_lincense`
+
+```python
+def create_lincense(path, license_type, project_owner=None):
+```
+
+Generates a `LICENSE` file based on the specified license type (e.g., MIT, GPLv3, Apache, BSD 3-Clause, CC0).
+
+### Function: `create_manifest`
+
+```python
+def create_manifest(path):
+```
+
+Creates a `MANIFEST.in` file for Python package projects.
+
+## Virtual Environment and Dependencies
+
+### Function: `create_venv`
+
+```python
+def create_venv(path):
+```
+
+Creates a Python virtual environment in the project directory.
+
+### Function: `install_requirements`
+
+```python
+def install_requirements(path):
+```
+
+Installs the required dependencies from the `requirements.txt` file in the virtual environment.
+
+## CI Workflow Files
+
+### Function: `create_workflows_path`
+
+```python
+def create_workflows_path(project_path, service=DEFAULT_CI_SERVICE):
+```
+
+Generates CI workflow files for services like GitHub Actions, GitLab CI, and CircleCI.
+
+## License Generation
+
+- **MIT License**: `generate_mit_license(project_owner)`
+- **GPLv3 License**: `generate_gplv3_license(project_owner)`
+- **Apache License**: `generate_apache_license(project_owner)`
+- **BSD 3-Clause License**: `generate_bsd3_license(project_owner)`
+- **CC0 License**: `generate_cco_license(project_owner)`
+
+## Command-Line Interface (CLI)
+
+### Function: `main`
+
+```python
+def main():
+```
+
+This is the main entry point for the CLI. It uses `argparse` to handle commands:
+
+- **`startproject`**: Prompts the user for details to create a new project.
+- **`project-types`**: Displays supported project types.
+
+---
+
+### Example
+
+```bash
+# Start a new project
+$ python spider_cligen.py startproject
+
+# Show supported project types
+$ python spider_cligen.py project-types
+```
