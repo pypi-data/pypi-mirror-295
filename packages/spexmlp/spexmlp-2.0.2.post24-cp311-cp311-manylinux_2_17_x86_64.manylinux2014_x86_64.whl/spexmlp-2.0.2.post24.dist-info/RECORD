@@ -1,0 +1,12 @@
+spexmlp_swiglu_cuda_torch24.so,sha256=JsNr5HU2B6uX0_CU3EhtrSKDdJcla0U_QZwPY4hu72M,20302545
+spexmlp/eswiglu.py,sha256=UiqRBG4a_K3ZCIFtochyCUebOi_DHsSj8K4zENJd5tI,7247
+spexmlp/_autocast_utils.py,sha256=aErJc0n0i0aa9FVtrRLURhSvbruk-9g31karwFYYqNE,664
+spexmlp/spexmlp.py,sha256=K3E69V6dZthYMwByhrppRAKAQtsRZXDs2B2DSG9LWAw,3463
+spexmlp/__init__.py,sha256=OUrTM8q5IVkq-Vo4og_EL-qPMvQusGG_6eEwQzBxVqE,324
+spexmlp/rollcat.py,sha256=BmVCYwaPG7wOF54-Wxtc31e7A56yK3yFDnzwNpZOxcA,785
+spexmlp-2.0.2.post24.dist-info/WHEEL,sha256=1pYTe4_OeXMoiAzbCCjVEUIQIlCH_vOwKRWEjMaDcV0,151
+spexmlp-2.0.2.post24.dist-info/METADATA,sha256=ZVEqfr2rwSVXnHlpand5wh3S9k9Zsxpoq1qieE6f7RQ,864
+spexmlp-2.0.2.post24.dist-info/RECORD,,
+spexmlp-2.0.2.post24.dist-info/top_level.txt,sha256=HZoIYlTWtkPf5eNRebjR00PnnO7G1rvTUaga_vfwxNw,36
+spexmlp-2.0.2.post24.dist-info/LICENSE,sha256=iCfP3zpgJ8FCvnf3ysuQwaSVG9LZSMgZeEznqZOGkK8,1449
+spexmlp.libs/libcudart-d0da41ae.so.11.8.89,sha256=hhk7JOGxrNgSAkL7vl1PY3troN21hCfMEKnDjAIDtsk,695145
