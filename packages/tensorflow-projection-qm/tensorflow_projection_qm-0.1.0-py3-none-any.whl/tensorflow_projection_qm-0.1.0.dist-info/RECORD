@@ -1,0 +1,14 @@
+tensorflow_projection_qm/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tensorflow_projection_qm/metrics/__init__.py,sha256=XsH2-ZyEmOaM-xGNavLHE191e_ycqJSXQgixaXikQOc,886
+tensorflow_projection_qm/metrics/continuity.py,sha256=cCQ_dvRSFEB5KGR8EW2rRfV1vEM9ORZ5M4h5Uca0IKI,960
+tensorflow_projection_qm/metrics/distance_consistency.py,sha256=3q7CXOSF79GQ2pUAbr1mmijUqEiHZVBpIhD_gH7x7Ic,871
+tensorflow_projection_qm/metrics/mean_rel_rank_error.py,sha256=tNeqUDFXVUMMCKGlQJH2ywU3Z_ljvx4MZcV5Hm78pyw,2647
+tensorflow_projection_qm/metrics/neighborhood_hit.py,sha256=cQeG4CPYmCt9HAICB7l_VdwdcJwJXWxsJsh4euJYU-4,418
+tensorflow_projection_qm/metrics/stress.py,sha256=TbwAu40H2N2yMGzoVE0BAhXufqX_5euFgkvrpNte8RQ,1777
+tensorflow_projection_qm/metrics/trustworthiness.py,sha256=gTKGggD4vGJ2y0kA2_QOkCTOA27advTv-Xa6MjfZZk4,982
+tensorflow_projection_qm/util/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tensorflow_projection_qm/util/distance.py,sha256=XEcKPWvuTMeJHcwjLSVvKQaksXWSt_pcyy2pyiVxrXo,1647
+tensorflow_projection_qm-0.1.0.dist-info/LICENSE,sha256=YEmzWFBix0-J8OhL3uCOljw1nwGTeJE29S6OGMDQ760,1073
+tensorflow_projection_qm-0.1.0.dist-info/METADATA,sha256=zfxm5J87AnHn8ZaBkconAN-lnOLLXlj9mMAqviBjRaU,5683
+tensorflow_projection_qm-0.1.0.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+tensorflow_projection_qm-0.1.0.dist-info/RECORD,,
