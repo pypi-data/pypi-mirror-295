@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: hfmonthlyreportALL
+Version: 0.3
+Summary: Send monthly file count only to monthly report server
+Author: VishalJain_NIOT
+Author-email: vishaljain9516@gmail.com
+Requires-Dist: requests
+Requires-Dist: pyperclip==1.8.2
+Requires-Dist: qrcode
