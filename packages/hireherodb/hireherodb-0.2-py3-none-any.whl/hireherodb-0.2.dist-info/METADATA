@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: hireherodb
+Version: 0.2
+Requires-Python: >=3.12
+Requires-Dist: SQLAlchemy ==2.0.32
+Requires-Dist: pydantic ==2.8.2
+
