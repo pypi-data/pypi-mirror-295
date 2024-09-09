@@ -1,0 +1,11 @@
+README.md
+setup.py
+glpi_api/__init__.py
+glpi_api/api.py
+hitss_glpi.egg-info/PKG-INFO
+hitss_glpi.egg-info/SOURCES.txt
+hitss_glpi.egg-info/dependency_links.txt
+hitss_glpi.egg-info/entry_points.txt
+hitss_glpi.egg-info/requires.txt
+hitss_glpi.egg-info/top_level.txt
+test/test_api.py
