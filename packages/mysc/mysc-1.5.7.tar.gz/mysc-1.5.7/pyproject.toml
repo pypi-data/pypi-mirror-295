@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mysc"
+version = "1.5.7"
+authors = [
+    {name = "Me2sY", email = "me2sy@outlook.com"}
+]
+description = "A Scrcpy client implemented in Python. Gui with dearpygui/pygame. With Video, Audio, also Control. GUI Supports Key Proxy, window position record, right-click gesture control, Virtual Camera, UHID Keyboard and Chinese input and more."
+readme = "README.md"
+requires-python = ">= 3.11"
+keywords = ["scrcpy", "android", "adbutils", "av", "numpy", "DearPyGui", "Pygame", "adb", "pyaudio"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Chinese (Simplified)",
+    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture"
+]
+
+dependencies = [
+    # Base
+    "loguru", "adbutils", "click",
+
+    # Video
+    "av==12.3.0",
+    "numpy",
+
+    # Audio
+    "pyaudio",
+
+    # Control
+    "pyperclip"
+]
+
+
+[project.optional-dependencies]
+# For GUI USE
+gui = [
+    # GUI Framework
+    "dearpygui", "pygame",
+
+    # GUI Functions
+    "moosegesture", "pyvirtualcam"
+]
+
+# Web USE
+web = [
+    "nicegui"
+]
+
+flac = [
+    "pyflac"
+]
+
+opus = [
+    "pyogg", "opuslib"
+]
+
+tools = [
+    "pyvirtualcam"
+]
+
+full = [
+    "dearpygui", "pygame",
+    "pyperclip", "moosegesture", "pyvirtualcam",
+    "nicegui",
+    "pyflac", "pyogg", "opuslib"
+]
+
+
+[project.scripts]
+mysc-cli = "myscrcpy.run:run"
+mysc-web = "myscrcpy.gui.ng.main:run_app"
+
+mysc-t-vc = "myscrcpy.tools.virtualcam:cli"
+
+
+[project.gui-scripts]
+mysc-gui = "myscrcpy.run:run"
+
+
+[project.urls]
+Homepage = "https://github.com/me2sy/MYScrcpy"
+Issues = "https://github.com/me2sy/MYScrcpy/issues"
