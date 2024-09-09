@@ -1,0 +1,72 @@
+services:
+    gai-ttt:
+        image: kakkoii1337/gai-ttt-svr-exllamav2:1.0.3
+        container_name: gai-ttt
+        environment:
+            DEFAULT_GENERATOR: "ttt-exllamav2-mistral7b"
+            LOG_LEVEL: "DEBUG"
+            TZ: "Asia/Singapore"
+            SWAGGER_URL: "/doc"
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
+                          driver: nvidia
+                          count: all
+        ports:
+            - "12031:12031"
+            - "5678:5678"
+        networks:
+            - gai-sandbox
+        volumes:
+            - ~/.gai:/root/.gai
+        command: python -m debugpy --listen 0.0.0.0:5678 main.py
+        #command: sleep infinity
+    gai-rag:
+        image: kakkoii1337/gai-rag-svr:1.0.10
+        container_name: gai-rag
+        environment:
+            DOCKER_BUILDKIT: 1
+            LOG_LEVEL: "DEBUG"
+            TZ: "Asia/Singapore"
+            SWAGGER_URL: "/doc"
+            DEFAULT_GENERATOR: "rag-instructor-sentencepiece"
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
+                          driver: nvidia
+                          count: all
+        ports:
+            - "12036:12036"
+            - "5679:5679"
+        networks:
+            - gai-sandbox
+        volumes:
+            - ~/.gai:/app/.gai
+    gai-tti:
+        image: kakkoii1337/gai-tti-svr:1.0.9
+        container_name: gai-tti
+        environment:
+            CLI_ARGS: "--listen --api --xformers --medvram --no-download-sd-model --ckpt /stable-diffusion-webui/models/Stable-diffusion/runwayml/v1-5-pruned-emaonly.safetensors"
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
+                          driver: nvidia
+                          count: all
+        ports:
+            - "12035:12035"
+        networks:
+            - gai-sandbox
+        volumes:
+            - ~/.gai/models/Stable-diffusion:/stable-diffusion-webui/models/Stable-diffusion
+            - ~/.gai/models/VAE:/stable-diffusion-webui/models/VAE
+        
+
+networks:
+    gai-sandbox:
+        external: true
