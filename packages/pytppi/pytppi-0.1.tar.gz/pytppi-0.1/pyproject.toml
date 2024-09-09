@@ -1,0 +1,79 @@
+[project]
+name = "pytppi"
+version = "0.1"
+dependencies = []
+requires-python = ">= 3.8"
+authors = [{ name = "Abhijit Bose (aka. boseji)" }]
+description = "tppi stands for Tilde Pipe Plus Interface"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+keywords = ["communication", "encoding", "string", "iot", "industrial"]
+classifiers = [
+    # How mature is this project? 
+    # "Development Status :: 1 - Planning",
+    # "Development Status :: 2 - Pre-Alpha",
+    # "Development Status :: 3 - Alpha",
+    # "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
+
+    # Topic
+    "Topic :: Communications",
+    "Topic :: Home Automation",
+    "Topic :: Internet",
+
+    # License
+    "License :: OSI Approved :: Apache Software License",
+
+    # Programming Language
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
+### Base Install command
+## pip install -e .
+
+[project.urls]
+Homepage = "https://github.com/boseji/pytppi"
+Repository = "https://github.com/boseji/pytppi.git"
+Issues = "https://github.com/boseji/pytppi/issues"
+
+[project.optional-dependencies]
+dev = ["build", "coverage", "black"]
+
+### Development Depencies Install
+## pip install -e .[dev]
+### Build the Artefacts
+## python -m build --wheel --sdist
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+# [project.scripts]
+# tppi-assemble="tppi.cli.assemble:main"
+
+## For Windows
+# [project.gui-scripts]
+# tppi-assemble="tppi.cli.assemble:main"
+
+[tool.black]
+line-length = 80
+skip-magic-trailing-comma = false
+skip-string-normalization = false
+target-version = ['py38', 'py310', 'py311']
+
+### Code Formatting Command
+## black .
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.coverage.run]
+branch = true
+include = ["src/*"]
+command_line = "-m unittest discover -v -s tests/"
+
+### Test Command
+## coverage run
+## coverage html
