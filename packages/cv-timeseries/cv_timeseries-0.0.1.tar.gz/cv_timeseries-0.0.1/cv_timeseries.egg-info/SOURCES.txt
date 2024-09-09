@@ -1,0 +1,12 @@
+README.md
+setup.py
+cv_timeseries/__init__.py
+cv_timeseries.egg-info/PKG-INFO
+cv_timeseries.egg-info/SOURCES.txt
+cv_timeseries.egg-info/dependency_links.txt
+cv_timeseries.egg-info/requires.txt
+cv_timeseries.egg-info/top_level.txt
+cv_timeseries/plots/__init__.py
+cv_timeseries/plots/plot_cv.py
+cv_timeseries/statistics/__init__.py
+cv_timeseries/statistics/calculate_cv.py
