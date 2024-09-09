@@ -1,0 +1,52 @@
+Metadata-Version: 2.3
+Name: antares-ptb
+Version: 21.5
+Summary: A ptb fork for personal use only
+Project-URL: Bug Tracker, https://github.com/Antares0982/python-telegram-bot/issues
+Project-URL: Source Code, https://github.com/Antares0982/python-telegram-bot
+Author-email: Leandro Toledo <devs@python-telegram-bot.org>
+License-Expression: LGPL-3.0-only
+License-File: LICENSE
+License-File: LICENSE.dual
+License-File: LICENSE.lesser
+Keywords: api,bot,python,telegram,wrapper
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.8
+Requires-Dist: httpx~=0.27
+Provides-Extra: all
+Requires-Dist: python-telegram-bot[ext,http2,passport,socks]; extra == 'all'
+Provides-Extra: callback-data
+Requires-Dist: cachetools<5.6.0,>=5.3.3; extra == 'callback-data'
+Provides-Extra: ext
+Requires-Dist: python-telegram-bot[callback-data,job-queue,rate-limiter,webhooks]; extra == 'ext'
+Provides-Extra: http2
+Requires-Dist: httpx[http2]; extra == 'http2'
+Provides-Extra: job-queue
+Requires-Dist: apscheduler~=3.10.4; extra == 'job-queue'
+Requires-Dist: pytz>=2018.6; extra == 'job-queue'
+Provides-Extra: passport
+Requires-Dist: cffi>=1.17.0rc1; (python_version > '3.12') and extra == 'passport'
+Requires-Dist: cryptography!=3.4,!=3.4.1,!=3.4.2,!=3.4.3,>=39.0.1; extra == 'passport'
+Provides-Extra: rate-limiter
+Requires-Dist: aiolimiter~=1.1.0; extra == 'rate-limiter'
+Provides-Extra: socks
+Requires-Dist: httpx[socks]; extra == 'socks'
+Provides-Extra: webhooks
+Requires-Dist: tornado~=6.4; extra == 'webhooks'
+Description-Content-Type: text/x-rst
+
+A ptb fork for personal use only
