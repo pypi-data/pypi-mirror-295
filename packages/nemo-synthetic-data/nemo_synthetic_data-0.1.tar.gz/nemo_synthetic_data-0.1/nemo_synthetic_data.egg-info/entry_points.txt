@@ -1,0 +1,2 @@
+[console_scripts]
+generate-data = nemo_synthetic_data.main:main

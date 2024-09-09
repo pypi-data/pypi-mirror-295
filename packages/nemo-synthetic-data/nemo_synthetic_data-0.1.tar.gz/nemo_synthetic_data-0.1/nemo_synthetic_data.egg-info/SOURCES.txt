@@ -1,0 +1,22 @@
+README.md
+setup.py
+nemo_synthetic_data/__init__.py
+nemo_synthetic_data/config.py
+nemo_synthetic_data/data_handling.py
+nemo_synthetic_data/instruction_generation.py
+nemo_synthetic_data/main.py
+nemo_synthetic_data/response_generation.py
+nemo_synthetic_data/topic_generation.py
+nemo_synthetic_data.egg-info/PKG-INFO
+nemo_synthetic_data.egg-info/SOURCES.txt
+nemo_synthetic_data.egg-info/dependency_links.txt
+nemo_synthetic_data.egg-info/entry_points.txt
+nemo_synthetic_data.egg-info/requires.txt
+nemo_synthetic_data.egg-info/top_level.txt
+synthetic_data_generation copy/__init__.py
+synthetic_data_generation copy/config.py
+synthetic_data_generation copy/data_handling.py
+synthetic_data_generation copy/instruction_generation.py
+synthetic_data_generation copy/main.py
+synthetic_data_generation copy/response_generation.py
+synthetic_data_generation copy/topic_generation.py
