@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: mini_max_swing
+Version: 1.1.4
+Summary: httpgenerator or rpcgenerator distpackage
+Home-page: https://gitlab.xaminim.com/qa/swing
+Author: zhengguang
+Author-email: xingyun@minimaxi.com
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.9
+Requires-Dist: allure-pytest==2.13.5
+Requires-Dist: allure-python-commons==2.13.5
+Requires-Dist: cos-python-sdk-v5==1.9.29
+Requires-Dist: pytest==6.2.3
+Requires-Dist: pandas==2.2.2
+Requires-Dist: requests==2.25.1
+Requires-Dist: urllib3==1.26.5
+Requires-Dist: ptsd==0.2.0
+Requires-Dist: requests-toolbelt
+Requires-Dist: pytz==2024.1
+Requires-Dist: thrift==0.20.0
+Requires-Dist: thriftpy2==0.4.20
+Requires-Dist: python-gitlab==4.4.0
+Requires-Dist: kafka-python==2.0.2
+Requires-Dist: backports.tarfile==1.2.0
+Requires-Dist: certifi==2024.8.30
+Requires-Dist: charset-normalizer==3.3.2
+Requires-Dist: Cython==3.0.11
+Requires-Dist: docutils==0.21.2
+Requires-Dist: idna==3.8
+Requires-Dist: importlib_metadata==8.4.0
+Requires-Dist: jaraco.classes==3.4.0
+Requires-Dist: jaraco.context==6.0.1
+Requires-Dist: jaraco.functools==4.0.2
+Requires-Dist: keyring==25.3.0
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: more-itertools==10.5.0
+Requires-Dist: nh3==0.2.18
+Requires-Dist: pkginfo==1.10.0
+Requires-Dist: ply==3.11
+Requires-Dist: Pygments==2.18.0
+Requires-Dist: readme_renderer==44.0
+Requires-Dist: requests==2.32.3
+Requires-Dist: requests-toolbelt==1.0.0
+Requires-Dist: rfc3986==2.0.0
+Requires-Dist: rich==13.8.0
+Requires-Dist: six==1.16.0
+Requires-Dist: twine==5.1.1
+Requires-Dist: zipp==3.20.1
