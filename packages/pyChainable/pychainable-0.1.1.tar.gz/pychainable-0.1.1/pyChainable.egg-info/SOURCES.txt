@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+pyChainable.egg-info/PKG-INFO
+pyChainable.egg-info/SOURCES.txt
+pyChainable.egg-info/dependency_links.txt
+pyChainable.egg-info/top_level.txt
+pychain/__init__.py
+pychain/chainable.py
+pychain/common.py
+pychain/pipeline.py
+tests/test_chainable.py
