@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: rapid-latex-ocr
+Version: 0.0.8
+Summary: Tool of converting images of equations into LaTeX code.
+Home-page: https://github.com/RapidAI/RapidLaTeXOCR
+Author: SWHL
+Author-email: liekkaskono@163.com
+License: Apache-2.0
+Keywords: ocr, image to text, latex
+Platform: Any
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.6,<3.13
+Description-Content-Type: text/markdown
+Requires-Dist: onnxruntime
+Requires-Dist: tokenizers >=0.13.2
+Requires-Dist: numpy <2.0.0
+Requires-Dist: opencv-python
+Requires-Dist: Pillow >=9.2.0
+Requires-Dist: PyYAML
+
+### See details for [RapidLaTexOCR](https://github.com/RapidAI/RapidLaTeXOCR)
+
+
