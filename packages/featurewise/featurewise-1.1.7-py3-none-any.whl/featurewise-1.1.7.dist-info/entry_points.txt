@@ -1,0 +1,2 @@
+[console_scripts]
+featurewise-app = featurewise.scripts.run_app:main
