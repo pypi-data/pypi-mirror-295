@@ -1,0 +1,17 @@
+ops~=2.15
+PyYAML>=6.0.1
+
+[docs]
+canonical-sphinx-extensions
+furo
+linkify-it-py
+myst-parser
+pyspelling
+sphinx~=8.0.0
+sphinx-autobuild
+sphinx-copybutton
+sphinx-design
+sphinx-notfound-page
+sphinx-tabs
+sphinxcontrib-jquery
+sphinxext-opengraph
