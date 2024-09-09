@@ -1,0 +1,14 @@
+LICENSE.md
+MANIFEST.in
+README.md
+pyproject.toml
+src/egyptian_id_validator/__init__,py
+src/egyptian_id_validator/generation.py
+src/egyptian_id_validator/validation.py
+src/egyptian_id_validator.egg-info/PKG-INFO
+src/egyptian_id_validator.egg-info/SOURCES.txt
+src/egyptian_id_validator.egg-info/dependency_links.txt
+src/egyptian_id_validator.egg-info/top_level.txt
+src/egyptian_id_validator/__pycache__/validation.cpython-312.pyc
+tests/test_validation.py
+tests/__pycache__/test_validation.cpython-312-pytest-8.3.2.pyc
