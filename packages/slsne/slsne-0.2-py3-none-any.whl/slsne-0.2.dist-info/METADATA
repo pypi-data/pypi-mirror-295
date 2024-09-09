@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: slsne
+Version: 0.2
+Summary: Catalog of Type-I Superluminous Supernovae
+Home-page: https://github.com/gmzsebastian/SLSNe
+Author: Sebastian Gomez
+Author-email: sgomez@stsci.edu
+License: MIT License
+Requires-Python: >=3.6
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: dust-extinction
+Requires-Dist: extinction
+Requires-Dist: astropy
+Requires-Dist: scipy
+Requires-Dist: numexpr
+
