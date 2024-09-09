@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+    {name = "pydicom contributors"}
+]
+classifiers=[
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Stubs Only",
+]
+description = "Extended type hints for pydicom"
+keywords = ["pydicom, typing"]
+license = {text = "MIT"}
+name = "types-pydicom"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "3.0.0.0"
+
+[tool.setuptools.package-data]
+pydicom_stubs = ["*.pyi"]
+
+[project.optional-dependencies]
+dev =  [
+    "mypy",
+    # "pydicom @ git+https://github.com/pydicom/pydicom.git@main",
+    "build",
+]
+
+[project.urls]
+homepage = "https://github.com/pydicom/types-pydicom"
+
+
+[tool.mypy]
+python_version = "3.10"
+hide_error_codes = false
+warn_redundant_casts = false
+warn_unused_ignores = false
+warn_return_any = true
+warn_unreachable = false
+ignore_missing_imports = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
