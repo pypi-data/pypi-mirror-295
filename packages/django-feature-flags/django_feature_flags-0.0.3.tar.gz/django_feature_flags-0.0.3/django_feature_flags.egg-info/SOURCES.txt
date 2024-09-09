@@ -1,0 +1,17 @@
+LICENCE
+LICENSE
+README.md
+setup.py
+django_feature_flags.egg-info/PKG-INFO
+django_feature_flags.egg-info/SOURCES.txt
+django_feature_flags.egg-info/dependency_links.txt
+django_feature_flags.egg-info/requires.txt
+django_feature_flags.egg-info/top_level.txt
+feature_flags/__init__.py
+feature_flags/admin.py
+feature_flags/apps.py
+feature_flags/models.py
+feature_flags/tests.py
+feature_flags/utils.py
+feature_flags/views.py
+feature_flags/migrations/__init__.py
