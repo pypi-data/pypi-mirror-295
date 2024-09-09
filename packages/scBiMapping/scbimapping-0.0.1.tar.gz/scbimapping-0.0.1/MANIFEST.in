@@ -1,0 +1,3 @@
+include README.md
+include LICENSE
+include scBiMapping/scBiMapping.cpython-311-x86_64-linux-gnu.so
