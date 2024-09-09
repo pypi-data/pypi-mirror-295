@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="header">
+      <!-- Header and Scan Submission Inline -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <h1 class="title"><span>LAN</span>scape</h1>
+        <!-- Form -->
+        <form id="scan-form" class="d-flex align-items-end">
+            <div class="form-group me-2">
+                <label for="subnet">Subnet:</label>
+                <input type="text" id="subnet" name="subnet" class="form-control" value="{{subnet}}" placeholder="Enter subnet">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Scan</button>
+        </form>
+    </div>
+
+    <!-- Advanced Section -->
+    <details onclick="rightSizeScanContainer()">
+        <summary>Advanced</summary>
+        <div class="form-group mt-2">
+            <label for="port_list">Port List:</label>
+            <div class="port-list-wrapper">
+                <div id="port-list" class="port-list">{{port_list}}</div>
+                <div id="port-list-dropdown" class="port-list-dropdown"></div>
+            </div>
+        </div>
+        
+        <div class="form-group mt-2">
+            <label for="parallelism">Parallelism:</label>
+            <input type="range" id="parallelism" name="parallelism" min="0.25" max="3" step="0.05" value="{{parallelism}}">
+            <output id="parallelism-value">{{parallelism}}</output>
+        </div>
+    </details>
+</div>
+<div id="scan-container">
+    <div class="container-fluid my-4">
+        <!-- Scan Results -->
+        <div id="scan-results" class="div-hide">
+            <h2>Scan Results</h2>
+            <iframe id="overview-frame" src=""></iframe>
+            <input type="text" id="filter" placeholder="Filter results" class="form-control mb-3 mt-3">
+            <div class="table-frame-container">
+                <iframe id="ip-table-frame" src=""></iframe>
+            </div>
+        </div>
+        <div id="no-scan">
+            <h2>No results to show</h2>
+            <p>Submit a scan above</p>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}
+
+
+
