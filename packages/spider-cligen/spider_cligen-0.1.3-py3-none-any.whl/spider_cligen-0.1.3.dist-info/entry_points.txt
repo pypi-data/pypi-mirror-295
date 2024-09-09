@@ -1,0 +1,2 @@
+[console_scripts]
+spider-cligen = spider_cligen.cli:main
