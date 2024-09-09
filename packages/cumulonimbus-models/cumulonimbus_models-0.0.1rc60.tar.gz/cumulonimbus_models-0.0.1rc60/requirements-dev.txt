@@ -1,0 +1,6 @@
+setuptools-scm
+uv
+tox-uv
+mypy
+build
+cibuildwheel

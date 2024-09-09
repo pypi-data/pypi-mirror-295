@@ -1,0 +1,15 @@
+awslogin='aws codeartifact login --tool pip --repository pypi --domain guywilsonjr --domain-owner 936272581790 --region us-west-2'
+alias clean='rm -rf build/ dist/ src/cumulonimbus_models.egg-info/ .tox/ src/build/ src/*.so src/cumulonimbus_models/*.so'
+alias build='python3 -m build'
+alias cbuild='clean && build'
+alias predepinstall='pip install -U pip && pip install -U uv'
+alias depinstall='uv pip install -U -r requirements.in -r requirements-dev.txt -r requirements-test.txt'
+
+function committagpush() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: blanktagpush <tag>"
+    return 1
+  fi
+  tagname=$1
+  git commit -a -m "$tagname" && gtag $tagname -m "$tagname" && gpush
+}
