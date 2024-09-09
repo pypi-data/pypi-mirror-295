@@ -1,0 +1,2 @@
+[console_scripts]
+cymulate-cli = cymulate_oauth2_client.cli:main
