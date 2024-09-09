@@ -1,0 +1,20 @@
+import reflex as rx
+
+
+def hint(
+    text: str, content: rx.Component, side: str = "top", active: bool = False, class_name: str = "", **props
+) -> rx.Component:
+    return rx.hover_card.root(
+        rx.hover_card.trigger(content),
+        rx.hover_card.content(
+            rx.text(text),
+            side=side,
+            align="center",
+            class_name="flex justify-center items-center bg-[--slate-11] px-1.5 py-0.5 rounded-lg font-medium text-sm text-[--slate-1]",
+        ),
+        class_name=class_name,
+        default_open=active,
+        open_delay=80,
+        close_delay=80,
+        **props,
+    )
