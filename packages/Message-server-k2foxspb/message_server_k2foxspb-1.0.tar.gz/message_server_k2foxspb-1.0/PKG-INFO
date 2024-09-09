@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: Message_server_k2foxspb
+Version: 1.0
+Summary: mess_server
+Author: @k2Fox
+Author-email: k2foxspb@mail.ru
+Requires-Dist: PyQt5
+Requires-Dist: sqlalchemy
+Requires-Dist: pycryptodome
+Requires-Dist: pycryptodomex
