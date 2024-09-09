@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: scratchattachplus
+Version: 0.1.0
+Summary: scratchattachの追加機能版
+Home-page: https://github.com/kakeruzoku/scratchattachplus
+Download-URL: https://github.com/kakeruzoku/scratchattachplus
+Author: kakeruzoku
+Author-email: kakeruzoku@gmail.com
+Maintainer: kakeruzoku
+Maintainer-email: kakeruzoku@gmail.com
+License: MIT
+Keywords: scratch api,scratchattach,scratch api python,scratch python,scratch for python,scratch,scratch cloud,scratch cloud variables,scratch bot
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scratchattach
+Requires-Dist: requests
+
+# scratchattachplus
+
+install:
+```
+pip install scratchattachplus
+```
+
+## ScratchAttachplusの機能
+ScratchAttachに比べて...
+- 報告
+- 生徒アカウントの作成
+- scratchattachからの簡単な移行
+- scratchattachの機能も引き続き利用可能
+
+wikiは[こちら](https://github.com/kakeruzoku/scratchattachplus/wiki)
+
+## LINKS
+[X](https://x.com/kakeruzoku)
+
+[Scratch](https://scratch.mit.edu/users/-25kakeru-25)
+
+[Change log](https://github.com/kakeruzoku/scratchattachplus/blob/main/changelog.md)
+
+[mail](mailto:kakeruzoku@gmail.com)
+
+[discord](https://0f.f5.si/d)
+
+## Thanks!
+**Thanks to [timmccool](https://github.com/TimMcCool) for [scratchattach](https://github.com/TimMcCool/scratchattach)**
+**[scratchattach](https://github.com/TimMcCool/scratchattach)を作った[timmccool](https://github.com/TimMcCool)に感謝します。**
