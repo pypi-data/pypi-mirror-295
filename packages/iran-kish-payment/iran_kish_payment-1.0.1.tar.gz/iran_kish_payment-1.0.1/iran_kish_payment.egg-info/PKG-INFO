@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: iran_kish_payment
+Version: 1.0.1
+Summary: Iran Kish payment portal
+Home-page: https://github.com/parsbytes/iran_kish_payment
+Author: parsbytes
+Author-email: parsbytes@gmail.com
+License-File: LICENSE
+Requires-Dist: pycryptodome
+Requires-Dist: requests
+Requires-Dist: urllib3<2
