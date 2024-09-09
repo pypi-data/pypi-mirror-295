@@ -1,0 +1,12 @@
+syslog_manager/__init__.py,sha256=AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs,1
+syslog_manager/count_event_per_process.py,sha256=VGnKI4x5x3y2kATiei_1tNIVser4WrBGrFToaduRLyo,430
+syslog_manager/exporter.py,sha256=7joWGrYiaaRGC0xXWiSamx_AGQN8HzziAMgXfCeFPKE,4340
+syslog_manager/log_query.py,sha256=6TyT_DSsihyaDp3BxE3_0D9YAiGOFPIAWn6f3Tz4FXI,8137
+syslog_manager/main.py,sha256=CJgBtl22_MAB7heykbg9ZNEVSJD-mALr-uEQdNtSZU0,6057
+syslog_manager/split_by_day.py,sha256=EYh5EhzJIdKZ6fiGNM_o0BCtjUjQ1KxllhckS4TxdcY,1199
+syslog_manager/utility.py,sha256=X4uVODZ4MN6ltKoyKc2kSEr5kJC-jzM6Z8yMoNK-iBY,375
+syslog_manager-2.0.0.dist-info/METADATA,sha256=esqPVJ8uX7yfluxwCMe6yCBstnIk1btXAZGt2enmntY,630
+syslog_manager-2.0.0.dist-info/WHEEL,sha256=UvcQYKBHoFqaQd6LKyqHw9fxEolWLQnlzP0h_LgJAfI,91
+syslog_manager-2.0.0.dist-info/entry_points.txt,sha256=kbaNJcKT-PT8Xy4XZUqo51Z0ELAJ5SeZwMJdo6FJ_ZU,60
+syslog_manager-2.0.0.dist-info/top_level.txt,sha256=o_DOuupRG7L36n1EQHv6mJg0IlZcVEqPQW3a0U9xWRg,15
+syslog_manager-2.0.0.dist-info/RECORD,,

@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: syslog_manager
+Version: 2.0.0
+Requires-Dist: attrs ==24.2.0
+Requires-Dist: colorama ==0.4.6
+Requires-Dist: coverage ==7.6.1
+Requires-Dist: iniconfig ==2.0.0
+Requires-Dist: jsonschema ==4.23.0
+Requires-Dist: jsonschema-specifications ==2023.12.1
+Requires-Dist: mirakuru ==2.5.2
+Requires-Dist: packaging ==24.1
+Requires-Dist: pluggy ==1.5.0
+Requires-Dist: port-for ==0.7.2
+Requires-Dist: psutil ==6.0.0
+Requires-Dist: pycsvschema ==0.0.6
+Requires-Dist: pytest ==8.3.2
+Requires-Dist: pytest-mock ==3.14.0
+Requires-Dist: referencing ==0.35.1
+Requires-Dist: rfc3986 ==2.0.0
+Requires-Dist: rpds-py ==0.20.0
+
