@@ -1,0 +1,30 @@
+from setuptools import setup
+
+setup(
+    name='classifier_linear',  
+    version='0.12.0',  
+    author='Anshuman Pattnaik',  
+    author_email='helloanshu04@gmail.com',  
+    description='A linear classifier built using tensorflow.', 
+    long_description='lond description', 
+    long_description_content_type='text/markdown',  
+    url='https://github.com/ANSHPG',  
+    packages=['classifier_linear'], 
+    install_requires=[
+        'tensorflow>=2.0.0',  
+        'numpy>=1.18.0', 
+    ], 
+    classifiers=[
+        'Programming Language :: Python :: 3', 
+        'License :: OSI Approved :: MIT License', 
+        'Operating System :: OS Independent',
+    ],
+    python_requires='>=3.6',
+    entry_points = {
+        "console_script":[
+            "classifier-linear = classifier_linear:clsfr",
+            "dataset-1 = classifier_linear:dataset_1",
+            "dataset-2 = classifier_linear:dataset_2"
+        ],
+    }, 
+)
