@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: reportobello
+Version: 0.1.0
+Summary: Python API library for Reportobello
+Author: dosisod
+License: MIT
+Project-URL: Source, https://github.com/reportobello/reportobello-python
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Typing :: Typed
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: httpx >=0.27.2
+
+# Reportobello
+
+Python API library for Reportobello.
+
+## Installing
+
+```shell
+$ pip install reportobello
+```
+
+## Basic Usage
+
+Below is a full exmaple of how to create reports in Reportobello.
+
+This example is ready to go, and can be copy-pasted into your project.
+
+```python
+from dataclasses import dataclass
+import asyncio
+
+from reportobello import ReportobelloApi, Template
+
+
+@dataclass
+class QuarterlyReport(Template):
+    name = "quarterly_report"
+
+    # See Typst docs for syntax: https://typst.app/docs
+    content = """
+#let data = json("data.json")
+
+= Q#data.quarter Earnings Report
+
+Generated: #datetime.today().display()
+
+Earnings: #data.earnings
+"""
+    # Alternatively, store in a file
+    # file = "report.typ"
+
+    quarter: int
+    earnings: float
+
+
+api = ReportobelloApi()
+
+
+async def main():
+    template = QuarterlyReport(quarter=1, earnings=123_456)
+
+    # You only need to run this if the template above changes
+    await api.create_or_update_template(template)
+
+    pdf = await api.build_template(template)
+
+    print(f"Downloading {pdf.url}")
+
+    await pdf.save_to("output.pdf")
+
+asyncio.run(main())
+```
+
+Read [the docs](https://reportobello.com/docs/libraries/python.html) for more info.
