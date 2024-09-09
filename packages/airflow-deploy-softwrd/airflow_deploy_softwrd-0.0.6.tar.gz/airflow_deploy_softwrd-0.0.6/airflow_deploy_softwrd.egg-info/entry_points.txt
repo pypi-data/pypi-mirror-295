@@ -1,0 +1,2 @@
+[console_scripts]
+airflow_deploy_softwrd = airflow_deploy_softwrd.app:main
