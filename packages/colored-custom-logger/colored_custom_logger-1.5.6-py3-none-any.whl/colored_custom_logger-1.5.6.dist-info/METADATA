@@ -1,0 +1,127 @@
+Metadata-Version: 2.1
+Name: colored_custom_logger
+Version: 1.5.6
+Summary: A custom logger with colorful output
+Project-URL: Homepage, https://github.com/robin-collins/colored_custom_logger
+Project-URL: Bug Tracker, https://github.com/robin-collins/colored_custom_logger/issues
+Project-URL: Documentation, https://robin-collins.github.io/colored_custom_logger/
+Author-email: Robin Collins <robin@blackcat-it.com.au>
+License-File: LICENSE
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: System :: Logging
+Requires-Python: >=3.7
+Requires-Dist: colorama
+Description-Content-Type: text/markdown
+
+# 🌈 Colored Custom Logger
+
+[![PyPI version](https://badge.fury.io/py/colored-custom-logger.svg)](https://badge.fury.io/py/colored-custom-logger)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Versions](https://img.shields.io/pypi/pyversions/colored-custom-logger.svg)](https://pypi.org/project/colored-custom-logger/)
+
+Turn your monochrome console into a vibrant logging fiesta! 🎉
+
+## 🌟 Features
+
+- 🎨 Colorful date and log level outputs
+- 🚦 Easy-to-distinguish log levels
+- 🔧 Customizable and extendable
+- 🚀 Simple to integrate into existing projects
+- 🐍 Pure Python, no extra dependencies (except colorama for Windows support)
+
+## 📸 See It in Action
+
+Feast your eyes on these beautiful logs:
+
+![Colored Logger Demo](docs/images/showcase_example.png)
+
+## 🚀 Installation
+
+Get started with a simple pip install:
+
+```bash
+pip install colored-custom-logger
+```
+
+## 🎮 Quick Start
+
+Here's a taste of what you can do with Colored Custom Logger:
+
+```python
+from colored_custom_logger import CustomLogger
+
+# Create your fabulous logger
+logger = CustomLogger.get_logger(__name__)
+
+# Let the colorful logging begin!
+logger.debug("🔍 This is a debug message")
+logger.info("ℹ️ Here's some info for you")
+logger.warning("⚠️ Uh-oh, this is a warning")
+logger.error("❌ Oops! We've got an error")
+logger.critical("🚨 MAYDAY! MAYDAY! This is critical!")
+```
+
+And voilà! Your console will transform into this:
+
+![Logger Output](docs/images/quickstart.png)
+
+## Documentation
+
+Comprehensive documentation for Colored Custom Logger is available online:
+
+- **User Guide and API Reference**: [https://robin-collins.github.io/colored_custom_logger/](https://robin-collins.github.io/colored_custom_logger/)
+
+This documentation includes:
+- Installation instructions
+- Usage examples
+- API reference
+- Troubleshooting guide
+
+For developers interested in contributing to the project or setting up the documentation locally:
+
+- **Documentation Setup Guide**: See [DOCUMENTATION_SETUP.md](DOCUMENTATION_SETUP.md) in the project repository.
+
+The documentation is built using MkDocs and hosted on GitHub Pages. It is automatically updated when changes are pushed to the main branch of the repository.
+
+## 🌈 Color Scheme
+
+Our carefully curated color palette ensures your logs are both beautiful and readable:
+
+- 🔵 DEBUG: Cool Blue
+- 🟢 INFO: Go Green
+- 🟡 WARNING: Yummy Yellow
+- 🔴 ERROR: Radical Red
+- 🔥 CRITICAL: Blazing Bright Red
+
+## 🛠️ Advanced Usage
+
+Want to customize your logger further? No problem! Check out our advanced usage guide:
+
+![Advanced Usage](docs/images/advanced_usage.png)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- Thanks to the [colorama](https://pypi.org/project/colorama/) project for making cross-platform colored terminal text output possible.
+- Inspired by all the monochrome loggers out there, waiting for a splash of color.
+
+---
+
+Made with ❤️ and 🌈 by [Robin Collins](https://github.com/robin-collins)
+
+Remember, life's too short for boring logs! 🎭🎨
