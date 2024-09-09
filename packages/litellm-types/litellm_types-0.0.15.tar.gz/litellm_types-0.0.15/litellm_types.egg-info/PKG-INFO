@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: litellm_types
+Version: 0.0.15
+License-File: LICENSE
+Requires-Dist: pydantic
+Requires-Dist: litellm
+Requires-Dist: beartype
+Requires-Dist: rich
+Requires-Dist: tenacity
