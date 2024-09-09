@@ -1,0 +1,2 @@
+[console_scripts]
+generate = nem12_tools.cli:generate
