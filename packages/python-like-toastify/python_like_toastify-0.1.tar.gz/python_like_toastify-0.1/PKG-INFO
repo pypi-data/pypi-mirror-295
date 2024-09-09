@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: python-like-toastify
+Version: 0.1
+Summary: A Django reusable app to display customizable toast messages.
+Home-page: 
+Author: Dean Vervaeck
+Author-email: dean.vervaeck@spotgroup.be
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: Django
