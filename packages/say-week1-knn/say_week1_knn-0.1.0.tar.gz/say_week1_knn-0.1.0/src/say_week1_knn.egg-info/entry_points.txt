@@ -1,0 +1,2 @@
+[console_scripts]
+w1-fish = say_week1_knn.main:main

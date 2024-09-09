@@ -1,0 +1,23 @@
+[project]
+name = "say-week1-knn"
+version = "0.1.0"
+description = "Week1 program - using scikit-learn KNeighborsClassifier"
+authors = [
+    {name = "NishNovae", email = "raecrowned@gmail.com"},
+]
+dependencies = [
+    "scikit-learn>=1.3.2",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm]
+distribution = true
+
+[project.scripts]
+w1-fish = "say_week1_knn.main:main"
+
+[project.urls]
+Homepage="https://github.com/NishNovae/say-week1-knn"
+Issues="https://github.com/NishNovae/say-week1-knn/issues"
