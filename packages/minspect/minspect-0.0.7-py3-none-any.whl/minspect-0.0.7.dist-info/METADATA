@@ -1,0 +1,30 @@
+Metadata-Version: 2.3
+Name: minspect
+Version: 0.0.7
+Project-URL: Documentation, https://github.com/mbodiai/minspect#readme
+Project-URL: Issues, https://github.com/mbodiai/minspect/issues
+Project-URL: Source, https://github.com/mbodiai/minspect
+Author: mbodiai
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.10
+Requires-Dist: click>=8.0.0
+Requires-Dist: rich
+Description-Content-Type: text/markdown
+
+# minspect
+
+
+
+## Installation
+
+```bash
+pip install minspect
+```
