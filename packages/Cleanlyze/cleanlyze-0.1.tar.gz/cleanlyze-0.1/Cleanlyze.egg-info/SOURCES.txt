@@ -1,0 +1,16 @@
+README.md
+setup.py
+Cleanlyze.egg-info/PKG-INFO
+Cleanlyze.egg-info/SOURCES.txt
+Cleanlyze.egg-info/dependency_links.txt
+Cleanlyze.egg-info/requires.txt
+Cleanlyze.egg-info/top_level.txt
+cleanlyze/__init__.py
+cleanlyze/cleaning.py
+cleanlyze/dataAgregation.py
+cleanlyze/dataEncoding.py
+cleanlyze/exportImport.py
+cleanlyze/timeSeriesProcessing.py
+cleanlyze/transformation.py
+cleanlyze/utility.py
+cleanlyze/visualisation.py
