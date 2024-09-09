@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: undatasio
+Version: 0.1.1
+Summary: test pip upload
+Home-page: 
+Author: lily
+Author-email: 1909017169@qq.com
+License: MIT
+Requires-Python: >=3.8
+Requires-Dist: requests (~=2.32.3)
+Requires-Dist: requests-toolbelt (==1.0.0)
+
