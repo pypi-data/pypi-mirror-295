@@ -1,0 +1,3 @@
+[console_scripts]
+never-gonna-give-you-up = nevergonnagiveyouup.__main__:never_gonna_give_you_up
+nevergonnagiveyouup = nevergonnagiveyouup.__main__:never_gonna_give_you_up
