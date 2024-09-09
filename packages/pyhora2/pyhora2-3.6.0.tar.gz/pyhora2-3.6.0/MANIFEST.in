@@ -1,0 +1,6 @@
+graft hora
+
+# Exclude virtual environment
+prune venv
+
+include _package_info.py
