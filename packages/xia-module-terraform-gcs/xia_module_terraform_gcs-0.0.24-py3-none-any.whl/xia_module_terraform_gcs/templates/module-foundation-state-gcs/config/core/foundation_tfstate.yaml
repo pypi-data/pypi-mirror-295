@@ -1,0 +1,9 @@
+backend: gcs
+# default_tf_bucket:
+# org_buckets:
+#   <foundation_bucket_name>:
+#     bucket_orgs: # could use any starting part of <realm>/<foundation> as match pattern
+#       - <realm>/<foundation>
+#     bucket_project:
+#     bucket_region: eu
+
