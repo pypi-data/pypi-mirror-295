@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.py
+mmk_ai/__init__.py
+mmk_ai/auto_train.py
+mmk_ai/data_preprocessing.py
+mmk_ai/easy_train.py
+mmk_ai/evaluation.py
+mmk_ai/model_training.py
+mmk_ai/scoring.py
+mmk_ai/visualization.py
+mmk_ai.egg-info/PKG-INFO
+mmk_ai.egg-info/SOURCES.txt
+mmk_ai.egg-info/dependency_links.txt
+mmk_ai.egg-info/requires.txt
+mmk_ai.egg-info/top_level.txt
