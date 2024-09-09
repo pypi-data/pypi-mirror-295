@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: lintian-codeclimate
+Version: 0.2.2
+Summary: Codeclimate parser for lintian
+Author-email: Duncan Macleod <macleoddm@cardiff.ac.uk>
+License: MIT
+Project-URL: Homepage, https://gitlab.com/duncanmmacleod/lintian-codeclimate/
+Project-URL: Bug Tracker, https://gitlab.com/duncanmmacleod/lintian-codeclimate/-/issues/
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Quality Assurance
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+
+# lintian-codeclimate
+
+This project provides a Python-based parser for Lintian to write
+CodeClimate-format reports, mainly to assist using Lintian in
+Gitlab CI/CD pipelines.
+
+## Install
+
+```shell
+python -m pip install lintian-codeclimate
+```
+
+## Usage
+
+Just pipe the output of `lintian --info` to the `lintian_codeclimate` module.
+
+```shell
+lintian --info | python -m lintian_codeclimate
+```

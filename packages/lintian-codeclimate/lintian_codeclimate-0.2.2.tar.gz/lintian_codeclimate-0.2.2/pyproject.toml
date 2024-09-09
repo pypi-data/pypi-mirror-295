@@ -1,0 +1,65 @@
+[build-system]
+requires = [
+  "setuptools >=61.0.0",
+  "setuptools-scm[toml] >=3.4.3",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lintian-codeclimate"
+description = "Codeclimate parser for lintian"
+readme = "README.md"
+authors = [
+  { name = "Duncan Macleod", email = "macleoddm@cardiff.ac.uk" },
+]
+license = { text = "MIT" }
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Quality Assurance",
+]
+requires-python = ">=3.8"
+
+dependencies = [
+]
+dynamic = [
+  "version",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+]
+
+[project.urls]
+"Homepage" = "https://gitlab.com/duncanmmacleod/lintian-codeclimate/"
+"Bug Tracker" = "https://gitlab.com/duncanmmacleod/lintian-codeclimate/-/issues/"
+
+[tool.coverage.paths]
+source = [
+  "lintian_codeclimate/",
+  "*/*-packages/lintian_codeclimate/",
+]
+
+[tool.coverage.report]
+omit = [
+  "*/lintian_codeclimate/_version.py",
+]
+precision = 1
+
+[tool.setuptools]
+license-files = [ "LICENSE" ]
+
+[tool.setuptools.packages.find]
+include = [
+  "lintian_codeclimate",
+]
+
+[tool.setuptools_scm]
+write_to = "lintian_codeclimate/_version.py"
