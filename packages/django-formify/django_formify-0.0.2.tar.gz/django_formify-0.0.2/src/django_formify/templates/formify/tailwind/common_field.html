@@ -1,0 +1,13 @@
+<div id="div_{{ field.auto_id }}" class="{{ formify_helper.wrapper_class }}">
+
+  {% if field.label and formify_helper.form_show_labels %}
+    <label for="{{ field.id_for_label }}" class="{% if formify_helper.label_class %}{{ formify_helper.label_class }}{% endif %}">
+      {{ field.label|safe }}{% if field.field.required %}<span>*</span>{% endif %}
+    </label>
+  {% endif %}
+
+  {{ field_html }}
+
+  {% include 'formify/tailwind/help_text_and_errors.html' %}
+
+</div>
