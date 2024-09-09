@@ -1,0 +1,36 @@
+Metadata-Version: 2.3
+Name: winnplib
+Version: 0.1.3
+Summary: A simple API to get Windows Media information, including cover art.
+Author: Maxplayz7566
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: <3.13,>=3.9
+Requires-Dist: pillow
+Requires-Dist: winrt-windows-foundation
+Requires-Dist: winrt-windows-foundation-collections
+Requires-Dist: winrt-windows-media
+Requires-Dist: winrt-windows-media-control
+Requires-Dist: winrt-windows-storage
+Requires-Dist: winrt-windows-storage-streams
+Description-Content-Type: text/markdown
+
+# Now Playing Api
+
+## NOW USES UP TO DATE LIBRARYS / PYTHON!
+
+### A simple api to get windows media
+This includes but not limited to cover art
+
+To get media info you want to await it:
+```python
+await winnplib.get_media_info_async()
+```
+or you can use asyncio
+```python
+asyncio.run(winnplib.get_media_info_async())
+```
+
+getting media info returns a dict
