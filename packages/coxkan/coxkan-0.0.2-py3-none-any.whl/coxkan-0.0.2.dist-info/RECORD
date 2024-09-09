@@ -1,0 +1,14 @@
+coxkan/CoxKAN.py,sha256=zQyXeCjc-a_XTMrpcHQN6HcEZkXDTErE65vvl-pJgNU,47927
+coxkan/__init__.py,sha256=bkOQfUk4bhGWv0AUxiEQq0lzUeeoWDHODhblMVDo9-4,26
+coxkan/hyperparam_search.py,sha256=JsdBtUp9hMFLrL0rlgCxj-Yrh15KQT-yx-ygN7Ge5j0,16649
+coxkan/utils.py,sha256=maVJoSVrCRDezUydOJhsw6s92TGDMBwzm9xZA9ZVxto,7983
+coxkan/datasets/__init__.py,sha256=PBkZNZANQsdSksbP0RTLUyaFjsnmImPLnCO6nWfNaT0,216
+coxkan/datasets/_base.py,sha256=4Ye2l63xoeN3rAUl6yeY6IMR0HaGiWTldTRQb4-zoLs,1417
+coxkan/datasets/deepsurv.py,sha256=ufpOh-_COaDb9BehHgI12-NbnNb0HK8qdEWL4ewBn0A,7469
+coxkan/datasets/rdatasets.py,sha256=ybTum6AqhQYd2klEZ3M1fDW_cSmejI7-C7VWt3pEYDA,6710
+coxkan/datasets/simulation.py,sha256=hhnAew_-Tod8pG7zw96GaZ3u4q6vcDXVM9JA7IvfV-s,2558
+coxkan-0.0.2.dist-info/LICENSE,sha256=hpMD7jIeLQnc1eb4VmoZXSoUPYPK2RBYr366UQrzMJA,11352
+coxkan-0.0.2.dist-info/METADATA,sha256=rE6APMmKgNHI0KiQfJvHefv1xhPKoQLmsngxPeI1gdk,7816
+coxkan-0.0.2.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+coxkan-0.0.2.dist-info/top_level.txt,sha256=IgrB1OnkS4MUzTgxHsRS8d8qGqH4pbLP-9oh55SJsIA,7
+coxkan-0.0.2.dist-info/RECORD,,
