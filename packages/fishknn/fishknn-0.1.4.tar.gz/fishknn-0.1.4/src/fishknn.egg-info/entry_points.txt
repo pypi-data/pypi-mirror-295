@@ -1,0 +1,3 @@
+[console_scripts]
+scat_plot = fishknn.what_fish_name:watch_data
+t_cmd = fishknn.what_fish_name:fish_pred

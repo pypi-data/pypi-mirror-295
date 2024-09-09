@@ -1,0 +1,28 @@
+[project]
+name = "fishknn"
+version = "0.1.4"
+description = "Fish predictor with KNN"
+authors = [
+    {name = "Kimwonjoon", email = "kimpass189@gmail.com"},
+]
+dependencies = [
+    "pandas>=2.2.2",
+    "pyarrow>=17.0.0",
+    "scikit-learn>=1.5.1",
+    "matplotlib>=3.9.2",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = true
+
+[project.scripts]
+t_cmd = "fishknn.what_fish_name:fish_pred"
+scat_plot = "fishknn.what_fish_name:watch_data"
+
+[project.urls]
+Homepage = "https://github.com/Kimwonjoon/fishknn"
+Issues = "https://github.com/Kimwonjoon/fishknn/issues"

@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/fishknn/__init__.py
+src/fishknn/what_fish_name.py
+src/fishknn.egg-info/PKG-INFO
+src/fishknn.egg-info/SOURCES.txt
+src/fishknn.egg-info/dependency_links.txt
+src/fishknn.egg-info/entry_points.txt
+src/fishknn.egg-info/requires.txt
+src/fishknn.egg-info/top_level.txt
