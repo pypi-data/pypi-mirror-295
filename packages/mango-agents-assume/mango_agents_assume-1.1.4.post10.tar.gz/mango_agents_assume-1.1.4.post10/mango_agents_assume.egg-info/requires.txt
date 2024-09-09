@@ -1,0 +1,12 @@
+dill>=0.3.8
+msgspec>=0.18.6
+paho-mqtt>=2.1.0
+protobuf==5.27.2
+python-dateutil>=2.9.0
+
+[dev]
+black
+isort
+pytest
+pytest-cov
+pytest-asyncio
