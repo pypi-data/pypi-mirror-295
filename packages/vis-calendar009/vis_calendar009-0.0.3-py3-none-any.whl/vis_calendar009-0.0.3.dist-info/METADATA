@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: vis-calendar009
+Version: 0.0.3
+Author: Omer Cakir
+Author-email: <omercakir2323@gmail.com>
+Keywords: python
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: calendar
+
