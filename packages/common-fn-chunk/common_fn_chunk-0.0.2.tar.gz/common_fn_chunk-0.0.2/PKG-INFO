@@ -1,0 +1,60 @@
+Metadata-Version: 2.3
+Name: common-fn-chunk
+Version: 0.0.2
+Project-URL: Documentation, https://github.com/Hao Wu/common-fn-chunk#readme
+Project-URL: Issues, https://github.com/Hao Wu/common-fn-chunk/issues
+Project-URL: Source, https://github.com/Hao Wu/common-fn-chunk
+Author-email: Hao Wu <haowu@dataset.sh>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# common_fn_chunk
+
+[![PyPI - Version](https://img.shields.io/pypi/v/common-fn-chunk.svg)](https://pypi.org/project/common-fn-chunk)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/common-fn-chunk.svg)](https://pypi.org/project/common-fn-chunk)
+
+-----
+
+## Table of Contents
+
+- [common\_fn\_chunk](#common_fn_chunk)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+
+## Installation
+
+```console
+pip install common-fn-chunk
+```
+
+## Usage
+```python
+from common_fn_chunk import chunk_it
+r = range(1000)
+for chunk in chunk_it(r):
+    print(len(chunk)) # 50
+    break
+
+r = range(1000)
+
+for chunk in chunk_it(r, 100):
+    print(len(chunk)) # 100
+    break
+
+```
+
+## License
+`common-fn-chunk` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
