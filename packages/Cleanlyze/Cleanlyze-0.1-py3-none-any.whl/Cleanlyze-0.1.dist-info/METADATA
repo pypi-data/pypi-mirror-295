@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: Cleanlyze
+Version: 0.1
+Summary: A simple library for data processing tasks.
+Author: PgNetwork
+Author-email: cleanlyze@gmail.com
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scipy
+
