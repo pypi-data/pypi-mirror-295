@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: llm-cloudflare
+Version: 0.1
+Summary: An LLM CLI plugin for Cloudflare Workers AI models.
+Author: elithrar
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/elithrar/llm-cloudflare
+Project-URL: Issues, https://github.com/elithrar/llm-cloudflare/issues
+Project-URL: CI, https://github.com/elithrar/llm-cloudflare/actions
+Project-URL: Changelog, https://github.com/elithrar/llm-cloudflare/releases
+Classifier: License :: OSI Approved :: Apache Software License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: llm
+Requires-Dist: OpenAI
+
+## cloudflare-llm
+
+> 🚧 Work in progress
+
+A plugin for the [`llm`](https://llm.datasette.io/en/stable/) CLI that allows you to use the text generation models (LLMs) running on Cloudflare [Workers AI](https://developers.cloudflare.com/workers-ai/models/#text-generation).
+
+## Usage
+
+```sh
+# Install the plugin
+llm install llm-cloudflare
+
+# Provide a valid Workers AI token
+# Docs: https://developers.cloudflare.com/workers-ai/get-started/rest-api/#1-get-api-token-and-account-id
+llm keys set cloudflare
+
+# Set your Cloudflare account ID
+# Docs: https://developers.cloudflare.com/workers-ai/get-started/rest-api/#1-get-api-token-and-account-id
+export CLOUDFLARE_ACCOUNT_ID="33charlonghexstringhere"
+```
+
+The default model is currently the [Llama 3.1 8B instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct) model
+
+## Model library
+
+TODO
+
+## License
+
+Copyright Cloudflare, Inc (2024). Apache-2.0 licensed. See the LICENSE file for details.
