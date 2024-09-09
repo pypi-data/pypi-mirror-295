@@ -1,0 +1,26 @@
+[project]
+name = "tgr"
+version = "0.1.0"
+description = "Testing General Relativity with Gravitational Waves"
+authors = [
+    {name = "Yifan Wang", email = "yifan.wang@aei.mpg.de"},
+]
+dependencies = [
+    "pycbc",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+# https://packaging.python.org/en/latest/tutorials/packaging-projects/
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/yi-fan-wang/TestingGR_with_Gravwaves"
+Issues = "https://github.com/yi-fan-wang/TestingGR_with_Gravwaves/issues"
