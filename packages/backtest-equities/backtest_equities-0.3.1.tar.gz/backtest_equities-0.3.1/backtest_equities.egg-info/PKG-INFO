@@ -1,0 +1,142 @@
+Metadata-Version: 2.1
+Name: backtest_equities
+Version: 0.3.1
+Summary: A tool for simulating trading strategies against historical market data to evaluate performance and refine approaches before live trading.
+Home-page: https://github.com/JackMartinDev/backtest_equities
+Author: Jack Martin
+Author-email: Jack Martin <jack.martin.codes@gmail.com>
+Project-URL: Homepage, https://github.com/JackMartinDev/backtest_equities
+Project-URL: Issues, https://github.com/JackMartinDev/backtest_equities/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: The Unlicense (Unlicense)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Backtesting Package
+
+A Python package for backtesting and analyzing trading strategies over various time periods. This package allows users to easily split data, run backtests, optimize strategies, and perform equity curve analysis.
+
+## Features
+
+- **Split Data Periods**: Split time series data into yearly, monthly, or custom periods.
+- **Backtest**: Run backtests on trading strategies across different periods.
+- **Equity Curve Analysis**: Analyze and visualize equity curves for deeper insight into performance.
+- **Monte Carlo Simulation**: Perform Monte Carlo simulations to evaluate strategy robustness.
+- **Parameter Optimization**: Optimize strategy parameters for better performance.
+
+## Installation
+You can install the package using pip:
+pip install backtest_equities
+
+## Usage
+
+### Import the Package
+
+import backtest_equities as bt
+
+1. Split Data into Periods
+You can split your time series data (such as stock price data) into periods for different types of analysis.
+
+import pandas as pd
+
+### Assuming `df` is your time series data with a DateTime index
+
+df = pd.read_csv('your-data.csv', index_col='Date', parse_dates=True)
+
+### Split the data into yearly periods
+
+split_data = bt.split_periods(df, periods_for_split='yearly')
+
+2. Run a Backtest Over Periods
+Run a backtest on the split data for different periods.
+
+### Define your strategy parameters
+
+side = 'long'
+SL_type = 'fixed'
+SL = 0.02
+SL_spike_out = False
+TP = 0.05
+TS = 0.03
+
+### Run backtest over the split periods
+
+backtest_results = bt.backtest_over_periods(split_data, side, SL_type, SL, SL_spike_out, TP, TS)
+
+### Analyze the backtest results
+
+for result in backtest_results:
+    print(result)
+
+3. Optimize Strategy Parameters
+You can optimize your strategy by testing different parameters.
+
+### Define parameter ranges
+
+param_ranges = {
+    'SL': [0.01, 0.02, 0.03],
+    'TP': [0.03, 0.05, 0.07]
+}
+
+### Optimize parameters
+
+optimal_params = bt.optimize_parameters(df, param_ranges)
+print("Optimal Parameters:", optimal_params)
+
+4. Equity Curve Analysis
+Visualize and analyze the equity curves from the backtest.
+
+### Perform equity curve analysis
+
+bt.equity_curve_analysis(backtest_results)
+
+5. Monte Carlo Simulation
+Run a Monte Carlo simulation to assess the strategy’s robustness.
+
+### Run Monte Carlo simulation with 1000 iterations
+
+bt.monte_carlo_simulation(backtest_results, iterations=1000)
+
+# Example Workflow
+Here’s a full workflow example of using the package to split data, backtest, and analyze results.
+
+import pandas as pd
+import your_package_name as bt
+
+### Load data
+
+df = pd.read_csv('your-data.csv', index_col='Date', parse_dates=True)
+
+### Split into yearly periods
+
+split_data = bt.split_periods(df, periods_for_split='yearly')
+
+### Run backtest on each period
+
+backtest_results = bt.backtest_over_periods(split_data, side='long', SL_type='fixed', SL=0.02, SL_spike_out=False, TP=0.05, TS=0.03)
+
+### Perform equity curve analysis
+
+bt.equity_curve_analysis(backtest_results)
+
+### Run Monte Carlo simulation for further analysis
+
+bt.monte_carlo_simulation(backtest_results, iterations=1000)
+
+# Contributing
+Contributions are welcome! Please fork the repository, create a branch for your changes, and submit a pull request.
+
+# License
+This project is dedicated to the public domain under the Unlicense. You can freely use, modify, and distribute this software without any restrictions.
+
+# Contact
+For any issues or support, please reach out via the GitHub repository or email at jack.martin.codes@gmail.com.
+
+# Sections Explained:
+- **Overview**: General introduction to the package features.
+- **Installation**: Instructions on how to install the package using pip.
+- **Usage**: Step-by-step examples showing how to split periods, backtest, optimize parameters, and perform equity analysis.
+- **Example Workflow**: A full example that combines everything.
+- **Contributing** and **License** sections provide information for contributors and license details.
