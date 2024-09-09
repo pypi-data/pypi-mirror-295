@@ -1,0 +1,33 @@
+services:
+  your-project:
+    restart: always
+    build:
+      context: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./project:/project
+      - ./media:/src/media
+    env_file: .pg-env
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - database
+
+  database:
+    restart: always
+    image: postgres:14-alpine
+    env_file: .pg-env
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./your_certificate.crt:/etc/ssl/certs/your_certificate.crt:ro
+      - ./your_certificate.key:/etc/ssl/private/your_certificate.key:ro
+      - ./your_certificate.crt:/etc/ssl/certs/your_certificate.crt:ro
+    depends_on:
+      - your-project

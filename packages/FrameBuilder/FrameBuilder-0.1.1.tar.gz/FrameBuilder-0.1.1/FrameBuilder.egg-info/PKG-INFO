@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: FrameBuilder
+Version: 0.1.1
+Summary: Library for creating projects with a ready-made structure on popular Python frameworks
+Home-page: https://github.com/zabit923/FrameBuilder
+Author: Ibragimov Zabit
+Author-email: xaclafun1991@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+<h1 align="center">рџ› FrameBuilderрџ› </h1>
+
+---
+
+<b>In this README рџ‘‡</b>
+
+---
+
+## Features
+This library is designed to unpack a ready-made project with a ready-made file structure.
+
+new templates will be added in the future
+
+## Install and usage
+
+```commandline
+pip install FrameBuilder
+```
+
+to unpack the template
+```commandline
+builder-run
+```
+
+to change the template
+```commandline
+builder-rebuild
+```
