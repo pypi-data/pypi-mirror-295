@@ -1,0 +1,4 @@
+[console_scripts]
+builder-help = builder.core:command_help
+builder-rebuild = builder.core:command_rebuild
+builder-run = builder.core:command_run
