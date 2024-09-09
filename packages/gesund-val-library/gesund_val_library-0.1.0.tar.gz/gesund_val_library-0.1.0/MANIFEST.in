@@ -1,0 +1,13 @@
+global-include *.py *.txt
+
+include LICENSE
+include README.md
+include CHANGELOG.txt
+
+recursive-include metrics *
+
+recursive-include scripts *
+
+recursive-include utils *
+
+prune test_data
