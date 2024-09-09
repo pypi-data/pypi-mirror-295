@@ -1,0 +1,6 @@
+importlib_metadata==8.4.0
+packaging==24.1
+python-dotenv==1.0.1
+Requests==2.32.3
+rich==13.8.0
+setuptools==69.2.0
