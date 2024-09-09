@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+src/catbox/__init__.py
+src/catbox/catbox.py
+src/catbox/exceptions.py
+src/catbox/helpers.py
+src/catbox_uploader.egg-info/PKG-INFO
+src/catbox_uploader.egg-info/SOURCES.txt
+src/catbox_uploader.egg-info/dependency_links.txt
+src/catbox_uploader.egg-info/requires.txt
+src/catbox_uploader.egg-info/top_level.txt
