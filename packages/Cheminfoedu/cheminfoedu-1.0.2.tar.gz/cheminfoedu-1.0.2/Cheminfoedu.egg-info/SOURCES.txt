@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+setup.py
+Cheminfoedu.egg-info/PKG-INFO
+Cheminfoedu.egg-info/SOURCES.txt
+Cheminfoedu.egg-info/dependency_links.txt
+Cheminfoedu.egg-info/top_level.txt
+cheminformatics/__init__.py
+cheminformatics/utils.py
+cheminformatics/edu/__init__.py
+cheminformatics/edu/base.py
+cheminformatics/edu/data.py
+cheminformatics/edu/eln.py
+cheminformatics/tools/__init__.py
+cheminformatics/tools/LLM/__init__.py
+cheminformatics/tools/LLM/prompts.py
+cheminformatics/tools/ontology/__init__.py
