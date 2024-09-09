@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: Prompt-Caller
+Version: 0.0.1
+Summary: This package is responsible for calling prompts in a specific format. It uses LangChain and OpenAI API
+Author: Thiago Nepomuceno
+Author-email: thiago@neps.academy
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: toml
+
+# Neps Academy AI
+
+This package is responsible for all Neps Academy features related to AI
+
+# Build and Upload
+
+python setup.py sdist bdist_wheel
+
+twine upload dist/\*
