@@ -1,0 +1,50 @@
+[build-system]
+requires = [
+    "setuptools>=43.0.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "objx"
+description = "objects"
+version = "123"
+authors = [
+    {name = "Bart Thate", email = "rssbotd@gmail.com"},
+]
+readme = "README.rst"
+license = {text="Public Domain"}
+classifiers = [ 
+    'Development Status :: 3 - Alpha',
+    'License :: Public Domain',
+    'Operating System :: Unix',
+    'Programming Language :: Python',
+    'Topic :: Utilities'
+]
+
+
+[project.urls]
+"home" = "https://pypi.org/project/objx"
+"bugs" = "https://github.com/rssbotd/objx/issues"
+"source" = "https://github.com/rssbotd/objx"
+
+
+[tool.setuptools]
+packages = [
+    'objx',
+]
+zip-safe=true
+
+
+[tool.setuptools.data-files]
+"share/doc/objx" = [
+    "README.rst"
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+       "env*",
+       "html*",
+       "test*"
+      ]
