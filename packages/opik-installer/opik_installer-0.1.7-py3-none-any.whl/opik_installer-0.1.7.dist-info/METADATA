@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: opik-installer
+Version: 0.1.7
+Summary: PIP installer for the Comet Opik
+Author-email: "Comet ML Inc." <mail@comet.com>
+Maintainer-email: "Diego Fernando Carrión (CRThaze)" <diegoc@comet.com>
+License: Apache License 2.0
+Project-URL: Homepage, https://github.com/comet-ml/opik
+Project-URL: Documentation, https://github.com/comet-ml/opik
+Project-URL: Repository, https://github.com/comet-ml/opik.git
+Project-URL: Issues, https://github.com/comet-ml/opik/issues
+Keywords: comet,opik,llm,eval
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Java
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: System :: Installation/Setup
+Classifier: Typing :: Typed
+Requires-Python: <4.0,>=3.8.1
+Description-Content-Type: text/markdown
+Requires-Dist: click>=8.1.3
+Requires-Dist: semver>=2.8.1
+
+# Opik installer
+
+If you would like to contribute to the Opik installer, please refer to the [Contribution guide](./CONTRIBUTING.md).
