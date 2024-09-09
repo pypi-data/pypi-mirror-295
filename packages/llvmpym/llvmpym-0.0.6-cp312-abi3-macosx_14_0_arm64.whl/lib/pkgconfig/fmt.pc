@@ -1,0 +1,11 @@
+prefix=/var/folders/py/lcjn3y352g1106vf1rqk521r0000gn/T/tmpfhq41mqn/wheel/platlib
+exec_prefix=/var/folders/py/lcjn3y352g1106vf1rqk521r0000gn/T/tmpfhq41mqn/wheel/platlib
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 11.0.2
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+
