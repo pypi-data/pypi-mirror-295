@@ -1,0 +1,6 @@
+kiwipiepy_model<0.19,>=0.18
+numpy<2
+tqdm
+
+[:python_version < "3.7"]
+dataclasses
