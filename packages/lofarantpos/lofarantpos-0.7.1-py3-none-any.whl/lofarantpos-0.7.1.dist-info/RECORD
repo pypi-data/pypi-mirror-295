@@ -1,0 +1,15 @@
+lofarantpos/__init__.py,sha256=-tX58KFFqAsuyeI89TRIJ5H6zdus1HX__OrcEkCNyFk,198
+lofarantpos/db.py,sha256=i1WG9fyvgB0MfI_dXrcGFUQyDsfTNbAyHv_lncHgfao,12807
+lofarantpos/geo.py,sha256=MrccGeD-TuaFSYRXTbZWY9cOG0Dkm9Xrorrwdka-HDg,8423
+lofarantpos/plotutil.py,sha256=AqNbrOyoE1EnOgcIM19pd3ECKBdn5F1DM9Oiw2avuPQ,15397
+lofarantpos/share/lofarantpos/etrs-antenna-positions.csv,sha256=9sIxk_tiSn7OVIUDwzADrxSBHYjEbsBROItQR1XP8NI,449289
+lofarantpos/share/lofarantpos/etrs-phase-centres.csv,sha256=fj_UwOEqWPAaEJFpGPEQHS1jBOtVGlr8I1jgEhDYCRk,6934
+lofarantpos/share/lofarantpos/hba-rotations.csv,sha256=QvRsN8hBti2sk4zkoGDca1_A9oYcYwokAqHYhvd6xcw,677
+lofarantpos/share/lofarantpos/normal_vectors.dat,sha256=dMoL6ZBYKFET64Hdwqtz-XMeKrBWmhLEUJFoS29TCQo,5509
+lofarantpos/share/lofarantpos/rotation_matrices.dat,sha256=yCYsQhOSmC8Nr6NfNHbdezDNx750pVBdytMm-owwLEg,16974
+lofarantpos/share/lofarantpos/stationinfo.csv,sha256=jY652MC7UhabLVzvMqrHvGG6MRLKnFJS4TguvLZPyFU,5682
+lofarantpos-0.7.1.dist-info/LICENSE,sha256=WJiAjHv_Ksr9kUDlU7mRFvS1a0UNAqSJWhUt4hdKr00,11336
+lofarantpos-0.7.1.dist-info/METADATA,sha256=8loks8_VuOLsPf57Wbii8hPfRnMC_IA5zipzBZ4sCtg,1988
+lofarantpos-0.7.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+lofarantpos-0.7.1.dist-info/top_level.txt,sha256=AoLIIfLwbN5laT6cDYtEv1u9WbI_F8-3RlIjtUjA09E,12
+lofarantpos-0.7.1.dist-info/RECORD,,
