@@ -1,0 +1,18 @@
+Metadata-Version: 2.3
+Name: mydash
+Version: 0.2.6
+Summary: Customize Dashboard with Python
+Project-URL: Homepage, https://github.com/ij5/mydash
+Project-URL: Issues, https://github.com/ij5/mydash/issues
+Author: Jaehee Lee
+License-File: LICENSE
+Requires-Python: >=3.10
+Requires-Dist: asyncio>=3.4.3
+Requires-Dist: pytz>=2024.1
+Requires-Dist: requests>=2.32.3
+Requires-Dist: schedule>=1.2.2
+Description-Content-Type: text/markdown
+
+# MyDash
+
+Python package for managing dashboard widgets
