@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: read-commit
+Version: 2024.9.9
+Summary: 自动统计分析每次 Commit 中用例增删改、方法增删改的详细数据
+Author-email: DarkLii <liguangming@uniontech.com>
+License: GPL2.0
+License-File: LICENSE
+Requires-Python: >=3.7
+Requires-Dist: funnylog
+Description-Content-Type: text/markdown
+
+# youqu-git-commit
+自动统计分析每次 Commit 中用例增删改、方法增删改的详细数据

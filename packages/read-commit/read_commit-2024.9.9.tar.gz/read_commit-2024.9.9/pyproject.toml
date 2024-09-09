@@ -1,0 +1,31 @@
+[project]
+name = "read-commit"
+description = "自动统计分析每次 Commit 中用例增删改、方法增删改的详细数据"
+authors = [
+    { name = "DarkLii", email = "liguangming@uniontech.com" },
+]
+dependencies = [
+    "funnylog",
+]
+dynamic = [
+    "version",
+]
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "GPL2.0" }
+
+[project.scripts]
+read-commit = "read_commit.cli:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch]
+version = { path = "read_commit/__version__.py" }
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "/read_commit",
+]
+
