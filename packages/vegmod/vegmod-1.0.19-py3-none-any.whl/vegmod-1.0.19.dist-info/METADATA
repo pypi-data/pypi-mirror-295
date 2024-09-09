@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: vegmod
+Version: 1.0.19
+Summary: Awesome vegmod created by numemac
+Home-page: https://github.com/numemac/vegmod/
+Author: vegmod
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setuptools ==72.1.0
+Requires-Dist: praw ==7.7.1
+Requires-Dist: typer ==0.12.3
+Requires-Dist: loguru ==0.7.2
+Requires-Dist: python-dotenv ==1.0.1
+Requires-Dist: Pillow ==10.4.0
+Provides-Extra: test
+
