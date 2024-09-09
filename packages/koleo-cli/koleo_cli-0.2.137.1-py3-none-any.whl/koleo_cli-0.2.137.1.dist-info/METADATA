@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: koleo-cli
+Version: 0.2.137.1
+Summary: Koleo CLI
+Home-page: https://github.com/lzgirlcat/koleo-cli
+Author: Zoey !
+Maintainer-email: cb98uzhd@duck.com
+License: GNU General Public License v3.0
+Project-URL: Source (GitHub), https://github.com/lzgirlcat/koleo-cli
+Project-URL: Issue Tracker, https://github.com/lzgirlcat/koleo-cli/issues
+Keywords: koleo,timetable,trains,rail,poland
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: rich==13.7.1
+Requires-Dist: requests==2.31.0
+
