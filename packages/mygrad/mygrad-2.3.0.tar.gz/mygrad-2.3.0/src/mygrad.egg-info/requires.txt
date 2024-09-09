@@ -1,0 +1,10 @@
+numpy!=1.25.0,>=1.24
+typing-extensions!=4.6.0,>=4.1.0
+
+[rnn]
+numba>=0.34.0
+
+[test]
+pytest>=3.8
+hypothesis>=6.17.1
+scipy
