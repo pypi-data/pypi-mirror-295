@@ -1,0 +1,3 @@
+[console_scripts]
+mlmorph = mlmorph.__main__:main
+spellchecker = mlmorph.spellchecker.__main__:main
