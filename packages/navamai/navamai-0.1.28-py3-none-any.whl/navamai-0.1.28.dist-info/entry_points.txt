@@ -1,0 +1,5 @@
+[console_scripts]
+ask=navamai.cli:ask
+expand=navamai.cli:expand
+navamai=navamai.cli:cli
+
