@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.py
+app/__init__.py
+app/normal_logs.py
+app/suspicious_logs.py
+app/utils.py
+log_crafter.egg-info/PKG-INFO
+log_crafter.egg-info/SOURCES.txt
+log_crafter.egg-info/dependency_links.txt
+log_crafter.egg-info/requires.txt
+log_crafter.egg-info/top_level.txt
+tests/__init__.py
+tests/test_normal_logs.py
+tests/test_suspicious_logs.py
+tests/test_utils.py
