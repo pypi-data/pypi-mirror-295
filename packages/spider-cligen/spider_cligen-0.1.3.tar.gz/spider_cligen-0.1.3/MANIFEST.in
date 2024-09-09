@@ -1,0 +1,19 @@
+# Incluir o README.md no pacote
+include README.md
+
+# Incluir o LICENSE no pacote
+include LICENSE
+
+# Incluir o arquivo de requisitos (caso exista)
+include requirements.txt
+
+# Incluir toda a documentação gerada pelo Sphinx
+graft docs
+
+# Incluir os arquivos de testes
+graft tests
+
+# Excluir arquivos desnecessários como arquivos compilados do Python
+global-exclude __pycache__
+global-exclude *.py[cod]
+include spider_cligen/data/*
