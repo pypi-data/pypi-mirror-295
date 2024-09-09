@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: torch_kdtree
+Version: 1.0
+Summary: Implementation of the tf_kdtree in Torch
+Author: Thomas Grandits
+Author-email: tomdev@gmx.net
+License-File: LICENSE
+Requires-Dist: numpy>=1.20
+Requires-Dist: torch
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: scipy; extra == "tests"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: pydata_sphinx_theme; extra == "docs"

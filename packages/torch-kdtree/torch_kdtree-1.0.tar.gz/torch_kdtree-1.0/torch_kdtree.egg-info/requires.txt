@@ -1,0 +1,10 @@
+numpy>=1.20
+torch
+
+[docs]
+sphinx
+pydata_sphinx_theme
+
+[tests]
+pytest
+scipy
