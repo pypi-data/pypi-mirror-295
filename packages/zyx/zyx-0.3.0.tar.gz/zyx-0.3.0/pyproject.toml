@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "zyx"
+version = "0.3.00"
+description = "A hyper-fast, fun, quality-of-life focused & genuinely useful LLM toolkit. Inspired by Marvin-AI. Built on LiteLLM, Instructor & Qdrant."
+authors = ["Hammad Saeed <hvmmad@gmail.com>"]
+readme = "readme.md"
+
+[tool.poetry.dependencies]
+# Primary Dependencies
+python = "^3.11"
+instructor = "^1.4.0"
+litellm = "^1.44.18"
+loguru = "^0.7.2"
+rich = "^13.8.0"
+textual = "^0.79.1"
+tavily-python = "^0.4.0"
+qdrant-client = "^1.11.1"
+semchunk = "^2.2.0"
+
+[tool.poetry.group.dev.dependencies]
+# Dev dependencies
+poetry = "^1.8.3"
+ruff = "^0.6.4"
+uv = "^0.4.5"
+pytest = "^8.3.2"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = {extras = ["imaging"], version = "^9.5.34"}
+mkdocstrings = {extras = ["python"], version = "^0.26.1"}
+mkdocs-jupyter = "^0.25.0"
+
+[tool.ruff.lint]
+# This is to ignore the unused import errors in the generated code.
+extend-select = ["I"]
+
+[build-system]
+# Backend Build System
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
