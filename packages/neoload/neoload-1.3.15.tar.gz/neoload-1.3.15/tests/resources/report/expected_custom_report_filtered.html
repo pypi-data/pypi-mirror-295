@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+    <script type="text/javascript">function appendOnLoad(handler) { window[ addEventListener ? 'addEventListener' : 'attachEvent' ]( addEventListener ? 'load' : 'onload', handler ) }
+
+function toggleDisplay(id) {
+  var el = d3.select("#"+id)
+  var visible = el.style("display") != "none";
+  el.style("display", visible ? "none" : "inline");
+}
+
+function getDateTime(relativeToStartMs) {
+  var since = startDateEpoch + relativeToStartMs;
+  return new Date(since);
+}
+
+function getWH(el) {
+  var node = el.node();
+  var styl = window.getComputedStyle(node)
+  var ret = {
+    width: styl.width,
+    height: styl.height
+  }
+  ret.width = parseInt(ret.width == null || ret.width < 10 ? 200 : ret.width);
+  ret.height = parseInt(ret.height == null || ret.height < 10 ? 200 : ret.height);
+  return ret;
+}
+
+function plotSVG(divParent, specs) {
+  specs = Array.isArray(specs) ? specs : [specs]
+  if(!specs.every(d => typeof(d.data)!='undefined' && typeof(d.xPlot)!='undefined' && typeof(d.yPlot)!='undefined'))
+    throw "plotSVG was provided data incompatible with use"
+
+  specs.forEach(function(spec) {
+    spec.typX = spec.data.length > 0 ? getTypeName(spec.xPlot(spec.data[0])) : "number";
+    spec.typY = spec.data.length > 0 ? getTypeName(spec.yPlot(spec.data[0])) : "number";
+  })
+
+  for(spec of specs) {
+    spec.title = typeof(spec.title)!='undefined' ? spec.title : "Unknown";
+    spec.color = typeof(spec.color)!='undefined' ? spec.color : "gray";
+  }
+
+  var specs_y_axis = specs.filter(spec => !(spec.typY == "number" && d3.max(spec.data, spec.yPlot)==0))
+
+  var legend_cols = 4
+  var legend = addLegend(divParent, specs,legend_cols)
+
+  var parentBox = getWH(divParent);
+
+  var legend_height = Math.round(specs.length / 3) * 20;
+  var h_padding_per = 40
+  var h_total_padding = Math.round(specs.length / 2) * h_padding_per;
+
+  // set the dimensions and margins of the graph
+  var margin = {top: 10, right: 60, bottom: 30, left: 60},
+      width = parentBox.width - margin.left - margin.right - h_total_padding,
+      height = parentBox.height - legend_height - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  var svg = divParent
+    .append("svg")
+      .attr("width", width + margin.left + margin.right + h_total_padding * 2)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + (margin.left + (h_total_padding/2)) + "," + margin.top + ")");
+
+  var all_x_are_dates = specs.every(spec => getTypeName(spec.xPlot(spec.data[0])) === "Date")
+  var all_x = null;
+  var is_y_axis_left = true;
+
+  for(var i=0; i<specs.length; i++) {
+    var spec = specs[i];
+
+    // Add X axis --> it is a date format
+    var x = getD3scalerForType(spec.typX, spec.data, spec.xPlot)
+      .range([ 0, width ]);
+    if(all_x_are_dates) {
+      if(all_x == null) {
+        all_x = x;
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+      }
+      x = all_x;
+    }
+
+    if(specs_y_axis.some(s => spec.title === s.title)) {
+      // Add Y axis
+      var y = getD3scalerForType(spec.typY, spec.data, spec.yPlot)
+        .range([ height, 0 ]);
+      var y_axis = is_y_axis_left ? d3.axisLeft(y) : d3.axisRight(y)
+      var rightTransform = is_y_axis_left ? 0 : width
+      var h_offset = Math.floor(i / 2) * h_padding_per * (is_y_axis_left ? -1 : 1)
+      is_y_axis_left = !is_y_axis_left;
+      svg.append("g")
+        .attr("stroke", spec.color)
+        .attr("transform", "translate(" + (rightTransform + h_offset) + ",0)")
+        .call(y_axis);
+    }
+
+    var path = svg.append("path")
+          .datum(spec.data)
+          .attr("fill", "none")
+          .attr("stroke", spec.color)
+          .attr("stroke-width", 1.5)
+          .attr("d", d3.line()
+            .x(function(d) { return x(spec.xPlot(d)) })
+            .y(function(d) { return y(spec.yPlot(d)) })
+          )
+  }
+
+  divParent.append(() => legend.node());
+  legend.style("width",getWH(divParent).width / 2)
+  legend.attr("transform", "translate(0," + (-margin.bottom) + ")")
+  var whLegend = getWH(legend)
+  divParent.style("height", getWH(divParent).height + whLegend.height)
+}
+
+function getTypeName(obj) {
+  if(obj == null) return "string";
+  if(Object.prototype.toString.call(obj) === '[object Date]')
+    return "Date";
+  else
+    return typeof(obj);
+}
+
+function getD3scalerForType(typeName, data, plot) {
+  if(typeName == "Date")
+    return d3.scaleTime()
+      .domain(d3.extent(data, plot))
+  else
+    return d3.scaleLinear()
+      .domain([0, Math.max(1,d3.max(data, plot))])
+}
+
+function addLegend(divParent, specs, cols_per) {
+  var rows = []
+  for(var i=0; i<specs.length; i+=cols_per) {
+    var row = specs.slice(i, i+cols_per)
+    rows.push(row)
+  }
+  var legend = d3.create("table")
+                .attr("class","legend")
+  var tablebody = legend.append("tbody");
+        rows = tablebody
+                .selectAll("tr")
+                .data(rows)
+                .enter()
+                .append("tr");
+        cells = rows.selectAll("td")
+                .data(function(d) {
+                  return d;
+                })
+                .enter()
+                .append("td")
+                .style("color",d => d.color)
+                .text(d => d.title + (typeof(d.units)!='undefined'?" (" + d.units + ")":""));
+  return legend
+}
+
+function specTimeLine(title, units, color, data, l_time_field, l_num_field) {
+  var ret = {
+      title: title,
+      data: data,
+      xPlot: d => getDateTime(l_time_field(d)),
+      yPlot: l_num_field
+    }
+  if(units != null && typeof(units)!='undefined')
+    ret.units = units
+  ret.color = (color != null && typeof(color)!='undefined') ? color : "gray"
+  return ret
+}
+
+function createSpecsTable(specs) {
+  var table = d3.create("table")
+  var header = table.append("thead").append("tr");
+      header.selectAll("th")
+            .data(["Color", "Scale", "Measurement", "Min", "Avg", "Max", "Med", "Std. Dev."])
+            .enter()
+            .append("th")
+            .text(function(d) { return d; });
+  var tablebody = table.append("tbody");
+        rows = tablebody
+                .selectAll("tr")
+                .data(specs)
+                .enter()
+                .append("tr");
+        cells = rows.selectAll("td")
+                .data(function(d) {
+                  var commons = getMinMaxAvgMedianStdDev(d.data, d.yPlot)
+                  var arr = [
+                    { text: ".", background_color: d.color },
+                    //{ text: d.title + (typeof(d.units)!='undefined'?" (" + d.units + ")":"") },
+                    { text: (typeof(d.units)!='undefined'?" (" + d.units + ")":""), },
+                    { text: d.title, },
+                    { text: commons.minimum },
+                    { text: commons.mean },
+                    { text: commons.maximum },
+                    { text: commons.median },
+                    { text: commons.deviation },
+                  ];
+                  arr.forEach(a => a.__data__ = d)
+                  return arr
+                })
+                .enter()
+                .append("td")
+                .style("background-color", d => (typeof(d.background_color!='undefined') ? d.background_color : "transparent"))
+                .style("color", d => (typeof(d.__data__.color!='undefined') ? d.__data__.color : "black"))
+                .text(d => d.text);
+  return table
+}
+
+function getMinMaxAvgMedianStdDev(data, plot) {
+  // if "number"
+  var vals = data.map(d => plot(d));
+  return {
+    minimum: d3.min(vals),
+    maximum: d3.max(vals),
+    mean: d3.mean(vals),
+    median: d3.median(vals),
+    variance: d3.variance(vals),
+    deviation: d3.deviation(vals)
+  }
+}</script>
+    <script type="text/javascript">
+    var startDateEpoch = 1612539609521
+    </script>
+  </head>
+  <body>
+
+<div class="clearfix">
+  <div style="float:left;width:80%;">
+    <h1 style="text-align:left;">#3</h1>
+  </div>
+  <div style="float:right;width:160px;padding-top:0.75em;">
+    <svg fill="hsla(210, 100%, 30%, 1)" viewBox="0 0 1366 281.16"><polygon points="34.84 227.65 0 192.81 52.38 140.43 0.39 88.44 35.23 53.6 122.06 140.43 34.84 227.65"></polygon><polygon points="88.34 281.16 53.51 246.32 140.73 159.1 227.56 245.93 192.72 280.76 140.73 228.78 88.34 281.16"></polygon><polygon points="140.43 122.06 53.6 35.23 88.44 0.4 140.43 52.39 192.81 0 227.65 34.84 140.43 122.06"></polygon><polygon points="468.86 31.92 289.87 31.92 289.87 65.1 361.88 65.1 361.88 248.26 396.85 248.26 396.85 65.1 468.86 65.1 468.86 31.92"></polygon><path d="M475.27,106.83l-3.22-18.74H441V248.26h35v-106a54.21,54.21,0,0,1,21.62-16.84,75.54,75.54,0,0,1,31.27-6.53h6.27V85.1h-6.27C507.51,85.1,489.53,92.4,475.27,106.83Z"></path><rect x="553.54" y="88.09" width="34.97" height="160.17"></rect><rect x="552.49" y="26.54" width="37.06" height="37.06"></rect><path d="M698.43,84C647.13,84,607,120.54,607,167.2v.61c0,46.15,40,82.29,91.14,82.29,18.74,0,34.61-3.73,48.5-11.42l-.39-.35c-.6-.55-1.21-1.1-1.77-1.7h0a81.16,81.16,0,0,1-15.07-23.18,60.44,60.44,0,0,1-29.23,7.27c-31.35,0-55-23-55-53.52v-.61c0-29.67,23.27-52.91,53-52.91A60.63,60.63,0,0,1,729.62,122a88.74,88.74,0,0,1,17.79-26.71C733.54,87.67,717.5,84,698.43,84Z"></path><path d="M818.2,85.1a78.28,78.28,0,0,0-28.15,5.3,71,71,0,0,0-24.38,15.71,77.17,77.17,0,0,0-17,26.17c-4.26,10.44-6.42,22.77-6.42,36.66a103.82,103.82,0,0,0,5,32.88A67.86,67.86,0,0,0,788.79,245c10.61,4.12,23.26,6.21,37.61,6.21a149.67,149.67,0,0,0,16.64-.92c5.44-.61,10.57-1.37,15.23-2.27a124.88,124.88,0,0,0,12.55-3,63.44,63.44,0,0,0,8.14-3l-4.83-28.9a113,113,0,0,1-17.5,4.91,123.43,123.43,0,0,1-25.5,2.46c-15.86,0-28.14-3.59-36.52-10.68s-13.21-17.25-14.26-30.18l-.06-.71H889.18c.18-1.84.32-3.94.42-6.24.1-2.64.15-4.87.15-6.83,0-26.74-6.36-47.12-18.9-60.56S840.6,85.1,818.2,85.1Zm34.7,68H780.57l.1-.74a62.7,62.7,0,0,1,3.5-13.87,38.93,38.93,0,0,1,7.21-12.1,34.87,34.87,0,0,1,27.13-11.8,34.91,34.91,0,0,1,14.93,3,31.25,31.25,0,0,1,10.63,8.1,35.47,35.47,0,0,1,6.59,12.12,48,48,0,0,1,2.24,14.69Z"></path><path d="M994.06,85.1c-19.22,0-36.78,7.46-52.29,22.18l-3.3-19.19H907.4V248.26h35V144.16C956.61,126.79,971.78,118,987.48,118c19.77,0,29,10.35,29,32.57v97.71h35V147.56c0-17.61-5.14-32.53-15.28-44.37C1025.86,91.19,1011.7,85.1,994.06,85.1Z"></path><path d="M1123.54,49.87l-63.36,62v7.32h28.39v88.74c0,28.34,16.43,43.33,47.51,43.33a61.19,61.19,0,0,0,28.69-7l2.09-1.09V214.78h-6.8l-.76.34c-13.3,5.91-24.77,5.1-31.23,2.38-3-1.31-4.53-5.33-4.53-12V119.18h43.32V88.09h-43.32Z"></path><rect x="1188.39" y="88.09" width="34.97" height="160.17"></rect><rect x="1187.35" y="26.54" width="37.06" height="37.06"></rect><path d="M1356,173a47.6,47.6,0,0,0-24.31-15.16l-26.46-6.94a119.71,119.71,0,0,1-21.89-7.8c-6.51-3.16-7.27-7-7.27-9.59,0-4.25,2.38-7.78,7.27-10.79,5.42-3.34,14.23-5,26.19-5,12.17,0,24.83,2.72,37.65,8.07l.72.3h6.76V94.66l-2.54-.94a141.69,141.69,0,0,0-49.76-8.62c-18.21,0-32.89,4.75-43.64,14.11-10.9,9.5-16.42,22-16.42,37,0,11.14,3.47,20.48,10.32,27.76A51.06,51.06,0,0,0,1277,178.49l26.33,7.06a130.83,130.83,0,0,1,21.59,7.61c7,3.31,7,6.66,7,7.76,0,7.49-3,17.45-29.28,17.45a99,99,0,0,1-51.2-13.8l-.92-.54h-6.45v32.18l2,1.11c16.84,9.24,35.72,13.93,56.11,13.93,20.65,0,36.57-4.53,47.3-13.45,10.94-9.1,16.49-20.43,16.49-33.68C1366,191.13,1362.63,180.65,1356,173Z"></path></svg>
+  </div>
+</div>
+
+<script type="text/javascript">
+window.ctrl_user_load = [{"AVG": 0, "from": 0, "to": 1000}, {"AVG": 10, "from": 1000, "to": 2000}, {"AVG": 10, "from": 2000, "to": 3000}];
+window.all_requests = [{"AVG_DURATION": 40.572582, "AVG_TTFB": 39.91129, "COUNT": 248, "ELEMENTS_PER_SECOND": 248.0, "ERRORS": 85, "ERRORS_PER_SECOND": 85.0, "ERROR_RATE": 34.274193, "MAX_DURATION": 111, "MAX_TTFB": 111, "MIN_DURATION": 30, "MIN_TTFB": 29, "THROUGHPUT": 309823.0, "from": 60000, "to": 61000}, {"AVG_DURATION": 39.474102, "AVG_TTFB": 38.258965, "COUNT": 251, "ELEMENTS_PER_SECOND": 251.0, "ERRORS": 126, "ERRORS_PER_SECOND": 126.0, "ERROR_RATE": 50.199203, "MAX_DURATION": 126, "MAX_TTFB": 126, "MIN_DURATION": 30, "MIN_TTFB": 29, "THROUGHPUT": 369152.0, "from": 61000, "to": 62000}, {"AVG_DURATION": 40.692623, "AVG_TTFB": 39.57377, "COUNT": 244, "ELEMENTS_PER_SECOND": 244.0, "ERRORS": 121, "ERRORS_PER_SECOND": 121.0, "ERROR_RATE": 49.590164, "MAX_DURATION": 135, "MAX_TTFB": 135, "MIN_DURATION": 30, "MIN_TTFB": 28, "THROUGHPUT": 357936.0, "from": 62000, "to": 63000}, {"AVG_DURATION": 38.160305, "AVG_TTFB": 37.15649, "COUNT": 262, "ELEMENTS_PER_SECOND": 262.0, "ERRORS": 131, "ERRORS_PER_SECOND": 131.0, "ERROR_RATE": 50.0, "MAX_DURATION": 95, "MAX_TTFB": 95, "MIN_DURATION": 29, "MIN_TTFB": 29, "THROUGHPUT": 385031.0, "from": 63000, "to": 64000}, {"AVG_DURATION": 38.326923, "AVG_TTFB": 37.303844, "COUNT": 260, "ELEMENTS_PER_SECOND": 260.0, "ERRORS": 132, "ERRORS_PER_SECOND": 132.0, "ERROR_RATE": 50.76923, "MAX_DURATION": 136, "MAX_TTFB": 136, "MIN_DURATION": 28, "MIN_TTFB": 28, "THROUGHPUT": 383332.0, "from": 64000, "to": 65000}, {"AVG_DURATION": 42.13502, "AVG_TTFB": 41.05485, "COUNT": 237, "ELEMENTS_PER_SECOND": 237.0, "ERRORS": 117, "ERRORS_PER_SECOND": 117.0, "ERROR_RATE": 49.36709, "MAX_DURATION": 140, "MAX_TTFB": 140, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 347374.0, "from": 65000, "to": 66000}, {"AVG_DURATION": 40.258064, "AVG_TTFB": 39.133064, "COUNT": 248, "ELEMENTS_PER_SECOND": 248.0, "ERRORS": 125, "ERRORS_PER_SECOND": 125.0, "ERROR_RATE": 50.403225, "MAX_DURATION": 115, "MAX_TTFB": 114, "MIN_DURATION": 29, "MIN_TTFB": 29, "THROUGHPUT": 365021.0, "from": 66000, "to": 67000}, {"AVG_DURATION": 40.1626, "AVG_TTFB": 39.13008, "COUNT": 246, "ELEMENTS_PER_SECOND": 246.0, "ERRORS": 122, "ERRORS_PER_SECOND": 122.0, "ERROR_RATE": 49.593494, "MAX_DURATION": 118, "MAX_TTFB": 117, "MIN_DURATION": 30, "MIN_TTFB": 29, "THROUGHPUT": 360822.0, "from": 67000, "to": 68000}, {"AVG_DURATION": 39.98016, "AVG_TTFB": 39.107143, "COUNT": 252, "ELEMENTS_PER_SECOND": 252.0, "ERRORS": 126, "ERRORS_PER_SECOND": 126.0, "ERROR_RATE": 50.0, "MAX_DURATION": 94, "MAX_TTFB": 94, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 370279.0, "from": 68000, "to": 69000}, {"AVG_DURATION": 40.840164, "AVG_TTFB": 39.737705, "COUNT": 244, "ELEMENTS_PER_SECOND": 244.0, "ERRORS": 123, "ERRORS_PER_SECOND": 123.0, "ERROR_RATE": 50.409836, "MAX_DURATION": 147, "MAX_TTFB": 147, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 359140.0, "from": 69000, "to": 70000}, {"AVG_DURATION": 40.90535, "AVG_TTFB": 39.958847, "COUNT": 243, "ELEMENTS_PER_SECOND": 243.0, "ERRORS": 120, "ERRORS_PER_SECOND": 120.0, "ERROR_RATE": 49.382717, "MAX_DURATION": 104, "MAX_TTFB": 104, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 356138.0, "from": 70000, "to": 71000}, {"AVG_DURATION": 39.32422, "AVG_TTFB": 38.304688, "COUNT": 256, "ELEMENTS_PER_SECOND": 256.0, "ERRORS": 128, "ERRORS_PER_SECOND": 128.0, "ERROR_RATE": 50.0, "MAX_DURATION": 134, "MAX_TTFB": 133, "MIN_DURATION": 30, "MIN_TTFB": 28, "THROUGHPUT": 376094.0, "from": 71000, "to": 72000}, {"AVG_DURATION": 41.881855, "AVG_TTFB": 40.92827, "COUNT": 237, "ELEMENTS_PER_SECOND": 237.0, "ERRORS": 120, "ERRORS_PER_SECOND": 120.0, "ERROR_RATE": 50.63291, "MAX_DURATION": 147, "MAX_TTFB": 147, "MIN_DURATION": 30, "MIN_TTFB": 28, "THROUGHPUT": 349229.0, "from": 72000, "to": 73000}, {"AVG_DURATION": 40.331966, "AVG_TTFB": 39.385246, "COUNT": 244, "ELEMENTS_PER_SECOND": 244.0, "ERRORS": 121, "ERRORS_PER_SECOND": 121.0, "ERROR_RATE": 49.590164, "MAX_DURATION": 134, "MAX_TTFB": 134, "MIN_DURATION": 30, "MIN_TTFB": 29, "THROUGHPUT": 357980.0, "from": 73000, "to": 74000}, {"AVG_DURATION": 38.408398, "AVG_TTFB": 37.389313, "COUNT": 262, "ELEMENTS_PER_SECOND": 262.0, "ERRORS": 131, "ERRORS_PER_SECOND": 131.0, "ERROR_RATE": 50.0, "MAX_DURATION": 122, "MAX_TTFB": 122, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 385052.0, "from": 74000, "to": 75000}, {"AVG_DURATION": 37.89272, "AVG_TTFB": 36.91571, "COUNT": 261, "ELEMENTS_PER_SECOND": 261.0, "ERRORS": 131, "ERRORS_PER_SECOND": 131.0, "ERROR_RATE": 50.19157, "MAX_DURATION": 117, "MAX_TTFB": 117, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 383894.0, "from": 75000, "to": 76000}, {"AVG_DURATION": 40.084, "AVG_TTFB": 38.888, "COUNT": 250, "ELEMENTS_PER_SECOND": 250.0, "ERRORS": 125, "ERRORS_PER_SECOND": 125.0, "ERROR_RATE": 50.0, "MAX_DURATION": 148, "MAX_TTFB": 148, "MIN_DURATION": 29, "MIN_TTFB": 29, "THROUGHPUT": 367346.0, "from": 76000, "to": 77000}, {"AVG_DURATION": 39.377953, "AVG_TTFB": 38.374016, "COUNT": 254, "ELEMENTS_PER_SECOND": 254.0, "ERRORS": 125, "ERRORS_PER_SECOND": 125.0, "ERROR_RATE": 49.212597, "MAX_DURATION": 129, "MAX_TTFB": 129, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 371993.0, "from": 77000, "to": 78000}, {"AVG_DURATION": 41.584747, "AVG_TTFB": 40.228813, "COUNT": 236, "ELEMENTS_PER_SECOND": 236.0, "ERRORS": 120, "ERRORS_PER_SECOND": 120.0, "ERROR_RATE": 50.847458, "MAX_DURATION": 121, "MAX_TTFB": 120, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 347894.0, "from": 78000, "to": 79000}, {"AVG_DURATION": 38.934364, "AVG_TTFB": 37.841698, "COUNT": 259, "ELEMENTS_PER_SECOND": 259.0, "ERRORS": 129, "ERRORS_PER_SECOND": 129.0, "ERROR_RATE": 49.80695, "MAX_DURATION": 107, "MAX_TTFB": 107, "MIN_DURATION": 28, "MIN_TTFB": 28, "THROUGHPUT": 380260.0, "from": 79000, "to": 80000}, {"AVG_DURATION": 40.806583, "AVG_TTFB": 39.76543, "COUNT": 243, "ELEMENTS_PER_SECOND": 243.0, "ERRORS": 120, "ERRORS_PER_SECOND": 120.0, "ERROR_RATE": 49.382717, "MAX_DURATION": 161, "MAX_TTFB": 161, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 356206.0, "from": 80000, "to": 81000}, {"AVG_DURATION": 37.688213, "AVG_TTFB": 36.6692, "COUNT": 263, "ELEMENTS_PER_SECOND": 263.0, "ERRORS": 132, "ERRORS_PER_SECOND": 132.0, "ERROR_RATE": 50.190113, "MAX_DURATION": 75, "MAX_TTFB": 75, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 386744.0, "from": 81000, "to": 82000}, {"AVG_DURATION": 41.945835, "AVG_TTFB": 40.866665, "COUNT": 240, "ELEMENTS_PER_SECOND": 240.0, "ERRORS": 122, "ERRORS_PER_SECOND": 122.0, "ERROR_RATE": 50.833332, "MAX_DURATION": 150, "MAX_TTFB": 150, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 353891.0, "from": 82000, "to": 83000}, {"AVG_DURATION": 39.853657, "AVG_TTFB": 38.76829, "COUNT": 246, "ELEMENTS_PER_SECOND": 246.0, "ERRORS": 123, "ERRORS_PER_SECOND": 123.0, "ERROR_RATE": 50.0, "MAX_DURATION": 112, "MAX_TTFB": 111, "MIN_DURATION": 30, "MIN_TTFB": 29, "THROUGHPUT": 361542.0, "from": 83000, "to": 84000}, {"AVG_DURATION": 39.924603, "AVG_TTFB": 38.916668, "COUNT": 252, "ELEMENTS_PER_SECOND": 252.0, "ERRORS": 125, "ERRORS_PER_SECOND": 125.0, "ERROR_RATE": 49.603176, "MAX_DURATION": 145, "MAX_TTFB": 145, "MIN_DURATION": 29, "MIN_TTFB": 28, "THROUGHPUT": 369647.0, "from": 84000, "to": 85000}];
+</script>
+
+<h3>General Details</h3>
+Run Date: 2021-02-05 15:40:09<br />
+Period: 2021-02-05 15:40:09 - 2021-02-05 15:42:09<br />
+Run Duration: 2 minutes, 0 second<br />
+<br />
+Status: FAILED<br />
+Author: Guillaume Bert<br />
+
+<h3>Description/Conclusion</h3>
+<br />
+
+<h3>Workload Characteristics</h3>
+<div class="clearfix">
+  <div style="float:left;width:50%;">
+    Max Running Users: <br />
+    Average Hits per Second: 239.12138 <br />
+    Total Hits: 14524<br />
+    Total Passed Transactions per Second: 119.49827<br />
+    Total Transactions (Success): 152<br />
+    Total Transactions (Failed): 14205<br />
+  </div>
+  <div style="float:right;width:50%;">
+    <div id="dWorkload" style="height:200px;"></div>
+    <script type="text/javascript">
+    appendOnLoad(function() {
+      graphWorkload(d3.select('#dWorkload'), window.ctrl_user_load, window.all_requests)
+    })
+    </script>
+  </div>
+</div>
+
+<script type="text/javascript">
+function graphWorkload(el, ctrl_user_load, req_data) {
+  var specs = []
+  specs.push(specTimeLine("User Load", "VUs", "blue", ctrl_user_load, d => d.from, d => d.AVG))
+  specs.push(specTimeLine("Rate", "el/s", "purple", req_data, d => d.from, d => d.ELEMENTS_PER_SECOND))
+  specs.push(specTimeLine("Errors", null, "red", req_data, d => d.from, d => d.ERRORS))
+  specs.push(specTimeLine("Duration", "ms", "green", req_data, d => d.from, d => d.AVG_DURATION))
+  plotSVG(el, specs)
+}
+
+</script>
+
+<h3>Transactions</h3>
+<table>
+<thead>
+<tr>
+<td>Name</td>
+<td>Count</td>
+<td>TPS</td>
+<td>Min Dur</td>
+<td>Avg Dur</td>
+<td>Max Dur</td>
+<td>Total</td>
+<td>Success</td>
+<td>Fail</td>
+<td>p50</td>
+<td>p90</td>
+<td>p95</td>
+<td>p99</td>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>
+  
+    <div style="margin: -10px 0; cursor: help; color: #ff7600; font-size: 17pt; display: inline-block;"
+         title="The following datas are computed from already aggregated data and may be less accurate: Percentiles, counts, failure and success rates.">
+         &#9888;
+     </div>
+  
+  <a href="javascript:toggleDisplay('d818d2419-daec-43d6-b004-b1195799df57')">kamoulox \ Actions \ transaction_sla_passed</a>
+</td>
+<td>780</td>
+<td>31.2</td>
+<td>0.058</td>
+<td>0.073</td>
+<td>0.202</td>
+<td>780</td>
+<td>9</td>
+<td>771</td>
+<td>0.074</td>
+<td>0.077</td>
+<td>0.078</td>
+<td>0.079</td>
+</tr>
+<tr>
+<td colspan="13" class="graph">
+  <div id="d818d2419-daec-43d6-b004-b1195799df57" class="expandable graph" style="height:200px;"></div>
+  <script type="text/javascript">
+  appendOnLoad(function() {
+    var data = [{"AVG_DURATION": 71.58064, "AVG_TTFB": 34.677418, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 22, "ERRORS_PER_SECOND": 22.0, "ERROR_RATE": 70.96774, "MAX_DURATION": 87, "MAX_TTFB": 45, "MIN_DURATION": 63, "MIN_TTFB": 30, "THROUGHPUT": 78518.0, "from": 60000, "to": 61000}, {"AVG_DURATION": 69.03226, "AVG_TTFB": 34.29032, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 77, "MAX_TTFB": 40, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 91108.0, "from": 61000, "to": 62000}, {"AVG_DURATION": 77.0, "AVG_TTFB": 41.419353, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 147, "MAX_TTFB": 112, "MIN_DURATION": 63, "MIN_TTFB": 30, "THROUGHPUT": 91109.0, "from": 62000, "to": 63000}, {"AVG_DURATION": 67.90625, "AVG_TTFB": 33.1875, "COUNT": 32, "ELEMENTS_PER_SECOND": 32.0, "ERRORS": 32, "ERRORS_PER_SECOND": 32.0, "ERROR_RATE": 100.0, "MAX_DURATION": 77, "MAX_TTFB": 42, "MIN_DURATION": 62, "MIN_TTFB": 29, "THROUGHPUT": 94044.0, "from": 63000, "to": 64000}, {"AVG_DURATION": 68.78125, "AVG_TTFB": 33.625, "COUNT": 32, "ELEMENTS_PER_SECOND": 32.0, "ERRORS": 32, "ERRORS_PER_SECOND": 32.0, "ERROR_RATE": 100.0, "MAX_DURATION": 77, "MAX_TTFB": 43, "MIN_DURATION": 58, "MIN_TTFB": 28, "THROUGHPUT": 94040.0, "from": 64000, "to": 65000}, {"AVG_DURATION": 74.32258, "AVG_TTFB": 38.83871, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 145, "MAX_TTFB": 112, "MIN_DURATION": 63, "MIN_TTFB": 29, "THROUGHPUT": 91098.0, "from": 65000, "to": 66000}, {"AVG_DURATION": 73.58064, "AVG_TTFB": 37.774193, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 150, "MAX_TTFB": 114, "MIN_DURATION": 61, "MIN_TTFB": 29, "THROUGHPUT": 91128.0, "from": 66000, "to": 67000}, {"AVG_DURATION": 75.066666, "AVG_TTFB": 37.4, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 133, "MAX_TTFB": 101, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 88128.0, "from": 67000, "to": 68000}, {"AVG_DURATION": 73.645164, "AVG_TTFB": 36.129032, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 94, "MAX_TTFB": 57, "MIN_DURATION": 61, "MIN_TTFB": 31, "THROUGHPUT": 91109.0, "from": 68000, "to": 69000}, {"AVG_DURATION": 74.066666, "AVG_TTFB": 38.166668, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 128, "MAX_TTFB": 96, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 88163.0, "from": 69000, "to": 70000}, {"AVG_DURATION": 78.3, "AVG_TTFB": 39.833332, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 141, "MAX_TTFB": 101, "MIN_DURATION": 64, "MIN_TTFB": 30, "THROUGHPUT": 88145.0, "from": 70000, "to": 71000}, {"AVG_DURATION": 71.59375, "AVG_TTFB": 34.96875, "COUNT": 32, "ELEMENTS_PER_SECOND": 32.0, "ERRORS": 32, "ERRORS_PER_SECOND": 32.0, "ERROR_RATE": 100.0, "MAX_DURATION": 79, "MAX_TTFB": 41, "MIN_DURATION": 64, "MIN_TTFB": 30, "THROUGHPUT": 94020.0, "from": 71000, "to": 72000}, {"AVG_DURATION": 75.90323, "AVG_TTFB": 38.258064, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 148, "MAX_TTFB": 110, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 91112.0, "from": 72000, "to": 73000}, {"AVG_DURATION": 69.53333, "AVG_TTFB": 34.366665, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 78, "MAX_TTFB": 43, "MIN_DURATION": 63, "MIN_TTFB": 30, "THROUGHPUT": 88193.0, "from": 73000, "to": 74000}, {"AVG_DURATION": 68.02857, "AVG_TTFB": 34.114285, "COUNT": 35, "ELEMENTS_PER_SECOND": 35.0, "ERRORS": 35, "ERRORS_PER_SECOND": 35.0, "ERROR_RATE": 100.0, "MAX_DURATION": 77, "MAX_TTFB": 42, "MIN_DURATION": 61, "MIN_TTFB": 29, "THROUGHPUT": 102879.0, "from": 74000, "to": 75000}, {"AVG_DURATION": 66.833336, "AVG_TTFB": 32.533333, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 77, "MAX_TTFB": 41, "MIN_DURATION": 60, "MIN_TTFB": 29, "THROUGHPUT": 88205.0, "from": 75000, "to": 76000}, {"AVG_DURATION": 72.96875, "AVG_TTFB": 35.53125, "COUNT": 32, "ELEMENTS_PER_SECOND": 32.0, "ERRORS": 32, "ERRORS_PER_SECOND": 32.0, "ERROR_RATE": 100.0, "MAX_DURATION": 97, "MAX_TTFB": 51, "MIN_DURATION": 63, "MIN_TTFB": 30, "THROUGHPUT": 94053.0, "from": 76000, "to": 77000}, {"AVG_DURATION": 74.870964, "AVG_TTFB": 40.19355, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 168, "MAX_TTFB": 129, "MIN_DURATION": 61, "MIN_TTFB": 29, "THROUGHPUT": 91089.0, "from": 77000, "to": 78000}, {"AVG_DURATION": 75.83871, "AVG_TTFB": 38.29032, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 169, "MAX_TTFB": 102, "MIN_DURATION": 59, "MIN_TTFB": 29, "THROUGHPUT": 91059.0, "from": 78000, "to": 79000}, {"AVG_DURATION": 71.645164, "AVG_TTFB": 36.70968, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 144, "MAX_TTFB": 107, "MIN_DURATION": 59, "MIN_TTFB": 28, "THROUGHPUT": 91123.0, "from": 79000, "to": 80000}, {"AVG_DURATION": 77.63333, "AVG_TTFB": 39.533333, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 202, "MAX_TTFB": 161, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 88178.0, "from": 80000, "to": 81000}, {"AVG_DURATION": 67.32353, "AVG_TTFB": 33.0, "COUNT": 34, "ELEMENTS_PER_SECOND": 34.0, "ERRORS": 34, "ERRORS_PER_SECOND": 34.0, "ERROR_RATE": 100.0, "MAX_DURATION": 78, "MAX_TTFB": 41, "MIN_DURATION": 61, "MIN_TTFB": 30, "THROUGHPUT": 99908.0, "from": 81000, "to": 82000}, {"AVG_DURATION": 79.23333, "AVG_TTFB": 41.3, "COUNT": 30, "ELEMENTS_PER_SECOND": 30.0, "ERRORS": 30, "ERRORS_PER_SECOND": 30.0, "ERROR_RATE": 100.0, "MAX_DURATION": 152, "MAX_TTFB": 115, "MIN_DURATION": 61, "MIN_TTFB": 28, "THROUGHPUT": 88216.0, "from": 82000, "to": 83000}, {"AVG_DURATION": 75.28125, "AVG_TTFB": 37.5625, "COUNT": 32, "ELEMENTS_PER_SECOND": 32.0, "ERRORS": 32, "ERRORS_PER_SECOND": 32.0, "ERROR_RATE": 100.0, "MAX_DURATION": 154, "MAX_TTFB": 111, "MIN_DURATION": 63, "MIN_TTFB": 30, "THROUGHPUT": 94066.0, "from": 83000, "to": 84000}, {"AVG_DURATION": 70.645164, "AVG_TTFB": 35.51613, "COUNT": 31, "ELEMENTS_PER_SECOND": 31.0, "ERRORS": 31, "ERRORS_PER_SECOND": 31.0, "ERROR_RATE": 100.0, "MAX_DURATION": 96, "MAX_TTFB": 50, "MIN_DURATION": 62, "MIN_TTFB": 30, "THROUGHPUT": 91061.0, "from": 84000, "to": 85000}];
+    graphTransaction(d3.select('#d818d2419-daec-43d6-b004-b1195799df57'), data)
+  })
+  </script>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<script type="text/javascript">
+function graphTransaction(el, data) {
+  var specs = [];
+  specs.push(specTimeLine("User Load", "VUs", "blue", window.ctrl_user_load, d => d.from, d => d.AVG))
+  specs.push(specTimeLine("Rate", "el/s", "purple", data, d => d.from, d => d.ELEMENTS_PER_SECOND))
+  specs.push(specTimeLine("Errors", null, "red", data, d => d.from, d => d.ERRORS))
+  specs.push(specTimeLine("Duration", "ms", "green", data, d => d.from, d => d.AVG_DURATION))
+  plotSVG(el, specs)
+}
+</script>
+
+<h3>Ext. Data</h3>
+
+    No external data in this test.
+
+
+<h3>Running Vitrual Users</h3>
+<div class="clearfix">
+  <div>
+    <div id="dRunningVUs" style="min-height:500px;"></div>
+    <script type="text/javascript">
+    appendOnLoad(function() {
+      graphRunningVUs(d3.select('#dRunningVUs'), window.ctrl_user_load, window.all_requests)
+    })
+    </script>
+  </div>
+</div>
+
+<script type="text/javascript">
+function graphRunningVUs(el, ctrl_user_load, req_data) {
+  var specs = []
+  specs.push(specTimeLine("User Load", "VUs", "blue", ctrl_user_load, d => d.from, d => d.AVG))
+  plotSVG(el, specs)
+  el.append(() => createSpecsTable(specs.filter(s => s.title==="User Load")).node());
+}
+
+</script>
+
+<h3>Hits per Second</h3>
+<div class="clearfix">
+  <div>
+    <div id="dHitsPerSecond" style="min-height:500px;"></div>
+    <script type="text/javascript">
+    appendOnLoad(function() {
+      graphHitsPerSecond(d3.select('#dHitsPerSecond'), window.ctrl_user_load, window.all_requests)
+    })
+    </script>
+  </div>
+</div>
+
+<script type="text/javascript">
+function graphHitsPerSecond(el, ctrl_user_load, req_data) {
+  var specs = []
+  specs.push(specTimeLine("User Load", "VUs", "blue", ctrl_user_load, d => d.from, d => d.AVG))
+  specs.push(specTimeLine("Request Rate", "hits/s", "purple", req_data, d => d.from, d => d.ELEMENTS_PER_SECOND))
+  specs.push(specTimeLine("Error Rate", "err/s", "red", req_data, d => d.from, d => d.ERRORS_PER_SECOND))
+  specs.push(specTimeLine("Throughput", "Bytes/s", "green", req_data, d => d.from, d => d.THROUGHPUT))
+  plotSVG(el, specs)
+  el.append(() => createSpecsTable(specs.filter(s => s.title==="Request Rate")).node());
+}
+
+</script>
+
+<script type="text/javascript">
+appendOnLoad(function() {
+  d3.selectAll(".expandable").style("display","none");
+})
+</script>
+
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, sans-serif;
+  padding: 2em;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+h1 {
+  margin: 1em auto;
+  text-align: center;
+}
+
+h3 {
+  padding: 0.3em;
+  margin: 1em auto;
+  text-align: center;
+  background-color: #e2e2ff;
+  border-bottom: #444;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+td.graph {
+  padding:0px;
+}
+div.graph {
+  background-color:#eee;
+}
+
+table.legend {
+  margin: 0em auto;
+  text-align: center;
+  width: 75%;
+  border: 1px solid #000;
+}
+table.legend, table.legend > tbody > tr > td {
+  border: 0px;
+  padding:0px;
+}
+</style>
+  </body>
+</html>
