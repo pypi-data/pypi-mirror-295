@@ -1,0 +1,33 @@
+bidict
+packaging
+
+[:sys_platform == "darwin"]
+rubicon-objc
+
+[:sys_platform == "linux"]
+dbus-fast
+
+[:sys_platform == "win32"]
+winrt-windows.applicationmodel.core
+winrt-windows.data.xml.dom
+winrt-windows.foundation
+winrt-windows.foundation.collections
+winrt-windows.foundation.interop
+winrt-windows.ui.notifications
+
+[dev]
+black
+bump2version
+flake8
+flake8-pyproject
+isort
+mypy
+pytest
+pytest-asyncio
+pytest-cov
+
+[docs]
+furo==2024.8.6
+sphinx==8.0.2
+sphinx-autoapi==3.3.1
+sphinx-mdinclude==0.6.2

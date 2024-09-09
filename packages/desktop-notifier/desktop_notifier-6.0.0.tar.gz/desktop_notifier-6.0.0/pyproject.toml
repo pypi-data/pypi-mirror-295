@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=61.2", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "desktop-notifier"
+version = "6.0.0"
+authors = [{name = "Sam Schott", email = "sam.schott@outlook.com"}]
+license = {text = "MIT"}
+description = "Python library for cross-platform desktop notifications"
+keywords = [
+    "desktop-notifier",
+    "notifications",
+    "Notification Center",
+    "push notifications",
+    "Toast notifications",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Communications",
+    "Topic :: Desktop Environment",
+    "Topic :: Desktop Environment :: Gnome",
+    "Topic :: Desktop Environment :: K Desktop Environment (KDE)",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "bidict",
+    "packaging",
+    "dbus-fast;sys_platform=='linux'",
+    "rubicon-objc;sys_platform=='darwin'",
+    "winrt-windows.applicationmodel.core;sys_platform=='win32'",
+    "winrt-windows.data.xml.dom;sys_platform=='win32'",
+    "winrt-windows.foundation;sys_platform=='win32'",
+    "winrt-windows.foundation.collections;sys_platform=='win32'",
+    "winrt-windows.foundation.interop;sys_platform=='win32'",
+    "winrt-windows.ui.notifications;sys_platform=='win32'",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/samschott/desktop-notifier"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "bump2version",
+    "flake8",
+    "flake8-pyproject",
+    "isort",
+    "mypy",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+]
+docs = [
+    "furo==2024.8.6",
+    "sphinx==8.0.2",
+    "sphinx-autoapi==3.3.1",
+    "sphinx-mdinclude==0.6.2",
+]
+
+[tool.setuptools.package-data]
+desktop_notifier = ["**/*.png"]
+
+[tool.flake8]
+ignore = "E203,E501,W503,H306"
+per-file-ignores = """
+__init__.py: F401"""
+statistics = "True"
+
+[tool.mypy]
+# Imports are not available on all platforms.
+ignore_missing_imports = true
+# On platforms where imports are not available, ignores may be unused.
+warn_unused_ignores = false
+strict = true
+files = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
