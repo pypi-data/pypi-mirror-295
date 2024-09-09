@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: plytix-pim-client
+Version: 0.0.16
+Summary: An HTTP client in Python for Plytix PIM API.
+Author-email: Arturo Parra <arturoteleco95@proton.me>
+Project-URL: Homepage, https://github.com/TheTelematic/plytix-pim-client
+Project-URL: Issues, https://github.com/TheTelematic/plytix-pim-client/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: httpx~=0.27.2
+
+# plytix-pim-client
+An HTTP client in Python for Plytix PIM API.
+
+API documentation: https://apidocs.plytix.com
+
+![Example](doc/images/example.png)
