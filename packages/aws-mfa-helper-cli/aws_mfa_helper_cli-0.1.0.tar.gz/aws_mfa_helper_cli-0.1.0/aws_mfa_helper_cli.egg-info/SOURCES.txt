@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+aws_mfa_helper_cli/__init__.py
+aws_mfa_helper_cli/cli.py
+aws_mfa_helper_cli/config.py
+aws_mfa_helper_cli/utils.py
+aws_mfa_helper_cli.egg-info/PKG-INFO
+aws_mfa_helper_cli.egg-info/SOURCES.txt
+aws_mfa_helper_cli.egg-info/dependency_links.txt
+aws_mfa_helper_cli.egg-info/entry_points.txt
+aws_mfa_helper_cli.egg-info/requires.txt
+aws_mfa_helper_cli.egg-info/top_level.txt
