@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: sharh
+Version: 0.9.0
+Summary: tiny dsl for lua-resty-expr
+Author-email: Kamyab Taghizadeh <kamyab.zad@gmail.com>
+Project-URL: Homepage, https://github.com/oktoze/sharh
+Project-URL: Repository, https://github.com/oktoze/sharh.git
+Project-URL: Issues, https://github.com/oktoze/sharh/issues
+Requires-Python: >=3.9
+License-File: LICENSE
+Requires-Dist: ply==3.11
