@@ -1,0 +1,3 @@
+[console_scripts]
+trident-cli=trident.cli:main
+
