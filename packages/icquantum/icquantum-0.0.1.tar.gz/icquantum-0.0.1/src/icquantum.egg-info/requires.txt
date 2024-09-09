@@ -1,0 +1,14 @@
+icflow==0.0.12
+qiskit
+qiskit-aer
+matplotlib
+mqt.bench
+
+[test]
+pytest
+pytest-cov
+pytest-sugar
+black
+flake8
+pylint
+mypy

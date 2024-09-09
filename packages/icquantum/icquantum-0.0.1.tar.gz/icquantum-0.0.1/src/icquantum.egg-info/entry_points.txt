@@ -1,0 +1,2 @@
+[console_scripts]
+icflow = icquantum.main_cli:main_cli
