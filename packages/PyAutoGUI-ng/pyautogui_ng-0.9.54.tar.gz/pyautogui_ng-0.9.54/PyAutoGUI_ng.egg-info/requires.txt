@@ -1,0 +1,12 @@
+pymsgbox
+pytweening>=1.0.4
+pyscreeze>=0.1.21
+pygetwindow>=0.0.5
+mouseinfo
+
+[:platform_system == "Darwin"]
+pyobjc-core
+pyobjc-framework-quartz
+
+[:platform_system == "Linux"]
+python-xlib
