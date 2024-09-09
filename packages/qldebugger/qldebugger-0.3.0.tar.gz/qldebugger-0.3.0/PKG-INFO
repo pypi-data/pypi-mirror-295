@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: qldebugger
+Version: 0.3.0
+Summary: Utility to debug AWS lambdas with SQS messages
+Home-page: https://github.com/eduardoklosowski/qldebugger
+License: MIT
+Author: Eduardo Klosowski
+Author-email: eduardo_klosowski@yahoo.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Debuggers
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: System :: Emulators
+Classifier: Typing :: Typed
+Requires-Dist: boto3 (>=1.35,<2.0)
+Requires-Dist: click (>=8.1,<9.0)
+Requires-Dist: graphlib_backport (>=1.1,<2.0) ; python_version < "3.9"
+Requires-Dist: pydantic (>=2.8,<3.0)
+Requires-Dist: tomli (>=2.0,<3.0)
+Project-URL: Documentation, http://qldebugger.readthedocs.io/
+Project-URL: Repository, https://github.com/eduardoklosowski/qldebugger
+Description-Content-Type: text/markdown
+
+# Queue Lambda Debugger
+
+Utility to debug AWS lambdas with SQS messages.
+

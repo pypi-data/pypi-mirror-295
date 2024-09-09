@@ -1,0 +1,103 @@
+[build-system]
+requires = ["poetry-core>=1,<2"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "qldebugger"
+version = "0.3.0"
+description = "Utility to debug AWS lambdas with SQS messages"
+authors = ["Eduardo Klosowski <eduardo_klosowski@yahoo.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/eduardoklosowski/qldebugger"
+documentation = "http://qldebugger.readthedocs.io/"
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Debuggers",
+  "Topic :: Software Development :: Testing",
+  "Topic :: System :: Emulators",
+  "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = "^1.35"
+click = "^8.1"
+graphlib_backport = {version = "^1.1", python = "<3.9"}
+pydantic = "^2.8"
+tomli = "^2.0"
+
+[tool.poetry.group.type.dependencies]
+aws-lambda-typing = "^2.20"
+boto3-stubs = {version = "^1.35", extras = ["secretsmanager", "sns", "sqs", "sts"]}
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6"
+mypy = "^1.11"
+pytest = "^8.3"
+pytest-cov = "^5.0"
+moto = {version = "^5.0", extras = ["server", "secretsmanager", "sns", "sqs", "sts"]}
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.6"
+
+[tool.poetry.scripts]
+qldebugger = "qldebugger.cli:cli"
+
+[tool.ruff]
+target-version = "py38"
+line-length = 119
+src = ["src", "tests"]
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D", "UP037", "ANN401", "FBT", "COM812", "EM", "FA100", "ISC001", "PLR0913", "TRY003", "TRY004", "PERF203"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/qldebugger/example/*.py" = ["T20", "ARG001"]
+"tests/*.py" = ["S101", "S311", "ARG", "PLR2004"]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.pep8-naming]
+classmethod-decorators = ["pydantic.validator"]
+
+[tool.mypy]
+warn_unused_configs = true
+show_column_numbers = true
+show_error_codes = true
+sqlite_cache = true
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["src/**/*.py", "tests/**/*.py"]
+
+[[tool.mypy.overrides]]
+module = [
+  "graphlib.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if (typing\\.)?TYPE_CHECKING:",
+  "@abstractmethod",
+  "@overload",
+]
