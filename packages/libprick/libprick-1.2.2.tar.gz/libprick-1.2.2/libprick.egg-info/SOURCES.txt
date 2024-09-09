@@ -1,0 +1,11 @@
+README.md
+setup.cfg
+setup.py
+libprick/FFMpeg.py
+libprick/__init__.py
+libprick.egg-info/PKG-INFO
+libprick.egg-info/SOURCES.txt
+libprick.egg-info/dependency_links.txt
+libprick.egg-info/requires.txt
+libprick.egg-info/top_level.txt
+tests/test_FFMpeg.py
