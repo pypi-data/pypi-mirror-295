@@ -1,0 +1,13 @@
+duckreg/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+duckreg/demean.py,sha256=mhKjzvOFD9FGZoyKiqHwtfn_RKCRGgKwpZxb8VnnLgA,4034
+duckreg/duckreg.py,sha256=60zEiKABMSOl6Fj3nw8hQ2rfnnEbUSFP1R6OaHTG_Ko,3080
+duckreg/estimators.py,sha256=0fs1I4-fzr66_CkLn3Xm_GrHzsGkgtrcrCLaEYbIA7E,30799
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/conftest.py,sha256=8BXD_90qhOXVJJhcv5H8rOlLac6Rd1pMz1yZ6ffrsMQ,313
+tests/test_fitter.py,sha256=f8wdoXCEL9A4S7UkNYI73VMnaCUyMqcf0Rq1Q-lqzeE,2636
+tests/utils.py,sha256=_rcnBhMCmlxlgpEwIk4X3dKTyKt8y0U1GrZ2gSHQmj8,1030
+duckreg-0.1.1.dist-info/LICENSE,sha256=mFA6lT9Xni9EKrFOrMkQDRHc4FT2p_Nwhjeqxz-35Fk,1068
+duckreg-0.1.1.dist-info/METADATA,sha256=EjhsFTKeMXtk68KaqNRr1kuUoTXhVyvKMYUDK8ayDzw,3155
+duckreg-0.1.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+duckreg-0.1.1.dist-info/top_level.txt,sha256=70EeSfAHS__hV5XrR1haubWWMiPoVpAf2J3x2Tl4OUE,14
+duckreg-0.1.1.dist-info/RECORD,,
