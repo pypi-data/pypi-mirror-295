@@ -1,0 +1,14 @@
+scanpy
+scikit-learn
+numpy
+matplotlib
+seaborn
+scipy
+anndata
+dynamicTreeCut
+
+[dev]
+coverage
+mypy
+pytest
+ruff
