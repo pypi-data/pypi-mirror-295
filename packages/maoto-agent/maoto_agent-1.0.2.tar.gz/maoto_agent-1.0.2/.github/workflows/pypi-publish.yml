@@ -1,0 +1,41 @@
+name: Build and Publish Pypi Package
+
+on:
+  push:
+    tags:
+      - 'v*'  # Runs when a version tag is pushed
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    environment: release_pypi
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetch all history including tags
+          fetch-tags: true  # Ensure tags are fetched
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install Build Dependencies
+        run: |
+          pip install build twine setuptools-scm
+
+      - name: Ensure Git Tags Exist for Setuptools-SCM
+        run: git describe --tags
+
+      - name: Build the package
+        run: python -m build
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          python -m twine upload dist/*
