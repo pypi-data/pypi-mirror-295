@@ -1,0 +1,3 @@
+[console_scripts]
+asyncpal = asyncpal.__main__:main
+
