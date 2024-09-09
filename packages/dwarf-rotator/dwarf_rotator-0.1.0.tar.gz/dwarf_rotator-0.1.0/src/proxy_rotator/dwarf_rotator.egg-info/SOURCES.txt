@@ -1,0 +1,8 @@
+setup.py
+src/proxy_rotator/dwarf_rotator.egg-info/PKG-INFO
+src/proxy_rotator/dwarf_rotator.egg-info/SOURCES.txt
+src/proxy_rotator/dwarf_rotator.egg-info/dependency_links.txt
+src/proxy_rotator/dwarf_rotator.egg-info/requires.txt
+src/proxy_rotator/dwarf_rotator.egg-info/top_level.txt
+tests/test_proxy_rotator.py
+tests/test_proxy_storage.py
