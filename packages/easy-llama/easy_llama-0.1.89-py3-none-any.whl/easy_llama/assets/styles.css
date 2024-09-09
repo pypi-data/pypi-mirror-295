@@ -1,0 +1,246 @@
+/*
+styles.css
+https://github.com/ddh0/easy-llama/
+*/
+
+html {
+    background-color: #000000;
+    color: #eeeeee;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+body {
+    background-color: #000000;
+    color: #eeeeee;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#pageContainer {
+    width: 100svw;
+    height: 100svh;
+    margin: 0px;
+    border-color: transparent;
+    border-width: 0px;
+    padding: 0px;
+    overflow: hidden;
+    color: #eeeeee;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rex;
+    line-height: 3.5rex;
+}
+
+#conversationContainer {
+    width: 80svw;
+    height: inherit;
+    margin: inherit;
+    border-color: inherit;
+    border-width: inherit;
+    padding: inherit;
+    overflow: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+#conversationWindow {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #161616;
+    width: inherit;
+    height: 85svh;
+    margin: 0px;
+    border-color: inherit;
+    border-width: inherit;
+    padding: inherit;
+    overflow-y: auto;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+#inputBox {
+    background-color: #161616;
+    width: calc(100% - 2rex); /* fill width and account for padding */
+    height: 15svh;
+    margin: 0px;
+    resize: none;
+    border-color: #242424;
+    border-width: 5px 0px 0px 0px;
+    padding: 1rex;
+    overflow: auto;
+    color: #eeeeee;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: inherit;
+    line-height: 3.5rex;
+}
+
+#panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    float: right;
+    width: 20svw;
+    height: inherit;
+    margin: inherit;
+    border-color: inherit;
+    border-width: inherit;
+    padding: inherit;
+    overflow: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button {
+    border-color: #555;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 16px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 15svw;
+    height: 8svh;
+    background-color: #4b724b;
+    color: #eeeeee;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.7rex;
+    line-height: 3.5rex;
+    overflow: clip;
+}
+
+button:hover {
+    background-color: #355335;
+    border-color: #838383;
+    cursor: pointer;
+}
+
+h1 {
+    line-height: 8rex;
+}
+
+h2 {
+    line-height: 6rex;
+}
+
+pre {
+    font-size: 85%;
+    line-height: 2.8rex;
+    max-height: 45rex;
+    border-radius: 5px;
+    padding: 1rex;
+    white-space: pre;
+    word-wrap: normal;
+    background-color: #000000bf;
+    color: #bebebe;
+    overflow: auto;
+    max-width: 100%;
+}
+
+code {
+    color: #bebebe;
+}
+
+a {
+    color: #a0c5ff;
+}
+
+a:visited {
+    color: #a0c5ff;
+}
+
+.message {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rex;
+    /* overflow: auto; */
+    width: calc(100% - 4rex);
+    padding: 0.5rex 2rex;
+    /* min-height: 6rex; */
+    border-radius: 0px;
+    color: #eeeeee;
+}
+
+.user-message {
+    background-color: #214a2e;
+    align-self: center;
+}
+
+.bot-message {
+    background-color: #21434b;
+    align-self: center;
+}
+
+/* these 4 rules do the same thing on different browsers */
+textarea::placeholder {
+    color: #404040;
+}
+textarea::-webkit-input-placeholder {
+    color: #404040;
+}
+textarea::-moz-placeholder {
+    color: #404040;
+}
+textarea:-ms-input-placeholder {
+    color: #404040;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.disabled-button {
+    background-color: #404040 !important ;
+    cursor: not-allowed !important;
+}
+
+.disabled-button:hover {
+    background-color: #404040 !important ;
+}
+
+.red-button {
+    background-color: #693333;
+}
+
+.red-button:hover {
+    background-color: #4c2323;
+}
+
+#resetButton {
+    background-color: #693333;
+}
+
+#resetButton:hover {
+    background-color: #4c2323;
+}
+
+#removeButton {
+    background-color: #696233;
+}
+
+#removeButton:hover {
+    background-color: #4c4723;
+}
+
+#newBotMessageButton {
+    background-color: #335e69;
+}
+
+#newBotMessageButton:hover {
+    background-color: #23444c;
+}
+
+#swipeButton {
+    background-color: #363369;
+}
+
+#swipeButton:hover {
+    background-color: #25234c;
+}
