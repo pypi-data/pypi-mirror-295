@@ -1,0 +1,2 @@
+[console_scripts]
+Workspace-Auto = WorkspaceAutomation.__main__:entry_point
