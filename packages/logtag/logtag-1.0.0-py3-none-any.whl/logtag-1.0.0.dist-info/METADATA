@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: logtag
+Version: 1.0.0
+Summary: LogTag adds tags to log messages.
+Home-page: https://github.com/ShotaIuchi/LogTag
+Author: Shota Iuchi
+Author-email: shotaiuchi.develop@gmail.com
+License: MIT
+Keywords: log,tag
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+License-File: LICENSE
+Requires-Dist: tabulate
+Requires-Dist: hjson
+
