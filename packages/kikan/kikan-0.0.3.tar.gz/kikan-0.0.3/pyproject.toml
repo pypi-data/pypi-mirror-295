@@ -1,0 +1,26 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [
+  {name = "Kir Ivanov", email = "asagiri@duck.com"},
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+description = "TUI-based game engine"
+name = "kikan"
+readme = "README.md"
+requires-python = ">=3.9"
+version = "0.0.3"
+
+dependencies = [
+  "blessed",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/idkarn/kikan/issues"
+"Homepage" = "https://github.com/idkarn/kikan"
