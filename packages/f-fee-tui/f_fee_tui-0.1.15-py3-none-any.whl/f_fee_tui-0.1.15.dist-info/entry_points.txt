@@ -1,0 +1,2 @@
+[console_scripts]
+f-fee-tui = f_fee_tui.__main__:main
