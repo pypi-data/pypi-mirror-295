@@ -1,0 +1,5 @@
+[console_scripts]
+create-linux-vm = linux.linux_vm:create_linux_vm
+start-linux-vm = linux.linux_vm:start_linux_vm
+start-webserver = linux.webserver:start_webserver
+stop-linux-vm = linux.linux_vm:stop_linux_vm
