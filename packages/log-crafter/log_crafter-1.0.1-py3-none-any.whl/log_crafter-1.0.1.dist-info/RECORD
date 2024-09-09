@@ -1,0 +1,13 @@
+app/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+app/normal_logs.py,sha256=ts5QKz0N6aNhVbZogwCugwT51t0KTiTfd26ZNPQXduc,3175
+app/suspicious_logs.py,sha256=PKbIk5RaQnHe6-pQlvNXf-WHwpAKDiC_mY4c6x7OER0,2725
+app/utils.py,sha256=9_ddzn_57-GRfooRbCwMyCPAV9Q6ZtWjotpt7KWTDFY,2301
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_normal_logs.py,sha256=c5ru6qMC20r1OrOm33GmasL6apEi7UmZYYKY8pkYg38,2413
+tests/test_suspicious_logs.py,sha256=_ZYu29NWBL6RYmiIGdf37jolgeVDmDd0TLXjVfXBBhE,2514
+tests/test_utils.py,sha256=KPBBeY5CZBPWjnmWmO6kAGp1ZtqUUfOIvhCehowsXGI,2067
+log_crafter-1.0.1.dist-info/LICENSE,sha256=WTJliEOTQJBaWxyVMVzNN-pt4IpOjXbLwUXfL47cksw,1070
+log_crafter-1.0.1.dist-info/METADATA,sha256=VCRFGId0uIpNsiDGUPIV-4SLv9SCs9kOq1ityDSRxrs,3679
+log_crafter-1.0.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+log_crafter-1.0.1.dist-info/top_level.txt,sha256=MJXn5pCZl0XSEeWNKzshxzMMANr3AymeoMYBO1JNPyU,10
+log_crafter-1.0.1.dist-info/RECORD,,
