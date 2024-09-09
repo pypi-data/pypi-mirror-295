@@ -1,0 +1,10 @@
+setuptools_scm
+pyserial
+pandas
+pygubu==0.16
+wiliot-api>=4.9.4
+wiliot-core>=5.7.4
+customtkinter>=5.0.3
+pillow>=9.0.1
+CtkMessagebox
+ttkbootstrap
