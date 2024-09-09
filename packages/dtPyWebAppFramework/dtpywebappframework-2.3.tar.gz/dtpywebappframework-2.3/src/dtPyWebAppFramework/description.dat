@@ -1,0 +1,13 @@
+<p>The dtPyWebAppFramework is a Python library designed to streamline the development of applications and tools with user interfaces that are accessible through a web browser. This framework is specifically tailored for local computer environments, ensuring a high level of security by restricting access to the local machine.</p>
+
+<p>Built upon the dtPyAppFramework, dtPyWebAppFramework leverages its core functionalities to provide a robust foundation for creating intuitive and interactive web-based applications. Whether you are developing a new tool or enhancing an existing application, this library offers a seamless integration for presenting user interfaces within a web browser, all while maintaining strict security protocols.</p>
+
+<p>Key Features:</p>
+
+<ul>
+<li><b>Local Access Only</b>: Ensures that applications are run and accessed exclusively on the local computer for enhanced security.</li>
+<li><b>Web-Based Interface</b>: Allows the development of user interfaces that can be interacted with through any web browser.</li>
+<li><b>Integration with dtPyAppFramework</b>: Utilizes the capabilities of dtPyAppFramework to support advanced application development features.</li>
+</ul>
+
+<p>dtPyWebAppFramework is ideal for developers seeking to create secure, web-based applications with minimal overhead, leveraging the power and flexibility of Python.</p>

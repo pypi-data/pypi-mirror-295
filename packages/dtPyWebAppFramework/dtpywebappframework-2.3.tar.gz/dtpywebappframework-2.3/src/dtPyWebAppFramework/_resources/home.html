@@ -1,0 +1,44 @@
+<style>
+    .disabled-feature {
+        opacity: 0.6;
+        pointer-events: auto;
+        cursor: not-allowed;
+    }
+
+    .disabled-link {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+</style>
+<div class="container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Your Applications</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        {% for card in cards %}
+        {% if card.enabled %}
+        <div class="col d-flex align-items-start">
+            {% else %}
+            <div class="col d-flex align-items-start disabled-feature" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<strong class='text-primary'>Application Disabled</strong><p>{{ card.disabled_reason }}</p>">
+                {% endif %}
+                <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" role="img" width="1em" height="1em" fill="currentColor">
+                        <use xlink:href="/assets/bootstrap/icons/bootstrap-icons.svg#{{ card.icon }}"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2 text-body-emphasis">{{ card.name }}</h3>
+                    <p>{{ card.description }}</p>
+                    {% if card.enabled %}
+                    <a href="#" onclick="openApp('{{ card.short_name }}'); return false" class="btn btn-primary">
+                        Open App
+                    </a>
+                    {% else %}
+                    <a href="#" class="btn btn-primary  disabled-link">
+                        Open App
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
