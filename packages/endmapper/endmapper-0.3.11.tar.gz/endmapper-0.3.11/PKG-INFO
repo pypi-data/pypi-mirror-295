@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: endmapper
+Version: 0.3.11
+Summary: This is the simplest module for quick get project endpoints
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# Endmapper
+
+Endmapper is a library for mapping endpoints.
+
+## Installation
+
+```bash
+pip install endmapper
+```
+
+## Config file "cmapcfg.json"
+
+```yaml
+{
+  //This keywords must be in path
+  "path_white_list": [],
+  //This keywords could not be in path
+  "path_black_list": [],
+  //This keywords must be in endpoint name 
+  "name_white_list": [],
+  //This keywords could not be in endpoint name
+  "name_black_list": [],
+  //Services use with proxy endpoints
+  //Service what you want to connect must use endmapper too
+  "services": {
+    "endpoint_name": "hostname or ip"
+  }
+}
+```
+
+## How to use with django/drf
+
+- add new path to main project urls
+```python
+from django.urls import path, include
+
+urlpatterns = [
+    # another paths
+    path('', include('endmapper.urls'))
+]
+```
+
+## How to use with fastAPI
