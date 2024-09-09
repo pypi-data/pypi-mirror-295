@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: knn_fishmlserv
+Version: 0.1.4
+Summary: Default template for PDM package
+Author-email: kim <lsiwh32749@gmail.com>
+License: MIT
+Requires-Python: ==3.10.*
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.0.3
+Requires-Dist: pyarrow>=17.0.0
+Requires-Dist: fastparquet>=2024.2.0
+Requires-Dist: note>=0.5.2
+Requires-Dist: scikit-learn>=1.5.1
+Requires-Dist: matplotlib>=3.7.5
+Requires-Dist: plotext>=5.2.8
+Requires-Dist: jupyter>=1.1.1
+Requires-Dist: notebook>=7.2.2
+
+# knn_fishmlserv
+
+# command
+```bash
+$ knn_fishml
+$ 나가기를 원하면 exit을 입력하세요
+$ 물고기의 길이를 입력하세요: 35
+$ 물고기의 무게를 입력하세요: 37
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 도미
+$ 물고기의 길이를 입력하세요: 35.7
+$ 물고기의 무게를 입력하세요: 27.8
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 도미
+$ 물고기의 길이를 입력하세요: 1
+$ 물고기의 무게를 입력하세요: 1
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 빙어
+$ 물고기의 길이를 입력하세요: 3
+$ 물고기의 무게를 입력하세요: 2
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 빙어
+$ 물고기의 길이를 입력하세요: 3
+$ 물고기의 무게를 입력하세요: 4
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 빙어
+$ 물고기의 길이를 입력하세요: 2
+$ 물고기의 무게를 입력하세요: 5
+$ 이 녀석은 바로 도미
+$ 정답을 입력하세요: 빙어
+$ 물고기의 길이를 입력하세요: 3
+$ 물고기의 무게를 입력하세요: 6
+$ 이 녀석은 바로 빙어
+$ 정답을 입력하세요: 빙어
+$ 물고기의 길이를 입력하세요: exit
+$ 프로그램을 종료합니다.
+```
+
