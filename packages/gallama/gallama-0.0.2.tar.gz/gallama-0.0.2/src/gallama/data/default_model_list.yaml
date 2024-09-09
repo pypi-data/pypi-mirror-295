@@ -1,0 +1,452 @@
+llama-3.1-8B:
+  remark: "v3.1"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Llama3.1
+  repo:
+    - repo: "turboderp/Llama-3.1-8B-Instruct-exl2"
+      branch: ['3.0bpw', '3.5bpw', '4.0bpw', '4.5bpw', '5.0bpw', '6.0bpw', '8.0bpw']
+      quant: [3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 8.0]
+      backend: exllama
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [2.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q2_K_L.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q3_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [6.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q6_K.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
+      branch: ['main']
+      quant: [8.0]
+      url: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q8_0.gguf
+      backend: llama_cpp
+llama-3.1-70B:
+  remark: "v3.1"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Llama3.1
+  repo:
+    - repo: "turboderp/Llama-3.1-70B-Instruct-exl2"
+      branch: ['2.5bpw', '3.0bpw', '3.5bpw', '4.0bpw', '4.5bpw', '5.0bpw', '6.0bpw']
+      quant: [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0]
+      backend: exllama
+    - repo: "MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF/blob/main/Meta-Llama-3.1-70B-Instruct.Q3_K_S.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF/blob/main/Meta-Llama-3.1-70B-Instruct.Q4_K_S.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/MaziyarPanahi/Meta-Llama-3.1-70B-Instruct-GGUF/blob/main/Meta-Llama-3.1-70B-Instruct.Q5_K_S.gguf
+      backend: llama_cpp
+mistral:
+  remark: "v0.3"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Mistral_large
+  repo:
+    - repo: "turboderp/Mistral-7B-instruct-v0.3-exl2"
+      branch: ['2.8bpw', '3.0bpw', '4.0bpw', '4.5bpw', '5.0bpw', '6.0bpw']
+      quant: [2.8, 3.0, 4.0, 4.5, 5.0, 6.0]
+      backend: exllama
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [2.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q2_K.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q3_K_M.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q4_K_M.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q5_K_M.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [6.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q6_K.gguf
+      backend: llama_cpp
+    - repo: "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF"
+      branch: ['main']
+      quant: [8.0]
+      url: https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/blob/main/Mistral-7B-Instruct-v0.3.Q8_0.gguf
+      backend: llama_cpp
+mistral-large:
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Mistral_large
+  repo:
+    - repo: "turboderp/Mistral-Large-Instruct-2407-123B-exl2"
+      branch: ['2.3bpw', '2.5bpw', '2.75bpw', '3.0bpw', '3.5bpw', '4.0bpw', '4.25bpw', '4.5bpw', '4.75bpw', '5.0bpw', '6.0bpw']
+      quant: [2.3, 2.5, 2.75, 3.0, 3.5, 4.0, 4.25, 4.5, 4.75, 5.0, 6.0]
+      backend: exllama
+    - repo: "Panchovix/Mistral-Large-Instruct-2407-3.75bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.75]
+      backend: exllama
+mistral-nemo:
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Mistral
+  repo:
+    - repo: "turboderp/Mistral-Nemo-Instruct-12B-exl2"
+      branch: ['2.5bpw', '3.0bpw', '3.5bpw', '4.0bpw', '4.5bpw', '5.0bpw', '6.0bpw', '8.0bpw']
+      quant: [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 8.0]
+      backend: exllama
+    - repo: "bartowski/Mistral-Nemo-Instruct-2407-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF/blob/main/Mistral-Nemo-Instruct-2407-Q3_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Mistral-Nemo-Instruct-2407-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF/blob/main/Mistral-Nemo-Instruct-2407-Q4_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Mistral-Nemo-Instruct-2407-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF/blob/main/Mistral-Nemo-Instruct-2407-Q5_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Mistral-Nemo-Instruct-2407-GGUF"
+      branch: ['main']
+      quant: [6.0]
+      url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF/blob/main/Mistral-Nemo-Instruct-2407-Q6_K.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Mistral-Nemo-Instruct-2407-GGUF"
+      branch: ['main']
+      quant: [8.0]
+      url: https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF/blob/main/Mistral-Nemo-Instruct-2407-Q8_0.gguf
+      backend: llama_cpp
+codestral:
+  remark: "v0.1"
+  default_quant: 4.25
+  default_cache_quant: Q4
+  prompt_template: Mistral
+  repo:
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['3_0']
+      quant: [3.0]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['3_5']
+      quant: [3.5]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['4_25']
+      quant: [4.25]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['5_0']
+      quant: [5.0]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['6_5']
+      quant: [6.5]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-exl2"
+      branch: ['8_0']
+      quant: [8.0]
+      backend: exllama
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [8.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q8_0.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [6.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q6_K.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q5_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q4_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q3_K_M.gguf
+      backend: llama_cpp
+    - repo: "bartowski/Codestral-22B-v0.1-GGUF"
+      branch: ['main']
+      quant: [2.0]
+      url: https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF/blob/main/Codestral-22B-v0.1-Q2_K.gguf
+      backend: llama_cpp
+gemma-2-9B:
+  remark: "v2"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Gemma2
+  repo:
+    - repo: "turboderp/gemma-2-27b-it-exl2"
+      branch: ['2.5bpw', '3.0bpw', '3.5bpw', '4.0bpw', '4.5bpw', '5.0bpw', '5.5bpw', '6.0bpw', '8.0bpw']
+      quant: [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 8.0]
+      backend: exllama
+gemma-2-27B:
+  remark: "v2"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Gemma2
+  repo:
+    - repo: "turboderp/gemma-2-27b-it-exl2"
+      branch: ['3.0bpw', '3.5bpw', '4.0bpw', '4.5bpw', '5.0bpw', '6.0bpw', '8.0bpw']
+      quant: [3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 8.0]
+      backend: exllama
+qwen-2-1.5B:
+  remark: "v2"
+  default_quant: 4.0
+  default_cache_quant: Q8
+  prompt_template: Qwen2
+  repo:
+    - repo: "LoneStriker/Qwen2-1.5B-Instruct-3.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-1.5B-Instruct-4.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-1.5B-Instruct-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [5.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-1.5B-Instruct-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [6.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-1.5B-Instruct-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [8.0]
+      backend: exllama
+    - repo: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/Qwen/Qwen2-0.5B-Instruct-GGUF/blob/main/qwen2-0_5b-instruct-q4_0.gguf
+      backend: llama_cpp
+    - repo: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+      branch: ['main']
+      quant: [5.0]
+      url: https://huggingface.co/Qwen/Qwen2-0.5B-Instruct-GGUF/blob/main/qwen2-0_5b-instruct-q5_k_m.gguf
+      backend: llama_cpp
+    - repo: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+      branch: ['main']
+      quant: [6.0]
+      url: https://huggingface.co/Qwen/Qwen2-0.5B-Instruct-GGUF/blob/main/qwen2-0_5b-instruct-q6_k.gguf
+      backend: llama_cpp
+    - repo: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+      branch: ['main']
+      quant: [8.0]
+      url: https://huggingface.co/Qwen/Qwen2-0.5B-Instruct-GGUF/blob/main/qwen2-0_5b-instruct-q8_0.gguf
+      backend: llama_cpp
+qwen-2-7B:
+  remark: "v2"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Qwen2
+  repo:
+    - repo: "LoneStriker/Qwen2-7B-Instruct-3.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-7B-Instruct-4.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-7B-Instruct-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [5.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-7B-Instruct-6.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [6.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-7B-Instruct-8.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [8.0]
+      backend: exllama
+qwen-2-72B:
+  remark: "v2"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Qwen2
+  repo:
+    - repo: "LoneStriker/Qwen2-72B-Instruct-3.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-72B-Instruct-3.5bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.5]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-72B-Instruct-4.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.0]
+      backend: exllama
+    - repo: "bartowski/Qwen2-72B-Instruct-exl2"
+      branch: ["4_25"]
+      quant: [4.25]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-72B-Instruct-4.65bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.65]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-72B-Instruct-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [5.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-72B-Instruct-6.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [6.0]
+      backend: exllama
+    - repo: "LoneStriker/Qwen2-7B-Instruct-8.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [8.0]
+      backend: exllama
+    - repo: "Qwen/Qwen2-72B-Instruct-GGUF"
+      branch: ['main']
+      quant: [2.0]
+      url: https://huggingface.co/Qwen/Qwen2-72B-Instruct-GGUF/blob/main/qwen2-72b-instruct-q2_k.gguf
+      backend: llama_cpp
+    - repo: "Qwen/Qwen2-72B-Instruct-GGUF"
+      branch: ['main']
+      quant: [3.0]
+      url: https://huggingface.co/Qwen/Qwen2-72B-Instruct-GGUF/blob/main/qwen2-72b-instruct-q3_k_m.gguf
+      backend: llama_cpp
+    - repo: "Qwen/Qwen2-72B-Instruct-GGUF"
+      branch: ['main']
+      quant: [4.0]
+      url: https://huggingface.co/Qwen/Qwen2-72B-Instruct-GGUF/blob/main/qwen2-72b-instruct-q4_k_m.gguf
+      backend: llama_cpp
+yi-1.5-34B:
+  remark: "v1.5"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Yi1.5
+  repo:
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-3_0bpw_exl2"
+      branch: ['main']
+      quant: [3.0]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-3_5bpw_exl2"
+      branch: ['main']
+      quant: [3.5]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-3_75bpw_exl2"
+      branch: ['main']
+      quant: [3.75]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-4_0bpw_exl2"
+      branch: ['main']
+      quant: [4.0]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-4_25bpw_exl2"
+      branch: ["4_25"]
+      quant: [4.25]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-5_0bpw_exl2"
+      branch: ['main']
+      quant: [5.0]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-6_0bpw_exl2"
+      branch: ['main']
+      quant: [6.0]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-6_5bpw_exl2"
+      branch: ['main']
+      quant: [6.5]
+      backend: exllama
+    - repo: "Zoyd/01-ai_Yi-1.5-34B-Chat-16K-8_0bpw_exl2"
+      branch: ['main']
+      quant: [8.0]
+      backend: exllama
+reflection-llama-3.1-70B:
+  remark: "v3.1"
+  default_quant: 4.0
+  default_cache_quant: Q4
+  prompt_template: Llama3.1
+  repo:
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-2.25bpw-h6-exl2"
+      branch: ['main']
+      quant: [2.25]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-2.4bpw-h6-exl2"
+      branch: ['main']
+      quant: [2.4]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-3.5bpw-h6-exl2"
+      branch: ['main']
+      quant: [3.5]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-4.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.0]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-4.65bpw-h6-exl2"
+      branch: ['main']
+      quant: [4.65]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-5.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [5.0]
+      backend: exllama
+    - repo: "LoneStriker/Reflection-Llama-3.1-70B-6.0bpw-h6-exl2"
+      branch: ['main']
+      quant: [6.0]
+      backend: exllama
+
+
+# embedding model from here
+multilingual-e5-large-instruct:
+  default_quant: 16
+  default_cache_quant: FP16
+  repo:
+    - repo: "intfloat/multilingual-e5-large-instruct"
+      branch: ['main']
+      quant: [16.0]
+      backend: embedding
+gte-large-en-v1.5:
+  default_quant: 16
+  default_cache_quant: FP16
+  repo:
+    - repo: "Alibaba-NLP/gte-large-en-v1.5"
+      branch: ['main']
+      quant: [16.0]
+      backend: embedding
