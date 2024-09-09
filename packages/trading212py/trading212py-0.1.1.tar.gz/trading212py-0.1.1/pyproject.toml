@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trading212py"
+version = "0.1.1"
+description = "A Python client for the Trading212 public API."
+authors = [{name = "Serdar Baran", email = "none@g.com"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+dependencies = [
+    'requests==2.32.3',
+    'python-dotenv==1.0.1',
+    'pydantic == 2.8.2'
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

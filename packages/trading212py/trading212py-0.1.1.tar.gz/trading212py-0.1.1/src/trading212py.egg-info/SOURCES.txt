@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/trading212py/__init__.py
+src/trading212py/base.py
+src/trading212py/config.py
+src/trading212py/decorators.py
+src/trading212py/t212.py
+src/trading212py.egg-info/PKG-INFO
+src/trading212py.egg-info/SOURCES.txt
+src/trading212py.egg-info/dependency_links.txt
+src/trading212py.egg-info/requires.txt
+src/trading212py.egg-info/top_level.txt
+test/test_t212.py
