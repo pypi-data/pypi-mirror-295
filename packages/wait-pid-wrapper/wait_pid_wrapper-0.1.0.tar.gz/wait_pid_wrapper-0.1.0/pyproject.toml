@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "wait-pid-wrapper"
+version = "0.1.0"
+description = ""
+authors = ["Dick Marinus <dick@mrns.nl>"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+wait-pid-wrapper-exec = "wait_pid_wrapper:exec"
+wait-pid-wrapper-waitpid = "wait_pid_wrapper:waitpid"
