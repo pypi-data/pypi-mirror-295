@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+src/cpdfkit/__init__.py
+src/cpdfkit/cpdfkit.py
+src/cpdfkit/exceptions.py
+src/cpdfkit.egg-info/PKG-INFO
+src/cpdfkit.egg-info/SOURCES.txt
+src/cpdfkit.egg-info/dependency_links.txt
+src/cpdfkit.egg-info/top_level.txt
