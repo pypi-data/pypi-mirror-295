@@ -1,0 +1,3 @@
+[console_scripts]
+kutana=kutana.cli:run
+
