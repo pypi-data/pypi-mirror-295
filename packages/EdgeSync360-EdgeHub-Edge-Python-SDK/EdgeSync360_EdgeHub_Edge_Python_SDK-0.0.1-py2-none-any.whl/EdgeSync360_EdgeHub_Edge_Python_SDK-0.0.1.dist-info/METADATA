@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: EdgeSync360-EdgeHub-Edge-Python-SDK
+Version: 0.0.1
+Summary: EdgeSync360_EdgeHub_Edge_Python_SDK package allows developers to write Python applications which access the EdgeSync360/EdgeHub Platform via MQTT protocol.
+Home-page: https://github.com/EdgeHub-Repo/dc-edge-sdk-python-sample
+Author: Paul Tseng
+Author-email: edgehub.dev@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+Requires-Dist: paho-mqtt (==1.4.0)
+
+# EdgeSync360.EdgeHub.Edge.Python.SDK
+
+EdgeSync360.EdgeHub.Edge.Python.SDK package allows developers to write Python applications which access the EdgeSync360/EdgeHub Platform via MQTT protocol.
+
+- [EdgeSync360/EdgeHub](https://docs.wise-paas.advantech.com/en/Guides_and_API_References/Data_Acquisition/1579073100328245315)
+
+
