@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: radarx
+Version: 0.1.5
+Summary: Xarray based radar toolkit
+Author-email: Hamid Ali Syed <hamidsyed37@gmail.com>
+Maintainer-email: Hamid Ali Syed <hamidsyed37@gmail.com>
+License: MIT license
+Project-URL: bugs, https://github.com/syedhamidali/radarx/issues
+Project-URL: changelog, https://github.com/syedhamidali/radarx/blob/master/changelog.md
+Project-URL: homepage, https://github.com/syedhamidali/radarx
+Project-URL: documentation, https://radarx.reathedocs.io
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+License-File: LICENSE
+License-File: AUTHORS.md
+Provides-Extra: dev
+Requires-Dist: coverage; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pooch; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: black[jupyter]; extra == "dev"
+Requires-Dist: blackdoc; extra == "dev"
+Requires-Dist: codespell; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: pytest-mock; extra == "dev"
+Requires-Dist: pytest-check; extra == "dev"
+Requires-Dist: pytest-sugar; extra == "dev"
+Requires-Dist: pytest-watcher; extra == "dev"
+Requires-Dist: deepdiff; extra == "dev"
+Requires-Dist: pip-tools; extra == "dev"
+Requires-Dist: bumpver; extra == "dev"
+Requires-Dist: twine; extra == "dev"
+Requires-Dist: wheel; extra == "dev"
+Requires-Dist: build; extra == "dev"
+Requires-Dist: setuptools>=61.0.0; extra == "dev"
+Requires-Dist: sphinx; extra == "dev"
+Requires-Dist: sphinx-gallery; extra == "dev"
+Requires-Dist: sphinx-book-theme; extra == "dev"
+Requires-Dist: nbsphinx; extra == "dev"
+Requires-Dist: sphinx-mdinclude; extra == "dev"
+
