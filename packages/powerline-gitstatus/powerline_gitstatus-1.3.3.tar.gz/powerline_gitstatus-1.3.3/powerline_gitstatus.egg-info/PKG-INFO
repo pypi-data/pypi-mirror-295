@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: powerline-gitstatus
+Version: 1.3.3
+Summary: A Powerline segment for showing the status of a Git working copy
+Author-email: "Jasper N. Brouwer" <jasper@nerdsweide.nl>
+Maintainer-email: Jérôme Charaoui <jerome@riseup.net>
+License: MIT License
+Project-URL: Homepage, https://github.com/jaspernbrouwer/powerline-gitstatus
+Project-URL: Repository, https://github.com/jaspernbrouwer/powerline-gitstatus.git
+Project-URL: Issues, https://github.com/jaspernbrouwer/powerline-gitstatus
+Keywords: powerline git status prompt
+Classifier: Development Status :: 6 - Mature
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Terminals
+License-File: LICENSE
