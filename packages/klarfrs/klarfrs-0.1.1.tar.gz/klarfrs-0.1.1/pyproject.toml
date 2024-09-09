@@ -1,0 +1,18 @@
+[project]
+name = "klarfrs"
+version = "0.1.1"
+authors = [
+  {name = "Norman Banick", email = "norman.banick@gmail.com"},]
+description = "Klarfrs is a parser written in Rust to read klarf files as a python dictionary. Currently it only supports version 1.2."
+readme = {file = "readme.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+keywords = ["parser", "rust-lang", "semiconductor", "klarf", "wafers"]
+[project.urls]
+Homepage = "https://github.com/banickn/klarfrs"
+Repository = "https://github.com/banickn/klarfrs"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.maturin]
+username = "__token__"
+password = "pypi-AgEIcHlwaS5vcmcCJGZiZTkyNjFiLTRhMzEtNGNiOC1hNTY0LWZmMjUyZjljZTAyMQACKlszLCJkYWM3ZWQ0ZC1kOWVmLTQ4MmQtYjM4OS1iYWI0NTMyYzkxNDUiXQAABiDXq7rjsUgAVVobvLCn5crfKygRT2eRK-82UFqfo6sHFw"
