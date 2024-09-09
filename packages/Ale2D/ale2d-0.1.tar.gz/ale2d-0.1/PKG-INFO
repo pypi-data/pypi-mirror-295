@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: Ale2D
+Version: 0.1
+Summary: Un motor de juego 2D basado en Pygame y Arcade con físicas, carga de archivos y manejo de imágenes.
+Home-page: https://github.com/Alejandrix2456github/Ale2D-Engine
+Author: Tu Nombre
+Requires-Dist: pygame
+Requires-Dist: arcade
+Requires-Dist: pymunk
