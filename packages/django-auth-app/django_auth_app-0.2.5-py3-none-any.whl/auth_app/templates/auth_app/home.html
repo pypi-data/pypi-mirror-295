@@ -1,0 +1,14 @@
+{% extends 'auth_app\base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Welcome to Auth App</h1>
+{% if user.is_authenticated %}
+<p>You are logged in as {{ user.email }}</p>
+<a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+{% endif %}
+{% endblock %}
