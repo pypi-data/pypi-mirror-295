@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+glogcenter/__init__.py
+glogcenter/__version__.py
+glogcenter/glc.py
+glogcenter.egg-info/PKG-INFO
+glogcenter.egg-info/SOURCES.txt
+glogcenter.egg-info/dependency_links.txt
+glogcenter.egg-info/requires.txt
+glogcenter.egg-info/top_level.txt
