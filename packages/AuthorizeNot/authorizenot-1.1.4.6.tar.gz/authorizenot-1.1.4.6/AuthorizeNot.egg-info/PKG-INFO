@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: AuthorizeNot
+Version: 1.1.4.6
+Summary: Authorize.Net Python SDK, But It Actually Works.
+Home-page: https://github.com/Faugermire/AuthorizeNot
+Author: Faugermire
+Author-email: faugermire@gmail.com
+License: proprietary
+Keywords: authorizenot,authorizenet,authorize.net,payment,ecommerce
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3.12
+License-File: LICENSE.txt
+Requires-Dist: pyxb-x==1.2.6.2
+Requires-Dist: lxml==5.*
+Requires-Dist: requests==2.*
+Requires-Dist: setuptools~=74.1.2

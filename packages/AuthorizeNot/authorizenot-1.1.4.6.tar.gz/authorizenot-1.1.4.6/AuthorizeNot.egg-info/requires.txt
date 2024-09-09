@@ -1,0 +1,4 @@
+pyxb-x==1.2.6.2
+lxml==5.*
+requests==2.*
+setuptools~=74.1.2
