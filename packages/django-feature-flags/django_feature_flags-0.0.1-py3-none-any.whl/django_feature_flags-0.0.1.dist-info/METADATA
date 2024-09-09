@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: django-feature-flags
+Version: 0.0.1
+Summary: A django app to help you manage the django-shopify-app package billing
+Home-page: http://pypi.python.org/pypi/django-feature-flags/
+Author: 
+Author-email: 
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENCE
+License-File: LICENSE
+Requires-Dist: Django
+Requires-Dist: pytest
+
