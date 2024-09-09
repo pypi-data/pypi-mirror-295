@@ -1,0 +1,14 @@
+# 包含所有Python文件
+include *.py
+
+# 包含特定文件夹
+# include my_package/data/
+
+# 排除指定文件
+# exclude *.pyc
+
+# 排除测试目录
+# exclude tests/
+
+# 包含特定模式匹配的文件
+# recursive-include my_package/images *.png
