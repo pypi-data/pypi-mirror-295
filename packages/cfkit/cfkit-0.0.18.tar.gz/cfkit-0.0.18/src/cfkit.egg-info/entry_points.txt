@@ -1,0 +1,2 @@
+[console_scripts]
+cf = cfkit._cmd.cli:main
