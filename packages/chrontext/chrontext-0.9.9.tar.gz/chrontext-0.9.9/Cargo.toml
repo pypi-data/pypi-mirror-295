@@ -1,0 +1,50 @@
+[workspace]
+resolver = "1"
+members = ["py_chrontext"]
+
+[workspace.dependencies]
+#spargebra = { path = "../maplib/lib/spargebra", features = ["rdf-star"]}
+#query_processing = { path = "../maplib/lib/query_processing"}
+#pydf_io = { path = "../maplib/lib/pydf_io"}
+#representation = { path = "../maplib/lib/representation", features = ["rdf-star"]}
+#templates = { path = "../maplib/lib/templates"}
+spargebra = { git = "https://github.com/DataTreehouse/maplib", rev="07dbea46a9fed5db3eb71475996e5e1fcfec3247", features = ["rdf-star"]}
+query_processing = { git = "https://github.com/DataTreehouse/maplib", rev="07dbea46a9fed5db3eb71475996e5e1fcfec3247" }
+pydf_io = { git = "https://github.com/DataTreehouse/maplib", rev="07dbea46a9fed5db3eb71475996e5e1fcfec3247" }
+representation = { git = "https://github.com/DataTreehouse/maplib", rev="07dbea46a9fed5db3eb71475996e5e1fcfec3247", features = ["rdf-star"] }
+templates = { git = "https://github.com/DataTreehouse/maplib", rev="07dbea46a9fed5db3eb71475996e5e1fcfec3247" }
+
+
+sparesults = { version = "0.2.0-alpha.5", features = ["rdf-star"] }
+oxrdf = { version = "0.2.0-alpha.5", features = ["rdf-star"] }
+oxigraph = "0.4.0-alpha.7"
+oxrdfio = { version= "0.1.0-alpha.6", features = ["rdf-star"] }
+
+polars = "0.41.3"
+tokio = "1.32.1"
+log = "0.4.21"
+pyo3 = "0.22.2"
+reqwest = "0.12.3"
+env_logger = "0.11.3"
+thiserror = "1.0.58"
+async-recursion = "1.1.0"
+async-trait = "0.1.81"
+chrono = "0.4.37"
+filesize = "0.2.0"
+serde = "1.0.203"
+serde_json = "1.0.117"
+backoff = "0.4.0"
+gcp-bigquery-client = "0.20.0"
+rayon = "1.10.0"
+opcua = {version="0.12.0", features = ["vendored-openssl"]}
+url = "2.5.2"
+uuid = {version = "1.10.0", features = ["fast-rng", "v4"]}
+
+[patch.crates-io]
+oxrdf = { git = 'https://github.com/magbak/oxigraph.git', rev = "b13df973ed2785de2ac41066ca4b62d88d3f5d40"}
+oxttl = { git = 'https://github.com/magbak/oxigraph.git', rev = "b13df973ed2785de2ac41066ca4b62d88d3f5d40"}
+oxrdfio = { git = 'https://github.com/magbak/oxigraph.git', rev = "b13df973ed2785de2ac41066ca4b62d88d3f5d40"}
+oxigraph = { git = 'https://github.com/magbak/oxigraph.git', rev = "b13df973ed2785de2ac41066ca4b62d88d3f5d40"}
+sparesults = { git = 'https://github.com/magbak/oxigraph.git', rev = "b13df973ed2785de2ac41066ca4b62d88d3f5d40"}
+#polars = { git = "https://github.com/pola-rs/polars.git",  rev = "0c2b5d82fd2726df7d7b318e5c21581a27fffdba"}
+#polars-core = { git = "https://github.com/pola-rs/polars.git",  rev = "0c2b5d82fd2726df7d7b318e5c21581a27fffdba"}
