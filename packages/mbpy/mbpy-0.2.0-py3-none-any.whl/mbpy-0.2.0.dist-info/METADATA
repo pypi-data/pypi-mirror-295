@@ -1,0 +1,132 @@
+Metadata-Version: 2.3
+Name: mbpy
+Version: 0.2.0
+Summary: Install and manage pyproject.toml with pip commands.
+Project-URL: Documentation, https://github.com/mbodiai/mpip#readme
+Project-URL: Issues, https://github.com/mbodiai/mpip/issues
+Project-URL: Source, https://github.com/mbodiai/mpip
+Author-email: Sebastian Peralta <sebastian@mbodi.ai>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: click==8.1.7
+Requires-Dist: logger
+Requires-Dist: mrender
+Requires-Dist: packaging==24.1
+Requires-Dist: requests==2.32.3
+Requires-Dist: rich==13.7.1
+Requires-Dist: toml==0.10.2
+Requires-Dist: tomlkit==0.13.0
+Provides-Extra: docs
+Requires-Dist: mkdocs; extra == 'docs'
+Requires-Dist: mkdocs-material; extra == 'docs'
+Requires-Dist: myst-parser; extra == 'docs'
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'docs'
+Requires-Dist: sphinx-click; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme; extra == 'docs'
+Provides-Extra: mkdocs
+Requires-Dist: mkdocs; extra == 'mkdocs'
+Requires-Dist: mkdocs-material; extra == 'mkdocs'
+Provides-Extra: sphinx
+Requires-Dist: myst-parser; extra == 'sphinx'
+Requires-Dist: sphinx; extra == 'sphinx'
+Requires-Dist: sphinx-autodoc-typehints; extra == 'sphinx'
+Requires-Dist: sphinx-click; extra == 'sphinx'
+Requires-Dist: sphinx-rtd-theme; extra == 'sphinx'
+Description-Content-Type: text/markdown
+
+# mbpy - Manage Python Projects with Ease
+
+[![PyPI - Version](https://img.shields.io/pypi/v/mbpy.svg)](https://pypi.org/project/mbpy)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mbpy.svg)](https://pypi.org/project/mbpy)
+
+-----
+
+`mbpy` is a powerful tool for creating, managing, and documenting Python projects. It simplifies the process of setting up project structures, managing dependencies, and generating documentation.
+
+## Features
+
+- Create new Python projects with customizable structures
+- Manage project dependencies using pyproject.toml
+- Set up documentation using Sphinx or MkDocs
+- Generate GitHub Actions workflows for CI/CD
+- Simplify package installation and management with pip-like commands
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install mbpy
+```
+
+## Usage
+
+To create a new project:
+
+```console
+mbpy create <project_name> --author "<Your Name>" --description "<Project Description>"
+```
+
+To manage dependencies:
+
+```console
+mpip install <package_name>
+mpip uninstall <package_name>
+mpip show
+```
+
+For more detailed usage instructions, run:
+
+```console
+mbpy --help
+```
+
+or
+
+```console
+mpip --help
+```
+
+## Documentation
+
+To view the full documentation, you have two options:
+
+### Sphinx
+
+1. Build the docs:
+   ```
+   hatch run docs
+   ```
+2. Open `docs/_build/html/index.html` in your web browser.
+
+### MkDocs
+
+1. Install MkDocs if you haven't already:
+   ```
+   pip install mkdocs
+   ```
+2. Build and serve the docs:
+   ```
+   mkdocs serve
+   ```
+3. Open your web browser and go to `http://127.0.0.1:8000/`
+
+## License
+
+`mbpy` is distributed under the terms of the [MIT License](LICENSE).
