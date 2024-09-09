@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "doogat-core"
+version = "0.1.1"
+description = ""
+authors = ["Tomáš Bouška <admin@doogat.com>"]
+license = "GNU GPLv3"
+readme = "README.md"
+packages = [
+   { include = "doogat", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+inflection = "^0.5.1"
+buvis-pybase = "^0.1.2"
+# buvis-pybase = {version = "*", source = "test-pypi"}
+# buvis-pybase = {path = "../../buvis/buvis-pybase", develop = true}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pre-commit = "^3.8.0"
+sphinx = "^8.0.2"
+sphinx-material = "^0.0.36"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["S101"]
