@@ -1,0 +1,58 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+body > footer {
+    margin-top: var(--winter-footer-block-spacing-top);
+    padding-top: 0.5em;
+    padding-bottom: var(--winter-footer-block-spacing-bottom);
+    font-family: var(--winter-footer-font);
+    font-size: var(--winter-footer-font-size);
+    font-weight: var(--winter-footer-font-weight);
+    line-height: var(--winter-footer-line-height);
+    color: var(--winter-footer-fg);
+    background: var(--winter-footer-bg);
+
+    border-top: var(--winter-footer-divider);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-block: 0;
+        padding: 0;
+        list-style: none;
+
+        &:first-child {
+            align-items: flex-start;
+        }
+        &:last-child {
+            align-items: flex-end;
+        }
+    }
+
+    & li {
+    }
+
+    & a,
+    [role="link"] {
+        color: var(--winter-footer-fg);
+        background: transparent;
+        display: inline-block;
+        text-decoration: none;
+
+        &:is([aria-current], :hover, :active, :focus) {
+            color: var(--winter-footer-fg);
+            background: transparent;
+            text-decoration: underline;
+            text-decoration-thickness: 0.08em;
+        }
+    }
+}

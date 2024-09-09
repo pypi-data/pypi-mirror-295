@@ -1,0 +1,36 @@
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "bracketSameLine": true,
+    "plugins": ["prettier-plugin-jinja-template"],
+    "overrides": [
+        {
+            "files": ["*.js", "*.ts"],
+            "options": {
+                "parser": "typescript"
+            }
+        },
+        {
+            "files": ["tsconfig.json"],
+            "options": {
+                "parser": "json5",
+                "quoteProps": "preserve"
+            }
+        },
+        {
+            "files": ["*.html"],
+            "options": {
+                "tabWidth": 2,
+                "htmlWhitespaceSensitivity": "ignore"
+            }
+        },
+        {
+            "files": ["src/wintersong/**/*.html"],
+            "options": {
+                "parser": "jinja-template"
+            }
+        }
+    ]
+}

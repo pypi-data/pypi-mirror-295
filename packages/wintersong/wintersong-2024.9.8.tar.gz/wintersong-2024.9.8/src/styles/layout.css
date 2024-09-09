@@ -1,0 +1,56 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+body {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+
+    & header,
+    main,
+    footer {
+        display: block;
+        width: 100%;
+        max-width: 980px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.grid {
+    display: grid;
+    --min: 15ch;
+    --gap: 1rem;
+
+    display: grid;
+    grid-gap: var(--gap);
+    /* min() with 100% prevents overflow in extra narrow spaces */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+    align-items: start;
+
+    &.col-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    &.col-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    &.col-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    &.col-1-2 {
+        grid-template-columns: 1fr 2fr;
+    }
+    &.col-2-1 {
+        grid-template-columns: 2fr 1fr;
+    }
+    &.col-1-3 {
+        grid-template-columns: 1fr 3fr;
+    }
+    &.col-3-1 {
+        grid-template-columns: 3fr 1fr;
+    }
+}

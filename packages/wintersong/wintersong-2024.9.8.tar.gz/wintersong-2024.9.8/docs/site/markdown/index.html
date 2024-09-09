@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Page author --><link rel="canonical" href="https://wintersong.wntr.dev/markdown/" />
+
+<link
+  rel="shortcut icon"
+  sizes="192x192"
+  href="/icon.png" />
+<link
+  rel="apple-touch-icon"
+  sizes="192x192"
+  href="/icon.png" />
+
+<meta name="generator" content="mkdocs-1.5.3" /><!-- Title --><title>
+          Wintersong
+          
+            
+          
+
+          
+            - Markdown
+          
+        </title><link rel="stylesheet" href="../winter.css" /></head>
+
+  <body
+    class=""
+    data-page="markdown/"><header>
+        <nav role="navigation" aria-label="main navigation">
+          <ul>
+            <li>
+              <a href="..">Wintersong</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <img class="logo" src="/winterbloom.png" alt="Winterbloom logo" />
+            </li>
+          </ul>
+        </nav>
+        <nav role="navigation" aria-label="secondary navigation">
+          <ul class="has-dividers"><li>
+                <a
+                  
+                  href="..">
+                  Home
+                </a>
+              </li><li>
+                <a
+                  
+                  href="../components/">
+                  Components
+                </a>
+              </li><li>
+                <a
+                  aria-current
+                  href="./">
+                  Markdown
+                </a>
+              </li></ul>
+          <ul><li>
+              <winter-dark-mode></winter-dark-mode>
+            </li>
+          </ul>
+        </nav>
+      </header><main
+      class="hide-title">
+  <article class="content"><h1 id="markdown-reference">Markdown reference<a class="headerlink" href="#markdown-reference" title="Permanent link">#</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#headings">Headings</a></li>
+<li><a href="#inline-text">Inline text</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#blockquotes">Blockquotes</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#math">Math</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#admonitions">Admonitions</a></li>
+<li><a href="#definition-lists">Definition lists</a></li>
+<li><a href="#keys">Keys</a></li>
+<li><a href="#abbreviations">Abbreviations</a></li>
+<li><a href="#footnotes">Footnotes</a></li>
+<li><a href="#images">Images</a></li>
+</ul>
+</div>
+<h2 id="headings">Headings<a class="headerlink" href="#headings" title="Permanent link">#</a></h2>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># This is H1, the title of the page.</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gu">## This is H2, for page sections.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gu">### This is H3, for subsections.</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gu">#### H4 through H6 are also possible, but should be used sparingly.</span>
+</span></code></pre></div>
+<p>In addition to the standard headings, there is a special <code>subtitle</code> heading that's used to create a stylized, short phrase under the first heading. This is useful for product tag lines:</p>
+<p class="subtitle">Analog-inspired parameterized drum synthesizer</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Analog-inspired parameterized drum synthesizer
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{: .subtitle}
+</span></code></pre></div>
+<h3 id="this-is-h3">This is H3<a class="headerlink" href="#this-is-h3" title="Permanent link">#</a></h3>
+<h4 id="this-is-h4">This is H4<a class="headerlink" href="#this-is-h4" title="Permanent link">#</a></h4>
+<h5 id="this-is-h5">This is H5<a class="headerlink" href="#this-is-h5" title="Permanent link">#</a></h5>
+<h6 id="this-is-h6">This is H6<a class="headerlink" href="#this-is-h6" title="Permanent link">#</a></h6>
+<h2 id="inline-text">Inline text<a class="headerlink" href="#inline-text" title="Permanent link">#</a></h2>
+<p>Inline text can be formatted in several ways, such as <strong>bold</strong>, <em>italic</em>, <strong><em>bold and italic</em></strong>, <del>strikethrough</del>, <code>monospace</code>, super<sup>script</sup>, sub<sub>script</sub>, <mark>mark</mark>, <ins>insert</ins>, and <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span>.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>You can use <span class="gs">**bold**</span>, <span class="ge">_italic_</span>, <span class="gs">**_bold and italic_**</span>, <span class="gd">~~strikethrough~~</span>, and <span class="sb">`monospace`</span>.
+</span></code></pre></div>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<p>You can create links to <a href="/bia/">internal pages</a> and <a href="https://noiseengineering.us">external sites</a>.</p>
+<p>You can also use <a href="https://winterbloom.com">named links</a> when you reference the same link <a href="https://winterbloom.com">multiple</a> <a href="https://winterbloom.com">times</a>.</p>
+<p>Links are automatically created if you reference a full, valid URL, for example, <a href="https://winterbloom.com">winterbloom.com</a>.</p>
+<p>You can also create <a href="#page">links to headings in the page</a>. Each heading has a permalink styled as a <code>#</code> next to it.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>You can create links to [<span class="nt">internal pages</span>](<span class="na">/bia/</span>) and
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>[<span class="nt">external sites</span>](<span class="na">https://noiseengineering.us</span>).
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>You can also use [<span class="nt">named links</span>][<span class="nl">winterbloom</span>] when you
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>reference the same link [<span class="nt">multiple</span>][<span class="nl">winterbloom</span>] [times]
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>[winterbloom].
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>[<span class="nl">winterbloom</span>]: <span class="na">https://winterbloom.com</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Links are automatically created if you reference a
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>full, valid URL, for example, https://winterbloom.com.
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>You can also create [<span class="nt">links to headings in the page</span>](<span class="na">#page</span>).
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>Each heading has a permalink styled as a <span class="sb">`#`</span> next to it.
+</span></code></pre></div>
+<h2 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">#</a></h2>
+<p>Lists look like this:</p>
+<ul>
+<li>Lists can be</li>
+<li>created unordered</li>
+<li>or ordered<ol>
+<li>They can also be nested</li>
+<li>multiple times<ul>
+<li>and different styles can</li>
+<li>be mixed as</li>
+</ul>
+</li>
+<li>needed</li>
+</ol>
+</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">-</span><span class="w"> </span>  Lists can be
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">-</span><span class="w"> </span>  created unordered
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">-</span><span class="w"> </span>  or ordered
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">1.</span> They can also be nested
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="k">1.</span> multiple times
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">-</span><span class="w"> </span>and different styles can
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">-</span><span class="w"> </span>be mixed as
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="k">1.</span> needed
+</span></code></pre></div>
+<h2 id="blockquotes">Blockquotes<a class="headerlink" href="#blockquotes" title="Permanent link">#</a></h2>
+<p>This is a blockquote:</p>
+<blockquote>
+<p>You can format a paragraph as a blockquote,
+and even extend it over multiple lines.
+You can use text formatting like <strong>bold</strong> and <em>italic</em>
+as well.</p>
+<p>Blockquotes can also span multiple paragraphs and such.</p>
+</blockquote>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">&gt; </span><span class="ge">You can format a paragraph as a blockquote,</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">&gt; </span><span class="ge">and even extend it over multiple lines.</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">&gt; </span><span class="ge">You can use text formatting like **bold** and _italic_</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">&gt; </span><span class="ge">as well.</span>
+</span></code></pre></div>
+<h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">#</a></h2>
+<p>When referencing code in the middle of a paragraph, use <code>this syntax</code>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>For larger, multi-line blocks of
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>code, you use the fenced block
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>syntax.
+</span></code></pre></div>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>When referencing code in the middle of a paragraph, use <span class="sb">`this syntax`</span>.
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="sb">```</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="sb">For larger, multi-line blocks of</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="sb">code, you use the fenced block</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="sb">syntax.</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="sb">```</span>
+</span></code></pre></div>
+<h2 id="math">Math<a class="headerlink" href="#math" title="Permanent link">#</a></h2>
+<p>You can generate formatted math formulae by using <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">LaTeX markup</a>:</p>
+<div class="arithmatex">\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$$
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>$$
+</span></code></pre></div>
+<p>You can also use formatted math inline with paragraph text, for example:</p>
+<p>The slope-intercept form of a straight line is <span class="arithmatex">\(y=mx+b\)</span>, where <span class="arithmatex">\(m\)</span> is the slope (<span class="arithmatex">\(rise/run\)</span>) and <span class="arithmatex">\(b\)</span> is the y-intercept.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>The slope-intercept form of a straight line is \(y=mx+b\), where \(m\) is the slope (\(rise/run\)) and \(b\) is the y-intercept.
+</span></code></pre></div>
+<p>This functionality is provided through the <a href="https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/">Arithmatex</a> extension and <a href="https://www.mathjax.org/">MathJax</a>. MathJax is a powerful math markup renderer with accessibility features.</p>
+<h2 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1, C2</td>
+<td>10 uF</td>
+</tr>
+<tr>
+<td>C3 - C10</td>
+<td>100 nF</td>
+</tr>
+<tr>
+<td>R1, R2</td>
+<td>100 kΩ</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>10 kΩ</td>
+</tr>
+</tbody>
+</table>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>| Reference | Value  |
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>| --------- | ------ |
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>| C1, C2    | 10 uF  |
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>| C3 - C10  | 100 nF |
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>| R1, R2    | 100 kΩ |
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>| R3        | 10 kΩ  |
+</span></code></pre></div>
+<h2 id="admonitions">Admonitions<a class="headerlink" href="#admonitions" title="Permanent link">#</a></h2>
+<p>Admonitions are a <a href="https://python-markdown.github.io/extensions/admonition/">Markdown extension</a> that add stylized callouts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Admonitions allow you to draw attention to specific text.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition fairy">
+<p class="admonition-title">Fairy</p>
+<p>There are different types of admonitions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Admonition titles</p>
+<p>You can set the title of an admonition if you don't want to use the generic title.</p>
+</div>
+<div class="admonition tip inline end">
+<p class="admonition-title">Inline admonitions</p>
+<p>This is an inline admonition</p>
+</div>
+<p>Admonitions can be inlined next to content, if desired.  This is just filler text to give it something to wrap around. You can ignore the rest of this paragraph. Seriously. I mean it!</p>
+<p>Example source:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>!!! note
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    Admonitions allow you to draw attention to specific text.
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>!!! warning
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    There are two different styles of admonitions: <span class="sb">`note`</span> and <span class="sb">`warning`</span>. More can be added by modifying the theme.
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>!!! note &quot;Admonition titles&quot;
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    You can set the title of an admonition if you don&#39;t want t0 use the generic title.
+</span></code></pre></div>
+<h2 id="definition-lists">Definition lists<a class="headerlink" href="#definition-lists" title="Permanent link">#</a></h2>
+<p>Definition lists are a Markdown extension that's useful for defining terms or creating a legend.</p>
+<dl>
+<dt>Pitch</dt>
+<dd>The pitch knob and CV input adjusts the pitch of the fundamental oscillator.
+This is a <code>1 V / octave</code> standard input. The knob sums with the CV input.</dd>
+<dt>Decay</dt>
+<dd>The decay knob and CV input adjust the decay for all oscillators. The knob offsets the CV input.</dd>
+</dl>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Pitch
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>: The pitch knob and CV input adjusts the pitch of the fundamental oscillator.
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>This is a <span class="sb">`1 V / octave`</span> standard input. The knob sums with the CV input.
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Decay
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>: The decay knob and CV input adjust the decay for all oscillators. The knob offsets the CV input.
+</span></code></pre></div>
+<h2 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">#</a></h2>
+<p>The <a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">keys</a> extension adds syntax to format text using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd">&lt;kbd&gt; element</a>. It's similar to inline code formatting, but is specifically useful for references physical inputs, outputs, knob, etc.</p>
+<p>For example: Each oscillator has an individual envelope that is controlled by the <span class="keys"><kbd>Attack</kbd></span>, <span class="keys"><kbd>Decay</kbd></span>, and <span class="keys"><kbd>Harm</kbd></span> controls. The noise envelope is also affected by the <span class="keys"><kbd>Attack</kbd></span> knob.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>For example: Each oscillator has an individual envelope that is controlled by
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>the ++&quot;Attack&quot;++, ++&quot;Decay&quot;++, and ++&quot;Harm&quot;++ controls. The noise envelope is
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>also affected by the ++&quot;Attack&quot;++ knob.
+</span></code></pre></div>
+<p>Keys can of course be used for keyboard keys, and there's special cases for those that add helpful icons:</p>
+<ul>
+<li><span class="keys"><kbd class="key-alt">Alt</kbd></span>, <span class="keys"><kbd class="key-left-alt">Left Alt</kbd></span>, <span class="keys"><kbd class="key-right-alt">Right Alt</kbd></span></li>
+<li><span class="keys"><kbd class="key-command">Cmd</kbd></span>, <span class="keys"><kbd class="key-left-command">Left Command</kbd></span>, <span class="keys"><kbd class="key-right-command">Right Command</kbd></span></li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd></span>, <span class="keys"><kbd class="key-left-control">Left Ctrl</kbd></span>, <span class="keys"><kbd class="key-right-control">Right Ctrl</kbd></span></li>
+<li><span class="keys"><kbd class="key-meta">Meta</kbd></span>, <span class="keys"><kbd class="key-left-meta">Left Meta</kbd></span>, <span class="keys"><kbd class="key-right-meta">Right Meta</kbd></span></li>
+<li><span class="keys"><kbd class="key-option">Option</kbd></span>, <span class="keys"><kbd class="key-left-option">Left Option</kbd></span>, <span class="keys"><kbd class="key-right-option">Right Option</kbd></span></li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd></span>, <span class="keys"><kbd class="key-left-shift">Left Shift</kbd></span>, <span class="keys"><kbd class="key-right-shift">Right Shift</kbd></span></li>
+<li><span class="keys"><kbd class="key-super">Super</kbd></span>, <span class="keys"><kbd class="key-left-super">Left Super</kbd></span>, <span class="keys"><kbd class="key-right-super">Right Super</kbd></span></li>
+<li><span class="keys"><kbd class="key-windows">Win</kbd></span>, <span class="keys"><kbd class="key-left-windows">Left Win</kbd></span>, <span class="keys"><kbd class="key-right-windows">Right Win</kbd></span></li>
+<li><span class="keys"><kbd class="key-arrow-left">Left</kbd></span>, <span class="keys"><kbd class="key-arrow-right">Right</kbd></span>, <span class="keys"><kbd class="key-arrow-up">Up</kbd></span>, <span class="keys"><kbd class="key-arrow-down">Down</kbd></span></li>
+<li><span class="keys"><kbd class="key-escape">Esc</kbd></span>, <span class="keys"><kbd class="key-caps-lock">Caps Lock</kbd></span>, <span class="keys"><kbd class="key-tab">Tab</kbd></span>, <span class="keys"><kbd class="key-backspace">Backspace</kbd></span>, <span class="keys"><kbd class="key-backtab">Back Tab</kbd></span>, <span class="keys"><kbd class="key-enter">Enter</kbd></span>, <span class="keys"><kbd class="key-num-enter">Num Enter</kbd></span></li>
+<li><span class="keys"><kbd class="key-context-menu">Menu</kbd></span>, <span class="keys"><kbd class="key-print-screen">Print Screen</kbd></span>, <span class="keys"><kbd class="key-clear">Clear</kbd></span>, <span class="keys"><kbd class="key-eject">Eject</kbd></span></li>
+<li><span class="keys"><kbd class="key-insert">Ins</kbd></span>, <span class="keys"><kbd class="key-delete">Del</kbd></span>, <span class="keys"><kbd class="key-home">Home</kbd></span>, <span class="keys"><kbd class="key-end">End</kbd></span>, <span class="keys"><kbd class="key-page-up">Page Up</kbd></span>, <span class="keys"><kbd class="key-page-down">Page Down</kbd></span></li>
+</ul>
+<p>And of course, key combinations are styled nicely, like <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span> and <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-v">V</kbd></span>.</p>
+<h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">#</a></h2>
+<p>You can use abbreviations (<abbr title="Hyper Text Markup Language">HTML</abbr> tag <code>&lt;abbr&gt;</code>). First, create an abbreviation definition like this:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>*[HTML]: Hyper Text Markup Language
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>*[W3C]:  World Wide Web Consortium
+</span></code></pre></div>
+<p>then, elsewhere in the document, write text such as:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>The HTML specification is maintained by the W3C.
+</span></code></pre></div>
+<p>Any instace of the abbreviations will automatically get rendered as such, for example:</p>
+<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+<p>Abbreviations are case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case <code>&lt;abbr&gt;</code> tags will be added in the text but the title attribute will be omitted. The abbreviation definitions can be anywhere in the document.</p>
+<h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">#</a></h2>
+<p>Footnotes work mostly like reference-style links, where you use a <em>marker</em> in the text that will become a superscript link, and a footnote <em>definition</em>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>That&#39;s some text[^1] with a footnote.
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>[^1]: This is the footnote.
+</span></code></pre></div>
+<blockquote>
+<p>That's some text<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> with a footnote.</p>
+</blockquote>
+<p>You can place the definition wherever, but they'll all end up at the bottom of the document.</p>
+<h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">#</a></h2>
+<p>Standard markdown images are rendered with nice spacing:</p>
+<p><img alt="An example image" src="../images/example.webp" /></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>![<span class="nt">An example image</span>](<span class="na">images/example.webp</span>)
+</span></code></pre></div>
+<p>But there's a few more tricks. You can pull an image to left or right of a body of text. For example:</p>
+<p><img align="right" alt="An image pulled to the right" src="../images/example.webp" /></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>![<span class="nt">An image pulled to the right</span>](<span class="na">images/example.webp</span>){: align=right }
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ...
+</span></code></pre></div>
+<p>You can also control the size of the images:</p>
+<p><img alt="small" class="small" src="../images/example.webp" />
+<img alt="quarter" class="quarter" src="../images/example.webp" />
+<img alt="half" class="half" src="../images/example.webp" /></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>![<span class="nt">small</span>](<span class="na">images/example.webp</span>){: .small }
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>![<span class="nt">quarter</span>](<span class="na">images/example.webp</span>){: .quarter }
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>![<span class="nt">half</span>](<span class="na">images/example.webp</span>){: .half }
+</span></code></pre></div>
+<p>Finally, the theme automatically inverts illustrations (<code>.svg</code>s) when dark mode is used. Toggle dark mode on and off to see the effect on the image below:</p>
+<p><img alt="Inverted in dark mode" src="../images/interface-cutoff-formula.svg" /></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>![<span class="nt">Inverted in dark mode</span>](<span class="na">images/interface-cutoff-formula.svg</span>)
+</span></code></pre></div>
+<p>You can prevent this by using <code>.no-invert</code>:</p>
+<p><img alt="Not inverted in dark mode" class="no-invert" src="../images/interface-cutoff-formula.svg" /></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>![<span class="nt">Not inverted in dark mode</span>](<span class="na">images/interface-cutoff-formula.svg</span>){: .no-invert }
+</span></code></pre></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This is the footnote.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main><footer>
+        <ul>
+          <li>
+            © 2024
+            Winterbloom · Alethea Flowers
+          </li>
+          <li>
+            Published under
+            <a
+              href="https://github.com/wntrblm/wintersong/blob/main/docs/LICENSE">
+              CC BY-SA 4.0
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li class="updated">
+            Last updated on 2024/2/6
+          </li>
+          <li>
+            <a href="https://github.com/wntrblm/wintersong/edit/main/docs/docs/markdown.md">Edit this page on GitHub</a>
+          </li>
+          <li>
+            <a href="mailto:support@winterbloom.com">
+              Send us a message
+            </a>
+          </li>
+        </ul>
+      </footer>
+      <script type="module" src="../winter.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,497 @@
+:root {
+    /* Border radius */
+    --winter-border-radius-s: 0.1875rem;
+    --winter-border-radius-m: 0.25rem;
+    --winter-border-radius-l: 0.5rem;
+    --winter-border-radius-xl: 1rem;
+    --winter-border-radius-circle: 50%;
+    --winter-border-radius-pill: 9999px;
+
+    /* Elevation */
+    --winter-shadow-color-hsl: 261, 32%, 28%;
+    --winter-shadow-alpha-xs: 0.2;
+    --winter-shadow-blur-alpha-xs: 0.05;
+    --winter-shadow-alpha-s: 0.2;
+    --winter-shadow-blur-alpha-s: 0.1;
+    --winter-shadow-alpha-m: 0.3;
+    --winter-shadow-blur-alpha-m: 0.15;
+    --winter-shadow-alpha-l: 0.3;
+    --winter-shadow-blur-alpha-l: 0.15;
+
+    --winter-shadow-color-xs: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-alpha-xs)
+    );
+    --winter-shadow-blur-color-xs: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-blur-alpha-xs)
+    );
+    --winter-shadow-color-s: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-alpha-s)
+    );
+    --winter-shadow-blur-color-s: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-blur-alpha-s)
+    );
+    --winter-shadow-color-m: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-alpha-m)
+    );
+    --winter-shadow-blur-color-m: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-blur-alpha-m)
+    );
+    --winter-shadow-color-l: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-alpha-l)
+    );
+    --winter-shadow-blur-color-l: hsl(
+        var(--winter-shadow-color-hsl),
+        var(--winter-shadow-blur-alpha-l)
+    );
+
+    --winter-shadow-xs: 1px 1px 1px 0 var(--winter-shadow-color-xs),
+        0 0 10px 0 var(--winter-shadow-blur-color-xs);
+    --winter-shadow-s: 3px 3px 1px 0 var(--winter-shadow-color-s),
+        0 0 10px 0 var(--winter-shadow-blur-color-s);
+    --winter-shadow-m: 6px 6px 3px 0 var(--winter-shadow-color-m),
+        0 0 10px 0 var(--winter-shadow-blur-color-m);
+    --winter-shadow-l: 10px 10px 3px 0 var(--winter-shadow-color-l),
+        0 0 10px 0 var(--winter-shadow-blur-color-l);
+
+    /* Generic spacing */
+    --winter-spacing-xxxs: 0.125rem;
+    --winter-spacing-xxs: 0.25rem;
+    --winter-spacing-xs: 0.5rem;
+    --winter-spacing-s: 0.75rem;
+    --winter-spacing-m: 1rem;
+    --winter-spacing-l: 1.25rem;
+    --winter-spacing-xl: 1.75rem;
+    --winter-spacing-xxl: 2.25rem;
+    --winter-spacing-xxxl: 3rem;
+    --winter-spacing-xxxxl: 4.5rem;
+
+    /* Transitons/duration */
+    --winter-duration-xs: 50ms;
+    --winter-duration-s: 150ms;
+    --winter-duration-m: 250ms;
+    --winter-duration-l: 500ms;
+    --winter-duration-xl: 1000ms;
+
+    /* Typography */
+    --winter-font-serif: "Nunito", Georgia, "Times New Roman", serif;
+    --winter-font-sans: "Nunito Sans", system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
+    --winter-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, SF Mono,
+        Menlo, Consolas, Liberation Mono, monospace;
+    --winter-font-decorative: "Space Grotesk", system-ui;
+
+    --winter-font-size-base: 20px;
+    --winter-font-size-xxs: 0.625rem;
+    --winter-font-size-xs: 0.75rem;
+    --winter-font-size-s: 0.875rem;
+    --winter-font-size-m: 1rem;
+    --winter-font-size-l: 1.25rem;
+    --winter-font-size-xl: 1.5rem;
+    --winter-font-size-xxl: 1.75rem;
+    --winter-font-size-xxxl: 2rem;
+    --winter-font-size-xxxxl: 2.25rem;
+
+    --winter-font-weight-light: 300;
+    --winter-font-weight-normal: 400;
+    --winter-font-weight-semibold: 500;
+    --winter-font-weight-bold: 700;
+
+    --winter-letter-spacing-xs: -0.03em;
+    --winter-letter-spacing-s: -0.015em;
+    --winter-letter-spacing-m: normal;
+    --winter-letter-spacing-l: 0.075em;
+    --winter-letter-spacing-xl: 0.15em;
+
+    --winter-line-height-xs: 1;
+    --winter-line-height-s: 1.25;
+    --winter-line-height-m: 1.6;
+    --winter-line-height-l: 1.8;
+    --winter-line-height-xl: 2.2;
+
+    /* Focus */
+    --winter-focus-outline-color: var(--color-gray-800);
+    --winter-focus-outline: 1px solid var(--winter-focus-outline-color);
+    --winter-focus-outline-offset: 0px;
+
+    /* Page colors */
+    --winter-bg: var(--winter-white);
+    --winter-fg: var(--winter-not-quite-black);
+
+    /* <header> and <nav> */
+    --winter-header-font: var(--winter-font-decorative);
+    --winter-header-font-size: var(--winter-font-size-l);
+    --winter-header-font-weight: var(--winter-font-weight-normal);
+    --winter-header-line-height: var(--winter-line-height-m);
+    --winter-header-icon-size: var(--winter-font-size-xl);
+    --winter-header-block-spacing-top: 2rem;
+    --winter-header-block-spacing-bottom: 0rem;
+    --winter-header-bg: transparent;
+    --winter-header-fg: var(--winter-purple-1);
+    --winter-header-accent: var(--winter-teal-1);
+    --winter-header-divider: 0.15rem solid var(--winter-header-fg);
+    --winter-header-name-font-size: var(--winter-font-size-xxxxl);
+    --winter-header-name-font-weight: var(--winter-font-weight-bold);
+
+    /* <footer> */
+    --winter-footer-font: var(--winter-font-decorative);
+    --winter-footer-font-size: var(--winter-font-size-xs);
+    --winter-footer-font-weight: var(--winter-font-weight-normal);
+    --winter-footer-line-height: var(--winter-line-height-s);
+    --winter-footer-block-spacing-top: 2rem;
+    --winter-footer-block-spacing-bottom: 3rem;
+    --winter-footer-fg: var(--winter-purple-1);
+    --winter-footer-accent: var(--winter-teal-1);
+    --winter-footer-divider: 0.15rem solid var(--winter-footer-fg);
+
+    /* <h1>-<h6> */
+    --winter-heading-spacing: var(--winter-spacing-xxl);
+    --winter-heading-fg: var(--winter-purple-1);
+    --winter-heading-font: var(--winter-font-decorative);
+    --winter-heading-font-weight: var(--winter-font-weight-semibold);
+    --winter-heading-line-height: var(--winter-line-height-s);
+    --winter-heading-link-fg: var(--winter-teal-4);
+
+    /* Inline content */
+
+    /* <a> */
+    --winter-link-fg: var(--color-mint-600);
+    --winter-link-bg: transparent;
+    --winter-link-decoration: underline;
+    --winter-link-hover-fg: var(--color-pink-600);
+    --winter-link-hover-bg: transparent;
+    --winter-link-hover-decoration: underline;
+
+    /* <code> */
+    --winter-code-font-size: 85%;
+    --winter-code-padding: 0.12em 0.5em;
+    --winter-code-fg: var(--winter-white);
+    --winter-code-bg: var(--winter-not-quite-black);
+    --winter-code-border-radius: var(--winter-border-radius-s);
+    --winter-code-shadow: var(--winter-shadow-s);
+
+    /* <kbd> */
+    --winter-kbd-font: var(--winter-font-mono);
+    --winter-kbd-font-size: 90%;
+    --winter-kbd-font-weight: var(--winter-font-weight-semibold);
+    --winter-kbd-font-style: italic;
+    --winter-kbd-padding: 0.12em 0.5em 0.12em 0.4em;
+    --winter-kbd-fg: var(--winter-white);
+    --winter-kbd-bg: var(--color-purple-600);
+    --winter-kbd-combinator-fg: var(--color-gray-600);
+    --winter-kbd-border-radius: var(--winter-border-radius-s);
+    --winter-kbd-shadow: var(--winter-shadow-s);
+
+    /* <mark> */
+    --winter-mark-fg: inherit;
+    --winter-mark-bg: var(--color-yellow-100);
+
+    /* <abbr> */
+    --winter-abbr-border: 0.1em dashed
+        color-mix(in srgb, currentColor 40%, white);
+
+    /* Block content */
+    --winter-block-spacing: var(--winter-spacing-l);
+
+    /* <pre> */
+    --winter-pre-font-size: var(--winter-font-size-m);
+    --winter-pre-line-height: var(--winter-line-height-s);
+    --winter-pre-padding: 1rem;
+    --winter-pre-fg: var(--winter-white);
+    --winter-pre-bg: var(--winter-not-quite-black);
+    --winter-pre-scrollbar: var(--color-gray-500);
+    --winter-pre-scrollbar-hover: var(--winter-purple-3);
+
+    /* <ul>, <ol>, <li> */
+    --winter-list-indent: var(--winter-spacing-m);
+    --winter-list-spacing: var(--winter-spacing-xxs);
+
+    /* <dl>, <dt>, <dd> */
+    --winter-desc-list-block-spacing: var(--winter-spacing-m);
+    --winter-desc-list-padding: var(--winter-spacing-s);
+    --winter-desc-term-font: var(--winter-font-decorative);
+    --winter-desc-term-font-size: var(--winter-font-size-l);
+    --winter-desc-term-fg: var(--winter-teal-1);
+
+    /* <table> */
+    --winter-table-font-size: var(--winter-font-size-m);
+    --winter-table-border: var(--color-purple-200);
+    --winter-table-heading-border: var(--winter-purple-2);
+    --winter-table-padding: var(--winter-spacing-xxs) var(--winter-spacing-xs);
+    --winter-table-striped-bg: var(--color-purple-50);
+    --winter-table-hover-bg: var(--color-purple-100);
+
+    /* <blockquote> */
+    --winter-blockquote-padding: var(--winter-spacing-m);
+    --winter-blockquote-font: var(--winter-font-serif);
+    --winter-blockquote-font-size: var(--winter-font-size-m);
+    --winter-blockquote-fg: var(--winter-not-quite-black);
+    --winter-blockquote-bg: var(--color-white);
+
+    /* <hr> */
+    --winter-hr-border-color: var(--winter-purple-3);
+    --winter-hr-border: 0.15rem solid var(--winter-hr-border-color);
+
+    /* <button> */
+    --winter-button-font: var(--winter-font-mono);
+    --winter-button-font-size: 90%;
+    --winter-button-font-weight: var(--winter-font-weight-semibold);
+    --winter-button-font-style: normal;
+    --winter-button-padding: 0.12em 0.5em 0.12em 0.5em;
+    --winter-button-combinator-fg: var(--color-gray-600);
+    --winter-button-border-radius: var(--winter-border-radius-s);
+    --winter-button-shadow: var(--winter-shadow-s);
+
+    --winter-button-fg: var(--winter-white);
+    --winter-button-bg: var(--color-purple-600);
+    --winter-button-hover-fg: var(--winter-white);
+    --winter-button-hover-bg: var(--color-purple-500);
+    --winter-button-active-fg: var(--winter-white);
+    --winter-button-active-bg: var(--color-purple-700);
+    --winter-button-disabled-fg: var(--color-gray-200);
+    --winter-button-disabled-bg: var(--color-gray-600);
+    --winter-button-outline-bg: var(--winter-white);
+    --winter-button-outline-disabled-bg: var(--color-gray-100);
+
+    --winter-button-secondary-fg: var(--winter-white);
+    --winter-button-secondary-bg: var(--color-blue-500);
+    --winter-button-secondary-hover-fg: var(--winter-white);
+    --winter-button-secondary-hover-bg: var(--color-blue-400);
+    --winter-button-secondary-active-fg: var(--winter-white);
+    --winter-button-secondary-active-bg: var(--color-blue-600);
+    --winter-button-secondary-disabled-fg: var(--color-gray-200);
+    --winter-button-secondary-disabled-bg: var(--color-blue-700);
+
+    --winter-button-contrast-fg: var(--winter-black);
+    --winter-button-contrast-bg: var(--color-cyan-200);
+    --winter-button-contrast-hover-fg: var(--winter-black);
+    --winter-button-contrast-hover-bg: var(--color-cyan-100);
+    --winter-button-contrast-active-fg: var(--winter-black);
+    --winter-button-contrast-active-bg: var(--color-cyan-50);
+    --winter-button-contrast-disabled-fg: var(--color-gray-200);
+    --winter-button-contrast-disabled-bg: var(--color-cyan-400);
+
+    --winter-button-danger-fg: var(--winter-white);
+    --winter-button-danger-bg: var(--color-red-400);
+    --winter-button-danger-hover-fg: var(--winter-white);
+    --winter-button-danger-hover-bg: var(--color-red-300);
+    --winter-button-danger-active-fg: var(--winter-white);
+    --winter-button-danger-active-bg: var(--color-red-500);
+    --winter-button-danger-disabled-fg: var(--color-gray-200);
+    --winter-button-danger-disabled-bg: var(--color-red-500);
+
+    /* <form> and friends */
+    --winter-input-fg: var(--winter-not-quite-black);
+    --winter-input-bg: var(--color-purple-50);
+    --winter-input-accent: var(--winter-purple-3);
+    --winter-input-border-radius: var(--winter-border-radius-s);
+    --winter-input-block-spacing: var(--winter-spacing-s);
+    --winter-input-font-weight: var(--winter-font-weight-m);
+    --winter-input-font-size: var(--winter-font-size-m);
+    --winter-input-padding: 0.2em 0.5em;
+
+    --winter-input-disabled-fg: var(--color-gray-600);
+    --winter-input-disabled-bg: var(--color-gray-50);
+    --winter-input-disabled-accent: var(--color-gray-200);
+    --winter-input-readonly-fg: var(--color-gray-800);
+    --winter-input-readonly-bg: var(--color-gray-50);
+    --winter-input-readonly-accent: var(--color-gray-500);
+    --winter-input-active-fg: var(--color-blue-800);
+    --winter-input-active-bg: var(--color-blue-50);
+    --winter-input-active-accent: var(--color-blue-500);
+    --winter-input-valid-fg: var(--color-green-800);
+    --winter-input-valid-bg: var(--color-green-50);
+    --winter-input-valid-accent: var(--color-green-500);
+    --winter-input-invalid-fg: var(--color-red-800);
+    --winter-input-invalid-bg: var(--color-red-50);
+    --winter-input-invalid-accent: var(--color-red-500);
+
+    /* Labels */
+    --winter-label-font-size: inherit;
+    --winter-label-font-family: var(--winter-font-decorative);
+    --winter-label-font-weight: var(--winter-font-weight-semibold);
+    --winter-label-fg: currentColor;
+
+    /* Checkbox/radio */
+    --winter-checkbox-size: 1.75rem;
+    --winter-checkbox-fg: var(--winter-purple-2);
+    --winter-checkbox-active-fg: var(--color-blue-500);
+    --winter-checkbox-disabled-fg: var(--color-gray-500);
+
+    /* Range */
+    --winter-range-padding: 0.5em 0;
+    --winter-range-track-radius: 5rem;
+    --winter-range-track-size: 0.375rem;
+    --winter-range-thumb-size: 1.25rem;
+    --winter-range-bg: var(--color-purple-200);
+    --winter-range-fg: var(--winter-purple-3);
+    --winter-range-active-bg: var(--color-purple-200);
+    --winter-range-active-fg: var(--winter-purple-2);
+    --winter-range-active-thumb-size: 1.4rem;
+
+    /* <aside> within form, styled similar to <blockquote> */
+    --winter-form-aside-padding: var(--winter-spacing-xs)
+        var(--winter-spacing-s);
+    --winter-form-aside-font: var(--winter-font-serif);
+    --winter-form-aside-font-size: var(--winter-font-size-s);
+    --winter-form-aside-fg: currentColor;
+    --winter-form-aside-bg: var(--color-white);
+    --winter-form-aside-accent: var(--winter-purple-4);
+
+    /* Markdown extensions */
+    /* .admonition */
+    --winter-admonition-font: var(--winter-font-serif);
+    --winter-admonition-font-size: var(--winter-font-size-m);
+    --winter-admonition-fg: var(--winter-fg);
+    --winter-admonition-bg: var(--winter-bg);
+    --winter-admonition-accent: var(--winter-teal-1);
+    --winter-admonition-icon: "info";
+    --winter-admonition-padding: var(--winter-spacing-xs)
+        var(--winter-spacing-s);
+    --winter-admonition-title-font: var(--winter-font-decorative);
+    --winter-admonition-title-font-size: var(--winter-font-size-l);
+    --winter-admonition-body-spacing: var(--winter-spacing-s);
+
+    --winter-admonition-note-accent: var(--winter-teal-1);
+    --winter-admonition-note-fg: var(--winter-admonition-fg);
+    --winter-admonition-note-bg: var(--winter-admonition-bg);
+    --winter-admonition-note-icon: "stylus";
+    --winter-admonition-info-accent: var(--winter-teal-2);
+    --winter-admonition-info-fg: var(--winter-admonition-fg);
+    --winter-admonition-info-bg: var(--winter-admonition-bg);
+    --winter-admonition-info-icon: "info";
+    --winter-admonition-tip-accent: var(--winter-teal-2);
+    --winter-admonition-tip-fg: var(--winter-admonition-fg);
+    --winter-admonition-tip-bg: var(--winter-admonition-bg);
+    --winter-admonition-tip-icon: "lightbulb";
+    --winter-admonition-success-accent: var(--color-green-400);
+    --winter-admonition-success-fg: var(--winter-admonition-fg);
+    --winter-admonition-success-bg: var(--winter-admonition-bg);
+    --winter-admonition-success-icon: "check";
+    --winter-admonition-question-accent: var(--color-mint-400);
+    --winter-admonition-question-fg: var(--winter-admonition-fg);
+    --winter-admonition-question-bg: var(--winter-admonition-bg);
+    --winter-admonition-question-icon: "help";
+    --winter-admonition-warning-accent: var(--color-yellow-300);
+    --winter-admonition-warning-fg: var(--winter-admonition-fg);
+    --winter-admonition-warning-bg: var(--winter-admonition-bg);
+    --winter-admonition-warning-icon: "warning";
+    --winter-admonition-failure-accent: var(--color-red-500);
+    --winter-admonition-failure-fg: var(--winter-admonition-fg);
+    --winter-admonition-failure-bg: var(--winter-admonition-bg);
+    --winter-admonition-failure-icon: "close";
+    --winter-admonition-danger-accent: var(--color-red-600);
+    --winter-admonition-danger-fg: var(--winter-admonition-fg);
+    --winter-admonition-danger-bg: var(--winter-admonition-bg);
+    --winter-admonition-danger-icon: "report";
+    --winter-admonition-bug-accent: var(--color-violet-500);
+    --winter-admonition-bug-fg: var(--winter-admonition-fg);
+    --winter-admonition-bug-bg: var(--winter-admonition-bg);
+    --winter-admonition-bug-icon: "bug_report";
+    --winter-admonition-example-accent: var(--color-purple-500);
+    --winter-admonition-example-fg: var(--winter-admonition-fg);
+    --winter-admonition-example-bg: var(--winter-admonition-bg);
+    --winter-admonition-example-icon: "developer_guide";
+    --winter-admonition-quote-accent: var(--color-gray-600);
+    --winter-admonition-quote-fg: var(--winter-admonition-fg);
+    --winter-admonition-quote-bg: var(--winter-admonition-bg);
+    --winter-admonition-quote-icon: "format_quote";
+    --winter-admonition-fairy-accent: var(--color-pink-500);
+    --winter-admonition-fairy-fg: var(--winter-admonition-fg);
+    --winter-admonition-fairy-bg: var(--winter-admonition-bg);
+    --winter-admonition-fairy-icon: "🧚";
+
+    /* footnotes */
+    --winter-footnote-font-size: var(--winter-font-size-s);
+    --winter-footnote-fg: var(--color-gray-700);
+    --winter-footnote-divider-color: var(--color-gray-200);
+    --winter-footnote-divider: 0.1rem solid var(--winter-footnote-divider-color);
+}
+
+@media screen {
+    html.dark {
+        --winter-near-black: color-mix(
+            in srgb,
+            var(--color-purple-900) 30%,
+            var(--winter-bg)
+        );
+        --winter-bg: var(--winter-black);
+        --winter-fg: var(--winter-white);
+
+        --winter-shadow-color-hsl: 260, 48.1%, 75%;
+
+        --winter-header-fg: var(--winter-purple-3);
+        --winter-header-accent: var(--winter-teal-3);
+        --winter-footer-fg: var(--winter-purple-3);
+        --winter-heading-fg: var(--winter-purple-3);
+        --winter-heading-link-fg: var(--winter-teal-1);
+        --winter-link-fg: var(--color-mint-300);
+        --winter-link-hover-fg: var(--color-pink-300);
+        --winter-code-fg: var(--winter-white);
+        --winter-code-bg: var(--winter-not-quite-black);
+        --winter-kbd-fg: var(--winter-white);
+        --winter-kbd-bg: var(--color-purple-600);
+        --winter-kbd-combinator-fg: var(--color-gray-600);
+        --winter-mark-fg: inherit;
+        --winter-mark-bg: var(--color-yellow-600);
+        --winter-pre-fg: var(--winter-white);
+        --winter-pre-bg: var(--winter-not-quite-black);
+        --winter-desc-term-fg: var(--winter-teal-1);
+        --winter-table-border: var(--color-purple-900);
+        --winter-table-heading-border: var(--color-purple-400);
+        --winter-table-striped-bg: var(--winter-near-black);
+        --winter-table-hover-bg: var(--color-purple-900);
+        --winter-blockquote-fg: var(--color-purple-200);
+        --winter-blockquote-bg: var(--winter-near-black);
+        --winter-hr-border-color: var(--color-purple-900);
+        --winter-desc-term-fg: var(--winter-teal-4);
+
+        --winter-button-outline-bg: var(--winter-black);
+        --winter-button-outline-disabled-bg: var(--color-gray-900);
+        --winter-input-fg: var(--winter-white);
+        --winter-input-bg: var(--color-purple-900);
+        --winter-input-disabled-fg: var(--color-gray-100);
+        --winter-input-disabled-bg: var(--color-gray-900);
+        --winter-input-readonly-fg: var(--color-gray-50);
+        --winter-input-readonly-bg: var(--color-gray-800);
+        --winter-input-active-fg: var(--winter-white);
+        --winter-input-active-bg: var(--color-blue-900);
+        --winter-input-valid-fg: var(--color-green-100);
+        --winter-input-valid-bg: var(--color-green-900);
+        --winter-input-invalid-fg: var(--color-red-100);
+        --winter-input-invalid-bg: var(--color-red-900);
+        --winter-checkbox-fg: var(--winter-purple-4);
+        --winter-checkbox-active-fg: var(--color-blue-100);
+        --winter-checkbox-disabled-fg: var(--color-gray-500);
+        --winter-range-bg: var(--color-purple-800);
+        --winter-range-fg: var(--winter-purple-4);
+        --winter-range-active-bg: var(--color-purple-500);
+        --winter-range-active-fg: var(--winter-purple-5);
+
+        --winter-admonition-fg: var(--winter-fg);
+        --winter-admonition-bg: var(--winter-near-black);
+        --winter-admonition-accent: var(--winter-teal-3);
+        --winter-admonition-note-accent: var(--winter-teal-3);
+        --winter-admonition-info-accent: var(--winter-teal-4);
+        --winter-admonition-tip-accent: var(--winter-teal-4);
+        --winter-admonition-success-accent: var(--color-green-300);
+        --winter-admonition-question-accent: var(--color-mint-300);
+        --winter-admonition-warning-accent: var(--color-yellow-200);
+        --winter-admonition-failure-accent: var(--color-red-400);
+        --winter-admonition-danger-accent: var(--color-red-500);
+        --winter-admonition-bug-accent: var(--color-violet-400);
+        --winter-admonition-example-accent: var(--color-purple-500);
+        --winter-admonition-quote-accent: var(--color-gray-400);
+        --winter-admonition-fairy-accent: var(--color-pink-400);
+        --winter-admonition-fairy-icon: "🧚";
+        --winter-footnote-fg: var(--color-gray-500);
+        --winter-footnote-divider-color: var(--color-gray-900);
+    }
+}

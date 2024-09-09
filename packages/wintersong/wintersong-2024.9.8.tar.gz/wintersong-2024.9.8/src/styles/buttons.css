@@ -1,0 +1,149 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+button,
+[role="button"],
+a[role="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 8ch;
+    min-height: 2.2rem;
+    text-align: center;
+    line-height: inherit;
+    vertical-align: middle;
+
+    --normal-fg: var(--winter-button-fg);
+    --normal-bg: var(--winter-button-bg);
+    --active-fg: var(--winter-button-active-fg);
+    --active-bg: var(--winter-button-active-bg);
+    --hover-fg: var(--winter-button-hover-fg);
+    --hover-bg: var(--winter-button-hover-bg);
+    --disabled-fg: var(--winter-button-disabled-fg);
+    --disabled-bg: var(--winter-button-disabled-bg);
+    --outline-fg: var(--normal-bg);
+    --outline-hover-fg: var(--hover-bg);
+    --outline-active-fg: var(--active-bg);
+    --outline-disabled-fg: var(--disabled-bg);
+    --fg: var(--normal-fg);
+    --bg: var(--normal-bg);
+    --shadow: var(--winter-button-shadow);
+
+    font-family: var(--winter-button-font);
+    font-size: var(--winter-button-font-size);
+    font-style: var(--winter-button-font-style);
+    font-weight: var(--winter-button-font-weight);
+    padding: var(--winter-button-padding);
+    border-radius: var(--winter-button-border-radius);
+    border: 0.15em solid transparent;
+    box-shadow: var(--shadow);
+    color: var(--fg);
+    background: var(--bg);
+
+    &:disabled {
+        --fg: var(--disabled-fg);
+        --bg: var(--disabled-bg);
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    &:not(:disabled) {
+        &:hover,
+        &:focus {
+            --fg: var(--hover-fg);
+            --bg: var(--hover-bg);
+            text-decoration: none;
+        }
+
+        &:active {
+            --fg: var(--active-fg);
+            --bg: var(--active-bg);
+        }
+    }
+
+    &:focus {
+        outline: var(--winter-focus-outline);
+        outline-offset: var(--winter-focus-outline-offset);
+    }
+
+    &.secondary {
+        --normal-fg: var(--winter-button-secondary-fg);
+        --normal-bg: var(--winter-button-secondary-bg);
+        --active-fg: var(--winter-button-secondary-active-fg);
+        --active-bg: var(--winter-button-secondary-active-bg);
+        --hover-fg: var(--winter-button-secondary-hover-fg);
+        --hover-bg: var(--winter-button-secondary-hover-bg);
+        --disabled-fg: var(--winter-button-secondary-disabled-fg);
+        --disabled-bg: var(--winter-button-secondary-disabled-bg);
+    }
+
+    &.contrast {
+        --normal-fg: var(--winter-button-contrast-fg);
+        --normal-bg: var(--winter-button-contrast-bg);
+        --active-fg: var(--winter-button-contrast-active-fg);
+        --active-bg: var(--winter-button-contrast-active-bg);
+        --hover-fg: var(--winter-button-contrast-hover-fg);
+        --hover-bg: var(--winter-button-contrast-hover-bg);
+        --disabled-fg: var(--winter-button-contrast-disabled-fg);
+        --disabled-bg: var(--winter-button-contrast-disabled-bg);
+    }
+
+    &.danger {
+        --normal-fg: var(--winter-button-danger-fg);
+        --normal-bg: var(--winter-button-danger-bg);
+        --active-fg: var(--winter-button-danger-active-fg);
+        --active-bg: var(--winter-button-danger-active-bg);
+        --hover-fg: var(--winter-button-danger-hover-fg);
+        --hover-bg: var(--winter-button-danger-hover-bg);
+        --disabled-fg: var(--winter-button-danger-disabled-fg);
+        --disabled-bg: var(--winter-button-danger-disabled-bg);
+    }
+
+    &.outline {
+        --fg: var(--outline-fg);
+        --bg: var(--winter-button-outline-bg);
+
+        border: 0.15em solid currentColor;
+
+        &:hover,
+        &:focus {
+            --fg: var(--outline-hover-fg);
+            --bg: var(--winter-button-outline-bg);
+        }
+        &:active {
+            --fg: var(--outline-active-fg);
+            --bg: var(--winter-button-outline-bg);
+        }
+
+        &:disabled {
+            --fg: var(--outline-disabled-fg);
+            --bg: var(--winter-button-outline-disabled-bg);
+        }
+    }
+
+    &:has(winter-icon) {
+        min-width: unset;
+        gap: 0.25em;
+    }
+
+    /* Icon on its own, no text */
+    &:not(:has(span)) {
+        & winter-icon {
+            margin-left: 0.25em;
+            margin-right: 0.25em;
+        }
+    }
+}

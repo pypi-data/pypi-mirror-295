@@ -1,0 +1,69 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+/*
+Groups via [role="group"], inspired by PicoCSS.
+
+Refs:
+- https://picocss.com/docs/group
+- https://github.com/picocss/pico/blob/f714a51d9e1c4765f29f95942154e9cd0ce18f87/scss/components/_group.scss
+*/
+
+[role="group"] {
+    display: inline-flex;
+    vertical-align: middle;
+
+    form & {
+        display: flex;
+        width: 100%;
+    }
+
+    & :not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    & :not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    /* Group box-shadow and outline */
+    &:has(
+            button,
+            [role="button"],
+            a[role="button"],
+            input[type="reset"],
+            input[type="submit"],
+            input[type="button"]
+        ) {
+        box-shadow: var(--winter-button-shadow);
+        border-radius: var(--winter-button-border-radius);
+    }
+    &:has(
+            button:focus,
+            [role="button"]:focus,
+            a[role="button"]:focus,
+            input[type="reset"]:focus,
+            input[type="submit"]:focus,
+            input[type="button"]:focus
+        ) {
+        outline: var(--winter-focus-outline);
+        outline-offset: var(--winter-focus-outline-offset);
+    }
+
+    & button,
+    [role="button"],
+    a[role="button"],
+    input[type="reset"],
+    input[type="submit"],
+    input[type="button"] {
+        --shadow: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

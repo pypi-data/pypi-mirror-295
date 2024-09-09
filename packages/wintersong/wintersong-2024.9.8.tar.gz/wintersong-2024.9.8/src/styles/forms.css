@@ -1,0 +1,369 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+/* Reset appearences */
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]),
+select,
+textarea {
+    appearance: none;
+}
+
+/* Spacing between form elements */
+main form {
+    margin-block: var(--winter-block-spacing);
+
+    & section {
+        margin-block: var(--winter-block-spacing);
+
+        & h2 {
+            margin-block-end: var(--winter-spacing-l);
+        }
+
+        & aside {
+            margin-block: var(--winter-block-spacing);
+            font-family: var(--winter-form-aside-font);
+            font-size: var(--winter-form-aside-font-size);
+            color: var(--winter-form-aside-fg);
+            background: var(--winter-form-aside-bg);
+            border-inline-start: 0.15rem solid var(--winter-form-aside-accent);
+            padding: var(--winter-form-aside-padding);
+            box-shadow: var(--winter-shadow-xs);
+
+            & p:first-child {
+                margin-block-start: 0;
+            }
+        }
+
+        & .grid {
+            --gap: 0.5rem 1.5rem;
+
+            & .grid {
+                --gap: 0.5rem 1rem;
+            }
+        }
+
+        & label,
+        h2 {
+            & + :is(img, figure, canvas) {
+                margin-block-start: 0;
+            }
+        }
+    }
+}
+
+/* Elements that create a new "block" */
+label:has(+ input, + select, + textarea, + [role="group"]) {
+    display: block;
+}
+
+input:not([type="checkbox"], [type="radio"]),
+button[type="submit"],
+select,
+textarea,
+label:has(input) {
+    display: block;
+    width: 100%;
+    margin-block-end: var(--winter-input-block-spacing);
+}
+
+/* Labels */
+
+label:not(:has(input[type="checkbox"], input[type="radio"])) {
+    color: var(--winter-label-fg);
+    font-weight: var(--winter-label-font-weight);
+    font-family: var(--winter-label-font-family);
+    font-size: var(--winter-label-font-size);
+}
+
+/* "Normal" form controls */
+
+input:not(
+        [type="range"],
+        [type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="submit"],
+        [type="button"]
+    ),
+select,
+textarea {
+    --fg: var(--winter-input-fg);
+    --bg: var(--winter-input-bg);
+    --accent: var(--winter-input-accent);
+    --border: 1px solid var(--accent);
+
+    outline: none;
+    border: var(--border);
+    border-radius: var(--winter-input-border-radius);
+    color: var(--fg);
+    background: var(--bg);
+    font-size: var(--winter-input-font-size);
+    font-weight: var(--winter-input-font-weight);
+    box-shadow: var(--winter-input-shadow);
+    padding: var(--winter-input-padding);
+
+    &:active,
+    &:hover,
+    &:focus {
+        --fg: var(--winter-input-active-fg);
+        --bg: var(--winter-input-active-bg);
+        --accent: var(--winter-input-active-accent);
+    }
+
+    &:focus {
+        outline: var(--winter-focus-outline);
+        outline-offset: var(--winter-focus-outline-offset);
+    }
+
+    &:disabled {
+        --fg: var(--winter-input-disabled-fg);
+        --bg: var(--winter-input-disabled-bg);
+        --accent: var(--winter-input-disabled-accent);
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    &[readonly] {
+        --fg: var(--winter-input-readonly-fg);
+        --bg: var(--winter-input-readonly-bg);
+        --accent: var(--winter-input-readonly-accent);
+    }
+
+    &:user-invalid,
+    &[aria-invalid="true"] {
+        --fg: var(--winter-input-invalid-fg);
+        --bg: var(--winter-input-invalid-bg);
+        --accent: var(--winter-input-invalid-accent);
+    }
+
+    &:user-valid,
+    &[aria-invalid="false"] {
+        --fg: var(--winter-input-valid-fg);
+        --bg: var(--winter-input-valid-bg);
+        --accent: var(--winter-input-valid-accent);
+    }
+}
+
+/* Checkboxes */
+label:has([type="checkbox"], [type="radio"]) {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 0.1em;
+    align-items: center;
+
+    &:has([disabled]) {
+        cursor: not-allowed;
+    }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    color: var(--winter-checkbox-fg);
+    font-size: var(--winter-checkbox-size);
+    height: 1em;
+    margin-left: -0.1em;
+    display: grid;
+    place-content: center;
+
+    &::before {
+        font-family: "Material Symbols Outlined";
+        font-weight: normal;
+        font-style: normal;
+        font-size: inherit;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: "liga";
+        -moz-font-feature-settings: "liga";
+        font-feature-settings: "liga";
+        -webkit-font-smoothing: antialiased;
+        user-select: none;
+        content: var(--unchecked-char, "\e835");
+    }
+
+    &:checked::before {
+        content: var(--checked-char, "\e834");
+    }
+
+    &:active,
+    &:hover,
+    &:focus {
+        color: var(--winter-checkbox-active-fg);
+    }
+
+    &:disabled {
+        color: var(--winter-checkbox-disabled-fg);
+        cursor: not-allowed;
+    }
+}
+
+input[type="radio"] {
+    --checked-char: "\e837";
+    --unchecked-char: "\e836";
+}
+
+/* Adjacent checkboxes/radios */
+input[type="checkbox"] {
+    label:has(&) {
+        &:has(+ label > input[type="checkbox"]) {
+            margin-block-end: 0;
+        }
+    }
+}
+input[type="radio"] {
+    label:has(&) {
+        &:has(+ label > input[type="radio"]) {
+            margin-block-end: 0;
+        }
+    }
+}
+
+/* Range input */
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: var(--winter-range-padding);
+    --size: var(--winter-range-thumb-size);
+    --fg: var(--winter-range-fg);
+    --bg: var(--winter-range-bg);
+    --margin-top: calc(
+        (var(--size) * -0.5) + (var(--winter-range-track-size) * 0.5)
+    );
+
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        border-radius: var(--winter-range-track-radius);
+        background-color: var(--bg);
+        height: var(--winter-range-track-size);
+    }
+    &::-moz-range-track {
+        width: 100%;
+        border-radius: var(--winter-range-track-radius);
+        background-color: var(--bg);
+        height: var(--winter-range-track-size);
+    }
+    &::-ms-track {
+        width: 100%;
+        border-radius: var(--winter-range-track-radius);
+        background-color: var(--bg);
+        height: var(--winter-range-track-size);
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: var(--size);
+        height: var(--size);
+        margin-top: var(--margin-top);
+        border: 2px solid var(--fg);
+        border-radius: 50%;
+        background-color: var(--fg);
+        cursor: pointer;
+    }
+    &::-moz-range-thumb {
+        -webkit-appearance: none;
+        width: var(--size);
+        height: var(--size);
+        margin-top: var(--margin-top);
+        border: 2px solid var(--fg);
+        border-radius: 50%;
+        background-color: var(--fg);
+        cursor: pointer;
+    }
+    &::-ms-thumb {
+        -webkit-appearance: none;
+        width: var(--size);
+        height: var(--size);
+        margin-top: var(--margin-top);
+        border: 2px solid var(--fg);
+        border-radius: 50%;
+        background-color: var(--fg);
+        cursor: pointer;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        --size: var(--winter-range-active-thumb-size);
+        --fg: var(--winter-range-active-fg);
+        --bg: var(--winter-range-active-bg);
+    }
+}
+
+/* Help text */
+input:not([type="checkbox"], [type="radio"]),
+select,
+textarea {
+    &:has(+ small) {
+        margin-block-end: 0;
+    }
+    & + small {
+        display: block;
+        width: 100%;
+        margin-block-end: var(--winter-input-block-spacing);
+        color: var(--winter-input-accent);
+    }
+
+    /* Validation states */
+    &:user-invalid,
+    &[aria-invalid="true"] {
+        & + small {
+            color: var(--winter-input-invalid-accent);
+        }
+    }
+    &:user-valid,
+    &[aria-invalid="false"] {
+        & + small {
+            color: var(--winter-input-valid-accent);
+        }
+    }
+}
+
+/* Groups */
+form [role="group"] {
+    display: flex;
+    width: 100%;
+    vertical-align: middle;
+
+    --winter-button-shadow: none;
+
+    /* Combine block margin */
+    margin-block-end: var(--winter-input-block-spacing);
+
+    & > * {
+        margin-block-end: 0;
+    }
+
+    /* Remove right border on inputs */
+    & input,
+    select {
+        &:first-child {
+            border-right: none;
+        }
+    }
+
+    /* Remove min-height on buttons so they're the same size as their input */
+    & button,
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"] {
+        min-height: unset;
+    }
+}

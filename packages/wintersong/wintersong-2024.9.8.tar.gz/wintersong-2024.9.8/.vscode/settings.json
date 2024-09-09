@@ -1,0 +1,51 @@
+{
+    "editor.formatOnSave": true,
+    "css.format.spaceAroundSelectorSeparator": true,
+    "css.lint.float": "warning",
+    "css.lint.ieHack": "error",
+    "css.lint.important": "warning",
+    "eslint.experimental.useFlatConfig": true,
+    "files.exclude": {
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "build/": true
+    },
+    "cSpell.words": [
+        "typefn"
+    ],
+    "debug.console.closeOnEnd": true,
+    "debug.terminal.clearBeforeReusing": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false,
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+    },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#f5e0dc",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#eabdb4",
+        "statusBarItem.remoteBackground": "#f5e0dc",
+        "statusBarItem.remoteForeground": "#15202b"
+    },
+    "peacock.color": "f5e0dc",
+}

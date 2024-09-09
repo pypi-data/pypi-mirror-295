@@ -1,0 +1,110 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+header {
+    padding-top: var(--winter-header-block-spacing-top);
+    margin-bottom: var(--winter-header-block-spacing-bottom);
+    font-family: var(--winter-header-font);
+    font-size: var(--winter-header-font-size);
+    font-weight: var(--winter-header-font-weight);
+    line-height: var(--winter-header-line-height);
+    color: var(--winter-header-fg);
+    background: var(--winter-header-bg);
+
+    & > nav:first-of-type {
+        font-size: var(--winter-header-name-font-size);
+        font-weight: var(--winter-header-name-font-weight);
+        border-bottom: var(--winter-header-divider);
+
+        & ul {
+            & a {
+                margin-bottom: -0.25lh;
+                /* This "erases" the divider line where the text has descenders */
+                --outline-color: var(--winter-bg);
+                --outline-size: 0.15em;
+                text-shadow:
+                    calc(var(--outline-size) * -1) 0px 0px var(--outline-color),
+                    calc(var(--outline-size) * -0.5) 0px 0px
+                        var(--outline-color),
+                    calc(var(--outline-size) * 0.5) 0px 0px var(--outline-color),
+                    var(--outline-size) 0px 0px var(--outline-color);
+            }
+
+            & img.logo {
+                margin-bottom: -0.15lh;
+                height: 0.5lh;
+                width: auto;
+            }
+        }
+
+        & a,
+        [role="link"] {
+            color: var(--winter-header-fg);
+            display: inline-block;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+
+    & ul {
+        display: flex;
+        align-items: center;
+        margin-block: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    & li {
+        display: flex;
+        align-items: center;
+    }
+
+    & a,
+    [role="link"] {
+        color: var(--winter-header-fg);
+        background: var(--winter-header-bg);
+        display: inline-block;
+        text-decoration: none;
+
+        &:is([aria-current], :hover, :active, :focus) {
+            color: var(--winter-header-fg);
+            background: var(--winter-header-bg);
+            text-decoration: underline;
+            text-decoration-thickness: 0.08em;
+        }
+    }
+
+    & ul.has-dividers {
+        & li:not(:first-child) {
+            margin-inline-start: 1.2em;
+        }
+        & li:not(:last-child) a::after {
+            color: var(--winter-header-fg);
+            position: absolute;
+            margin-inline-start: 0.4em;
+            content: "/";
+            text-align: center;
+            pointer-events: none;
+        }
+    }
+
+    & winter-icon,
+    winter-dark-mode {
+        font-size: var(--winter-header-icon-size);
+    }
+
+    & winter-dark-mode:hover {
+        color: var(--winter-header-accent);
+    }
+}

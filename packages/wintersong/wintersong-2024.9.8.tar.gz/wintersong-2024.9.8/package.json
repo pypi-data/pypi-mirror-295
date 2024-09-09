@@ -1,0 +1,61 @@
+{
+    "name": "wintersong",
+    "version": "0.0.0",
+    "description": "Winterbloom frontend library and web components",
+    "type": "module",
+    "private": "true",
+    "engines": {
+        "node": ">=20.5.1"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "devDependencies": {
+        "@esm-bundle/chai": "^4.3.4-fix.0",
+        "@open-wc/semantic-dom-diff": "^0.20.1",
+        "@open-wc/testing": "^3.0.0-next.5",
+        "@types/mocha": "^10.0.6",
+        "@typescript-eslint/eslint-plugin": "^6.19.0",
+        "@typescript-eslint/parser": "^6.19.0",
+        "@web/dev-server-esbuild": "^1.0.1",
+        "@web/test-runner": "^0.18.0",
+        "esbuild": "^0.19.11",
+        "esbuild-plugin-copy": "^2.1.1",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-lit": "^1.11.0",
+        "eslint-plugin-mocha": "^10.2.0",
+        "prettier": "^3.2.5",
+        "prettier-plugin-jinja-template": "^1.3.2",
+        "typescript": "^5.3.3",
+        "typescript-lit-html-plugin": "^0.9.0"
+    },
+    "scripts": {
+        "test:watch": "web-test-runner --config scripts/web-test-runner.config.mjs --watch",
+        "test:coverage": "web-test-runner --config scripts/web-test-runner.config.mjs --coverage",
+        "test": "web-test-runner --config scripts/web-test-runner.config.mjs",
+        "lint:eslint": "eslint",
+        "lint:types": "tsc -p tsconfig.json",
+        "lint:prettier": "prettier src/scripts src/styles src/wintersong/*.html scripts tests --check",
+        "lint": "npm run lint:eslint && npm run lint:types && npm run lint:prettier",
+        "format": "prettier src/scripts src/styles src/wintersong/*.html scripts tests --write",
+        "build:no-check": "node scripts/build.js",
+        "build": "tsc -p tsconfig.json && node scripts/build.js",
+        "watch": "node scripts/watch.js",
+        "clean": "rm -rf dist && rm -rf www/dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wntrblm/wintersong.git"
+    },
+    "author": "Alethea Katherine Flowers",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wntrblm/wintersong/issues"
+    },
+    "homepage": "https://github.com/wntrblm/wintersong#readme",
+    "dependencies": {
+        "eslint-plugin-wc": "^2.0.4",
+        "lit": "^3.1.1"
+    }
+}

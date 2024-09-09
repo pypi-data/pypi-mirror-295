@@ -1,0 +1,160 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+:root {
+    --winter-white: #fff;
+    --winter-black: #000;
+    --winter-not-quite-black: #333;
+    --winter-yellow-1: rgb(184, 125, 33);
+    --winter-yellow-2: rgb(219, 161, 64);
+    --winter-yellow-3: rgb(250, 194, 105);
+    --winter-yellow-4: rgb(255, 214, 143);
+    --winter-yellow-5: rgb(255, 229, 186);
+    --winter-red-1: rgb(191, 36, 54);
+    --winter-red-2: rgb(217, 74, 92);
+    --winter-red-3: rgb(245, 115, 128);
+    --winter-red-4: rgb(250, 153, 163);
+    --winter-red-5: rgb(252, 194, 201);
+    --winter-teal-1: rgb(38, 120, 128);
+    --winter-teal-2: rgb(64, 140, 148);
+    --winter-teal-3: rgb(102, 173, 181);
+    --winter-teal-4: rgb(153, 209, 214);
+    --winter-teal-5: rgb(204, 237, 240);
+    --winter-purple-1: rgb(94, 64, 158);
+    --winter-purple-2: rgb(125, 97, 186);
+    --winter-purple-3: rgb(163, 138, 214);
+    --winter-purple-4: rgb(199, 184, 237);
+    --winter-purple-5: rgb(235, 227, 250);
+}
+
+/*
+https://accessiblepalette.com/?lightness=98.2,93.95,85.1,76.5,67.65,57.8,47.6,40.4,32.4,23.55&gb(245,%20115,%20128)=1,0&f76707=0,12&f1d152=0,7&78ec90=0,0&gb(129,%20255,%20190)=0,5&gb(129,%20238,%20255)=0,0&97d2ff=0,0&ae82ff=0,0&9939b3=1,0&gb(254,%20129,%20173)=0,0&292537=0,0
+
+let colors = ["red", "orange", "yellow", "green", "mint", "cyan", "blue", "purple", "violet", "pink", "gray"];
+let shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+let out = "";
+
+document.querySelectorAll(".palette_colors").forEach((column, n) => {
+    column.querySelectorAll(".hex").forEach((row, i) => {
+        out += `--color-${colors[n]}-${shades[i]}: ${row.innerText};\n`;
+    });
+});
+
+console.log(out);
+*/
+
+:root {
+    --color-red-50: #fff8f8;
+    --color-red-100: #ffe9e9;
+    --color-red-200: #ffc7c9;
+    --color-red-300: #fea5a9;
+    --color-red-400: #f8818b;
+    --color-red-500: #d96772;
+    --color-red-600: #b0555d;
+    --color-red-700: #93494f;
+    --color-red-800: #753b40;
+    --color-red-900: #542d2f;
+    --color-orange-50: #fff9f5;
+    --color-orange-100: #fdeadd;
+    --color-orange-200: #facca8;
+    --color-orange-300: #f6ad72;
+    --color-orange-400: #f18c30;
+    --color-orange-500: #de6a00;
+    --color-orange-600: #b35800;
+    --color-orange-700: #964b00;
+    --color-orange-800: #773d00;
+    --color-orange-900: #582d00;
+    --color-yellow-50: #fdfaec;
+    --color-yellow-100: #f9eebf;
+    --color-yellow-200: #eed45a;
+    --color-yellow-300: #d3bd4a;
+    --color-yellow-400: #b7a540;
+    --color-yellow-500: #9a8c36;
+    --color-yellow-600: #7c722c;
+    --color-yellow-700: #686025;
+    --color-yellow-800: #534d1e;
+    --color-yellow-900: #3d3916;
+    --color-green-50: #f1fdf3;
+    --color-green-100: #cef8d6;
+    --color-green-200: #79ec91;
+    --color-green-300: #6bd280;
+    --color-green-400: #5db770;
+    --color-green-500: #4f9b5e;
+    --color-green-600: #407e4d;
+    --color-green-700: #366a41;
+    --color-green-800: #2b5534;
+    --color-green-900: #203f26;
+    --color-mint-50: #e9fff4;
+    --color-mint-100: #abffd6;
+    --color-mint-200: #73ebb1;
+    --color-mint-300: #65d19e;
+    --color-mint-400: #58b68b;
+    --color-mint-500: #499a75;
+    --color-mint-600: #3b7d60;
+    --color-mint-700: #316a51;
+    --color-mint-800: #275541;
+    --color-mint-900: #1d3e30;
+    --color-cyan-50: #eefdff;
+    --color-cyan-100: #c2f7ff;
+    --color-cyan-200: #7ce4f4;
+    --color-cyan-300: #6ecad9;
+    --color-cyan-400: #60b1bd;
+    --color-cyan-500: #5195a0;
+    --color-cyan-600: #427982;
+    --color-cyan-700: #37666e;
+    --color-cyan-800: #2c5258;
+    --color-cyan-900: #213c41;
+    --color-blue-50: #f5fbff;
+    --color-blue-100: #ddf0ff;
+    --color-blue-200: #abdaff;
+    --color-blue-300: #8cc3ed;
+    --color-blue-400: #7aaacf;
+    --color-blue-500: #678fae;
+    --color-blue-600: #54758e;
+    --color-blue-700: #476278;
+    --color-blue-800: #394f60;
+    --color-blue-900: #2a3a46;
+    --color-purple-50: #fbf9ff;
+    --color-purple-100: #f2eaff;
+    --color-purple-200: #deccff;
+    --color-purple-300: #cbafff;
+    --color-purple-400: #b791ff;
+    --color-purple-500: #9d75e6;
+    --color-purple-600: #8060bc;
+    --color-purple-700: #6c519e;
+    --color-purple-800: #56417f;
+    --color-purple-900: #40305d;
+    --color-violet-50: #fcf9fd;
+    --color-violet-100: #f5eaf7;
+    --color-violet-200: #e7ccec;
+    --color-violet-300: #d8afe0;
+    --color-violet-400: #c991d5;
+    --color-violet-500: #b770c7;
+    --color-violet-600: #a34cba;
+    --color-violet-700: #9037a8;
+    --color-violet-800: #722e85;
+    --color-violet-900: #53255f;
+    --color-pink-50: #fff8fb;
+    --color-pink-100: #ffe8f0;
+    --color-pink-200: #ffc5d9;
+    --color-pink-300: #fea2c2;
+    --color-pink-400: #f77ea8;
+    --color-pink-500: #d16a8e;
+    --color-pink-600: #aa5674;
+    --color-pink-700: #8f4962;
+    --color-pink-800: #733a4e;
+    --color-pink-900: #552b3a;
+    --color-gray-50: #fafafa;
+    --color-gray-100: #eeedef;
+    --color-gray-200: #d5d4d8;
+    --color-gray-300: #bdbcc2;
+    --color-gray-400: #a5a4ab;
+    --color-gray-500: #8c8a93;
+    --color-gray-600: #726f7b;
+    --color-gray-700: #615e6b;
+    --color-gray-800: #4e4a59;
+    --color-gray-900: #3a3647;
+}

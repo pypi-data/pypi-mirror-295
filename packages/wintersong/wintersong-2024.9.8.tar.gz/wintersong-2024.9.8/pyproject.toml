@@ -1,0 +1,150 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wintersong"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+keywords = ["mkdocs", "theme"]
+authors = [{ name = "Thea Flowers", email = "thea@winterbloom.com" }]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = ["mkdocs>=1.5.0", "pygments>=2.16", "pymdown-extensions>=10.3"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wintersong"]
+
+[project.urls]
+Documentation = "https://github.com/wntrblm/wintersong#readme"
+Issues = "https://github.com/wntrblm/wintersong/issues"
+Source = "https://github.com/wntrblm/wintersong"
+
+[project.entry-points."mkdocs.themes"]
+wintersong = "wintersong"
+
+[tool.hatch.version]
+path = "src/wintersong/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = ["pyright", "pytest", "ruff>=0.1.0"]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+typing = "pyright"
+style = ["ruff check {args:.}"]
+format = ["ruff format --fix {args:.}"]
+lint = ["style", "typing"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+select = [
+    # Note: these are ordered to match https://beta.ruff.rs/docs/rules/
+    "F",     # PyFlakes
+    "E",     # pycodestyle errors
+    "W",     # pycodestyle warnings
+    "I",     # isort
+    "N",     # pep8-naming
+    "UP",    # pyupgrade
+    "ASYNC", # flake8-async
+    "BLE",   # flake8-blind-except
+    "FBT",   # flake8-boolean-trap
+    "B",     # flake8-bugbear
+    "A",     # flake8-builtins
+    "COM",   # flake8-commas
+    "CPY",   # flake8-copyright
+    "C4",    # flake8-comprehensions
+    "DTZ",   # flake8-datetimez
+    "T10",   # flake8-debugger
+    "EM",    # flake8-errmsg
+    "ISC",   # flake8-implicit-str-concat
+    "PIE",   # flake8-pie
+    "PT",    # flake8-pytest-style
+    "Q",     # flake8-quotes
+    "RET",   # flake8-return
+    "SLOT",  # flake8-slots
+    "SIM",   # flake8-simplify
+    "TID",   # flake8-tidy-imports
+    "ARG",   # flake8-unused-arguments
+    "PTH",   # flake8-pathlib
+    "TD",    # flake8-todo
+    "PL",    # PyLint
+    "TRY",   # tryceratops
+    "NPY",   # NumPy
+    "RUF",   # Ruff
+]
+ignore = [
+    "TD002", # missing-todo-author
+    # PyLint too aggressive about too many args, statements, branches, and
+    # returns
+    "PLR0911",
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+]
+unfixable = [
+    # Don't touch unused imports
+    "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["sayonara"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__"]
+reportMissingImports = true
+reportMissingTypeStubs = false
+pythonVersion = "3.11"
+pythonPlatform = "Linux"
+typeCheckingMode = "basic"
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+reportAssertAlwaysTrue = "error"
+reportInvalidStringEscapeSequence = "error"
+reportSelfClsParameterName = "error"
+reportConstantRedefinition = "error"
+reportDeprecated = "error"
+reportDuplicateImport = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+reportInconsistentConstructor = "error"
+reportMatchNotExhaustive = "warning"
+reportOverlappingOverload = "error"
+reportMissingSuperCall = "error"
+reportPrivateUsage = "warning"
+reportTypeCommentUsage = "error"
+reportUnnecessaryCast = "error"
+reportUnnecessaryComparison = "error"
+reportUnnecessaryContains = "error"
+reportUnnecessaryIsInstance = "error"
+reportUnusedClass = "warning"
+reportUnusedImport = "warning"
+reportUnusedFunction = "warning"
+reportUnusedVariable = "warning"
+reportUntypedBaseClass = "error"
+reportUntypedClassDecorator = "error"
+reportUntypedFunctionDecorator = "error"
+reportUntypedNamedTuple = "error"
+reportCallInDefaultInitializer = "error"
+reportImplicitOverride = "error"
+reportPropertyTypeMismatch = "warning"
+reportShadowedImports = "warning"
+reportUninitializedInstanceVariable = "warning"
+reportUnnecessaryTypeIgnoreComment = "warning"
+reportUnusedCallResult = "warning"

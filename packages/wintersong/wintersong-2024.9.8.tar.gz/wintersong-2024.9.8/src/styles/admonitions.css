@@ -1,0 +1,221 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+/*
+    Admonitions
+    https://python-markdown.github.io/extensions/admonition/
+*/
+
+.admonition {
+    --fg: var(--winter-admonition-fg);
+    --bg: var(--winter-admonition-bg);
+    --accent: var(--winter-admonition-accent);
+    --icon: var(--winter-admonition-icon);
+
+    display: flow-root;
+    margin-block: var(--winter-block-spacing);
+    padding: var(--winter-admonition-padding);
+    font-family: var(--winter-admonition-font);
+    font-size: var(--winter-admonition-font-size);
+    border-inline-start: 0.15rem solid var(--accent);
+    color: var(--fg);
+    background: var(--bg);
+    page-break-inside: avoid;
+    box-shadow: var(--winter-shadow-s);
+
+    & .admonition-title {
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        height: 1lh;
+        font-family: var(--winter-admonition-title-font);
+        font-size: var(--winter-admonition-title-font-size);
+        white-space: pre-wrap;
+        margin-block: 0;
+
+        &::before {
+            content: var(--icon);
+            /* line-height: 0; */
+            display: inline-flex;
+            align-items: center;
+            padding-inline-end: 0.15ch;
+
+            /* The reset is Material Symbols stuff */
+            font-family: "Material Symbols Outlined";
+            font-weight: normal;
+            font-style: normal;
+            font-size: inherit;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: "liga";
+            -moz-font-feature-settings: "liga";
+            font-feature-settings: "liga";
+            -webkit-font-smoothing: antialiased;
+            user-select: none;
+        }
+
+        /* Remove underlines from <abbr> in admonition titles */
+        & abbr {
+            border-bottom: none;
+        }
+    }
+
+    & p {
+        margin-block: var(--winter-admonition-body-spacing);
+
+        &:last-child {
+            margin-block-end: 0;
+        }
+    }
+
+    &.note {
+        --fg: var(--winter-admonition-note-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-note-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-note-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-note-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.info {
+        --fg: var(--winter-admonition-info-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-info-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-info-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-info-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.tip {
+        --fg: var(--winter-admonition-tip-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-tip-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-tip-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-tip-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.success {
+        --fg: var(--winter-admonition-success-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-success-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-success-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-success-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.question {
+        --fg: var(--winter-admonition-question-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-question-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-question-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-question-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.warning {
+        --fg: var(--winter-admonition-warning-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-warning-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-warning-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-warning-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.failure {
+        --fg: var(--winter-admonition-failure-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-failure-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-failure-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-failure-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.danger {
+        --fg: var(--winter-admonition-danger-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-danger-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-danger-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-danger-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.bug {
+        --fg: var(--winter-admonition-bug-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-bug-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-bug-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-bug-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.example {
+        --fg: var(--winter-admonition-example-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-example-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-example-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-example-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.quote {
+        --fg: var(--winter-admonition-quote-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-quote-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-quote-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-quote-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+    &.fairy {
+        --fg: var(--winter-admonition-fairy-fg, var(--winter-admonition-fg));
+        --bg: var(--winter-admonition-fairy-bg, var(--winter-admonition-bg));
+        --accent: var(
+            --winter-admonition-fairy-accent,
+            var(--winter-admonition-accent)
+        );
+        --icon: var(
+            --winter-admonition-fairy-icon,
+            var(--winter-admonition-icon)
+        );
+    }
+}

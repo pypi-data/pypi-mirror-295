@@ -1,0 +1,46 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+main {
+    & winter-audio-player,
+    winter-carousel,
+    winter-image-map {
+        --elevation-shadow: var(--winter-shadow-s);
+    }
+
+    & winter-audio-player {
+        width: 640px;
+        max-width: 80%;
+        margin: 2em auto;
+    }
+
+    & winter-carousel {
+        & img {
+            margin: 0;
+        }
+    }
+
+    & winter-pcb-assembly {
+        & canvas {
+            border-radius: 10px;
+
+            &.back {
+                transform: scaleX(-1);
+            }
+        }
+
+        & table.bom-table {
+            width: 100%;
+
+            & th:first-child,
+            td:first-child {
+                min-width: unset;
+                width: 2rem;
+                white-space: nowrap;
+            }
+        }
+    }
+}

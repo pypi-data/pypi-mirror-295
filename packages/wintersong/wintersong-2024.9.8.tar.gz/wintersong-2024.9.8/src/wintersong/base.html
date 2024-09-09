@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="{{ config.theme.locale|default('en') }}">
+  <head>
+    {%- block html_head -%}
+
+      {%- block html_meta -%}
+        {%- include "meta.html" -%}
+      {%- endblock html_meta -%}
+
+      <!-- Title -->
+      {%- block html_title -%}
+        <title>
+          {{ config.site_name }}
+          {% if page and page.meta and page.meta.title %}
+            {% set title = page.meta.title %}
+          {% elif page %}
+            {% set title = page.title %}
+          {% endif %}
+
+          {% if title and not page.is_homepage %}
+            - {{ title | striptags }}
+          {% endif %}
+        </title>
+      {%- endblock html_title -%}
+
+      {%- block styles -%}
+        <link rel="stylesheet" href="{{ 'winter.css' | url }}" />
+        {%- for path in config.extra_css -%}
+          <link href="{{ path | url }}" rel="stylesheet" />
+        {%- endfor -%}
+      {%- endblock styles -%}
+    {%- endblock html_head -%}
+  </head>
+
+  <body
+    class="{% if page and page.meta.body_class %}{{ page.meta.body_class }}{% endif %}"
+    data-page="{{ page.url }}">
+    {%- block header -%}
+      <header>
+        <nav role="navigation" aria-label="main navigation">
+          <ul>
+            <li>
+              <a href="{{ base_url }}">{{ config.site_name }}</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <img class="logo" src="/winterbloom.png" alt="Winterbloom logo" />
+            </li>
+          </ul>
+        </nav>
+        <nav role="navigation" aria-label="secondary navigation">
+          <ul class="has-dividers">
+            {%- for nav_item in nav -%}
+              <li>
+                <a
+                  {% if page.url == nav_item.url: %}aria-current{% endif %}
+                  href="{{ nav_item.url |url }}">
+                  {{ nav_item.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <ul>
+            {%- if 'search' in config.plugins -%}
+              <li>
+                <winter-icon>search</winter-icon>
+              </li>
+            {%- endif -%}
+            <li>
+              <winter-dark-mode></winter-dark-mode>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    {%- endblock header -%}
+
+    <main
+      class="{%- if not page.meta['show-title']: -%}hide-title{%- endif -%}">
+      {%- block content -%}{%- endblock -%}
+    </main>
+
+    {%- block footer -%}
+      <footer>
+        <ul>
+          <li>
+            © {{ config.theme.copyright_year }}
+            {{ config.theme.copyright_author }}
+          </li>
+          <li>
+            Published under
+            <a
+              href="{{ config.repo_url }}/{{ config.theme.copyright_license_uri }}">
+              {{ config.theme.copyright_license }}
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li class="updated">
+            Last updated on {{ build_date_utc.strftime('%Y/%-m/%-d') }}
+          </li>
+          <li>
+            <a href="{{ page.edit_url }}">Edit this page on GitHub</a>
+          </li>
+          <li>
+            <a href="mailto:{{ config.theme.contact_email }}">
+              Send us a message
+            </a>
+          </li>
+        </ul>
+      </footer>
+    {%- endblock footer -%}
+
+    {% block scripts %}
+      <script type="module" src="{{ 'winter.js' | url }}"></script>
+      {% for script in config.extra_javascript %}
+        {{ script | script_tag }}
+      {% endfor %}
+    {% endblock %}
+  </body>
+</html>

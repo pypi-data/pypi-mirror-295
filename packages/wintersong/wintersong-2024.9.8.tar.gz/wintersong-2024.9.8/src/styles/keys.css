@@ -1,0 +1,119 @@
+/*
+    Copyright (c) 2024 Winterbloom LLC, Alethea Katherine Flowers
+    Published under the standard MIT License.
+    Full text available at: https://opensource.org/licenses/MIT
+*/
+
+main {
+    & .keys {
+        & span {
+            margin-inline: 0.1em;
+            color: var(--winter-kbd-combinator-fg);
+        }
+
+        & kbd::before,
+        kbd::after {
+            font-family: var(--winter-font-sans);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            user-select: none;
+        }
+
+        & kbd::before {
+            margin-right: 0.25ch;
+        }
+        & kbd::after {
+            margin-left: 0.25ch;
+        }
+
+        & :is(.key-alt, .key-left-alt, .key-right-alt)::before {
+            content: "\2387";
+        }
+        & :is(.key-command, .key-left-command, .key-right-command)::before {
+            content: "\2318";
+        }
+        & :is(.key-control, .key-left-control, .key-right-control)::before {
+            content: "\2303";
+        }
+        & :is(.key-meta, .key-left-meta, .key-right-meta)::before {
+            content: "\25C6";
+        }
+        & :is(.key-option, .key-left-option, .key-right-option)::before {
+            content: "\2325";
+        }
+        & :is(.key-shift, .key-left-shift, .key-right-shift)::before {
+            content: "\21E7";
+        }
+        & :is(.key-super, .key-left-super, .key-right-super)::before {
+            content: "\2756";
+        }
+        & :is(.key-windows, .key-left-windows, .key-right-windows)::before {
+            content: "\229E";
+        }
+        & .key-arrow-left::before {
+            content: "\2190";
+        }
+        & .key-arrow-right::before {
+            content: "\2192";
+        }
+        & .key-arrow-up::before {
+            content: "\2191";
+        }
+        & .key-arrow-down::before {
+            content: "\2193";
+        }
+        & .key-backspace::before {
+            content: "\232B";
+        }
+        & .key-backtab::before {
+            content: "\21E4";
+        }
+        & .key-caps-lock::before {
+            content: "\21EA";
+        }
+        & .key-clear::before {
+            content: "\2327";
+        }
+        & .key-context-menu::before {
+            content: "\2630";
+        }
+        & .key-delete::before {
+            content: "\2326";
+        }
+        & .key-eject::before {
+            content: "\23CF";
+        }
+        & .key-end::before {
+            content: "\2913";
+        }
+        & .key-escape::before {
+            content: "\238B";
+        }
+        & .key-home::before {
+            content: "\2912";
+        }
+        & .key-insert::before {
+            content: "\2380";
+        }
+        & .key-page-down::before {
+            content: "\21DF";
+        }
+        & .key-page-up::before {
+            content: "\21DE";
+        }
+        & .key-print-screen::before {
+            content: "\2399";
+        }
+        & .key-tab::after {
+            content: "\21E5";
+        }
+        & .key-enter::after {
+            content: "\23CE";
+        }
+        & .key-num-enter::after {
+            content: "\2324";
+        }
+    }
+}

@@ -1,0 +1,50 @@
+site_name: Wintersong
+site_url: https://wintersong.wntr.dev
+repo_url: "https://github.com/wntrblm/wintersong"
+edit_uri: edit/main/docs/docs
+theme:
+    name: wintersong
+plugins: []
+markdown_extensions:
+    - abbr
+    - admonition
+    - def_list
+    - attr_list
+    - footnotes
+    - md_in_html
+    - toc:
+          permalink: "#"
+          toc_depth: 2-2
+    - pymdownx.arithmatex:
+          generic: true
+    - pymdownx.betterem:
+          smart_enable: all
+    - pymdownx.blocks.tab:
+          alternate_style: true
+    - pymdownx.caret
+    - pymdownx.details
+    - pymdownx.highlight:
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.keys
+    - pymdownx.magiclink:
+          hide_protocol: true
+          repo_url_shortener: true
+          social_url_shortener: true
+          normalize_issue_symbols: true
+          repo_url_shorthand: true
+          user: wntrblm
+          repo: winter
+    - pymdownx.mark
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+          custom_checkbox: true
+    - pymdownx.tilde
+nav:
+    - "Home": index.md
+    - "Components": components.md
+    - "Markdown": markdown.md
+    - "Forms": forms.md
+    - "Buttons": buttons.md
