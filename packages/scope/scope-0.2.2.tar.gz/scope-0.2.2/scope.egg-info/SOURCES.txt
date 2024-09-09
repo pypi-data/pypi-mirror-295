@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+pyproject.toml
+requirements.txt
+setup.py
+scope/__init__.py
+scope/columns.py
+scope/reader.py
+scope/writer.py
+scope.egg-info/PKG-INFO
+scope.egg-info/SOURCES.txt
+scope.egg-info/dependency_links.txt
+scope.egg-info/requires.txt
+scope.egg-info/top_level.txt
+tests/test_float.py
+tests/test_image.py
+tests/test_video.py
