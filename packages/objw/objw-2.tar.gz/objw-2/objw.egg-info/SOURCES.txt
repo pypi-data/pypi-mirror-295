@@ -1,0 +1,13 @@
+README.rst
+pyproject.toml
+setup.py
+objw/__init__.py
+objw/disk.py
+objw/find.py
+objw/workdir.py
+objw.egg-info/PKG-INFO
+objw.egg-info/SOURCES.txt
+objw.egg-info/dependency_links.txt
+objw.egg-info/requires.txt
+objw.egg-info/top_level.txt
+objw.egg-info/zip-safe
