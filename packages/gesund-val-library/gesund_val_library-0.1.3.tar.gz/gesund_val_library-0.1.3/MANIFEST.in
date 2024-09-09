@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+recursive-include gesund_val_library/scripts *
+recursive-include gesund_val_library/metrics *
+recursive-include gesund_val_library/utils *

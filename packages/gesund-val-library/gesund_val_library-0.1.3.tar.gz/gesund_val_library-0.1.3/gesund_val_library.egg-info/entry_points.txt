@@ -1,0 +1,3 @@
+[console_scripts]
+run_metrics = gesund_val_library.scripts.run_metrics:main
+
