@@ -1,0 +1,13 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "Jupyter Litchi",
+  "description": "AI Plugin for JupyterLab.",
+  "type": "object",
+  "properties": {
+  },
+  "additionalProperties": true,
+  "jupyter.lab.toolbars": {
+    "Litchi": [
+    ]
+  }
+}
