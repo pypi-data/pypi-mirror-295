@@ -1,0 +1,3 @@
+[console_scripts]
+file_recoding = mini_toolbox.recoding:main
+pip_list = mini_toolbox.pip_list:main
