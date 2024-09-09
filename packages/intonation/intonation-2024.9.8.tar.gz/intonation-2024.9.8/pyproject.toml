@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "pypeaks", "scipy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intonation"
+dynamic = ["version"]
+description = "Python module to analyze, study and research the intonation of musical intervals in music recordings."
+readme = "README.rst"
+license = { text = "GNU Affero GPL v3" }
+
+authors = [
+    { name = "Gopala Krishna Koduri", email = "gopala.koduri@gmail.com" }
+]
+
+keywords = ["python", "intonation", "research", "music", "intervals", "tuning"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+urls = { "Homepage" = "https://github.com/gopalkoduri/intonation" }
+
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "pypeaks",
+    "scipy"
+]
+
+[tool.setuptools.packages.find]
+include = ["intonation"]
+
+[tool.setuptools.dynamic]
+version = {attr = "intonation.__version__"}
