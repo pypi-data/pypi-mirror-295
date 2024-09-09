@@ -1,0 +1,69 @@
+[project]
+name = "nevergonnagiveyouup"
+version = "0.1.0"
+description = "Never gonna let you down"
+authors = [{ name = "Dowon", email = "ks2515@naver.com" }]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+license = { text = "MIT" }
+keywords = ["never", "gonna", "give", "you", "up"]
+classifiers = [
+    "Topic :: Multimedia :: Video",
+    "Intended Audience :: Healthcare Industry",
+    "Topic :: Games/Entertainment :: Fortune Cookies",
+]
+
+[project.scripts]
+nevergonnagiveyouup = "nevergonnagiveyouup.__main__:never_gonna_give_you_up"
+never-gonna-give-you-up = "nevergonnagiveyouup.__main__:never_gonna_give_you_up"
+
+[project.urls]
+homepage = "https://youtu.be/dQw4w9WgXcQ?si=9DdFPcmcprsOGYA0"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = ["ruff", "pre-commit"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nevergonnagiveyouup"]
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "FBT",
+    "FURB",
+    "I001",
+    "ISC",
+    "N",
+    "PD",
+    "PERF",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "RET",
+    "RUF",
+    "S",
+    "SIM",
+    "T20",
+    "TRY",
+    "UP",
+    "W",
+]
+ignore = ["B905", "E501"]
+unfixable = ["F401"]

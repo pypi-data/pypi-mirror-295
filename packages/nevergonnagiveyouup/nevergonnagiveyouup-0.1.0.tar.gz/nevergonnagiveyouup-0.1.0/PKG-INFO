@@ -1,0 +1,50 @@
+Metadata-Version: 2.3
+Name: nevergonnagiveyouup
+Version: 0.1.0
+Summary: Never gonna let you down
+Project-URL: homepage, https://youtu.be/dQw4w9WgXcQ?si=9DdFPcmcprsOGYA0
+Author-email: Dowon <ks2515@naver.com>
+License: MIT
+License-File: LICENSE
+Keywords: give,gonna,never,up,you
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Topic :: Games/Entertainment :: Fortune Cookies
+Classifier: Topic :: Multimedia :: Video
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# Never Gonna Give You Up
+
+Never gonna let you down
+
+Never gonna run around and desert you
+
+Never gonna make you cry
+
+Never gonna say goodbye
+
+Never gonna tell a lie and hurt you
+
+## Never Gonna Install This
+
+```bash
+pip install nevergonnagiveyouup
+```
+
+## Never Gonna Use This
+
+```bash
+nevergonnagiveyouup
+# or
+never-gonna-give-you-up
+```
+
+## Never Gonna Import This
+
+```python
+import nevergonnagiveyouup
+```
+
+```python
+from nevergonnagiveyouup import never_gonna_give_you_up
+```
