@@ -1,0 +1,27 @@
+---
+lab_guru:
+  report_data:
+    # This is the name of the worksheet that will be contain the data to be parsed.
+    sheet_name: Sheet1
+    # This is the row number (0 index based) where the column headers will be found.
+    header_row_number: 0
+    # The engine should be xlrd for .xls Excel files
+    # or openpyxl for .xlsx Excel files.
+    engine: openpyxl
+    expected_column_headers:
+      - "Name *"
+      - "Date of Birth"
+      - "Collection Date"
+      - "Diagnosis"
+      - "Specimen ID"
+      - "Segment Length (cm)"
+      - "Gender"
+      - "Date Received"
+      - "Ordering Physician"
+      - "Ordering Physician Clinic"
+      - "Medical Record ID"
+      - "Patient Name"
+      - "Ordering Physician Address"
+      - "Ordering Physician City State Zip"
+      - "Treating Provider"
+      - "Report Date"
