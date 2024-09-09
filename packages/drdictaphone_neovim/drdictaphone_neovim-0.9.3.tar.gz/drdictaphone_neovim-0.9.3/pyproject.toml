@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "drdictaphone_neovim"
+version = "0.9.3"
+authors = ["Ole Kliemann <mail@olekliemann.de>"]
+description = "Dictation app for the terminal and Neovim"
+readme = "README.md"
+license = "LICENSE"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
+  "Topic :: Text Processing",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+MrEventLoop = ">=0.6.2"
+drdictaphone-shared = "0.9.3"
+pynvim = ">=0.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+homepage = "https://github.com/olekli/DrDictaphone"
