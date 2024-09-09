@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "pretiac"
+version = "0.4.0"
+description = "pretiac: A PREtty Typed Icinga2 Api Client."
+authors = ["Josef Friedrich <josef@friedrich.rocks>"]
+readme = "README.rst"
+repository = "https://github.com/Josef-Friedrich/PREtty-Typed-Icinga2-Api-Client_py"
+license = "GPL-3.0-only"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "^2"
+pyyaml = "^6"
+requests = "^2"
+rich = "^13"
+types-pyyaml = "^6"
+types-requests = "^2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+tox = "^4"
+ruff = "^0"
+sphinx = "^7"
+sphinx-rtd-theme = "^2"
+sphinx-tags = "^0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.poetry.scripts]
+# must not be named pretiac.py -> import error
+"pretiac" = "pretiac.cli:main"
