@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: spexmlp
+Version: 2.0.2.post24
+Summary: fused modules of EPRI(SGRI) visual models
+Home-page: https://github.com/flishwang/spexmlp
+Author: flish_wang
+Author-email: flish_wang@sina.com
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: tqdm>=4.28.1
+Requires-Dist: numpy>=1.15.3
+Requires-Dist: PyYAML>=5.1
+Requires-Dist: packaging>=20.6
+Requires-Dist: torch<2.5.0,>=2.4.0
+
+# RELEASE NOTE
+
+### 2.0.2
+fix bugs that some cubins are under cuda API 12.4 instead of 11.8
+
+# USAGE
+
+```
+from torch import nn
+from spexmlp.eswiglu import load_license,sFusedSwiglu
+
+load_license(path="mylicense.dat",device="cuda:0")
+model=sFusedSwiglu(1280,1280*3,1024)
+x=torch.zeros((256,1280),dtype=torch.float16,device='cuda:0')
+dy=torch.randn((256,1024),dtype=torch.float16,device='cuda:0')
+y=model(x)
+y.backward(dy)
+print(x.grad)
+
+```
+
