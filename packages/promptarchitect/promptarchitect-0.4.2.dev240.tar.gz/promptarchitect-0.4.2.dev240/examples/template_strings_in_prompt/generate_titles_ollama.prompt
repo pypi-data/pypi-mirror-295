@@ -1,0 +1,10 @@
+---
+provider: ollama
+model: gemma2
+prompt_version: 1.0w
+input: examples/template_strings_in_prompt/input.txt
+output: title-ollama.txt
+---
+# Instructions
+
+Generate {{number}} titles for a {{type_of_media}} about the following and include {{type_of_media}} in the title

@@ -1,0 +1,12 @@
+---
+provider: ollama
+model: gemma2
+prompt_version: 1.0
+temperature: 0.2
+input: examples/system_role/podcast_description.txt
+output: title-ollama.txt
+system_role: examples/system_role/system_role.txt
+---
+# Instructions
+
+Generate 5 titles for a podcast about the following:

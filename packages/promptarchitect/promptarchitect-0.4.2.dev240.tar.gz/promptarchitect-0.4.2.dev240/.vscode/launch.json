@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTEST_ADDOPTS": "--no-cov"
+            }
+        },
+        {
+            "name": "Debug prompt testing",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/promptarchitect/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "test",
+                "--prompts",
+                "./examples/quickstart",
+                "--output",
+                "./output_directory"
+            ]
+        },
+        {
+            "name": "Debug prompt analysis",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/promptarchitect/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "analyze",
+                "prompt",
+                "--input",
+                "tests/analyzer/article.prompt"
+            ]
+        }
+    ]
+}
