@@ -1,0 +1,4 @@
+[console_scripts]
+codexes2gemini-ui = Codexes2Gemini.ui.streamlit_ui:main
+codexes2gemini-ui-1455 = Codexes2Gemini.ui.streamlit_ui:main
+dataset2gemini = Codexes2Gemini.ui.build_from_dataset_of_codexes:main
