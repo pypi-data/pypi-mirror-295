@@ -1,0 +1,7 @@
+ofxstatement
+pandas
+tabula-py
+pypdf2
+
+[test]
+pytest
