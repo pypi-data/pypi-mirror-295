@@ -1,0 +1,10 @@
+Metadata-Version: 2.3
+Name: uclid
+Version: 0.0.1
+Summary: A placeholder package
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+
+# Uclid
+
+A [DotBlocks](https://www.dotblocks.fr/) placeholder package to avoid dependency confusion attacks.
