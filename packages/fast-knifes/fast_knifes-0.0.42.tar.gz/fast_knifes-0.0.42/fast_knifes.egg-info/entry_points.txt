@@ -1,0 +1,2 @@
+[console_scripts]
+deploy = knifes.deploy.main:app
