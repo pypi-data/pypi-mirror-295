@@ -1,0 +1,2 @@
+[console_scripts]
+htmlcheck = html_checker.cli.entrypoint:cli_frontend

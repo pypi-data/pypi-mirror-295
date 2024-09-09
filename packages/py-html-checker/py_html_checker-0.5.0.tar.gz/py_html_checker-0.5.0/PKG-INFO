@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: py-html-checker
+Version: 0.5.0
+Summary: Python wrapper around library Nu Html Checker (v.Nu)
+Home-page: https://github.com/sveetch/py-html-checker
+Author: David Thenon
+Author-email: sveetch@gmail.com
+License: MIT
+Project-URL: Source Code, https://github.com/sveetch/py-html-checker
+Project-URL: Issue Tracker, https://github.com/sveetch/py-html-checker/issues
+Project-URL: Changelog, https://py-html-checker.readthedocs.io/en/latest/history.html
+Project-URL: Documentation, https://py-html-checker.readthedocs.io/
+Keywords: Python,HTML,VNU
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENCE.txt
+Requires-Dist: requests
+Provides-Extra: cli
+Requires-Dist: click>=7.0; extra == "cli"
+Requires-Dist: colorlog; extra == "cli"
+Provides-Extra: jinja
+Requires-Dist: Jinja2>=3.0; extra == "jinja"
+Requires-Dist: Pygments>=2.6.0; extra == "jinja"
+Provides-Extra: serve
+Requires-Dist: cherrypy>=18.0.0; extra == "serve"
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Provides-Extra: quality
+Requires-Dist: flake8; extra == "quality"
+Requires-Dist: tox; extra == "quality"
+Requires-Dist: twine; extra == "quality"
+Provides-Extra: doc
+Requires-Dist: sphinx>=8.0.2; extra == "doc"
+Requires-Dist: furo>=2024.8.6; extra == "doc"
+Requires-Dist: sphinx-copybutton>=0.5.2; extra == "doc"
+Provides-Extra: doc-live
+Requires-Dist: livereload; extra == "doc-live"
+
+.. _Nu Html Checker: https://github.com/validator/validator
+.. _Sitemap: http://www.sitemaps.org/
+.. _Python: https://www.python.org/
+.. _Click: https://click.palletsprojects.com
+.. _Requests: https://requests.readthedocs.io/
+.. _CherryPy: https://docs.cherrypy.dev/
+.. _Jinja: https://jinja.palletsprojects.com/
+.. _Pygments: https://pygments.org/
+.. _colorlog: https://github.com/borntyping/python-colorlog
+
+
+Py Html Checker
+===============
+
+Python wrapper around library `Nu Html Checker`_ (v.Nu) to check document validation
+either from a list of pages or a `Sitemap`_.
+
+
+Links
+*****
+
+* Read the documentation on `Read the docs <https://py-html-checker.readthedocs.io/>`_;
+* Download its `PyPi package <http://pypi.python.org/pypi/py-html-checker>`_;
+* Clone it on its `Github repository <https://github.com/sveetch/py-html-checker>`_;
+
+
+Requires
+********
+
+* `Python`_>=3.8;
+* Java>=8 (OpenJDK or OracleJDK);
+
+
+Dependencies
+************
+
+* `Requests`_>=2.27.0;
+* `Click`_>=8.0 (optional);
+* `colorlog`_ (optional);
+* `Jinja`_>=2.10,<3.0 (optional);
+* `Pygments`_ (optional);
+* `CherryPy`_ (optional);
+
+
+Credits
+*******
+
+Logo vector and icon original sources by `SVG Repo <https://www.svgrepo.com>`_ then
+modified to build final logo.
