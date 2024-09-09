@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+batch_iter/__init__.py
+batch_iter/group_batch_iter.py
+batch_iter/simple_batch_iter.py
+batch_iter.egg-info/PKG-INFO
+batch_iter.egg-info/SOURCES.txt
+batch_iter.egg-info/dependency_links.txt
+batch_iter.egg-info/requires.txt
+batch_iter.egg-info/top_level.txt

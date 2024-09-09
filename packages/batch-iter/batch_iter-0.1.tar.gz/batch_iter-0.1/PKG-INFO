@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: batch_iter
+Version: 0.1
+Summary: Utilities for efficiently iterating over mini-batches of PyTorch tensors
+Author: Alex Shtoff
+Author-email: <alex.shtf@gmail.com>
+Keywords: python,pytorch
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch>=2.1.0
+
+This package allows eliminating the over-head incurred by the DataLoader class when iterating over in-memory tensors for training small models. Allows iterating over (shuffled) samples, or groups of samples, such as what is required for learning-to-rank.
