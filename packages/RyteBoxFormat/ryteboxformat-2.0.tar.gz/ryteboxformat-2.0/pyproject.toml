@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "RyteBoxFormat"
+version = "2.0"
+description = "File converter to translate specific income file formats in the RyteBox standard format"
+authors = ["Paul Velicky"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.11"
+wxpython = "4.2.1"
+pandas = "2.2.2"
+openpyxl = "3.1.5"
+xls2xlsx = "0.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
