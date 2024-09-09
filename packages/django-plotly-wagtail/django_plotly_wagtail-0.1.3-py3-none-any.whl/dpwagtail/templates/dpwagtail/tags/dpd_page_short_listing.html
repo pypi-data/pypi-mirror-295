@@ -1,0 +1,9 @@
+{%load wagtailcore_tags%}
+<div class="card-body">
+  <div>
+    <a href="{%pageurl dpd_page%}">{{dpd_page.title}}</a>
+  </div>
+  <div class="card-text">
+    {{dpd_page.short_description|richtext}}
+  </div>
+</div>

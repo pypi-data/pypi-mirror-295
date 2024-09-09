@@ -1,0 +1,9 @@
+{%load plotly_dash%}
+
+{%if is_dash_app%}
+  {%plotly_app da=ivalue %}
+{%endif%}
+
+{%if is_stateless_app%}
+  {%plotly_app name=ivalue %}
+{%endif%}

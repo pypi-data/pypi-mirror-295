@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+
+{%load wagtailcore_tags dpwagtail %}
+
+{%block body_class %}template-homepage{%endblock%}
+
+{%block content%}
+
+{{page.description|richtext}}
+
+{%dpd_instance page.dash_instance%}
+
+{%endblock%}
