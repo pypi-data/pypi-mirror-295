@@ -1,0 +1,22 @@
+version: '3.12'
+
+name: bot
+services:
+  app:
+    build: .
+    volumes:
+      - ./data:/usr/src/app/data
+      - ./ssl:/usr/src/app/ssl
+    environment:
+    # necessary environment variables
+    - BOT_TOKEN=${BOT_TOKEN}
+    - BOT_NAME=${BOT_NAME}    
+    - MY_ID=${MY_ID}
+    # optional environment variables
+    - TIME_ZONE=${TIME_ZONE}
+    # optional (webhook)
+    - WEBHOOK_URL=${WEBHOOK_URL}
+    - CERT_FILE_PATH=./ssl/selfsigned.pem
+    - SECRET_TOKEN=${SECRET_TOKEN}
+    - PORT=${PORT}
+    - LISTEN=${LISTEN}
