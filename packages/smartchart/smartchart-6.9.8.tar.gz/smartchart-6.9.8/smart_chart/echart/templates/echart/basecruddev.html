@@ -1,0 +1,340 @@
+<!doctype html><html><head><title>{{title}}</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cove"><meta http-equiv="X-UA-Compatible" content="IE=edge">{{contentrefresh|safe}}
+<link rel="icon"  href="/static/smartui/img/favicon.ico"><link rel="stylesheet" href="/static/smartchart/js/fun.css?_=1">
+<script src="/static/smartchart/js/jquery-2.2.3.min.js"></script>
+{% if devhead %}<link rel="stylesheet" href="/static/smartchart/js/dev.css?_=3.1"><link rel="stylesheet" href="/static/smartchart/icon/iconfont.css?_=2"><link rel="stylesheet" href="/static/smartchart/editor/modal.css">{% endif %}
+<script src="/static/smartui/js/vue.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.7/theme-chalk/index.css" /><script src="https://cdn.staticfile.org/element-ui/2.15.7/index.js"></script>
+<style>
+body {background-color: #f1f1f1;width: 100%;}
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {text-align: center;}
+.el-table--border th.el-table__cell, .el-table__fixed-right-patch {background-color: #475254;color: #fff; border: none !important;text-align: center;}
+.search_base_div{display:flex;justify-content:center;}
+.search_div{background-color: #fff;padding:0.5rem;width:95%;margin-top:0.5rem;border-radius:1rem;}
+.body_base_div{display:flex;justify-content:center;}
+.body_div{background-color: #fff;padding:0.5rem;width:95%;margin-top:0.5rem;border-radius:1rem;}
+.filter_base_div{display:flex;justify-content: center;align-items:center;}
+.filter_div{width:99%;display:flex;justify-content: space-between;align-items:center}
+.table_base_div{display:flex;justify-content:center;align-items:center;margin-top:1rem;}
+.table_div{width:99%;display:flex;flex-direction: column;}
+</style>{% block head %}{% endblock %}</head>
+{% autoescape off %}{{linkhead}}{{devhead}}{% block body %}
+<body>
+<vue id="vue_app">
+{% for div in div_list %}{{div}}{% endfor %}
+<!--筛选功能行-->
+<div class="search_base_div" v-if="btnSearch||btnDownload||btnAdd">
+<div class="search_div">
+    <div style="display:flex;">
+        {% block body_search %}{% endblock %}
+        <el-select v-for="(value, key) in searchDict" v-model="searchDict[key]" :style="{width:inputWidth}" :placeholder="nameDict[key]||key" size="mini" clearable>
+            <el-option v-for="item in optionDict[key]" :key="item[0]" :label="item[0]" :value="item[0]"></el-option>
+        </el-select>
+        <el-button size="mini" v-if="btnSearch" style="background-color:#66b1ff;border: none;color:#fff" @click="search" icon="el-icon-search"></el-button>
+        <el-button size="mini" v-if="btnDownload" style="background-color:#66b1ff;border: none;color:#fff" @click='daochu' icon="el-icon-download"></el-button>
+        <el-button size="mini" v-if="btnAdd" style="background-color:#ff9900;border: none;color:#fff" @click='handleAdd' icon="el-icon-circle-plus-outline"></el-button>
+        </div>
+</div>
+</div>
+<!--表格体-->
+<div class="body_base_div">
+<div class="body_div">
+    <!--表格功能行-->
+    <div class="filter_base_div">
+        <div class="filter_div"><h2>{[title]}</h2>
+        <div>
+         {% block body_filter %}{% endblock %}
+         <el-input v-for="(value, key) in filterDict" v-model="filterDict[key]" size="mini" :placeholder="nameDict[key]" @input='data_filter()' :style="{width:inputWidth}"></el-input>
+         <el-popconfirm :title="'execute:'+value[0]+'?'" v-for="(value, key) in actionDict" @confirm='action_batch(key)'>
+            <el-button slot="reference" :disabled="isClicked"  size="mini" :style="{background:value[1],border:'none',color:'#fff'}" >{[value[0]]}</el-button>
+         </el-popconfirm>
+         </div>
+        </div>
+    </div>
+    <!--表格容器-->
+    <div class="table_base_div">
+     <div class="table_div">
+       {% block body_table %}
+       <el-table
+        :data="tableData.slice((currentPage-1)*pageSize, currentPage*pageSize)"
+        size="mini"
+        header-cell-class-name="tablehead"
+        border
+        ref="multipleTable"
+        :max-height="maxheight"
+        @selection-change="handleSelectionChange"
+        style="width: 100%;">
+        <!--自定义选择列-->
+        <el-table-column type="selection" width="55" v-if="actionDict" key="1"></el-table-column>
+        <!--自动列-->
+        <el-table-column v-for="item in tableHead" :label="nameDict[item]||item" :width="widthDict[item]" :property="item" :key="item" sortable show-overflow-tooltip>
+          <template slot-scope="scope">
+              <el-tag v-if="tagFields.includes(item)" :color="statusColor[scope.row[item]]" style="color:white" disable-transitions>{[scope.row[item]]}</el-tag>
+              {% block body_table_column %}{% endblock %}
+              <span  v-else>{[ scope.row[item]]}</span>
+
+          </template>
+        </el-table-column>
+        <!--自定义操作列-->
+        <el-table-column fixed="right" label="Action" width="80" v-if="btnEdit||btnRequest||btnView" key="2">
+          <template slot-scope="scope">
+            <el-button type="text" size="small" icon="el-icon-edit-outline" @click.stop="handleRequestClick(scope.row)" v-if="btnRequest"></el-button>
+            <el-button type="text" size="small" icon="el-icon-edit" @click.stop="handleEditClick(scope.row)" v-else-if="btnEdit"></el-button>
+            <el-button type="text" size="small"  icon="el-icon-view" @click.stop="handleViewClick(scope.row)" v-if="btnView"></el-button>
+            {% block body_table_column_button %}{% endblock %}
+          </template>
+        </el-table-column>
+       </el-table>
+       <!--分页控件-->
+       <el-pagination align='center' v-if="pageSize<10000" @size-change="handlerSizeChange" @current-change="handlerCurrentChange" :current-page="currentPage" :page-size="pageSize" layout="total,sizes,prev,pager,next,jumper" :total="tableData.length"></el-pagination>
+      {% endblock %}
+    </div>
+    </div>
+</div>
+</div>
+<!--新增修改页-->
+{% block dialog_modify %}
+<el-dialog :title="title" :visible.sync="dialogFormVisible">
+  <el-form ref="form" :model="form" :rules="rules">
+    <el-form-item v-for="(value, key) in form" :prop="key" :label="nameDict[key]||key" :label-width="formLabelWidth">
+      <el-input v-if="typeDict[key]=='text'" v-model="form[key]" type="textarea" autosize></el-input>
+      <el-select v-else-if="typeDict[key]=='select'" v-model="form[key]">
+        <el-option v-for="item in optionDict[key]" :key="item[0]" :label="item[0]" :value="item[0]"></el-option>
+      </el-select>
+      <el-input v-else v-model="form[key]" autocomplete="off" :disabled="constFields.includes(key) && modifyFlag"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible = false" icon="el-icon-circle-close"></el-button>
+    <el-button :disabled="isClicked" type="primary" @click.stop="update_data" icon="el-icon-success"></el-button>
+  </div>
+</el-dialog>
+{% endblock %}
+<!--卡片页-->
+{% block dialog_card %}
+<el-dialog  :visible.sync="dialogTableVisible">
+    <el-descriptions class="margin-top" :title="title" :column="3" size="mini" border :labelStyle="{'color': 'red'}">
+        <el-descriptions-item v-for="(value,key) in detail" :key="key" :label="nameDict[key]||key">{[value]}</el-descriptions-item>
+    </el-descriptions>
+</el-dialog>
+{% endblock %}
+<!--申批修改页-->
+{% block dialog_request %}
+<el-dialog :title="title+':变更需求'" :visible.sync="dialogFormVisible_r">
+  <el-form ref="rform" :model="rform" :rules="rules">
+    <el-form-item  prop="code" label="主键" :label-width="formLabelWidth">
+      <el-input  v-model="rform.code" autocomplete="off" disabled></el-input>
+    </el-form-item>
+    <el-form-item  prop="columnname" label="列名" :label-width="formLabelWidth">
+      <el-select  v-model="rform.columnname" @change="rform_select_change">
+        <el-option v-for="(value, key) in nameDict" :key="key" :label="value" :value="key"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item  prop="oldvalue" label="旧值" :label-width="formLabelWidth">
+      <el-input  v-model="rform.oldvalue" autocomplete="off" disabled></el-input>
+    </el-form-item>
+    <el-form-item  prop="newvalue" label="新值" :label-width="formLabelWidth">
+      <el-input  v-model="rform.newvalue" autocomplete="off"></el-input>
+    </el-form-item>
+    <el-form-item  prop="request_remark" label="备注" :label-width="formLabelWidth">
+      <el-input  v-model="rform.request_remark" autocomplete="off"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible_r = false" icon="el-icon-circle-close"></el-button>
+    <el-button :disabled="isClicked" type="primary" @click.stop="update_data_r" icon="el-icon-success"></el-button>
+  </div>
+</el-dialog>
+{% endblock %}
+</vue>
+</body>
+{% endblock %}{% endautoescape %}
+</html><script>const dashid={{ dashid }};const dsDict={{ dsdict|safe }};</script><script src="/static/smartchart/js/fun.js?_=5"></script>
+{{footer|safe}}{% block javascript %}<script>
+var vapp = new Vue({el: '#vue_app', delimiters: ['{[', ']}'],
+     data: {
+         title:'测试CRUD',
+         tableData:[],
+         tableHead:[],
+         fullData:[],
+         multipleSelection: [],
+         modifyFlag:1,
+         dialogFormVisible: false,
+         total:1,
+         isClicked:false,
+         dialogTableVisible:false,
+         dialogFormVisible_r:false,
+         detail:'',
+         clickRow:'',
+         maxheight:800, //表格最大高度
+
+         btnDownload:true,
+         btnAdd:true,
+         btnSearch:true,
+         btnEdit:false,
+         btnView:false,
+         btnRequest:false,
+         currentPage:1,
+         pageSize:30,
+         formLabelWidth: '80px', //标签宽
+         inputWidth: '100px', //筛选区输入宽
+         nameDict:{}, //字段与名称的MAP
+         typeDict:{}, //用于填报页面字段的类型
+         form:{}, //当无aform和mform时生效
+         aform:'', //新增表单字段
+         mform:'', //修改表单字段
+         autoform:{}, //自动提交的内容
+         rform:{code:'', columnname:'', oldvalue:'', newvalue:'', request_remark:''}, //变更请求,tablename,codename,updater请写在数据集中
+         constFields:['code'], //定义修改时只读的字段
+         tagFields:[], //显示为tag样式的字段
+         widthDict:{}, //字段的显示宽度
+         optionDict:{}, //字段选项
+         filterDict:{}, //用于过滤的字段
+         actionDict:'', //动作区按钮的定义
+         searchDict:{}, //用于筛选的字段
+         rules: {}, //定义字段校验规则
+         statusColor: {}, //定义tag字段显示的颜色
+     },
+     methods: {
+        search(){
+          for(key in this.searchDict){
+            ds_setParam(key, this.searchDict[key]);
+          }
+          this.refreshTable();
+        },
+        handleViewClick(row) {
+            this.dialogTableVisible = true;
+            let param={};
+            param[this.constFields[0]]=row[this.constFields[0]];
+            ds_refresh(2,param);
+            this.detail = ds_createMap_all(data2)[0];
+         },
+        update_data(){
+            this.stopClick();
+            this.$refs.form.validate((valid)=>{
+                if(valid) {
+                    let param={};
+                    for(key in this.form){
+                        if(this.constFields.indexOf(key)<1){
+                            param[key]=this.form[key];
+                        }
+                    }
+                    for(key in this.autoform){
+                        param[key]=this.autoform[key];
+                    }
+                    let res = ds_save(1, param, this.modifyFlag);
+                    if(res.status==200){
+                     this.$message.success('完成数据保存 Completed Save');
+                     this.refreshTable();
+                     this.dialogFormVisible = false;
+                    }
+                   else{this.$message.error(res.msg);}
+                 }
+            });
+         },
+         //用于变更申请提交
+         update_data_r(){
+            this.stopClick();
+            this.$refs.rform.validate((valid)=>{
+                if(valid) {
+                    let res = ds_save(1, this.rform, this.modifyFlag);
+                    if(res.status==200){
+                     this.$message.success('完成提交,等待审核通过 Submitted, Wait for check');
+                     this.dialogFormVisible_r = false;
+                    }
+                   else{this.$message.error(res.msg);}
+                 }
+            });
+         },
+        //功能批量处理
+        action_batch(action){
+            this.stopClick();
+            let updatelist=[];
+            for(item of this.multipleSelection){
+                updatelist.push(item[this.constFields[0]]);
+            }
+            updatelist=`${updatelist.map(item =>  typeof item !== 'number' ? "'" + item + "'" : item).join(',')}`;
+            let param={action:action,updatelist:updatelist};
+            ds_refresh(3,param);
+            this.refreshTable();
+            this.data_filter();
+        },
+        handlerSizeChange(val){
+             this.currentPage = 1;
+             this.pageSize=val;
+         },
+        handlerCurrentChange(val){
+             this.currentPage = val;
+         },
+        handleEditClick(row) {
+            this.modifyFlag=1;
+            this.dialogFormVisible = true;
+            if(this.mform){this.form=this.mform}
+            this.clickRow=row;
+            for (let key in this.form) {this.form[key] = row[key];}
+         },
+        handleRequestClick(row) {
+            this.modifyFlag=0;
+            this.dialogFormVisible_r = true;
+            this.clickRow=row;
+            this.rform.code=row[this.constFields[0]];
+         },
+        handleAdd(){
+            this.dialogFormVisible = true;
+            this.modifyFlag=0;
+            if(this.aform){this.form=this.aform}
+            for(let key in this.form) {this.form[key] = "";}
+         },
+        daochu(){
+            ds_download(this.title + '_下载', ds_mapToList(this.tableData));
+         },
+         //数据模糊过滤
+        data_filter(){
+            this.currentPage = 1;
+            let tempData=this.fullData;
+            for(key in this.filterDict){
+               let v = this.filterDict[key].trim();
+               if(v){
+                   let op=v[0];
+                   if(['<','=','>','>=','<='].includes(op)){
+                       if(v.length<2){return}
+                       if(v[1]=='='){op=op+'='}
+                       v=v.slice(op.length);
+                       if(op=='='){op='=='};
+                       let fun=eval(`item => item${op}'${v}'`);
+                       tempData = tempData.filter(item => fun(item[key]));
+                   }
+                   else{
+                       let regex = new RegExp(v, 'i');
+                       tempData = tempData.filter(item => regex.test(item[key]));
+                   }
+               }
+            }
+            this.tableData = tempData;
+        },
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+        },
+        stopClick(){
+            this.isClicked = true;
+            setTimeout(() => {
+            this.isClicked = false;
+            }, 1000);
+        },
+        refreshTable(){
+            ds_refresh(0);
+            this.tableHead = data0[0];
+            this.tableData=ds_createMap_all(data0);
+            this.fullData=this.tableData;
+        },
+         //请求修改表单选择联想
+        rform_select_change(){
+            this.rform.oldvalue=this.clickRow[this.rform.columnname];
+        }
+     }
+});
+
+</script>{% endblock %}{% if devhead %}<div class="modal" id="modal_iframe"><div class="modal-content modal-dash"><header class="modal-header" id="id_header">
+<span class="close" onclick="hideModal()">×</span>SmartChart<a class='iconfont iconed_ds' onclick=dev_dseditor()>数据集</a><a class='iconfont iconed_chart' onclick=dev_dschart()>图形</a><a class='iconfont iconed_div' onclick=dev_dsdiv()>布局</a>
+    <span class="editor_head"></span></header><div class="modal-body"><iframe id="iframepage" class="iframechart"  width="100%"></iframe></div></div></div><script src="/static/smartchart/js/dev.js?_=8.1"></script>{% endif %}
+<script>var charts = [];{{echart_main|safe}}window.onresize = function(){for(var i = 0; i < charts.length; i++){charts[i].resize();}};</script>
+{% block footer %}{% endblock %}<script>vapp.refreshTable();</script>
+<!--powered by smartchart.cn,Designed by JohnYan mailto:84345999@qq.com, https://gitee.com/smartchart/smartchart you need keep this-->
