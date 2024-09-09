@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: scBiMapping
+Version: 0.0.2
+Summary: scBiMapping is a tool for non-linear dimension reduction method suitable for large-scale high-dimensional sparse single-cell datasets such as scRNA, scATAC, scHi-C, etc, with very few runtime and memory cost.
+Author: Teng Qiu
+Author-email: qiutengcool@163.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# scBiMapping
+
+### *scBiMapping* is a tool for non-linear dimension reduction method suitable for large-scale high-dimensional sparse single-cell datasets such as scRNA, scATAC, scHi-C, etc, with very few runtime and memory cost. 
