@@ -1,0 +1,138 @@
+Metadata-Version: 2.3
+Name: timeout-executor
+Version: 0.4.0
+Summary: execute with timeout
+Project-URL: Repository, https://github.com/phi-friday/timeout-executor
+Author-email: phi <phi.friday@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2023-2024 Choi Min-yeong
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,LICEN
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: AnyIO
+Classifier: Framework :: AsyncIO
+Classifier: Framework :: Trio
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.9
+Requires-Dist: anyio>=4.0.0
+Requires-Dist: async-wrapper>=0.9.0
+Requires-Dist: cloudpickle>=3.0.0
+Requires-Dist: exceptiongroup; python_version < '3.11'
+Requires-Dist: psutil
+Requires-Dist: tblib>=3.0.0
+Requires-Dist: typing-extensions>=4.4.0
+Provides-Extra: test
+Requires-Dist: pytest>=8.0.2; extra == 'test'
+Requires-Dist: trio>=0.24.0; extra == 'test'
+Provides-Extra: uvloop
+Requires-Dist: uvloop; (platform_system != 'Windows') and extra == 'uvloop'
+Description-Content-Type: text/markdown
+
+# timeout-executor
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![github action](https://github.com/phi-friday/timeout-executor/actions/workflows/check.yaml/badge.svg?event=push&branch=dev)](#)
+[![PyPI version](https://badge.fury.io/py/timeout-executor.svg)](https://badge.fury.io/py/timeout-executor)
+[![python version](https://img.shields.io/pypi/pyversions/timeout_executor.svg)](#)
+
+## how to install
+```shell
+$ pip install timeout_executor
+# or
+$ pip install "timeout_executor[uvloop]"
+```
+
+## how to use
+```python
+from __future__ import annotations
+
+import time
+
+import anyio
+
+from timeout_executor import AsyncResult, TimeoutExecutor
+
+
+def sample_sync_func(x: float) -> str:
+    time.sleep(x)
+    return "done"
+
+
+async def sample_async_func(x: float) -> str:
+    await anyio.sleep(x)
+    return "done"
+
+
+def main() -> None:
+    executor = TimeoutExecutor(2)
+    result = executor.apply(sample_sync_func, 10)
+    assert isinstance(result, AsyncResult)
+
+    try:
+        value = result.result()
+    except Exception as exc:
+        assert isinstance(exc, TimeoutError)
+
+    result = executor.apply(sample_async_func, 1)
+    assert isinstance(result, AsyncResult)
+    value = result.result()
+    assert value == "done"
+
+    result = executor.apply(lambda: "done")
+    assert isinstance(result, AsyncResult)
+    value = result.result()
+    assert value == "done"
+
+
+async def async_main() -> None:
+    executor = TimeoutExecutor(2)
+    result = await executor.delay(sample_sync_func, 10)
+    assert isinstance(result, AsyncResult)
+
+    try:
+        value = await result.delay()
+    except Exception as exc:
+        assert isinstance(exc, TimeoutError)
+
+    result = await executor.delay(sample_async_func, 1)
+    assert isinstance(result, AsyncResult)
+    value = await result.delay()
+    assert value == "done"
+
+    result = await executor.delay(lambda: "done")
+    assert isinstance(result, AsyncResult)
+    value = await result.delay()
+    assert value == "done"
+
+
+if __name__ == "__main__":
+    main()
+    anyio.run(async_main)
+```
+
+## License
+
+MIT, see [LICENSE](https://github.com/phi-friday/timeout-executor/blob/main/LICENSE).
