@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: taipan-lang
+Version: 0.1.1
+Summary: Taipan is a simple imperative programming language.
+Home-page: https://github.com/TheoGuerin64/taipan
+Author: Theo Guerin
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: click (>=8.1,<9.0)
+Requires-Dist: jinja2 (>=3.1,<4.0)
+Project-URL: Repository, https://github.com/TheoGuerin64/taipan
+Description-Content-Type: text/markdown
+
+# Taipan
+
+Taipan is a simple imperative programming language.
+
+## Requirements
+
+- [Python 3.12](https://www.python.org/downloads/release/python-3120/) or later
+- [clang](https://clang.llvm.org/)
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html) (optional)
+
+## Install
+
+```bash
+pip install taipan-lang
+```
+
+## Usage
+
+### Build
+
+```bash
+taipan build <file>
+```
+
+### Build to C
+
+```bash
+taipan compile -c <file>
+```
+
+### Run
+
+```bash
+taipan run <file>
+```
+
+### Help
+
+```bash
+taipan --help
+```
+
+## Development
+
+### Requirements
+
+- [Poetry](https://python-poetry.org/docs/)
+
+### install
+
+```bash
+poetry install
+pre-commit install
+```
+
+### Run
+
+```bash
+poetry run taipan ...
+```
+
+### Test
+
+```bash
+poetry run pytest
+```
+
