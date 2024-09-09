@@ -1,0 +1,2 @@
+[console_scripts]
+2fa_decoder = 2fa_decoder.2fa_decoder:main
