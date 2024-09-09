@@ -1,0 +1,170 @@
+name: Test pgqueuer
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  example:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-latest]
+
+    env:
+      PGHOST: localhost
+      PGUSER: testuser
+      PGPASSWORD: testpassword
+      PGDATABASE: testdb
+      PGPORT: 5432
+
+    name: pgqueuer example
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build custom PostgreSQL Docker image
+        run: docker compose up --build -d pgq
+
+      - name: Install pgqueuer
+        run: |
+          pip install pip -U
+          pip install ".[dev]"
+
+      - name: Run example and send SIGINT
+        run: |
+          # Start the Python program in the background
+          PYTHONUNBUFFERED=1 python3 -m pgqueuer run tools.consumer.main &
+          pid=$!
+
+          # Wait for 10 seconds
+          sleep 10
+
+          # Send SIGINT to the process
+          kill -SIGINT $pid
+
+          # Wait for the process to exit
+          wait $pid
+
+  benchmark:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-latest]
+        pgdriver: ["apg", "psy"]
+
+    env:
+      PGHOST: localhost
+      PGUSER: testuser
+      PGPASSWORD: testpassword
+      PGDATABASE: testdb
+      PGPORT: 5432
+
+    name: pgqueuer Benchmark
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build custom PostgreSQL Docker image
+        run: docker compose up --build -d pgq
+
+      - name: Install pgqueuer
+        run: |
+          pip install pip -U
+          pip install ".[dev]"
+
+      - name: Benchmark
+        run: PYTHONUNBUFFERED=1 python3 tools/benchmark.py --driver ${{ matrix.pgdriver }}
+
+  test-pgqueuer:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+        postgres-version: ["13", "14", "15", "16"]
+        os: [ubuntu-latest]
+
+    env:
+      PGHOST: localhost
+      PGUSER: testuser
+      PGPASSWORD: testpassword
+      PGDATABASE: testdb
+      PGPORT: 5432
+
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }} using PG ${{ matrix.postgres-version }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build custom PostgreSQL Docker image
+        run: |
+          POSTGRES_VERSION=${{ matrix.postgres-version }} docker compose up --build -d pgq
+      - name: Install pgqueuer
+        run: |
+          pip install pip -U
+          pip install ".[dev]"
+
+      - name: Full test
+        run: pytest -vs
+
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up python
+        uses: actions/setup-python@v4
+      - name: Install dev-env.
+        run: |
+          pip install -U pip
+          pip install ".[dev]"
+      - name: Ruff check
+        if: ${{ always() }}
+        run: ruff check .
+      - name: Ruff format
+        if: ${{ always() }}
+        run: ruff format . --check
+
+  mypy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up python
+        uses: actions/setup-python@v4
+      - name: Install dev-env.
+        run: |
+          pip install -U pip
+          pip install ".[dev]"
+      - name: Mypy
+        run: mypy .
+
+  all-tests-completed:
+    needs: [benchmark, test-pgqueuer, ruff, mypy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check all jobs success
+        run: echo "All tests completed successfully."
