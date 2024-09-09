@@ -1,0 +1,14 @@
+alive_progress>=3.0.0
+cmocean>=3.0.0
+joblib>=1.2.0
+numpy>=1.25.2
+scipy>=1.10.0
+jupyterlab
+pytest
+
+[docs]
+myst_parser>=0.13
+sphinx>=4.0
+sphinx-copybutton
+sphinx-autodoc-typehints
+sphinx_rtd_theme
