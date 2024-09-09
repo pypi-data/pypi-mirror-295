@@ -1,0 +1,49 @@
+Metadata-Version: 2.3
+Name: pytest-typing-runner
+Version: 0.6
+Summary: Pytest plugin to make it easier to run and check python code against static type checkers
+Project-URL: repository, https://github.com/delfick/pytest-typing-runner
+Project-URL: changelog, https://pytest-typing-runner.readthedocs.io/en/latest/api/changelog.html
+Project-URL: docs, https://pytest-typing-runner.readthedocs.io
+Author-email: Stephen Moore <stephen@delfick.com>
+License: MIT
+License-File: LICENSE
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Typing :: Typed
+Requires-Python: >=3.10
+Provides-Extra: tests
+Requires-Dist: pytest==8.2.2; extra == 'tests'
+Description-Content-Type: text/x-rst
+
+Pytest Typing Runner
+====================
+
+This is a plugin for pytest to assist in generating scenarios to run static
+type checking against.
+
+History
+-------
+
+This plugin comes out of a `fork`_ of the `pytest_mypy_plugins`_ pytest plugin
+for writing tests that pytest can use to run mypy against sets of files.
+
+The difference for this plugin is that it provides a pytest fixture to do work from
+rather than exposing a ``yml`` interface for writing tests. It also allows for running
+mypy multiple times in the same test with changes to the code being statically type
+checked. And also has some different mechanisms for expressing the expected output
+from mypy.
+
+.. _pytest_mypy_plugins: https://pypi.org/project/pytest-mypy-plugins/
+.. _fork: https://github.com/typeddjango/pytest-mypy-plugins/issues/144
+
+Built Docs
+----------
+
+https://pytest-typing-runner.readthedocs.io
