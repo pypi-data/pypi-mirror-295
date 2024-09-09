@@ -1,0 +1,6 @@
+amplify>=1.2.0
+numpy
+pandas
+torch
+plotly
+nbformat>=4.2.0
