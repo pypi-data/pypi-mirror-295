@@ -1,0 +1,8 @@
+dist/
+.venv/
+.pytest_cache/
+
+.DS_Store
+TODO
+.coverage
+example/db.sqlite3
