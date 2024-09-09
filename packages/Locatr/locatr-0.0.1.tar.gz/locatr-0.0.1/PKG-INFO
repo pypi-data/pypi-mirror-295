@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: Locatr
+Version: 0.0.1
+Summary: Locatr A simple offline Reverse Geocoder Library
+Author: SOORAJ TS
+Author-email: sjts007@gmail.com
+Keywords: reverse geocoding,geolocation,offline,python
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+
+
+Our reverse geocoding library is a robust Python tool designed to translate latitude and longitude coordinates into detailed addresses, entirely offline. It processes geographical coordinates, such as latitude and longitude, and returns a full address corresponding to the location, including country, state, city. The library is optimized for performance and accuracy, leveraging pre-downloaded datasets of geographical locations, eliminating the need for online queries or API calls.
+
+This library is especially useful for applications where internet connectivity is limited or unavailable, or where privacy concerns require offline processing. It supports large-scale reverse geocoding operations by efficiently handling massive datasets, making it ideal for geospatial analysis, mobile applications, and data processing pipelines that require rapid location lookup without external dependencies.
+
+With built-in data compression and storage optimizations, your reverse geocoding library minimizes disk space while maintaining high accuracy, offering developers a reliable solution for offline geocoding tasks.
