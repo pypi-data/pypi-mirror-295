@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools", "wheel", "torch"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hipims2"
+version = "0.0.0.0"
+dependencies = [
+  # "hipims_io",
+  "numpy",
+  "matplotlib",
+  "seaborn",
+  "rasterio",
+  "geopandas"
+]
+requires-python = ">=3.7"
+
+authors = [
+  {name = "Jiaheng Zhao", email = "jiaheng.zhao@fmglobal.com"},
+  {name = "Xue Tong", email = "x.tong2@lboro.ac.uk"},
+]
+maintainers = [
+  {name = "Xue Tong", email = "x.tong2@lboro.ac.uk"}
+]
+description = "HiPIMS names for High-Performance Integrated hydrodynamic Modelling System. It uses state-of-art numerical schemes (Godunov-type finite volume) to solve the 2D shallow water equations for flood simulations. To support high-resolution flood simulations, HiPIMS is implemented on multiple GPUs (Graphics Processing Unit) using CUDA/C++ languages to achieve high-performance computing."
+readme = "README.md"
+license = {file = "LICENSE"}
+
+keywords = ["flood", "flooding", "flood-modelling"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: C++",
+]
+
+[tool.setuptools.package-data]
+hipims = ["sample/input/*.tif", "sample/input/*.xlsx"]
+
+[project.urls]
+Homepage = "https://example.com"
+Documentation = "https://readthedocs.org"
+Repository = "https://github.com/me/spam.git"
+"Bug Tracker" = "https://github.com/me/spam/issues"
+Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+

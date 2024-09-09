@@ -1,0 +1,2 @@
+include src/cuda/gpu.cuh
+include src/hipims/banner.txt
