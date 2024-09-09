@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+kanban_indexer/__init__.py
+kanban_indexer/alphabet_indexer.py
+kanban_indexer/main.py
+kanban_indexer.egg-info/PKG-INFO
+kanban_indexer.egg-info/SOURCES.txt
+kanban_indexer.egg-info/dependency_links.txt
+kanban_indexer.egg-info/requires.txt
+kanban_indexer.egg-info/top_level.txt
+tests/test_alphabet_indexer.py
+tests/test_main.py
