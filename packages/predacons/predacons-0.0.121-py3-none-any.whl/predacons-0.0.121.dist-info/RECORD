@@ -1,0 +1,17 @@
+predacons/__init__.py,sha256=vHHqsIG4D9ExUNVQ-mo_y7V9l61IaV2K1CwKHo9q8fM,463
+predacons/src/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+predacons/src/data_preparation.py,sha256=NB1LFRfcJAl9CzfHoEANUXl16ANYIlIDX8l4EvmVKvM,4367
+predacons/src/generate.py,sha256=vQtuhoD3pWtuXBrkV1C9pGEkXLj9XDMEl9DOpv0yWR4,4762
+predacons/src/kv_cache_model.py,sha256=kuHB3ahHe8dKDFqNjXTnpkspDNGZML_qEyyFyC4CG9Y,4582
+predacons/src/load_data.py,sha256=PzuB0MdpONhxUuB7J4xXZo5H7Axq4rhI3mPfSspN7Dw,2080
+predacons/src/predacons.py,sha256=dB3wIN57IJvopljrA7o1H8oAEjwzRDUqz0cx0n5VGNc,25601
+predacons/src/speculative_decode.py,sha256=mFrktr7U9A37Ke1MQ6LK9rXxd4reGd6xObvdrxM0dCY,8399
+predacons/src/speculative_fast_generation.py,sha256=-1wqGRpegFOKlbs6MgcxLVDb-LiqWxW1ODw-02eto8M,5225
+predacons/src/train_predacons.py,sha256=xKRev7ZVgKUBEMzyALhLaEjH3i1gtkPBONjoaFJsU7s,10366
+predacons-0.0.121.dist-info/LICENSE-AGPL,sha256=hIahDEOTzuHCU5J2nd07LWwkLW7Hko4UFO__ffsvB-8,34523
+predacons-0.0.121.dist-info/LICENSE-COMMERCIAL-PERPETUAL,sha256=UQtw5PhaxHr3aoGpzv0b_NKhVegErOL2ixo6SYqHNmc,15965
+predacons-0.0.121.dist-info/LICENSE-COMMERCIAL-YEARLY,sha256=FYCFFzmt9Xa9kgiPvy5_ytV9-5YMV0kEDODEkbvpmnw,15962
+predacons-0.0.121.dist-info/METADATA,sha256=0U8Q96cxhBR2qymdHQV9EPMX8ZSx7TBwg-3UgiWQFuc,4254
+predacons-0.0.121.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+predacons-0.0.121.dist-info/top_level.txt,sha256=Q9w8qpOfVL5xDbu5mqVwW7aJ3-n6mGQmRIVQq5akvcY,10
+predacons-0.0.121.dist-info/RECORD,,
