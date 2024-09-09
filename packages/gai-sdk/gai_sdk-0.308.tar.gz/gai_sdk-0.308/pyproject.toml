@@ -1,0 +1,77 @@
+[build-system]
+requires = [ "poetry-core", "setuptools>=60", "setuptools-scm>=8.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "gai-sdk"
+version = "0.308"
+description = "Refer to https://gai-labs.github.io/gai for more information"
+authors = [ "kakkoii1337 <kakkoii1337@gmail.com>",]
+license = "MIT"
+classifiers = [ "Programming Language :: Python :: 3.10", "Development Status :: 3 - Alpha", "License :: OSI Approved :: MIT License", "Intended Audience :: Science/Research", "Intended Audience :: Developers", "Operating System :: OS Independent", "Topic :: Software Development", "Topic :: Software Development :: Libraries :: Python Modules", "Topic :: Scientific/Engineering :: Artificial Intelligence",]
+include = [ "gai/docker-compose.yml", "gai/cli/artifacts/tools.txt", "gai/gai.yml",]
+[[tool.poetry.packages]]
+include = "gai"
+from = "."
+
+[[tool.poetry.packages]]
+include = "gai/scripts"
+from = "gai-scripts/src"
+
+[[tool.poetry.packages]]
+include = "gai/agent"
+from = "gai-agent/src"
+
+[[tool.poetry.packages]]
+include = "gai/lib"
+from = "gai-lib/src"
+
+[[tool.poetry.packages]]
+include = "gai/itt"
+from = "gai-itt/src"
+
+[[tool.poetry.packages]]
+include = "gai/ttt"
+from = "gai-ttt/src"
+
+[[tool.poetry.packages]]
+include = "gai/rag"
+from = "gai-rag/src"
+
+[[tool.poetry.packages]]
+include = "gai/tti"
+from = "gai-tti/src"
+
+[[tool.poetry.packages]]
+include = "gai/tts"
+from = "gai-tts/src"
+
+[tool.poetry.scripts]
+gai = "gai.scripts.main:main"
+
+[tool.poetry.dependencies]
+python = ">3.10"
+click = "^8.1.7"
+colorlog = "^6.8.2"
+fastapi = "*"
+huggingface_hub = "^0.24.5"
+numpy = "^1.22.0, <2.0.0"
+openai = "^1.40.0, <2.0.0"
+pillow = "^10.4.0"
+pydantic = "*"
+pynvml = "^11.5.3"
+python-dotenv = "^1.0.1"
+rich = "^13.7.1"
+websockets = "^13.0.0"
+toml = "^0.10.2"
+setuptools = "69.5.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+nox = "^2024.4.15"
+twine = "^5.1.1"
+"keyrings.alt" = "^5.0.1"
+ipykernel = "^6.29.5"
+flake8 = "^7.1.1"
+pytest-ordering = "^0.6"
+bs4 = "^0.0.2"
