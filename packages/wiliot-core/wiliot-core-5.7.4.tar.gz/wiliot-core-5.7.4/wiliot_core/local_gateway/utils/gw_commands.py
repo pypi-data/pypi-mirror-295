@@ -1,0 +1,52 @@
+from enum import Enum
+
+
+class CommandDetails(Enum):
+    version = {'cmd': 'version', 'cmd_shortcut': 'v', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_version'}
+    set_energizing_pattern = {'cmd': 'set_energizing_pattern', 'cmd_shortcut': 'sep', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_energy_pattern'}
+    set_dyn_energizing_pattern = {'cmd': 'set_dyn_energizing_pattern', 'cmd_shortcut': 'sdep', 'num_of_args': ['SKIP_ARGS_VALIDATION'], 'status_return': True, 'cmd_func': 'cmd_set_dynamic_energy_pattern'}
+    set_beacons_pattern = {'cmd': 'set_beacons_pattern', 'cmd_shortcut': 'sbp', 'num_of_args': ['SKIP_ARGS_VALIDATION'], 'status_return': True, 'cmd_func': 'cmd_set_beacons_pattern'}
+    output_power = {'cmd': 'output_power', 'cmd_shortcut': 'op', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_2_4_ghz_power_set'}
+    time_profile = {'cmd': 'time_profile', 'cmd_shortcut': 'tp', 'num_of_args': ['2'], 'status_return': True, 'cmd_func': 'cmd_time_profile_set'}
+    set_pacer_interval = {'cmd': 'set_pacer_interval', 'cmd_shortcut': 'pi', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_wlt_pacer_interval_set'}
+    set_sub_1_ghz_energizing_frequency = {'cmd': 'set_sub_1_ghz_energizing_frequency', 'cmd_shortcut': 'sf', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_sub_1_ghz_energizing_frequency'}
+    set_sub_1_ghz_power = {'cmd': 'set_sub_1_ghz_power', 'cmd_shortcut': 'sop', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_sub_1_ghz_power_set'}
+    start_2_4_ghz_energizing = {'cmd': 'start_2_4_ghz_energizing', 'cmd_shortcut': 'NONE', 'num_of_args': ['2'], 'status_return': True, 'cmd_func': 'cmd_2_4_ghz_energizing_start'}
+    enable_hw_dual_band = {'cmd': 'enable_hw_dual_band', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': False, 'cmd_func': 'cmd_enable_hw_dual_band'}
+    gateway_app = {'cmd': 'gateway_app', 'cmd_shortcut': 's', 'num_of_args': ['0', '4'], 'status_return': True, 'cmd_func': 'cmd_gateway_application_start'}
+    store_to_flash = {'cmd': 'store_to_flash', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_store_to_flash'}
+    reset = {'cmd': 'reset', 'cmd_shortcut': 'r', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_reset'}
+    move_to_bootloader = {'cmd': 'move_to_bootloader', 'cmd_shortcut': 'mtb', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_move_to_bootloader'}
+    print_config = {'cmd': 'print_config', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_print_config'}
+    print_config_extended = {'cmd': 'print_config_extended', 'cmd_shortcut': 'pce', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_print_config_extended'}
+    get_device_address = {'cmd': 'get_device_address', 'cmd_shortcut': 'pda', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_get_device_address'}
+    pl_gw_config = {'cmd': 'pl_gw_config', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_pl_gw_config'}
+    full_packet_mode = {'cmd': 'full_packet_mode', 'cmd_shortcut': 'fpm', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_full_packet_mode'}
+    enable_crc = {'cmd': 'enable_crc', 'cmd_shortcut': 'ecrc', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_enable_wrong_crc'}
+    print_crc = {'cmd': 'print_crc', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_print_crc'}
+    reset_crc = {'cmd': 'reset_crc', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_reset_crc_counters'}
+    listen_to_tag_only = {'cmd': 'listen_to_tag_only', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_listen_to_tag_only'}
+    set_tester_mode = {'cmd': 'set_tester_mode', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_tester_mode'}
+    beacons_backoff = {'cmd': 'beacons_backoff', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_beacons_backoff_set'}
+    scan_ch = {'cmd': 'scan_ch', 'cmd_shortcut': 'NONE', 'num_of_args': ['1', '2'], 'status_return': True, 'cmd_func': 'cmd_scan_channel_set'}
+    start_rx = {'cmd': 'start_rx', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_rx_start'}
+    start_cw = {'cmd': 'start_cw', 'cmd_shortcut': 'NONE', 'num_of_args': ['2'], 'status_return': True, 'cmd_func': 'cmd_cw_transmit_time_start'}
+    start_tx_carrier = {'cmd': 'start_tx_carrier', 'cmd_shortcut': 'NONE', 'num_of_args': ['0', '1'], 'status_return': True, 'cmd_func': 'cmd_tx_carrier_start'}
+    set_packet_filter_on = {'cmd': 'set_packet_filter_on', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_set_packet_filter_on'}
+    set_packet_filter_off = {'cmd': 'set_packet_filter_off', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_set_packet_filter_off'}
+    bypass_pa = {'cmd': 'bypass_pa', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_bypass_pa'}
+    bypass_tx_rx = {'cmd': 'bypass_tx_rx', 'cmd_shortcut': 'NONE', 'num_of_args': ['2'], 'status_return': True, 'cmd_func': 'cmd_bypass_tx_rx'}
+    trigger_pl = {'cmd': 'trigger_pl', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_trigger_pl'}
+    set_pl_delay = {'cmd': 'set_pl_delay', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_pl_delay'}
+    set_encryption_keys = {'cmd': 'set_encryption_keys', 'cmd_shortcut': 'NONE', 'num_of_args': ['3'], 'status_return': True, 'cmd_func': 'cmd_set_encryption_keys'}
+    decrypt_packet = {'cmd': 'decrypt_packet', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': False, 'cmd_func': 'cmd_decrypt_packet'}
+    set_rssi_th = {'cmd': 'set_rssi_th', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_rssi_th'}
+    enable_hv_gpio = {'cmd': 'enable_hv_gpio', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_enable_hv_gpio'}
+    run_ed_sample = {'cmd': 'run_ed_sample', 'cmd_shortcut': 'NONE', 'num_of_args': ['2'], 'status_return': False, 'cmd_func': 'cmd_run_ed_sample'}
+    set_lbt = {'cmd': 'set_lbt', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_set_lbt_mode'}
+    cancel = {'cmd': 'cancel', 'cmd_shortcut': 'c', 'num_of_args': ['0'], 'status_return': True, 'cmd_func': 'cmd_cancel'}
+    sub1g_sync = {'cmd': 'sub1g_sync', 'cmd_shortcut': 'NONE', 'num_of_args': ['1'], 'status_return': True, 'cmd_func': 'cmd_sub1g_sync'}
+    beacons_train = {'cmd': 'beacons_train', 'cmd_shortcut': 'bt', 'num_of_args': ['SKIP_ARGS_VALIDATION'], 'status_return': True, 'cmd_func': 'cmd_set_beacons_train'}
+    cmd_gpio = {'cmd': 'cmd_gpio', 'cmd_shortcut': 'NONE', 'num_of_args': ['SKIP_ARGS_VALIDATION'], 'status_return': True, 'cmd_func': 'cmd_gpio'}
+    get_name = {'cmd': 'get_name', 'cmd_shortcut': 'NONE', 'num_of_args': ['0'], 'status_return': False, 'cmd_func': 'cmd_get_name'}
+    set_scan_radio = {'cmd': 'set_scan_radio', 'cmd_shortcut': 'NONE', 'num_of_args': ['2'], 'status_return': True, 'cmd_func': 'cmd_scan_radio_params'}

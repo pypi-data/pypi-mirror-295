@@ -1,0 +1,9 @@
+setuptools_scm
+pyserial
+pc_ble_driver_py
+pandas
+numpy<2,>=1.20.0
+appdirs
+
+[:sys_platform != "linux"]
+nrfutil

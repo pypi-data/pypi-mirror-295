@@ -1,0 +1,9 @@
+setuptools_scm==6.4.2
+pyserial
+pc_ble_driver_py
+nrfutil; sys_platform != "linux"
+pandas
+numpy>=1.20.0,<2
+appdirs
+pycryptodome==3.14.1
+flask
