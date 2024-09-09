@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: spider-cligen
+Version: 0.1.2
+Summary: A CLI tool to initialize Python projects with a standard structure.
+Home-page: https://github.com/simondev413/SpiderCLI
+Author: Simão Domingos De Oliveira António
+Author-email: simaodomingos413@gamil.com
+Project-URL: Source, https://github.com/simondev413/SpiderCLI/
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+
+Spider CLIGEN Documentation
+
+## Overview
+The **Spider CLIGEN** is a command-line tool that helps developers quickly set up different types of Python projects, including packages, web applications, mobile apps, and more. It automates the creation of project structures, virtual environments, and essential files such as `README.md`, `.gitignore`, `LICENSE`, and CI workflow files for services like GitHub Actions, GitLab CI, and CircleCI.
+
+### Main Features:
+- Create project structure based on different types of Python projects.
+- Support for multiple license types (MIT, GPLv3, Apache, BSD 3-Clause, CC0).
+- Automates the creation of a virtual environment and installation of dependencies.
+- Generates configuration files for popular CI services.
+- Automatically generates essential files like `README.md`, `.gitignore`, `LICENSE`, and more.
+
+## Usage
+
+The CLI provides the following commands:
+
+- `startproject`: Initialize a new project structure.
+- `project-types`: Display the supported project types.
+
+### Example
+
+```bash
+# Start a new project
+$ python spider_cligen startproject
+
+# Show supported project types
+$ python spider_cligen project-types
+```
+
+### Licenses Supported
+
+- MIT
+- Apache 2.0
+- BSD 3 Clause
+- CCO
+- GPLv3
