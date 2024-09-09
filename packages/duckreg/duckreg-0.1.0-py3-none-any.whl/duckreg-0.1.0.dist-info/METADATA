@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: duckreg
+Version: 0.1.0
+Summary: A package for Regression in compressed representation powered by DuckDB
+Home-page: https://github.com/apoorvalal/duckreg
+Author: Apoorva Lal
+Author-email: lal.apoorva@gmail.com
+License: MIT
+Keywords: statistics,econometrics,sufficient statistics,bootstrap
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
