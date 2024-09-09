@@ -1,0 +1,2 @@
+[console_scripts]
+megaprofiler = megaprofiler.cli:main
