@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: madoc
+Version: 1.1.11
+Summary: Documentation generator from markdown files
+Home-page: https://github.com/byoso/madoc
+Author: Vincent Fabre
+Author-email: peigne.plume@gmail.com
+License: MIT
+Keywords: markdown html documentation
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# Madoc
+
+
+## What is Madoc for ?
+
+It is a terminal tool to automatically generate a single html documentation file from all
+the .md files found in the directory.
+
+Cool stuff to join a clean and easy to read documentation to some project.
+
+
+# Installation
+
+`pip install madoc`
+
+
+# Usage
+
+Open a terminal in the directory where the .md files are,
+and just type:
+
+`madoc`
+
+done, you have your documentation in a single html file.
+
+Know more options with `madoc -h`.
+
+
+# Changelog
+
+- 1.1.1: responsive design
+- 1.1.0: Recursive build mode
+
+# Libraries used by Madoc
+
+- Bulma (CSS framework)
+- Vue.js (JS framework)
+- Marked (JS library)
+- Jinja2 (python library)
+
+
