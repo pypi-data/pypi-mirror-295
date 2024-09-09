@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: python3-aigc2md
+Version: 0.1.0
+Summary: convert AIGC to hugo markdown
+Home-page: https://www.xiexianbin.cn/
+Author: xiexianbin
+Author-email: me@xiexianbin.cn
+Project-URL: Bug Tracker, https://github.com/x-actions/python3-aigc2md/issues
+Project-URL: Source Code, https://github.com/x-actions/python3-aigc2md
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pbr>=5.5.0
+Requires-Dist: jinja2==3.0.3
+Requires-Dist: requests==2.27.1
+Requires-Dist: setuptools==74.1.2
+
+# python3-aigc2md
+
+[![PyPI-python3-aigc2md](https://img.shields.io/pypi/v/python3-aigc2md.svg?maxAge=3600)](https://pypi.org/project/python3-aigc2md/)
+
+convert AIGC to hugo markdown
+
+## How to Use by Github Actions
+
+```
+    - name: convert AIGC to hugo markdown
+      uses: x-actions/python3-aigc2md@v1
+      env:
+        OPEN_WEBUI_JWT: "<JWT>"
+        LOG_LEVEL: "DEBUG"
+```
+
+## Dev and Test
+
+- local run
+
+```
+# create venv
+python3 -m venv .venv
+source .venv/bin/activate
+
+# install
+pip3 install -r requirements.txt
+
+# set env
+export OPEN_WEBUI_JWT="<JWT>"
+
+# dev
+export PYTHONPATH=$(pwd)
+python3 aigc2md/shell.py --help
+python3 aigc2md/shell.py help xxx
+```
+
+- tests
+
+```
+python3 -m unittest aigc2md.tests.unit.test_http.HTTPTestCase.test_http_get
+```
+

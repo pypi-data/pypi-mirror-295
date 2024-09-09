@@ -1,0 +1,2 @@
+[console_scripts]
+aigc2md = aigc2md.shell:main
