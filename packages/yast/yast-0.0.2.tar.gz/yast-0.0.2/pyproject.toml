@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "yast"
+version = "0.0.2"
+description = ""
+authors = ["Yuichi Tateno <hotchpotch@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
