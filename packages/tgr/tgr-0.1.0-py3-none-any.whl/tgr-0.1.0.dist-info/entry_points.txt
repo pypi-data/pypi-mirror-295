@@ -1,0 +1,13 @@
+[pycbc.waveform.fd]
+birefringence = tgr.birefringence:gen_waveform
+fta = tgr.fta:gen_waveform
+lsa = tgr.lineofsight:gen_waveform
+massivegraviton = tgr.massivegraviton:gen_waveform
+ppe = tgr.ppe:gen_waveform
+
+[pycbc.waveform.length]
+birefringence = tgr:length_in_time
+fta = tgr:length_in_time
+lsa = tgr:length_in_time
+massivegraviton = tgr:length_in_time
+ppe = tgr:length_in_time
