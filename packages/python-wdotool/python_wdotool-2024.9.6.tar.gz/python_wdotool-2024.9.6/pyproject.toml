@@ -1,0 +1,29 @@
+[project]
+name = "python-wdotool"
+description = ""
+authors = [
+    { name = "zhaoyouzhi", email = "zhaoyouzhi@uniontech.com" },
+]
+dependencies = [
+    "funnylog2",
+    "pillow",
+]
+dynamic = [
+  "version",
+]
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "GPL2.0" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch]
+version = { path = "wdotool/__version__.py" }
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "/wdotool",
+]
+

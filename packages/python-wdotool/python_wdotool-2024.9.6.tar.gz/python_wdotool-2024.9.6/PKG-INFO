@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: python-wdotool
+Version: 2024.9.6
+Author-email: zhaoyouzhi <zhaoyouzhi@uniontech.com>
+License: GPL2.0
+License-File: LICENSE
+Requires-Python: >=3.7
+Requires-Dist: funnylog2
+Requires-Dist: pillow
+Description-Content-Type: text/markdown
+
+# wdotool
