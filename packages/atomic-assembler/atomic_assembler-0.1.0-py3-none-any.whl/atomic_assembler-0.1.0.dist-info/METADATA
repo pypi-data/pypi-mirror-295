@@ -1,0 +1,10 @@
+Metadata-Version: 2.3
+Name: atomic-assembler
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Requires-Dist: gitpython>=3.1.43
+Requires-Dist: pyfiglet>=1.0.2
+Requires-Dist: pyyaml>=6.0.2
+Requires-Dist: rich>=13.7.1
+Requires-Dist: textual>=0.77.0
