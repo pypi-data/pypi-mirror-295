@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: pagesage
+Version: 0.0.3
+Summary: pagesage - Serve markdown pages and files as static website.
+Home-page: https://gitlab.com/nul.one/pagesage
+Download-URL: https://gitlab.com/nul.one/pagesage/-/archive/0.0.3/pagesage-0.0.3.tar.gz
+Author: Predrag Mandic
+Author-email: predrag@nul.one
+License: BSD
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.11.2
+Description-Content-Type: text/markdown
+
+
+pagesage
+==================================================
+
+Serve markdown pages and files as static website.
+
+## Usage
+
+Change into the root directory of your documentation project and run pagesage on a specific port (e.g. 8000):
+
+```
+pagesage run 8000
+```
+
+Directories containing `index.md` file will render the index markdown file. If index is not present, it will list other directories and files.
+
+
