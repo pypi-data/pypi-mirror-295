@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: mtune
+Version: 0.0.1
+Summary: Python package
+Author: Dr. Selvaraman Nagamani, Gori Sankar Borah, Hillul Chutia 
+Author-email: nagamaniselvaraman@gmail.com, gorishankarbora45@gmail.com, hillulchutia@gmail.com
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
+## Installation
+
+You can install the package using pip:
+
+```bash
+pip install mtune
+
+```
+
+See [Official Github Repo](https://github.com/Naga270588/M-Tune)
