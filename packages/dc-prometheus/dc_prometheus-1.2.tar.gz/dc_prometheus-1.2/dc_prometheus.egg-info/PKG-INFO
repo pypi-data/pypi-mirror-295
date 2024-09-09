@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: dc_prometheus
+Version: 1.2
+Summary: push discord bot data to prometheus
+Home-page: https://github.com/phillychi3/dc_grafana
+Author: phillychi3
+Author-email: phillychi3@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: prometheus_client
+
+# Discord Prometheus
