@@ -1,0 +1,10 @@
+*.egg-info/
+.tox
+/venv/
+__pycache__/
+/build/
+/dist/
+/.direnv/
+/.envrc
+/tags
+/.*env/**

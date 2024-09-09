@@ -1,0 +1,37 @@
+[project]
+name = "dvc-pandas"
+version = "0.3.1"
+authors = [
+    {name = "Bernhard Bliem", email = "bernhard.bliem@kausal.tech"},
+    {name = "Juha Yrjölä", email = "juha.yrjola@kausal.tech"},
+]
+description = "Wrapper for DVC and git to easily fetch Polars dataframes"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "appdirs>=1.4.4",
+    "dvc>=3.54.1",
+    "dvc-s3>=3.2.0",
+    "filelock>=3.15.4",
+    "pyarrow>=17.0.0",
+    "pandas>=2.2.2",
+    "polars>=1.5.0",
+    "pint-pandas>=0.6.2",
+    "python-snappy>=0.7.2",
+    "ruamel-yaml>=0.18.6",
+    "pygit2>=1.15.1",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.urls]
+Repository = "https://github.com/kausaltech/dvc-pandas"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dvc_pandas"]
