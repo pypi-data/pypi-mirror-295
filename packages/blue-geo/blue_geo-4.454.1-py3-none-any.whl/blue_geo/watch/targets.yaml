@@ -1,0 +1,97 @@
+burning-man-2024:
+  catalog: EarthSearch
+  collection: sentinel_2_l1c
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    datetime: 2024-08-18/2024-09-15
+    lat: 40.7864
+    lon: -119.2065
+    radius: 0.01
+
+chilcotin-river-landslide:
+  catalog: copernicus
+  collection: sentinel_2
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    datetime: 2024-07-15/2024-08-24
+    keyword: L1C
+    lat: 51.847180
+    lon: -122.790264
+    radius: 0.01
+
+elkhema:
+  catalog: copernicus
+  collection: sentinel_2
+  query_args:
+    datetime: 2022-08-06/
+    lat: 49.281209
+    lon: -123.130760
+
+Mount-Etna:
+  catalog: EarthSearch
+  collection: sentinel_2_l1c
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    datetime: 2024-06-15/2024-07-20
+    lat: 37.7510
+    lon: 14.9934
+    radius: 0.01
+
+Fagradalsfjall:
+  catalog: EarthSearch
+  collection: sentinel_2_l1c
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    count: 30
+    datetime: 2024-06-04/2024-09-04
+    lat: 63.9000
+    lon: -22.2667
+    radius: 0.01
+
+Jasper:
+  catalog: EarthSearch
+  collection: sentinel_2_l1c
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    count: 30
+    datetime: 2024-06-22/2024-08-22
+    lat: 52.8734
+    lon: -118.0814
+    radius: 0.01
+
+Hurricane-Idalia-2023:
+  catalog: EarthSearch
+  collection: sentinel_2_l1c
+  params:
+    height: 0.9
+    width: 0.9
+  query_args:
+    count: 30
+    datetime: 2023-08-20/2023-09-10
+    lat: 29.0
+    lon: -83.0
+    radius: 0.9
+    description: Monitoring the development, trajectory, and aftermath of Hurricane Idalia, including pre-storm conditions and post-storm recovery.
+
+test:
+  catalog: copernicus
+  collection: sentinel_2
+  params:
+    height: 0.051
+    width: 0.12
+  query_args:
+    count: 2
+    datetime: 2024-07-30/2024-08-09
+    lat: 51.847180
+    lon: -122.790264
+    radius: 0.01
