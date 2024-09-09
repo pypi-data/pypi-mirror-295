@@ -1,0 +1,102 @@
+Metadata-Version: 2.1
+Name: pylibrelinkup
+Version: 0.1.0
+Summary: A client for the Abbott LibreLinkUp API
+Author-email: Rob Berwick <rob.berwick@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2024 Rob Berwick
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/robberwick/pylibrelinkup
+Project-URL: Issues, https://github.com/robberwick/pylibrelinkup/issues
+Keywords: librelink,librelinkup,abbott,diabetes,glucose,api,client,health,medical,blood-sugar,continuous-glucose-monitoring,cgm
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.31.0
+Requires-Dist: pydantic>=2.5.0
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+Requires-Dist: pytest-mock; extra == "test"
+Requires-Dist: polyfactory; extra == "test"
+Requires-Dist: responses; extra == "test"
+
+# pylibrelinkup
+
+`pylibrelinkup` is a Python client for the LibreLinkUp API, which allows you to interact with the LibreLinkUp service to retrieve glucose data and other related information. This project is a Python implementation inspired by the [libre-link-up-api-client](https://github.com/DiaKEM/libre-link-up-api-client) project.
+
+## Installation
+
+To install `pylibrelinkup`, you can use `pip`:
+
+```bash
+pip install pylibrelinkup
+```
+
+## Usage
+
+### Initialization
+
+First, you need to import the necessary modules, initialize the client, and authenticate with your LibreLinkUp credentials:
+
+```python
+from pylibrelinkup.client import LibreLinkUpClient
+
+client = LibreLinkUpClient(username='your_username', password='your_password')
+client.authenticate()
+```
+
+### Getting Patient List
+
+You can fetch the patient list using the `get_patient_list` method:
+
+```python
+patient_list = client.get_patient_list()
+print(patient_list)
+```
+
+### Getting Patient data
+
+Retrieve patient data using the `read` method:
+
+```python
+patient = client.get_patient_list()[0]
+patient_data = client.read(patient_id=patient.patient_id)
+```
+
+Get the latest glucose data:
+
+```python
+latest_glucose = patient_data.current
+print(latest_glucose)
+```
+
+Get the historical glucose data:
+
+```python
+historical_glucose = patient_data.history
+print(historical_glucose)
+```
