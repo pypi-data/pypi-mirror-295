@@ -1,0 +1,14 @@
+semantix/__init__.py,sha256=aZwtgkcXWeI3VgqlyNsIIFRo_q_7LAyye0ZIAdcp9xw,289
+semantix/decorators.py,sha256=nKbdHDT638IOwxwDQvI0wCz6Kr07Z9peRDcz2ztNhmE,4038
+semantix/inference.py,sha256=rZAGlyYQSEj4fc6U7bnb38i_JQUva-ixfiiCXn2kj1I,8007
+semantix/llms/__init__.py,sha256=z-Mh-u5cJYRxHc7poutT_KL-UMqDPukHQjmv0N6aCVo,33
+semantix/llms/base.py,sha256=bs05CJhkoXZMp7znD8W9ALXR0n_lY6oTupcUx81SRZc,7021
+semantix/llms/openai.py,sha256=XC7bJicrMGdCtGV9OdI3Rvzi2PTbIdtieSCTn6A3O3Y,1474
+semantix/media.py,sha256=J11yqN4aYDJ-EikgV8Ab79IkwbTfhVXGtTnH0GzMg7M,3006
+semantix/tools/__init__.py,sha256=e-OBqyPvfaAOUpcPruFOp6uddrdCf1cO0TVzMn_cWJU,40
+semantix/types.py,sha256=ZjXbAsQ4feNfnRh_sJxdOCmVHrOVowZYc99I_YZTAlg,10905
+semantix/utils.py,sha256=8nl2eYZjMCGFrOXbYoKAwodS14-degOwSizRqxscxmE,4727
+semantix-0.1.1.dist-info/LICENSE,sha256=bz-xAMkaTLOSzuA8CO7zU06zhLZB7oBQzwtR_23XBoo,1078
+semantix-0.1.1.dist-info/METADATA,sha256=Pwza_zjK2R-Jo8eQup4rHSl4G0dN8r-q__uqhLbgJko,4162
+semantix-0.1.1.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+semantix-0.1.1.dist-info/RECORD,,
