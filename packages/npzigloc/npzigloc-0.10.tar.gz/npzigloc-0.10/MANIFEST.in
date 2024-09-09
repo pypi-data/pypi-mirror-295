@@ -1,0 +1,8 @@
+include npzigloc/requirements.txt
+include npzigloc/thirdparty.json
+include npzigloc/LICENSE
+include npzigloc/npzigwhere.pyx
+include npzigloc/npzigwhere_compile.py
+include npzigloc/README.MD
+include npzigloc/zignpwhere.zig
+include npzigloc/create_zig_functions.py
