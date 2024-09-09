@@ -1,0 +1,8 @@
+beartype
+coremltools>=8.0b2
+torchvision
+jaxtyping
+scikit-learn
+torch
+wandb
+tabulate
