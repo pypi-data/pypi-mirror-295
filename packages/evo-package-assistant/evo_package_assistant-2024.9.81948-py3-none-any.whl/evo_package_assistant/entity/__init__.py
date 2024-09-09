@@ -1,0 +1,10 @@
+
+from evo_package_assistant.entity.EnumAssistantRole import EnumAssistantRole
+from evo_package_assistant.entity.EAssistant import EAssistant
+from evo_package_assistant.entity.EAssistantAction import EAssistantAction
+from evo_package_assistant.entity.EAssistantMap import EAssistantMap
+from evo_package_assistant.entity.EAssistantAdmin import EAssistantAdmin
+from evo_package_assistant.entity.EAssistantMessage import EAssistantMessage
+from evo_package_assistant.entity.EAssistantUser import EAssistantUser
+from evo_package_assistant.entity.EAssistantTool import EAssistantTool
+from evo_package_assistant.entity.EAssistantToolParam import EAssistantToolParam

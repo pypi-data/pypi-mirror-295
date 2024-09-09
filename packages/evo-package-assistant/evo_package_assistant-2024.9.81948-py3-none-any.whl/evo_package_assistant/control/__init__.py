@@ -1,0 +1,3 @@
+
+from evo_package_assistant.control.CAssistantApi import CAssistantApi
+from evo_package_assistant.control.CAssistantCallback import CAssistantCallback

@@ -1,0 +1,73 @@
+#========================================================================================================================================
+# CyborgAI CC BY-NC-ND 4.0 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internation    https://github.com/cyborg-ai-git | 
+#========================================================================================================================================
+
+# TYPE:
+#   STRING [DEFAULT_VALUE]
+#   LANGUAGE [DEFAULT_VALUE]
+#   INT [DEFAULT_VALUE]
+#   LONG [DEFAULT_VALUE]
+#   FLOAT [DEFAULT_VALUE]
+#   DOUBLE [DEFAULT_VALUE]
+#   BYTE
+#   BYTES
+#   BOOL [DEFAULT_VALUE]
+#   EOBJECT EOBJECT_CLASS
+#   MAP EOBJECT_CLASS
+#   ENUM ENUM_CLASS .ENUM_DEFAULT
+#   EAPIADMIN
+#   EAPIFILE
+#   EAPITEXT
+
+package: evo_package_assistant
+
+enum:
+  EnumAssistantRole:
+    #SYSTEM
+    ASSISTANT
+    USER
+
+entity:
+  EAssistant:
+    _DOC_: "EAssistant _DOC_"
+    name: STRING
+    description: STRING
+    systemMessage: STRING
+    logo: STRING
+    mapEAssistantMessage: MAP EAssistantMessage
+    mapEAssistantTool: MAP EAssistantTool
+    mapAction: MAP EAssistantAction
+
+  EAssistantAction:
+    _DOC_: "EAssistantAction _DOC_"
+    message: STRING
+
+  EAssistantMap:
+    _DOC_: "EAssistant _DOC_"
+    mapEAssistant: MAP EAssistant
+
+  EAssistantAdmin:
+    _DOC_: "EAssistantAdmin _DOC_"
+    eApiAdmin: EAPIADMIN
+    eApiQuery: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+
+  EAssistantMessage:
+    _DOC_: "EAssistantChat _DOC_"
+    enumAssistantRole: ENUM EnumAssistantRole .USER
+    message: STRING
+    eApiFile: EAPIFILE
+
+  EAssistantUser:
+    _DOC_: "EAssistant _DOC_"
+    eAssistanID: STRING
+    mapEAssistantMessage: MAP EAssistantMessage
+
+  EAssistantTool:
+    _DOC_: "EAssistantTool _DOC_"
+    description: STRING
+    mapEAssistantToolParam: MAP EAssistantToolParam
+
+  EAssistantToolParam:
+    _DOC_: "EAssistantToolParam _DOC_"
+    type: STRING
+    isRequired: BOOL True

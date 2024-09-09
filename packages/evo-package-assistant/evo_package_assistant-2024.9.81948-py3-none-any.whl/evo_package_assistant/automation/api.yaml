@@ -1,0 +1,36 @@
+#========================================================================================================================================
+# CyborgAI CC BY-NC-ND 4.0 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International   https://github.com/cyborg-ai-git # 
+#========================================================================================================================================
+
+# TYPE:
+#   EOBJECT EOBJECT_CLASS
+
+package: evo_package_assistant
+
+control:
+  CAssistantApi:
+    _DOC_: "CAssistantApi DOCUMENTATION"
+
+    assistant-set:
+      description: "assistant-set description"
+      callback: onSet
+      input: EOBJECT EAssistantAdmin
+      output:  EOBJECT EAssistant
+
+    assistant-get:
+      description: "assistant-get description"
+      callback: onGet
+      input: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+      output:  EOBJECT EAssistant
+
+    assistant-del:
+      description: "assistant-del description"
+      callback: onDel
+      input: EOBJECT EAssistantAdmin
+      output: EOBJECT EAssistant
+
+    assistant-query:
+      description: "assistant-query description"
+      callback: onQuery
+      input: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+      output:  EOBJECT EAssistantMap
