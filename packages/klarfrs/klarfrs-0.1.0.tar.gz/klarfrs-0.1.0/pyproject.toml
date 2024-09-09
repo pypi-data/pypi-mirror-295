@@ -1,0 +1,11 @@
+[project]
+name = "klarfrs"
+version = "0.1.0"
+authors = [
+  {name = "Norman Banick", email = "norman.banick@gmail.com"},]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.maturin]
+username = "__token__"
+password = "pypi-AgEIcHlwaS5vcmcCJGZiZTkyNjFiLTRhMzEtNGNiOC1hNTY0LWZmMjUyZjljZTAyMQACKlszLCJkYWM3ZWQ0ZC1kOWVmLTQ4MmQtYjM4OS1iYWI0NTMyYzkxNDUiXQAABiDXq7rjsUgAVVobvLCn5crfKygRT2eRK-82UFqfo6sHFw"

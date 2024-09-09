@@ -1,0 +1,23 @@
+[package]
+name = "klarfrs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "klarfrs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pyo3 = { version = "0.22.2", features = ["extension-module"] }
+
+[build-dependencies]
+pyo3-build-config = "0.22.2"
+
+[dev-dependencies]
+tempfile = "3.2"
+
+[tool.maturin]
+username = "__token__"
+password = "pypi-AgEIcHlwaS5vcmcCJGZiZTkyNjFiLTRhMzEtNGNiOC1hNTY0LWZmMjUyZjljZTAyMQACKlszLCJkYWM3ZWQ0ZC1kOWVmLTQ4MmQtYjM4OS1iYWI0NTMyYzkxNDUiXQAABiDXq7rjsUgAVVobvLCn5crfKygRT2eRK-82UFqfo6sHFw"
