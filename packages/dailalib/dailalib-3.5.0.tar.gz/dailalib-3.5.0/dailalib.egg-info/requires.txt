@@ -1,0 +1,7 @@
+litellm
+tiktoken
+Jinja2
+libbs>=1.21.0
+
+[full]
+varbert>=2.3.0
