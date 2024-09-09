@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: bi_etl
+Version: 1.6.1a0
+Summary: Python ETL Framework
+Home-page: https://github.com/arcann/bi_etl
+License: MIT
+Keywords: etl
+Author: Derek Wood
+Author-email: bietl_info@bietl.dev
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Database
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides-Extra: all
+Provides-Extra: dagster
+Provides-Extra: jira
+Provides-Extra: keyring
+Provides-Extra: pykeepass
+Provides-Extra: slack
+Provides-Extra: test
+Requires-Dist: SQLAlchemy (>=1.4.49)
+Requires-Dist: boto3 (>=1.33)
+Requires-Dist: btrees (>=4.7.2)
+Requires-Dist: config-wrangler[aws] (>=1.0.16)
+Requires-Dist: dagster (>=1.5.7) ; extra == "dagster" or extra == "all"
+Requires-Dist: dagster-webserver (>=1) ; extra == "dagster" or extra == "all"
+Requires-Dist: fastavro (>=1.0.0)
+Requires-Dist: gevent (>=21.8.0)
+Requires-Dist: jira (>=3.1.1) ; extra == "jira" or extra == "all"
+Requires-Dist: keyring (>=21.1.0) ; extra == "keyring" or extra == "all"
+Requires-Dist: more-itertools (>=9.0.0)
+Requires-Dist: openpyxl (>=3.0.5)
+Requires-Dist: psutil (>=5.7.2)
+Requires-Dist: pyarrow (>=10.0.1)
+Requires-Dist: pydicti (>=1.1.6)
+Requires-Dist: pykeepass (>=4.0.6) ; extra == "pykeepass" or extra == "all"
+Requires-Dist: semidbm (>=0.5.1)
+Requires-Dist: slack-sdk (>=3.19.5) ; extra == "slack"
+Requires-Dist: sqlparse (>=0.4.2)
+Requires-Dist: testcontainers[mysql, oracle, postgresql, mssqlserver] (>=3.5.4) ; extra == "test" or extra == "all"
+Requires-Dist: urllib3 (<2)
+Project-URL: Documentation, https://bietl.dev/docs/
+Project-URL: Repository, https://github.com/arcann/bi_etl
+Description-Content-Type: text/markdown
+
+# bi_etl Python ETL Framework for BI
+
+## Docs
+
+[Please see the documentation site for detailed documentation.](https://bietl.dev/bi_etl/)
+
+Python based ETL (Extract Transform Load) framework geared towards BI databases in particular. 
+The goal of the project is to create reusable objects with typical technical transformations used in loading dimension tables.
+
+## Guiding Design Principles
+1. Don’t Repeat Yourself (DRY).
+
+1. The source or target of an ETL owns the metadata (list of columns and data types). The ETL generally has no reason to define those again unless the ETL requires a change. If a datatype must be changed, only that one column’s new type should be specified. If a column name must be changed, only the source & target column names that differ should be specified.
+
+1. Data Quality is King
+
+1. Data quality is more important than performance. For example, the process should fail before truncating data contents (i.e. loading 6 characters into a 5 character field) even if that means sacrificing some load performance.
+
+1. Give helpful error messages.
+
+1. Make it as easy as possible to create re-usable modules.
+
+1. SQL is a very powerful transformation language. The Transform Extract Load (TEL) model should be supported.
