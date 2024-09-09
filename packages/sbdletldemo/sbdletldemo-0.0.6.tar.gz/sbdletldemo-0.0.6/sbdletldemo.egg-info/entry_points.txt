@@ -1,0 +1,3 @@
+[console_scripts]
+run-sbdl = SBDL.run_sbdl:from_databricks
+run-sbdl2 = SBDL.scripts.run_databricks:on_databricks
