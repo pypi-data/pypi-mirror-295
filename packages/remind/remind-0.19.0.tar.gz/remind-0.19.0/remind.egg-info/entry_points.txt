@@ -1,0 +1,3 @@
+[console_scripts]
+ics2rem = remind:ics2rem
+rem2ics = remind:rem2ics
