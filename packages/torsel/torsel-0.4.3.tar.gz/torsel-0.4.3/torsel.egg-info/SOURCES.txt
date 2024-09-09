@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+torsel/__init__.py
+torsel/cookies_manager.py
+torsel/torsel.py
+torsel.egg-info/PKG-INFO
+torsel.egg-info/SOURCES.txt
+torsel.egg-info/dependency_links.txt
+torsel.egg-info/not-zip-safe
+torsel.egg-info/requires.txt
+torsel.egg-info/top_level.txt
