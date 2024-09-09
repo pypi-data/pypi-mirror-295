@@ -1,0 +1,22 @@
+{
+  "time-notification": "The time is: %I %M %p",
+  "no-weather": "Unable to contact weather source.",
+  "no-location": "Unable to acquire location lock.",
+  "unknown": "Humph...",
+  "sunrise-past": "The Sun rose {} ago.",
+  "sunrise-future": "The Sun will rise in {}.",
+  "sunset-past": "The Sun set {} ago.",
+  "sunset-future": "The Sun will set in {}.",
+  "temp-decrease": "Temperature dropping to ",
+  "temp-increase": "Temperature increasing to ",
+  "temp-approach-zero": "Temperature approaching freezing; currently at ",
+  "temp-zero": "Freezing temperature detected currently at ",
+  "temp-remains": "Temperature remains at ",
+  "temp-measurement": " degrees",
+  "weather-nochange": "The Weather has not changed... ",
+  "rain-clear": "Rain will clear shortly. ",
+  "mist-clear": "Mist will clear shortly. ",
+  "wind": "Wind due {} at {}mph",
+  "humidity": "Humidity at {}%",
+  "forecast": "The current forecast is; {}"
+}
