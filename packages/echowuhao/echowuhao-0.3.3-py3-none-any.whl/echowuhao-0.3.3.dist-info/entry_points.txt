@@ -1,0 +1,3 @@
+[console_scripts]
+auto_commit = echowuhao.auto_commit.command_line:main
+hello = echowuhao:hello
