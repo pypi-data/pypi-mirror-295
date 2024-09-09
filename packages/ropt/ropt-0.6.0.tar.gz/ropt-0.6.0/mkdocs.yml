@@ -1,0 +1,107 @@
+site_name: ropt Documentation
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: indigo
+      accent: blue
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      accent: lime
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mike
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src, examples]
+          options:
+            show_source: false
+            show_bases: true
+            show_root_toc_entry: false
+            show_root_heading: true
+            show_root_full_path: true
+            show_root_members_full_path: false
+            heading_level: 2
+            members_order: source
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets:
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  version:
+    provider: mike
+  generator: false
+
+watch:
+  - src
+
+repo_url: https://github.com/TNO-ropt/ropt
+nav:
+  - "About": index.md
+  - Usage:
+      - "Introduction": usage/robust_optimization.md
+      - "Running Optimizations": usage/running.md
+  - Reference:
+      - "Configuration":
+          - "Optimization Plan configuration": reference/plan_config.md
+          - "Optimizer configuration": reference/enopt_config.md
+      - "Optimization":
+          - "Optimization Plans": reference/plans.md
+          - "Optimization": reference/optimization.md
+          - "Function evaluations": reference/evaluator.md
+          - "Optimization results": reference/results.md
+          - "Reporting": reference/reporting.md
+      - "Plugins":
+          - "Plugins": reference/plugin_manager.md
+          - "Plan objects": reference/plan_plugins.md
+          - "Optimizer plugins": reference/optimizer_plugins.md
+          - "Sampler plugins": reference/sampler_plugins.md
+          - "Realization filters": reference/realization_filter_plugins.md
+          - "Function transforms": reference/function_transform_plugins.md
+      - "Default Plugins":
+          - "SciPy Optimizer Plugin": reference/scipy_optimizer.md
+          - "SciPy Sampler Plugin": reference/scipy_sampler.md
+          - "Default Realization Filters": reference/default_realization_filters.md
+          - "Default Function Transforms": reference/default_function_transforms.md
+          - "Default Plan Objects": reference/default_plan_objects.md
+      - "Enumerations": reference/enums.md
+      - "Exceptions": reference/exceptions.md
+      - "Utilities": reference/utilities.md
