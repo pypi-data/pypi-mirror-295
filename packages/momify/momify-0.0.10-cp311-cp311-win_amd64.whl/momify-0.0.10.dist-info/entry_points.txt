@@ -1,0 +1,3 @@
+[console_scripts]
+momify = momify.cli:app
+
