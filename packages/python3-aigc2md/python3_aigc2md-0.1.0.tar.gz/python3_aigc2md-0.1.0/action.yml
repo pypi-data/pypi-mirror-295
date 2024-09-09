@@ -1,0 +1,17 @@
+name: 'convert AIGC to hugo markdown'
+description: 'convert AIGC to hugo markdown'
+author: 'xiexianbin <me@xiexianbin>'
+inputs:
+  OPEN_WEBUI_JWT:
+    description: 'open-webui JWT'
+    default: ''
+  LOG_LEVEL:
+    description: 'logger level, value [DEBUG|INFO|WARN|ERROR|FATAL]'
+    default: 'DEBUG'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  color: 'blue'
+  icon: 'repeat'
