@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "agenticos"
+version = "0.0.1"
+description = "Tapping into the power of AI agents"
+authors = ["Sebastian Kuepers <s.kuepers@house-of-communication.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = {extras = ["tools"], version = "^0.41.1"}
+agentops = "^0.3.7"
+pydantic = "^2.0"  # Pydantic is required for data validation
+requests = "^2.31.0"  # Requests is required for handling HTTP requests
+
+[tool.poetry.dev-dependencies]
+pytest = ">=8.0.0,<9.0.0"  # For testing
+pytest-mock = "^3.10.0"  # To mock objects in pytest
+requests-mock = "^1.10.0"  # Mock requests during testing
+black = "^23.1.0"  # Code formatter (optional for development)
+isort = "^5.10.1"  # Import sorting (optional for development)
+
+[tool.poetry.scripts]
+contentful_taxonomy = "agenticos.workflows.contentful_taxonomy_creator.main:run"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
