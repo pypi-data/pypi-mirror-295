@@ -1,0 +1,16 @@
+matplotlib
+numpy
+scipy
+pyyaml
+
+[dev]
+pre-commit
+
+[docs]
+sphinx
+sphinx-rtd-theme
+
+[test]
+pytest
+pytest-cov
+pytest-xdist

@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: MoorPy
+Version: 1.1.0
+Summary: A design-oriented mooring system library for Python
+Author-email: National Renewable Energy Laboratory <matthew.hall@nrel.gov>
+Maintainer-email: Matthew Hall <matthew.hall@nrel.gov>, Stein Housner <stein.housner@nrel.gov>
+License: BSD-3-Clause
+Project-URL: Homepage, https://github.com/NREL/MoorPy
+Project-URL: Documentation, https://moorpy.readthedocs.io
+Keywords: wind,floating,mooring,design,water
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Fortran
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pyyaml
+Provides-Extra: dev
+Requires-Dist: pre-commit; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx-rtd-theme; extra == "docs"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+Requires-Dist: pytest-xdist; extra == "test"
+
+# MoorPy - Quasi-Static Mooring Analysis in Python
+
+MoorPy is a design-oriented mooring system library for Python based around a quasi-static modeling approach.
+
+### Prerequisites
+
+- Python 3.9 or greater
+- The following packages: NumPy, MatPlotLib, pyyaml, scipy
+
+### Installation
+
+MoorPy is available on PyPi via:
+```pycon
+pip install MoorPy
+```
+
+For an editable install that relies on the local source code, first clone the repository.  Then, from the command line in the main MoorPy directory, run the following commands (with a "-e" for "editable") based on your additional needs.
+The "dev", "test", and "docs" flags will install necessary packages related to development, testing, or documentation (e.g., the docs flag installs "sphinx" for documentation).
+
+#### General
+```pycon
+pip install .
+```
+
+#### Development
+```pycon
+pip install .[dev]
+```
+#### Testing
+```pycon
+pip install .[test]
+pre-commit install --hook-type pre-commit --hook-type pre-push
+```
+#### Documentation
+```pycon
+pip install .[docs]
+```
+
+MoorPy's documentation website is under development at https://moorpy.readthedocs.io
+
+### Citing
+The MoorPy software can be cited as:
+M. Hall, S. Housner, S. Sirnivas, and S. Wilson.
+*MoorPy: Quasi-Static Mooring Analysis in Python.*
+National Renewable Energy Laboratory, 2021.
+https://doi.org/10.11578/dc.20210726.1.
