@@ -1,0 +1,1 @@
+This Python program uses Turtle graphics to draw a user's name with customizable patterns. Users can input their name, choose a character (e.g., *, ^), and select a color to create personalized designs of their own name.
