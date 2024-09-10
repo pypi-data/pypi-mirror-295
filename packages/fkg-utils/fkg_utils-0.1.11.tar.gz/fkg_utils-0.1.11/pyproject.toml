@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "fkg-utils"
+version = "0.1.11"
+description = ""
+authors = ["Rodrigo Zavan <rrzavan@fkgrupo.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.32.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry_bumpversion.replacements]]
+files = ["fkg_utils/__init__.py"]
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+[[tool.poetry_bumpversion.replacements]]
+files = ["README.md"]
+search = 'version-{current_version}-purple'
+replace = 'version-{new_version}-purple'
