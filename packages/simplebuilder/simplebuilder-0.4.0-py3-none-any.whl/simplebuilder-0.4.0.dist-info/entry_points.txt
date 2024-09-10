@@ -1,0 +1,2 @@
+[console_scripts]
+simplebuilder = simplebuilder.__main__:main
