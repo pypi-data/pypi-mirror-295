@@ -1,0 +1,10 @@
+esda
+geopandas>=0.9.0
+giddy
+libpysal
+mapclassify
+matplotlib>=3.3.3
+numpy
+packaging
+seaborn>=0.11.0
+spreg
