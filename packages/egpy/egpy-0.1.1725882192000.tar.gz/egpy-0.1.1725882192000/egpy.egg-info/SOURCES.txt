@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+setup.py
+egpy/__init__.py
+egpy.egg-info/PKG-INFO
+egpy.egg-info/SOURCES.txt
+egpy.egg-info/dependency_links.txt
+egpy.egg-info/requires.txt
+egpy.egg-info/top_level.txt
+egpy/eg/__init__.py
+egpy/eg/interp/__init__.py
+egpy/eg/interp/events_pb2.py
+egpy/eg/interp/events_pb2.pyi
+egpy/envx/__init__.py
+egpy/metrics/__init__.py
+egpy/metrics/eg.interp.events_pb2_grpc.py
+egpy/metrics/eg_interp_events_pb2_grpc.py
