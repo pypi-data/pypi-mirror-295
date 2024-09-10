@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "netbox-kea"
+version = "1.0.1"
+description = ""
+authors = ["Devon Mar <devonm+netbox-kea@mdmm.ca>"]
+readme = "README.md"
+packages = [{include = "netbox_kea"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+requests = "^2"
+netaddr = ">=0.8 | ^1"
+
+[tool.poetry.group.dev.dependencies]
+django-stubs = {extras = ["compatible-mypy"], version = "^5"}
+mypy = "^1.2"
+types-requests = "^2"
+pytest = "^8"
+pynetbox = "^7.3"
+pytest-playwright = "^0.5"
+ruff = "^0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+  "netbox_kea/migrations",
+]
+
+[tool.ruff.lint]
+select = [
+  "C4",
+  "E",
+  "EXE",
+  "F",
+  "I",
+  "ISC",
+  "PERF",
+  "PIE",
+  "PYI",
+  "UP",
+  "W",
+]
+ignore = [
+  "E501",
+  # https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "COM812",
+  "COM819",
+  "ISC001",
+  "ISC002",
+]
