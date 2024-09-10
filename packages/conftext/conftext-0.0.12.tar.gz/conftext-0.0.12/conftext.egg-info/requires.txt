@@ -1,0 +1,11 @@
+invoke
+pydantic
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[dev]
+twine
+py
+pytest
+pytest-regtest
