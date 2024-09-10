@@ -1,0 +1,34 @@
+services:
+  tauth:
+    container_name: tauth
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      target: run
+    env_file: .env
+    ports:
+      - ${TAUTH_PORT}:${TAUTH_PORT}
+    develop:
+      watch:
+        - path: ./tauth
+          action: sync
+          target: /app/tauth
+    depends_on:
+      - mongodb
+    tty: true
+    stdin_open: true
+
+  mongodb:
+    container_name: tauth-mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - tauth-mongodb-data:/data/db
+      - tauth-mongodb-configdb:/data/configdb
+
+volumes:
+  tauth-mongodb-data:
+    driver: local
+  tauth-mongodb-configdb:
+    driver: local
