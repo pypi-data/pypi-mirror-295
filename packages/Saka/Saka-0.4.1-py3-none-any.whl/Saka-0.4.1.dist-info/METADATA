@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Saka
+Version: 0.4.1
+Summary: Lockon Selfusing tools package
+Author-email: Zhenxi_CX <lockon_zhang@foxmail.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+License-File: LICENSE
+Requires-Dist: pandas>=1.3.0
+Requires-Dist: numpy>=1.20.0
+Requires-Dist: LockonToolAlpha>=0.0.3
+Requires-Dist: influxdb-client
+
