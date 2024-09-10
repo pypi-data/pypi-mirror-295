@@ -1,0 +1,6 @@
+╭ templates/nginx/proxy_params.j2
+╰─ .infrable/files/root@dev.example.com/etc/nginx/proxy_params.new
+
+╭ templates/nginx/web.j2
+╰─ .infrable/files/root@dev.example.com/etc/nginx/sites-enabled/web.new
+

@@ -1,0 +1,5 @@
+Skipping infra.py, Exists.
+Skipping templates/hostname/hostname.j2, Exists.
+Skipping templates/nginx/proxy_params.j2, Exists.
+Skipping templates/nginx/web.j2, Exists.
+Skipping modules/mycloud.py, Exists.
