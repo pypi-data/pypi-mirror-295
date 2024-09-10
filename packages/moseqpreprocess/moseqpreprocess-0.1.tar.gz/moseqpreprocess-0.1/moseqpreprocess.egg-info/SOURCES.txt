@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+setup.py
+moseqprep/__init__.py
+moseqprep/filter_and_plot_syllables.py
+moseqprep/plot_syl.py
+moseqpreprocess.egg-info/PKG-INFO
+moseqpreprocess.egg-info/SOURCES.txt
+moseqpreprocess.egg-info/dependency_links.txt
+moseqpreprocess.egg-info/requires.txt
+moseqpreprocess.egg-info/top_level.txt
