@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: pyknic
+Version: 0.0.0.1.dev0
+Summary: Small library for some cases
+Home-page: https://github.com/a1ezzz/pyknic
+Author: Ildar Gafurov
+Author-email: dev@binblob.com
+Maintainer: Ildar Gafurov
+Maintainer-email: dev@binblob.com
+License: GNU Lesser General Public License v3
+Keywords: pyknic
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: twine; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest>=4; extra == "test"
+Requires-Dist: pytest-html<2.0.0; extra == "test"
+Provides-Extra: all
+Requires-Dist: pyknic[dev,test]; extra == "all"
+
+# pyknic
