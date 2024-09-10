@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: compound_interest_calculator
+Version: 0.1
+Summary: Um pacote para calcular juros compostos em Python.
+Home-page: https://github.com/gbernardojr/compound_interest_calculator
+Author: Gilberto Aparecido Bernardo Junior
+Author-email: gbernardoti@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: license
+
+# Compound Interest Calculator
+
+Este Ã© um pacote em Python para calcular juros compostos.
+
+## InstalaÃ§Ã£o
+
+VocÃª pode instalar via pip:
+
+pip install compound_interest_calculator
+
+
+## Uso
+
+```python
+from compound_interest import calcular_juros_compostos, calcular_juros_acumulados
+
+# Calcular o montante com juros compostos
+montante = calcular_juros_compostos(1000, 0.05, 5, 12)
+print(f"Montante: {montante}")
+
+# Calcular os juros acumulados
+juros = calcular_juros_acumulados(1000, 0.05, 5, 12)
+print(f"Juros Acumulados: {juros}")
+```
