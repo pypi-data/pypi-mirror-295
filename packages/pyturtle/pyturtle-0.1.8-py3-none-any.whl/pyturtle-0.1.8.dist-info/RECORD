@@ -1,0 +1,15 @@
+pyturtle/__init__.py,sha256=nszADiEDez5Lyg_J0WBshB1q9FD4dWC9cwb_ijkkeyE,112
+pyturtle/pyturtle.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pyturtle/shapes/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pyturtle/shapes/arc.py,sha256=m2WfTu2o5R-SfzXJxkqGxNRjvwkdzr9VrveUSLGBXEY,3248
+pyturtle/shapes/circle.py,sha256=j87vD192nLAVkPCJDwNODGTJL73kc-RsFpi4tnt5B34,357
+pyturtle/shapes/circle_class.py,sha256=sQwrlDfgZixwqg3Lxn57GHGkoiq11NQhRZNa8VTdZTM,13820
+pyturtle/shapes/line.py,sha256=sCu9EBE2xulVkoL0A3vuNBB43AXRGcp11yndDOaqZco,5182
+pyturtle/shapes/point.py,sha256=tK7N4rSZV_f4R3Le_5RGmFQumemTgMVAp_ubKIHCkkc,159
+pyturtle/shapes/polygon_class.py,sha256=ho7vURrYJ3pku3rNriFYGifHycK4x-VZVfZcFPEFjhk,1027
+pyturtle/shapes/random_walk_class.py,sha256=HZMElN4Hu_V0sfR4IRyfUSdYfYw6PdB37nCwc7Nrfb4,5417
+pyturtle/shapes/shape.py,sha256=53dEl4mWfvX6qx6dx2a5BBE4_jlssAFMovCwkDfMoJM,1689
+pyturtle-0.1.8.dist-info/LICENSE,sha256=Tb7zMrVh-6itKAF8qy0W52zzqSpHYq9Ywi-j5nwD-LI,1074
+pyturtle-0.1.8.dist-info/METADATA,sha256=bXA1x4XJByL9dmIgEMR9qeIcunmmGrMRzrp1bvf-vKw,1132
+pyturtle-0.1.8.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+pyturtle-0.1.8.dist-info/RECORD,,
