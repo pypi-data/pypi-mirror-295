@@ -1,0 +1,40 @@
+{
+    "$id": "https://alwaysai.co/onnxModelParameters.json",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "properties": {
+        "onnxModelProperties": {
+            "type": "object",
+            "properties": {
+                "batch_size": {
+                    "type": "number"
+                }
+            },
+            "required": [],
+            "if": {
+                "type": "object",
+                "properties": {
+                    "purpose": {
+                        "const": "ObjectDetection"
+                    }
+                }
+            },
+            "then": {
+                "type": "object",
+                "properties": {
+                    "architecture": {
+                        "type": "string",
+                        "enum": [
+                            "centernet",
+                            "detr",
+                            "yolo_x",
+                            "yolov4"
+                        ]
+                    }
+                },
+                "required": []
+            }
+        }
+    }
+
+}
