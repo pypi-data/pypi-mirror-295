@@ -1,0 +1,8 @@
+#pragma once
+
+#define CSPICE_VERSION "1.0"
+
+#define CSPICE_VERSION_MAJOR 1
+#define CSPICE_VERSION_MINOR 0
+#define CSPICE_VERSION_PATCH 0
+#define CSPICE_VERSION_TWEAK 0
