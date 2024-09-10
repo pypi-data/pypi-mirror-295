@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package strique.model.db.schedule;
+
+option java_outer_classname = "FrequencyProto";
+option java_package = "com.strique.model.db.schedule";
+
+// Next Id: 7
+// Enumeration for Frequency types
+enum Frequency {
+  FREQUENCY_UNKNOWN = 0;
+  DAILY = 1;
+  EVERY_MONDAY_LAST_7_DAYS = 2;
+  MONTHLY_1ST_MONDAY_LAST_MONTH = 3;
+  MONTHLY_24TH_DAY_LAST_30_DAYS = 4;
+  MONTHLY_24TH_DAY_LAST_60_DAYS = 5;
+  MONTHLY_24TH_DAY_LAST_90_DAYS = 6;
+}
