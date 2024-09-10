@@ -1,0 +1,91 @@
+Metadata-Version: 2.1
+Name: markdown-img2fig
+Version: 1.0.1
+Summary: Convert markdown imgs into captioned <figure>s
+Home-page: https://github.com/zetaloop/markdown_img2fig
+Author: zetaloop
+Author-email: zetaloop@outlook.com
+License: MIT
+Keywords: markdown img figure caption
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Markdown>=3.0.1
+
+# Markdown img2fig
+
+Convert inline markdown images to captioned figures.
+
+Inspirated by [markdown-captions](https://github.com/Evidlo/markdown_captions) and [yafg](https://git.sr.ht/~ferruck/yafg).
+
+## Installation
+
+``` bash
+pip install markdown-img2fig
+```
+
+## Usage
+
+### Markdown module
+``` python
+import markdown
+import img2fig
+
+data = markdown.markdown(
+    md,
+    extensions=[
+        img2fig.Img2FigExtension(
+            source_attr="title",
+            remove_attr=True,
+            force_convert=True,
+            empty_as_none=True,
+        ),
+        'attr_list',  # optional
+    ]
+)
+```
+
+### MkDocs `mkdocs.yml`
+``` yaml
+markdown_extensions:
+  - img2fig:
+      source_attr: title
+      remove_attr: true
+      force_convert: true
+      empty_as_none: true
+  - attr_list # optional
+```
+
+### Result
+``` md
+![Alt text](image.jpg "Title text"){: .someclass }
+```
+``` html
+<figure class="someclass">
+    <img alt="Alt text" src="image.jpg" />
+    <figcaption>Title text</figcaption>
+</figure>
+```
+
+
+## Options
+
+- `source_attr` (default: 'title')<br>
+  Use 'title' or 'alt' attribute as the caption.
+- `remove_attr` (default: True)<br>
+  Remove the alt/title attribute after conversion.
+- `force_convert` (default: True)<br>
+  Convert all images to figures, missing alt/title will cause figures without figcaptions.<br>
+  If false, images will be left as is.
+- `empty_as_none` (default: True)<br>
+  Treat empty alt/title as if they don't exist.
+
+## License
+
+Licensed under the MIT License.
