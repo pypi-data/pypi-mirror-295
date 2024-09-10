@@ -1,0 +1,17 @@
+xml2db/__init__.py,sha256=HlqpgmE8vFXSW4ZUwRldTYdgF7ynK8Octfr0nUrSphI,433
+xml2db/document.py,sha256=uQuqIEF6IbOHmmED_MAAUOhpBIhklzfVNFNl8F78yEI,27911
+xml2db/exceptions.py,sha256=9telo33P4I-cNHFlAl3ad9WUkEbHbP9_jxF6R7Q_pHw,524
+xml2db/model.py,sha256=jLzNG6vPoMOg4Ds9cZwNHRt6004_xMSesS_b-ytwa40,31347
+xml2db/xml_converter.py,sha256=-2EMmHoyGopRMIACJHhBXVky9qegfr9s5RiO3wU1O9w,18850
+xml2db/table/__init__.py,sha256=LB2p2xhq1d1xktn9vndNr-cxdhS_PG2OiZqLhgCWBxQ,234
+xml2db/table/column.py,sha256=fFvsF_y5_vBWGyvJdrJJquUGzh0yXrW87vPtP8KZfZo,8356
+xml2db/table/duplicated_table.py,sha256=o9tC9ZOHWFNsd2qD8afvwKsPd8Cjg2YdiHdiWxIfqcw,7469
+xml2db/table/relations.py,sha256=ZVEvK3FaM_SfkDquu5ofrRY-a_v2qF00wlEgJzrj9nM,8924
+xml2db/table/reused_table.py,sha256=mgndcTiyqHHgMXM-Ehn9MhP6BvSzpt4vtZI-B-BsTT4,7556
+xml2db/table/table.py,sha256=o5hIYu4d5L-_vlq52cs-rBuhi1HUiWDSiFm7ugXGIw0,14869
+xml2db/table/transformed_table.py,sha256=MJmNgGTgqnRlUcnzLvXQebYZmMl8fvJZnhUs4eg_nsc,13532
+xml2db-0.12.1.dist-info/LICENSE,sha256=cgnri6774CSYcCdV36ozf_ME1FsL9AJ_fUtZQ0BUJBQ,1082
+xml2db-0.12.1.dist-info/METADATA,sha256=BBd_3moplETcT1c_NmuLVeRX_IzMKVtbSe-fUmM3XF8,4276
+xml2db-0.12.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+xml2db-0.12.1.dist-info/top_level.txt,sha256=GNo5U2vNXkcW0dPMdH4-yss0gb5fiIr46tUY4u3ohGg,7
+xml2db-0.12.1.dist-info/RECORD,,
