@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: wukongbaobao
+Version: 1.0.3
+Summary: Wukong is a program that helps parents flexibly generate test questions for their children. The tool is written in Python.
+Author-email: qiqilelebaobao <qiqilelebaobao@163.com>
+Project-URL: Homepage, https://github.com/qiqilelebaobao/wukong
+Project-URL: Issues, https://github.com/qiqilelebaobao/wukong/issues
+Project-URL: Repository, https://github.com/qiqilelebaobao/wukong
+Keywords: education,math,learn,kids-learn,kids-education
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: python-docx
+
+# Wukong
+
+Wukong 是一个帮助家长灵活生成幼儿考试题的程序。工具使用 Python 编写。
+* https://github.com/qiqilelebaobao/wukong
+
+Wukong is a program that helps parents flexibly generate test questions for their children. The tool is written in Python.
+* https://github.com/qiqilelebaobao/wukong
+
+
+主要功能包括：
+* 通过算法按需生成数学试题
+* 支持生成txt文件、docx文件格式
+
+Main functions include:
+* Generate math test questions on demand through algorithms
+* Supports generation of txt and docx file formats
+
+## 适用场景 Applicable Scenarios
+
+* 场景一：家庭教育场景
+* 场景二：程序学习场景
+
+* Scenario 1: Family education scenario
+* Scenario 2: Program learning scenario
+
+## 安装指南 Installation Guide
+
+需要 Python3 环境
+Python3 is required
+
+```shell
+$ pip3 install -i --upgrade python-docx
+$ pip3 install wukongbaobao
+```
+
+## 使用说明 Instructions
+
+```shell
+$ python3 -m wukongbaobao.exam [-h] [--level {1,2,3,4,5,6,7,8,9,10}] [--basic_cnt BASIC_CNT] [--open_cnt OPEN_CNT] [--algorithm {+,-}]
+```
+默认在ouput文件夹生成word文件，可以打印测验。  
+
+level 1 对应 0，10以间的算法  
+level 2 对应 11，20之间的算法  
+...  
+以此类推，总共10个等级。
