@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/epr2md/__init__.py
+src/epr2md/_version.py
+src/epr2md/epr2md.py
+src/epr2md.egg-info/PKG-INFO
+src/epr2md.egg-info/SOURCES.txt
+src/epr2md.egg-info/dependency_links.txt
+src/epr2md.egg-info/entry_points.txt
+src/epr2md.egg-info/requires.txt
+src/epr2md.egg-info/top_level.txt
+src/epr2md/resources/__init__.py
+src/epr2md/resources/loggingConfiguration.json
