@@ -1,0 +1,10 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = [
+    "setuptools>=42", 
+    "wheel",
+    "Cython>=0.29.24",
+    ]
+
+[tool.black]
+line-length = 88
