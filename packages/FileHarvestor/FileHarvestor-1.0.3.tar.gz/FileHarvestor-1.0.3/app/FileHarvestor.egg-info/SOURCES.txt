@@ -1,0 +1,13 @@
+LICENSE.txt
+README.md
+setup.py
+app/FileHarvestor/__init__.py
+app/FileHarvestor.egg-info/PKG-INFO
+app/FileHarvestor.egg-info/SOURCES.txt
+app/FileHarvestor.egg-info/dependency_links.txt
+app/FileHarvestor.egg-info/top_level.txt
+app/FileHarvestor/src/FileHarvestor.py
+app/FileHarvestor/src/__init__.py
+app/FileHarvestor/test/__init__.py
+app/FileHarvestor/test/file_maker.py
+app/FileHarvestor/test/test_FileHarvestor.py
