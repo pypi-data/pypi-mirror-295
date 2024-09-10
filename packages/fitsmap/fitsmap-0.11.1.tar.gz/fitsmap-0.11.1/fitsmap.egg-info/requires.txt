@@ -1,0 +1,11 @@
+astropy
+cbor2
+numpy
+matplotlib
+pillow
+ray
+scikit-image
+tqdm
+click
+protobuf<4.21
+mapbox_vector_tile
