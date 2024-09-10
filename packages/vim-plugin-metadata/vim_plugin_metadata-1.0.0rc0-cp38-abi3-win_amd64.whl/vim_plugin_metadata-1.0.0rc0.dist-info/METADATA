@@ -1,0 +1,55 @@
+Metadata-Version: 2.3
+Name: vim-plugin-metadata
+Version: 1.0.0rc0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries
+Summary: Parse and analyze your vim plugins
+Keywords: vim,parsing,tree-sitter
+Author: David Barnett
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Repository, https://github.com/dbarnett/vim-plugin-metadata
+Project-URL: Issues, https://github.com/dbarnett/vim-plugin-metadata/issues
+
+# vim-plugin-metadata
+
+Parse and analyze your vim plugins.
+
+WARNING: This library is in early development, still missing functionality, and probably has plenty
+of bugs. Use at your own risk.
+
+## Usage
+
+pip install it, point it at a file, get metadata:
+
+```python
+import vim_plugin_metadata
+
+parser = vim_plugin_metadata.VimParser()
+parser.parse_plugin_dir(".vim/plugged/someplugin")
+```
+```
+VimPlugin([VimModule("plugin/somefile.vim", …), VimModule("autoload/someplugin.vim", …)])
+```
+
+```python
+parser.parse_module_str("""
+""
+" File header comment
+
+""
+" Does something cool.
+func MyFunc() abort
+  …
+endfunc
+""")
+```
+```
+VimModule(doc="File header comment", nodes=[Function(name="MyFunc", args=[], modifiers=["abort"], doc="Does something cool.")])
+```
+
