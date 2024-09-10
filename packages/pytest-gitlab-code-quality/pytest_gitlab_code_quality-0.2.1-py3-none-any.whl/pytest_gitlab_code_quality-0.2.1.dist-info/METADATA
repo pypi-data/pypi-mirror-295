@@ -1,0 +1,65 @@
+Metadata-Version: 2.3
+Name: pytest-gitlab-code-quality
+Version: 0.2.1
+Summary: Collects warnings while testing and generates a GitLab Code Quality Report.
+Project-URL: Homepage, https://github.com/NiclasvanEyk/pytest-gitlab-code-quality
+Project-URL: Issues, https://github.com/NiclasvanEyk/pytest-gitlab-code-quality/issues
+Project-URL: Changelog, https://github.com/NiclasvanEyk/pytest-gitlab-code-quality/blob/main/CHANGELOG.md
+Author-email: Niclas van Eyk <niclas.eyk@gmail.com>
+Classifier: Framework :: Pytest
+Requires-Python: >=3.9
+Requires-Dist: pytest>=8.1.1
+Description-Content-Type: text/markdown
+
+# GitLab Code Quality Report Provider for Pytest Warnings
+
+Pytest plugin that generates a GitLab Code Quality Report file from the warnings emitted when running the tests.
+
+| Terminal | GitLab |
+|----------|--------|
+| ![Pytest warnings in the terminal](https://github.com/NiclasvanEyk/pytest-gitlab-code-quality/blob/main/.github/images/terminal.png?raw=true) | ![Pytest warnings in the GitLab merge request widget](https://github.com/NiclasvanEyk/pytest-gitlab-code-quality/blob/main/.github/images/gitlab.png?raw=true) |
+
+If you run GitLab Premium or Ultimate, you should even see the warnings [right next to the code](https://docs.gitlab.com/ee/ci/testing/code_quality.html#merge-request-changes-view) in the diff view of merge requests.
+The [official documentation](https://docs.gitlab.com/ee/ci/testing/code_quality.html) contains more information and screenshots.
+
+## Getting Started
+
+Install the plugin using a package manager of your choice
+
+```shell
+pip install pytest-gitlab-code-quality
+```
+
+then specify the output location for the report using the `--gitlab-code-quality-report` option
+
+```shell
+pytest --gitlab-code-quality-report=pytest-warnings.json
+```
+
+In GitLab CI, this will look similar to this:
+
+```yaml
+# .gitlab-ci.yml
+pytest:
+  stage: test
+  image: python
+  script:
+    - pip install -r requirements.txt # Or however you install your dependencies
+    - python -m pytest --gitlab-code-quality-report=pytest-warnings.json
+
+  # The three lines below are required in order for the warnings to show up!
+  artifacts:
+    reports:
+      codequality: pytest-warnings.json
+```
+
+## Motivation
+
+Some warnings are only surfaced during runtime, so static analyzers do not always catch them.
+The screenshots at the top of this document contain the example of a questionably configured SQLAlchemy model.
+Tests are a cheap way to surface such issues.
+
+While you may run the tests locally and see these warnings there, you also might overlook them or don't know whether they were introduced by your changes or were already present before.
+Either way, I think it makes sense to explicitly surface and track them during code review instead of burying them in the CI logs that nobody looks at when the tests pass.
+And that is exactly why this plugin was created.
+
