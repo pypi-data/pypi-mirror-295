@@ -1,0 +1,27 @@
+fastapi
+uvicorn
+httpx
+pydantic
+sqlalchemy
+typer
+magika
+pydantic-settings
+typesense
+opencv-python
+pillow
+piexif
+imagehash
+rapidocr_onnxruntime
+screeninfo
+sentence-transformers
+torch
+numpy
+
+[:sys_platform == "darwin"]
+pyobjc
+pyobjc-core
+pyobjc-framework-Quartz
+
+[:sys_platform == "win32"]
+pywin32
+psutil
