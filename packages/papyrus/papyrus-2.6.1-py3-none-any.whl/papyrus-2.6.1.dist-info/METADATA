@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: papyrus
+Version: 2.6.1
+Summary: Geospatial Extensions for Pyramid
+Home-page: https://github.com/camptocamp/papyrus
+License: BSD
+Keywords: FOSS4G,Pylons,Pyramid
+Author: Camptocamp
+Author-email: info@camptocamp.com
+Requires-Python: >=3.9
+Classifier: Framework :: Pyramid
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP
+Requires-Dist: GeoAlchemy (>=0.0.0,<1.0.0)
+Requires-Dist: geoalchemy2 (>=0.0.0,<1.0.0)
+Requires-Dist: geojson (>=3.0.0,<4.0.0)
+Requires-Dist: pyramid (>=2.0.0,<3.0.0)
+Requires-Dist: shapely (>=2.0.0,<3.0.0)
+Project-URL: Repository, https://github.com/camptocamp/papyrus
+Description-Content-Type: text/markdown
+
+# Papyrus
+
+Geospatial Extensions for the [Pyramid](http://docs.pylonsproject.org/en/latest/docs/pyramid.html) web framework.
+
+The Papyrus doc is hosted on [Read the Docs](http://readthedocs.org/).
+
+- Doc for current stable release: http://papyrus.readthedocs.org/en/stable/
+- Doc for current master branch: http://papyrus.readthedocs.org/en/latest/
+
