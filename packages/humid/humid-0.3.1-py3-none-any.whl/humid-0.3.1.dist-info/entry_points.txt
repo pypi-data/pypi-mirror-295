@@ -1,0 +1,5 @@
+[console_scripts]
+hfid = humid.cli:generate
+hfid-new-word = humid.cli:check_word
+humid = humid.cli:generate
+
