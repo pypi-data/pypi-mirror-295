@@ -1,0 +1,1 @@
+import{as as i,at as c,r as l,ar as m}from"./BNXY2P2N.js";function v(){const a=i(),o=c(),n=l(a.appName);function r(e){return e.reduce((t,f)=>{const{children:s,...p}=f;return t.push(p),s&&s.length&&t.push(...r(s)),t},[])}const u=r(a.navItems);return m(()=>{const e=u.find(t=>t.to===o.path);n.value=e?e.text:a.appName,o.meta.title=n.value}),n}export{v as u};
