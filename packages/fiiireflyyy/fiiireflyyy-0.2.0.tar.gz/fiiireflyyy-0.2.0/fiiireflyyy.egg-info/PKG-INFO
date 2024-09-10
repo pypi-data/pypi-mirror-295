@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: fiiireflyyy
+Version: 0.2.0
+Summary: A python package covering miscellaneous uses, from system management to machine learning and image or data processing. Developed for personal uses.
+Author: fiiireflyyy (Willy Lutz)
+Author-email: <lutz0willy@gmail.com>
+Keywords: python,machine learning,deep learning,data analysis,system management,data processing
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: scikit-learn
+Requires-Dist: opencv-python
+Requires-Dist: matplotlib
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: imaris-ims-file-reader
+Requires-Dist: zarr
+Requires-Dist: seaborn
