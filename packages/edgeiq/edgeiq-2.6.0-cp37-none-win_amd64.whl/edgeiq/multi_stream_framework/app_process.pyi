@@ -1,0 +1,13 @@
+import multiprocessing
+from .multi_stream_app_interface import MultiStreamAppInterface as MultiStreamAppInterface
+from .shared import Shared as Shared
+from edgeiq._utils import gen_logger as gen_logger
+from typing import Type
+
+class AppProcess(multiprocessing.Process):
+    next_idx: int
+    @classmethod
+    def get_next_idx(cls): ...
+    def __init__(self, app_class: Type[MultiStreamAppInterface], shared: Shared, args: tuple) -> None: ...
+    def setup_logger(self): ...
+    def run(self) -> None: ...
