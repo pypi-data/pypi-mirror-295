@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: mfa-decoder
+Version: 1.0.4
+Summary: Decode QR Code & Generate OTP
+Home-page: https://www.nghiahl.cloud
+Author: Nghia Handsome
+Author-email: nghiahandsome@gmail.com
+License: GNU General Public License v3 (GPLv3)
+Keywords: QR_Code OTP 2FA Secret-Code
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: opencv-python
+Requires-Dist: pyzbar
+Requires-Dist: pyotp
+
+**The Project is Used To Extract Raw Data From a QR Code & Generate a TOTP From Secret Code Entered Via The Keyboard.**
+
+**How To Use**
+```
+# QR Code Decoder and OTP Generator
+mfa_decoder [-h] {decode,otp} INPUT
+```
+| Arguments       | Description                             |
+|---------------|-----------------------------------------|
+| `decode`      | Decode QR Code With `<INPUT>` - "Path To QR Code" |
+| `otp`         | Generate OTP From Secret Code (Base32 Format)           |
+| `-h, --help`  | Show This Help Message and Exit         |
+
+**Note**: The Secret Code Here Only Accepts Strings Encoded In Base32 Format. Other Encoding Formats Like Base64, Hex, or Bytes are Not Yet Supported By This Project (Base32 Only Contains The Characters A-Z And 2-7, Without Characters Like 1, 8, 9, 0, Or Other Special Characters).
+
+**Example**
+| Command	    | Output 		|
+| :-------------: |:-------------:|
+| # mfa_decoder decode C:\Users\Test\QR-Code.png	| This-Is-Raw-Data-From-QR-Code
+| # mfa_decoder otp 1233214566547899870				| Invalid Base32 Format
+| # mfa_decoder otp 3O2QUFEKB4O7PF3FEVC				| 123456

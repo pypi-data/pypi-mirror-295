@@ -1,0 +1,2 @@
+[console_scripts]
+mfa_decoder = mfa_decoder.mfa_decoder:main
