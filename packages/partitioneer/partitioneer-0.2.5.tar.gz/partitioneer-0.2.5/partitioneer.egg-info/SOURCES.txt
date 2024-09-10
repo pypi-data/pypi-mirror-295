@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+partitioneer/__init__.py
+partitioneer/core.py
+partitioneer.egg-info/PKG-INFO
+partitioneer.egg-info/SOURCES.txt
+partitioneer.egg-info/dependency_links.txt
+partitioneer.egg-info/requires.txt
+partitioneer.egg-info/top_level.txt
+tests/test_core.py
