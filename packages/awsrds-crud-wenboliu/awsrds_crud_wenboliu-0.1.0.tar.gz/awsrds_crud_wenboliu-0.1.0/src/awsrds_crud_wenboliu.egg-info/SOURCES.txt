@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/awsrds_crud_wenboliu.egg-info/PKG-INFO
+src/awsrds_crud_wenboliu.egg-info/SOURCES.txt
+src/awsrds_crud_wenboliu.egg-info/dependency_links.txt
+src/awsrds_crud_wenboliu.egg-info/requires.txt
+src/awsrds_crud_wenboliu.egg-info/top_level.txt
+src/mongodb_connect/__init__.py
+src/mongodb_connect/mysql_crud.py
