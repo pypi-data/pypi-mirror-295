@@ -1,0 +1,7 @@
+google-cloud-workstations<1.0.0,>=0.5.6
+click<9.0.0,>=8.1.7
+pyyaml<7.0.0,>=6.0.1
+wheel<0.44.0,>=0.43.0
+rich<14.0.0,>=13.7.1
+grpcio==1.64.1
+google-cloud-logging<4.0.0,>=3.10.0

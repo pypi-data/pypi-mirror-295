@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: cloud-workstation
+Version: 0.1.0
+Author-email: Damien Ramunno-Johnson <damien@squareup.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: google-cloud-workstations<1.0.0,>=0.5.6
+Requires-Dist: click<9.0.0,>=8.1.7
+Requires-Dist: pyyaml<7.0.0,>=6.0.1
+Requires-Dist: wheel<0.44.0,>=0.43.0
+Requires-Dist: rich<14.0.0,>=13.7.1
+Requires-Dist: grpcio==1.64.1
+Requires-Dist: google-cloud-logging<4.0.0,>=3.10.0
+
+### Cloud-Workstations
+Please see the docs [here](https://square.github.io/workstations/).
