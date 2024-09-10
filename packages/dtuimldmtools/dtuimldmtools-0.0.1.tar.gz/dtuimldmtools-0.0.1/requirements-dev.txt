@@ -1,0 +1,15 @@
+matplotlib
+scikit-learn
+numpy
+torch
+nltk
+xlrd
+scipy
+importlib_resources
+apyori
+pandas
+black
+pytest
+flake8
+twine
+build
