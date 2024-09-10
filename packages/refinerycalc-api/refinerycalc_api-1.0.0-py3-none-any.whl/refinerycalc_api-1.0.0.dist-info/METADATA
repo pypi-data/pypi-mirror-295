@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: refinerycalc-api
+Version: 1.0.0
+Summary: Refinery Calc API Documentation
+Home-page: 
+Author-email: support@refinerycalc.com.com
+Keywords: Swagger,Refinery Calc API Documentation
+Requires-Dist: urllib3 >=1.15
+Requires-Dist: six >=1.10
+Requires-Dist: certifi
+Requires-Dist: python-dateutil
+
+    Integrate the powerful Refinery Calc Engine into your process using this API.  # noqa: E501
+    
