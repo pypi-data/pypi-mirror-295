@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: adnbidder
+Version: 1.0.7
+Summary: A simple client for controlling bidding in the Adnuntius platform
+Home-page: https://github.com/Adnuntius/adnuntius-bidder
+Author: Adnuntius
+Author-email: tech@adnuntius.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+License-File: LICENSE.txt
+Requires-Dist: python-dateutil
+Requires-Dist: adnuntius
+
+A simple client for controlling bidding in the Adnuntius platform
