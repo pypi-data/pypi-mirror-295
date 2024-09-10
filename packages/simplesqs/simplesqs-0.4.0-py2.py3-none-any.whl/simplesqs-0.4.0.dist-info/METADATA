@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: simplesqs
+Version: 0.4.0
+Summary: A library for sending and receiving AWS SQS messages.
+Home-page: https://github.com/caltechads/simplesqs
+Author: Glenn W. Bach
+Author-email: imss-ads-staff@caltech.edu
+License: MIT License
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Networking
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: boto3
+
+# Simple SQS
+
+Provides a simple class-based wrapper around AWS SQS.
+
+## Quick start
+
+Install with pip:
+
+    pip install simplesqs
+
+Creating a queue:
+
+    from simplesqs.message import MessagingHandler
+
+    queue_name = "test_queue_simplesqs"
+    handler = MessagingHandler(queue_name=queue_name)
+    handler.create_queue()
+
+Sending a message:
+
+    from simplesqs.message import MessagingHandler
+
+    queue_name = "test_queue_simplesqs"
+    handler = MessagingHandler(queue_name=queue_name)
+    handler.send_message(message_type='test', message={'message': f"Hello world!"})
+
+Reading messages:
+
+    from simplesqs.message import MessagingHandler
+
+    queue_name = "test_queue_simplesqs"
+    handler = MessagingHandler(queue_name=queue_name)
+
+    while True:
+        messages = handler.batch_receive_messages(message_type='test')
+        if len(messages) == 0:
+            break
+        for message in messages:
+            print(message.message)
+            message.delete()
