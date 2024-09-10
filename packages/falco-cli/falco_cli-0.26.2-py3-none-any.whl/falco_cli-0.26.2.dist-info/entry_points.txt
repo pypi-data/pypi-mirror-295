@@ -1,0 +1,2 @@
+[console_scripts]
+falco = falco_cli.__main__:main
