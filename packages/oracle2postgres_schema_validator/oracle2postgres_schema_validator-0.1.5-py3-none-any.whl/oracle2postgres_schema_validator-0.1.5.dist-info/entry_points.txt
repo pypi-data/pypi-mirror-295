@@ -1,0 +1,6 @@
+[console_scripts]
+importer=importer.__main__:main
+oracollector=oracollector.__main__:main
+pgcollector=pgcollector.__main__:main
+reporter=reporter.__main__:main
+
