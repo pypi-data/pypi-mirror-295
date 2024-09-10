@@ -1,0 +1,5 @@
+[console_scripts]
+image-builder=images:build
+main-tests=tests.runner:test_main
+test-image-builder=images:build_test
+
