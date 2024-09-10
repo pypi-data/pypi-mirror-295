@@ -1,0 +1,16 @@
+beautifulsoup4>=4.12.3
+click>=8.1.7
+httpx>=0.27.0
+pillow>=10.4.0
+pydantic-xml>=2.11.0
+pydantic[email]>=2.8.2
+user-agent>=0.1.10
+
+[build]
+setuptools
+wheel
+build
+
+[dev]
+ruff
+mypy
