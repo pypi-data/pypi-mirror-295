@@ -1,0 +1,39 @@
+[build-system]
+requires = [
+  "hatchling",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "linc_convert"
+version = "0.0.1"
+authors = [
+  { name="Yaël Balbastre", email="y.balbastre@ucl.ac.uk"},
+  { name="Michael Schutzman", email="michaelschutzman@gmail.com"},
+]
+description = "Linc Convert Scripts"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+license = "Apache-2.0"
+dependencies = [
+    "numpy",
+    "glymur",
+    "zarr",
+    "nibabel",
+    "tifffile",
+    "numcodecs",
+    "typer",
+    "numcodecs",
+]
+
+[project.urls]
+Homepage = "https://github.com/lincbrain/linc-convert"
+Issues = "https://github.com/lincbrain/linc-convert/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scripts"]
