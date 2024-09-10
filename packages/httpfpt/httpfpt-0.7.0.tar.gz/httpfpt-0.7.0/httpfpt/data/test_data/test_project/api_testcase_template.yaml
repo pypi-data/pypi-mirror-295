@@ -1,0 +1,160 @@
+config:
+  allure:
+    epic: demo接口
+    feature: demo模块
+    story: yaml数据测试输出
+  request:
+    env: dev.env
+    headers:
+    timeout: 10
+    verify: False
+    redirects: True
+    proxies:
+      http:
+      https:
+    retry:
+  module: test
+
+test_steps:
+  - name: 查询
+    case_id: event_query_001
+    description: 测试关联变量
+    is_run:
+    request:
+      method: GET
+      url: /posts/1
+      params:
+      headers:
+      body_type:
+      body:
+      files:
+    setup:
+      - testcase:
+          case_id: event_linked_001
+          request:
+            - value: 2
+              jsonpath: $.params.postId
+          response:
+            - key: rcode
+              jsonpath: $.status_code
+      - testcase:
+          case_id: event_linked_001
+          response:
+              - key: rcode
+                jsonpath: $.status_code
+      - testcase: event_linked_001
+      - hook:
+      - wait_time: 0
+    teardown:
+      - sql:
+      - hook:
+      - extract:
+          key: test_cache
+          type: cache
+          jsonpath: $.status_code
+      - assert:
+          check:
+          type: str_eq
+          value: ^{rcode}
+          jsonpath: $.status_code
+      - wait_time: 0
+
+  - name: 断言
+    case_id: event_query_002
+    description: 测试高级断言
+    is_run:
+    request:
+      method: GET
+      url: /albums/1
+      params:
+      headers:
+      body_type:
+      body:
+      files:
+    setup:
+      - wait_time: 0
+    teardown:
+      - extract:
+          key: test_env
+          type: env
+          jsonpath: $.status_code
+      - extract:
+          key: test_global
+          type: global
+          jsonpath: $.status_code
+      - assert: assert 200 == pm.response.get('status_code')
+      - assert: assert pm.response.get('status_code') == IsInt(exactly=200), '响应状态码非200'
+      - assert: assert int(pm.response.get('status_code')) == IsInt, '响应状态码错误'
+      - assert: assert 'postId' not in str(pm.response.get('content')), '没有返回content'
+      - assert:
+          check:
+          type: jsonschema
+          jsonschema:
+            type: object
+            properties:
+              userId:
+                type: integer
+              id:
+                type: integer
+              title:
+                type: string
+            required:
+              - userId
+              - id
+              - title
+      - assert:
+          check:
+          type: re
+          pattern: '^\b200\b'
+          jsonpath: $.status_code
+
+  - name: hook
+    case_id: event_create_001
+    description: 测试hook
+    is_run:
+    retry: 2
+    request:
+      method: POST
+      url: /users/1
+      params:
+      headers:
+      body_type: json
+      body:
+        title: foo
+        body: sum(a+b)=${sum_a_b(1,2)}; $test_cache ; $test_env ; ${test_global}.
+        userId: 1
+      files:
+    setup:
+      - hook: ${current_time()}
+    teardown:
+      - hook: ${random_phone()}
+      - assert: assert 200 == pm.response.get('status_code')
+
+  - name: 被关联用例
+    case_id: event_linked_001
+    description: 作为被关联简易用例而存在
+    is_run:
+    request:
+      method: GET
+      url: /comments
+      params:
+        postId: 1
+      headers:
+      body_type:
+      body:
+      files:
+
+  - name: 跨文件关联用例
+    case_id: event_relate_001
+    description: 测试跨文件关联用例
+    is_run:
+    request:
+      method: GET
+      url: /albums/1
+      params:
+      headers:
+      body_type:
+      body:
+      files:
+    setup:
+      - testcase: event_upload_004
