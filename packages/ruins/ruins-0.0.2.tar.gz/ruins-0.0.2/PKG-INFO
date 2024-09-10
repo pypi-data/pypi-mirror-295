@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: ruins
+Version: 0.0.2
+Summary: Static page generator
+Home-page: UNKNOWN
+Author: Hiroki Kiyohara
+Author-email: hirokiky@gmail.com
+License: MIT
+Platform: UNKNOWN
+
+# ruins
+
+Static page generator.
+
+## Install
+
+```
+$ pip install ruins
+```
+
+## How to use
+
+See `demo/` of it's GitHub repository.
+
+### Build
+
+```
+$ ruins
+```
+
+
