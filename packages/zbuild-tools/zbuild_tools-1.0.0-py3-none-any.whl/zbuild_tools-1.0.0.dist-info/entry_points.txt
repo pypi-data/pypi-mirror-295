@@ -1,0 +1,13 @@
+[console_scripts]
+board = zbuild:board_main
+buildserver = zbuild:buildserver_main
+mainserver = zbuild:mainserver_main
+mkuenv = zbuild:mkimg_main
+ndb = zbuild:ndb_main
+nflash = zbuild:sel4flash_main
+nrun = zbuild:sel4run_main
+sel4flash = zbuild:sel4flash_main
+sel4run = zbuild:sel4run_main
+tapnet = zbuild:tapnet_main
+zb = zbuild:tb_main
+zbuild = zbuild:zbuild_main
