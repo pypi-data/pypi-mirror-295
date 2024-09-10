@@ -1,0 +1,13 @@
+/data
+/models
+/notebooks/t5/runs
+/notebooks/t5/wandb
+/notebooks/llama2/runs
+/notebooks/llama2/wandb
+/notebooks/size-selection/wandb
+/notebooks/final-model-training/wandb
+/.venv
+/flask-app/build
+/flask-app/dist
+/transliteration/data
+/transliteration/notebooks/wandb
