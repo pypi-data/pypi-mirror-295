@@ -1,0 +1,23 @@
+[project]
+name = "mupny"
+version = "1.3"
+description = "simplest example in the python world"
+license = { text="MIT" }
+dependencies = []
+
+[tool.setuptools]
+# data to be included is specified in MANIFEST.in
+include-package-data = true
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.pytest.ini_options]
+testpaths = [
+  "tests",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+include = '\.pyi?$'
