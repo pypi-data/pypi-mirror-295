@@ -1,0 +1,150 @@
+# FastAPI Validation
+
+FastAPI Validation support both SQLAlchemy for sql database and BeanieODM for nosql Database.
+To use the @Exists and @Unique decorator we need to set global-variable for the database_type
+Check the sample code below
+
+## For SQL Database using SQLAlchemy as ORM
+
+```python
+from fastapi_validation import DatabaseTypeEnum
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=False, pool_size=50, max_overflow=100)
+global_db_session: Session = sessionmaker(
+    autoflush=False, autobegin=True, bind=engine, join_transaction_mode='rollback_only'
+)()
+def run_with_global_session(callback):
+    try:
+        return callback(global_db_session)
+    except Exception as e:
+        global_db_session.rollback()
+        raise e
+
+GlobalVariable.set('run_with_global_session', run_with_global_session)
+GlobalVariable.set('database_type', DatabaseTypeEnum.SQL)
+```
+
+## For Nosql Database using Beanie as ODM
+
+```python
+GlobalVariable.set('database_type', DatabaseTypeEnum.NOSQL) # We can skip this line because the defautl database_type is No-SQL
+
+```
+
+## How to use
+
+
+### Exists decorator
+
+```python
+from fastapi_validation import FieldValidator, Exists
+
+class UpdateProfileDto(BaseDto):
+  avatar_id: UUID | None = None
+
+  _exist_avatar = FieldValidator('avatar_id')(
+    Exists(
+      table=MediaEntity,
+      column='id',
+      customs=[{'column': 'type', 'value': MediaType.IMAGE}],
+    )
+  )
+```
+
+### Unique decorator
+
+```python
+
+class InviteUserDto(BaseDto):
+  username: str = Field(max_length=255, min_length=1)
+
+  _unique_username = FieldValidator('username')(
+    Unique(table=UserEntity, column='username', customs=[{'column': 'deleted_at', 'value': None}])
+  )
+
+```
+
+### Customized FieldValidator handler
+
+```python
+
+from fastapi_validation import FieldValidator
+
+class InviteUserDto(BaseDto):
+  username: str = Field(max_length=255, min_length=1)
+
+  _validate_username = FieldValidator('username')(validate_username)
+
+def validate_username(username: str | None = None) -> str:
+  if not username:
+    return username
+
+  if not re.search(USERNAME_REGEX, username):
+    raise ValueError('invalid username')
+
+  return username
+```
+
+### ModelValidator
+
+```python
+
+from fastapi_validation import ModelValidator
+
+def required_phone_number_and_code_pair(cls, values):
+  phone_code, phone_number = values.phone_code, values.phone_number
+
+  is_missing_only_phone_number = phone_code is not None and phone_number is None
+  is_missing_only_phone_code = phone_number is not None and phone_code is None
+
+  if is_missing_only_phone_number or is_missing_only_phone_code:
+    throw_validation_with_exception(MissingPhoneNumberPhoneCodeError(loc=('body', 'phone_code', 'phone_number')))
+
+  return values
+
+class CheckPhoneTokenDto(BaseDto):
+  phone_code: CodeValidation
+  phone_number: PhoneNumberValidation
+  token: int = Field(ge=100000, le=999999)
+
+  _phone_number_and_code_validation = ModelValidator()(required_phone_number_and_code_pair)
+```
+
+
+### list_int_enum_query_param
+
+```python
+from fastapi_validation import SortParam, Sorts, 
+from fastapi_validation import list_int_enum_query_param
+
+class RoleEnum(int, Enum):
+  ADMIN = 1
+  ADMIN_ASSISTANT = 2
+
+@controller('users')
+@tag('Users')
+@auth()
+class UserController:
+  def __init__(
+    self, user_service: UserService = Depends()
+  ):
+    self.user_service = user_service
+
+  @get()
+  @response(UserResponse)
+  async def list_users_by_role(
+    self,
+    roles: list[int] = list_int_enum_query_param(values=RoleEnum, key='roles'),
+  ):
+    return await self.user_service.list_users_by_role(roles)
+```
+
+### PasswordValidation
+
+```python
+from fastapi_validation import PasswordValidation
+
+class ChangePasswordDto(BaseDto):
+  old_password: PasswordValidation
+  new_password: PasswordValidation
+```
