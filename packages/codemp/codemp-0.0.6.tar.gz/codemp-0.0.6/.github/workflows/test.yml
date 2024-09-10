@@ -1,0 +1,38 @@
+name: test
+
+on:
+  push:
+    branches:
+      - ci
+      - dev
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        features:
+          - rust
+          - lua
+          - java
+          - js
+          - python
+        toolchain:
+          - stable
+        #  - beta
+        #  - nightly
+        # TODO should re-enable future toolchains so we get warnings on breaking changes
+    steps:
+      - uses: arduino/setup-protoc@v3
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - run: cargo test --verbose --features=${{ matrix.features }}
