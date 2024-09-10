@@ -1,0 +1,35 @@
+{
+    "provider": "ollama",
+    "prompt_file_path": "examples/prompts/ollama.prompt",
+    "output_path": "examples/completions/ollama/beschrijving",
+    "input_file": "examples/tests/podcast_titels/beschrijving.txt",
+    "input_text": "",
+    "duration": 18.574735874994076,
+    "cost": 0.0,
+    "errors": {
+        "errors": [],
+        "duplicates": 0
+    },
+    "completion": {
+        "system_role": "You are a helpful assistant.",
+        "model": "gemma2",
+        "parameters": {
+            "provider": "ollama",
+            "model": "gemma2",
+            "prompt_version": 1.0,
+            "temperature": 0.2,
+            "input": "examples/inputs/podcast_titels/beschrijving.txt",
+            "output": "title-ollama.txt",
+            "test_path": "examples/tests/podcast_titels"
+        },
+        "cost": 0.0,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "Hier zijn 5 titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **AI in Action: MLOps & Beyond** (Krachtig en direct, benadrukt praktische toepassingen)\n2. **Decoding AI: Explainability & Business Impact** (Benadrukt de waarde van begrijpelijke AI voor bedrijven)\n3. **The Language of Machines: LLMs for the Enterprise** (Focus op Large Language Models en hun zakelijke potentieel)\n4. **AI Unpacked: Bridging the Gap Between Tech & Strategy** (Verkrijgt een brug tussen technische kennis en bedrijfsstrategie)\n5. **Future Forward: AI Insights for IT Leaders** (Richt zich rechtstreeks op leiders in de IT-sector) \n\n\n",
+        "duration": 18.574735874994076,
+        "provider_file": "claude.json"
+    },
+    "completion_type": "OllamaCompletion",
+    "response_message": "Hier zijn 5 titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **AI in Action: MLOps & Beyond** (Krachtig en direct, benadrukt praktische toepassingen)\n2. **Decoding AI: Explainability & Business Impact** (Benadrukt de waarde van begrijpelijke AI voor bedrijven)\n3. **The Language of Machines: LLMs for the Enterprise** (Focus op Large Language Models en hun zakelijke potentieel)\n4. **AI Unpacked: Bridging the Gap Between Tech & Strategy** (Verkrijgt een brug tussen technische kennis en bedrijfsstrategie)\n5. **Future Forward: AI Insights for IT Leaders** (Richt zich rechtstreeks op leiders in de IT-sector) \n\n\n",
+    "response_texr": "Hier zijn 5 titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **AI in Action: MLOps & Beyond** (Krachtig en direct, benadrukt praktische toepassingen)\n2. **Decoding AI: Explainability & Business Impact** (Benadrukt de waarde van begrijpelijke AI voor bedrijven)\n3. **The Language of Machines: LLMs for the Enterprise** (Focus op Large Language Models en hun zakelijke potentieel)\n4. **AI Unpacked: Bridging the Gap Between Tech & Strategy** (Verkrijgt een brug tussen technische kennis en bedrijfsstrategie)\n5. **Future Forward: AI Insights for IT Leaders** (Richt zich rechtstreeks op leiders in de IT-sector) \n\n\n"
+}

@@ -1,0 +1,62 @@
+{
+    "test_id": "test_01",
+    "test_prompt": "Controleer of de titels in de lijst in \"normal casing\" zijn geschreven. Dit betekent dat alleen het eerste woord van de titel en eventuele eigennamen of acroniemen met een hoofdletter beginnen. Woorden na een dubbele punt hoeven geen hoofdletter te hebben, tenzij het eigen namen of acroniemen betreft. Antwoord met JA/NEE of alle titels correct zijn geschreven volgens dit principe. Indien NEE, leg uit waarom niet. \n",
+    "test_completion": "NEE\n\nHier is waarom:\n\n* **AI in Action: MLOps & Beyond**  is correct.\n* **Decoding AI: Explainability & Business Impact** is correct.\n* **The Language of Machines: LLMs for the Enterprise** heeft een hoofdletter voor \"The\" die niet nodig is. \n* **AI Unpacked: Bridging the Gap Between Tech & Strategy** is correct.\n* **Future Forward: AI Insights for IT Leaders** is correct. \n\n\n\n",
+    "passed": false,
+    "completion": {
+        "system_role": "Je bent een prompt tester.",
+        "model": "gemma2",
+        "parameters": {
+            "temperature": 0.2,
+            "max_tokens": 1000
+        },
+        "cost": 0.0,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "NEE\n\nHier is waarom:\n\n* **AI in Action: MLOps & Beyond**  is correct.\n* **Decoding AI: Explainability & Business Impact** is correct.\n* **The Language of Machines: LLMs for the Enterprise** heeft een hoofdletter voor \"The\" die niet nodig is. \n* **AI Unpacked: Bridging the Gap Between Tech & Strategy** is correct.\n* **Future Forward: AI Insights for IT Leaders** is correct. \n\n\n\n",
+        "duration": 6.417275750005501,
+        "provider_file": "claude.json",
+        "completion_type": "OllamaCompletion"
+    },
+    "completion_type": "OllamaCompletion",
+    "engineered_prompt": {
+        "provider": "ollama",
+        "prompt_file_path": "examples/prompts/ollama.prompt",
+        "output_path": "examples/completions/ollama/beschrijving",
+        "input_file": "examples/tests/podcast_titels/beschrijving.txt",
+        "input_text": "",
+        "duration": 18.574735874994076,
+        "cost": 0.0,
+        "errors": {
+            "errors": [],
+            "duplicates": 0
+        },
+        "completion": {
+            "system_role": "You are a helpful assistant.",
+            "model": "gemma2",
+            "parameters": {
+                "provider": "ollama",
+                "model": "gemma2",
+                "prompt_version": 1.0,
+                "temperature": 0.2,
+                "input": "examples/inputs/podcast_titels/beschrijving.txt",
+                "output": "title-ollama.txt",
+                "test_path": "examples/tests/podcast_titels"
+            },
+            "cost": 0.0,
+            "is_json": false,
+            "test_path": "",
+            "response_message": "Hier zijn 5 titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **AI in Action: MLOps & Beyond** (Krachtig en direct, benadrukt praktische toepassingen)\n2. **Decoding AI: Explainability & Business Impact** (Benadrukt de waarde van begrijpelijke AI voor bedrijven)\n3. **The Language of Machines: LLMs for the Enterprise** (Focus op Large Language Models en hun zakelijke potentieel)\n4. **AI Unpacked: Bridging the Gap Between Tech & Strategy** (Verkrijgt een brug tussen technische kennis en bedrijfsstrategie)\n5. **Future Forward: AI Insights for IT Leaders** (Richt zich rechtstreeks op leiders in de IT-sector) \n\n\n",
+            "duration": 0.0,
+            "provider_file": "claude.json"
+        },
+        "completion_type": "OllamaCompletion",
+        "response_message": "Hier zijn 5 titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **AI in Action: MLOps & Beyond** (Krachtig en direct, benadrukt praktische toepassingen)\n2. **Decoding AI: Explainability & Business Impact** (Benadrukt de waarde van begrijpelijke AI voor bedrijven)\n3. **The Language of Machines: LLMs for the Enterprise** (Focus op Large Language Models en hun zakelijke potentieel)\n4. **AI Unpacked: Bridging the Gap Between Tech & Strategy** (Verkrijgt een brug tussen technische kennis en bedrijfsstrategie)\n5. **Future Forward: AI Insights for IT Leaders** (Richt zich rechtstreeks op leiders in de IT-sector) \n\n\n",
+        "response_texr": ""
+    },
+    "last_run": "2024-08-12 10:23:06",
+    "errors": {
+        "errors": [],
+        "duplicates": 0
+    }
+}
