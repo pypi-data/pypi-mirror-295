@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: DialAgent
+Version: 0.0.2
+Summary: DialAgent
+Home-page: https://github.com/chensav
+Author: chensav
+Author-email: chensav@163.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fabric2
+Requires-Dist: redis
+
+
+### 安装
