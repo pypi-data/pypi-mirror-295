@@ -1,0 +1,12 @@
+README.md
+setup.py
+macrolibs/__init__.py
+macrolibs.egg-info/PKG-INFO
+macrolibs.egg-info/SOURCES.txt
+macrolibs.egg-info/dependency_links.txt
+macrolibs.egg-info/top_level.txt
+macrolibs/filemacros/__init__.py
+macrolibs/filemacros/filemacros.py
+macrolibs/filemacros/jsonmacros.py
+macrolibs/typemacros/__init__.py
+macrolibs/typemacros/typemacros.py
