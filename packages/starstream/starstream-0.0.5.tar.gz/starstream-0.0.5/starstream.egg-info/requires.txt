@@ -1,0 +1,15 @@
+spacepy
+astropy
+xarray
+selenium==4.23.1
+chromedriver-binary==128.*
+tqdm
+numpy
+aiofiles
+beautifulsoup4
+pandas
+pillow
+joblib
+aiohttp
+viresclient
+asyncio
