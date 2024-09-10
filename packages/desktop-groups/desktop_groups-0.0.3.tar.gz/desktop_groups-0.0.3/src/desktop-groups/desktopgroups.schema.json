@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/Nitro4542/desktop-groups/master/src/desktop-groups/desktopgroups.schema.json",
+    "title": "DesktopGroup",
+    "description": "A .desktopgroup file",
+    "type": "object",
+    "properties": {
+        "group": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "icon": {
+                                "type": "string"
+                            },
+                            "command": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "command"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ]
+        }
+    },
+    "required": [
+        "group"
+    ]
+}

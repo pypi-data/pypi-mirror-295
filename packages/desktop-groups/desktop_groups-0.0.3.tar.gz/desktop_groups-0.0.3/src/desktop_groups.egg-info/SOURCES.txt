@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/desktop-groups/__init__.py
+src/desktop-groups/__main__.py
+src/desktop-groups/desktopgroups.schema.json
+src/desktop-groups/group.py
+src/desktop-groups/gui.py
+src/desktop_groups.egg-info/PKG-INFO
+src/desktop_groups.egg-info/SOURCES.txt
+src/desktop_groups.egg-info/dependency_links.txt
+src/desktop_groups.egg-info/requires.txt
+src/desktop_groups.egg-info/top_level.txt
