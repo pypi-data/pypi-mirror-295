@@ -1,0 +1,6 @@
+pybind11>=2.10.0
+cmake
+
+[test]
+pre-commit
+pytest
