@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: toadr3
+Version: 0.2.2
+Summary: Tiny OpenADR 3 compatible client Python Library
+Home-page: https://github.com/prelectai/toadr3
+License: Apache-2.0
+Author: Jean-Paul Balabanian
+Author-email: jean-paul.balabanian@eviny.no
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aiodns (>=3.2.0,<4.0.0)
+Requires-Dist: aiohttp (>=3.10.5,<4.0.0)
+Project-URL: Repository, https://github.com/prelectai/toadr3
+Description-Content-Type: text/markdown
+
+# toadr3 
+## Tiny OpenADR3 Python Library
+
+This is an OpenADR3 compatible Python library that can be used to perform operations from the VEN perspective.   
+
+
+
+
+
