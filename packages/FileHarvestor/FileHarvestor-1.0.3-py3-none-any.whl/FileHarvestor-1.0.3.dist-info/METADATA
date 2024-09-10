@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: FileHarvestor
+Version: 1.0.3
+Summary: FileHarvestor is a Python utility that reads the contents of specified files and writes them to both text and markdown files. If a file does not exist, it is added to a list of not found files. This tool is useful for consolidating and documenting the contents of multiple files in a directory.
+Home-page: https://github.com/Hardvan/FileHarvestor
+Author: Hardik Pawar
+Author-email: hardikpawarh@gmail.com
+License: UNKNOWN
+Keywords: file,harvestor,read,write,text,markdown,file-reader,read-file
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# FileHarvestor
+
+This script is a Python utility that reads the contents of specified files and writes them to both text and markdown files. If a file does not exist, it is added to a list of not found files. This tool is useful for consolidating and documenting the contents of multiple files in a directory.
+
+## Features
+
+- Reads the contents of specified files.
+- Writes the contents to both a text file (`contents.txt`) and a markdown file (`contents.md`).
+- Handles non-existent files and maintains a list of files that were not found.
+- Provides a summary of the process, including read times for each file and overall execution time.
+
+## How it works
+
+1. The script takes a list of file paths as input and iterates through each file.
+2. For each file, it checks if it exists, reads its contents, and writes the contents to both a text file and a markdown file.
+3. If a file is not found, it is added to a list of not found files.
+4. The script provides detailed output about the success or failure of reading each file and summarizes the overall process at the end.
+
+Function arguments:
+
+- **file_list (list, optional):** List of files to read. Defaults to None.
+- **output_text_file (str, optional):** Output text file. Defaults to './output/contents.txt'.
+- **output_markdown_file (str, optional):** Output markdown file. Defaults to './output/contents.md'.
+
+## Usage
+
+1. Install the `FileHarvestor` package from PyPI using pip:
+
+   ```bash
+   pip install FileHarvestor
+   ```
+
+   OR
+
+   Clone or download the `FileHarvestor.py` script to your local machine.
+
+   ```bash
+   git clone https://github.com/Hardvan/FileHarvestor
+   cd FileHarvestor
+   pip install .
+   ```
+
+2. Call the `read_files_in_directory` function from the `FileHarvestor` package with the directory path as an argument.
+
+   ```python
+   from FileHarvestor import read_files_in_directory
+
+   read_files(file_list=['./path/to/file1.txt', './path/to/file2.txt'], output_text_file='./output/contents.txt', output_markdown_file='./output/contents.md')
+   ```
+
+   View the `run.py` file for an example of how to use the `FileHarvestor` package.
+
+
