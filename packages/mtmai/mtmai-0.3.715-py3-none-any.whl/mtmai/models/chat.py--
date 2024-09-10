@@ -1,0 +1,22 @@
+from datetime import datetime
+
+from sqlmodel import Field, SQLModel
+
+from mtmai.mtlibs import mtutils
+
+
+# 过期了？
+class MtmChatMessageBase(SQLModel):
+    content: str | None = None
+    role: str | None = Field(default="user")
+    # 升级中，用这个字段表示消息类型，消息类型决定了全段使用什么组件渲染
+    msg_ypte: str | None = Field(default="msg")
+
+
+# 过期了？
+class MtmChatMessage(MtmChatMessageBase, table=True):
+    id: str = Field(default_factory=mtutils.gen_orm_id_key, primary_key=True)
+    created_at: datetime = Field(default_factory=datetime.now, nullable=False)
+    updated_at: datetime = Field(default_factory=datetime.now, nullable=False)
+    chat_id: str | None = Field(default=None, foreign_key="chatinput.id")
+    # chat: "ChatInput" = Relationship(back_populates="messages")
