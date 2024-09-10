@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "info_ratio"
+version = "0.1.9"
+description = "Calculation of Information Ratio for Mutual Funds per category"
+authors = ["Rolf Lobo <rolf.lobo@trustgroup.in>"]
+license = "OSI Approved :: GNU General Public License v3 (GPLv3)"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "1.4.3"
+numpy = "1.23.1"
+openpyxl = "3.0.10"
+joblib = "^1.4.2"
+loga = "^1.0.0"
+tqdm = "^4.66.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
