@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2024 OpenBit
+#
+# SPDX-License-Identifier: CC0-1.0
+
+[build-system]
+requires=["setuptools>=70", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"boxer" = "boxer"}
+
+[tool.setuptools_scm]
+
+[tool.setuptools.dynamic]
+dependencies = { "file" = ["requirements.txt"] }
+
+[project]
+name="boxer"
+authors = [
+    { name = "Hugo Rodrigues", email="hugo.rodrigues@openbit.tech" }
+]
+description = "Boxer - A VM builder"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies", "version"]
+
+[project.scripts]
+boxer = "boxer.__main__:wrapper"
+
+[project.urls]
+Homepage = "https://codeberg.org/openbit/boxer"
+Issues = "https://codeberg.org/openbit/boxer/issues"

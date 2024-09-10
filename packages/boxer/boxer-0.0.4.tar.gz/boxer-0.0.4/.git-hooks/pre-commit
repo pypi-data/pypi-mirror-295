@@ -1,0 +1,9 @@
+#!/bin/sh
+# SPDX-FileCopyrightText: 2024 OpenBit
+#
+# SPDX-License-Identifier: CC0-1.0
+set -e 
+find "$(dirname "$0")/pre-commit.d/" -type f -name "*.sh" -print0 | xargs -0 realpath | while read hook;do
+    echo "::Running $hook"
+    /bin/sh $hook
+done

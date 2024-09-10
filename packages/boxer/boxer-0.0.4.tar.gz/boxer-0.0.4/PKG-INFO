@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: boxer
+Version: 0.0.4
+Summary: Boxer - A VM builder
+Author-email: Hugo Rodrigues <hugo.rodrigues@openbit.tech>
+Project-URL: Homepage, https://codeberg.org/openbit/boxer
+Project-URL: Issues, https://codeberg.org/openbit/boxer/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: aiodns==3.2.0
+Requires-Dist: aiohttp==3.9.5
+Requires-Dist: aiofiles==24.1.0
+Requires-Dist: aioshutil==1.4
+Requires-Dist: validators==0.28.3
+Requires-Dist: asyncssh==2.14.2
+
+<!--
+SPDX-FileCopyrightText: 2024 OpenBit
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
+# Boxer
+
+Boxer is a tool to build virtual machine images.
+
