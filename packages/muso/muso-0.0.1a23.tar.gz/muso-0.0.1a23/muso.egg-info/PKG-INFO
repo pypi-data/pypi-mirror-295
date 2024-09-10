@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: muso
+Version: 0.0.1a23
+Summary: A simple async JSON API-Framework based on Marshmallow / Uvicorn / Starlette / Orjson.
+Author-email: "M@gicAgCl(DEAD)" <wyqsmith@aegeanstudio.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiomysql
+Requires-Dist: apispec
+Requires-Dist: marshmallow
+Requires-Dist: orjson
+Requires-Dist: psycopg[binary,pool]
+Requires-Dist: python-multipart
+Requires-Dist: starlette
+Requires-Dist: tzlocal
+Requires-Dist: uvicorn[standard]
+
+# muso
+A simple async JSON API-Framework based on **M**arshmallow / **U**vicorn / **S**tarlette / **O**rjson.
