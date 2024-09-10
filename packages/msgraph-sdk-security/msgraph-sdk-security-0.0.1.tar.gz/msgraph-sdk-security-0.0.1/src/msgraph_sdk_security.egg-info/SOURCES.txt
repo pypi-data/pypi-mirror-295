@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+data/data_file
+src/msgraph_sdk_security.egg-info/PKG-INFO
+src/msgraph_sdk_security.egg-info/SOURCES.txt
+src/msgraph_sdk_security.egg-info/dependency_links.txt
+src/msgraph_sdk_security.egg-info/entry_points.txt
+src/msgraph_sdk_security.egg-info/requires.txt
+src/msgraph_sdk_security.egg-info/top_level.txt
+tests/test_simple.py
