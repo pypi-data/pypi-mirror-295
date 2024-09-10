@@ -1,0 +1,11 @@
+setup.py
+config/__init__.py
+config/cache.py
+config/common_env.py
+config/constants.py
+config/global_vaiables_enum.py
+digitization.egg-info/PKG-INFO
+digitization.egg-info/SOURCES.txt
+digitization.egg-info/dependency_links.txt
+digitization.egg-info/requires.txt
+digitization.egg-info/top_level.txt
