@@ -1,0 +1,73 @@
+[build-system]
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "anysynth"
+description = "TBD"
+readme = "README.md"
+requires-python = ">=3.10, <3.13"
+license = {text = "MIT License"}
+authors = [
+    {name = "Takashi Kodama", email = "tkodama@nii.ac.jp"},
+    {name = "Hirokazu Kiyomaru", email = "kiyomaru@nii.ac.jp"},
+    {name = "Yusuke Oda", email = "odashi@predicate.jp"},
+]
+keywords = [
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+]
+dynamic = [
+    "version"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.10",
+    "flake8>=5.0",
+    "isort>=5.10",
+    "mypy>=0.991",
+    "pyproject-flake8>=5.0",
+    "pytest>=7.1",
+]
+mypy = [
+    "mypy>=0.991",
+    "pytest>=7.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/nii-llmc/anysynth"
+"Bug Tracker" = "https://github.com/nii-llmc/anysynth/issues"
+
+[tool.hatch.build]
+include = [
+    "*.py",
+]
+exclude = [
+    "*_test.py",
+]
+only-packages = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anysynth"]
+
+[tool.hatch.version]
+path = "src/anysynth/_version.py"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict = true
