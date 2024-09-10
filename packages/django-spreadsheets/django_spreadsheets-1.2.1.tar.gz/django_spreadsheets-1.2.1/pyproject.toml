@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "django_spreadsheets"
+version = "1.2.1"
+description = "Import from and export to XLSX files with data validation."
+authors = ["Kapt dev team <dev@kapt.mobi>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+repository = "https://gitlab.com/kapt/open-source/django-spreadsheets"
+packages = [
+  { include = "django_spreadsheets" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = ">=3.0,<5"
+django-formtools = "^2.5.1"
+openpyxl = "^3.1.5"
+
+[tool.poetry.dev-dependencies]
+gitchangelog = "^3.0.4"
+bumpversion = "^0.6.0"
+black = "~21.9b0"
+flake8 = "~3.9.2"
+isort = "~5.9.3"
+djhtml = "~1.4.10"
+
+[build-system]
+requires = ["poetry-core>=1.2.1", "setuptools"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+known_local_folder = ["src"]
+sections="FUTURE,STDLIB,DJANGO,THIRDPARTY,LOCALFOLDER,FIRSTPARTY"
+import_heading_stdlib = "Standard Library"
+import_heading_firstparty= "Project"
+import_heading_thirdparty= "Third party"
+import_heading_localfolder= "Local application / specific library imports"
+known_django= "django"
+import_heading_django= "Django"
+
+[tool.black]
+include = '\.pyi?$'
+exclude = '''
+(
+    \.eggs         # exclude a few common directories in the
+  | \.git          # root of the project
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | node_modules
+)
+'''

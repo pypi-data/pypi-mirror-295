@@ -1,0 +1,235 @@
+# DJANGO-SPREADSHEET TRANSLATIONS.
+# Copyright (C) 2024 KAPT
+# This file is distributed under the same license as the DJANGO-SPREADSHEET package.
+# Adrien DELHORME <ad@kapt.mobi>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 16:45+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Adrien DELHORME <ad@kapt.mobi>\n"
+"Language-Team: Kapt <dev@kapt.mobi>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Spreadsheet"
+msgstr "Classeur"
+
+msgid "Configuration"
+msgstr "Configuration"
+
+#, python-brace-format
+msgid "export {config_name} {date}.xlsx"
+msgstr "export {config_name} {date}.xlsx"
+
+#, python-brace-format
+msgid "{config_name} template file.xlsx"
+msgstr "modèle import {config_name}.xlsx"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "No"
+msgstr "Non"
+
+#, python-brace-format
+msgid "Sheet \"{sheet_name}\""
+msgstr "Feuille « {sheet_name} »"
+
+#, python-brace-format
+msgid "{message}, cell {column_letter}{row}"
+msgstr "{message}, cellule {column_letter}{row}"
+
+#, python-brace-format
+msgid "The sheet \"{sheet_name}\" is missing"
+msgstr "La feuille « {sheet_name} » est manquante"
+
+#, python-brace-format
+msgid "The sheet \"{sheet_name}\" is missing from the file you supplied. Check that the sheet has not been deleted or renamed."
+msgstr "La feuille « {sheet_name} » est manquante dans le fichier fourni. Veuillez vérifier que la feuille n’a pas été renommée ou supprimée."
+
+#, python-brace-format
+msgid "The sheet \"{sheet_name}\" will be ignored when importing"
+msgstr "La feuille « {sheet_name} » sera ignorée lors de l’import"
+
+#, python-brace-format
+msgid "The sheet \"{sheet_name}\" in the file you have supplied does not correspond to a sheet in the template ({sheets_names}). It will be ignored."
+msgstr "La feuille « {sheet_name} » dans le fichier fourni ne correspond à aucune feuille dans le modèle ({sheets_names}). Elle sera ignorée."
+
+msgid "The column name does not match the model"
+msgstr "Le nom de la colonne ne correspond pas au modèle"
+
+#, python-brace-format
+msgid "{message} : the name of column {column_letter} is \"{column_header}\" when it should be \"{expected_column_header}\""
+msgstr "{message} : le nom de la colonne {column_letter} est « {column_header} » alors qu’il devrait être « {expected_column_header} »"
+
+#, python-brace-format
+msgid "{message}, column \"{column_header}\" ({column_letter}). {error_message}"
+msgstr "{message}, colonne « {column_header} » ({column_letter}). {error_message}"
+
+#, python-brace-format
+msgid "Type of data in column \"{column_header}\" ({column_letter}) is incorrect"
+msgstr "Le type de donnée dans la colonne « {column_header} » ({column_letter}) est incorrect"
+
+#, python-brace-format
+msgid "{message} : cell must no be empty"
+msgstr "{message} : la cellule ne doit pas être vide"
+
+#, python-brace-format
+msgid "Data is missing in required column \"{column_header}\" ({column_letter})"
+msgstr "Des données sont manquante dans la colonne « {column_header} » ({column_letter})"
+
+#, python-brace-format
+msgid "{message} at least one of the columns \"{column_header}\" ({column_letter}) or \"{required_unless_column_header}\" ({required_unless_column_letter}) must be completed"
+msgstr "{message} au moins une des colonne « {column_header} » ({column_letter}) ou « {unless_column_header} » ({required_unless_column_letter}) doit être remplie"
+
+#, python-brace-format
+msgid "{message} column \"{column_header}\" ({column_letter}) must be completed if column \"{required_if_column_header}\" ({required_if_column_letter}) is completed"
+msgstr "{message} la colonne « {column_header} » ({column_letter}) doit être remplie si la colonne « {required_if_column_header} » ({required_if_column_letter}) est remplie"
+
+#, python-brace-format
+msgid "Line {line_number} is a duplicate of line {is_duplicate_of}"
+msgstr "La ligne {line_number} est un doublon de la ligne {is_duplicate_of}"
+
+msgid "Duplicated lines"
+msgstr "Lignes dupliquées"
+
+#, python-brace-format
+msgid "The object \"{object}\" will be deleted during import because it does not exist in the imported file."
+msgstr "L’objet « {object} » sera supprimé lors de l’import car il n’existe pas dans le fichier fourni."
+
+msgid "Object removal"
+msgstr "Suppression d’objet"
+
+msgid "unknown"
+msgstr "inconnu"
+
+#, python-brace-format
+msgid "The configuration version of the file ({found}) is different from that expected ({expected})"
+msgstr "La version de configuration du fichier ({found}) est différente de celui attendu ({expected})"
+
+msgid "The configuration version of the file is incorrect"
+msgstr "La version de configuration du fichier est incorrecte"
+
+#, python-brace-format
+msgid "`{model_name}.{field_name}` received an unknown value: \"{value}\"."
+msgstr "`{model_name}.{field_name}` a reçu une valeur inconnue: « {value} »."
+
+msgid "Choose a configuration"
+msgstr "Choisissez une configuration"
+
+msgid "File to import"
+msgstr "Fichier à importer"
+
+#, python-brace-format
+msgid "Your file must be formatted as in the template version {config_version}: <a href=\"{url}?config={config_name}\">Download import file template version {config_version}</a>."
+msgstr "Votre fichier doit être formaté comme le modèle version {config_version} : <a href=\"{url}?config={config_name}\">Télécharger le modèle de fichier d’import version {config_version}</a>."
+
+msgid "No file were provided."
+msgstr "Aucun fichier n’a été fourni."
+
+msgid "There are errors in the file. Please correct them and try importing the file again."
+msgstr "Il y a des erreurs dans le fichier. Veuillez les corriger et essayer d’importer le fichier de nouveau."
+
+msgid "No file were provided"
+msgstr "Aucun fichier n’a été fourni."
+
+#, python-brace-format
+msgid "Sheet \"{sheet_title}\", column \"{column_header}\" ({column_letter}) select an existing value corresponding to \"{cell_value}\""
+msgstr "Feuille « {sheet_title} », colonne « {column_header} » ({column_letter}) choisissez une valeur existante correspondant à « {cell_value} »"
+
+msgid "Please select an existing element."
+msgstr "Veuillez choisir une valeur existante."
+
+msgid "Completed"
+msgstr "Terminé"
+
+msgid "The import is complete."
+msgstr "L’import est terminé."
+
+msgid "New import"
+msgstr "Nouvel import"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Start"
+msgstr "Démarrer"
+
+msgid "Import a file"
+msgstr "Importer un fichier"
+
+msgid "for"
+msgstr "pour"
+
+msgid "No errors or warnings identified in the file, click ‘Next’ to confirm data import."
+msgstr "Aucune erreur ou avertissement trouvé dans le fichier, cliquez sur « Suivant » pour confirmer l’import des données."
+
+msgid "Unknown values"
+msgstr "Valeurs inconnues"
+
+msgid "Errors"
+msgstr "Erreurs"
+
+msgid "Sheet"
+msgstr "Feuille"
+
+#, python-format
+msgid "%(counter)s problem"
+msgid_plural "%(counter)s problems"
+msgstr[0] "%(counter)s problème"
+msgstr[1] "%(counter)s problèmes"
+
+msgid "Warnings"
+msgstr "Avertissements"
+
+msgid "General"
+msgstr "Général"
+
+#, python-format
+msgid "%(counter)s warning"
+msgid_plural "%(counter)s warnings"
+msgstr[0] "%(counter)s avertissement"
+msgstr[1] "%(counter)s avertissements"
+
+msgid "Next"
+msgstr "Suivant"
+
+#, python-format
+msgid "Step %(step_number)s/%(steps_total)s"
+msgstr "Étape %(step_number)s/%(steps_total)s"
+
+msgid "Import/Export"
+msgstr "Importer/Exporter"
+
+#, python-brace-format
+msgid "{count} items has been imported from sheet {sheet_name}."
+msgstr "{count} éléments ont été importés depuis la feuille {sheet_name}."
+
+#, python-brace-format
+msgid "No config found with name: \"{config_name}\""
+msgstr "Aucune configuration trouvée avec le nom : « {config_name} »"
+
+#~ msgid "Column \"{column_header}\" must be of the type: {expected_type}"
+#~ msgstr "La colonne « {column_header} » doit être de type : {expected_type}"
+
+#~ msgid "Column \"{column_header}\" is required"
+#~ msgstr "La colonne « {column_header} » est requise"
+
+#~ msgid "Columns \"{column_header}\" and \"{required_if_column_header}\" must be completed"
+#~ msgstr "Les colonnes « {column_header} » et « {required_if_column_header} » doivent être remplies"
+
+#~ msgid "The object \"{object}\" will be deleted during import"
+#~ msgstr "L’objet « {object} » sera supprimé lors de l’import"
+
+#~ msgid "Problems"
+#~ msgstr "Problèmes"
+
+#~ msgid "warnings"
+#~ msgstr "avertissements"

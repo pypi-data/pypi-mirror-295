@@ -1,0 +1,135 @@
+{% extends "spreadsheets/base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Import a file" %}{% endblock title %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {{ wizard.form.media }}
+{% endblock extrastyle %}
+
+{% block page_title %}
+  {% translate "Import a file" %} {% if object %}{% translate "for" %} {{ object.name }}{% endif %}
+{% endblock page_title %}
+
+{% block main %}
+  {% if messages %}
+    <ul class="messagelist messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if importer.has_run_validation and not form.errors %}
+    <p class="alert alert-info">{% blocktranslate %}No errors or warnings identified in the file, click ‘Next’ to confirm data import.{% endblocktranslate %}</p>
+  {% elif form.errors %}
+    <p class="alert alert-danger">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ wizard.management_form }}
+
+    {% if wizard.steps.current == "match" and importer.match_errors %}
+      <h2>{% translate "Unknown values" %}</h2>
+    {% endif %}
+
+    <fieldset class="module spreadsheet-module">
+      {% for field in wizard.form %}
+        <div class="form-row field-{{ field.html_name }}">
+          <div>
+            <div class="flex-container">
+              {{ field.label_tag }}
+              {{ field }}
+            </div>
+            <p class="help">{{ field.help_text }}</p>
+            <ul class="errorlist">{{ field.errors }}</ul>
+          </div>
+        </div>
+      {% endfor %}
+    </fieldset>
+
+    {% if importer.import_errors %}
+      <fieldset class="module spreadsheet-module">
+        <h2>{% translate "Errors" %}</h2>
+        <ul class="spreadsheet-nested-errors">
+          {% regroup importer.import_errors by sheet_name as errors_by_sheet %}
+          {% for sheet in errors_by_sheet %}
+            <li class="spreadsheet-sheet-item">
+              <details>
+                <summary>{% translate "Sheet" %} "{{ sheet.grouper }}"</summary>
+                <ul>
+                  {% regroup sheet.list by title as errors_by_title %}
+                  {% for title in errors_by_title %}
+                    <li class="spreadsheet-error-item">
+                      <details>
+                        <summary>
+                          {{ title.grouper }} <span class="spreadsheet-error-count">{% blocktranslate count counter=title.list|length %}{{ counter }} problem{% plural %}{{ counter }} problems{% endblocktranslate %}</span>
+                        </summary>
+                        <ul class="spreadsheet-errors-list">
+                          {% for error in title.list %}
+                            <li>{{ error }}</li>
+                          {% endfor %}
+                        </ul>
+                      </details>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </details>
+            </li>
+          {% endfor %}
+        </ul>
+      </fieldset>
+    {% endif %}
+
+    {% if importer.import_warnings %}
+      <fieldset class="module spreadsheet-module">
+        <h2>{% translate "Warnings" %}</h2>
+        <ul class="spreadsheet-nested-errors">
+          {% regroup importer.import_warnings by sheet_name as warnings_by_sheet %}
+          {% for sheet in warnings_by_sheet %}
+            <li class="spreadsheet-sheet-item">
+              <details>
+                {% if sheet.grouper %}
+                  <summary>{% translate "Sheet" %} "{{ sheet.grouper }}"</summary>
+                {% else %}
+                  <summary>{% translate "General" %}</summary>
+                {% endif %}
+                <ul>
+                  {% regroup sheet.list by title as warnings_by_title %}
+                  {% for title in warnings_by_title %}
+                    <li class="spreadsheet-error-item">
+                      <details>
+                        <summary>
+                          {{ title.grouper }} <span class="spreadsheet-error-count">{% blocktranslate count counter=title.list|length %}{{ counter }} warning{% plural %}{{ counter }} warnings{% endblocktranslate %}</span>
+                        </summary>
+                        <ul class="spreadsheet-errors-list">
+                          {% for warning in title.list %}
+                            <li>{{ warning }}</li>
+                          {% endfor %}
+                        </ul>
+                      </details>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </details>
+            </li>
+          {% endfor %}
+        </ul>
+      </fieldset>
+    {% endif %}
+
+    <div class="submit-row">
+      <input type="submit" value="{% translate "Next" %}" class="{% block submit-button-class %}default{% endblock submit-button-class %}" />
+      <span class="submit-row-item align-item-right">
+        {% blocktranslate with step_number=wizard.steps.step1 steps_total=wizard.steps.count %}Step {{ step_number }}/{{ steps_total }}{% endblocktranslate %}
+      </span>
+    </div>
+  </form>
+{% endblock main %}

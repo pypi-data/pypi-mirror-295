@@ -1,0 +1,13 @@
+{% extends "spreadsheets/base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Configuration" %}{% endblock page_title %}
+{% block main %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="submit-row">
+      <input type="submit" class="{% block submit-button-class %}default{% endblock submit-button-class %}" value="{% translate "Export" %}" />
+    </div>
+  </form>
+{% endblock main %}
