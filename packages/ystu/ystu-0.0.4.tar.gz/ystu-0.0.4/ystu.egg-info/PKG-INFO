@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: ystu
+Version: 0.0.4
+Summary: Auth on site YSTU
+Home-page: https://github.com/aleksejeei/ystu_lib
+Author: aleksejeei
+Author-email: aleksejeei@gmail.com
+Project-URL: GitHub, https://github.com/aleksejeei
+Keywords: files speedfiles
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: bs4
