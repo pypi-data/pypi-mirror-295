@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "big3_integration_mig24"
+version = "0.1.dev4"
+authors = [
+    { name = "BIG3", email = "info@big3.ru" },
+    { name = "Нестеренко Михаил Васильевич", email = "m.nesterenko@big3.ru" }
+]
+description = "Интеграция с МИГ24, для проектов на базе платформы конструктора."
+readme = "README.md"
+requires-python = ">=3.10.0"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["b3integration_mig24/"]
