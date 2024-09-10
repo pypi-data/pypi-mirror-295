@@ -1,0 +1,7 @@
+click
+
+[:python_version < "3.3"]
+monotonic
+
+[test]
+pytest
