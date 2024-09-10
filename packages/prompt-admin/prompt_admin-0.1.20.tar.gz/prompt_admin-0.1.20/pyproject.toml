@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "prompt-admin"
+version = "0.1.20"
+description = ""
+authors = ["phoenix <vova24848@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "promptadmin" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Jinja2 = "^3.1.2"
+anthropic = "^0.31.2"
+pydantic = "^2.8.2"
+polyfactory = "^2.16.2"
+sqlmodel = "^0.0.21"
+SQLAlchemy = "^2.0.23"
+xmltodict = "^0.13.0"
+asyncpg = "^0.29.0"
+fastapi = "^0.110.1"
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+pytest-json-report = "^1.5.0"
+datamodel-code-generator = "^0.26.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
