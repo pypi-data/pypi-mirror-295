@@ -1,0 +1,10 @@
+setuptools
+requests
+argparse
+pydantic
+gitpython
+pydriller
+python-dotenv~=1.0.1
+websocket-client
+rich
+prompt_toolkit
