@@ -1,0 +1,2 @@
+[console_scripts]
+morph-tool = morph_tool.cli:cli
