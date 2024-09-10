@@ -1,0 +1,8 @@
+{
+  "source_dir": "/Users/hobu/dev/git/pdal-python-plugins",
+  "build_dir": "/Users/hobu/dev/git/pdal-python-plugins/build",
+  "cmake_path": "/Users/hobu/miniforge3/envs/pdal-python/bin/cmake",
+  "skbuild_path": "/Users/hobu/miniforge3/envs/pdal-python/lib/python3.11/site-packages/scikit_build_core",
+  "skbuild_version": "0.10.5",
+  "python_executable": "/Users/hobu/miniforge3/envs/pdal-python/bin/python"
+}

@@ -1,0 +1,10 @@
+[
+    {
+        "type": "readers.numpy",
+        "filename": "filename"
+    },
+    {
+        "type": "writers.las",
+        "filename": "filename"
+    }
+]
