@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: excel-tables
+Version: 0.2
+Summary: Python library to quickly export pandas tables to pretty, sensible Excel workbooks.
+Home-page: https://github.com/yourusername/foo
+Author: Fralau
+Author-email: fralau@bluewin.ch
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENCE
