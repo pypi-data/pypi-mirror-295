@@ -1,0 +1,134 @@
+Metadata-Version: 2.1
+Name: spectran
+Version: 0.5.1
+Summary: A tool to measure pictures with scale_bars
+License: MIT License
+        
+        Copyright © 2024 Jan Ullmann
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: repository, https://github.com/ullmannJan/spectran
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Utilities
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: PySide6
+Requires-Dist: pyopengl
+Requires-Dist: pyqtgraph
+Requires-Dist: pint
+Requires-Dist: scipy
+Requires-Dist: niscope
+Requires-Dist: nisyscfg
+Requires-Dist: nidaqmx
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: h5py
+Requires-Dist: importlib-metadata; python_version < "3.11"
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+
+# Spectran
+
+![Spectran Logo](./src/spectran/data/osci_128.ico)
+
+A simple spectrum analyzer. Read a voltage signal and perform a spectral analysis.
+
+![grafik](https://github.com/user-attachments/assets/1652ff62-cc40-434a-b43d-1699b94ba99a)
+
+## Usage
+
+### Installation and Execution
+
+Install via 
+
+    pip install spectran
+
+Run via
+
+    import spectran
+    spectran.run()
+
+or in terminal 
+
+    python -m spectran
+
+### Workflow
+
+1. First, select driver and device and click connect. 
+This connects the device.
+1. Then, select all other options like sample_rate, input_channel, etc.
+1. Finally, start the measurement by clicking on `Start Measurement`.
+
+## API Connection
+
+It is possible to remotely control most of Spectran's features via an API. 
+API key can be set with the environment variable `API_KEY`.
+Default host is `127.0.0.1` on port `8111`. (host should be `0.0.0.0` to access from other network devices)
+You can check your connection by typing in a browser 
+
+    http://<host>:<port>
+
+A detailed example can be found in [this example](./examples/api_example.py).
+
+First, the connection to the API has to be set up (you might have to input your api key):
+```python
+api = API_Connection()
+```
+Afterwards one can set up devices and measurements:
+
+```python
+api.connect_device("DummyDAQ", 'Dev1')
+
+CONFIG = {
+    "input_channel": "ai0",
+    "sample_rate": 50_000 * ureg.Hz,
+    "duration": 0.05 * ureg.second,
+    "averages": 4,
+    "signal_range_min": -3 * ureg.volt, 
+    "signal_range_max":  3 * ureg.volt,
+    "unit": "Volt",
+}
+api.set_config(CONFIG)    
+
+# start the measurement
+api.start_measurement()
+# this waits for the measurement to finish
+api.wait_for_measurement()
+# this saves the data to a file
+api.save_file(f"data.txt")
+```
+
+## Development
+
+Install module into environment 
+
+    pip install -e .[dev]
+
+### Extensibility
+
+Spectran is written to provide extensive possibilities for extension. Just extend the `spectran.daq.DAQ` class for a new driver and implement all necessary functions.
+
+Then add this class to list of drivers in `spectran.daq.__init__`
