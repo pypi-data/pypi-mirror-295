@@ -1,0 +1,15 @@
+polars>=0.19.8
+numpy>=1.20
+
+[test]
+pytest
+pylint
+pydocstyle
+mypy
+ruff
+nbval
+
+[tutorial]
+pyvis
+networkx
+faker
