@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: otus-open-lesson
+Version: 0.3.0
+Summary: Python package code and GitHub actions examples for OTUS open lesson for Team-Lead learning course
+Home-page: https://github.com/danteonline/team-lead-ci-cd-open-lesson
+Author: DanteOnline
+Author-email: iamdanteonline@gmail.com
+License: MIT
+Project-URL: Source, https://github.com/danteonline/team-lead-ci-cd-open-lesson
+Project-URL: Tracker, https://github.com/danteonline/team-lead-ci-cd-open-lesson/issues
+Project-URL: Release notes, https://github.com/danteonline/team-lead-ci-cd-open-lesson/releases
+Project-URL: Changelog, https://github.com/danteonline/team-lead-ci-cd-open-lesson/releases
+Project-URL: Download, https://pypi.org/project/team-lead-ci-cd-open-lesson
+Keywords: python,audio,package,text
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Environment :: Console
+Classifier: Operating System :: Unix
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setuptools
+Requires-Dist: gTTS
+Requires-Dist: pydub
+
+# team-lead-ci-cd-open-lesson
+Python package code and GitHub actions examples for OTUS open lesson for Team-Lead learning course
+
+## In debian based linux
+
+```commandline
+sudo apt update
+sudo apt install boxes
+sudo apt install ffmpeg
+```
+
+## Install package
+
+```commandline
+pip install otus-open-lesson
+```
+
+## Usage
+
+```python
+from say_something import show_text, say
+
+
+while True:
+    text = input()
+    if text:
+        show_text(text)
+        say(text)
+    else:
+        break
+```
