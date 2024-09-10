@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "auto-py-input"
+version = "0.0.1"
+authors = [
+  { name="Siddhanth_78", email="siddhanth.lalgowdar@gmail.com" },
+]
+description = "Input autocompletion"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft",
+]
+
+[project.urls]
+Homepage = "https://github.com/siddhanth78/autopyinput"

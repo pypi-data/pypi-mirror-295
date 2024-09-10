@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/auto_py_input.egg-info/PKG-INFO
+src/auto_py_input.egg-info/SOURCES.txt
+src/auto_py_input.egg-info/dependency_links.txt
+src/auto_py_input.egg-info/top_level.txt
+src/autopyinput/__init__.py
+src/autopyinput/utils.py
+src/autopyinput/word_complete.py
