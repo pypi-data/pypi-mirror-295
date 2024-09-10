@@ -1,0 +1,17 @@
+CHANGELOG.md
+README.md
+pyproject.toml
+.github/workflows/publish.yml
+src/MyCommonLib/__init__.py
+src/MyCommonLib/configuration.py
+src/MyCommonLib/constants.py
+src/MyCommonLib/customLogger.py
+src/MyCommonLib/dictman.py
+src/MyCommonLib/loginit.py
+src/MyCommonLib/software_mode.py
+src/MyCommonLib/version.py
+src/MyCommonLib.egg-info/PKG-INFO
+src/MyCommonLib.egg-info/SOURCES.txt
+src/MyCommonLib.egg-info/dependency_links.txt
+src/MyCommonLib.egg-info/requires.txt
+src/MyCommonLib.egg-info/top_level.txt
