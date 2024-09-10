@@ -1,0 +1,2 @@
+[console_scripts]
+raimad = raimad.cli:cli
