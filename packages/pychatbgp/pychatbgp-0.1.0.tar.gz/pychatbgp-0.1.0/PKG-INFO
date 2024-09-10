@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: pychatbgp
+Version: 0.1.0
+Summary: A Python library to get BGP data from the ChatBGP API
+Home-page: https://github.com/yourusername/pychatbgp
+Author: Thomas Holterbach and Thomas Alfroy
+Author-email: contact@bgproutes.io
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
