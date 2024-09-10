@@ -1,0 +1,13 @@
+import numpy as np
+from .trackable_prediction import PredictionT as PredictionT, TrackablePredictionT as TrackablePredictionT, TrackerCbT as TrackerCbT
+from .tracking_results import TrackingResults as TrackingResults
+from edgeiq._constants import SupportedPurposes as SupportedPurposes
+from edgeiq._production_client import PRODUCTION_CLIENT as PRODUCTION_CLIENT
+from edgeiq._utils import gen_logger as gen_logger
+from typing import Any, Callable, Generic, List, Optional, Tuple, Type
+
+class TrackerAlgorithm(Generic[TrackablePredictionT]):
+    def __init__(self, deregister_frames: int, min_inertia: int, confidence_threshold: float, history_length: int, enter_cb: Optional[TrackerCbT], exit_cb: Optional[TrackerCbT], trackable: Type[TrackablePredictionT], distance_functions: List[Callable[[TrackablePredictionT, PredictionT], float]], match_optimizer: Callable[[np.ndarray], List[Tuple[int, int]]]) -> None: ...
+    def update(self, predictions: List[PredictionT], **trackable_kwargs) -> TrackingResults[TrackablePredictionT]: ...
+    def remove_id(self, id: int): ...
+    def publish_analytics(self, results: TrackingResults, tag: Any = ..., **kwargs): ...
