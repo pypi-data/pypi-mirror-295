@@ -1,0 +1,78 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+# poetry
+# ------
+
+[tool.poetry]
+name = "pelican-granular-signals"
+version = "1.2.0"
+description = "Add more granular signals to Pelican."
+authors = ["Kurt McKee <contactme@kurtmckee.org>"]
+license = "MIT"
+packages = [
+    { include = "pelican", from = "src" }
+]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+
+
+# coverage
+# --------
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+    "pelican.plugins.granular_signals",
+    "tests",
+]
+
+[tool.coverage.paths]
+source = [
+    "src",
+    "*/site-packages",
+]
+
+[tool.coverage.report]
+fail_under = 100
+
+
+# isort
+# -----
+
+[tool.isort]
+profile = "black"
+known_third_party = "pelican"
+known_first_party = "pelican.plugins.granular_signals"
+
+
+# mypy
+# ----
+
+[tool.mypy]
+packages = "src.pelican.plugins.granular_signals"
+strict = true
+sqlite_cache = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pelican.*",
+]
+ignore_missing_imports = true
+
+
+# pytest
+# ------
+
+[tool.pytest.ini_options]
+addopts = "--color=yes"
+filterwarnings = [
+    "error",
+    # dateutil throws a DeprecationWarning on Python 3.12.
+    "ignore:datetime.datetime.utcfromtimestamp:DeprecationWarning:dateutil",
+]
