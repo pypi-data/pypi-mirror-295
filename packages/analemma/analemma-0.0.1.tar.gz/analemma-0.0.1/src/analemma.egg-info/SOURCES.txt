@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/analemma/__init__.py
+src/analemma/geometry.py
+src/analemma/orbit.py
+src/analemma/plot.py
+src/analemma.egg-info/PKG-INFO
+src/analemma.egg-info/SOURCES.txt
+src/analemma.egg-info/dependency_links.txt
+src/analemma.egg-info/requires.txt
+src/analemma.egg-info/top_level.txt

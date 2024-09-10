@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: analemma
+Version: 0.0.1
+Summary: Calculate sundial geometry and plot the analemma
+Author-email: Russell Goyder <russell.goyder@gmail.com>
+License: MIT License
+Project-URL: homepage, https://russellgoyder.github.io/sundial
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+
+# Sundial Calculations
+
+NOTE: Placeholder for now. Proper doc and functionality arriving in coming weeks.
+
+[![Build and publish sundial notebooks](https://github.com/russellgoyder/sundial/actions/workflows/publish-notebooks.yml/badge.svg)](https://github.com/russellgoyder/sundial/actions/workflows/publish-notebooks.yml)
+[![pages-build-deployment](https://github.com/russellgoyder/sundial/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/russellgoyder/sundial/actions/workflows/pages/pages-build-deployment)
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/russellgoyder/sundial/HEAD?labpath=docs/sundial.ipynb)
+
+See https://russellgoyder.github.io/sundial/.
