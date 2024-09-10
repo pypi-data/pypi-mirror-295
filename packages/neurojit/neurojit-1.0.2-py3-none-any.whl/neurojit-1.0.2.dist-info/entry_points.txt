@@ -1,0 +1,2 @@
+[console_scripts]
+neurojit-cli = neurojit.scripts.neurojit_cli:main
