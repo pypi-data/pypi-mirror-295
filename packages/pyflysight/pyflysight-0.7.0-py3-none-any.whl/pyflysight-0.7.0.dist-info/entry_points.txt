@@ -1,0 +1,2 @@
+[console_scripts]
+pyflysight = pyflysight.cli:pyflysight_cli
