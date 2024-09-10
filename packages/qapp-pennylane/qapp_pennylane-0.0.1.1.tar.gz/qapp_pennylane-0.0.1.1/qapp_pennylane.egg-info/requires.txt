@@ -1,0 +1,10 @@
+qapp-common==0.0.8.2
+pennylane==0.38.0
+matplotlib
+
+[dev]
+black
+bumpver
+isort
+pip-tools
+pytest
