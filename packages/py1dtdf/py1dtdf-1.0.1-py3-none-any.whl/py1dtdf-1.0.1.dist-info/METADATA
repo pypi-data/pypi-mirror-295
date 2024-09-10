@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: py1dtdf
+Version: 1.0.1
+Summary: A comprehensive package for extracting standard, fractal, and complexity-based time-domain features from 1-D signals.
+Home-page: https://gitlab.rakshitmittal.net/rmittal/py1dtdf
+Author: Rakshit Mittal
+Author-email: pypi@rakshitmittal.net
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: nolds
+Requires-Dist: numpy
+Requires-Dist: scipy
+
