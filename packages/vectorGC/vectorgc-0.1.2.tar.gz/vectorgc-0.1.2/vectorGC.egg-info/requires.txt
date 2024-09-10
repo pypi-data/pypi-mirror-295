@@ -1,0 +1,8 @@
+rdkit>=2023.3.3
+numpy>=1.26.0
+pandas>=2.0.3
+torch>=2.1.0
+feos>=0.4.3
+feos_torch>=0.1.0
+scipy>=1.11.4
+tqdm>=4.66.1
