@@ -1,0 +1,3 @@
+[submodule "src/incstats"]
+	path = src/incstats
+	url = https://github.com/borchehq/incstats

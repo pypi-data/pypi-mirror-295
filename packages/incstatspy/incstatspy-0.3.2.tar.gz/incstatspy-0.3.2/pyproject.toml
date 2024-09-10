@@ -1,0 +1,14 @@
+[build-system]
+requires = [
+    "scikit-build-core",
+    "numpy >= 1.20.0"
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "incstatspy"  # as it would appear on PyPI
+version = "0.3.2"
+readme = "README.md"
+
+[tool.scikit-build]
+build.targets = ["incstatspy"]
