@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+PlayDrissionPage/__init__.py
+PlayDrissionPage.egg-info/PKG-INFO
+PlayDrissionPage.egg-info/SOURCES.txt
+PlayDrissionPage.egg-info/dependency_links.txt
+PlayDrissionPage.egg-info/entry_points.txt
+PlayDrissionPage.egg-info/not-zip-safe
+PlayDrissionPage.egg-info/requires.txt
+PlayDrissionPage.egg-info/top_level.txt
+PlayDrissionPage/client/__init__.py
+PlayDrissionPage/client/remote_browser_client.py
+tests/test_interupt_continue.py
+tests/test_package.py
