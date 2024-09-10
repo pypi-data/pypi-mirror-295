@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: rkNseClient
+Version: 0.2
+Summary: A short description of the package
+Home-page: https://github.com/kamalkavin68/rkNseClient
+Author: kamalkavin96
+Author-email: kamalkavin68@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas==2.2.2
+Requires-Dist: pydantic==2.9.1
+Requires-Dist: requests==2.32.3
+Requires-Dist: setuptools==74.1.2
+Requires-Dist: wheel==0.44.0
+Requires-Dist: twine==5.1.1
+
+# NSE API Python Client
+
+## Overview
+
+This Python client provides a simple and efficient interface to interact with the National Stock Exchange (NSE) API. It allows users to access real-time market data, historical data, and perform stock analysis with ease. Whether you're a retail trader, financial analyst, or developing a stock market application, this client enables seamless integration with NSE data to power your financial needs.
+
+## Features
+
+- **Real-Time Market Data**: Fetch live stock prices, indices, and market movements.
+- **Historical Data**: Access past performance data to analyze trends and patterns.
+- **Stock Analysis**: Integrate technical and fundamental analysis using NSE data.
+- **Market Instruments**: Retrieve details of various market instruments, including stocks, indices, options, and more.
+- **Efficient Caching**: Minimize API calls with built-in data caching mechanisms.
+- **Extensible API**: Easily extend the functionality to support custom queries or additional NSE features.
+
+## Installation
+
+Install the package via pip:
+
+```bash
+pip install rkNseClient
