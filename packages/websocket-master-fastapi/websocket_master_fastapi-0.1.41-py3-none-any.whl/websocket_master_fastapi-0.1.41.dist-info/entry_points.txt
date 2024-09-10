@@ -1,0 +1,3 @@
+[console_scripts]
+ws-master=ws_master.file_builder:main
+
