@@ -1,0 +1,36 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Publish to pypi
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        . $CONDA/etc/profile.d/conda.sh
+        conda config --set always_yes yes --set changeps1 no
+        sed -i -e "s/- python=.*/- python=$PYTHON_VERSION/g" environment.yml
+
+        echo "Creating conda env"
+        conda env create -n ci -f environment.yml
+        conda activate ci
+        pip install build
+        pip install twine
+        python setup.py sdist
+        twine upload dist/* -u $TWINE_USERNAME -p $TWINE_PASSWORD

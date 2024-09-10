@@ -1,0 +1,15 @@
+name: lstmcpipe
+channels:
+  - default
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - setuptools_scm<8.0
+  - astropy>=4.2
+  - pip
+  - pre-commit
+  - ctapipe
+  - ruamel.yaml>=0.17
+  - lstchain
+  - pyirf
+  - ctaplot

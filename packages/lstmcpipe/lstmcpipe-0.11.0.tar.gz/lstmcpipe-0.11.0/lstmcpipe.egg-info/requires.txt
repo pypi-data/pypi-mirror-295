@@ -1,0 +1,10 @@
+lstchain>=0.9.0
+numpy
+astropy
+ctaplot>=0.5
+pyirf>=0.4
+matplotlib
+pytest
+ruamel.yaml>=0.17
+setuptools_scm<8.0
+deepdiff
