@@ -1,0 +1,288 @@
+Third-party software packages used in ImFusionCore:
+Boost
+ 
+Version: 1.70.0
+License: Boost Software License, Version 1.0, https://www.boost.org/LICENSE_1_0.txt
+https://www.boost.org/
+
+Eigen
+Copyright (c) Eigen Team
+Version: 3.4.0
+License: MPL-2, http://eigen.tuxfamily.org/index.php?title=Main_Page#License
+https://eigen.tuxfamily.org
+
+MiniZip
+Copyright (C) 2010-2019 Nathan Moinvaziri
+Version: 3.0.9
+License: zlib, https://github.com/nmoinvaz/minizip/blob/master/LICENSE
+https://github.com/nmoinvaz/minizip
+
+date-tz
+Copyright (c) 2021 Howard E. Hinnant
+Version: 3.0.1
+License: MIT License
+https://github.com/HowardHinnant/date
+
+nlohmann-json
+Copyright © 2013-2022 Niels Lohmann
+Version: 3.11.3
+License: MIT License
+https://github.com/nlohmann/json
+
+PCG Random Number Generation, C++ Edition
+Copyright (c) 2014-2017 Melissa O'Neill and PCG Project contributors
+Version: 0.98.1.1-ffd522e7
+License: MIT, https://github.com/imneme/pcg-cpp/blob/master/LICENSE-MIT.txt
+https://github.com/imneme/pcg-cpp
+
+zlib
+Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler
+Version: 1.3
+License: https://www.zlib.net/zlib_license.html
+http://www.zlib.net/
+
+zstd
+Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
+Version: 1.5.0
+License: https://raw.githubusercontent.com/facebook/zstd/dev/LICENSE
+https://github.com/facebook/zstd
+
+
+Third-party software packages used in ImFusionGL:
+Boost
+ 
+Version: 1.70.0
+License: Boost Software License, Version 1.0, https://www.boost.org/LICENSE_1_0.txt
+https://www.boost.org/
+
+FreeType
+Copyright (c) 1996-2002, 2006 David Turner, Robert Wilhelm, and Werner Lemberg
+Version: 2.10.0
+License: FreeType License, https://www.freetype.org/license.html
+https://www.freetype.org/
+
+
+Third-party software packages used in ImFusionResourceCompiler:
+Boost
+ 
+Version: 1.70.0
+License: Boost Software License, Version 1.0, https://www.boost.org/LICENSE_1_0.txt
+https://www.boost.org/
+
+zlib
+Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler
+Version: 1.3
+License: https://www.zlib.net/zlib_license.html
+http://www.zlib.net/
+
+
+Third-party software packages used in ImFusionLib:
+Boost
+ 
+Version: 1.70.0
+License: Boost Software License, Version 1.0, https://www.boost.org/LICENSE_1_0.txt
+https://www.boost.org/
+
+Crypto++
+Copyright (c) 1995-2013 Wei Dai
+Version: 8.2.0
+License: Boost Software License
+http://www.cryptopp.com
+
+Eigen
+Copyright (c) Eigen Team
+Version: 3.4.0
+License: MPL-2, http://eigen.tuxfamily.org/index.php?title=Main_Page#License
+https://eigen.tuxfamily.org
+
+FLANN
+Copyright (c) 2008-2011  Marius Muja (mariusm@cs.ubc.ca). All rights reserved.
+Copyright (c) 2008-2011  David G. Lowe (lowe@cs.ubc.ca). All rights reserved.
+Copyright (c) 2015 Google Inc (Jack Rae, jwrae@google.com). All Rights Reserved.
+Version: 1.9.1.1-be80cefa69b314a3d9e1ab971715e84145863ebb
+License: BSD
+http://www.cs.ubc.ca/research/flann
+
+HDF5
+Copyright by The HDF Group.
+Copyright by the Board of Trustees of the University of Illinois.
+Version: 1.10.6
+License: https://www.hdfgroup.org/licenses
+https://www.hdfgroup.org/solutions/hdf5
+
+NLopt
+Copyright (c) Gilbert Bernstein 2013
+Version: 2.6.1
+License: MIT, https://nlopt.readthedocs.io/en/latest/NLopt_License_and_Copyright/
+https://nlopt.readthedocs.io/en/latest/
+
+OpenMesh
+Copyright (c) 2001-2015, RWTH-Aachen University
+Version: 8.0
+License: 3-clause BSD
+http://www.openmesh.org/
+
+OpenSSL
+Copyright (c) 1998-2018 The OpenSSL Project
+Version: 1.0.2-l
+License: Apache License 1.0 and four-clause BSD, https://www.openssl.org/source/license.html
+https://www.openssl.org
+
+Point Cloud Library (PCL)
+Copyright (c) 2009-2012, Willow Garage, Inc.
+Copyright (c) 2012-, Open Perception, Inc.
+Copyright (c) XXX, respective authors.
+Version: 1.11.0
+License: BSD, https://github.com/PointCloudLibrary/pcl/blob/master/LICENSE.txt
+http://www.pointclouds.org/
+
+Qt
+Copyright (c) 2018 The Qt Company and its subsidiaries
+Version: 5.15.2
+License: LGPL 2.1 license
+https://www.qt.io/
+
+curl
+Copyright (c) 1996 - 2019, Daniel Stenberg, daniel@haxx.se, and many contributors
+Version: 7.58.0
+License: MIT/X derivate, https://curl.haxx.se/docs/copyright.html
+https://curl.haxx.se/
+
+fmt
+Copyright 2012-present, Victor Zverovich
+Version: 9.1.0
+License: MIT
+https://github.com/fmtlib/fmt
+
+lib3mf
+3MF Consortium (C) Copyright 2021
+Version: 2.1.1
+License: BSD 2-Clause Simplified License
+https://github.com/3MFConsortium/lib3mf
+
+libcpr
+Copyright (c) 2021 libcpr and many other contributors
+Version: 1.7.2
+License: MIT License
+https://github.com/libcpr/cpr
+
+libjpeg
+Copyright (C) 1994-1998, Thomas G. Lane.
+Version: 9-c
+License: Custom BSD-like
+http://libjpeg.sourceforge.net/
+
+libpng
+Copyright (c) 2004, 2006-2014 Glenn Randers-Pehrson
+Version: 1.6.37
+License: http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
+http://www.libpng.org/pub/png/libpng.html
+
+libtiff
+Copyright (c) 1988-1997 Sam Leffler
+Copyright (c) 1991-1997 Silicon Graphics, Inc.
+Version: 4.1.0
+License: BSD style, http://www.libtiff.org/misc.html
+http://www.libtiff.org
+
+zlib
+Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler
+Version: 1.3
+License: https://www.zlib.net/zlib_license.html
+http://www.zlib.net/
+
+
+Third-party software packages used in ImFusionDicom:
+DCMTK
+Coypright (c) 1994-2018 OFFIS e.V.
+Version: 3.6.7
+License: BSD
+http://dicom.offis.de/dcmtk
+
+date-tz
+Copyright (c) 2021 Howard E. Hinnant
+Version: 3.0.1
+License: MIT License
+https://github.com/HowardHinnant/date
+
+zlib
+Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler
+Version: 1.3
+License: https://www.zlib.net/zlib_license.html
+http://www.zlib.net/
+
+
+Third-party software packages used in ImFusionML:
+HDF5
+Copyright by The HDF Group.
+Copyright by the Board of Trustees of the University of Illinois.
+Version: 1.10.6
+License: https://www.hdfgroup.org/licenses
+https://www.hdfgroup.org/solutions/hdf5
+
+yaml-cpp
+Copyright (c) 2008-2015 Jesse Beder.
+Version: 0.7.0
+License: MIT (https://github.com/jbeder/yaml-cpp/blob/master/LICENSE)
+https://github.com/jbeder/yaml-cpp
+
+zlib
+Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler
+Version: 1.3
+License: https://www.zlib.net/zlib_license.html
+http://www.zlib.net/
+
+zstd
+Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
+Version: 1.5.0
+License: https://raw.githubusercontent.com/facebook/zstd/dev/LICENSE
+https://github.com/facebook/zstd
+
+
+Third-party software packages used in ImFusionPython:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
+
+Third-party software packages used in ImFusionPythonModule3.8:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
+
+Third-party software packages used in ImFusionPythonModule3.9:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
+
+Third-party software packages used in ImFusionPythonModule3.10:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
+
+Third-party software packages used in ImFusionPythonModule3.11:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
+
+Third-party software packages used in ImFusionPythonModule3.12:
+pybind11
+Copyright (c) 2016 Wenzel Jakob
+Version: 2.11.1
+License: BSD-style
+https://github.com/pybind/pybind11
+
