@@ -1,0 +1,48 @@
+# prompt-sender
+
+A tool for sending JSON files of prompts and model responses to the Argilla A/B testing platform
+for human annotations.
+
+## How to use
+
+Simply install the package using pip:
+
+```
+pip install prompt-sender
+```
+
+Run `prompt-sender --help` for the required arguments:
+
+```
+$ prompt-sender --help
+                                                                                                                                                                                  
+ Usage: prompt-sender [OPTIONS]                                                                                                                                                   
+                                                                                                                                                                                  
+ Send prompts that need annotations to the A/B testing platform. Make sure WORKSPACE_NAME and DATASET_NAME already exist on the platform!                                         
+                                                                                                                                                                                  
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --api-url                   TEXT  A/B testing platform URL [default: None] [required]                                                                                       │
+│ *  --api-key                   TEXT  API key for testing platform [default: None] [required]                                                                                   │
+│ *  --prompt-file               TEXT  The name of the file of prompts to send to the A/B testing platform [default: None] [required]                                            │
+│ *  --workspace-name            TEXT  The name of the workspace in the Argilla A/B testing platform [default: None] [required]                                                  │
+│ *  --dataset-name              TEXT  The dataset to add prompts to [default: None] [required]                                                                                  │
+│    --install-completion              Install completion for the current shell.                                                                                                 │
+│    --show-completion                 Show completion for the current shell, to copy it or customize the installation.                                                          │
+│    --help                            Show this message and exit.                                                                                                               │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+## How to develop
+
+1. Clone the repo: `git clone git@github.com:langtech-bsc/prompt-sender.git`.
+
+2. If `poetry` is not installed on your system, follow the instructions to install it:
+    - Install `pipx` using the [official installation instructions](https://pipx.pypa.io/stable/installation/)
+    - `pipx install poetry`
+
+3. `cd prompt-sender/` and create a virtual environment, either by using something like `venv` or by using `poetry`'s
+built-in virtual environment, which can be created and activated by running `poetry shell` (run `exit` to deactivate).
+
+4. Run `poetry install` to install project dependencies.
+
+5. Run `pre-commit install` to set up the git pre-commit hook scripts

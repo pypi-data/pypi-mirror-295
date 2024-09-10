@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "prompt-sender"
+version = "0.2.2"
+description = "Send prompts and model responses to the Argilla A/B testing platform for annotations"
+authors = ["Hannah Galbraith <hannah.galbraith@bsc.es>"]
+license = "Apache 2.0 License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+argilla = "^2.1.0"
+typer = "^0.12.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pre-commit = "^3.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+prompt-sender = "prompt_sender.main:app"
+
+[tool.mypy]
+mypy_path = "prompt_sender"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
