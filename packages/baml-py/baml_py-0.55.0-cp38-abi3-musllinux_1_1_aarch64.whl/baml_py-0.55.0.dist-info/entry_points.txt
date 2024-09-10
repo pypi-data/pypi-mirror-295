@@ -1,0 +1,2 @@
+[console_scripts]
+baml-cli=baml_cli:invoke_runtime_cli
