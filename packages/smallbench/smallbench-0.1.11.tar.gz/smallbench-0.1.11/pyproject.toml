@@ -1,0 +1,23 @@
+[project]
+name = "smallbench"
+version = "0.1.11"
+description = "Small Benchmarks for LM Agents"
+authors = [{name = "Josh Purtell", email = "jmvpurtell@gmail.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "apropos-ai==0.2.28",
+    "ollama>=0.3.2",
+]
+classifiers = []
+
+[project.urls]
+Homepage = "https://github.com/yourusername/smallbench"
+Repository = "https://github.com/yourusername/smallbench.git"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
