@@ -1,0 +1,15 @@
+itk/LabelPointSetPython.py,sha256=4Mh-PrjXPKfR7DWtzJFqZ3s2GLpj__kPr5uDoMtQAGU,2247
+itk/_LabelPointSetPython.pyd,sha256=_R3taqLI0F17J8EbCMQaFg2DwSs1XEz36fHj82YborM,1903616
+itk/__init_labelpointset__.py,sha256=wbYjvJGrNWnImk4NpMuNPXGynXDWp9JDdocLsn_bcc8,1399
+itk/itkLabelToPointSetFilterPython.py,sha256=l_FajVbvG2L0_LvoBS83Za11Q7xfUZCEIREBztE9hMA,257670
+itk/Configuration/LabelPointSetConfig.py,sha256=hfOFCCwhC7OBAgcwXdajmG5RyScHw5KsKcyBKxCWLos,14871
+itk/Configuration/LabelPointSet_snake_case.py,sha256=6_RCChh8rEIixhOKL2EvUwhzkoLVx0L_P8xM3bIWN04,56
+itk_labelpointset-0.2.0.dist-info/licenses/LICENSE,sha256=Pd-b5cKP4n2tFDpdx27qJSIq0d1ok0oEcGTlbtL6QMU,11560
+itk_labelpointset.libs/.load-order-itk_labelpointset-0.2.0,sha256=F4JgOTEXwc27ORCvVEwuZhBnzVbDjbYCrCMs2WQ2bvE,42
+itk_labelpointset.libs/msvcp140.dll,sha256=19dpkdvMzVj1HXgTMNJvUAeJUuHKmQHKnaXP0oWj1VQ,574872
+itk_labelpointset.libs/tbb12.dll,sha256=uAYeUFrGU4BfPGbeEDcO5SoBUd0xLQeYCBIUMYGAUwA,313344
+itk_labelpointset.libs/vcruntime140_1.dll,sha256=Ghi40zfEKh6QEUeV_yISyM6cNyERL64HTVXZBOwL_R8,49632
+itk_labelpointset-0.2.0.dist-info/DELVEWHEEL,sha256=kYwd73BzmoTBLWzrPSpshhndqqFFGAvbLrJnsP3Sd4o,278
+itk_labelpointset-0.2.0.dist-info/METADATA,sha256=8KWezhv9RhQO2gSnYQid7Dl0r-tUKDSNdj5nl-z80bI,15780
+itk_labelpointset-0.2.0.dist-info/WHEEL,sha256=gWrbxin4KFhkxxXhjD7C7Qrk7cA6fVF2fG2LLBFGufc,104
+itk_labelpointset-0.2.0.dist-info/RECORD,,
