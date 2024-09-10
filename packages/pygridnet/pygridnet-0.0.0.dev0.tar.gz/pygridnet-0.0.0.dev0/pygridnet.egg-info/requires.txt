@@ -1,0 +1,16 @@
+pandas
+numpy
+
+[dev]
+pre-commit
+
+[doc]
+wheel
+mkdocs-material
+mknotebooks
+matplotlib
+notebook
+
+[test]
+pytest
+pytest-cov

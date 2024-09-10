@@ -1,0 +1,5 @@
+# GridNet
+
+## License
+
+[MIT](LICENSE)
