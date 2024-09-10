@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cobra-io"
+description = "Composable Benchmark for Robotics Applications - Input/Output"
+authors = [{ name = "Matthias Mayer", email = "matthias.mayer@tum.de" }]
+license = {text = "MIT"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only"
+]
+keywords = ["Modular Reconfigurable Robots", "Robot Design", "Model Generation", "Simulation", "Benchmark", "Path Planning"]
+dependencies = [
+    "jsonschema >= 4.10",
+    "requests >= 2.28.1",
+    "requests-ratelimiter>=0.6.0",
+    "requests-cache>=0.7.0",
+    "referencing>=0.35.0",
+]
+requires-python = ">=3.7"
+dynamic = ["version", "readme"]
+
+[project.optional-dependencies]
+dev = ["flake8>=5.0", "coverage>=6.3", "pre-commit", "pip-tools", "pytest>=6.0", "setuptools>=61.0.0",
+       "timor-python>=1.0.0", "nb-clean", "nbconvert", "nbformat"]
+full = ["cobra-io[dev]", "notebook"]
+
+[tool.setuptools.dynamic]
+readme = {file = "README.rst"}
+version = {attr = "cobra.__version__"}
+
+[project.urls]
+"Source Code" = "https://gitlab.lrz.de/tum-cps/cobra-io"
+"Documentation" = "https://cobra-io.readthedocs.io/en/latest/"
+"Bug Tracker" = "https://gitlab.lrz.de/tum-cps/cobra-io/-/issues"
