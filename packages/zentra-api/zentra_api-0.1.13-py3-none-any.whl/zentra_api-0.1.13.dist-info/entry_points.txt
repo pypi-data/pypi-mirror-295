@@ -1,0 +1,3 @@
+[console_scripts]
+zentra-api=zentra_api.cli.main:app
+
