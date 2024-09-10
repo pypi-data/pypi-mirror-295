@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+src/subsampwinner/GenerateData.py
+src/subsampwinner/SubsampDoubleAssurance.py
+src/subsampwinner/__init__.py
+src/subsampwinner/subsamp.py
+src/subsampwinner.egg-info/PKG-INFO
+src/subsampwinner.egg-info/SOURCES.txt
+src/subsampwinner.egg-info/dependency_links.txt
+src/subsampwinner.egg-info/requires.txt
+src/subsampwinner.egg-info/top_level.txt
