@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: aimmocore
+Version: 0.1.15
+Summary: The sdk for aimmocore curation service
+Author-email: Aimmo <aimmocore-dev@aimmo.co.kr>
+License: AIMMO, apache 2.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: uvicorn
+Requires-Dist: hypercorn
+Requires-Dist: starlette>=0.38.0
+Requires-Dist: loguru
+Requires-Dist: pydantic
+Requires-Dist: pyhumps
+Requires-Dist: azure-storage-blob
+Requires-Dist: motor
+Requires-Dist: aimmocore-db
+Requires-Dist: nest-asyncio
+Requires-Dist: pillow
+Requires-Dist: IPython
+Requires-Dist: aiohttp
+Requires-Dist: aiofiles
+Requires-Dist: tqdm
+Requires-Dist: psutil
+Requires-Dist: apscheduler
+
+# AIMMO Core Curation Service
+The Aimmocore Curation SDK is a Python package that selects core data within a dataset through clustering techniques using metadata and embedding information of images.
+
+
+## Requirements
+- Python 3.8 or later
+
+## Installation
+```bash
+pip install aimmocore
+```
