@@ -1,0 +1,3 @@
+class LoggerErrors(Exception):
+    """Ошибка блока manager"""
+    ...
