@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/auto_update/__init__.py
+src/auto_update/update.py
+src/auto_update.egg-info/PKG-INFO
+src/auto_update.egg-info/SOURCES.txt
+src/auto_update.egg-info/dependency_links.txt
+src/auto_update.egg-info/requires.txt
+src/auto_update.egg-info/top_level.txt
