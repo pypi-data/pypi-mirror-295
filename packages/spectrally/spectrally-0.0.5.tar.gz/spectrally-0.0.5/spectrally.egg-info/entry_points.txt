@@ -1,0 +1,4 @@
+[console_scripts]
+specrally-custom = spectrally.scripts.spectrallycustom:main
+spectrally = spectrally.scripts.spectrally_bash:main
+spectrally-version = spectrally.scripts.spectrallyversion:main
