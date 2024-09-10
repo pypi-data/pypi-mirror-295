@@ -1,0 +1,470 @@
+Metadata-Version: 2.3
+Name: neurojit
+Version: 1.0.0
+Summary: A Python package for calculating the commit understandability features of Java projects.
+Author-email: Hansae Ju <sparky@hanyang.ac.kr>
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           Copyright 2024 Hansae Ju
+           Copyright 2024 Gichan Lee
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+License-File: LICENSE
+Requires-Python: >=3.11
+Requires-Dist: javalang>=0.13.0
+Requires-Dist: numpy>=1.26.4
+Requires-Dist: pandas>=2.2.1
+Requires-Dist: pydriller>=2.6
+Provides-Extra: replication
+Requires-Dist: cliffs-delta>=1.0.0; extra == 'replication'
+Requires-Dist: imblearn>=0.0; extra == 'replication'
+Requires-Dist: lime>=0.2.0.1; extra == 'replication'
+Requires-Dist: matplotlib>=3.8.3; extra == 'replication'
+Requires-Dist: rich>=13.7.1; extra == 'replication'
+Requires-Dist: scikit-learn>=1.4.1.post1; extra == 'replication'
+Requires-Dist: scipy>=1.12.0; extra == 'replication'
+Requires-Dist: seaborn>=0.13.2; extra == 'replication'
+Requires-Dist: statsmodels>=0.14.1; extra == 'replication'
+Requires-Dist: tabulate>=0.9.0; extra == 'replication'
+Requires-Dist: typer>=0.12.4; extra == 'replication'
+Requires-Dist: xgboost>=2.0.3; extra == 'replication'
+Description-Content-Type: text/markdown
+
+# NeuroJIT Replication Package
+
+This document introduces the replication package for the paper titled *NeuroJIT: Improving Just-In-Time Defect Prediction Using Neurophysiological and Empirical Perceptions of Modern Developers* and provides detailed instructions on its usage. The package contains the core modules of NeuroJIT, along with the scripts and datasets required to replicate the results presented in the paper. This package can be used to reproduce the paper’s results or to implement a customized version of NeuroJIT for experiments tailored to your specific needs. If you have any questions about the package or the content of the paper, please do not hesitate to contact us via email at fantasyopy@hanyang.ac.kr or sparky@hanyang.ac.kr.
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## Contents
+
+- [1. Brief Descriptions of the Replication Package](#1-brief-descriptions-of-the-replication-package)
+  - [Structure](#structure)
+  - [Dataset](#dataset)
+  - [NeuroJIT](#neurojit)
+- [2. Step-by-step Explanations for NeuroJIT Replication](#2-step-by-step-explanations-for-neurojit-replication)
+  - [2-1. Setup](#2-1-setup)
+    - [1) Hardware/Software Requirements](#1-hardwaresoftware-requirements)
+    - [2) Docker Container Setup](#2-docker-container-setup)
+  - [2-2. Usage](#2-2-usage)
+    - [1) Reproducing the Experimental Results](#1-reproducing-the-experimental-results)
+    - [2) Additional Experiments for the Validity](#2-additional-experiments-for-the-validity)
+    - [3) An Example of NeuroJIT Usage](#3-an-example-of-neurojit-usage)
+- [3. Customizing NeuroJIT](#3-customizing-neurojit)
+
+## 1. Brief Descriptions of the Replication Package (NeuroJIT.zip)
+
+### Structure
+
+```Shell
+├── archive # zipped trained models (pickles) in our experiment
+├── data
+│  ├── dataset # dataset used in the experiments
+│  ├── output # output of the experiments
+│  └── plots  # plots generated in the experiments
+├── dist # neurojit package distribution
+├── Dockerfile
+├── docker-compose.yml
+├── src/neurojit # core module
+└── scripts 
+# main scripts
+   ├── data_utils.py # data preprocessing and caching
+   ├── calculate.py # calculate commit understandability features and LT of Kamei et al.
+   ├── pre_analysis.py # analyze statistics of the dataset
+   ├── jit_sdp.py # machine learning algorithm training and evaluation for just-in-time defect prediction
+   ├── analysis.py # analyze the ML models
+# sub-modules
+   ├── correlation.py # modules for correlation analysis
+   ├── environment.py # environment variables for main scripts
+   ├── visualization.py # visualization tools
+# for replication
+   ├── reproduce.sh # a script to reproduce the major experimental results of the paper
+   ├── commit_distribution.ipynb # a notebook for commit distribution analysis (external validity)
+   └── neurojit_cli.py # an example of utilizing NeuroJIT for user's objectives
+```
+
+### Dataset
+
+Our dataset includes widely adopted just-in-time defect prediction features as well as the commit understandability features of NeuroJIT, derived from a total of eight Apache projects. Each CSV file in the `data/dataset` directory represents intermediate outputs generated at data preprocessing stages described in the paper, while each CSV file in the `combined` directory represents the final output for each project.
+
+```Shell
+data/dataset
+├── apachejit_total.csv # original ApacheJIT dataset
+├── apachejit_date.csv # ApacheJIT dataset with bug_fix_date
+├── apachejit_gap.csv # gap between commit date and bug_fix_date in ApacheJIT dataset
+├── apache_metrics_kamei.csv # traditional just-in-time features in ApacheJIT dataset
+├── baseline/  # LT added and preprocessed ApacheJIT dataset
+│  ├── activemq.csv
+│  ├── ...
+├── combined/*.csv   # the dataset used in the research
+└── cuf/*.csv      # 9 commit understandability features of target commits
+```
+
+If you wish to build the dataset from scratch, the following scripts can be used:
+
+```Shell
+ (1) Usage: python scripts/data_utils.py COMMAND [ARGS]...
+
+ Data preprocessing and caching
+
+╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ combine-dataset   Combine the baseline and commit understandability features datasets                                         │
+│ filter-commits    Filter method changes for each commit in the dataset and save methods to cache                              │
+│ prepare-data      ApacheJIT (bug_date column added) dataset                                                                   │
+│ save-methods      Save the change contexts for commits that modified existing methods                                         │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ (2) Usage: python scripts/calculate.py COMMAND [ARGS]...
+
+ Calculate metrics for CUF and Baseline
+
+╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ cuf-all       Calculate all commit understandability features for a project                                                   │
+│ cuf-metrics   Calculate specific commit understandability features metrics for a project                                      │
+│ lt            Calculate LT for apachejit_metrics (baseline)                                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### NeuroJIT
+
+The `neurojit` module offers commit understandability feature calculators and the implementation of the sliding window method. The module is structured as follows:
+
+```Shell
+src/neurojit
+├── commit.py # commit filtering and saving
+├── cuf
+│  ├── cfg.py # control flow graph for DD
+│  ├── halstead.py # halstead metrics
+│  ├── metrics.py  # commit understandability features calculation 
+│  └── rii.py # II feature calculation with Checkstyle
+└── tools
+    └── data_utils.py # the implementation of sliding window method for chronological order, verification latency, and concept drifts
+```
+
+## 2. Step-by-step Explanations for NeuroJIT Replication
+### 2-1. Setup
+
+#### 1) Hardware/Software Requirements
+
+We tested the replication package on the following devices:
+
+ - Windows 11
+   - CPU: AMD Ryzen 5 5600X
+   - RAM: 32GB
+ - Ubuntu 20.04.6
+   - Device: NVIDIA DGX Station V100, 2019
+   - CPU: Intel Xeon(R) E5-2698 v4 @ 2.20GHz
+   - RAM: 256GB
+ - MacOS 14.6.1
+   - Device: MacBook Air M2, 2022
+   - CPU: Apple M2
+   - RAM: 24GB
+ - Docker version 4.33.1
+  
+#### 2) Docker Container Setup
+
+To install Docker, refer to the official installation guide at [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/). 
+After downloading and extracting `NeuroJIT.zip`, navigate to the directory via CLI. 
+To build the container using `docker-compose`, execute the following command:
+
+```Shell
+$ docker-compose up --build -d
+...
+✔ Container neurojit-ase  Started
+```
+
+Verify that the `neurojit-ase` container is running by using the `docker ps` command.
+
+### 2-2. Usage
+
+#### 1) Reproducing the Experimental Results
+
+To reproduce the major results of the paper, execute the following command:
+
+```Shell
+$ docker exec -it neurojit-ase scripts/reproduce.sh
+``` 
+
+If the script is executed successfully, you can see the identical results as `reproduced_results.png`:
+
+![reproduced_results.png](reproduced_results.png)
+
+In addition to the tables shown in the capture, you can find the figures in the saved directory.
+
+For a detailed explanation of reproduce.sh, please refer to `reproduce_sh.md`.
+
+#### 2) Additional Experiments for the Validity
+
+1) The result presented in Figure 5 on page 7 of the paper, which demonstrates that commit understandability features provide exclusive information, applies to all positives, not just true positives. You can verify the results for all positives by executing the following commands with the `--no-only-tp` option:
+
+    ```Shell
+    $ docker exec -it neurojit-ase python scripts/analysis.py table-set-relationships data/output/random_forest_cuf.json data/output/random_forest_baseline.json --fmt fancy_outline --no-only-tp
+
+    ╒═══════════╤════════════╤════════════════╤═════════════════╕
+    │ Project   │   cuf only │   Intersection │   baseline only │
+    ╞═══════════╪════════════╪════════════════╪═════════════════╡
+    │ Groovy    │       58.2 │           15.7 │            26.1 │
+    │ Camel     │       53.7 │           17.9 │            28.4 │
+    │ Flink     │       47.1 │           13.4 │            39.5 │
+    │ Ignite    │       41.9 │           10.2 │            47.9 │
+    │ Cassandra │       33.8 │           17.2 │            48.9 │
+    │ HBase     │       31.4 │           35.6 │            33.0 │
+    │ ActiveMQ  │       30.3 │           14.7 │            54.9 │
+    │ Hive      │       29.8 │           40.3 │            29.9 │
+    ╘═══════════╧════════════╧════════════════╧═════════════════╛
+
+    $ docker exec -it neurojit-ase python scripts/analysis.py table-set-relationships data/output/xgboost_cuf.json data/output/xgboost_baseline.json --fmt fancy_outline --no-only-tp
+
+    ╒═══════════╤════════════╤════════════════╤═════════════════╕
+    │ Project   │   cuf only │   Intersection │   baseline only │
+    ╞═══════════╪════════════╪════════════════╪═════════════════╡
+    │ Groovy    │       60.2 │           15.9 │            23.9 │
+    │ Camel     │       57.2 │           17.0 │            25.8 │
+    │ Flink     │       49.3 │           13.0 │            37.7 │
+    │ Ignite    │       45.0 │           10.1 │            44.9 │
+    │ Cassandra │       40.4 │           18.2 │            41.4 │
+    │ HBase     │       39.8 │           31.6 │            28.6 │
+    │ ActiveMQ  │       34.9 │           16.0 │            49.1 │
+    │ Hive      │       29.2 │           37.9 │            32.9 │
+    ╘═══════════╧════════════╧════════════════╧═════════════════╛
+    ```
+2) To obtain the results mentioned in the External Validity section on page 10 of the paper, which states that the dataset used in this study shows a different distribution compared to the dataset used in cited study, execute the following commands:
+  
+    ```Shell
+    $ docker exec -it neurojit-ase python scripts/pre_analysis.py plot-commit-distribution --ours
+
+    Saved plot to data/plots/commit_distribution_ours.png
+
+    $ docker exec -it neurojit-ase python scripts/pre_analysis.py plot-commit-distribution
+
+    Saved plot to data/plots/commit_distribution_apachejit.png
+    ```
+
+    Please check the figures saved in the corresponding directory.
+
+#### 3) An Example of NeuroJIT Usage
+
+NeuroJIT is currently designed to calculate commit understandability features from method-level commits of projects. You can calculate the features using the following `neurojit_cli.py` script:
+
+```Shell
+$ docker exec -it neurojit-ase python scripts/neurojit_cli.py calculate --project REPONAME --commit-hash COMMIT_HASH
+```
+
+For example, to calculate the features for the `8f40a7` commit in the `ActiveMQ` project, execute the following command:
+
+```Shell
+$ docker exec -it neurojit-ase python scripts/neurojit_cli.py calculate --project activemq --commit-hash 8f40a7
+
+{'NOGV': 1.0, 'MDNL': 0.0, 'TE': 3.5122864969277017, 'II': 0.03225806451612903, 'NOP': 0.0, 'NB': 0.0, 'EC': 0.5, 'DD_HV': 0.04324106779539902, 'NOMT': 9.0}
+```
+
+If the commit is not a method changes commit, you will see a message like this:
+
+```Shell
+$ docker exec -it neurojit-ase python scripts/neurojit_cli.py calculate --project groovy --commit-hash 7b84807
+
+Target commit is not a method changes commit
+```
+
+If the commits are at the method level, you can still extract the commit understandability features even if the project is not included in our dataset. Please refer to the example below.
+
+```Shell
+$ docker exec -it neurojit-ase python scripts/neurojit_cli.py calculate --project spring-projects/spring-framework --commit-hash 0101945
+
+{'NOGV': 0.6, 'MDNL': 0.0, 'TE': 4.623781958476344, 'II': 0.9166666666666666, 'NOP': 1.0, 'NB': 0.0, 'EC': 0.3333333333333333, 'DD_HV': 0.04484876484351509, 'NOMT': 17.0}
+```
+
+## 3. Customizing NeuroJIT
+
+To modify NeuroJIT and conduct custom experiments, you can extend the neurojit module by referring to the scripts described above. Below are the key modules you should consider to customize NeuroJIT:
+
+- `neurojit.commit.py`: The function `Mining.only_method_changes(repo, commit_hash)` filters commits that only modify methods and saves the method bodies to the cache. You can modify this function to use other filtering methods.
+- `neurojit.cuf.metrics.py`: The `MethodUnderstandabilityFeatures` and `CommitUnderstandabilityFeatures` classes calculate commit understandability features of method-level commits. You can modify these classes if you wish to change the detailed methodology for extracting the features.
+- `scripts/environment.py`: This script includes the environment variables used in the scripts. You can modify the environment variables to perform custom experiments.
