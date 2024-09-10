@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: fnllm
+Version: 0.0.4
+Summary: A function-based LLM protocol and wrapper.
+Author: Chris Trevino
+Author-email: chtrevin@microsoft.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: azure
+Provides-Extra: openai
+Requires-Dist: aiolimiter (>=1.1.0,<2.0.0)
+Requires-Dist: azure-identity (>=1.17.1,<2.0.0) ; extra == "azure"
+Requires-Dist: azure-storage-blob (>=12.20.0,<13.0.0) ; extra == "azure"
+Requires-Dist: httpx (>=0.27.0,<0.28.0)
+Requires-Dist: openai (>=1.35.12,<2.0.0) ; extra == "openai"
+Requires-Dist: pydantic (>=2.8.2,<3.0.0)
+Requires-Dist: tenacity (>=8.5.0,<9.0.0)
+Requires-Dist: tiktoken (>=0.7.0,<0.8.0) ; extra == "openai"
+Description-Content-Type: text/markdown
+
+# fnllm
+
+A generic LLM wrapper that provides a function protocol for LLM implementations. An OpenAI wrapper is provided.
+
+# Getting Started
+
+```sh
+pip install fnllm
+```
+
+# Usage
+
+Coming Soon
