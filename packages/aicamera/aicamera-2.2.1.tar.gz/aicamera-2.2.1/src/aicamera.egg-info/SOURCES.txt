@@ -1,0 +1,13 @@
+pyproject.toml
+src/aicamera/__init__.py
+src/aicamera/cameraSocket.py
+src/aicamera/image.py
+src/aicamera/lcd.py
+src/aicamera/rtsp.py
+src/aicamera/udp.py
+src/aicamera/util.py
+src/aicamera/wifi.py
+src/aicamera.egg-info/PKG-INFO
+src/aicamera.egg-info/SOURCES.txt
+src/aicamera.egg-info/dependency_links.txt
+src/aicamera.egg-info/top_level.txt
