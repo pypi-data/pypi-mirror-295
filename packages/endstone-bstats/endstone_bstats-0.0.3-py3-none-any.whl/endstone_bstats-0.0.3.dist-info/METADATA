@@ -1,0 +1,39 @@
+Metadata-Version: 2.3
+Name: endstone-bstats
+Version: 0.0.3
+Summary: bStats Metrics for Endstone Plugins
+Author-email: Vincent Wu <magicdroidx@gmail.com>
+License-File: LICENSE
+Keywords: bstats,endstone,metrics,minecraft
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: requests
+Requires-Dist: schedule
+Requires-Dist: tomlkit
+Provides-Extra: dev
+Requires-Dist: endstone; extra == 'dev'
+Requires-Dist: pytest; extra == 'dev'
+Requires-Dist: pytest-cov; extra == 'dev'
+Requires-Dist: pytest-mock; extra == 'dev'
+Requires-Dist: requests-mock; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# bstats
+
+bStats Metrics for Endstone Plugins
+
+## Features
+
+- [x] Metrics Class
+- Custom Charts
+    - [x] Simple Pie
+    - [x] Advanced Pie
+    - [x] Drilldown Pie
+    - [x] Single Line
+    - [ ] Multi Line
+    - [ ] Simple Bar
+    - [ ] Advanced Bar
