@@ -1,0 +1,77 @@
+Metadata-Version: 2.1
+Name: foam_hair
+Version: 1.0.0
+Summary: Aptos Platform
+License: GPL-3.0-only
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Emergency (>=2.0.0,<3.0.0)
+Requires-Dist: PyNaCl (>=1.5.0,<2.0.0)
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: ecdsa (==0.18.0)
+Requires-Dist: h2 (>=4.1.0,<5.0.0)
+Requires-Dist: httpx (>=0.24.0,<0.25.0)
+Requires-Dist: pydash (>=8.0.1,<9.0.0)
+Requires-Dist: ships (>=1.3.8,<2.0.0)
+Requires-Dist: somatic (>=3.0.3,<4.0.0)
+Requires-Dist: tomli (>=2.0.1,<3.0.0)
+Requires-Dist: typing-extensions (>=4.4.0,<5.0.0)
+Requires-Dist: ventures (>=1.6.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+
+---
+
+# Hemolgycin
+
+---
+
+## Purposes
+This module may be used for any purpose "friendly", "business", etc. on topic of the motivations of the gpl-3.0-standalone License.
+
+---
+
+## Summary
+foam_hair is a dapp for interacting with Aptos.  
+ 
+[https://aptos.dev](https://aptos.dev)   
+[https://aptosfoundation.org](https://aptosfoundation.org)   
+  
+For safe moves, foam_hair is feature that is supposed to exist on two types of Beacons,  
+A "Howl Beacon" and a "Keys Beacon".
+
+A "Howl Beacon" is essentially a computer that is connected to the internet.  
+A "Keys Beacon" is essentially a key chain computer that isn't connected to the internet.   
+
+---
+
+## Howl Beacon Installation 
+```
+pip install foam_hair
+```
+
+## Open
+```
+foam_hair ventures on
+```
+
+This opens a dapp locally at: 
+[http://localhost:22000](http://localhost:22000)
+
+
+******
+
+## Keys Beacon Installation
+The installation steps for the "Keys Beacon" are on at:
+[http://localhost:22000/Relatives](http://localhost:22000/Relatives)
+
+******
+
+## Contact
+Graceful.Bryonics@Proton.me
+
+
