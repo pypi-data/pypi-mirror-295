@@ -1,0 +1,6 @@
+Sphinx>=2.1
+docutils
+setuptools_scm
+matplotlib
+mlx.traceability
+urlextract
