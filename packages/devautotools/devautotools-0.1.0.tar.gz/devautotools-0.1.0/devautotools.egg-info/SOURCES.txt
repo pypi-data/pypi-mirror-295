@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+devautotools/__init__.py
+devautotools/__main__.py
+devautotools.egg-info/PKG-INFO
+devautotools.egg-info/SOURCES.txt
+devautotools.egg-info/dependency_links.txt
+devautotools.egg-info/requires.txt
+devautotools.egg-info/top_level.txt
+tests/test_module.py
