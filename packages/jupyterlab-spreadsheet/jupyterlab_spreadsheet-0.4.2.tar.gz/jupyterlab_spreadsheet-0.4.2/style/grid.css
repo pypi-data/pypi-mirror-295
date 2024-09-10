@@ -1,0 +1,32 @@
+.sp-Grid {
+    color: var(--jp-ui-font-color0);
+    background-color: var(--jp-rendermime-table-row-background);
+}
+
+.sp-GridHeader {
+    font-weight: bold;
+    background-color: var(--jp-border-color2);
+    color: var(--jp-ui-font-color0);
+}
+
+.sp-Row-Index {
+    border-right-style: solid;
+    background-color: var(--jp-border-color2);
+}
+
+.sp-Cell {
+    white-space: pre;
+}
+
+.sp-Cell-Number {
+    text-align: end;
+}
+
+.sp-Cell-Error {
+    font-weight: bold;
+    color: red;
+}
+
+.sp-Cell-MergeDown {
+    border-bottom-color: transparent;
+}

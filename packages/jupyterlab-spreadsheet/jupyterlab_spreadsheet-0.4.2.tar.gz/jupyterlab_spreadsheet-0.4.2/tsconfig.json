@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2015", "dom"],
+    "strict": true,
+    "moduleResolution": "node",
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@jupyterlab/*": ["../jupyterlab/packages/*"],
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": [
+    "src/*",
+    "src/**/*"
+  ],
+}
