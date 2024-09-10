@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: charLM
+Version: 0.1.1
+Summary: This package provides a simpleway to train language models at the character level.
+Home-page: https://github.com/josecruzado21/charLM
+Author: Jose Cruzado
+Author-email: josecruzado2103@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: numpy==2.1.0

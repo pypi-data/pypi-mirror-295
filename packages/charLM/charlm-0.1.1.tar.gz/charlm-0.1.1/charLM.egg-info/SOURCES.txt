@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+charLM.egg-info/PKG-INFO
+charLM.egg-info/SOURCES.txt
+charLM.egg-info/dependency_links.txt
+charLM.egg-info/requires.txt
+charLM.egg-info/top_level.txt
+charlm/__init__.py
+charlm/ngram.py
