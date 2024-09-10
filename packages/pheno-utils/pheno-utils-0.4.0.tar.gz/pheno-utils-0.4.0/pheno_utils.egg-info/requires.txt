@@ -1,0 +1,16 @@
+fastcore
+pandas==2.1.0
+pyarrow
+scipy
+fastparquet
+matplotlib
+seaborn
+scikit-learn
+pyCompare
+pygam
+smart_open
+dask[dataframe]
+requests
+urllib3
+
+[dev]
