@@ -1,0 +1,3 @@
+__all__ = ['softmax']
+
+def softmax(results): ...
