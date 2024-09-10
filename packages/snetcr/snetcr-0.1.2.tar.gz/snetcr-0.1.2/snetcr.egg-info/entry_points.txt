@@ -1,0 +1,2 @@
+[console_scripts]
+snetcr = snetcr.run_pipeline:main
