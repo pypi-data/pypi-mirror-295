@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "costly"
+version = "0.1.11"
+description = "Estimate costs and running times of complex LLM workflows/experiments/pipelines in advance before spending money, via simulations."
+authors = ["abhimanyu <abhimanyupallavisudhir@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Faker = "^28.0.0"
+pydantic = "^2.8.2"
+typing-extensions = "^4.12.2"
+tiktoken = "^0.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-m 'not slow'"
