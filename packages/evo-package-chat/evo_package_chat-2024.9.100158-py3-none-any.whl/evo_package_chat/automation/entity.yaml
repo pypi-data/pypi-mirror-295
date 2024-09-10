@@ -1,0 +1,86 @@
+#========================================================================================================================================
+# CyborgAI CC BY-NC-ND 4.0 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internation    https://github.com/cyborg-ai-git | 
+#========================================================================================================================================
+
+# TYPE:
+#   STRING [DEFAULT_VALUE]
+#   LANGUAGE [DEFAULT_VALUE]
+#   INT [DEFAULT_VALUE]
+#   LONG [DEFAULT_VALUE]
+#   FLOAT [DEFAULT_VALUE]
+#   DOUBLE [DEFAULT_VALUE]
+#   BYTE
+#   BYTES
+#   BOOL [DEFAULT_VALUE]
+#   EOBJECT EOBJECT_CLASS
+#   MAP EOBJECT_CLASS
+#   ENUM ENUM_CLASS .ENUM_DEFAULT
+#   EAPIADMIN
+#   EAPIFILE [image, video, audio, pdf]
+#   EAPITEXT
+package: evo_package_chat
+
+enum:
+  EnumChatRole:
+    SYSTEM
+    ASSISTANT
+    USER
+
+entity:
+  EChatInput:
+    _DOC_: "EChatInput _DOC_"
+    #token: BYTES
+    apiToken: STRING
+    modelID: BYTES
+    eAssistantID: BYTES
+    sessionID : BYTES 
+    language: STRING
+    text: STRING
+    eApiFile: EAPIFILE
+    mapEChatParameter: MAP EChatParameter
+    mapEApiText: MAP EApiText
+    mapEApiFile: MAP EApiFile
+
+  EChatMessage:
+    _DOC_: "EChatMessage _DOC_"
+    enumChatRole: ENUM EnumChatRole .USER
+    model: STRING
+    eAssistantID: BYTES
+    sessionID : BYTES 
+    eApiText: EAPITEXT
+    isError: BOOL
+    error: STRING
+    mapEApiText: MAP EApiText
+    mapEApiFile: MAP EApiFile
+
+  EChatMapMessage:
+    _DOC_: "EChatMapMessage _DOC_"
+    sessionID : BYTES 
+    mapEChatMessage: MAP EChatMessage
+
+  EChatParameter:
+    _DOC_: "EChatSession _DOC_"
+    key : STRING 
+    value: STRING
+
+  EChatSession:
+    _DOC_: "EChatSession _DOC_"
+    name: STRING
+    sessionID : BYTES 
+    sessionApi: STRING
+
+  EChatMapSession:
+    _DOC_: "EChatMapSession _DOC_"
+    mapEChatSession : MAP EChatSession 
+
+  EChatModel:
+    _DOC_: "EChatModel _DOC_"
+    name : STRING
+    created: INT
+    apiPackage: STRING
+    typeInput: INT
+
+  EChatMapModel:
+    _DOC_: "EChatModelMap _DOC_"
+    apiPackage: STRING
+    mapEChatModel: MAP EChatModel

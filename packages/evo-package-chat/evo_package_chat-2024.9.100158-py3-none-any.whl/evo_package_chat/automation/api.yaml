@@ -1,0 +1,54 @@
+#========================================================================================================================================
+# CyborgAI CC BY-NC-ND 4.0 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internation    https://github.com/cyborg-ai-git | 
+#========================================================================================================================================
+
+# VALID TYPE FOR INPUT/OUTPUT:
+#   EOBJECT EOBJECT_CLASS
+
+package: evo_package_chat
+
+control:
+  CChatApi:
+    _DOC_: "CChatApi description"
+    
+    chat-chatstream:
+      description: "chat-chatstream _DESCRIPTION_"
+      required: "eChatInput.apiToken|eChatInput.modelID"
+      callback: onChatStream
+      input: EOBJECT EChatInput
+      output: EOBJECT EChatMessage
+
+    chat-get_mapmodel:
+      description: "chat-get_mapmodel _DESCRIPTION_"
+      required: "*"
+      callback: onGetMapModel
+      input: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+      output: EOBJECT EChatMapModel
+
+    chat-get_mapmessage:
+      description: "chat-get_mapmessage _DESCRIPTION_"
+      required: "eChatInput.apiToken|eChatInput.modelID|eChatInput.sessionID"
+      callback: onGetMapMessage
+      input: EOBJECT EChatInput
+      output: EOBJECT EChatMapMessage
+
+    chat-get_mapsession:
+      description: "chat-get_mapsession _DESCRIPTION_"
+      required: "eChatInput.apiToken|eChatInput.modelID"
+      callback: onGetMapSession
+      input: EOBJECT EChatInput
+      output: EOBJECT EChatMapSession
+
+    chat-get_assistant:
+      description: "chat-get_assistant _DESCRIPTION_"
+      required: "eApiQuery.eObjectID"
+      callback: onGetEAssistant
+      input: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+      output: EOBJECT EAssistant
+
+    chat_query_assistant:
+      description: "chat-chat_query_assistant _DESCRIPTION_"
+      required: "eApiQuery.query"
+      callback: onGetEAssistantMap
+      input: EOBJECT evo_framework.core.evo_core_api.entity.EApiQuery
+      output: EOBJECT EAssistantMap
