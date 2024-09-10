@@ -1,0 +1,1 @@
+{"type": "function", "function": {"name": "book", "description": "", "parameters": {"type": "object", "properties": {"name": {"type": "string", "description": ""}, "year": {"type": "integer", "description": ""}, "author": {"type": "string", "description": ""}}, "required": ["name", "year", "author"]}}}
