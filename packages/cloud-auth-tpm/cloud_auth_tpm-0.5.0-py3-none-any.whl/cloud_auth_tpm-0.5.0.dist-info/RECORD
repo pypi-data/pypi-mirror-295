@@ -1,0 +1,12 @@
+cloud_auth_tpm/__init__.py,sha256=O9CT1B2F-cVB8elT0EoCJbgkcffjvlmqteqavs4giDg,25
+cloud_auth_tpm/aws/__init__.py,sha256=vO4o71jnJ-vAcNM7caeaowyrJ7Mj0bPZLsn70pg07U0,85
+cloud_auth_tpm/aws/awscredentials.py,sha256=5As37UJHNFUAJVI77OYRoCvluHZNLgnVrEtYc4Y0F_A,8013
+cloud_auth_tpm/azure/__init__.py,sha256=OVIxrcDTJiYVYSBdl-q779WPA3YELsNH4i4g7qpVwj4,91
+cloud_auth_tpm/azure/azurecredentials.py,sha256=CEIY6l_f-HXKczz4R--5r-B9lmbGM_ebWiAmQnqEIzA,5756
+cloud_auth_tpm/gcp/__init__.py,sha256=kacwAWO8qta8MUFQVn0Pn_OC70zaRs4DYG2XjVqAP24,85
+cloud_auth_tpm/gcp/gcpcredentials.py,sha256=uWNnMsGWws1_ICem4ANpjy6sHn-_v2GzYW16JrCe1fw,3941
+cloud_auth_tpm-0.5.0.dist-info/LICENSE,sha256=xx0jnfkXJvxRnG63LTGOxlggYnIysveWIZ6H3PNdCrQ,11357
+cloud_auth_tpm-0.5.0.dist-info/METADATA,sha256=gN_wwGT0kegfEnVeUVFLfWOW1Lw_AWABnVXQfgCcNdk,15552
+cloud_auth_tpm-0.5.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+cloud_auth_tpm-0.5.0.dist-info/top_level.txt,sha256=2gezTjJgACp4_6fEvuidY_jQxuu8yFl_dFXeReo0Q3Y,15
+cloud_auth_tpm-0.5.0.dist-info/RECORD,,
