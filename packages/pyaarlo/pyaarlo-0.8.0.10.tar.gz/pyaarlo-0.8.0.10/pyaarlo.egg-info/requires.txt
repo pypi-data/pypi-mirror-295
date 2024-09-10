@@ -1,0 +1,8 @@
+requests
+click
+pycryptodome
+unidecode
+cloudscraper>=1.2.71
+paho-mqtt
+cryptography
+slugify
