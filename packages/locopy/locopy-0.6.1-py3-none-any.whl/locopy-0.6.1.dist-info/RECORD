@@ -1,0 +1,14 @@
+locopy/__init__.py,sha256=XoQt_fGwurfPeJR1BCU9QIPrd4BaVi5ejEgjax2hRQI,933
+locopy/_version.py,sha256=8xeqZA_-vQFSMyxeptieVNnzVPCi3SEKB_RyxAx9SYU,708
+locopy/database.py,sha256=CE2EIpOKSeOjuZ0C2ZxEZs0Hs6l1Zdzpc_67BC4g3i8,8714
+locopy/errors.py,sha256=JksCpQE1lV9ClvaQflsLmSxmlj28drbSJe0jgf4DSdo,1915
+locopy/logger.py,sha256=_1f0-rg65x4hTGjpfNa_NCImxOiefD-Apbeb02Y2ggU,1953
+locopy/redshift.py,sha256=pTph07q5GZTZtlvVMigvfx6vc_8F9eqDeLbERgbhZKA,23245
+locopy/s3.py,sha256=sidWWpNc8Hv3oS788rEXD2YxPZSCYTh9rJfJAO9ACq4,12082
+locopy/snowflake.py,sha256=fwA7ug6xIreFxMT-d3GGe7pCpWt3G711kJHYZH-29Hs,18787
+locopy/utility.py,sha256=QqNVKcgeI2zu1cLjTnNFNymF-Q02h4neV2u9-YD6BVM,15329
+locopy-0.6.1.dist-info/LICENSE,sha256=xx0jnfkXJvxRnG63LTGOxlggYnIysveWIZ6H3PNdCrQ,11357
+locopy-0.6.1.dist-info/METADATA,sha256=eztENwRcd2mYQncw5Yv_Wo1D1qxx9kO4UZT4JQ1NgAg,7498
+locopy-0.6.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+locopy-0.6.1.dist-info/top_level.txt,sha256=jLNhHKrPurvstgX5jGVGBXpf9HUfBFuRBo6ivsEL3xM,7
+locopy-0.6.1.dist-info/RECORD,,
