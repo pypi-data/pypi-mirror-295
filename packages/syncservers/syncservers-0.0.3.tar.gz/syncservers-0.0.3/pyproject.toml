@@ -1,0 +1,21 @@
+[project]
+name = "syncservers"
+version = "0.0.3"
+authors = [
+  { name="Zhuo Wang", email="zhuowang10@gmail.com" },
+]
+description = "instantly sync data among home servers"
+readme = "README.md"
+requires-python = ">=3.7, <4"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "asyncinotify>=4.0.9",
+    "easyschedule>=0.107",
+]
+
+[project.urls]
+Homepage = "https://github.com/zhuowang10/syncservers"
