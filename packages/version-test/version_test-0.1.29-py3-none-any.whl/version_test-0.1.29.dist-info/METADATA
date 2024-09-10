@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: version-test
+Version: 0.1.29
+Summary: 
+Author: Kenny Stryker
+Author-email: nggkenny@gmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: black (>=24.8.0,<25.0.0)
+Requires-Dist: pytest (>=8.3.2,<9.0.0)
+Requires-Dist: pytest-cov (>=5.0.0,<6.0.0)
+Description-Content-Type: text/markdown
+
+# README
