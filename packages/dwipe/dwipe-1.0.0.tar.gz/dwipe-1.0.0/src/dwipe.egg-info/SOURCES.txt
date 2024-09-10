@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/dwipe/PowerWindow.py
+src/dwipe/__init__.py
+src/dwipe/main.py
+src/dwipe.egg-info/PKG-INFO
+src/dwipe.egg-info/SOURCES.txt
+src/dwipe.egg-info/dependency_links.txt
+src/dwipe.egg-info/entry_points.txt
+src/dwipe.egg-info/requires.txt
+src/dwipe.egg-info/top_level.txt
