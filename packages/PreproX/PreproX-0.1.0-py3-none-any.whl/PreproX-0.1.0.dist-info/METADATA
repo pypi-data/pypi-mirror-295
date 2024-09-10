@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: PreproX
+Version: 0.1.0
+Summary: A Python library for data preprocessing suggestions and transformations
+Home-page: https://github.com/Sam-Coding77/DataWiz
+Author: Samama Farooq
+Author-email: samama4200@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scikit-learn
+Requires-Dist: category-encoders
+Requires-Dist: psutil
+Requires-Dist: scipy
+
