@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: limbo-ml
+Version: 0.4.0
+Summary: Library for accessing computer vision training data in Limbo Data Format.
+Author-email: "Timothy M. Shead" <tshead@sandia.gov>
+Maintainer-email: "Timothy M. Shead" <tshead@sandia.gov>
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: imagecat[exr]
+Requires-Dist: numpy
+Requires-Dist: skia-python
+Requires-Dist: tqdm
+Requires-Dist: IPython ; extra == "all"
+Requires-Dist: behave ; extra == "all"
+Requires-Dist: coverage ; extra == "all"
+Requires-Dist: ipywidgets ; extra == "all"
+Requires-Dist: nbsphinx ; extra == "all"
+Requires-Dist: sphinx >= 3.5 ; extra == "all"
+Requires-Dist: sphinx-argparse ; extra == "all"
+Requires-Dist: sphinx-gallery < 0.11 ; extra == "all"
+Requires-Dist: sphinx_rtd_theme ; extra == "all"
+Requires-Dist: ipython ; extra == "doc"
+Requires-Dist: nbsphinx ; extra == "doc"
+Requires-Dist: sphinx >= 3.5 ; extra == "doc"
+Requires-Dist: sphinx-argparse ; extra == "doc"
+Requires-Dist: sphinx-gallery < 0.11 ; extra == "doc"
+Requires-Dist: sphinx_rtd_theme ; extra == "doc"
+Project-URL: Chat, https://github.com/limbo-ml/user/discussions
+Project-URL: Coverage, https://coveralls.io/r/limbo-ml/user
+Project-URL: Documentation, http://limbo-ml.readthedocs.io/
+Project-URL: Issue Tracker, http://github.com/limbo-ml/user/issues
+Project-URL: Regression Tests, http://github.com/limbo-ml/user/actions
+Project-URL: Source, http://github.com/limbo-ml/user
+Provides-Extra: all
+Provides-Extra: doc
