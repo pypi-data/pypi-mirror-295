@@ -1,0 +1,2 @@
+[console_scripts]
+yt-downloader = youtube_analyzer.yt_downloader:main
