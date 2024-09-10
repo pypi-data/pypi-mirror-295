@@ -1,0 +1,168 @@
+---
+title: "Quickstart"
+description: Build your first agentic workflow in under five minutes
+---
+
+import Installation from '/snippets/installation.mdx';
+
+This quickstart is designed to **show** you how ControlFlow works, rather than **teach** you.
+For a more detailed introduction, check out the full [tutorial](/tutorial).
+
+<Installation />
+
+## Define Tasks and Tools
+
+You define agentic workflows using tasks and tools.
+
+<CardGroup>
+  <Card title="Tasks" icon="list-check" iconType="duotone" href="/concepts/tasks">
+    Discrete objectives that you want an AI agent to complete, such as "write a poem" or "summarize this article".
+  </Card>
+  <Card title="Tools" icon="hammer" iconType="duotone" href="/concepts/tasks#providing-tools">
+    Additional functionality that agents can use to complete tasks.
+    For example, a calculator or a database query tool.
+  </Card>
+</CardGroup>
+
+Let's define a flow with two dependent tasks:
+
+1. Ask the user for input.
+2. Roll some dice.
+
+The `roll_dice` function is a tool that the second task uses to complete its objective.
+
+```python
+import controlflow as cf
+import random
+
+# this function will be used as a tool by task 2
+def roll_dice(n: int) -> int:
+    '''Roll n dice'''
+    return [random.randint(1, 6) for _ in range(n)]
+
+@cf.flow
+def dice_flow():
+
+    # task 1: ask the user how many dice to roll
+    user_task = cf.Task(
+        "Ask the user how many dice to roll", 
+        result_type=int, 
+        user_access=True
+    )
+
+    # task 2: roll the dice
+    dice_task = cf.Task(
+        "Roll the dice",
+        context=dict(n=user_task),
+        tools=[roll_dice],
+        result_type=list[int],
+    )
+
+    return dice_task
+
+result = dice_flow()
+print(f"The result is: {result}")
+```
+
+<Tip>
+All tasks in a `@flow` function are run automatically when the function is called, but you can run tasks eagerly by calling `task.run()`.
+</Tip>
+
+## Assign Agents to a Flow
+
+Agents collaborate with each other using flows.
+
+<CardGroup>
+  <Card title="Agents" icon="robot" iconType="duotone" href="/concepts/agents">
+    AI models that complete tasks in your workflows.
+    You can create agents that are optimized for particular tasks.
+  </Card>
+  <Card title="Flows" icon="arrow-progress" iconType="duotone" href="/concepts/flows">
+    Containers that group tasks and let multiple agents share context while working towards a larger objective.
+  </Card>
+</CardGroup>
+
+Let's create three agents: a `writer`, an `editor`, and a `manager`.
+
+- The writer begins the workflow by drafting a paragraph.
+- The editor refines the draft.
+- The manager reviews the final result and approves if its criteria is met.
+
+The `approval_task` function is run at the end of each iteration to see if the manager approved the paragraph.
+If not, the editing process continues until approval is granted.
+
+```python
+import controlflow as cf
+
+# Create three agents
+writer = cf.Agent(
+    name="Writer",
+    description="An AI agent that writes paragraphs",
+)
+
+editor = cf.Agent(
+    name="Editor",
+    description="An AI agent that edits paragraphs for clarity and coherence",
+)
+
+manager = cf.Agent(
+    name="Manager",
+    description="An AI agent that manages the writing process",
+    instructions="""
+        Your goal is to ensure the final paragraph meets high standards 
+        of quality, clarity, and coherence. You should be strict in your 
+        assessments and only approve the paragraph if it fully meets 
+        these criteria.
+        """,
+)
+
+@cf.flow
+def writing_flow():
+    draft_task = cf.Task(
+        "Write a paragraph about the importance of AI safety",
+        agents=[writer],
+    )
+
+    # we will continue editing until the manager approves the paragraph
+    approved = False
+    while not approved:
+
+        edit_task = cf.Task(
+            "Edit the paragraph for clarity and coherence",
+            context=dict(draft=draft_task),
+            agents=[editor],
+        )
+
+        approval_task = cf.Task(
+            "Review the edited paragraph to see if it meets the quality standards",
+            result_type=bool,
+            context=dict(edit=edit_task),
+            agents=[manager],
+        )
+
+        # eagerly run the approval task to see if the paragraph is approved
+        approved = approval_task.run()
+
+    return approved, edit_task.result
+
+approved, draft = writing_flow()
+print(f'{"Approved" if approved else "Rejected"} paragraph:\n{draft}')
+```
+
+## Conclusion
+
+Here's what you learned today:
+
+- **Tasks** are how you create goals for agents.
+They have a `result_type` that determines the type of data they return.
+They have a `context` that can include results of other tasks, enabling multi-step workflows.
+If `tools` or `user_access` is provided, the agent can use them to complete the task.
+- **Agents** are AI models that complete tasks and can be specialized with different capabilities, tools, instructions, and even LLM models.
+Agents can be assigned to tasks.
+- **Flows** can involve dynamic control flow like loops, based on eager task result.
+They allow multiple agents to collaborate on a larger objective with shared history.
+
+## What's Next? 
+
+Congratulations, you've completed the ControlFlow quickstart!
+To continue learning, please explore the full [ControlFlow tutorial](/tutorial).
