@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: odoo-addons-oca-hr-holidays
+Version: 16.0.20240909.0
+Summary: Meta package for oca-hr-holidays Odoo addons
+Classifier: Programming Language :: Python
+Classifier: Framework :: Odoo
+Classifier: Framework :: Odoo :: 16.0
+Requires-Dist: odoo-addon-hr-holidays-auto-extend <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-holidays-leave-auto-approve <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-holidays-natural-period <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-holidays-public <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-holidays-public-city <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-holidays-settings <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-hr-leave-type-code <16.1dev,>=16.0dev
+Requires-Dist: odoo-addon-resource-leaves-geographic <16.1dev,>=16.0dev
+
+UNKNOWN
