@@ -1,0 +1,15 @@
+Metadata-Version: 2.3
+Name: megatron-tokenizer-lite
+Version: 0.0.1
+Summary: Slim package to read megatron mmaps
+Author-email: Marco Bellagente <marco.bellagente@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# TODO
+
+Fill later
