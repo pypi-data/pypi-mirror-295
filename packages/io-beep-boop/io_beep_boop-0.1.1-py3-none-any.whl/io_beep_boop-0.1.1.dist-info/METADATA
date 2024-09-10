@@ -1,0 +1,42 @@
+Metadata-Version: 2.3
+Name: io-beep-boop
+Version: 0.1.1
+Summary: Wrapper and CLI for the Italian IO App API
+Project-URL: Repository, https://forge.steffo.eu/steffo/io-beep-boop/
+Author-email: Stefano Pigozzi <me@steffo.eu>
+Maintainer-email: Stefano Pigozzi <me@steffo.eu>
+License-Expression: EUPL-1.2
+License-File: LICENSE.txt
+Keywords: developers-italia,io-app
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.10
+Requires-Dist: cfig==0.2.3
+Requires-Dist: click==8.1.2
+Requires-Dist: httpx==0.22.0
+Requires-Dist: pydantic==1.9.0
+Provides-Extra: docs
+Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == 'docs'
+Requires-Dist: sphinx>=4.3.2; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: pytest-cov>=3.0.0; extra == 'test'
+Requires-Dist: pytest-github-actions-annotate-failures>=0.1.6; extra == 'test'
+Requires-Dist: pytest>=6.2.5; extra == 'test'
+Description-Content-Type: text/markdown
+
+<div align="center">
+
+![](.media/icon-128x128_round.png)
+
+# IO Beep Boop
+
+Wrapper and CLI for the Italian [IO App API](https://developer.io.italia.it/openapi.html)
+
+</div>
+
+## Links
+
+[![Documentation](https://img.shields.io/readthedocs/io-beep-boop)](https://io-beep-boop.readthedocs.io/)
+ 
+[![Available on PyPI](https://img.shields.io/pypi/v/io-beep-boop)](https://pypi.org/project/io-beep-boop/)

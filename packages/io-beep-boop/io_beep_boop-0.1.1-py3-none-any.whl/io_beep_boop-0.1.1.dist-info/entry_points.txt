@@ -1,0 +1,2 @@
+[console_scripts]
+io-beep-boop = io_beep_boop.cli.__main__:main
