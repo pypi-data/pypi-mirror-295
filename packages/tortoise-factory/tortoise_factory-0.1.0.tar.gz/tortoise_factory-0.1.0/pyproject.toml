@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "tortoise-factory"
+version = "0.1.0"
+description = "Populate Tortoise Model with faker output in a factory for tests"
+authors = ["Sebastien Nicolet <snicolet95@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+faker = "^28.4.1"
+tortoise-orm = "^0.21.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
