@@ -1,0 +1,3 @@
+[console_scripts]
+contentful_taxonomy=agenticos.workflows.contentful_taxonomy_creator.main:run
+
