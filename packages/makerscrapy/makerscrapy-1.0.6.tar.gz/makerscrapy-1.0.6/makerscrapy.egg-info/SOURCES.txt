@@ -1,0 +1,11 @@
+README.md
+setup.py
+makerscrapy.egg-info/PKG-INFO
+makerscrapy.egg-info/SOURCES.txt
+makerscrapy.egg-info/dependency_links.txt
+makerscrapy.egg-info/requires.txt
+makerscrapy.egg-info/top_level.txt
+makertools/__init__.py
+makertools/mark_excel.py
+makertools/mark_request.py
+makertools/mark_sqlalchemy.py
