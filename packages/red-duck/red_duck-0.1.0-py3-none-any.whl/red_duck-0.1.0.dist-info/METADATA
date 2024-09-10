@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: red-duck
+Version: 0.1.0
+Summary: Utilities for interacting with a DuckDB database.
+Author-Email: redjax <pypi@redjax.33mail.com>
+License: MIT
+Project-URL: Repository, https://github.com/redjax/red-duck
+Project-URL: Download, https://pypi.org/project/red-duck/
+Requires-Python: >=3.11
+Requires-Dist: duckdb>=1.1.0
+Requires-Dist: pandas>=2.2.2
+Requires-Dist: pyarrow>=17.0.0
+Description-Content-Type: text/markdown
+
+# red-duck
