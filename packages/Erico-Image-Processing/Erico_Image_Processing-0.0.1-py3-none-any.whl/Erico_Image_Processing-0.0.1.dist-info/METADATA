@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: Erico-Image-Processing
+Version: 0.0.1
+Summary: ## Descrição
+Home-page: https://github.com/EricoCoutoJr/image-processing-package.git
+Author: Erico Couto Jr.
+Author-email: erico.coutojr@gmail.com
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: numpy ==1.21.0
+Requires-Dist: scikit-image ==0.24.0
+Requires-Dist: matplotlib ==3.9.0
+
+# Image Processing
+
+Espe pacote tem a funÃ§Ã£o de permitir a transformaÃ§Ã£o de imagens usando as proporÃ§Ãµes de gradiente RGB de outra imagem.
+	- 
+	-
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package_name
+
+```bash
+pip install erico_image_processing
+```
+
+## Usage
+
+```python
+from erico_image_processing import combination, transformation
+combination.find_difference(image1, image2)
+combination.transfer_histogram(image1, image2)
+
+transfomation.resize_image(image, proportion)
+```
+
+## Author
+Erico Couto Jr. 
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
