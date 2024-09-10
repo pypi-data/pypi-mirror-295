@@ -1,0 +1,8 @@
+einops
+numpy
+torch
+datasets
+transformers
+tqdm
+pandas
+typeguard~=2.0
