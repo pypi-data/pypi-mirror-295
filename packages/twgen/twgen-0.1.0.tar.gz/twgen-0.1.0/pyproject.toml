@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "twgen"
+version = "0.1.0"
+description = "A command-line tool for creating and managing Tailwind CSS projects."
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.9.0"
+
+[tool.poetry.scripts]
+twgen = "twgen.main:app"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
