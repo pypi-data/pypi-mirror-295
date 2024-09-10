@@ -1,0 +1,16 @@
+ovos-plugin-manager~=0.1.1a3
+ovos-bus-client<1.0.0,>=0.0.7
+ovos-utils<1.0.0,>=0.0.38
+ovos-workshop<1.0.0,>=0.0.16a48
+padacioso>=0.1.1,~=0.1
+dbus-next
+
+[extractors]
+ovos-ocp-youtube-plugin>=0.0.1,~=0.0
+ovos-ocp-deezer-plugin>=0.0.1,~=0.0
+ovos-ocp-rss-plugin>=0.0.2,~=0.0
+ovos-ocp-bandcamp-plugin>=0.0.1,~=0.0
+ovos-ocp-m3u-plugin>0.0,>=0.0.1
+ovos-ocp-news-plugin>=0.0.3,~=0.0
+ovos_audio_plugin_simple<0.1.0,>=0.0.2a3
+ovos-ocp-files-plugin~=0.13
