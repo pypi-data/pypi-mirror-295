@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: tortoise-factory
+Version: 0.1.0
+Summary: Populate Tortoise Model with faker output in a factory for tests
+License: MIT
+Author: Sebastien Nicolet
+Author-email: snicolet95@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: faker (>=28.4.1,<29.0.0)
+Requires-Dist: tortoise-orm (>=0.21.6,<0.22.0)
+Description-Content-Type: text/markdown
+
+# Usage
+```python
+from tortoise import Model, fields
+from tortoise_factory import model_factory
+
+
+class User(Model):
+    id = fields.IntField(primary_key=True)
+    first_name = fields.CharField(max_length=100)
+    last_name = fields.CharField(max_length=100)
+    email = fields.CharField(max_length=200)
+
+
+class Product(Model):
+    id = fields.IntField(primary_key=True)
+    name = fields.CharField(max_length=200)
+    description = fields.TextField(null=True, default=None)
+    price = fields.FloatField()
+    created_by = fields.ForeignKeyField(
+        "models.User",
+        on_delete=fields.CASCADE,
+        related_name="products",
+    )
+
+    def __str__(self) -> str:
+        return self.name
+```
+## Generalities
+All returned models are saved in db, meaning they will all have a `.id` value, the same is true for any ForeignKeyField
+
+
+## Random values
+To get a simple random product:
+```python
+product = await model_factory(Product)
+```
+the `created_by` will be created automaticaly since it cannot be None, when possible, the factory will put None into optional fields.
+
+
+## Specify some fields
+```python
+product = await model_factory(Product, name="something", created_by__name="Bob")
+```
+we use `__` to go throught relations
+
+
+## Fill optional values
+```python
+product = await model_factory(Product, _optionals=["description"])
+```
+
+now you will have a `product.description` wich won't be `None`
+
+
