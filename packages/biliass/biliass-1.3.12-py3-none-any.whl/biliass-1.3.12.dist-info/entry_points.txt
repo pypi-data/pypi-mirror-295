@@ -1,0 +1,3 @@
+[console_scripts]
+biliass=biliass.__main__:main
+
