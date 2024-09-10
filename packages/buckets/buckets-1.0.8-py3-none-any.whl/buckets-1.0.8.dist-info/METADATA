@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: buckets
+Version: 1.0.8
+Summary: PM Cases generator for DB analysis
+Author-email: Fernando Ontiveros <feronti@gmail.com>
+Requires-Python: >=3.10
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Dist: mysql-connector-python==9.0.0
+Requires-Dist: protobuf==4.25.2
+Requires-Dist: Faker==27.0.0
+Requires-Dist: urllib3==2.2.2
