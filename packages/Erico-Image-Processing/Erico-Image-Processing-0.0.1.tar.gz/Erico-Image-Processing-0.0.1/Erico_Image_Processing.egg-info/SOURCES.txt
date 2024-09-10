@@ -1,0 +1,13 @@
+setup.py
+Erico_Image_Processing.egg-info/PKG-INFO
+Erico_Image_Processing.egg-info/SOURCES.txt
+Erico_Image_Processing.egg-info/dependency_links.txt
+Erico_Image_Processing.egg-info/requires.txt
+Erico_Image_Processing.egg-info/top_level.txt
+erico_image_processing/__init__.py
+erico_image_processing/processing/__init__.py
+erico_image_processing/processing/combination.py
+erico_image_processing/processing/transformation.py
+erico_image_processing/utils/__init__.py
+erico_image_processing/utils/io.py
+erico_image_processing/utils/plot.py
