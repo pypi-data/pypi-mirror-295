@@ -1,0 +1,10 @@
+README.md
+setup.py
+bvlogger/__init__.py
+bvlogger/authentication.py
+bvlogger/connector_logging.py
+bvlogger/endpoint_details.py
+bvlogger.egg-info/PKG-INFO
+bvlogger.egg-info/SOURCES.txt
+bvlogger.egg-info/dependency_links.txt
+bvlogger.egg-info/top_level.txt
