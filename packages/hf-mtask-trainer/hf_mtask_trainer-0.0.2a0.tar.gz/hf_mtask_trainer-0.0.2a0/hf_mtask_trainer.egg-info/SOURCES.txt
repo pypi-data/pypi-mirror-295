@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+hf_mtask_trainer/__init__.py
+hf_mtask_trainer/mixins.py
+hf_mtask_trainer/state.py
+hf_mtask_trainer/trainer.py
+hf_mtask_trainer/types.py
+hf_mtask_trainer.egg-info/PKG-INFO
+hf_mtask_trainer.egg-info/SOURCES.txt
+hf_mtask_trainer.egg-info/dependency_links.txt
+hf_mtask_trainer.egg-info/not-zip-safe
+hf_mtask_trainer.egg-info/requires.txt
+hf_mtask_trainer.egg-info/top_level.txt
