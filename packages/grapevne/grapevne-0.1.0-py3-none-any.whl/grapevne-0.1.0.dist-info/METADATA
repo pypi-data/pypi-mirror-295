@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: grapevne
+Version: 0.1.0
+Summary: Python library for grapevne snakemake support
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: packaging >=24.1
+
+# grapevne-py
+Python library for grapevne snakemake support
