@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: jltest
+Version: 0.1.0
+Summary: A minimalistic Python library
+Author-email: Your Name <your.email@example.com>
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/yourusername/jl
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: pydantic>=2.7.0
+Requires-Dist: fastapi>=0.111.0
+Requires-Dist: uvicorn>=0.24.0
