@@ -1,0 +1,53 @@
+# This workflow will install Python dependencies, run tests and report code coverage to Codecov
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Codecov
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore: 
+      - 'docs/**'
+      - 'examples/**'
+      - '**.md'
+  pull_request:
+    branches: [ "main" ]
+    paths-ignore: 
+      - 'docs/**'
+      - 'examples/**'
+      - '**.md'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f tests/requirements.txt ]; then pip install -r tests/requirements.txt; fi
+    - name: Test with pytest
+      env:
+        NUMBA_DISABLE_JIT: 1
+      run: |
+        python -m pytest --cov=flory --cov-report xml:.coverage_report.xml
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./.coverage_report.xml
+        flags: Tests
+        name: codecov-flory
+        fail_ci_if_error: true
