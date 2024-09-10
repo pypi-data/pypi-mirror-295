@@ -1,0 +1,15 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/pytppi.egg-info/PKG-INFO
+src/pytppi.egg-info/SOURCES.txt
+src/pytppi.egg-info/dependency_links.txt
+src/pytppi.egg-info/requires.txt
+src/pytppi.egg-info/top_level.txt
+src/tppi/__init__.py
+src/tppi/org.py
+src/tppi/protocol.py
+tests/test_assemble.py
+tests/test_disassemble.py
+tests/test_org.py
+tests/test_other.py
