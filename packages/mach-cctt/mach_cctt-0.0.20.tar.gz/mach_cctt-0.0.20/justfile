@@ -1,0 +1,85 @@
+set dotenv-load
+
+project := "mach_cctt"
+
+account_file := "trevor-personal-2.json"
+password := "abc"
+source := ""
+policy := "random"
+# Wallet to withdraw funds to
+wallet := "0xAAE1887BDed35e9fcC2f0bb6229DE479b91FD00c"
+
+# Directory to store build artifacts
+dist := "dist"
+
+# Set to any non-empty value to turn on performance profiling
+profile := ""
+profile_output := "perf.out"
+
+# Path to Python executable
+python := "python"
+
+# Don't touch these
+profile_args := if profile != "" { "cprofile -o" } else { "" }
+exec := python + " -m " + profile_args + " src." + project
+
+init:
+	{{ python }} -m pip install --upgrade -e .
+
+help:
+	{{ exec }} \
+		--help
+
+generate:
+	{{ exec }} \
+		generate \
+		--file {{ account_file}} \
+		--password {{ password }}
+
+import private_key:
+	{{ exec }} \
+		import \
+		--file {{ account_file }} \
+		--password {{ password }} \
+		--private-key {{ private_key }}
+
+decrypt:
+	{{ exec }} \
+		decrypt \
+		--file {{ account_file }} \
+		--password {{ password }}
+
+balances:
+	{{ exec }} \
+		balances \
+		--file {{ account_file }}
+
+run:
+	{{ exec }} \
+		run \
+		--file {{ account_file }} \
+		--password {{ password }} \
+		--source {{ source }} \
+		--destination-policy {{ policy }}
+
+withdraw:
+	{{ exec }} \
+		withdraw \
+		--file {{ account_file }} \
+		--password {{ password }} \
+		--wallet {{ wallet }}
+
+build:
+	{{ python }} -m build -o {{ dist }}
+
+upload-test:
+	{{ python }} -m twine upload --repository testpypi {{ dist }}/{{ project }}* --verbose
+
+upload:
+	{{ python }} -m twine upload {{ dist }}/{{ project }}* --verbose
+
+perf:
+	{{ python }} -m pstats {{ profile_output }}
+
+clean:
+	rm -rf {{ profile_output }} {{ dist }}/{{ project }}*
