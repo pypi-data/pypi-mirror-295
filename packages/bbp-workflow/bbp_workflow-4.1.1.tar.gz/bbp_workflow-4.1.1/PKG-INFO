@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: bbp-workflow
+Version: 4.1.1
+Summary: Automated pipelines of batch jobs using python and the luigi framework
+Author: Blue Brain Project, EPFL
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/BlueBrain/bbp-workflow
+Project-URL: Documentation, https://bbp-workflow.readthedocs.io/en/stable/
+Project-URL: Repository, https://github.com/BlueBrain/bbp-workflow
+Project-URL: Issues, https://github.com/BlueBrain/bbp-workflow/issues
+Keywords: computational neuroscience,BlueBrainProject
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Operating System :: POSIX
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Utilities
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+License-File: AUTHORS.txt
+Requires-Dist: luigi
+Requires-Dist: jsonschema
+Requires-Dist: luigi-tools
+Requires-Dist: sh<2
+Requires-Dist: matplotlib
+Requires-Dist: bluepysnap
+Requires-Dist: voxcell
+Requires-Dist: entity-management
+Requires-Dist: xarray
+Requires-Dist: pint-xarray
+Requires-Dist: cheetah3
+Requires-Dist: elephant
+Requires-Dist: neo
+Requires-Dist: pyarrow
+Requires-Dist: blue-cwl>=1.0.0
+Requires-Dist: brayns
+Requires-Dist: pandas
+Requires-Dist: bluepyemodel
+Requires-Dist: libsonata
+Provides-Extra: docs
+Requires-Dist: sphinx-bluebrain-theme; extra == "docs"
+
+bbp-workflow
+============
+
+Automated pipelines of batch jobs using python and the luigi framework.
+
+
+Documentation
+=============
+
+* `latest release <https://bbp-workflow.readthedocs.io/en/stable/>`_
+* `latest snapshot <https://bbp-workflow.readthedocs.io/en/latest/>`_
+
+Installation
+============
+
+bbp-workflow can be pip installed with the following command:
+
+.. code-block:: bash
+
+    $ pip install bbp-workflow
+
+Tests
+=====
+
+.. code-block:: bash
+
+    pip install tox
+    tox
+
+Local Run
+=========
+
+.. code-block:: bash
+
+    make install_to_venv
+    ./bbp-workflow-launch.sh --config workflows/foo.cfg foo Bar dynamic-param=world
+
+Acknowledgements
+================
+
+The development of this software was supported by funding to the Blue Brain Project, a research center of the École polytechnique fédérale de Lausanne (EPFL), from the Swiss government’s ETH Board of the Swiss Federal Institutes of Technology.
+
+For license and authors, see LICENSE.txt and AUTHORS.txt respectively.
+
+Copyright (c) 2022-2024 Blue Brain Project/EPFL
