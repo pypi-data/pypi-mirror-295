@@ -1,0 +1,16 @@
+pulumi_xyz/__init__.py,sha256=jR5-bQ8QlyoFnBbeO2t14Yq6dgZ74-pFtEThZqMX3e4,975
+pulumi_xyz/_utilities.py,sha256=aNnnaO6zRha3FhNHonuabR4fJLWGXANtK5dlh1Mz95k,10506
+pulumi_xyz/data_source.py,sha256=Zv2LOZcGSmRiQqW3xR9LvxFdzpcIz8PFUYu6RxnPgT8,2588
+pulumi_xyz/provider.py,sha256=plyWynHMzCPJdZ5YzCQHpvmxRYXmRTmUZdzqxl3bH0g,4365
+pulumi_xyz/pulumi-plugin.json,sha256=VyUSzALzfQR0cVD4slLOAWAIfjoLqkf0fcEUaSpvDXU,80
+pulumi_xyz/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pulumi_xyz/resource.py,sha256=Dvp1eVhDOIwM3te970VSKdhU0uayJxNIvrONLSuaJB8,5669
+pulumi_xyz/config/__init__.py,sha256=cfY0smRZD3fDVc93ZIAxEl_IM2pynmXB52n3Ahzi030,285
+pulumi_xyz/config/__init__.pyi,sha256=icBnu1iR2homCHBTQ5iB_bkWIdAW5hpTl4l7z-Inx1M,429
+pulumi_xyz/config/vars.py,sha256=Ah01ddfNN3ouZXaWn9bWT8wEXCv4wmUkkkOa3CBk_Ww,617
+pulumi_xyz/region/__init__.py,sha256=r4bXGf-6ycwcuCfdUI0XOdB9uAFbcIJg3sY86-_ma-I,291
+pulumi_xyz/region/_enums.py,sha256=UO9hVyAuTYjhkLrDDJ-tHVOGnl8AuPr0WKGmN1rv-1s,311
+pulumi_xyz-1.1.12a1725890616.dist-info/METADATA,sha256=4j0kTOB78Q_-2MRhXyS4hxPym0B-BKsNgwpw8VKDJnk,1496
+pulumi_xyz-1.1.12a1725890616.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+pulumi_xyz-1.1.12a1725890616.dist-info/top_level.txt,sha256=sr3MHy1XFZSa6Fs63S38XJc0QEbHpEpkZt6QSc5l5Aw,11
+pulumi_xyz-1.1.12a1725890616.dist-info/RECORD,,
