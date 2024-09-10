@@ -1,0 +1,14 @@
+PyJWT
+requests==2.28.2
+boto3
+tqdm
+requests_unixsocket
+python-dotenv
+
+[llm]
+openai
+fastapi
+uvicorn
+
+[test]
+pytest
