@@ -1,0 +1,107 @@
+# CNVizard
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35.0-brightgreen.svg)](https://streamlit.io/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
+
+CNVizard is a Streamlit-based application designed for the visualization and analysis of germline copy number variants (CNVs). This tool provides comprehensive features to help researchers and clinicians analyze genetic data with ease.
+
+## Table of Contents
+- [Setup](#setup)
+  - [Mandatory Setup](#mandatory-setup)
+  - [Optional Setup](#optional-setup)
+- [Usage](#usage)
+- [Creating References](#creating-references)
+- [License](#license)
+
+## Setup
+
+### Mandatory Setup
+1. **Clone this repository and change directory:**
+   ```sh
+   git clone https://github.com/IHGGM-Aachen/CNVizard
+   cd CNVizard
+   ```
+
+2. **Create a virtual environment and activate it:**
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+4. **Install the CNVizard:**
+   ```sh
+   pip install -e .
+   ```
+
+5. **Start the application with optionally giving a path to an environment file:**
+   ```sh
+   streamlit run cnvizard/app.py [ENV_FILE]
+   ```
+
+## Tabix 
+This application requires Tabix. 
+
+### Optional Setup
+
+1. **Create an `.env` file in the CNVizard folder (optional):**
+   - Can also be used to set up IGV outlinks.
+   - Example content:
+     ```
+     APPSETTING_IGV_OUTLINK=/path/to/samplename/samplename.cram
+     OMIM_ANNOTATION_PATH=./resources/omim/omim.txt
+     CANDIDATE_LIST_DIR=./resources/candidate_lists
+     REFERENCE_FILES_DIR=./resources/references
+     ANNOTSV_FORMAT_PATH=./resources/annotsv_format.txt
+     ```
+
+2. **Change the AnnotSV table format:**
+   - Navigate to `resources/annotsv_format.txt`.
+   - Modify the standard column names as needed.
+
+3. **Add/Remove a panel-list:**
+   - Navigate to `resources/candidate_lists/`.
+   - Add or remove new panel `.txt` files.
+
+4. **Modify OMIM List:**
+   - Navigate to `resources/omim.txt`.
+   - Modify the `.txt` file as needed.
+
+5. **Change Reference List:**
+   - Navigate to `resources/references/`.
+   - Replace `bintest_ref.parquet`, `total_ref.parquet`, or other reference files as needed.
+
+## Usage
+
+1. **Run the application:**
+   ```sh
+   streamlit run cnvizard/app.py
+   ```
+
+2. **Select or upload your `.env` file:**
+   - If no `.env` file is specified via the command line, you will be prompted to upload or create a new `.env` file within the application.
+
+3. **Upload necessary files:**
+   - Upload the reference file, individual `.cnr` file, and `.bintest` file provided by CNVkit.
+   - Optionally, upload additional files for trio analysis or scatter plots.
+
+4. **Configure settings:**
+   - Provide sample name and define the number of consecutive exons to display.
+   - Select candidate gene lists and apply filters as needed.
+
+5. **Visualize and analyze data:**
+   - View filtered dataframes and plots.
+   - Download prepared data in Excel format for further analysis.
+  
+## OMIM Annotations
+The CNVizard can annotate CNVs with information from OMIM. Because the OMIM files provided by are copyrighted by the Johns Hopkins university, we can't provide preformatted annotation files containing information from OMIM. If you want to use OMIM annotations, you need to obtain a license form : https://www.omim.org/help/copyright
+
+If you obtained a license the morbidmap.txt needs to be reformatted in the following way (and saved as a .txt file):
+
+Column names:
+gene  OMIMG Disease  OMIMP Inheritance
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
