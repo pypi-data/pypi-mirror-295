@@ -1,0 +1,2 @@
+recursive-include PS_Validation/instantclient *
+include PS_Validation/Config.txt
