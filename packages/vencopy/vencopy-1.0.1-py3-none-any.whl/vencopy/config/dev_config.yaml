@@ -1,0 +1,352 @@
+#-*- coding:utf-8 -*-
+# __license__ = "BSD-3-Clause"
+
+# This config holds specifications for the venco.py development.
+
+global:
+    relative_path:
+        parse_output: ./output/dataparser/
+        diary_output: ./output/diarybuilder/
+        grid_output: ./output/gridmodeller/
+        flex_output: ./output/flexestimator/
+        aggregator_output: ./output/profileaggregator/
+        processor_output: ./output/postprocessor/
+        config: ./vencopy/config/
+        eurostat_population: ./input/
+    files:
+        MiD17:
+            enrypted_zip_file_B1: B1_Standard-DatensatzpaketEncrypted.zip
+            enrypted_zip_file_B2: B2_Regional-DatensatzpaketEncrypted.zip
+            households_data_raw: MiD2017_Regional_Haushalte.csv
+            persons_data_raw: MiD2017_Regional_Personen.dta
+            trips_data_raw: MiD2017_Regional_Wege.dta
+        MiD08:
+            households_data_raw: MiD2008_PUF_Haushalte.dta
+            trips_data_raw: MiD2008_PUF_Wege.dta
+        KiD:
+            trips_data_raw: KiD2010-Fahrten-Datei-puf.dta
+            vehicles_data_raw: KiD2010-Fahrzeug-Datei-puf.dta
+        VF:
+            trips_data_raw: MiD2017_Wege.dta
+            vehicles_data_raw: tripDataMergedWVehicleData.csv
+        eurostat_population: proj_19rp3.tsv
+    disk_file_names:
+        output_dataparser: vencopy_output_dataparser
+        output_gridmodeller: vencopy_output_gridmodeller
+        output_flexestimator: vencopy_output_flexestimator
+        output_diarybuilder: vencopy_output_diarybuilder
+        output_profileaggregator: vencopy_output_profileaggregator
+        output_postprocessor_normalised: vencopy_output_postprocessor_weekly_normalised
+        output_postprocessor_annual: vencopy_output_postprocessor_annual_normalised
+        output_postprocessor_fleet: vencopy_output_postprocessor_annual_fleet
+    additional_label: ""
+
+dataparsers:
+    data_variables:
+        dataset: ["MiD08", "MiD17", "KiD", "VF"]
+        is_driver: ["pkw_f", "W_VM_G", "NA", "NA"]
+        household_id: ["household_id", "H_ID_Reg", "NA", "H_ID"]
+        vehicle_id: ["NA", "NA", "k00", "A_ID"] # Fahrzeug ID
+        vehicle_segment: ["NA", "NA", "k01", "seg_kba_gr"] # Fahrzeugart
+        drivetrain: ["NA", "NA", "NA", "A_ANTRIEB"]
+        person_id: ["pid", "P_ID", "NA", "P_ID"]
+        household_person_id: ["NA", "HP_ID_Reg", "NA", "HP_ID"]
+        trip_id: ["wid", "W_ID", "f00", "W_ID"]
+        trip_weight: ["w_gew", "W_GEW", "k93", "W_GEW"]
+        trip_scale_factor: ["NA", "W_HOCH", "k90", "W_HOCH"]
+        trip_start_clock: ["st_time", "W_SZ", "f04", "W_SZ"]
+        trip_end_clock: ["en_time", "W_AZ", "f10a", "W_AZ"]
+        trip_purpose: ["w04", "zweck", "f07a", "zweck"]
+        trip_purpose_from: ["NA", "NA", "k49","NA"]
+        trip_distance: ["wegkm_k", "wegkm", "f14", "wegkm_imp"]
+        travel_time: ["wegmin_k", "wegmin_imp1", "f15", "wegmin_imp1"]
+        trip_start_year: ["stich_j", "ST_JAHR", "NA", "ST_JAHR"]
+        trip_start_month: ["stich_m", "ST_MONAT", "NA", "ST_MONAT"]
+        trip_start_week: ["stichwo", "ST_WOCHE", "NA", "ST_WOCHE"]
+        trip_start_weekday: ["stichtag", "ST_WOTAG", "NA", "ST_WOTAG"]
+        trip_start_hour: ["st_std", "W_SZS", "NA", "W_SZS"]
+        trip_start_minute: ["st_min", "W_SZM", "NA", "W_SZM"]
+        trip_start_date: ["NA", "NA", "k22d", "NA"]
+        trip_end_hour: ["en_std", "W_AZS", "NA", "W_AZS"]
+        trip_end_minute: ["en_min", "W_AZM", "NA", "W_AZM"]
+        trip_end_next_day: ["en_dat", "W_FOLGETAG", "NA", "W_FOLGETAG"]
+        trip_is_intermodal: ["NA", "weg_intermod", "NA", "weg_intermod"]
+        area_type: ["NA", "SKTYP", "k50", "SKTYP"]
+        # weather: ["NA", "wetter", "NA", "wetter"]
+        # economic_status: ["NA", "oek_status", "NA", "oek_status"]
+        # household_building: ["NA", "hhtyp2", "NA", "hhtyp2"] # Gebäudetyp detailliert
+        # household_type: ["NA", "haustyp", "NA", "haustyp"]
+        # household_person_age: ["NA", "alter_gr5", "NA", "alter_gr5"]
+        # household_person_job: ["NA", "taet", "NA", "NA"]
+        # bundesland: ["NA", "BLAND", "NA", "BLAND"]
+        # garage: ["NA", "garage", "NA", "garage"]
+        # tripStartLocation: [ 'NA', 'KKZ_SO' ]
+        # tripEndLocation: [ 'NA', 'KKZ_ZO' ]
+    id_variables_names:
+        MiD08: "household_person_id"
+        MiD17: "household_person_id"
+        KiD: "vehicle_id"
+        VF: "household_person_id"
+    input_data_types:
+        MiD17:
+            is_driver: "bool"
+            household_person_id: "int"
+            trip_id: "int"
+            trip_weight: "float"
+            trip_purpose: "int"
+            trip_distance: "float"
+            trip_start_year: "int"
+            trip_start_month: "int"
+            trip_start_week: "int"
+            trip_start_weekday: "int"
+            trip_start_hour: "int"
+            trip_start_minute: "int"
+            trip_end_hour: "int"
+            trip_end_minute: "int"
+            trip_end_next_day: "bool"
+            trip_is_intermodal: "int"
+            weather: "int"
+            economic_status: "int"
+            household_type: "int"
+            hhStatus: "int"
+            household_person_age: "int"
+            household_person_job: "int"
+            bundesland: "int"
+            area_type: "int"
+            garage: "int"
+        MiD08:
+            is_driver: "bool"
+            household_person_id: "int"
+            trip_id: "int"
+            trip_weight: "float"
+            trip_purpose: "int"
+            trip_distance: "float"
+            trip_start_year: "int"
+            trip_start_month: "int"
+            trip_start_week: "int"
+            trip_start_weekday: "int"
+            trip_start_hour: "int"
+            trip_start_minute: "int"
+            trip_end_hour: "int"
+            trip_end_minute: "int"
+            trip_end_next_day: "bool"
+            trip_is_intermodal: "int"
+        KiD:
+            vehicle_id: "int"
+            trip_id: "int"
+            trip_weight: "float"
+            trip_start_clock: "str"
+            trip_end_clock: "str"
+            trip_purpose: "int"
+            trip_distance: "float"
+            travel_time: "int"
+            trip_start_date: "str"
+            area_type: "int"
+        VF:
+            is_driver: "bool"
+            vehicle_id: "int"
+            drivetrain: "str"
+            household_person_id: "int"
+            trip_id: "int"
+            trip_weight: "float"
+            trip_purpose: "int"
+            trip_distance: "float"
+            trip_start_year: "int"
+            trip_start_month: "int"
+            trip_start_week: "int"
+            trip_start_weekday: "int"
+            trip_start_hour: "int"
+            trip_start_minute: "int"
+            trip_end_hour: "int"
+            trip_end_minute: "int"
+            trip_end_next_day: "bool"
+            trip_is_intermodal: "int"
+            area_type: "int"
+            weather: "int"
+    filters:
+        lower_speed_threshold: 10 # Minimum speed required
+        higher_speed_threshold: 200 # Maximum speed allowed
+        MiD08:
+            include:
+                is_driver: [1]
+            exclude:
+                trip_start_hour: [301]
+                trip_start_minute: [301]
+                trip_end_hour: [301]
+                trip_end_minute: [301]
+                trip_start_clock: ["301:00"]
+                trip_end_clock: ["301:00"]
+                trip_purpose: [97, 98]
+            greater_than:
+            smaller_than:
+                trip_distance: [1000]
+        MiD17:
+            include:
+                is_driver: [1]
+            exclude:
+                trip_start_hour: [99, 701]
+                trip_end_hour: [99, 701]
+                trip_start_clock: [" "]
+                trip_end_clock: [" "]
+                trip_purpose: [99]
+                trip_is_intermodal: [1, 703, 708]
+            greater_than:
+            smaller_than:
+                trip_distance: [1000]
+        KiD:
+            include:
+            exclude:
+                trip_start_date: ["-1"]
+                area_type: [-1, 10]
+                trip_start_clock: ["-1:-1"]
+                trip_purpose: [-1]
+            greater_than:
+            smaller_than:
+                trip_distance: [3000]
+        VF:
+            include:
+            exclude:
+                trip_start_hour: [99, 701]
+                trip_end_hour: [99, 701]
+                trip_start_clock: [" "]
+                trip_end_clock: [" "]
+                trip_purpose: [99]
+            greater_than:
+            smaller_than:
+                trip_distance: [1000]
+    replacements:
+        MiD08:
+            trip_start_weekday:
+                1: "MON"
+                2: "TUE"
+                3: "WED"
+                4: "THU"
+                5: "FRI"
+                6: "SAT"
+                7: "SUN"
+            trip_purpose:
+                1: "WORK" # Erreichen des Arbeitsplatzes
+                2: "WORK" # dienstlich/geschäftlich
+                3: "SCHOOL" # Erreichen der Ausbildungsstätte/Schule
+                4: "SHOPPING" # Einkauf
+                5: "SHOPPING" # private Erledigung
+                6: "LEISURE" # Bringen/Holen/Begleiten von Personen
+                7: "LEISURE" # Freizeitaktivität
+                8: "HOME" # nach Hause
+                9: "HOME" # Rückweg vom vorherigen Weg
+                10: "OTHER" # anderer Zweck
+                11: "HOME" # Begleitung Erwachsener (MiD08)
+                31: "SCHOOL" # Zur Schule oder Vorschule (MiD08)
+                32: "SCHOOL" # Kindertagesstaette oder Kindergarten (MiD08)
+                99: "NA" # keine Angabe
+        MiD17:
+            trip_start_weekday:
+                1: "MON"
+                2: "TUE"
+                3: "WED"
+                4: "THU"
+                5: "FRI"
+                6: "SAT"
+                7: "SUN"
+            trip_purpose:
+                1: "WORK" # Erreichen des Arbeitsplatzes
+                2: "WORK" # dienstlich/geschäftlich
+                3: "SCHOOL" # Erreichen der Ausbildungsstätte/Schule
+                4: "SHOPPING" # Einkauf
+                5: "SHOPPING" # private Erledigung
+                6: "LEISURE" # Bringen/Holen/Begleiten von Personen
+                7: "LEISURE" # Freizeitaktivität
+                8: "HOME" # nach Hause
+                9: "HOME" # Rückweg vom vorherigen Weg
+                10: "OTHER" # anderer Zweck
+                11: "HOME" # Begleitung Erwachsener (MiD08)
+                31: "SCHOOL" # Zur Schule oder Vorschule (MiD08)
+                32: "SCHOOL" # Kindertagesstaette oder Kindergarten (MiD08)
+                99: "NA" # keine Angabe
+        KiD:
+            trip_start_weekday:
+                0: "MON"
+                1: "TUE"
+                2: "WED"
+                3: "THU"
+                4: "FRI"
+                5: "SAT"
+                6: "SUN"
+            trip_purpose:
+                # 1-5 dienstliche/geschäftliche Fahrtzwecken
+                1: "WORK" # Holen, Bringen, Transportieren von Gütern, Waren, Material, Maschinen, Geräten
+                2: "WORK" # Fahrt zur Erbringung beruflicher Leistungen
+                3: "WORK" # Holen, Bringen, Befördern von Personen (dienstlich/geschäftlich)
+                4: "WORK" # sonstige dienstlich/geschäftliche Erledigung
+                5: "WORK" # Ruckfahrt zum Betrieb/Stellplatz
+                # 5-12 private Fahrtzwecke
+                6: "WORK" # Fahrt zum Arbeitsplatz
+                7: "SCHOOL" # Fahrt zur Ausbildung
+                8: "SHOPPING" # Privater Einkauf
+                9: "LEISURE" # Freizeit, Erholung
+                10: "OTHER" # Holen, Bringen, Befördern von Personen (privat)
+                11: "OTHER" # sonstige private Erledigung
+                12: "HOME" # Fahrt nach Hause
+            trip_purpose_from:
+                1: "HOME" # Wohnung des ersten Fahrers
+                2: "HOME" # Sonstiger privater Ausgangspunkt
+                3: "WORK" # Umschlagpunkt (Bahnhof, Hafen, Spedition etc.)
+                4: "WORK" # Baustelle
+                5: "OTHER" # Land- oder forstwirtschaftliche Fläche
+                6: "WORK" # Eigener Betrieb
+                7: "WORK" # Fremder Betrieb Industrie/Bau
+                8: "WORK" # Fremder Betrieb Handel/Dienstleistung
+                9: "WORK" # Fremder Betrieb Sonstiges
+                10: "WORK" # Kundenaushalt
+                11: "WORK" # Sonstiger dienstlich/geschäftlicher Ausgangspunkt
+            vehicle_segment:
+                1: "Light motorised vehicle"
+                2: "Car"
+                3: "Van"
+                4: "Truck"
+                5: "Tractor unit"
+                6: "Coach"
+                7: "City bus" # not in KiD2010
+                8: "Other tractor unit"
+                9: "Agriculture and forestry tractor unit"
+                11: "Other"
+            area_type:
+                1: 1
+                2: 1
+                3: 2
+                4: 2
+                5: 3
+                6: 3
+                7: 3
+                8: 4
+                9: 4
+                10: 10 
+        VF:
+            trip_start_weekday:
+                1: "MON"
+                2: "TUE"
+                3: "WED"
+                4: "THU"
+                5: "FRI"
+                6: "SAT"
+                7: "SUN"
+            trip_purpose:
+                1: "WORK" # Erreichen des Arbeitsplatzes
+                2: "WORK" # dienstlich/geschäftlich
+                3: "SCHOOL" # Erreichen der Ausbildungsstätte/Schule
+                4: "SHOPPING" # Einkauf
+                5: "SHOPPING" # private Erledigung
+                6: "LEISURE" # Bringen/Holen/Begleiten von Personen
+                7: "LEISURE" # Freizeitaktivität
+                8: "HOME" # nach Hause
+                9: "HOME" # Rückweg vom vorherigen Weg
+                10: "OTHER" # anderer Zweck
+                11: "HOME" # Begleitung Erwachsener (MiD08)
+                31: "SCHOOL" # Zur Schule oder Vorschule (MiD08)
+                32: "SCHOOL" # Kindertagesstaette oder Kindergarten (MiD08)
+                99: "NA" # keine Angabe
+            vehicle_segment:
+                "klein": "S"
+                "kompakt": "S"
+                "mittel": "M"
+                "gross": "L"
