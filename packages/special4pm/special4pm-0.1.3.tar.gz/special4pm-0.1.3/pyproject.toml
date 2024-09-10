@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "special4pm"
+version = "0.1.3"
+authors = [
+  { name="Martin Kabierski", email="martin.kabierski@hu-berlin.de" },
+]
+description = "A Python package for the species-based analysis and computation of event logs"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  'pm4py >= 2.5',
+  'pandas >= 1.5',
+  'tqdm >= 4.64',
+  'numpy >= 1.26',
+  'scipy >= 1.10',
+  'matplotlib >= 3.6',
+  ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/MartinKabierski/SpeciAL-core"
+
+[tool.setuptools.packages.find]
+where = ["src"]
