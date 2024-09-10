@@ -1,0 +1,102 @@
+---
+# Pre-commit settings
+exclude: |
+  (?x)^(
+      ^src/\w+/migrations/.*\.py|
+      ^src/\w+/tests/.*\.py|
+      ^src/assets/dist/.*|
+      ^src/assets/stats\.html|
+      ^src/assets/bundles/.*|
+      ^src/assets/webpack-stats-prod\.json
+  )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: "src/assets/dist/.*"
+      - id: end-of-file-fixer
+        exclude: src/assets/dist/.*
+      - id: check-yaml
+      - id: check-json
+      - id: fix-encoding-pragma
+        args: [ '--remove' ]
+      - id: mixed-line-ending
+        args: [ '--fix=lf' ]
+        description: Forces to replace line ending by the UNIX 'lf' character.
+      - id: no-commit-to-branch
+        args: [ --branch, main ]
+
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.16
+    hooks:
+      - id: validate-pyproject
+        # Optional extra validations from SchemaStore:
+        additional_dependencies: [ "validate-pyproject-schema-store[all]" ]
+
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.15.0
+    hooks:
+      - id: django-upgrade
+        args: [ --target-version, "4.2" ]   # Replace with Django version
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.1.7
+    hooks:
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.1
+    hooks:
+      - id: mypy
+        name: mypy (django_stubs_ext)
+        entry: mypy
+        language: system
+        types: [ python ]
+        files: "django_stubs_ext/|django_stubs_ext/tests/"
+        args:
+          - "--cache-dir=/dev/null"
+          - "--no-incremental"
+          - "--strict"
+
+  - repo: https://github.com/john-hen/Flake8-pyproject
+    rev: 1.2.3
+    hooks:
+      - id: Flake8-pyproject
+        additional_dependencies:
+          - flake8-django
+          - flake8-bugbear
+          - flake8-builtins
+          - flake8-comprehensions
+          - flake8-cognitive-complexity
+          - flake8-alfred
+          - flake8-logging
+          - flake8-logging-format
+          - flake8-printf-formatting
+          - flake8-pep3101
+          - flake8-docstrings
+          - flake8-rst-docstrings
+          - flake8-string-format
+          - flake8-print
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: 'v8.55.0'
+    hooks:
+      - id: eslint
+        args:
+          - "--fix"
+          - "--config"
+          - "./src/assets/.eslintrc.js"
+          - "--ignore-path"
+          - "./src/assets/.eslintignore"
+          - "./src/assets/"
+
+  - repo: https://github.com/Riverside-Healthcare/djLint
+    rev: v1.34.0
+    hooks:
+      - id: djlint-django
+        exclude: "src/assets/.*"
