@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: omnitils
+Version: 1.3.2
+Summary: Universal reusable Python utils for the modern human.
+License: MPL-2.0
+Keywords: omnitils,utilities,utils,files,schema,test,benchmark,enums,logs,investigamer
+Author: Investigamer
+Author-email: hexproofsystems@gmail.com
+Requires-Python: >=3.10,<3.13
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Utilities
+Requires-Dist: PyYAML (>=6.0.1,<7.0.0)
+Requires-Dist: backoff (>=2.2.1,<3.0.0)
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: fonttools (>=4.47.2,<5.0.0)
+Requires-Dist: loguru (>=0.7.2,<0.8.0)
+Requires-Dist: mkdocs (>=1.5.3,<2.0.0)
+Requires-Dist: pathvalidate (>=3.2.0,<4.0.0)
+Requires-Dist: pillow (>=10.3.0,<11.0.0)
+Requires-Dist: py7zr (>=0.20.8,<0.21.0)
+Requires-Dist: pydantic (>=2.6.0,<3.0.0)
+Requires-Dist: ratelimit (>=2.2.1,<3.0.0)
+Requires-Dist: requests (>=2.32.0,<3.0.0)
+Requires-Dist: tomli (>=2.0.1,<3.0.0)
+Requires-Dist: tomlkit (>=0.12.3,<0.13.0)
+Requires-Dist: tqdm (>=4.66.1,<5.0.0)
+Requires-Dist: yarl (>=1.9.4,<2.0.0)
+Project-URL: Changelog, https://github.com/Investigamer/omnitils/blob/main/CHANGELOG.md
+Project-URL: Discord, https://discord.gg/magicproxies
+Project-URL: Issues, https://github.com/Investigamer/omnitils/issues
+Project-URL: Source, https://github.com/Investigamer/omnitils
+Project-URL: Sponsor, https://patreon.com/mpcfill
+Description-Content-Type: text/markdown
+
+# Omnitils
+Universal reusable Python utilities for the modern human. I got tired of constantly iterating on and re-writing the same common functionality
+and design practices spread across various Python projects, so I decided to combine and curate a collection of utilities I've written
+over the years into a single module.
+
+## ❓ What's in it?
+Mostly pretty straightforward utilities for dealing with files, schemas, properties, requests, and a variety of other common 
+needs of the modern Python user. Nothing in here is going to be novel earth-shattering stuff, you can find dozens of Stackoverflow
+entries using some of the same methodologies, apart from a handful of opinionated approaches I've taken in certain cases.
+
+The bulk of these utilities are things beginner or intermediate Python programmers already have in their toolbelt and can easily write.
+However, if you develop a lot of apps and are tired of taking valuable time to reimplement the same solution to common problems, many of
+these may be helpful.
+
+## 💌 How can I support your projects?
+If you find this module useful, or any of my other apps (Proxyshop, MTG Art Downloader, Hexproof API, Scalecord, etc) feel free to subscribe 
+to my [Patreon here](https://patreon.com/mpcfill). It comes with a few nice perks, and you'd be giving me the means to spend more time working on these
+awesome apps! If you'd like to support, but Patreon isn't your thing, feel free to buy me a coffee [via Paypal](https://www.paypal.com/donate/?hosted_button_id=D96NBC6ZAJ8H6). 
+Thanks so much to all my amazing supporters! 🚀
+
