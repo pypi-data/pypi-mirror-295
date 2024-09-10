@@ -1,0 +1,2 @@
+[console_scripts]
+nortrom = nortrom.__main__:main
