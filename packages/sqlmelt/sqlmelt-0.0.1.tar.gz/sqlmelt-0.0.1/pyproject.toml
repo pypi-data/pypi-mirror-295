@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sqlmelt"
+version = "0.0.1"
+authors = [
+ { name="ardavydovskiy", email="davydovskij.art@yandex.ru" },
+]
+description = "This library is not that useful. Perhaps someday it will become great."
+readme = "README.md"
+requires-python = ">=3.10.0"
+classifiers = [
+   "Programming Language :: Python :: 3",
+   "License :: OSI Approved :: MIT License",
+   "Operating System :: OS Independent",
+]
