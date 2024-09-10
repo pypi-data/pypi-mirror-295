@@ -1,0 +1,14 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+.jp-OutputArea-child {
+  height: 100%;
+}
+
+.trame-iframe {
+  border: none;
+  width: 100%;
+}
