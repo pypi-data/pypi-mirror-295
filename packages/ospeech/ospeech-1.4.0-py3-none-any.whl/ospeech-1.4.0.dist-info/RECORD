@@ -1,0 +1,15 @@
+ospeech/__init__.py,sha256=4pv6oxLUyFd74SSZ2KcjcBzZtdBkQSHv1KuM7dlwMGM,42
+ospeech/__main__.py,sha256=dLIpo_Fw3LjmtpZWITMNgDtlCXnO7ZXYWHA1mqvSjvQ,69
+ospeech/gradio_ui.py,sha256=choQs6FcFDlsHRltBn7maDy7qY6-87VxbUe09VAeiY8,3688
+ospeech/models.py,sha256=jECjIGdmMYHGCBuuatP0qiYS1pTw3b8PEMEwUhW4-9Y,4290
+ospeech/values.py,sha256=E02l5pByOLzhoX4IyAv6BVtasQeiuLJPAx-LfGX0rdk,5596
+ospeech/inference/__init__.py,sha256=zR3JLJF-lhKoHY0J3Ro13tsw2RpOe1Qc5pwGWhCVJQo,7595
+ospeech/text/__init__.py,sha256=2fzldtW5MxpXPhHVnhciBottu642ohdOuEBIpCjFRFM,1602
+ospeech/text/normalization.py,sha256=OFR9Sf9n1GuzqBOTUxGtEbG_80iH-I9HtgRYe7fqmfs,569
+ospeech/text/symbols.py,sha256=dYs5qxPvNjVjeVvuyhp0xIV4SMIJpTk68f_XRYs9EHo,2756
+ospeech/text/tokenizers.py,sha256=vvgoshUVfpYjSwreXMiLEbCJVoy2yL4IoCNoGEX1I4U,3374
+ospeech-1.4.0.dist-info/METADATA,sha256=NFv6XGsgixCQ9ZqrKNMZ2NHv5YsxeudS0GlZrbX1HSU,4218
+ospeech-1.4.0.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+ospeech-1.4.0.dist-info/entry_points.txt,sha256=RZL7JBgYhXCA_PblKoVN8RUfzErxFRcsQhTsE7uqPCU,127
+ospeech-1.4.0.dist-info/licenses/LICENSE,sha256=nccXOwQFlMiDqt676nEymr9wW_g9F6yK4MK_ADAoUII,1092
+ospeech-1.4.0.dist-info/RECORD,,

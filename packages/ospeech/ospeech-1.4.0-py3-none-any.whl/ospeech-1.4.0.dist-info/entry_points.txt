@@ -1,0 +1,4 @@
+[console_scripts]
+ospeech = ospeech.__main__:main
+ospeech-gradio = ospeech.gradio_ui:main
+ospeech-models = ospeech.models:main
