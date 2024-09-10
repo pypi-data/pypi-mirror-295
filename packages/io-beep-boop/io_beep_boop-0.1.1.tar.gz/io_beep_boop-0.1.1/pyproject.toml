@@ -1,0 +1,108 @@
+[build-system]
+#######################
+# Python build system #
+#######################
+# The build system to use when installing this package.
+# Used when installing the package with `pip install .`.
+# See also: https://www.python.org/dev/peps/pep-0517/
+
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+
+[project]
+###################
+# Project settings #
+###################
+
+# The name of your project.
+# Ensure that it is available on PyPI: https://pypi.org/
+name = "io-beep-boop"
+
+# The version of the package.
+version = "0.1.1"
+
+# A brief, one-sentence description about your project.
+description = "Wrapper and CLI for the Italian IO App API"
+
+# A list of the authors of the project.
+authors = [
+    {name = "Stefano Pigozzi", email = "me@steffo.eu"},
+]
+
+# A list of maintainers of the project.
+# Often, it is the same as the authors list.
+maintainers = [
+    {name = "Stefano Pigozzi", email = "me@steffo.eu"},
+]
+
+# The license of the package.
+# Uses SPDX format: https://spdx.org/licenses/
+license = "EUPL-1.2"
+
+# The README file.
+readme = "README.md"
+
+# Up to five keywords related to your project.
+# See also: https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#keywords
+keywords = [
+    "io-app",
+	"developers-italia",
+]
+
+# Any number of trove classifiers that apply to your project.
+# See the list at: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10"
+]
+
+# The minimum version of Python required to run the project.
+requires-python = ">=3.10"
+
+# A list of dependencies of the project, in pip format.
+dependencies = [
+    "cfig==0.2.3",
+    "click==8.1.2",
+    "httpx==0.22.0",
+	"pydantic==1.9.0",
+]
+
+
+[project.urls]
+##################
+# URLs           #
+##################
+# Project URLs in a name → link mapping.
+
+"Repository" = "https://forge.steffo.eu/steffo/io-beep-boop/"
+
+
+[project.optional-dependencies]
+##############################
+# Optional dependencies   #
+##############################
+# Same as dependencies, but with a key denoting the relevant extra.
+
+docs = [
+    "sphinx>=4.3.2",
+    "sphinx_rtd_theme>=1.0.0",
+]
+
+test = [
+	"pytest>=6.2.5",
+	"pytest-github-actions-annotate-failures>=0.1.6",
+	"pytest-cov>=3.0.0",
+]
+
+
+[project.scripts]
+#####################
+# Scripts           #
+#####################
+# Uv can create "binaries" to add to the PATH when the project is installed.
+# They are specified in the form of a mapping with the command name as key and the function to execute as value.
+
+"io-beep-boop" = "io_beep_boop.cli.__main__:main"
