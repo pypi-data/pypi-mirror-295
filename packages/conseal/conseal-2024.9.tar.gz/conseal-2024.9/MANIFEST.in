@@ -1,0 +1,5 @@
+recursive-include conseal/*
+prune test
+recursive-exclude test/* *
+prune */__pycache__
+prune wheelhouse

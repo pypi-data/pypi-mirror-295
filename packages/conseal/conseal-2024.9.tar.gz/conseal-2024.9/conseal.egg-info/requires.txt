@@ -1,0 +1,11 @@
+numpy
+scipy
+numba
+
+[deploy]
+
+[dev]
+flake8
+parameterized
+jpeglib
+pillow
