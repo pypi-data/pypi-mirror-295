@@ -1,0 +1,12 @@
+.gitignore
+LICENSE
+README.md
+setup.py
+sonarleaks/__init__.py
+sonarleaks/__main__.py
+sonarleaks.egg-info/PKG-INFO
+sonarleaks.egg-info/SOURCES.txt
+sonarleaks.egg-info/dependency_links.txt
+sonarleaks.egg-info/entry_points.txt
+sonarleaks.egg-info/requires.txt
+sonarleaks.egg-info/top_level.txt

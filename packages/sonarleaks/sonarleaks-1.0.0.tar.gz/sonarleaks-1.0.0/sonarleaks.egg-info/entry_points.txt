@@ -1,0 +1,2 @@
+[console_scripts]
+sonarleaks = sonarleaks.__main__:main
