@@ -1,0 +1,2 @@
+[console_scripts]
+boxer = boxer.__main__:wrapper
