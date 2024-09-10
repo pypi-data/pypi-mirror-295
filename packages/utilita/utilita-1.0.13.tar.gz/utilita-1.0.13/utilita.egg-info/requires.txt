@@ -1,0 +1,6 @@
+isoweek
+pendulum>=2
+deprecated
+openpyxl<4,>=3
+pandas>=1
+sendgrid>=6.0.0
