@@ -1,0 +1,34 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "rockai"
+version = "0.1.42"
+description = "Python SDK for RockAI.online"
+authors = [ "RockAI <rockai@skycouldsys.com>",]
+readme = "README.md"
+
+[tool.poetry.scripts]
+rockai = "rockai.rock:app"
+
+[tool.poetry.dependencies]
+python = "^3.9 <3.13"
+fastapi = "^0.109.2"
+requests = "^2.31.0"
+sseclient = "^0.0.27"
+httpx = "^0.27.0"
+httpx-sse = "0.1.0"
+aiosseclient = "^0.1.3"
+aiohttp-sse-client = "0.2.1"
+pebble = "^5.0.7"
+toml = "^0.10.2"
+multiprocess = "^0.70.16"
+
+[tool.poetry.dependencies.typer]
+extras = [ "all",]
+version = "^0.12.3"
+
+[tool.poetry.dependencies.uvicorn]
+extras = [ "standard",]
+version = "^0.27.0.post1"
