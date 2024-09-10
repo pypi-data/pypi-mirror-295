@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: info_ratio
+Version: 0.1.8
+Summary: Calculation of Information Ratio for Mutual Funds per category
+License: OSI Approved :: GNU General Public License v3 (GPLv3)
+Author: Rolf Lobo
+Author-email: rolf.lobo@trustgroup.in
+Requires-Python: >=3.10,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: joblib (>=1.4.2,<2.0.0)
+Requires-Dist: loga (>=1.0.0,<2.0.0)
+Requires-Dist: numpy (==1.23.1)
+Requires-Dist: openpyxl (==3.0.10)
+Requires-Dist: pandas (==1.4.3)
+Requires-Dist: tqdm (>=4.66.5,<5.0.0)
+Description-Content-Type: text/markdown
+
+To Run:
+
+from info_ratio.common.input_output import dfs_tabs
+from info_ratio.core import InfoRatio
+
+out_ = '/home/rolf/Music/Results/'
+db_path_ = "/home/rolf/Music/MutualFundData.db"
+
+ir = InfoRatio(db_path_, out_,
+               start_date='2023-07-01', end_date='2024-07-01')
+ir.run()
