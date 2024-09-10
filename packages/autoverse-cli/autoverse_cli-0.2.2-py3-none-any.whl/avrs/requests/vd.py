@@ -1,0 +1,33 @@
+from avrs.requests.request import AvrsApiRequest
+
+class Vd():
+    def __init__(self, parser, cfg):
+        psr = parser.add_parser('vd', help='Vehicle dynamic options')
+        sps = psr.add_subparsers(required= True, help='sub-command of vd')
+        SetFrictionModifier(sps, cfg)
+        SlipModel(sps, cfg)
+
+class SetFrictionModifier(AvrsApiRequest):
+    def __init__(self, parser, cfg):
+        AvrsApiRequest.__init__(self, parser, cfg, 'SetFrictionModifiers', 0)
+        psr = parser.add_parser('set-friction-modifier', help='Change the amount of grip the car has.' 
+            + '0 is no grip and higher values will prevent spinning')
+        psr.add_argument('modifier-value', type = float, help = "Modified grip value")
+        psr.set_defaults(func=self.send_request)
+    
+    def get_request_body(self, args):
+        return {
+            'Modifier Value': args.modifier-value
+        }
+    
+class SlipModel(AvrsApiRequest):
+    def __init__(self, parser, cfg):
+        AvrsApiRequest.__init__(self, parser, cfg, 'SlipModel', 0)
+        psr = parser.add_parser('slip-model', help='Change the tire slip model to be pure slip only or combined slip')
+        psr.add_argument('slip', choices = ['pure-slip, combined-slip'], help = 'type of slip')
+        psr.set_defaults(func=self.send_request)
+    
+    def get_request_body(self, args):
+        return {
+            'Modifier Value': args.slip
+        }
