@@ -1,0 +1,19 @@
+# Add requirements here, use the script for help (erotemic needs to publish this script)
+# xdev availpkg pygments
+
+numpy>=1.26.0    ; python_version < '4.0'  and python_version >= '3.12'    # Python 3.12+
+numpy>=1.23.2    ; python_version < '3.12' and python_version >= '3.11'    # Python 3.11
+numpy>=1.21.6    ; python_version < '3.11' and python_version >= '3.10'  # Python 3.10
+numpy>=1.19.3    ; python_version < '3.10' and python_version >= '3.6'   # Python 3.6 - 3.9
+
+py-cpuinfo>=9.0.0     ; python_version < '4.0'  and python_version >= '3.13'    # Python 3.13+
+py-cpuinfo>=9.0.0     ; python_version < '3.13' and python_version >= '3.6'     # Python 3.6
+
+fasteners>=0.16.3
+
+text_unidecode>=1.3
+
+pytimeparse>=1.1.8
+
+# If we port TimeInterval from geowatch
+# portion>=2.4.1
