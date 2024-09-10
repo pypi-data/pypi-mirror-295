@@ -1,0 +1,14 @@
+Pillow
+psutil
+future
+model-archiver
+torch
+
+[mxnet]
+mxnet
+
+[mxnet-cu90mkl]
+mxnet-cu90mkl
+
+[mxnet-mkl]
+mxnet-mkl
