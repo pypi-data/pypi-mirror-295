@@ -1,0 +1,6 @@
+llm
+prompt_toolkit>=3.0.43
+pygments>=2.17.2
+
+[test]
+pytest

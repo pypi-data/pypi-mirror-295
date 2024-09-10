@@ -1,0 +1,11 @@
+LICENSE
+README.md
+llm_cmd.py
+pyproject.toml
+llm_cmd.egg-info/PKG-INFO
+llm_cmd.egg-info/SOURCES.txt
+llm_cmd.egg-info/dependency_links.txt
+llm_cmd.egg-info/entry_points.txt
+llm_cmd.egg-info/requires.txt
+llm_cmd.egg-info/top_level.txt
+tests/test_cmd.py
