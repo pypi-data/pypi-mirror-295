@@ -1,0 +1,1859 @@
+openapi: 3.0.0
+servers:
+  - url: https://walletapi.zarban.io
+    description: Production server
+info:
+  title: Zarban Wallet API
+  version: 2.0.0
+  description: API for Zarban wallet services.
+
+paths:
+  /ws:
+    summary: Websocket to Fetch RFQs
+    description: Subscribe to RFQs
+    get:
+      tags:
+        - Websocket
+      summary: Websocket Upgrade
+      description: Upgrade to websocket connection
+      responses:
+        101:
+          description: Switching Protocols
+  /saving/offers:
+    get:
+      summary: Get saving offers
+      description: Get the list of saving offers.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SavingOffer"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /saving/withdraw:
+    post:
+      summary: Withdraw saving
+      description: Withdraw a saving from the wallet.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - amount
+                - savingPositionId
+                - intent
+              properties:
+                intent:
+                  type: string
+                  description: Intent to withdraw
+                  enum:
+                    - Withdraw
+                    - Preview
+                  example: "Withdraw"
+                amount:
+                  type: string
+                  description: Saving amount
+                  example: "100.00"
+                savingPositionId:
+                  type: integer
+                  description: Saving position Id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavingWithdrawResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /saving/positions:
+    get:
+      summary: Get saving positions
+      description: Get the list of saving positions.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SavingDepositResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /saving/deposit:
+    post:
+      summary: Create a saving
+      description: Create a new saving.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - amount
+                - offerId
+                - intent
+              properties:
+                intent:
+                  type: string
+                  description: Intent to save
+                  enum:
+                    - Save
+                    - Preview
+                  example: "Save"
+                amount:
+                  type: string
+                  description: Saving amount
+                  example: "100.00"
+                offerId:
+                  type: string
+                  description: Saving offer ID
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SavingDepositResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /payments:
+    post:
+      summary: Create a payment
+      description: Create a new payment.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - amount
+              properties:
+                amount:
+                  type: string
+                  description: Payment amount
+                  example: "100.00"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /profile:
+    get:
+      summary: Get profile
+      description: Get the profile of the user.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - nickname
+                  - transactions
+                  - referral
+                  - points
+                properties:
+                  nickname:
+                    type: string
+                  transactions:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Transaction"
+                  referral:
+                    $ref: "#/components/schemas/Referral"
+                  points:
+                    type: integer
+                  avatar:
+                    type: string
+                    description: Avatar URL, lottie file URL
+                    example: "https://example.com/avatar.json"
+                    nullable: true
+                  telegram:
+                    $ref: "#/components/schemas/TelegramProfile"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/nickname:
+    get:
+      summary: Get nickname
+      description: Get the nickname of a user.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nicknames:
+                    type: array
+                    items:
+                      type: string
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Add a nickname
+      description: Add a nickname to a user.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nickname
+              properties:
+                nickname:
+                  type: string
+                  description: The nickname to add
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /referrals:
+    post:
+      summary: Create a referral
+      description: Create a new referral.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - usageLimit
+              properties:
+                name:
+                  type: string
+                  nullable: true
+                usageLimit:
+                  type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  referralId:
+                    type: integer
+                    format: int64
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      summary: Get referrals
+      description: Get referrals by user ID or name.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: name
+          in: query
+          description: Referral name
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Referral"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /referrals/{referralId}/validate:
+    post:
+      summary: Validate a referral
+      description: Validate a referral to check if it can be redeemed.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: referralId
+          in: path
+          description: Referral ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /referrals/{referralId}/redeem:
+    post:
+      summary: Redeem a referral
+      description: Redeem a referral for a user.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: referralId
+          in: path
+          description: Referral ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /referrals/{referralId}:
+    get:
+      summary: Get referral by ID
+      description: Get a referral by its ID.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: referralId
+          in: path
+          description: Referral ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Referral"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /coins:
+    get:
+      summary: Get coins
+      description: Get the list of supported coins.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Coin"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /coins/{symbol}:
+    get:
+      summary: Get coin
+      description: Get the details of a coin.
+      parameters:
+        - name: symbol
+          in: path
+          description: Coin symbol
+          required: true
+          schema:
+            $ref: "#/components/schemas/Symbol"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Coin"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /swap/quote:
+    post:
+      summary: post a swap quote
+      description: post a swap quote
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - quoteId
+                - quote
+              properties:
+                quoteId:
+                  type: string
+                  description: Quote ID, required if intent is Swap
+                  example: "1234567890"
+                quote:
+                  type: string
+                  description: Quote
+                  example: "0.1234567890"
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /swap:
+    post:
+      summary: Swap coins
+      description: Swap coins in the wallet.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - intent
+              properties:
+                intent:
+                  type: string
+                  description: Intent to swap
+                  enum:
+                    - Swap
+                    - Quote
+                    - Preview
+                  example: "Swap"
+                quoteId:
+                  type: string
+                  description: Quote ID, required if intent is Swap
+                  example: "1234567890"
+                tradeType:
+                  type: string
+                  description: Trade type
+                  enum:
+                    - ExactInput
+                    - ExactOutput
+                  example: "ExactInput"
+                in:
+                  type: string
+                  description: Coin symbol to swap from
+                  example: "ZAR"
+                out:
+                  type: string
+                  description: Coin symbol to swap to
+                  example: "ETH"
+                amount:
+                  type: string
+                  description: Amount to swap
+                  example: "100.00"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quote:
+                    $ref: "#/components/schemas/SwapResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /withdraws/request:
+    post:
+      summary: Withdraw request
+      description: Request a withdrawal from the wallet.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - network
+                - symbol
+                - amount
+                - address
+              properties:
+                network:
+                  type: string
+                  description: Network to withdraw
+                  example: "arbitrum"
+                symbol:
+                  type: string
+                  description: Coin symbol
+                  example: "ZAR"
+                amount:
+                  type: string
+                  description: Amount to withdraw
+                  example: "100.00"
+                address:
+                  type: string
+                  description: Withdrawal address
+                  example: "0x1234567890abcdef"
+                comment:
+                  type: string
+                  nullable: true
+                  example: "Withdrawal request comment"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    description: Withdrawal request ID
+                    example: 1234567890
+
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserError"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /withdraws/preview:
+    post:
+      summary: Withdraw request
+      description: Request a withdrawal from the wallet.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - network
+                - symbol
+                - amount
+                - address
+              properties:
+                network:
+                  type: string
+                  description: Network to withdraw
+                  example: "arbitrum"
+                symbol:
+                  type: string
+                  description: Coin symbol
+                  example: "ZAR"
+                amount:
+                  type: string
+                  description: Amount to withdraw
+                  example: "100.00"
+                address:
+                  type: string
+                  description: Withdrawal address
+                  example: "0x1234567890abcdef"
+                comment:
+                  type: string
+                  nullable: true
+                  example: "Withdrawal request comment"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schema:
+                    $ref: "#/components/schemas/WithdrawRequestPreview"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserError"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /withdraws:
+    get:
+      summary: Get user withdraw requests
+      description: Get user withdraw requests
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WithdrawRequest"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /withdraws/{id}:
+    get:
+      summary: Get withdrawal status
+      description: Get the status of a withdrawal request.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: Withdrawal request ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 1234567890
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WithdrawRequest"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /balance/{symbol}:
+    get:
+      summary: Get balance
+      description: Get the balance by a symbol.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: symbol
+          in: path
+          description: Coin symbol
+          required: true
+          schema:
+            $ref: '#/components/schemas/Symbol'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /balance:
+    get:
+      summary: Get wallet balance
+      description: Get the balance of the wallet.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WalletBalance"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /deposit:
+    get:
+      summary: Deposit money
+      description: Deposit money to the wallet.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: network
+          in: query
+          description: Network to deposit
+          required: true
+          schema:
+            type: string
+            example: "arbitrum"
+        - name: symbol
+          in: query
+          description: Coin symbol
+          required: true
+          schema:
+            type: string
+            example: "ZAR"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - address
+                  - network
+                  - symbol
+                properties:
+                  address:
+                    type: string
+                    description: Deposit address
+                    example: "0x1234567890abcdef"
+                  network:
+                    $ref: "#/components/schemas/Network"
+                  symbol:
+                    type: string
+                    description: Coin symbol
+                    example: "ZAR"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /auth/telegram:
+    post:
+      summary: Authenticate with Telegram
+      description: Authenticate with Telegram and get a JWT token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - initdata
+              properties:
+                initdata:
+                  type: string
+                  description: Telegram init data
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - token
+                properties:
+                  token:
+                    type: string
+                    description: JWT token
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/signup:
+    post:
+      summary: signup with email and password
+      description: signup with email and password and get a JWT token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  description: user's email
+                  example: john@domain.com
+                password:
+                  type: string
+                  description: user's password
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - token
+                properties:
+                  token:
+                    type: string
+                    description: JWT token
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/login:
+    post:
+      summary: Login with email and password
+      description: Login with email and password and get a JWT token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  description: user's email
+                  example: john@domain.com
+                password:
+                  type: string
+                  description: user's password
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - token
+                properties:
+                  token:
+                    type: string
+                    description: JWT token
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /tasks:
+    get:
+      summary: Get tasks
+      description: Get the list of tasks.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: check task completion
+      description: check if the user has completed a task
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - taskId
+              properties:
+                taskId:
+                  type: string
+                  description: Task ID
+                  example: "1234567890"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - completed
+                properties:
+                  completed:
+                    type: boolean
+                    description: Task completion status
+                    example: true
+                  completedAt:
+                    $ref: "#/components/schemas/Timestamp"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /points/frineds:
+    get:
+      summary: Get friends points.
+      description: Get friends points.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                      description: the first name of the friend
+                      example: "John"
+                    points:
+                      type: integer
+                      format: int64
+                      description: the points of the friend
+
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    SavingOffer:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - apy
+        - minAmount
+        - symbol
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          example: "Zarban ZAR 10% APY"
+        description:
+          type: string
+          example: "Earn 10% APY on your ZAR savings"
+        apy:
+          type: string
+          example: "0.20"
+        minAmount:
+          type: string
+          example: "100.00"
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+
+    SavingWithdrawResponse:
+      type: object
+      required:
+        - fee
+        - balanceAfterWithdraw
+        - principal
+        - interest
+        - timeCreated
+      properties:
+        id:
+          type: integer
+          format: int64
+        fee:
+          type: string
+          description: Operation fee
+          example: "1"
+        balanceAfterWithdraw:
+          type: string
+          description: Balance after withdrawal
+          example: "99.00"
+        principal:
+          type: string
+          description: Principal amount
+          example: "100.00"
+        interest:
+          type: string
+          description: Interest amount
+          example: "10.00"
+        timeCreated:
+          $ref: "#/components/schemas/Timestamp"
+
+    SavingDepositResponse:
+      type: object
+      required:
+        - symbol
+        - apy
+        - principal
+        - interest
+        - timeCreated
+      properties:
+        id:
+          type: integer
+          format: int64
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+        fee:
+          type: string
+          description: Operation fee
+          example: "1"
+        apy:
+          type: string
+          description: APY
+          example: "0.20"
+        principal:
+          type: string
+          description: Principal amount
+          example: "100.00"
+        interest:
+          type: string
+          description: Interest amount
+          example: "10.00"
+        timeCreated:
+          $ref: "#/components/schemas/Timestamp"
+
+    Payment:
+      type: object
+      required:
+        - hash
+        - url
+        - senderFirstName
+        - text
+        - amount
+        - shareUrl
+      properties:
+        amount:
+          type: string
+          description: Payment amount
+          example: "100.00"
+        hash:
+          type: string
+          description: Payment hash
+          example: "0x1234567890abcdef"
+        url:
+          type: string
+          description: Payment URL
+          example: "https://t.me/catizenbot/gameapp?startapp=rp_1365932"
+        senderFirstName:
+          type: string
+          description: Sender first name
+          example: "John"
+        text:
+          type: string
+          description: Payment text
+          example: "Payment for the game"
+        shareUrl:
+          type: string
+          description: Share URL
+          example: "https://t.me/share/url?url=https://t.me/catizenbot/gameapp?startapp=rp_1365932&text=%F0%9F%92%B0Catizen%3A%20Unleash%2C%20Play%2C%20Earn%20-%20Where%20Every%20Game%20Leads%20to%20an%20Airdrop%20Adventure!%0A%F0%9F%8E%81Let%27s%20play-to-earn%20airdrop%20right%20now!"
+    Referral:
+      type: object
+      required:
+        - id
+        - referrerId
+        - usageLimit
+        - usageCount
+        - createdAt
+      properties:
+        id:
+          type: integer
+          format: int64
+        referrerId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        usageLimit:
+          type: integer
+        usageCount:
+          type: integer
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+        link:
+          type: string
+          nullable: true
+          example: "https://t.me/zarbanwalletbot?start=referral-29"
+    SwapResponse:
+      type: object
+      required:
+        - id
+        - tradeType
+        - in
+        - out
+        - amount
+        - quote
+        - createdAt
+        - expiresAt
+        - rate
+        - value
+      properties:
+        id:
+          type: string
+        tradeType:
+          type: string
+          enum:
+            - ExactInput
+            - ExactOutput
+        in:
+          $ref: "#/components/schemas/Symbol"
+        out:
+          $ref: "#/components/schemas/Symbol"
+        amount:
+          type: string
+        quote:
+          type: string
+        rate:
+          type: string
+        value:
+          $ref: "#/components/schemas/Currency"
+        inputBalanceAfterSwap:
+          type: string
+        outputBalanceAfterSwap:
+          type: string
+        createdAt:
+          $ref: "#/components/schemas/Timestamp"
+        expiresAt:
+          $ref: "#/components/schemas/Timestamp"
+        executedAt:
+          $ref: "#/components/schemas/Timestamp"
+    Timestamp:
+      type: object
+      required: [jalaali, gregorian]
+      properties:
+        jalaali:
+          type: string
+          description: Jalaali date
+          example: "1399-01-01T00:00:00Z"
+        gregorian:
+          type: string
+          description: Gregorian date
+          example: "2020-01-01T00:00:00Z"
+    WithdrawRequestPreview:
+      type: object
+      required:
+        - address
+        - network
+        - symbol
+        - amount
+        - fee
+        - balanceAfterWithdraw
+      properties:
+        address:
+          type: string
+          description: Withdrawal address
+          example: "0x1234567890abcdef"
+        network:
+          $ref: "#/components/schemas/Network"
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+        amount:
+          $ref: "#/components/schemas/Currency"
+        fee:
+          $ref: "#/components/schemas/Currency"
+        balanceAfterWithdraw:
+          $ref: "#/components/schemas/Currency"
+    WithdrawRequest:
+      required:
+        - id
+        - timeCreated
+        - network
+        - symbol
+        - amount
+        - to
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        timeCreated:
+          $ref: "#/components/schemas/Timestamp"
+        network:
+          $ref: "#/components/schemas/Network"
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+        amount:
+          type: string
+          format: decimal
+        to:
+          type: string
+        comment:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - Pending
+            - Canceled
+            - Approved
+            - Rejected
+            - Proccessing
+            - Failed
+            - Sent
+            - AccountDebited
+            - AccountBalanceUnlocked
+            - Completed
+        blockExplorerUrl:
+          type: string
+          nullable: true
+          example: "https://etherscan.io/tx/0x1234567890abcdef"
+    InternationalName:
+      type: object
+      additionalProperties:
+        type: string
+        format: string
+      example:
+        en_US: "Zar Stablecoin"
+        fa_IR: "استیبل کوین زر"
+    Symbol:
+      type: string
+      description: Symbol representation
+      enum:
+        - USD
+        - DAI
+        - USDT
+        - USDC
+        - WBTC
+        - ETH
+        - WETH
+        - ZAR
+        - TMN
+
+    Balance:
+      type: object
+      required:
+        - coin
+        - balance
+        - locked
+      properties:
+        locked:
+          $ref: "#/components/schemas/Currency"
+        coin:
+          $ref: "#/components/schemas/Coin"
+        balance:
+          $ref: "#/components/schemas/Currency"
+    Coin:
+      type: object
+      required:
+        - symbol
+        - name
+        - logoUri
+        - depositableNetworks
+        - withdrawableNetworks
+        - content
+        - config
+      properties:
+        config:
+          $ref: "#/components/schemas/CoinConfig"
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+        name:
+          $ref: "#/components/schemas/InternationalName"
+        logoUri:
+          type: string
+        depositableNetworks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Network"
+        withdrawableNetworks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Network"
+        content:
+          type: object
+          required:
+            - title
+            - text
+            - bollets
+          properties:
+            title:
+              type: string
+            text:
+              type: string
+            bollets:
+              type: array
+              items:
+                type: string
+    CoinConfig:
+      type: object
+      required:
+        - isTradeable
+        - withdrawFees
+        - minWithdrawal
+        - needsMemo
+      properties:
+        isTradeable:
+          type: boolean
+        withdrawFees:
+          type: object
+          additionalProperties:
+            type: string
+            format: string
+          example:
+            tron: "10"
+        minWithdrawal:
+          type: object
+          additionalProperties:
+            type: string
+            format: string
+            description: Minimum withdrawal amount. map of network to amount
+          example:
+            tron: "100"
+        needsMemo:
+          type: boolean
+
+    WalletBalance:
+      required:
+        - balances
+        - total
+      properties:
+        total:
+          $ref: "#/components/schemas/Currency"
+        balances:
+          type: array
+          items:
+            $ref: "#/components/schemas/Balance"
+    Network:
+      type: object
+      required:
+        - name
+        - logoUri
+      properties:
+        name:
+          $ref: "#/components/schemas/InternationalName"
+        logoUri:
+          type: string
+    Currency:
+      type: object
+      additionalProperties:
+        type: string
+        format: string
+      example:
+        USD: "1.23"
+        TMN: "45.67"
+        ZAR: "89.01"
+        ETH: "0.02"
+    Error:
+      type: object
+      required: [msg]
+      properties:
+        msg:
+          type: string
+          description: Error message
+          example: "Bad request"
+        reasons:
+          type: array
+          items:
+            type: string
+            description: Error reason
+            example: "Invalid address"
+    UserError:
+      type: object
+      required: [code, messages]
+      properties:
+        messages:
+          type: object
+          description: Localized error messages
+          additionalProperties:
+            type: object
+            required:
+              - userMessage
+            properties:
+              userMessage:
+                type: string
+                description: User-friendly error message
+                example: "Invalid request. Please check the provided address."
+              solutions:
+                type: array
+                items:
+                  type: string
+                  description: Possible solutions for the error
+                  example: "Ensure the address follows the correct format."
+    TransactionType:
+      type: string
+      enum:
+        - Credit
+        - Debit
+        - Transfer
+        - Deposit
+        - Withdraw
+    TransactionStatus:
+      type: string
+      enum:
+        - Sent
+        - Success
+        - Failed
+    TelegramProfile:
+      type: object
+      required:
+        - firstName
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+        lastName:
+          type: string
+          nullable: true
+        photoUrl:
+          type: string
+          nullable: true
+
+    Transaction:
+      type: object
+      required:
+        - Id
+        - Time
+        - Type
+        - From
+        - To
+        - Symbol
+        - Amount
+      properties:
+        Id:
+          type: integer
+          format: int64
+          description: Unique identifier of the transaction
+        Time:
+          $ref: "#/components/schemas/Timestamp"
+        Type:
+          $ref: "#/components/schemas/TransactionType"
+        From:
+          type: string
+          description: The ID of the user from whom the transaction originated
+        To:
+          type: string
+          description: The ID of the user to whom the transaction is directed
+        Symbol:
+          $ref: "#/components/schemas/Symbol"
+        Amount:
+          $ref: "#/components/schemas/Currency"
+        ExternalTransaction:
+          $ref: "#/components/schemas/ExternalTransaction"
+    ExternalTransaction:
+      type: object
+      required:
+        - Id
+        - Time
+        - Type
+        - Hash
+        - From
+        - To
+        - Amount
+        - Symbol
+        - Network
+        - Status
+        - Action
+        - Comment
+      properties:
+        Id:
+          type: integer
+          format: int64
+          description: Unique identifier of the transaction
+        Time:
+          $ref: "#/components/schemas/Timestamp"
+        Type:
+          $ref: "#/components/schemas/TransactionType"
+        Hash:
+          type: string
+          description: The hash of the transaction
+        From:
+          type: string
+          description: The address from which the transaction originated
+        To:
+          type: string
+          description: The address to which the transaction is sent
+        Comment:
+          type: string
+          nullable: true
+          description: A comment associated with the transaction
+        Amount:
+          $ref: "#/components/schemas/Currency"
+        Symbol:
+          $ref: "#/components/schemas/Symbol"
+        Network:
+          $ref: "#/components/schemas/Network"
+        Status:
+          $ref: "#/components/schemas/TransactionStatus"
+
+    Task:
+      type: object
+      required:
+        - id
+        - description
+        - points
+        - status
+      properties:
+        id:
+          type: string
+          description: Task ID
+          example: "1234567890"
+        description:
+          type: string
+          description: Task description
+          example: "Complete your profile to earn rewards"
+        points:
+          type: integer
+          format: int64
+          description: Task reward
+          example: 10
+        status:
+          type: string
+          description: Task status. Possible values "Pending", "Completed"
+          example: "Pending"
+        completedAt:
+          $ref: "#/components/schemas/Timestamp"
