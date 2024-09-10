@@ -1,0 +1,13 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.cfg
+MedicalImageConverter/__init__.py
+MedicalImageConverter/conversion.py
+MedicalImageConverter/memory.py
+MedicalImageConverter/parsar.py
+MedicalImageConverter/reader.py
+MedicalImageConverter.egg-info/PKG-INFO
+MedicalImageConverter.egg-info/SOURCES.txt
+MedicalImageConverter.egg-info/dependency_links.txt
+MedicalImageConverter.egg-info/top_level.txt
