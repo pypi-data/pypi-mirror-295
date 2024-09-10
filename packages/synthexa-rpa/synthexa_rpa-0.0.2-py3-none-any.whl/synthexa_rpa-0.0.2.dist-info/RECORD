@@ -1,0 +1,12 @@
+synthexa_rpa/__init__.py,sha256=bX_MbLR_qqW23ev-bXLtKiU2vH5NViAR21Um0ehfrP4,221
+synthexa_rpa/application/config.py,sha256=updCx6OUbzhqGnfNdH1U_NPggqSjEA64KSV-JL2tZPQ,925
+synthexa_rpa/application/logger.py,sha256=wJhGKbuKoA4OA239vQYKbs4l-2GDnMMVv_LUAQGUKJk,1170
+synthexa_rpa/application/orchestrator.py,sha256=6PDADO-bcdHXLUxTLVCKppiwtoIk9ecMkiwhNlIwxPk,1203
+synthexa_rpa/application/run.py,sha256=HNhMoiNWDikBlu4fkqtkBiMcP3Y7tt0EZ9ayyCoQibs,912
+synthexa_rpa/application/gateway/orchestrator_gateway.py,sha256=9_rCu8uGd4Rew6qPccnVVV1j0NSi4r0NRAgQ-YgsHKg,490
+synthexa_rpa/infra/gateway/orchestrator_gateway/supabase.py,sha256=x1Tx8GbzYDlmiI_LmKKG0BXF4Vj1ZUOBx0oy6X4qj4k,3535
+synthexa_rpa-0.0.2.dist-info/LICENSE,sha256=2bm9uFabQZ3Ykb_SaSU_uUbAj2-htc6WJQmS_65qD00,1073
+synthexa_rpa-0.0.2.dist-info/METADATA,sha256=ZK3zwtqNubDc4q1V_mz0scUG4UwvWvECgZrQOjIyqSE,488
+synthexa_rpa-0.0.2.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+synthexa_rpa-0.0.2.dist-info/top_level.txt,sha256=KSmuSu5bG_cwUf4BBl2lbhMR1M1PWA7LVJMrXCozvwA,13
+synthexa_rpa-0.0.2.dist-info/RECORD,,
