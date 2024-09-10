@@ -1,0 +1,2 @@
+[console_scripts]
+post-tracker = post_tracker.__main__:main
