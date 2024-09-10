@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+get_context/__init__.py
+get_context/cli.py
+get_context/directory_structure.py
+get_context/file_utils.py
+get_context/ignore_utils.py
+get_context/merger.py
+get_context.egg-info/PKG-INFO
+get_context.egg-info/SOURCES.txt
+get_context.egg-info/dependency_links.txt
+get_context.egg-info/entry_points.txt
+get_context.egg-info/requires.txt
+get_context.egg-info/top_level.txt
