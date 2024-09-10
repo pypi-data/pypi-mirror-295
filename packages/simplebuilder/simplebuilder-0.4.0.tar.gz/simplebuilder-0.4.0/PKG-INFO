@@ -1,0 +1,35 @@
+Metadata-Version: 2.3
+Name: simplebuilder
+Version: 0.4.0
+Summary: Simple build script for packages
+Project-URL: Repository, https://github.com/ilotoki0804/simplebuilder
+Project-URL: Issues, https://github.com/ilotoki0804/simplebuilder/issues
+Author-email: ilotoki0804 <ilotoki0804@gmail.com>
+Keywords: build
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Requires-Dist: tomlkit>=0.13.2
+Description-Content-Type: text/markdown
+
+# simplebuilder
+
+Build README for PyPI from Github README
+
+## Usage
+
+This project is used and will be used by [WebtoonScraper](https://github.com/ilotoki0804/WebtoonScraper) and many other packages.
+
+Relative links and images will be converted and additional message will be shown on top of PyPI description.
+
+## Changelog
+
+* **0.4.0**: Change concept of package
+* **0.3.0**: Change only explicit relative path link
+* **0.2.0**: Initial version
