@@ -1,0 +1,15 @@
+AUTHORS
+ChangeLog
+README.md
+requirements.txt
+setup.cfg
+setup.py
+src/vmtui/__init__.py
+src/vmtui/vmtui.py
+src/vmtui.egg-info/PKG-INFO
+src/vmtui.egg-info/SOURCES.txt
+src/vmtui.egg-info/dependency_links.txt
+src/vmtui.egg-info/not-zip-safe
+src/vmtui.egg-info/pbr.json
+src/vmtui.egg-info/requires.txt
+src/vmtui.egg-info/top_level.txt
