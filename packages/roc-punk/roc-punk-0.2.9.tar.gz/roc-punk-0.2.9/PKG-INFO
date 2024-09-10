@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: roc-punk
+Version: 0.2.9
+Summary: Pipeline UNit Keeper (PUNK) plugin is used to report activities monitored by the pipeline
+Home-page: https://gitlab.obspm.fr/ROC/Pipelines/Plugins/PUNK
+License: CECILL-C
+Author: Florence Henry
+Author-email: florence.henry@obspm.fr
+Requires-Python: >=3.8,<4
+Classifier: License :: CeCILL-C Free Software License Agreement (CECILL-C)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: SQLAlchemy (>=1.3,<2.0)
+Requires-Dist: poppy-core (>=0.9.4)
+Requires-Dist: poppy-pop (>=0.7.5)
+Requires-Dist: psycopg2 (>=2.8.4,<3.0.0)
+Requires-Dist: weasyprint (==0.28)
+Project-URL: Repository, https://gitlab.obspm.fr/ROC/Pipelines/Plugins/PUNK
+Description-Content-Type: text/markdown
+
+PUNK PLUGIN README
+===================
+
+This directory contains the source files of the Pipeline UNit Keeper (PUNK), a plugin used to monitor and report the ROC pipeline activities.
+PUNK is developed with and run under the POPPY framework.
+

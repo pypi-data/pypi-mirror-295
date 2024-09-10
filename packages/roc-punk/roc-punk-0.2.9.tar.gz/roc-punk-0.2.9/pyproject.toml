@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools==54", "wheel", "poetry==1.1.8", "poetry-core==1.0.4"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+skip-string-normalization = true
+line-length = 79
+include = "\\.pyi?$"
+exclude = "/(\n    \\.git\n  | \\.hg\n  | \\.mypy_cache\n  | \\.tox\n  | \\.venv\n  | _build\n  | buck-out\n  | build\n  | dist\n)/\n"
+
+[tool.poetry]
+name = "roc-punk"
+version = "0.2.9"
+readme = "README.md"
+license = "CeCILL-C"
+repository = "https://gitlab.obspm.fr/ROC/Pipelines/Plugins/PUNK"
+description = "Pipeline UNit Keeper (PUNK) plugin is used to report activities monitored by the pipeline"
+authors = [ "Florence Henry <florence.henry@obspm.fr>", "ROC Team <roc.support@sympa.obspm.fr>",]
+exclude = [ "bump_descriptor.py",]
+[[tool.poetry.packages]]
+include = "roc"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"
+psycopg2 = "^2.8.4"
+SQLAlchemy = "^1.3"
+"poppy-core" =  {version = ">=0.9.4"}
+"poppy-pop" = {version = ">=0.7.5"}
+weasyprint = {version = "==0.28"}
+
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pytest-cov = "^2.10.1"
+pre-commit = "^2.8"
+pytest-timeout = "^1.4"
+toml = "*"
+PyYAML = "*"

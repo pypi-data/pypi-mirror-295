@@ -1,0 +1,38 @@
+{
+    "identification": {
+        "project": "ROC",
+        "identifier": "roc.punk",
+        "name": "Pipeline Unit Keeper",
+        "description": "Watchdog plugin for the ROC pipelines"
+    },
+    "release": {
+        "version": "0.2.7",
+        "date": "2023-01-13",
+        "author": "Grégoire Duvauchelle, Florence Henry",
+        "institute": "LESIA",
+        "modification": "Fix issue recipients"
+    },
+    "tasks": [
+        {
+            "name": "descriptor_report",
+            "category": "Software execution",
+            "description": "Make a report in HTML or PDF about the softwares and datasets in the ROC database",
+            "inputs": {},
+            "outputs": {}
+        },
+        {
+            "name": "sbm_query",
+            "category": "SBM detection",
+            "description": "Search in DB for SBM events",
+            "inputs": {},
+            "outputs": {}
+        },
+        {
+            "name": "sbm_report",
+            "category": "SBM detection",
+            "description": "Make a notification for SBM events",
+            "inputs": {},
+            "outputs": {}
+        }
+    ]
+}
