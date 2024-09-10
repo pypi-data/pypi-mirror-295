@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: snova
+Version: 0.0.17
+Summary: 
+License: MIT
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: dev
+Requires-Dist: aiohttp (>=3.6)
+Requires-Dist: asyncio (>=3.4)
+Description-Content-Type: text/markdown
+
+# snova
+ 
+

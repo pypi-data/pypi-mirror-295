@@ -1,0 +1,13 @@
+{
+    "body": {
+        "messages": [],
+        "max_tokens": 2048,
+        "stop": ["<|eot_id|>"],
+        "stream": true,
+        "stream_options": {
+            "include_usage": true
+        },
+        "model": "Meta-Llama-3.1-8B-Instruct"
+    },
+    "env_type": "tp16"
+}
