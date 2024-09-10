@@ -1,0 +1,4 @@
+specfit.egg-info/
+*.nc
+*__pycache__*
+dist**
