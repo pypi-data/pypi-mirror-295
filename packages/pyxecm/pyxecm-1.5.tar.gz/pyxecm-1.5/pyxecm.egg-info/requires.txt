@@ -1,0 +1,16 @@
+requests<3
+requests_toolbelt
+setuptools
+kubernetes
+zipfile36
+suds
+python-hcl2
+xmltodict
+lxml
+openpyxl
+pandas
+
+[customizer]
+python-hcl2
+lxml
+pyrfc
