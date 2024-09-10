@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: agent-network
+Version: 0.0.1
+Summary: An Agent Self-Organizing Intelligent Network
+Home-page: https://github.com/WhuAgent/agent-network.git
+Author: WhuAgent
+Author-email: zhuyuhan2333@whu.edu.cn
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# agent-network
+An Agent Self-Organizing Intelligent Network.
