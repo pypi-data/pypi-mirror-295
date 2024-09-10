@@ -1,0 +1,1 @@
+DT_FuncConjunction = ["佮", "閣"]
