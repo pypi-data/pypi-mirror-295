@@ -1,0 +1,25 @@
+{% extends "generic/object_children.html" %}
+
+{% block head %}
+  {{ block.super }}
+  <style type="text/css">
+    div.quicksearch{
+      display: none
+    }
+    nav.text-end[aria-label="Pagination optoins"]{
+      display: none
+    }
+  </style>
+{% endblock %}
+
+{% block bulk_controls %}
+<div class="dropdown d-flex justify-content-end">
+  <button type="button" class="btn btn-purple dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="mdi mdi-download"></i> Export
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><a class="dropdown-item" href="?export=table">Current View</a></li>
+    <li><a class="dropdown-item" href="?export">All Data (CSV)</a></li>
+  </ul>
+</div>
+{% endblock bulk_controls %}
