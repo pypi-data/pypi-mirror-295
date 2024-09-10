@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+datatui/__init__.py
+datatui/__main__.py
+datatui/app.py
+datatui.egg-info/PKG-INFO
+datatui.egg-info/SOURCES.txt
+datatui.egg-info/dependency_links.txt
+datatui.egg-info/requires.txt
+datatui.egg-info/top_level.txt
+datatui/static/app.css

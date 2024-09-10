@@ -1,0 +1,41 @@
+#pbar {
+    margin: 1 4 0 4;
+    padding: 0;
+}
+ 
+#content {
+    padding: 2 6;
+    margin: 1 4 1 4;
+    background: $panel;
+    width: 100%;
+    text-align: center;
+}
+
+Footer {
+    text-align: center;
+}
+
+#container{
+    
+}
+
+.teal-card-border{
+    border: hkey rgb(55, 255, 248);
+}
+
+.red-card-border{
+    border: hkey rgb(220,38,38);
+}
+
+.orange-card-border{
+    border: hkey rgb(220, 172, 38);
+}
+
+.green-card-border{
+    border: hkey rgb(24, 215, 94);
+}
+
+.base-card-border{
+    border: hkey $panel;
+}
+
