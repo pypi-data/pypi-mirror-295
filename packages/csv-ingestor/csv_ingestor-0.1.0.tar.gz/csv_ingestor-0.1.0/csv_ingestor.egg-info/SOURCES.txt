@@ -1,0 +1,10 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+csv_ingestor.py
+pyproject.toml
+csv_ingestor.egg-info/PKG-INFO
+csv_ingestor.egg-info/SOURCES.txt
+csv_ingestor.egg-info/dependency_links.txt
+csv_ingestor.egg-info/requires.txt
+csv_ingestor.egg-info/top_level.txt
