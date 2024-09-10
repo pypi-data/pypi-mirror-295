@@ -1,0 +1,9 @@
+typer
+pandas
+matplotlib
+
+[dev]
+coverage
+mypy
+pytest
+ruff
