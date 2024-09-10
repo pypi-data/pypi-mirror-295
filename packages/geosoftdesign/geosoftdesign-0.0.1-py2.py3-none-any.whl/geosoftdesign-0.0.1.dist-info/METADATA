@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: geosoftdesign
+Version: 0.0.1
+Summary: Python Boilerplate contains all the boilerplate you need to create a Python package.
+Author-email: Carlos Del Real <carloshdelreal@gmail.com>
+License: MIT License
+Project-URL: Homepage, https://github.com/carloshdelreal/geosoftdesign
+Keywords: geosoftdesign
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: numpy
+Provides-Extra: all
+Requires-Dist: geosoftdesign[extra] ; extra == 'all'
+Provides-Extra: extra
+Requires-Dist: pandas ; extra == 'extra'
+
+# geosoftdesign
+
+
+[![image](https://img.shields.io/pypi/v/geosoftdesign.svg)](https://pypi.python.org/pypi/geosoftdesign)
+[![image](https://img.shields.io/conda/vn/conda-forge/geosoftdesign.svg)](https://anaconda.org/conda-forge/geosoftdesign)
+
+
+**Python Boilerplate contains all the boilerplate you need to create a Python package.**
+
+
+-   Free software: MIT License
+-   Documentation: https://carloshdelreal.github.io/geosoftdesign
+    
+
+## Features
+
+-   TODO
