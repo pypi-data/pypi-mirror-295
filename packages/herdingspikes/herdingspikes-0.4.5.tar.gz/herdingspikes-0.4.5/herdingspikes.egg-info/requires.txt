@@ -1,0 +1,9 @@
+cython
+numpy
+scipy
+scikit-learn
+matplotlib
+pandas
+tqdm
+joblib
+h5py
