@@ -1,0 +1,1 @@
+from mistercar_screenshooter.capture import ScreenCapture
