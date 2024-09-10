@@ -1,0 +1,37 @@
+Metadata-Version: 2.3
+Name: nxml2txt
+Version: 0.0.5
+Summary: XML formatted full-text articles to text format conversion. Standoff annotations for text and entities. Originally derived from https://github.com/spyysalo/nxml2txt
+Project-URL: Homepage, https://github.com/GullyBurns/nxml2txt
+Author-email: "orig. Sampo Pyysalo; updated: Gully Burns" <gully.burns@chanzuckerberg.com>
+License-Expression: MIT
+License-File: LICENSE
+Requires-Dist: lxml
+Description-Content-Type: text/markdown
+
+nxml2txt
+========
+
+NLM .nxml to text format conversion 
+
+Usage:
+
+    ./nxml2txt NXMLFILE [TEXTFILE] [SOFILE]
+
+For example (using test document):
+
+    ./nxml2txt test/PMC3357053.nxml test/PMC3357053.txt test/PMC3357053.so
+
+This creates the files `test/PMC3357053.txt`, containing the text
+content of the input document, and `test/PMC3357053.so`, containing
+the annotations (XML elements and their attributes) in a simple
+standoff format.
+
+nxml2txt assumes a unix-like environment.
+If the input .nxml file contains embedded TeX-math, nxml2txt
+requires [LaTeX](http://en.wikipedia.org/wiki/LaTeX) and
+[catdvi](http://catdvi.sourceforge.net/).
+
+This tool was originally introduced as part of the BioNLP Shared Task
+2011 supporting resources
+(https://github.com/ninjin/bionlp_st_2011_supporting).
