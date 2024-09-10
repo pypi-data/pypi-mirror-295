@@ -1,0 +1,15 @@
+README.md
+setup.py
+wikitoolkit/__init__.py
+wikitoolkit/api.py
+wikitoolkit/dumps.py
+wikitoolkit/links.py
+wikitoolkit/pageviews.py
+wikitoolkit/redirects.py
+wikitoolkit/revisions.py
+wikitoolkit/tools.py
+wikitoolkit.egg-info/PKG-INFO
+wikitoolkit.egg-info/SOURCES.txt
+wikitoolkit.egg-info/dependency_links.txt
+wikitoolkit.egg-info/requires.txt
+wikitoolkit.egg-info/top_level.txt
