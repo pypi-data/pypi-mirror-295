@@ -1,0 +1,14 @@
+jacobi.cpython-311-aarch64-linux-gnu.so,sha256=YTiDLhrF6vD3exJ-YKSr-CwBZQHo2tT5GbTBz3lBugQ,2144889
+libjacobi-motion.so,sha256=Qrm28JxQeYK5hWESLR-vGFBsUJvR-H6sgK64VnZf12Y,9389113
+jacobi_motion-0.0.40.dist-info/entry_points.txt,sha256=3VOVLaEYqqKYpCrUdr1wg3D0MeYQawpAKhUYJpTrxSM,170
+jacobi_motion-0.0.40.dist-info/WHEEL,sha256=8Epg00CJeOAWclfug4sNG9w2E0DD9y_MQsCGIa4P_MY,119
+jacobi_motion-0.0.40.dist-info/METADATA,sha256=my4juXc5xZoXwrCpYn688i3kGXGJ2Uud-NUR5_dVpC4,7867
+jacobi_motion-0.0.40.dist-info/RECORD,,
+jacobi_motion-0.0.40.dist-info/licenses/LICENSE,sha256=SB96j6prkX-9naEgQX31uDe9tvjN8p3wtJQBugr_HsU,5750
+jacobi-stubs/__init__.pyi,sha256=QwrPhqouabErHiBWElp9EmwKmvWJhPCJuRpvAVwlHvE,144205
+jacobi-stubs/drivers.pyi,sha256=Bgq5lXLZproPlKr101px0jAiynleGw8eIhkUS1aA0NE,109
+jacobi-stubs/exceptions.pyi,sha256=BtE-0GG_dC_1rtMXe8XYu514S8a0KAT_B7jZJDIR3Xo,301
+jacobi-stubs/robots.pyi,sha256=pGDHKs_-mYykVg5FtgS8VcUsPnrnM7wzTmXxzWvAzXw,8189
+jacobi_motion.libs/libgomp-bc9a3cf4.so.1.0.0,sha256=brvzs7GlJTO4Bw-oeSToAlSAURSSTwq5BQ9lW9dKb4g,343345
+jacobi_motion.libs/libcrypto-720e6dac.so.1.1.1k,sha256=XgHKM45qU_tkaauMBqdC0HLmQlN-zydJlLW2pug-nV0,2945609
+jacobi_motion.libs/libssl-235352c8.so.1.1.1k,sha256=B2Ro2flZ2zaoFT12Y-go8w8vWKnAEYmAJO5gt8gmB5E,740585
