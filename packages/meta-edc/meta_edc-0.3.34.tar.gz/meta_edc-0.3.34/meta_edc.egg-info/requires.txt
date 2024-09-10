@@ -1,0 +1,6 @@
+edc==0.6.11
+edc-microscopy
+beautifulsoup4
+edc-analytics
+celery[redis]
+Django==5.1
