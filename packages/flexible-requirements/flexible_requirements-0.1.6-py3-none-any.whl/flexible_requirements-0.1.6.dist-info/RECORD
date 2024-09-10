@@ -1,0 +1,15 @@
+main.py,sha256=8yjmDmfvUjo3GQeqWPLINRQfN8P-OJFlV9Lma01wZ3k,1757
+src/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+src/generator.py,sha256=y0YENfvThf2kyCEYbWx-pMpLCkSQDhK1uQCz5Nw45BI,2666
+src/package_info.py,sha256=q_P_gPhmHNIp2Bzz34yJn6phQe3MkjwS2RgGjKJ8jeU,955
+src/parsers.py,sha256=ILjC72sAWkJ1fHlHgJ4XsopyuZ_gWvcehXQil0-Axnw,571
+src/utils.py,sha256=X6JkTjwmgJgeJ6rPsr1Uydn58BVGAkadxAA3uqVuoxc,267
+src/compatibility_checkers/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+src/compatibility_checkers/base.py,sha256=B5QWi7SENi__2y2VixWyPPjgBMgaazkbozVbJkG1Rk8,150
+src/compatibility_checkers/fast_checker.py,sha256=VDC1e4-aBO4aBXxTFwU_0Kq5y6XvCcCOD5DReXniGGY,2844
+src/compatibility_checkers/installation_checker.py,sha256=FKFJvETvjJHMm5atdW5hnLmgynmiFZH1_oZi871uZuE,6979
+flexible_requirements-0.1.6.dist-info/METADATA,sha256=lR1sZ6T_37iDPoLpJTYEnlhJPCTGiBL2jE0S8t8iOQQ,5240
+flexible_requirements-0.1.6.dist-info/WHEEL,sha256=g4nMs7d-Xl9-xC9XovUrsDHGXt-FT0E17Yqo92DEfvY,92
+flexible_requirements-0.1.6.dist-info/entry_points.txt,sha256=eh9KBsk0x-MoSGbVs32PNss5Wx92NEQppQqNAyk8zfw,53
+flexible_requirements-0.1.6.dist-info/top_level.txt,sha256=7dQR-Fa4VIhfnQo3p1CubPBIGo7YRYTo2kAuwuj_HuI,9
+flexible_requirements-0.1.6.dist-info/RECORD,,
