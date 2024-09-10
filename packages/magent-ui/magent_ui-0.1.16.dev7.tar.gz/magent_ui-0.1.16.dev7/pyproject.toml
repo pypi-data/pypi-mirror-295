@@ -1,0 +1,32 @@
+[project]
+name = "magent-ui"
+version = "0.1.16.dev7"
+description = ""
+authors = [
+  { name = "shiyu", email = "dongyuxin.dyx@antgroup.com" },
+  { name = "brokun", email = "brokun0128@gmail.com" },
+]
+
+dependencies = [
+  "sse-starlette>=2.1.2",
+  "jinja2>=3.1.4",
+  "python-multipart>=0.0.9",
+  "aiofiles>=24.1.0",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/magent_ui"]
