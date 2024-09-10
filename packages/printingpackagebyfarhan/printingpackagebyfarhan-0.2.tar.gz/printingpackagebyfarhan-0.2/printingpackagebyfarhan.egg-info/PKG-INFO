@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: printingpackagebyfarhan
+Version: 0.2
+Summary: A short description of the package
+Home-page: https://github.com/SiddiqueFarhan/pypi_demo
+Author: Farhan Siddiqui
+Author-email: Farhan.siddiqui1572@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# My Package
+
+This is a short description of my package. This prints the hello on the screen.
+
+## Installation
+
+You can install the package using pip:
+
+```bash
+pip install my_package
