@@ -1,0 +1,61 @@
+# automagically generated parameter file
+
+[driver]
+tmax = 0.8    ; maximum simulation time to evolve
+max_steps = 1    ; maximum number of steps to take
+fix_dt = -1.0
+init_tstep_factor = 0.01    ; first timestep = init_tstep_factor * CFL timestep
+max_dt_change = 2.0    ; max amount the timestep can change between steps
+verbose = 0    ; verbosity
+cfl = 0.8
+
+[io]
+basename = quad_unsplit_    ; basename for output files
+dt_out = 0.1    ; simulation time between writing output files
+n_out = 10000    ; number of timesteps between writing output files
+do_io = 1    ; do we output at all?
+
+[mesh]
+grid_type = Cartesian2d    ; Geometry of the Grid ('Cartesian2d' or 'SphericalPolar')
+xmin = 0.0    ; domain minimum x-coordinate
+xmax = 1.0    ; domain maximum x-coordinate
+ymin = 0.0    ; domain minimum y-coordinate
+ymax = 1.0    ; domain maximum y-coordinate
+xlboundary = outflow    ; minimum x BC ('reflect', 'outflow', or 'periodic')
+xrboundary = outflow    ; maximum x BC ('reflect', 'outflow', or 'periodic')
+ylboundary = outflow    ; minimum y BC ('reflect', 'outflow', or 'periodic')
+yrboundary = outflow    ; maximum y BC ('reflect', 'outflow', or 'periodic')
+nx = 8    ; number of zones in the x-direction
+ny = 8    ; number of zones in the y-direction
+
+[particles]
+do_particles = 0    ; include particles? (1=yes, 0=no)
+n_particles = 100    ; number of particles
+particle_generator = grid    ; how do we generate particles? (random, grid)
+
+[quadrant]
+h1 = 1.4    ; quadrant 1 initial density
+u1 = 0.0    ; quadrant 1 initial x-velocity
+v1 = 0.0    ; quadrant 1 initial y-velocity
+h2 = 0.532258064516129    ; quadrant 2 initial density
+u2 = 1.206045378311055    ; quadrant 2 initial x-velocity
+v2 = 0.0    ; quadrant 2 initial y-velocity
+h3 = 0.137992831541219    ; quadrant 3 initial density
+u3 = 1.206045378311055    ; quadrant 3 initial x-velocity
+v3 = 1.206045378311055    ; quadrant 3 initial y-velocity
+h4 = 0.532258064516129    ; quadrant 4 initial density
+u4 = 0.0    ; quadrant 4 initial x-velocity
+v4 = 1.206045378311055    ; quadrant 4 initial y-velocity
+cx = 0.8    ; corner x position
+cy = 0.8    ; corner y position
+
+[swe]
+use_flattening = 0    ; apply flattening at shocks (1)
+cvisc = 0.1    ; artificial viscosity coefficient
+limiter = 2    ; limiter (0 = none, 1 = 2nd order, 2 = 4th order)
+grav = 1.0    ; gravitational acceleration (in y-direction)
+riemann = Roe    ; HLLC or Roe
+
+[vis]
+dovis = 0    ; runtime visualization? (1=yes, 0=no)
+store_images = 0    ; store vis images to files (1=yes, 0=no)
