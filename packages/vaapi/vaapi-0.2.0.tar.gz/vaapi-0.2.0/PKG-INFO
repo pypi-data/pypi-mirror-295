@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: vaapi
+Version: 0.2.0
+Summary: Python utils for adding logs to our Visual Analytics Tool
+Author-email: NaoTH Berlin United <nao-team@informatik.hu-berlin.de>
+License: Apache-2.0
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6.9
+Description-Content-Type: text/markdown
+
+# Berlin United - Visual Analytics Tool
+Work in progress for an Analytics tool tailored to the needs of RoboCup SPL.
+
+## Labelstudio API as Inspiration
+https://labelstud.io/sdk/index.html
+https://github.com/HumanSignal/label-studio-sdk/tree/release/0.0.34
