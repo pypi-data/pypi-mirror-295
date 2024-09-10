@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: spikeforest
+Version: 0.12.8
+Summary: None
+Home-page: https://github.com/flatironinstitute/spikeforest
+Author: Jeremy Magland
+Author-email: jmagland@flatironinstitute.org
+Project-URL: Bug Tracker, https://github.com/flatironinstitute/spikeforest/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE
+Requires-Dist: kachery-client>=1.2.0
+Requires-Dist: kachery-cloud>=0.1.4
+Requires-Dist: sortingview>=0.7.3
+Requires-Dist: spikeinterface>=0.100.0
