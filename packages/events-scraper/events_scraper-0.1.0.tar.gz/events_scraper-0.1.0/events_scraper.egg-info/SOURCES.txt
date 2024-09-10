@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+events_scraper/__init__.py
+events_scraper/events_scraper.py
+events_scraper.egg-info/PKG-INFO
+events_scraper.egg-info/SOURCES.txt
+events_scraper.egg-info/dependency_links.txt
+events_scraper.egg-info/requires.txt
+events_scraper.egg-info/top_level.txt
