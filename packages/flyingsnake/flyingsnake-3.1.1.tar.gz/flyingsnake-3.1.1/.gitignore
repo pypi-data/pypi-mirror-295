@@ -1,0 +1,11 @@
+.idea/
+settings.xml
+*.egg-info/
+dist/
+**/__pycache__/
+setup/
+build/
+venv/
+.venv/
+*.wld
+*.png
