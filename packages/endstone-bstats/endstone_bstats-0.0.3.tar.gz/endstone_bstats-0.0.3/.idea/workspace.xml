@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08c34ebf-731a-4cf0-a20b-431fe51085cd" name="Changes" comment="test: add more tests for Metrics class" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2lmxe5yEgqv8qqOpEsfcfpvnCvP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Projects/Python/endstone-bstats/tests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\Python\endstone-bstats\tests" />
+      <recent name="D:\Projects\Python\endstone-bstats\src\endstone_bstats\_charts" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428" />
+        <option value="bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08c34ebf-731a-4cf0-a20b-431fe51085cd" name="Changes" comment="" />
+      <created>1725799144356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725799144356</updated>
+      <workItem from="1725799145545" duration="33246000" />
+      <workItem from="1725835232307" duration="734000" />
+      <workItem from="1725876940576" duration="6383000" />
+      <workItem from="1725894366238" duration="7000" />
+      <workItem from="1725895506835" duration="2811000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: add project configuration">
+      <option name="closed" value="true" />
+      <created>1725799596428</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725799596428</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: add CustomChart class">
+      <option name="closed" value="true" />
+      <created>1725801116095</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725801116095</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: add SimplePie chart">
+      <option name="closed" value="true" />
+      <created>1725802299643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725802299643</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: add AdvancedPie chart">
+      <option name="closed" value="true" />
+      <created>1725802760487</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725802760487</updated>
+    </task>
+    <task id="LOCAL-00005" summary="chore: add optional dependencies">
+      <option name="closed" value="true" />
+      <created>1725803116737</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725803116737</updated>
+    </task>
+    <task id="LOCAL-00006" summary="style: remove unused import">
+      <option name="closed" value="true" />
+      <created>1725803305425</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725803305425</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: compatibility with Python 3.9">
+      <option name="closed" value="true" />
+      <created>1725803519971</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725803519971</updated>
+    </task>
+    <task id="LOCAL-00008" summary="docs: update README.md">
+      <option name="closed" value="true" />
+      <created>1725804870728</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725804870728</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: add Metrics class">
+      <option name="closed" value="true" />
+      <created>1725807824750</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725807824750</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: add MetricsConfig class">
+      <option name="closed" value="true" />
+      <created>1725810487125</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725810487125</updated>
+    </task>
+    <task id="LOCAL-00011" summary="test: add tests for MetricsConfig">
+      <option name="closed" value="true" />
+      <created>1725810672597</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725810672597</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactor: move classes around">
+      <option name="closed" value="true" />
+      <created>1725811060301</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725811060301</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: add ScheduledThreadPoolExecutor">
+      <option name="closed" value="true" />
+      <created>1725818178665</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725818178665</updated>
+    </task>
+    <task id="LOCAL-00014" summary="teat: add tests for ScheduledThreadPoolExecutor">
+      <option name="closed" value="true" />
+      <created>1725818185338</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1725818185338</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: add MetricsBase">
+      <option name="closed" value="true" />
+      <created>1725818416160</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725818416160</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix: lint error">
+      <option name="closed" value="true" />
+      <created>1725818469757</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725818469757</updated>
+    </task>
+    <task id="LOCAL-00017" summary="chore: add endstone to dev dependencies">
+      <option name="closed" value="true" />
+      <created>1725818584900</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725818584900</updated>
+    </task>
+    <task id="LOCAL-00018" summary="test: add tests for MetricsBase">
+      <option name="closed" value="true" />
+      <created>1725825439125</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725825439125</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: add Metrics class">
+      <option name="closed" value="true" />
+      <created>1725827411506</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1725827411506</updated>
+    </task>
+    <task id="LOCAL-00020" summary="test: add tests for Metrics class">
+      <option name="closed" value="true" />
+      <created>1725831325773</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1725831325773</updated>
+    </task>
+    <task id="LOCAL-00021" summary="refactor: change folder path from &quot;bStats&quot; to &quot;bstats&quot;">
+      <option name="closed" value="true" />
+      <created>1725834403745</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1725834403745</updated>
+    </task>
+    <task id="LOCAL-00022" summary="refactor: Metrics and MetricsBase class">
+      <option name="closed" value="true" />
+      <created>1725881008167</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1725881008167</updated>
+    </task>
+    <task id="LOCAL-00023" summary="refactor: change platform from &quot;server-implementation&quot; to &quot;bukkit&quot;">
+      <option name="closed" value="true" />
+      <created>1725882875518</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1725882875518</updated>
+    </task>
+    <task id="LOCAL-00024" summary="refactor: change the default platform data entries">
+      <option name="closed" value="true" />
+      <created>1725895969397</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1725895969397</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: add DrilldownPie">
+      <option name="closed" value="true" />
+      <created>1725896006123</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1725896006123</updated>
+    </task>
+    <task id="LOCAL-00026" summary="test: add tests for DrilldownPie">
+      <option name="closed" value="true" />
+      <created>1725896402391</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1725896402391</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: add SingleLineChart">
+      <option name="closed" value="true" />
+      <created>1725898100314</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1725898100314</updated>
+    </task>
+    <task id="LOCAL-00028" summary="test: add tests for SingleLineChart">
+      <option name="closed" value="true" />
+      <created>1725898113515</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1725898113515</updated>
+    </task>
+    <task id="LOCAL-00029" summary="test: add more tests for Metrics class">
+      <option name="closed" value="true" />
+      <created>1725898831703</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1725898831703</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="style: remove unused import" />
+    <MESSAGE value="fix: compatability with Python 3.9" />
+    <MESSAGE value="fix: compatibility with Python 3.9" />
+    <MESSAGE value="docs: update README.md" />
+    <MESSAGE value="feat: add MetricsConfig class" />
+    <MESSAGE value="test: add tests for MetricsConfig" />
+    <MESSAGE value="refactor: move classes around" />
+    <MESSAGE value="feat: add ScheduledThreadPoolExecutor" />
+    <MESSAGE value="teat: add tests for ScheduledThreadPoolExecutor" />
+    <MESSAGE value="feat: add MetricsBase" />
+    <MESSAGE value="fix: lint error" />
+    <MESSAGE value="chore: add endstone to dev dependencies" />
+    <MESSAGE value="test: add tests for MetricsBase" />
+    <MESSAGE value="feat: add Metrics class" />
+    <MESSAGE value="test: add tests for Metrics class" />
+    <MESSAGE value="feat" />
+    <MESSAGE value="refactor: change folder path from &quot;bStats&quot; to &quot;bstats&quot;" />
+    <MESSAGE value="refactor: Metrics and MetricsBase class" />
+    <MESSAGE value="refactor: change platform from &quot;server-implementation&quot; to &quot;bukkit&quot;" />
+    <MESSAGE value="refactor: change the default platform data entries" />
+    <MESSAGE value="feat: add DrilldownPie" />
+    <MESSAGE value="test: add tests for DrilldownPie" />
+    <MESSAGE value="feat: add SingleLineChart" />
+    <MESSAGE value="test: add tests for SingleLineChart" />
+    <MESSAGE value="test: add more tests for Metrics class" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: add more tests for Metrics class" />
+  </component>
+</project>
