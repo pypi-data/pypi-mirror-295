@@ -1,0 +1,2 @@
+[console_scripts]
+apply_poppins_theme = finres_ggpt2_matplotlib.theme:set_poppins_theme
