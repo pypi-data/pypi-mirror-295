@@ -1,0 +1,80 @@
+[tool.poetry]
+name = "netbox-lists"
+version = "4.0.1"
+description = ""
+authors = ["Devon Mar <devonm@mdmm.ca>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+netaddr = ">=0.8 | ^1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.3"
+pynetbox = "^7"
+requests = "^2"
+mypy = "^1.11"
+ruff = "^0.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[mypy]
+plugins = ["mypy_django_plugin.main"]
+
+disallow_any_generics = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = [
+    "rest_framework.*",
+    "taggit.*",
+    "django_filters",
+    "netaddr.*",
+    # NetBox
+    "dcim.*",
+    "ipam.*",
+    "extras.*",
+    "virtualization.*",
+]
+ignore_missing_imports = true
+
+[tool.ruff.lint]
+select = [
+  "C4",
+  "E",
+  "EXE",
+  "F",
+  "I",
+  "ISC",
+  "PERF",
+  "PIE",
+  "PYI",
+  "UP",
+  "W",
+]
+ignore = [
+  "E501",
+  # https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "COM812",
+  "COM819",
+  "ISC001",
+  "ISC002",
+]
