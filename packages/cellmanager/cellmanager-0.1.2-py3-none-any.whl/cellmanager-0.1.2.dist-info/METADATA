@@ -1,0 +1,14 @@
+Metadata-Version: 2.3
+Name: cellmanager
+Version: 0.1.2
+Summary: A Package for managing cell type about color and markers while processing scRNA-seq data.
+Author-email: Wade Huang <fastwade11@gmail.com>
+Requires-Python: >=3.8
+Requires-Dist: anytree>=2.12.1
+Requires-Dist: jupyter>=1.1.1
+Requires-Dist: rich>=13.8.0
+Description-Content-Type: text/markdown
+
+# cellmanager
+
+A Package for managing cell type about color and markers while processing scRNA-seq data.
