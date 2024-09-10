@@ -1,0 +1,15 @@
+click==8.1.7
+requests==2.32.3
+bs4==0.0.2
+rich==13.7.1
+PyGithub
+html2text
+git-python
+mbpy
+minspect
+aiohttp==3.8.5
+pytest
+pytest-asyncio==0.21.0
+asyncio
+markdown
+html5lib==1.1
