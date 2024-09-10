@@ -1,0 +1,17 @@
+kr_stock:
+  price: content.fnguide.ftp.price_volume.price_close.1d
+  volume: content.fnguide.ftp.price_volume.volume_sum.1d
+  market_cap: content.fnguide.ftp.price_volume.market_cap.1d
+  benchmark: "KOSPI"
+vn_stock:
+  price: content.spglobal.compustat.price_volume.vnm-all-price_close.1d
+  volume: content.spglobal.compustat.price_volume.vnm-all-trading_volume.1d
+us_stock:
+  price: content.spglobal.compustat.price_volume.us-stock-price_close.1d
+  volume: content.spglobal.compustat.price_volume.us-stock-trading_volume.1d
+us_etf:
+  price: content.spglobal.compustat.price_volume.us-etf-price_close.1d
+  volume: content.spglobal.compustat.price_volume.us-etf-trading_volume.1d
+
+common:
+  benchmark: content.factset.api.price_volume.world-index-price_close.1d
