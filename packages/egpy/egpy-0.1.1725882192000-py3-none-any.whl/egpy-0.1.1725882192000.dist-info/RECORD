@@ -1,0 +1,13 @@
+egpy/__init__.py,sha256=XTNwUNUMmFxFKEF-K14uOWpvS7ZUEIq2sDZPpXazJ1s,58
+egpy/eg/__init__.py,sha256=UO2REFX496gNto_6C9gQWU_FftYPVjsVQHVV7LWEcD4,746
+egpy/eg/interp/__init__.py,sha256=XYG5gtL2VDKYZy65SukBc9D1BgeRcYgkpQoVW1oJvNA,25
+egpy/eg/interp/events_pb2.py,sha256=kHHsjsiWR4AhaSHmZw0j_54gCU0qKla0PCHfPEJV78k,6172
+egpy/eg/interp/events_pb2.pyi,sha256=Pl5-oLyZBAmCFfjfI8P-SWXHRrxwrPzuAtUAaZCYHA4,5645
+egpy/envx/__init__.py,sha256=rhELOeKBu3VC3NOMgB3Cb88xHTdaPZnU9U5xTmzdFvE,891
+egpy/metrics/__init__.py,sha256=Zb0vurnXPFdo32OZW4wkS_9tWyo9Vc2NLhD2qcwkqvE,992
+egpy/metrics/eg.interp.events_pb2_grpc.py,sha256=J5-tkfD4YXxUcGaBcJ6YyVw1wKgi3logO6zsY0fBncw,13928
+egpy/metrics/eg_interp_events_pb2_grpc.py,sha256=jeiK_gAcztgO0epBjVJHHQ88Mv0gHcWErefvrzDDZAI,13933
+egpy-0.1.1725882192000.dist-info/METADATA,sha256=6OZF4ZFs-YubqniFbVTJZHCT_vNiWoJ1ZnAUabRIHJk,237
+egpy-0.1.1725882192000.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+egpy-0.1.1725882192000.dist-info/top_level.txt,sha256=hepY47OocHtNpVhfIGQAwCO_VCLakPiMUYPOQ950DDk,5
+egpy-0.1.1725882192000.dist-info/RECORD,,

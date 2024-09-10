@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: egpy
+Version: 0.1.1725882192000
+Summary: package for integrating with eg runtime
+Author-email: EG Engineering <engineering@egdaemon.com>
+Requires-Dist: grpcio
+Requires-Dist: grpcio-tools
+Requires-Dist: uuid7
+
