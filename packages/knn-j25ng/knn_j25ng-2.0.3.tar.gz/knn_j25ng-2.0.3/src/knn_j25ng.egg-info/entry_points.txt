@@ -1,0 +1,3 @@
+[console_scripts]
+chart = knn_j25ng.main:chart
+fish = knn_j25ng.main:main
