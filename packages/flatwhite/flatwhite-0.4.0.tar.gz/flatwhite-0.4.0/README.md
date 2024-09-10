@@ -1,0 +1,65 @@
+# flatwhite
+
+## Overview
+
+This project contains several modules designed to handle tasks such as file handling, format validation, and project structure creation. Below is a detailed description of each module and their respective functions.
+
+## Modules and Functions
+
+### `file_handler.py`
+
+This module provides functions to manage files, including organizing and deleting them based on file types or extensions.
+
+- **`handle_files(directory, action='organize', types=None, additional_ext=None)`**
+  - **Description:** Organizes or deletes files in a directory based on their types or additional extensions.
+  - **Parameters:**
+    - `directory (str)`: Path of the directory to process.
+    - `action (str)`: Action to perform ('organize' or 'delete'). Default is 'organize'.
+    - `types (list)`: List of file types to organize or delete (e.g., `['pics', 'sounds', 'docs']`).
+    - `additional_ext (str)`: Additional file extensions to include, provided as a comma-separated string.
+  - **Returns:** None.
+
+- **`list_directory_structure(root_dir, indent_level=0)`**
+  - **Description:** Recursively lists the directory structure starting from the root directory.
+  - **Parameters:**
+    - `root_dir (str)`: The root directory to start listing from.
+    - `indent_level (int)`: The current indentation level for pretty printing. Default is 0.
+  - **Returns:** None.
+
+### `format_validator.py`
+
+This module contains a function to validate different formats such as email, phone number, password, and custom regex patterns.
+
+- **`validate_input(input_value, validate_type, regex_pattern=None)`**
+  - **Description:** Validates an input based on the specified type (email, phone, password, or custom regex).
+  - **Parameters:**
+    - `input_value (str)`: The input to validate.
+    - `validate_type (str)`: The type of validation ('email', 'phone', 'password', 'regex').
+    - `regex_pattern (str)`: Custom regex pattern to use if `validate_type` is 'regex'.
+  - **Returns:** `bool`: Returns `True` if valid, otherwise `False`.
+
+### `project_structure.py`
+
+This module helps in creating basic project folder structures based on project type.
+
+- **`create_project_structure(project_type='web')`**
+  - **Description:** Creates a basic folder and file structure for a web project.
+  - **Parameters:**
+    - `project_type (str)`: The type of project. Default is 'web'.
+  - **Returns:** None.
+
+## Usage
+
+Here are examples showing how to use the modules and their respective functions.
+
+```python
+from flatwhite import create_project_structure, validate_input, handle_files
+
+# Example usage for creating a web project structure
+create_project_structure('web')
+
+# Example usage for validating an email
+is_valid_email = validate_input('example@example.com', validate_type='email')
+
+# Example usage for organizing files in a directory
+handle_files('/path/to/directory', action='organize', types=['pics', 'docs'])
