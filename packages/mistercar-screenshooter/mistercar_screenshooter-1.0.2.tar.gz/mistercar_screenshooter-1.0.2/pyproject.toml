@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "mistercar-screenshooter"
+version = "1.0.2"
+description = "A versatile, high-performance Python package for cross-platform screen capturing and recording"
+authors = ["PypayaTech"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/PypayaTech/mistercar-screenshooter"
+repository = "https://github.com/PypayaTech/mistercar-screenshooter"
+keywords = ["screen capture", "screenshot", "video recording"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^2.0.1"
+opencv-python = "^4.10.0.84"
+mss = "^9.0.2"
+bettercam = {version = "^1.0.0", markers = "sys_platform == 'win32'"}
+pywin32 = {version = "^306", markers = "sys_platform == 'win32'"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
