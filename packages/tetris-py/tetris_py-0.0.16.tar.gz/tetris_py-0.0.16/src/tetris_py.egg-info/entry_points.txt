@@ -1,0 +1,3 @@
+[console_scripts]
+tetris-py = tetris:main.main
+tetris-py-cli = tetris:main_cli.main
