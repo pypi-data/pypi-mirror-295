@@ -1,0 +1,12 @@
+kfp<3,>=2.6.0
+protobuf<5,>=4.21.1
+
+[dev]
+docformatter==1.4
+isort==5.10.1
+mypy==0.941
+pre-commit==2.19.0
+pycln==2.1.1
+pytest-xdist==2.5.0
+pytest==7.1.2
+yapf==0.32.0
