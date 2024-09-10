@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: NES
+Version: 1.1.4
+Home-page: https://earth.bsc.es/gitlab/es/NES
+Author: Carles Tena Medina, Alba Vilanova Cortezon
+Author-email: carles.tena@bsc.es, alba.vilanova@bsc.es
+Keywords: Python,NetCDF4,Grib2,Earth
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Description-Content-Type: text/markdown
+Requires-Dist: configargparse
+
+============
+CHANGELOG
+============
+
+.. start-here
+
+About
+============
+
+NES (NetCDF for Earth Science) is the Python I/O library used by SNES, the framework that implements the data post-processing pipelines at the Earth Sciences department, to read and write netCDF files.
+
+How to clone
+============
+
+Use the following command to get a copy of the repository:
+
+::
+
+    git clone https://earth.bsc.es/gitlab/es/NES.git
+
+You can use the latest stable version of NES
+by accessing the production branch:
+
+::
+
+    git checkout production
+
+You can also access the master branch to test new features,
+that are to be implemented in the upcoming release:
+
+::
+
+    git checkout master
+
+How to run
+============
+
+For running NES, please follow the instruction in 
+the `wiki <https://earth.bsc.es/gitlab/es/NES/-/wikis/home>`_.
