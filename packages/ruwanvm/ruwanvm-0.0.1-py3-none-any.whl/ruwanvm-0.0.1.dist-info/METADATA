@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: ruwanvm
+Version: 0.0.1
+Summary: ruwanvm cli clients
+Author: Ruwan Vimukthi
+Author-email: ruwanvm@gmail.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Dist: pytz >=2024.1
+
+ruwanvm cli use to various miscellaneous tasks
