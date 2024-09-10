@@ -1,0 +1,250 @@
+Metadata-Version: 2.1
+Name: papert-lab
+Version: 1.1.4
+Summary: papertlab is an AI pair programmer in your browser.
+Home-page: https://papert.in/
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Requires-Python: >=3.7,<3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: aiohappyeyeballs==2.3.4
+Requires-Dist: aiohttp==3.10.0
+Requires-Dist: aiosignal==1.3.1
+Requires-Dist: altair==5.3.0
+Requires-Dist: annotated-types==0.7.0
+Requires-Dist: anyio==4.4.0
+Requires-Dist: attrs==23.2.0
+Requires-Dist: backoff==2.2.1
+Requires-Dist: beautifulsoup4==4.12.3
+Requires-Dist: blinker==1.8.2
+Requires-Dist: cachetools==5.4.0
+Requires-Dist: certifi==2024.7.4
+Requires-Dist: cffi==1.16.0
+Requires-Dist: charset-normalizer==3.3.2
+Requires-Dist: click==8.1.7
+Requires-Dist: configargparse==1.7
+Requires-Dist: dataclasses-json==0.6.7
+Requires-Dist: deprecated==1.2.14
+Requires-Dist: diff-match-patch==20230430
+Requires-Dist: dirtyjson==1.0.8
+Requires-Dist: diskcache==5.6.3
+Requires-Dist: distro==1.9.0
+Requires-Dist: filelock==3.15.4
+Requires-Dist: flake8==7.1.0
+Requires-Dist: flask
+Requires-Dist: flask-cors
+Requires-Dist: frozenlist==1.4.1
+Requires-Dist: fsspec==2024.6.1
+Requires-Dist: gitdb==4.0.11
+Requires-Dist: gitpython==3.1.43
+Requires-Dist: greenlet==3.0.3
+Requires-Dist: grep-ast==0.3.3
+Requires-Dist: h11==0.14.0
+Requires-Dist: httpcore==1.0.5
+Requires-Dist: httpx==0.27.0
+Requires-Dist: huggingface-hub==0.24.5
+Requires-Dist: idna==3.7
+Requires-Dist: importlib-metadata<8.0.0
+Requires-Dist: importlib-resources==6.4.0
+Requires-Dist: jinja2==3.1.4
+Requires-Dist: joblib==1.4.2
+Requires-Dist: json5==0.9.25
+Requires-Dist: jsonschema==4.23.0
+Requires-Dist: jsonschema-specifications==2023.12.1
+Requires-Dist: litellm==1.42.9
+Requires-Dist: llama-index-core==0.10.59
+Requires-Dist: llama-index-embeddings-huggingface==0.2.2
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: markupsafe==2.1.5
+Requires-Dist: marshmallow==3.21.3
+Requires-Dist: mccabe==0.7.0
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: minijinja==2.0.1
+Requires-Dist: mpmath==1.3.0
+Requires-Dist: multidict==6.0.5
+Requires-Dist: mypy-extensions==1.0.0
+Requires-Dist: nest-asyncio==1.6.0
+Requires-Dist: networkx<3.3
+Requires-Dist: nltk==3.8.1
+Requires-Dist: numpy<2
+Requires-Dist: openai==1.37.2
+Requires-Dist: packaging==24.1
+Requires-Dist: pathspec==0.12.1
+Requires-Dist: pexpect==4.9.0
+Requires-Dist: pillow==10.4.0
+Requires-Dist: playwright==1.45.1
+Requires-Dist: prompt-toolkit==3.0.47
+Requires-Dist: protobuf==5.27.3
+Requires-Dist: pyarrow==17.0.0
+Requires-Dist: pyperclip==1.9.0
+Requires-Dist: pycodestyle==2.12.0
+Requires-Dist: pycparser==2.22
+Requires-Dist: pydantic==2.8.2
+Requires-Dist: pydantic-core==2.20.1
+Requires-Dist: pydeck==0.9.1
+Requires-Dist: pyee==11.1.0
+Requires-Dist: pyflakes==3.2.0
+Requires-Dist: pygments==2.18.0
+Requires-Dist: pypandoc==1.13
+Requires-Dist: python-dateutil==2.9.0.post0
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: pytz==2024.1
+Requires-Dist: pyyaml==6.0.1
+Requires-Dist: referencing==0.35.1
+Requires-Dist: regex==2024.7.24
+Requires-Dist: requests==2.32.3
+Requires-Dist: rich==13.7.1
+Requires-Dist: rpds-py==0.19.1
+Requires-Dist: safetensors==0.4.3
+Requires-Dist: scikit-learn==1.5.1
+Requires-Dist: scipy<1.14
+Requires-Dist: sentence-transformers==3.0.1
+Requires-Dist: smmap==5.0.1
+Requires-Dist: sniffio==1.3.1
+Requires-Dist: sounddevice==0.4.7
+Requires-Dist: soundfile==0.12.1
+Requires-Dist: soupsieve==2.5
+Requires-Dist: sqlalchemy[asyncio]==2.0.31
+Requires-Dist: sympy==1.13.1
+Requires-Dist: threadpoolctl==3.5.0
+Requires-Dist: tiktoken==0.7.0
+Requires-Dist: tokenizers==0.19.1
+Requires-Dist: tqdm==4.66.4
+Requires-Dist: tree-sitter==0.21.3
+Requires-Dist: tree-sitter-languages==1.10.2
+Requires-Dist: typing-extensions==4.12.2
+Requires-Dist: typing-inspect==0.9.0
+Requires-Dist: urllib3==2.2.2
+Requires-Dist: watchdog
+Requires-Dist: wcwidth==0.2.13
+Requires-Dist: wrapt==1.16.0
+Requires-Dist: yarl==1.9.4
+Requires-Dist: zipp==3.19.2
+
+# Papertlab: Your AI Pair Programmer
+
+
+Papertlab is your AI-powered pair programmer that lets you seamlessly collaborate with Large Language Models (LLMs) to edit code in your local Git repository or any other codebases. Whether you're starting a new project or working with an existing Git repository, Papertlab is here to help. It works best with Claude 3.5 Sonnet and GPT-4o.
+
+Documentation : [Papert Documentation](https://docs.papert.in).
+
+## Features
+
+- **Run Papertlab with the files you want to edit:** Select specific files to focus on during your coding session.
+- **Add new features or test cases:** Papertlab can help you implement new features or write test cases for your existing code.
+- **Refactor your code:** Easily refactor your codebase with the assistance of Papertlab.
+- **Update documentation:** Automatically update your documentation based on code changes or other inputs.
+- **Initialize and maintain Git repositories:** Papertlab will initialize your Git repository for new projects and manage it efficiently.
+- **Automatic Git commits:** Papertlab automatically commits changes with sensible commit messages.
+- **Support for multiple programming languages:** Works with Python, JavaScript, TypeScript, PHP, HTML, CSS, and more.
+- **Best with GPT-4o & Claude 3.5 Sonnet:** Optimized for these LLMs to provide the best code suggestions and improvements.
+- **Edit multiple files at once:** Handles complex requests by editing multiple files simultaneously.
+- **Works well in larger codebases:** Utilizes a map of your entire Git repository to ensure context-aware suggestions and changes.
+
+## Installation
+
+### Prerequisites
+
+Papertlab requires Universal Ctags for parsing code and generating tags. Follow the instructions below to install Ctags on your operating system.
+
+### Installing Universal Ctags
+
+#### For macOS and Linux (using Homebrew):
+
+1. **Install Homebrew (if not already installed):**
+   - **macOS:**
+     ```bash
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+     ```
+   - **Linux:**
+     Follow the [Linuxbrew installation instructions](https://docs.brew.sh/Homebrew-on-Linux).
+
+2. **Install Universal Ctags:**
+   ```bash
+   brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+   ```
+
+#### For Windows (using Chocolatey):
+
+1. **Install Chocolatey:**
+   Open an elevated Command Prompt and run:
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force; `
+   [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+   iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   ```
+
+2. **Install Universal Ctags:**
+   ```bash
+   choco install ctags
+   ```
+
+### Verify Ctags Installation
+
+After installation, verify that Ctags is correctly installed by running the following command in your terminal or command prompt:
+
+```bash
+ctags --version
+```
+
+## Setting Up Papertlab
+
+1. **Create a Virtual Environment:**
+
+   Create and activate a virtual environment to keep your dependencies isolated:
+
+   macOS/Linux:
+   ```bash
+   python3 -m venv papertlab-env
+   source papertlab-env/bin/activate
+   ```
+
+   Windows:
+   ```bash
+   python -m venv papertlab-env
+   .\papertlab-env\Scripts\activate
+   ```
+
+2. **Install Papertlab:**
+
+   Install the Papertlab package using pip:
+   ```bash
+   pip install papert-lab
+   ```
+
+3. **Run Papertlab:**
+
+   Navigate to your local Git repository or the directory you want to work in, then run:
+   ```bash
+   papertlab
+   ```
+
+4. **Access Papertlab in Your Browser:**
+
+   Open your web browser and go to `http://127.0.0.1:5000/` to access the Papertlab interface.
+
+    ![Demo](https://github.com/papertlab/papert-lab/blob/main/docs/static/demo.gif) 
+
+
+## Contributing
+
+Contributions are welcome! Please refer to the CONTRIBUTION.md file for guidelines on how to contribute to the project.
+
+
+## Questions and Support
+
+If you have any questions or need support, please don't hesitate to reach out:
+
+- Email: azhar@papert.in
+- LinkedIn: [https://www.linkedin.com/in/mohamed-azharudeen/](https://www.linkedin.com/in/mohamed-azharudeen/)

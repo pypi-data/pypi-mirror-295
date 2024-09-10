@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>papert-lab</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+
+    <script src="/static\vendor\js\react\react.production.min.js"></script>
+    <script src="/static\vendor\js\react\react-dom.production.min.js"></script>
+    <script src="/static\vendor\js\babel\babel.min.js"></script>
+
+    <script src="/static\vendor\js\tailwindcss\tailwindcss.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/static\vendor\css\codemirror\codemirror.min.css">
+    <link rel="stylesheet" href="/static\vendor\css\codemirror\monokai.min.css">
+    <link rel="stylesheet" href="/static\vendor\css\codemirror/addon/foldgutter.min.css">
+    <link rel="stylesheet" href="/static\vendor\css\codemirror/addon/dialog.min.css">
+    <link rel="stylesheet" href="/static\vendor\css\codemirror/addon/matchesonscrollbar.min.css">
+
+
+    <script src="/static\vendor\js\codemirror/codemirror.min.js"></script>
+    <script src="/static\vendor\js\codemirror/javascript.min.js"></script>
+    <script src="/static\vendor\js\codemirror\python.min.js"></script>
+    <script src="/static\vendor\js\codemirror/htmlmixed.min.js"></script>
+    <script src="/static\vendor\js\codemirror/xml.min.js"></script>
+    <script src="/static\vendor\js\codemirror/css.min.js"></script>
+
+    <!-- CodeMirror Addons -->
+    <script src="/static\vendor\js\codemirror/addon/closebrackets.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/matchbrackets.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/foldcode.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/foldgutter.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/brace-fold.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/indent-fold.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/search.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/searchcursor.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/jump-to-line.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/dialog.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/comment.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/lint.min.js"></script>
+    <script src="/static\vendor\js\codemirror/addon/active-line.min.js"></script>
+
+    
+    <style>
+      .CodeMirror {
+        height: 100% !important;
+        max-height: none;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .CodeMirror-scroll {
+        max-height: none;
+    }
+
+    .CodeMirror-fullscreen {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        height: auto;
+        z-index: 9999;
+    }
+
+    .react-codemirror2 {
+        height: 100%;
+    }
+      .command-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .command-dropdown-content {
+        position: absolute;
+        background-color: #1a202c;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+        bottom: 100%;
+        left: 0;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+      }
+      .command-dropdown-content a {
+        color: #4fd1c5;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .command-dropdown-content a:hover {
+        background-color: #2d3748;
+      }
+    </style>
+    <style>
+      .CodeMirror-dialog {
+          position: absolute;
+          left: 0; right: 0;
+          background: inherit;
+          z-index: 15;
+          padding: .1em .8em;
+          overflow: hidden;
+          color: inherit;
+      }
+  
+      .cm-inline-edit-dialog {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+      }
+  
+      .cm-inline-edit-dialog textarea {
+          margin: 10px 0;
+          padding: 5px;
+      }
+  
+      .cm-inline-edit-dialog button {
+          margin: 5px;
+          padding: 5px 10px;
+          background-color: #4a5568;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+  
+      .cm-inline-edit-dialog button:hover {
+          background-color: #2d3748;
+      }
+  </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="/static/editor.js"></script>
+    <script type="text/babel" src="/static/app.js"></script>
+</body>
+</html>
