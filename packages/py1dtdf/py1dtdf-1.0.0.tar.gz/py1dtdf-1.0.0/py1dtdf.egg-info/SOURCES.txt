@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+py1dtdf/__init__.py
+py1dtdf/features.py
+py1dtdf.egg-info/PKG-INFO
+py1dtdf.egg-info/SOURCES.txt
+py1dtdf.egg-info/dependency_links.txt
+py1dtdf.egg-info/requires.txt
+py1dtdf.egg-info/top_level.txt
