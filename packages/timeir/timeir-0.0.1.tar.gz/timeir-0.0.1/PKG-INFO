@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: timeir
+Version: 0.0.1
+Summary: python functions to extract and work with time.ir data
+Author-email: 5j9 <5j9@users.noreply.github.com>
+Requires-Python: >=3.12
+Description-Content-Type: text/x-rst
+Requires-Dist: httpx
+Project-URL: Homepage, https://github.com/5j9/timeir
+
+A few Python functions to extract and work with time.ir data.
+
