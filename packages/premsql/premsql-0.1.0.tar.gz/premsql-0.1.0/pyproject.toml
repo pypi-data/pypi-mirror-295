@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "premsql"
+version = "0.1.0"
+description = "End-to-End Local-First on premise Text-to-SQL Pipelines"
+authors = ["Anindyadeep <proanindyadeep@gmail.com>"]
+readme = "README.md"
+license = "MIT"  # Replace with your license
+keywords = ["SQL", "text-to-SQL", "ML", "datasets", "evaluation", "generator", "llm", "generative-ai", "genai", "databases"]
+homepage = "https://github.com/premAI-io/premsql"  
+
+[tool.poetry.dependencies]
+python = "^3.10"
+datasets = "^2.20.0"
+einops = "^0.8.0"
+black = "^24.4.2"
+fastapi = "^0.112.0"
+huggingface-hub = "^0.24.5"
+isort = "^5.13.2"
+numpy = "^1.26.3"
+torch = "^2.4.0"
+tqdm = "^4.66.4"
+transformers = "^4.43.3"
+mysql-connector-python = "^9.0.0"
+SQLAlchemy = "^2.0.30"
+sqlparse = "^0.5.1"
+premai = "^0.3.64"
+func_timeout = "^4.3.5"
+langchain-community = "^0.2.16"
+langchain = "^0.2.16"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
