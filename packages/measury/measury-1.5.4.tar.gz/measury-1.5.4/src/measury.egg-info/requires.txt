@@ -1,0 +1,9 @@
+numpy<2.0
+vispy>=0.14.3
+PySide6
+pyopengl
+opencv-python
+scipy
+
+[:python_version < "3.11"]
+importlib-metadata
