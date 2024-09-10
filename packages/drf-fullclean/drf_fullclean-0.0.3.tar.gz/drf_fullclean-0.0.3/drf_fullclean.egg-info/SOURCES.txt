@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+drf_fullclean/__init__.py
+drf_fullclean/serializers.py
+drf_fullclean/utils.py
+drf_fullclean.egg-info/PKG-INFO
+drf_fullclean.egg-info/SOURCES.txt
+drf_fullclean.egg-info/dependency_links.txt
+drf_fullclean.egg-info/top_level.txt
