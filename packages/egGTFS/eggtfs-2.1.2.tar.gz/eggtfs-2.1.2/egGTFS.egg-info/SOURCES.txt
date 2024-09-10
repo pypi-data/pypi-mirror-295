@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+egGTFS/__init__.py
+egGTFS/egGTFS.py
+egGTFS.egg-info/PKG-INFO
+egGTFS.egg-info/SOURCES.txt
+egGTFS.egg-info/dependency_links.txt
+egGTFS.egg-info/requires.txt
+egGTFS.egg-info/top_level.txt
+egGTFS/samples/ex_busHeatMap.py
+egGTFS/samples/ex_drawAllRoute.py
+egGTFS/samples/ex_drawTrip.py
+egGTFS/samples/ex_filter.py
+egGTFS/samples/ex_makeAllBusStopsHTML.py
+egGTFS/samples/ex_makeShapeHTML.py

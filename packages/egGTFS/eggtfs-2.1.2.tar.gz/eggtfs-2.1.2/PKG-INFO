@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: egGTFS
+Version: 2.1.2
+Summary: egGTFS : A Python library for reading, writing, and visualizing GTFS-JP format files.
+Author: Koji Iigura
+License: MIT License
+License-File: LICENSE
+Requires-Dist: pandas>=2.1.3
+Requires-Dist: numpy>=1.24.2
+Requires-Dist: geopy>=2.4.1
+Requires-Dist: folium>=0.15.0
