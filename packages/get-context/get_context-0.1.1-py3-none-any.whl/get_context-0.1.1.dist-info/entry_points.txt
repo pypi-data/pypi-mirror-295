@@ -1,0 +1,2 @@
+[console_scripts]
+get_context = get_context.cli:main
