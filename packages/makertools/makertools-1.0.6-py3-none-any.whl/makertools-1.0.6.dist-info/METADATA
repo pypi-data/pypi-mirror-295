@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: makertools
+Version: 1.0.6
+Summary: maker's private utils.
+Home-page: https://www.itax.com
+Author: maker
+Author-email: 526548354@qq.com
+License: MIT Licence
+Keywords: pip,makertools
+Platform: any
+Requires-Dist: requests
+Requires-Dist: openpyxl
+Requires-Dist: loguru
+Requires-Dist: sqlalchemy
+
+maker's private utils.
