@@ -1,0 +1,28 @@
+[project]
+name = "cellmanager"
+version = "0.1.2"
+description = "A Package for managing cell type about color and markers while processing scRNA-seq data."
+authors = [
+    { name = "Wade Huang", email = "fastwade11@gmail.com" }
+]
+dependencies = [
+    "jupyter>=1.1.1",
+    "anytree>=2.12.1",
+    "rich>=13.8.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cellmanager"]
