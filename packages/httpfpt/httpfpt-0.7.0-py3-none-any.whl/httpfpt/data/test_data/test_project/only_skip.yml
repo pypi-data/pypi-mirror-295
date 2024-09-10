@@ -1,0 +1,59 @@
+config:
+  allure:
+    epic: demo跳过
+    feature: demo模块
+    story: 跳过测试
+  request:
+    env: dev.env
+  module: test
+  # 此处设置跳过将跳过执行当前文件内所有测试用例
+  # is_run:
+
+test_steps:
+  # 因为只是测试跳过用例，所以没写其他内容
+  - name: 跳过
+    case_id: event_skip_001
+    description: 测试跳过
+    is_run: False
+    request:
+      method: GET
+      url: /skip
+      params:
+      headers:
+      body_type:
+      body:
+      files:
+
+  - name: 自定义跳过说明的跳过
+    case_id: event_skip_002
+    description: 测试跳过
+    is_run:
+      skip: True
+      reason: 自定义跳过
+    mark:
+      - test_api
+    request:
+      method: GET
+      url: /skip
+      params:
+      headers:
+      body_type:
+      body:
+      files:
+
+  - name: 条件判断时跳过
+    case_id: event_skip_003
+    description: 测试跳过
+    is_run:
+      skip_if:
+        - ${random_phone()} == 2
+        - ${timeout} == 5
+      reason: 条件判断为真跳过
+    request:
+      method: GET
+      url: /skip
+      params:
+      headers:
+      body_type:
+      body:
+      files:
