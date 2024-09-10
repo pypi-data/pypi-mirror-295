@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: vmtui
+Version: 0.0.0
+Summary: A text user interface (TUI) to control virtual machines an a per user basis
+Home-page: https://github.com/cgruhl/vmtui
+Author: Christian Gruhl
+Author-email: cgruhl@uni-kassel.de
+Keywords: libvirt,KVM,VM
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Description-Content-Type: text/x-rst; charset=UTF-8
+License-File: AUTHORS
+Requires-Dist: libvirt-python >=10.6.0
+Requires-Dist: textual >=0.73.0
+
+# VMTUI
+
+*a text user interface to control libvirt VMs on a per user basis.*
+
