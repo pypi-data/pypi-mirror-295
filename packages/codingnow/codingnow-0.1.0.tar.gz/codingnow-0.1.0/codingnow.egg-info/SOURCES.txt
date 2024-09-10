@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+codingnow/__init__.py
+codingnow/core.py
+codingnow.egg-info/PKG-INFO
+codingnow.egg-info/SOURCES.txt
+codingnow.egg-info/dependency_links.txt
+codingnow.egg-info/top_level.txt
+test/test_core.py
