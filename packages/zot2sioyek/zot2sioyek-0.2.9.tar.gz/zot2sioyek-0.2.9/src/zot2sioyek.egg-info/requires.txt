@@ -1,0 +1,11 @@
+pyzotero
+pymupdf
+PyQt5
+regex
+sioyek
+httpx
+
+[test]
+pytest
+pytest-pretty
+interrogate
