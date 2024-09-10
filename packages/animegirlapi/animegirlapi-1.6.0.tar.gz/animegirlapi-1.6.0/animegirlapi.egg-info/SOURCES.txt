@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.py
+animegirlapi/__init__.py
+animegirlapi/main.py
+animegirlapi.egg-info/PKG-INFO
+animegirlapi.egg-info/SOURCES.txt
+animegirlapi.egg-info/dependency_links.txt
+animegirlapi.egg-info/requires.txt
+animegirlapi.egg-info/top_level.txt
+tests/test_basic.py

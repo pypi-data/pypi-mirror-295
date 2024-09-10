@@ -1,0 +1,127 @@
+# AnimeGirlAPI
+
+AnimeGirlAPI is a Python package designed for easy interaction with the CatGirlNexus API. It provides functionalities to fetch image details, download images, and access various tags and ratings.
+
+## Installation
+
+To install AnimeGirlAPI, use `Poetry`. Ensure you have `Poetry` installed, then run:
+
+```bash
+poetry install
+```
+
+## Usage
+
+### Functions
+
+#### `get_info(url)`
+
+Retrieves information about a specific image from the API.
+
+**Parameters:**
+- `url` (str): The URL of the image.
+
+**Returns:**
+- A dictionary with:
+  - `tags`: A dictionary of image tags (excluding "rating").
+  - `rating`: The image's rating.
+
+**Example:**
+```python
+info = get_info("https://example.com/image1.jpg")
+```
+
+#### `get_all_tags()`
+
+Gets a dictionary of all available tags with their descriptions.
+
+**Returns:**
+- A dictionary where:
+  - Keys are tag names.
+  - Values are descriptions of the tags.
+
+**Example:**
+```python
+tags = get_all_tags()
+```
+
+#### `download_image(url, output=None)`
+
+Downloads an image from the specified URL and saves it to the given path.
+
+**Parameters:**
+- `url` (str): The URL of the image.
+- `output` (str, optional): The file path where the image will be saved. If not specified, the image is saved with its filename in the current directory.
+
+**Returns:**
+- A dictionary with:
+  - `path`: The path where the image was saved.
+
+**Example:**
+```python
+download_image("https://example.com/image1.jpg", "images/image1.jpg")
+```
+
+#### `get_all_images()`
+
+Fetches and returns a dictionary of all images from the API.
+
+**Returns:**
+- A dictionary with all image URLs and their associated data.
+
+**Example:**
+```python
+images = get_all_images()
+```
+
+#### `get_all_ratings()`
+
+Gets a list of all possible ratings.
+
+**Returns:**
+- A list of ratings, such as "suggestive", "nsfw", etc.
+
+**Example:**
+```python
+ratings = get_all_ratings()
+```
+
+#### `get_random_image(number=1, tag=None, rating=None, ignore=False, randomize=False)`
+
+Fetches a random image that matches the given tags and/or ratings.
+
+**Parameters:**
+- `number` (int): Number of images to fetch (up to 100).
+- `tag` (str, tuple, list, optional): Tags to filter images by.
+- `rating` (str, tuple, list, optional): Ratings to filter images by.
+- `ignore` (bool, optional): Whether to ignore warnings if not enough images are found.
+- `randomize` (bool, optional): Whether to shuffle images before selection.
+
+**Returns:**
+- A list of image URLs matching the specified criteria.
+
+**Example:**
+```python
+random_images = get_random_image(number=5, tag=["catgirl"], rating="safe", randomize=True)
+```
+
+## Requirements
+
+- Python 3.6 or higher
+- `requests` library
+
+## Development
+
+To run tests, use:
+
+```bash
+poetry run pytest
+```
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+Allexx <allexx129@gmail.com>
