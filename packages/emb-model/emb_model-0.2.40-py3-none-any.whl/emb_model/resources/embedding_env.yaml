@@ -1,0 +1,22 @@
+name: my_model_env # embedding model
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11.2
+  - pytorch
+  - mlflow
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - cloudpickle==2.2.1
+  - dill
+  - pip:
+    - mlflow==2.11.3
+    - statsmodels
+    - torch
+    - emb-model==0.2.4
+
