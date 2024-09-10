@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">List of softwares</h1>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                    {% for software in softwares %}
+                        <li class="list-group-item">
+                            <h4 class="list-group-item-heading">{{ software.identifier }}</h4>
+                            <div>
+                                <span class="label label-primary">Version: {{software.version}}</span>
+                                <span class="label label-primary">Date: {{software.date}}</span>
+                                <span class="label label-primary">Author: {{software.author}}</span>
+                                {% if software.contact %}
+                                    <span class="label label-primary">Contact: {{software.contact}}</span>
+                                {% endif %}
+                                {% if software.institute %}
+                                    <span class="label label-primary">Institute: {{software.institute}}</span>
+                                {% endif %}
+                                {% if software.url %}
+                                    <span class="label label-primary">{{software.url}}</span>
+                                {% endif %}
+                            </div>
+                            <div class="well well-sm">
+                                <p>{{software.description}}</p>
+                            </div>
+                            {% if software.datasets|length > 1 %}
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h5 class="list-group-item-heading">Datasets</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                        {% for dataset in software.output_datasets %}
+                                            <!-- do it only for datasets not none, due to the way we join -->
+                                            {% if dataset %}
+                                                <li class="list-group-item">
+                                                    <h6 class="list-group-item-heading">{{dataset.identifier}}</h6>
+                                                    <span class="label label-info">Version: {{dataset.version}}</span>
+                                                    <span class="label label-info">Level: {{dataset.level.data_level}}</span>
+                                                    <span class="label label-info">Date: {{dataset.date}}</span>
+                                                    <span class="label label-info">Author: {{dataset.author}}</span>
+                                                    {% if dataset.contact %}
+                                                        <span class="label label-info">Contact: {{dataset.contact}}</span>
+                                                    {% endif %}
+                                                    {% if dataset.institute %}
+                                                        <span class="label label-info">Institute: {{dataset.institute}}</span>
+                                                    {% endif %}
+                                                    <div class="well well-sm">
+                                                        <p class="list-group-item-text">
+                                                            {{dataset.description}}
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <p style="page-break-before: always" ></p>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Software</th>
+                        {% for dataset in datasets %}
+                            <th>{{ dataset.identifier }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for software in softwares %}
+                    <tr>
+                        <td><strong>{{ software.identifier }}</strong></td>
+                        {% for dataset in datasets %}
+                            {% if dataset in software.output_datasets %}
+                                <td class="info">Output</td>
+                            {% elif dataset in software.input_datasets %}
+                                <td class="success">Input</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
