@@ -1,0 +1,20 @@
+{
+    "tomo_recon": {
+        "cfg_file": "/media/usb2/Wenhua_2024-1/xanes3d_tomo_tplt_cfg_2024-07-31-22-30-39.json"
+    },
+    "tomo_batch_recon": {
+        "cfg_file": "/media/usb2/Wenhua_2024-1/tomo_batch_trial_cen_cfg_2024-07-31-20-42-07.json"
+    },
+    "xanes2d_reg": {
+        "cfg_file": "/media/usb2/Grant_UChicago_2024/2D_XANES/2D_trial_reg_cfg_Na05Co_xanes2d__195_2024-07-24-21-48-34.json"
+    },
+    "xanes3d_auto_cen": {
+        "cfg_file": "/media/usb2/Wenhua_2024-1/xanes3d_autocenreg--_2024-08-03-22-46-12.json"
+    },
+    "xanes2d_fit": {
+        "cfg_file": "/media/usb2/SeHwanPark_2024-2/2D_trial_reg_multipos_2D_xanes_scan2_id_100_repeat_0000_pos_00_2024-07-09-09-26-33.h5"
+    },
+    "xanes3d_fit": {
+        "cfg_file": "/media/usb2/Tongchao_2024-1/pass-312475/3D_trial_reg_scan_id_83719-83721_2024-04-27-10-20-35_pytxm.h5"
+    }
+}
