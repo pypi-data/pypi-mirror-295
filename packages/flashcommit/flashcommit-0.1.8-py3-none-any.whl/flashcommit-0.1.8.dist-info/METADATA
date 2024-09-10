@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: flashcommit
+Version: 0.1.8
+Requires-Python: >=3.8.0
+Requires-Dist: setuptools
+Requires-Dist: requests
+Requires-Dist: argparse
+Requires-Dist: pydantic
+Requires-Dist: gitpython
+Requires-Dist: pydriller
+Requires-Dist: python-dotenv~=1.0.1
+Requires-Dist: websocket-client
+Requires-Dist: rich
+Requires-Dist: prompt-toolkit
+
