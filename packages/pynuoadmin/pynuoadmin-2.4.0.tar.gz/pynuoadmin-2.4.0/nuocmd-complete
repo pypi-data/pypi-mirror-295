@@ -1,0 +1,68 @@
+# -*-shell-script-*-
+# (C) Copyright 2018-2023 Dassault Systemes SE.  All Rights Reserved.
+# To enable TAB completion, add the following line to ~/.bashrc:
+#
+#   . $NUODB_HOME/etc/nuocmd-complete
+#
+# Or if you have the NuoDB Client package, add the following to ~/.bashrc:
+#
+#   . $NUOCLIENT_HOME/etc/nuocmd-complete
+#
+# If neither NUODB_HOME or NUODB_CLIENT is set, then the nuocmd script must
+# be found as  ../bin/nuocmd from this script.
+
+_NUOCMD=
+
+# This function enables bash argument completion
+_nuocmd_argcomplete() {
+    [[ -n "$_NUOCMD" ]] || return
+
+    local IFS=$'\013'
+    local SUPPRESS_SPACE=0
+    compopt +o nospace 2>/dev/null && SUPPRESS_SPACE=1
+
+    COMPREPLY=( $(IFS="$IFS" \
+                  COMP_LINE="$COMP_LINE" \
+                  COMP_POINT="$COMP_POINT" \
+                  COMP_TYPE="$COMP_TYPE" \
+                  _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS" \
+                  _ARGCOMPLETE=1 \
+                  _ARGCOMPLETE_SUPPRESS_SPACE=$SUPPRESS_SPACE \
+                  command "$_NUOCMD" 8>&1 9>&2 1>/dev/null 2>/dev/null) )
+
+    if [[ $? != 0 ]]; then
+        unset COMPREPLY
+    elif [[ $SUPPRESS_SPACE == 1 ]] && [[ "$COMPREPLY" =~ [=/:]$ ]]; then
+        compopt -o nospace
+    fi
+}
+
+__nuocmd_setup() {
+    if type -P nuocmd >/dev/null 2>&1; then
+        # It's available on PATH.  Leave it there.
+        _NUOCMD=nuocmd
+        return
+    fi
+
+    # Find the NuoDB home directory:
+    # - If NUODB_HOME is set, use that
+    # - If NUOCLIENT_HOME is set use that
+    # - Otherwise infer it from location of this script
+    local _home="${NUODB_HOME:-${NUOCLIENT_HOME:-$(\cd "${BASH_SOURCE%/*}/.." && pwd)}}"
+
+    # This is needed for backward-compatibility: remove when we no longer
+    # provide drivers/pynuoadmin/nuocmd-complete
+    [[ -x "$_home/bin/nuocmd" ]] || _home="${NUODB_HOME:-${NUOCLIENT_HOME:-$(\cd "${BASH_SOURCE%/*}/../.." && pwd)}}"
+
+    [[ -x "$_home/bin/nuocmd" ]] || return
+
+    _NUOCMD="$_home/bin/nuocmd"
+
+    # It's not on $PATH so create an alias
+    alias nuocmd="$_NUOCMD"
+}
+
+__nuocmd_setup
+
+# Install the completer
+complete -o nospace -o default -F _nuocmd_argcomplete "nuocmd"

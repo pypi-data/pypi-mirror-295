@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# (C) Copyright 2017-2023 Dassault Systemes SE.  All Rights Reserved
+
+# Unfortunately, ksh93 defines builtin aliases even when run non-interactively.
+unalias -a
+
+die () { echo "$*"; exit 1; }
+
+# Find the installation directory.
+CMD=${0##*/}
+DIR=$(cd "${0%$CMD}." && pwd)
+
+_home=$NUODB_HOME
+if test -z "$_home"; then
+    test -f "${DIR%/*}"/bin/nuodb && _home=${DIR%/*} || _home=/opt/nuodb
+fi
+
+_pythonpath=$NUOCMD_PYTHONPATH
+
+if test -n "$NUOPYTHON"; then
+    # nuopython sets up local site-packages for us
+    _python="$NUOPYTHON"
+else
+    _python=$(command -v python3) || _python=$(command -v python) \
+        || die "Python must be installed"
+    # We need to set up local site-packages
+    if test -d "$_home/etc/python/site-packages"; then
+        _pythonpath="${_pythonpath:+$_pythonpath:}$_home/etc/python/site-packages"
+    elif test -z "$_pythonpath"; then
+        # If NUOCMD_PYTHONPATH is set assume it has the right stuff, else...
+        die "Cannot locate NuoDB: please set the NUODB_HOME environment variable."
+    fi
+fi
+
+test -n "$PYTHONPATH" && _pythonpath="${_pythonpath:+$_pythonpath:}$PYTHONPATH"
+
+test -n "$_pythonpath" && export PYTHONPATH="$_pythonpath"
+exec "$_python" -u -m pynuoadmin.nuocmd "$@"

@@ -1,0 +1,14 @@
+README.rst
+nuocmd
+nuocmd-complete
+nuocmd.bat
+setup.py
+pynuoadmin/__init__.py
+pynuoadmin/nuocmd.py
+pynuoadmin/nuodb_cli.py
+pynuoadmin/nuodb_mgmt.py
+pynuoadmin.egg-info/PKG-INFO
+pynuoadmin.egg-info/SOURCES.txt
+pynuoadmin.egg-info/dependency_links.txt
+pynuoadmin.egg-info/requires.txt
+pynuoadmin.egg-info/top_level.txt
