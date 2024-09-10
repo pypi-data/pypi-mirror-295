@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: telometer
+Version: 1.1
+Summary: a simple regular expression based method for measuring individual, chromosome-specific telomere lengths from long-read sequencing data
+Author: Santiago E Sanchez
+Author-email: ses94@stanford.edu
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+License-File: LICENSE.txt
+
+A simple tool for measuring chromosome-specific telomeres from long-read alignments.
+
+[Telometer Github](https://github.com/santiago-es/Telometer) 
