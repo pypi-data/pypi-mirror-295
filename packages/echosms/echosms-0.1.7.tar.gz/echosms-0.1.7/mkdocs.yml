@@ -1,0 +1,47 @@
+site_name: echoSMs
+nav:
+    - Introduction: index.md
+    - Usage: usage.md
+    - Contributing: contributing.md
+    - Benchmarks: benchmark_data.md
+    - API reference: api_reference.md
+    - Other software: other_software.md
+
+theme: 
+    name: material 
+    logo: resources/echoSMs_logo.png
+    favicon: resources/echoSMs_logo.png
+    icon:
+        repo: fontawesome/brands/github
+    features:
+        - navigation.top
+        - toc.integrate
+        - content.action.view
+        
+repo_url: https://github.com/ices-tools-dev/echoSMs
+edit_uri: edit/main/docs/
+
+plugins:
+    - search
+    - autorefs
+    - mkdocstrings:
+        handlers:
+            python:
+                paths: [src]
+                options:
+                    docstring_style: numpy
+                    show_submodules: false
+                    show_symbol_type_heading: true
+                    show_bases: true
+                    inherited_members: true
+                    show_root_heading: false
+                    show_root_toc_entry: false
+                    show_source: true
+                    heading_level: 3
+                    filters:
+                    - "!^_"
+
+markdown_extensions:
+    - attr_list
+    - footnotes
+    - tables
