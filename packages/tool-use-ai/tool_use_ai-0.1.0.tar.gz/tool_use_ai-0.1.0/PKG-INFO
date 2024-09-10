@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: tool-use-ai
+Version: 0.1.0
+Summary: Tools to simplify life with AI
+Author: Ty Fiero
+Author-email: tyfierodev@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Project-URL: Bug Tracker, https://github.com/tyfiero/tool-use/issues
+Project-URL: Homepage, https://github.com/tyfiero/tool-use
+Description-Content-Type: text/markdown
+
+# tool-use
+
+Tools to simplify life with AI
+
+## Installation
+
+You can install the package using pip:
+
