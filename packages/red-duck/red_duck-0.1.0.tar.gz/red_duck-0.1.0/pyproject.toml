@@ -1,0 +1,142 @@
+[project]
+name = "red-duck"
+version = "0.1.0"
+description = "Utilities for interacting with a DuckDB database."
+authors = [
+    { name = "redjax", email = "pypi@redjax.33mail.com" },
+]
+dependencies = [
+    "duckdb>=1.1.0",
+    "pandas>=2.2.2",
+    "pyarrow>=17.0.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Repository = "https://github.com/redjax/red-duck"
+Download = "https://pypi.org/project/red-duck/"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.6.4",
+    "pytest-xdist>=3.6.1",
+    "nox>=2024.4.15",
+    "uv>=0.4.8",
+]
+
+[tool.pdm.scripts.create-major-release]
+shell = "pdm bump major && pdm bump tag && pdm lock && pdm build && git push --tags"
+
+[tool.pdm.scripts.create-minor-release]
+shell = "pdm bump minor && pdm bump tag && pdm lock && pdm build && git push --tags"
+
+[tool.pdm.scripts.create-micro-release]
+shell = "pdm bump micro && pdm bump tag && pdm lock && pdm build && git push --tags"
+
+[tool.pdm.scripts.upload-pypi]
+shell = "pdm publish --repository pypi --verbose"
+
+[tool.pdm.scripts.upload-pypi-test]
+shell = "pdm publish --repository testpypi --verbose"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "D",
+    "E",
+    "F401",
+    "I",
+    "I001",
+]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D105",
+    "D106",
+    "D107",
+    "D200",
+    "D203",
+    "D205",
+    "D213",
+    "D401",
+    "E402",
+    "D406",
+    "D407",
+    "D414",
+    "D417",
+    "E501",
+    "E722",
+    "F401",
+]
+fixable = [
+    "C",
+    "D",
+    "E",
+    "E402",
+    "F401",
+    "I",
+    "N",
+    "T",
+    "W",
+    "ERA",
+    "PL",
+    "RUF",
+    "TID",
+    "TRY",
+    "UP",
+]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "__pycache__",
+    "*.pyc",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+    "D104",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+force-wrap-aliases = true
+lines-after-imports = 1
+order-by-type = true
+relative-imports-order = "closest-to-furthest"
+required-imports = [
+    "from __future__ import annotations",
+]
+section-order = [
+    "future",
+    "standard-library",
+    "first-party",
+    "local-folder",
+    "third-party",
+]
