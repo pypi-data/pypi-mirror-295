@@ -1,0 +1,2 @@
+[console_scripts]
+syslog_manager = syslog_manager.main:main
