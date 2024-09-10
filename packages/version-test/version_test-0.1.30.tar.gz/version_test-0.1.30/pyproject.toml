@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "version-test"
+version = "0.1.30"
+description = ""
+authors = ["Kenny Stryker <nggkenny@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+black = "^24.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
