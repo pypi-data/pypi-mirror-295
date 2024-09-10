@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unit_system_py"
+version = "0.8.0-rc9"
+authors = [
+  { name="noasakurajin", email="dev@noasakurajin.de" },
+]
+description = "A simple unit system for python"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Typing :: Typed",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/noah1510/unit-system-generator"
+"Bug Tracker" = "https://github.com/noah1510/unit-system-generator/issues"
+
+[tool.yapf]
+based_on_style = "pep8"
+column_limit = 120
+dedent_closing_brackets = true
