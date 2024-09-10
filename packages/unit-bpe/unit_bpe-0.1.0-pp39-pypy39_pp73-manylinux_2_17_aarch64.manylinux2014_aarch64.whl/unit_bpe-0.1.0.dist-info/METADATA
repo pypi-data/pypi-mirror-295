@@ -1,0 +1,15 @@
+Metadata-Version: 2.3
+Name: unit-bpe
+Version: 0.1.0
+Summary: BPE tokenizer that operates on integer sequences
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# unit-bpe
+
+BPE tokenizer that operates on integer sequences.
+
+## Usage
+
+See tests.
+
