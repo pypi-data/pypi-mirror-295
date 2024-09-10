@@ -1,0 +1,68 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static "admin/css/forms.css" %}">
+  <style>
+    .form-row, label {
+      font-size: 1rem;
+    }
+    .submit-row {
+      margin-top: 3rem;
+      padding: 12px 0 12px;
+    }
+    .submit-row-item {
+      align-content: center;
+      font-family: var(--font-family-primary);
+      font-weight: normal;
+      font-size: 0.8125rem;
+    }
+    .submit-row a.button { padding: 10px 15px; }
+    .align-item-right {
+      margin-left: auto;
+    }
+    .spreadsheet-module label {
+      width: auto;
+      align-content: center;
+      margin-right: 1rem;
+    }
+    ul.spreadsheet-nested-errors {
+      margin: 2px 0 0 0;
+      padding: 0;
+      ul { padding: 0; }
+      li.spreadsheet-sheet-item, li.spreadsheet-error-item {
+        list-style-type: none;
+        line-height: initial;
+      }
+      li.spreadsheet-error-item {
+        background-color: white;
+      }
+      summary {
+        padding: 8px;
+        background: var(--darkened-bg);
+        color: var(--body-fg);
+        cursor: pointer;
+      }
+      .spreadsheet-error-title {
+        display: flex;
+        justify-content: space-between;
+      }
+      .spreadsheet-error-count { float: right; }
+      ul.spreadsheet-errors-list {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding: 8px 8px 1rem 8px;
+      }
+    }
+  </style>
+{% endblock extrastyle %}
+
+{% block content %}
+  <div id="content-main">
+    <h1>
+      {% block page_title %}{% endblock page_title %}
+    </h1>
+    {% block main %}{% endblock main %}
+  </div>
+{% endblock content %}

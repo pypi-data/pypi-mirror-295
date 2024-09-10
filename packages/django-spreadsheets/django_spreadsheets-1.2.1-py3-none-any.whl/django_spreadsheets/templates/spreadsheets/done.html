@@ -1,0 +1,10 @@
+{% extends "spreadsheets/base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Completed" %}{% endblock page_title %}
+
+{% block main %}
+  <p>{% translate "The import is complete." %}</p>
+
+  <div class="submit-row"><a href="{% url "spreadsheets:import-index" %}" class="{% block submit-button-class %}button submit-row-item{% endblock submit-button-class %}">{% translate "New import" %}</a></div>
+{% endblock main %}
