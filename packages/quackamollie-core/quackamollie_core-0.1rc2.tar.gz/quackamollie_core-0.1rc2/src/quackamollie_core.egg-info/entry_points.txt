@@ -1,0 +1,9 @@
+[console_scripts]
+quackamollie = quackamollie.core.quackamollie:quackamollie
+
+[quackamollie.command]
+db = quackamollie.core.cli.command.db_cli_command:db
+serve = quackamollie.core.cli.command.serve_cli_command:serve
+
+[quackamollie.command.db]
+alembic = quackamollie.core.cli.command.alembic_cli_command:alembic

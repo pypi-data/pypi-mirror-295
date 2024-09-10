@@ -1,0 +1,12 @@
+services:
+  quackamollie_postgres:
+    image: postgres:16
+    restart: unless-stopped
+    ports:
+      - ${QUACKAMOLLIE_DB_HOST}:${QUACKAMOLLIE_DB_PORT}:5432
+    environment:
+      POSTGRES_USER: ${QUACKAMOLLIE_DB_USERNAME}
+      POSTGRES_PASSWORD: ${QUACKAMOLLIE_DB_PASSWORD}
+      POSTGRES_DB: ${QUACKAMOLLIE_DB_NAME}
+    volumes:
+      - ./data/quackamollie/database:/var/lib/postgresql/data
