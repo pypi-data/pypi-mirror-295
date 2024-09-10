@@ -1,0 +1,71 @@
+from __future__ import annotations
+
+import dataclasses as dc
+import typing
+from typing import TypeVar
+from typing import Union
+
+import attrs
+
+from typing_extensions import TypeGuard
+
+
+if typing.TYPE_CHECKING:  # pragma: no cover
+    from collections.abc import Mapping
+    from typing import Any
+    from typing import Final
+    from typing import Optional
+
+    from binobj.fields.base import Field as BinObjField
+
+T = TypeVar("T")
+
+BINOBJ_KEY: Final = "binobj"
+
+
+def ensure_is_class(instance_or_class: T | type[T]) -> type[T]:
+    if isinstance(instance_or_class, type):
+        return instance_or_class
+    return type(instance_or_class)
+
+
+def is_attrs_dataclass(
+    instance_or_class: object,
+) -> TypeGuard[Union[attrs.AttrsInstance, type[attrs.AttrsInstance]]]:
+    cls = ensure_is_class(instance_or_class)
+    return attrs.has(cls)
+
+
+@attrs.frozen(slots=True)
+class DataclassField:
+    original: dc.Field[Any] | attrs.Attribute[Any]
+    name: str = attrs.field(init=False)
+    type_: type = attrs.field(init=False)
+    metadata: Mapping[str, Any] = attrs.field(init=False)
+    binobj_field: BinObjField | None = attrs.field(init=False)
+
+    @name.default
+    def _default__name(self) -> str:
+        return self.original.name
+
+    @type_.default
+    def _default__type(self) -> type:
+        return self.original.type
+
+    @metadata.default
+    def _default__metadata(self) -> Mapping[str, Any]:
+        return self.original.metadata
+
+    @binobj_field.default
+    def _default__binobj_field(self) -> Optional[BinObjField]:
+        return self.metadata.get(BINOBJ_KEY)
+
+
+def get_dataclass_fields(instance_or_class: object) -> tuple[DataclassField, ...]:
+    cls = ensure_is_class(instance_or_class)
+
+    if attrs.has(cls):
+        return tuple(DataclassField(f) for f in attrs.fields(cls))
+    if dc.is_dataclass(cls):
+        return tuple(DataclassField(f) for f in dc.fields(cls))
+    raise TypeError("Not a dataclass or instance of one: " + repr(instance_or_class))
