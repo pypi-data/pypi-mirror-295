@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+ckanext/__init__.py
+ckanext/envvars/__init__.py
+ckanext/envvars/plugin.py
+ckanext/envvars/tests/__init__.py
+ckanext/envvars/tests/test_base_envvars.py
+ckanext_envvars.egg-info/PKG-INFO
+ckanext_envvars.egg-info/SOURCES.txt
+ckanext_envvars.egg-info/dependency_links.txt
+ckanext_envvars.egg-info/entry_points.txt
+ckanext_envvars.egg-info/requires.txt
+ckanext_envvars.egg-info/top_level.txt
