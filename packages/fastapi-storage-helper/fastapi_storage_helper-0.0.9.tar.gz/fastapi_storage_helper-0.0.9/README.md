@@ -1,0 +1,79 @@
+# FastAPI Storage
+
+## Introduction
+
+FastAPI Storage provides helper functions for interacting with AWS S3, making it easier to handle file storage, presigned URLs, metadata, and content-type modifications
+
+### How to use
+
+#### Configuration
+
+First, configure the storage service by setting up AWS credentials and bucket information:
+
+```python
+# config/storage.py
+from fastapi_storage_helper import StorageService
+from config.setting import env
+
+storage_service = StorageService(
+  access_key_id=env.AWS_ACCESS_KEY_ID,
+  secret_key=env.AWS_SECRET_KEY,
+  region_name=env.AWS_REGION,
+  bucket=env.AWS_S3_BUCKET_NAME,
+)
+```
+
+#### Create Read Presign URL
+
+To generate a presigned URL for reading a file from S3:
+
+```python
+from config.storage import storage_service
+
+def get_media_url(self, s3_image_path: str):
+    return storage_service.create_read_presign_url(s3_image_path)
+```
+
+#### Create an Upload Presign URL
+
+To generate a presigned URL for uploading a file to S3:
+
+```python
+from config.storage import storage_service
+def get_upload_media_url(self, s3_image_path: str):
+    return storage_service.create_upload_presign_url(s3_image_path)
+```
+
+#### Upload file to S3
+
+To directly upload a file to an S3 bucket:
+
+```python
+from config.storage import storage_service
+
+def upload_file(self, file: bytes, s3_image_path: str):
+    return storage_service.upload_file(file, s3_image_path)
+```
+
+#### Get metadata
+
+To get metadata for a file stored in S3:
+
+```python
+from config.storage import storage_service
+
+def get_metadata(self, s3_image_path: str):
+    return storage_service.get_metadata(s3_image_path)
+```
+
+#### Change Content Type
+
+To modify the content type of a file in S3:
+
+```python
+from config.storage import storage_service
+def change_content_type(self, s3_image_path: str, content_type: str):
+    return storage_service.change_content_type(s3_image_path, content_type)
+```
+
+
