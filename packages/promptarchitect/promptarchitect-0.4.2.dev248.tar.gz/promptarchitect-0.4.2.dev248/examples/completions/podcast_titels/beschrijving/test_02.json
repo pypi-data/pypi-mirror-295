@@ -1,0 +1,56 @@
+{
+    "test_id": "test_02",
+    "test_prompt": "COUNT(LINES) == 5",
+    "test_completion": "NEE, COUNT(LINES) is niet gelijk 5, maar 7",
+    "passed": false,
+    "completion": {
+        "system_role": "Calculate the number of lines, words, characters, or sentences in the prompt. No LLM is used for this.",
+        "model": "calculated",
+        "parameters": {},
+        "response_message": "NEE, COUNT(LINES) is niet gelijk 5, maar 7",
+        "duration": 3.879200085066259e-05,
+        "cost": 0.0,
+        "completion_type": "OpenAICompletion"
+    },
+    "completion_type": "OpenAICompletion",
+    "engineered_prompt": {
+        "provider": "openai",
+        "prompt_file_path": "examples/prompts/podcast_titels.prompt",
+        "output_path": "examples/completions/podcast_titels/beschrijving",
+        "input_file": "examples/tests/podcast_titels/beschrijving.txt",
+        "input_text": "",
+        "duration": 2.3517897499987157,
+        "cost": 9.06e-05,
+        "errors": {
+            "errors": [],
+            "duplicates": 0
+        },
+        "completion": {
+            "system_role": "You are a helpful assistant.",
+            "model": "gpt-4o-mini",
+            "parameters": {
+                "provider": "openai",
+                "model": "gpt-4o-mini",
+                "prompt_version": 1.0,
+                "temperature": 0.9,
+                "input": "examples/inputs/podcast_titels/beschrijving.txt",
+                "output": "title.txt",
+                "test_path": "examples/tests/podcast_titels"
+            },
+            "cost": 0.0,
+            "is_json": false,
+            "test_path": "",
+            "response_message": "Hier zijn vijf titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"**\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"**\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"**\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"**\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"**",
+            "duration": 0.0,
+            "provider_file": "openai.json"
+        },
+        "completion_type": "OpenAICompletion",
+        "response_message": "Hier zijn vijf titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"**\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"**\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"**\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"**\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"**",
+        "response_texr": ""
+    },
+    "last_run": "2024-08-12 10:22:54",
+    "errors": {
+        "errors": [],
+        "duplicates": 0
+    }
+}

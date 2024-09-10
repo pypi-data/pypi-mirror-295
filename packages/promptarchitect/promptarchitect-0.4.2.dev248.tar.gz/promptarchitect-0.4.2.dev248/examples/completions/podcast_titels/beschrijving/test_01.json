@@ -1,0 +1,62 @@
+{
+    "test_id": "test_01",
+    "test_prompt": "Controleer of de titels in de lijst in \"normal casing\" zijn geschreven. Dit betekent dat alleen het eerste woord van de titel en eventuele eigennamen of acroniemen met een hoofdletter beginnen. Woorden na een dubbele punt hoeven geen hoofdletter te hebben, tenzij het eigen namen of acroniemen betreft. Antwoord met JA/NEE of alle titels correct zijn geschreven volgens dit principe. Indien NEE, leg uit waarom niet. \n",
+    "test_completion": "NEE\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"** - \"MLOps\", \"Mysterieuze\" en \"Legitieme\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"** - \"Uitlegbaarheid\" en \"Optimalisatie\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"** - \"De\", \"Kracht\" en \"Grootschalige\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"** - \"MLOps\" is correct, maar \"Toekomst\" en \"Business\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"** - \"Strategie\u00ebn\", \"Succes\", \"Large\" en \"Language\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\nGeen van de titels is correct geschreven volgens de normal casing-regels.",
+    "passed": false,
+    "completion": {
+        "system_role": "Je bent een prompt tester.",
+        "model": "gpt-4o-mini",
+        "parameters": {
+            "temperature": 0.2,
+            "max_tokens": 1000
+        },
+        "cost": 0.0002469,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "NEE\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"** - \"MLOps\", \"Mysterieuze\" en \"Legitieme\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"** - \"Uitlegbaarheid\" en \"Optimalisatie\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"** - \"De\", \"Kracht\" en \"Grootschalige\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"** - \"MLOps\" is correct, maar \"Toekomst\" en \"Business\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"** - \"Strategie\u00ebn\", \"Succes\", \"Large\" en \"Language\" beginnen met een hoofdletter, terwijl ze geen eigennamen of acroniemen zijn. Dit is niet correct volgens de normal casing-regels.\n\nGeen van de titels is correct geschreven volgens de normal casing-regels.",
+        "duration": 4.858887333000894,
+        "provider_file": "openai.json",
+        "completion_type": "OpenAICompletion"
+    },
+    "completion_type": "OpenAICompletion",
+    "engineered_prompt": {
+        "provider": "openai",
+        "prompt_file_path": "examples/prompts/podcast_titels.prompt",
+        "output_path": "examples/completions/podcast_titels/beschrijving",
+        "input_file": "examples/tests/podcast_titels/beschrijving.txt",
+        "input_text": "",
+        "duration": 2.3517897499987157,
+        "cost": 9.06e-05,
+        "errors": {
+            "errors": [],
+            "duplicates": 0
+        },
+        "completion": {
+            "system_role": "You are a helpful assistant.",
+            "model": "gpt-4o-mini",
+            "parameters": {
+                "provider": "openai",
+                "model": "gpt-4o-mini",
+                "prompt_version": 1.0,
+                "temperature": 0.9,
+                "input": "examples/inputs/podcast_titels/beschrijving.txt",
+                "output": "title.txt",
+                "test_path": "examples/tests/podcast_titels"
+            },
+            "cost": 0.0,
+            "is_json": false,
+            "test_path": "",
+            "response_message": "Hier zijn vijf titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"**\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"**\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"**\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"**\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"**",
+            "duration": 0.0,
+            "provider_file": "openai.json"
+        },
+        "completion_type": "OpenAICompletion",
+        "response_message": "Hier zijn vijf titels voor een AI-podcast gericht op business professionals met een IT-achtergrond:\n\n1. **\"AI Unlocked: MLOps, Mysterieuze Modellen en Legitieme Leren\"**\n2. **\"Beyond the Black Box: Uitlegbaarheid en Optimalisatie in AI\"**\n3. **\"Language, Logic & Learning: De Kracht van Grootschalige Modellen\"**\n4. **\"From Code to Clarity: MLOps en de Toekomst van AI in Business\"**\n5. **\"Navigating the AI Frontier: Strategie\u00ebn voor Succes met Large Language Models\"**",
+        "response_texr": ""
+    },
+    "last_run": "2024-08-12 10:22:54",
+    "errors": {
+        "errors": [],
+        "duplicates": 0
+    }
+}
