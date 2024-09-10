@@ -1,0 +1,11 @@
+setup.py
+flashcommit/__init__.py
+flashcommit/gitclient.py
+flashcommit/main.py
+flashcommit/wsclient.py
+flashcommit.egg-info/PKG-INFO
+flashcommit.egg-info/SOURCES.txt
+flashcommit.egg-info/dependency_links.txt
+flashcommit.egg-info/entry_points.txt
+flashcommit.egg-info/requires.txt
+flashcommit.egg-info/top_level.txt
