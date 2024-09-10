@@ -1,0 +1,196 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"  # If not defined, then legacy behavior can happen.
+
+[project]
+name = "zot2sioyek"  # REQUIRED, is the only field that cannot be marked as dynamic.
+version = "0.2.8"
+description = "Script with managing utils of zotero database fratures to sioyek PDF reader."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+keywords = ["sioyek", "zotero", "PDF", "reader", "highlights"]
+authors = [
+  {name = "Eduardo Toledo Campos", email = "eduardotcampos@usp.br" }
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Database",
+  "Development Status :: 3 - Alpha",
+]
+dependencies = [
+    'pyzotero',
+    'pymupdf',
+    'PyQt5',
+    'regex',
+    'sioyek',
+	'httpx',
+]
+
+[project.urls]
+"Homepage" = "https://github.com/eduardotlc/zot2sioyek"
+"Bug Reports" = "https://github.com/eduardotlc/zot2sioyek/issues"
+"Source" = "https://github.com/eduardotlc/zot2sioyek/"
+
+[project.scripts]
+zot2sioyek = "zot2sioyek.zot2sioyek:cli"
+
+[project.optional-dependencies]
+test = [
+	"pytest",
+	"pytest-pretty",
+	"interrogate",
+]
+
+[tool.ruff]
+line-length = 100
+fix = true
+show-fixes = true
+preview = true
+exclude = [
+	"dist",
+	".mypy_cache",
+	".pytest_cache",
+	"zot2sioyek.egg-info",
+	".jukit",
+	"__pycache__",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 100
+indent-style = "space"
+quote-style = "double"
+preview = true
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+task-tags = [
+    "TODO",
+    "HACK",
+    "NOTE",
+    "DEBUG",
+    "TEST",
+    "FIXME",
+    "-TODO:",
+]
+select = [
+    "E",
+    "F",
+    "UP",
+    "B",
+    "SIM",
+    "I",
+    "Q",
+]
+logger-objects = ["logging_setup.logger"]
+fixable = ["ALL"]
+extend-safe-fixes = ["I"]
+ignore = [
+	"ANN",
+	"E203",
+	"E501",
+	"D103",
+]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+typing-modules = ["airflow.typing_compat"]
+preview = true
+
+[tool.ruff.lint.flake8-quotes]
+avoid-escape = true
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.lint.flake8-type-checking]
+exempt-modules = ["typing", "typing_extensions", "collections"]
+quote-annotations = true
+runtime-evaluated-base-classes = ["pydantic.BaseModel", "sqlalchemy.orm.DeclarativeBase"]
+runtime-evaluated-decorators = ["pydantic.validate_call", "attrs.define"]
+strict = false
+
+[tool.ruff.lint.isort]
+combine-as-imports = false
+default-section = "third-party"
+case-sensitive = true
+force-single-line = false
+force-sort-within-sections = false
+force-wrap-aliases = false
+from-first = false
+detect-same-package = true
+lines-after-imports = -1
+lines-between-types = 0
+no-sections = false
+no-lines-before = ["future", "standard-library"]
+force-to-top = ["src"]
+order-by-type = true
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+split-on-trailing-comma = true
+
+[tool.ruff.lint.pep8-naming]
+classmethod-decorators = [
+    "pydantic.validator",
+    "declared_attr",
+    "expression",
+    "comparator",
+]
+ignore-names = [
+	"setUp",
+	"tearDown",
+	"setUpClass",
+	"tearDownClass",
+	"setUpModule",
+	"tearDownModule",
+	"asyncSetUp",
+	"asyncTearDown",
+	"setUpTestData",
+	"failureException",
+	"longMessage",
+	"maxDiff"
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 100
+ignore-overlong-task-comments = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+property-decorators = ["gi.repository.GObject.Property"]
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-bool-expr = 5
+max-positional-args = 5
+max-returns = 6
+
+[tool.interrogate]
+verbose = 1
+color = true
+style = "sphinx"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --color=yes"
+testpaths = [
+	"tests",
+	"src/zot2sioyek",
+]
+console_output_style = "count"
+doctest_optionflags = [
+  "NORMALIZE_WHITESPACE",
+  "IGNORE_EXCEPTION_DETAIL",
+  "ELLIPSIS",
+]
+required_plugins = [
+	"pytest-pretty",
+]

@@ -1,0 +1,11 @@
+# Builded Package #
+###################
+dist
+
+# Temporary Python #
+####################
+.mypy_cache
+.pytest_cache
+zot2sioyek.egg-info
+.jukit
+__pycache__
