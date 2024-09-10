@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: mayako-core
+Version: 0.1.6
+Summary: mayako is a lightweight framework for prototyping interaction techniques in hci research.
+License: MIT
+Keywords: interaction techniques,human computer interaction,IoT,sensor data
+Author: vairasza
+Author-email: vairasza@mailbox.org
+Requires-Python: >=3.9,<3.13
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: C++
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: bleak (>=0.22.2,<0.23.0)
+Requires-Dist: crc (>=7.0.0,<8.0.0)
+Requires-Dist: platformio (>=6.1.15,<7.0.0)
+Requires-Dist: pynput (>=1.7.7,<2.0.0)
+Requires-Dist: pyserial (>=3.5,<4.0)
+Project-URL: Changelog, https://github.com/vairasza/mayako-core/blob/main/CHANGELOG.md
+Project-URL: Documentation, https://vairasza.github.io/mayako-core
+Project-URL: Issues, https://github.com/vairasza/mayako-core/issues
+Project-URL: Repository, https://github.com/vairasza/mayako-core
+Description-Content-Type: text/markdown
+
+# mayako-core
+
+lightweight framework for interaction technique prototyping in hci reseach
+
+
+## Documentation
+- published at [GitHub Pages](https://vairasza.github.io/mayako-core/)
+
+
+## Sources:
+- Deploy the Documentation to GitHub Pages:
+    https://tomasfarias.dev/articles/sphinx-docs-with-poetry-and-github-pages/
+
