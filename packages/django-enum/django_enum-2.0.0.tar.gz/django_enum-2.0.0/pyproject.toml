@@ -1,0 +1,180 @@
+[tool.poetry]
+name = "django-enum"
+version = "2.0.0"
+description = "Full and natural support for enumerations as Django model fields."
+authors = ["Brian Kohan <bckohan@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/bckohan/django-enum"
+homepage = "https://django-enum.rtfd.io"
+readme = "README.md"
+keywords = [
+    "enum",  "properties", "defines", "field", "django", "database",
+    "bitmask", "mask", "bitfield", "flags"
+]
+classifiers = [
+    "Environment :: Console",
+    "Framework :: Django",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+packages = [
+    { include = "django_enum" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+Django = ">=3.2,<6.0"
+enum-properties = {version = ">=2.0.0", optional = true}
+django-filter = {version = ">=21", optional = true}
+djangorestframework = {version = "^3.9", optional = true}
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0"
+Sphinx = [
+    { version = ">=8.0", markers = "python_version >= '3.10'" },
+    { version = ">=7.4", markers = "python_version >= '3.9'" },
+    { version = ">=7.0", markers = "python_version < '3.9'" }
+]
+docutils = [
+    { version = ">=0.21", markers = "python_version >= '3.9'" },
+    { version = ">=0.20", markers = "python_version < '3.9'" }
+]
+mypy = ">=1.0"
+doc8 = ">=0.11.0"
+darglint = ">=1.5.7"
+pytest-cov = ">=4.0.0"
+deepdiff = ">=5.2.3"
+readme-renderer = {extras = ["md"], version = ">=42.0"}
+pygount = ">=1.2.4"
+types-PyYAML = ">=6.0"
+coverage = ">=6.2,<8.0"
+beautifulsoup4 = ">=4.11.1"
+pytest-django = ">=4.5.2"
+django-test-migrations = ">=1.2.0"
+python-dateutil = ">=2.8.2"
+ipdb = ">=0.13.13"
+tqdm = ">=4.65.0"
+matplotlib = ">=3.7.5"
+numpy = [
+    {version = "<1.25", markers = "python_version < '3.9'"},
+    {version = ">=1.25", markers = "python_version >= '3.9'"}
+]
+django-stubs = {extras = ["compatible-mypy"], version = ">=4.2.7"}
+furo = "^2024.8.6"
+ruff = "^0.6.3"
+typing-extensions = "^4.12.2"
+
+[tool.poetry.group.psycopg2]
+optional = true
+
+[tool.poetry.group.psycopg2.dependencies]
+psycopg2 = "^2.5.4"
+
+[tool.poetry.group.psycopg3]
+optional = true
+
+[tool.poetry.group.psycopg3.dependencies]
+psycopg = "^3.1.8"
+
+[tool.poetry.group.mysql]
+optional = true
+
+[tool.poetry.group.mysql.dependencies]
+mysqlclient = ">=1.4.0"
+
+[tool.poetry.group.oracle]
+optional = true
+
+[tool.poetry.group.oracle.dependencies]
+cx-Oracle = '>=6.0.0'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.extras]
+all = ["django-filter", "enum-properties", "djangorestframework"]
+properties = ["enum-properties"]
+filters = ["django-filter"]
+djangorestframework = ["djangorestframework"]
+
+
+[tool.mypy]
+# The mypy configurations: http://bit.ly/2zEl9WI
+# allow_redefinition = false
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = ["tests"]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+
+
+# todo doc8 configuration here is not being picked up and doesnt seem to be working
+# as expected - for now pass these parameters manually
+[tool.doc8]
+max-line-length = 100
+sphinx = true
+
+
+[tool.pytest.ini_options]
+# py.test options:
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = "test*.py"
+norecursedirs = "*.egg .eggs dist build docs .tox .git __pycache__"
+
+addopts = [
+  "--strict-markers",
+  "--cov=django_enum",
+  "--cov-branch",
+  "--cov-report=term-missing:skip-covered"
+]
+
+[tool.coverage.run]
+omit = ["tests/**/*py"]
+branch = true
+source = ["django_enum"]
+concurrency = ["multiprocessing"]
+parallel = true
+relative_files = true
+command_line = "-m pytest --cov=django_enum"
+
+[tool.coverage.paths]
+source = ["django_enum"]
+
+
+[tool.ruff]
+line-length = 88
+exclude = [
+    "doc",
+    "dist",
+    "examples",
+    "plot_benchmarks.py"
+]
+
+[tool.ruff.lint]
+exclude = ["tests/**/*"]
