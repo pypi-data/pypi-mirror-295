@@ -1,0 +1,14 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytoolkit_soluciones"
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    "azure-search-documents>=11.3.0",
+    "azure-core==1.30.2"
+]

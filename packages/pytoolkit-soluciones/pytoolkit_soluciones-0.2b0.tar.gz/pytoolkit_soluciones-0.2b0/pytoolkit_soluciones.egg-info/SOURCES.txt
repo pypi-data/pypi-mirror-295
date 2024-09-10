@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+pytoolkit_soluciones/__init__.py
+pytoolkit_soluciones.egg-info/PKG-INFO
+pytoolkit_soluciones.egg-info/SOURCES.txt
+pytoolkit_soluciones.egg-info/dependency_links.txt
+pytoolkit_soluciones.egg-info/top_level.txt
+pytoolkit_soluciones/azure/__init__.py
+pytoolkit_soluciones/azure/ai_search.py
