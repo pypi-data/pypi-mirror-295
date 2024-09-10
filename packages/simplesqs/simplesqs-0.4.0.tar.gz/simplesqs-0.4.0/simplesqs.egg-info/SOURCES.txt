@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+simplesqs/__init__.py
+simplesqs/message.py
+simplesqs.egg-info/PKG-INFO
+simplesqs.egg-info/SOURCES.txt
+simplesqs.egg-info/dependency_links.txt
+simplesqs.egg-info/requires.txt
+simplesqs.egg-info/top_level.txt
