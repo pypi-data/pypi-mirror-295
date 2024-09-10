@@ -1,0 +1,2 @@
+[console_scripts]
+deephyper = deephyper.core.cli._cli:main
