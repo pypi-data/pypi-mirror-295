@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+rkNseClient/__init__.py
+rkNseClient/nse_client.py
+rkNseClient/nse_schema.py
+rkNseClient.egg-info/PKG-INFO
+rkNseClient.egg-info/SOURCES.txt
+rkNseClient.egg-info/dependency_links.txt
+rkNseClient.egg-info/requires.txt
+rkNseClient.egg-info/top_level.txt
