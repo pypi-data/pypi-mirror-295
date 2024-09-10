@@ -1,0 +1,6 @@
+[openstack.cli.extension]
+varroa = varroaclient.osc.plugin
+
+[openstack.varroa.v1]
+ip history = varroaclient.osc.v1.ip_usage:ListIPUsage
+
