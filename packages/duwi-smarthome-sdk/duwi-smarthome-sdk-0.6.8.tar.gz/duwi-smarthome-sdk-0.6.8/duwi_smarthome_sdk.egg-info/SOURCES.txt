@@ -1,0 +1,17 @@
+LICENSE
+README.md
+setup.py
+duwi-smarthome-sdk/__init__.py
+duwi-smarthome-sdk/base_api.py
+duwi-smarthome-sdk/const.py
+duwi-smarthome-sdk/customer_client.py
+duwi-smarthome-sdk/device_control.py
+duwi-smarthome-sdk/device_scene_models.py
+duwi-smarthome-sdk/manager.py
+duwi-smarthome-sdk/sign.py
+duwi-smarthome-sdk/ws.py
+duwi_smarthome_sdk.egg-info/PKG-INFO
+duwi_smarthome_sdk.egg-info/SOURCES.txt
+duwi_smarthome_sdk.egg-info/dependency_links.txt
+duwi_smarthome_sdk.egg-info/requires.txt
+duwi_smarthome_sdk.egg-info/top_level.txt
