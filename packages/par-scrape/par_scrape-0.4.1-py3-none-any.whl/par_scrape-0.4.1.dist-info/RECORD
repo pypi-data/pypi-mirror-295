@@ -1,0 +1,17 @@
+par_scrape/__init__.py,sha256=Uwi1y6VR-kTZfgPxsIjWK2KtcVuAfrQ4QlCGAQ0IDws,675
+par_scrape/__main__.py,sha256=9k3eIy8WtPrshyxrIao-sgXl46czO2CNl57UWpwewd4,12452
+par_scrape/fetch_html.py,sha256=eroubRmfEnwXTWo36igmTumTK5oTQw8eNlr-913FkwE,6713
+par_scrape/pricing.py,sha256=S0FUTzr2lvEguCotyQTLaQKVAF6v-bLj935J6gK6_ok,5685
+par_scrape/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+par_scrape/scrape_data.py,sha256=Sjv0BGCpzpZHdBoWtUcWKozf-SWO1kOsli1qKoIf39g,8323
+par_scrape/utils.py,sha256=8oWPZ1zUyfOgl1dcXIMgLzodUNNGkRT6Wlhy-0_skBM,1230
+par_scrape/lib/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+par_scrape/lib/llm_config.py,sha256=Ic8kJqwqteBUK0s9uYbnS5YWofV8fBfVX7fMv_frWu8,6785
+par_scrape/lib/llm_providers.py,sha256=51dp7Q0Xxb4utG7PavRriaFte4icN2bPsK8ibn3LWjM,1325
+par_scrape/lib/output_utils.py,sha256=U7yfCVeUyerItrs63m9AEeZs15g6COmqYvpDZAr2DFg,1460
+par_scrape/lib/par_ollama_embeddings.py,sha256=R1WGlQKcxEw9z6AMX4zeHbfNAcARPdbfGRx3L71h2AE,2216
+par_scrape-0.4.1.dist-info/METADATA,sha256=99Rm7Vvw0p_6tu3xkJLG3F0Am6tn49GcaeKNMh4vs_M,9963
+par_scrape-0.4.1.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+par_scrape-0.4.1.dist-info/entry_points.txt,sha256=2tCGtiLIfK_SVJtO45aQ4OcYX3XHdYcfCAlWjKUCrRg,55
+par_scrape-0.4.1.dist-info/licenses/LICENSE,sha256=mM7wR5vvvL5avX6RGqhwhOGjxyojbty3pmJSEHOqeFM,1069
+par_scrape-0.4.1.dist-info/RECORD,,
