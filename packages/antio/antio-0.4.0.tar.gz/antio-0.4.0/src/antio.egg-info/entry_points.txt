@@ -1,0 +1,2 @@
+[console_scripts]
+antio = antio.commands.main:run
