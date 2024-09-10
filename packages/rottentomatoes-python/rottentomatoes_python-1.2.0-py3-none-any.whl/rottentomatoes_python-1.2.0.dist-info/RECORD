@@ -1,0 +1,16 @@
+api/__init__.py,sha256=MTWFDdpjby8Ckg9Na67haAnmHqaq0tBiScqdyHp-7js,1962
+api/models.py,sha256=HHc9cqZNdgpI4jaeDOImaLu9QOLx0BZJ8kxP4d5sLco,8686
+rottentomatoes/__init__.py,sha256=H6Vu_ABERk5zGMyuiMfyxkuAlqNwoegTSNe69ak_aVs,69
+rottentomatoes/exceptions.py,sha256=xcNuEB0OCF0dM69oaN3LHXwKt_58ZUvnE70LWhxyfV8,79
+rottentomatoes/movie.py,sha256=DAh25SnfqE9RSMaH0pAECQCtOwS9bK2uNeHtfBrtJl4,2582
+rottentomatoes/search.py,sha256=KTJORh_K6kCvkTfVknYHQCcDYEpn92sujGQgmOHd-A8,2813
+rottentomatoes/standalone.py,sha256=eMbKxPEi1bBSefWOLdgC9seemFQq3doDsjCtbomfq-E,11165
+rottentomatoes/utils.py,sha256=75qduVMYS4-6ch9JRSP4_8sxnWq06ca753eItLj1_tA,345
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/conftest.py,sha256=wb2BUHQp3G32_EmqLNfzcj92fD3B2C9RWPkcBdmdKo8,464
+tests/test_movie.py,sha256=8iKuc6Es3Mr6R_iDaYYhE7XHkhpZe7V9_SURBKr4vow,538
+tests/test_standalone.py,sha256=wpbLauO1jDulG-7p8H_cxV15LRTuqU-YgcM1GJEXNpw,3476
+rottentomatoes_python-1.2.0.dist-info/METADATA,sha256=9rA1VeLELFeGXilemncNijj0SHU5ISmC-z-ScI59nv8,9499
+rottentomatoes_python-1.2.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+rottentomatoes_python-1.2.0.dist-info/top_level.txt,sha256=lPKUF0JfyenJu2cCKsF-9uq_SI8JoY7qMK49ViDYS30,25
+rottentomatoes_python-1.2.0.dist-info/RECORD,,
