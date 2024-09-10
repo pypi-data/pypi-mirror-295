@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: aurora-torch
+Version: 0.0.8
+Summary: Weather Swarm - Pytorch
+Home-page: https://github.com/kyegomez/Aurora
+License: MIT
+Keywords: artificial intelligence,deep learning,optimizers,Prompt Engineering
+Author: Kye Gomez
+Author-email: kye@apac.ai
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Dist: einops
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: zetascale
+Project-URL: Documentation, https://github.com/kyegomez/Aurora
+Project-URL: Repository, https://github.com/kyegomez/Aurora
+Description-Content-Type: text/markdown
+
+[![Multi-Modality](agorabanner.png)](https://discord.gg/qUtxnK2NMf)
+
+# Aurora
+[![Join our Discord](https://img.shields.io/badge/Discord-Join%20our%20server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/agora-999382051935506503) [![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@kyegomez3242) [![Connect on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kye-g-38759a207/) [![Follow on X.com](https://img.shields.io/badge/X.com-Follow-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/kyegomezb)
+
+
+![Aurora](aurora.png)
+
+Community and Open Source Implementation of the paper: "Aurora: A Foundation Model of the Atmosphere" in PyTorch: [Paper link](https://arxiv.org/abs/2405.13063)
+
+
+## Install
+```bash
+pip3 install aurora-torch
+```
+
+
+## Example
+```python
+import torch
+from aurora_torch.main import SwinTransformerUNet3D
+from loguru import logger
+
+# Test with random input tensor of shape (B, D, H, W, C)
+B, D, H, W, C = 2, 16, 64, 64, 32
+model = SwinTransformerUNet3D(input_dim=C, output_dim=C)
+input_tensor = torch.rand(B, D, H, W, C)
+
+# Forward pass through the model
+output = model(input_tensor)
+logger.info(f"Output shape: {output.shape}")
+
+```
+
+
+# License
+MIT
+
+
+#  Bibtex
+```bibtex
+@misc{bodnar2024aurora,
+    title={Aurora: A Foundation Model of the Atmosphere}, 
+    author={Cristian Bodnar and Wessel P. Bruinsma and Ana Lucic and Megan Stanley and Johannes Brandstetter and Patrick Garvan and Maik Riechert and Jonathan Weyn and Haiyu Dong and Anna Vaughan and Jayesh K. Gupta and Kit Tambiratnam and Alex Archibald and Elizabeth Heider and Max Welling and Richard E. Turner and Paris Perdikaris},
+    year={2024},
+    eprint={2405.13063},
+    archivePrefix={arXiv},
+    primaryClass={physics.ao-ph}
+}
+```
+
+# References
+
+- [Blog Release: Introducing Aurora: The first large-scale foundation model of the atmosphere](https://www.microsoft.com/en-us/research/blog/introducing-aurora-the-first-large-scale-foundation-model-of-the-atmosphere/)
+
+- [Paper Link](https://arxiv.org/abs/2405.13063)
+
+<!-- - [Microsoft Twitter Thread]() -->
