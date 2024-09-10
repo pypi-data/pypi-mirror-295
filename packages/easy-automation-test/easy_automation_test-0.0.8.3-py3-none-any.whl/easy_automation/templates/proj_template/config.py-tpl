@@ -1,0 +1,16 @@
+
+DEBUG = False
+
+FLASK_SERVICE_HOST = "0.0.0.0"
+
+FLASK_SERVICE_PORT = "5000"
+
+# consul 配置
+FLASK_CONSUL_HOST = ""
+
+FLASK_CONSUL_PORT = ""
+
+FLASK_CONSUL_TAGS = []
+
+# rancher 上服务名，自行修改
+FLASK_SERVICE_NAME = '{{ project_name }}-test-agent'
