@@ -1,0 +1,16 @@
+argh
+tqdm
+Faker<5.0,>=4.0
+aiohttp<4,>=3.3
+asyncpg
+
+[:python_version < "3.11"]
+toml
+
+[dev]
+asyncpg-stubs
+mypy
+
+[extra]
+uvloop
+pysimdjson
