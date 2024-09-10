@@ -1,0 +1,16 @@
+text_to_action/__init__.py,sha256=ESIa-w3TPYesUMsFME9Quap4ZifnymYwei_8jy1iX2Q,262
+text_to_action/action_dispatcher.py,sha256=ABPfFUZ4go-ZOl6TGooWn2dfN5lTuRslZEDqxJsAQhY,6731
+text_to_action/action_embeddings/calculator.h5,sha256=ZUkcMy3DIWJUzaESCuIHAXCbGRCL4TedHQSxWKSssVM,1181192
+text_to_action/actions/calculator.py,sha256=N1FLtCNZqLfeGwkr4J5yYnAtOShbnrAmrFU2hUd5S00,11373
+text_to_action/actions/on_device.py,sha256=m63S_W8Yl_nAE38zBTbHGuu9HiQBoqnpkJWdG7mx_E0,9375
+text_to_action/create_actions.py,sha256=R9n4CC3ChJOnOfPZG1QCs_idPTSnGMgnP0Tsf6ILR_A,974
+text_to_action/entity_models.py,sha256=xjybzI-YWRgpbFde8387zOs6f-3ij01WcYCSCU5xHVc,7459
+text_to_action/extract_parameters.py,sha256=ClDl9HWcN08qnERQJCCZGX9uXWao_-h9pNy70ypKRao,6783
+text_to_action/llm_utils.py,sha256=UV_PmgbkykdDi_sgzM84oRr145S88sU6-D6d4eyraQg,12745
+text_to_action/types.py,sha256=EibGSoUukSTfWFGssECXIOBxrVLZ_sFjs8ULjlUhtHE,173
+text_to_action/utils.py,sha256=674QVLZB6IITttuVKDCTl-xoQfc1Vg_K0w3CcqJdCs4,6306
+text_to_action/vector_emb.py,sha256=H1dmf7tkZFMOVCxfeWBcnboPGpP02TnN3J8uJJWLLY0,10042
+text_to_action-1.0.4.dist-info/LICENSE,sha256=xibzvKuBxl6ryFiMZsUTgz6d_HtZJ7FAMCWjfNv1dCU,1095
+text_to_action-1.0.4.dist-info/METADATA,sha256=ChPEwqHMkFV3wrh_rRpaCo6A-0IcgIvvy90bs9D8P90,5934
+text_to_action-1.0.4.dist-info/WHEEL,sha256=d2fvjOD7sXsVzChCqf0Ty0JbHKBaLYwDbGQDwQTnJ50,88
+text_to_action-1.0.4.dist-info/RECORD,,
