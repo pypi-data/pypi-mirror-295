@@ -1,0 +1,22 @@
+setuptools
+requests>=2.6.1
+ruamel.yaml<0.19,>=0.16
+rdflib<7.1.0,>=4.2.2
+shellescape<3.9,>=3.4.1
+schema-salad<9,>=8.7
+prov==1.5.1
+mypy-extensions
+psutil>=5.6.6
+coloredlogs
+pydot<3,>=1.4.1
+argcomplete
+pyparsing!=3.0.2
+cwl-utils>=0.32
+spython>=0.3.0
+
+[:python_version < "3.9"]
+importlib_resources>=1.4
+
+[deps]
+galaxy-tool-util!=23.0.1,!=23.0.2,!=23.0.3,!=23.0.4,!=23.0.5,<24.2,>=22.1.2
+galaxy-util<24.2
