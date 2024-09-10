@@ -1,0 +1,46 @@
+[
+    {
+        "name": "add_contact",
+        "group": "contact",
+        "type": "backend",
+        "level": 1,
+        "parameters": [
+            {
+                "name": "name",
+                "type": "string",
+                "required": true,
+                "description": "The name of the contact to be added."
+            },
+            {
+                "name": "address",
+                "type": "string",
+                "required": true,
+                "description": "The address of the contact to be added."
+            }
+        ],
+        "description": "Add a new contact with a specified name and address."
+    },
+    {
+        "name": "show_all_contact",
+        "type": "contact",
+        "level": 2,
+        "parameters": [
+        ],
+        "description": "Retrieve all contacts, sorted by the specified order."
+    },
+    {
+        "name": "show_contact_by_name",
+        "group": "contact",
+        "type": "backend",
+        "level": 2,
+        "parameters": [
+            {
+                "name": "name",
+                "type": "string",
+                "required": true,
+                "description": "The name of the contact to retrieve."
+            }
+        ],
+        "description": "Retrieve a contact's details by their name."
+    }
+]
