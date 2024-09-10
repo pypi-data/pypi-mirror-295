@@ -1,0 +1,13 @@
+LICENSE.md
+README.md
+setup.py
+cli-intern/__init__.py
+cli-intern/beauty_terminal/__init__.py
+cli-intern/beauty_terminal/clean_terminal.py
+cli-intern/beauty_terminal/text_line_decorator.py
+cli-intern/organize_files/__init__.py
+cli-intern/organize_files/create_file_structure_data_analysis.py
+cli_intern.egg-info/PKG-INFO
+cli_intern.egg-info/SOURCES.txt
+cli_intern.egg-info/dependency_links.txt
+cli_intern.egg-info/top_level.txt

@@ -1,0 +1,140 @@
+# Utilities for CLI for Python Users 🐍 Utilidades para CLI para usuários Python (🇺🇸|🇧🇷)
+
+[![](https://img.shields.io/badge/feito%20com%20%E2%9D%A4%20por-jaac-cyan)](https://github.com/jonasaacampos)
+![](https://img.shields.io/badge/python-informational?style=flat&logo=python&logoColor=white&color=green)
+![](http://ForTheBadge.com/images/badges/built-by-developers.svg)
+
+Este repositório contém um conjunto de funções úteis para gerenciamento de terminal. Essas funções são projetadas para melhorar a experiência de desenvolvimento em Python, especialmente em projetos que envolvem manipulação de dados e análise. A documentação deste projeto está em português(🇧🇷) e inglês(🇺🇸).
+
+
+<details>
+<summary>🇺🇸 version</summary>
+
+This repository contains a set of useful functions for terminal management. These functions are designed to enhance the development experience in Python, especially in projects involving data manipulation and analysis.
+
+## 🚀 Description
+
+The included functions are:
+
+- **Beauty_terminal**:
+
+    - `clean_terminal()`: This function is responsible for clearing the terminal screen, using the appropriate command for the operating system in use. This helps keep the console clean and organized during script execution.
+
+    - `text_separator(decorator="-", n_chars=81)`: This function generates a separator line that can be customized by the user. The user can specify the character to be repeated and the total number of characters in the line, allowing for a clear and organized visual presentation of console outputs.
+
+- **Organize Files**:
+    - `create_file_structure_data_analysis()`: This function creates an organized directory structure to store data at different stages of processing. In addition to creating the necessary directories, it generates a text file that describes the created structure, facilitating the management and location of data in analysis projects.
+
+</details>
+
+<details>
+
+<summary>🇧🇷 version</summary>
+
+Este repositório contém um conjunto de funções úteis para gerenciamento de terminal. Essas funções são projetadas para melhorar a experiência de desenvolvimento em Python, especialmente em projetos que envolvem manipulação de dados e análise.
+
+## 🚀 Descrição
+
+As funções incluídas são:
+
+- Beauty_terminal:
+
+    - `clean_terminal()`: Esta função é responsável por limpar a tela do terminal, utilizando o comando apropriado para o sistema operacional em uso. Isso ajuda a manter o console limpo e organizado durante a execução de scripts.
+
+    - `text_separator(decorator="-", n_chars=81)`: Esta função gera uma linha de separação que pode ser personalizada pelo usuário. O usuário pode especificar o caractere a ser repetido e o número total de caracteres na linha, permitindo uma apresentação visual clara e organizada das saídas no console.
+
+- Organize Files:
+    - `create_file_structure_data_analysis()`: Esta função cria uma estrutura de diretórios organizada para armazenar dados em diferentes estágios de processamento. Além de criar os diretórios necessários, ela gera um arquivo de texto que descreve a estrutura criada, facilitando o gerenciamento e a localização dos dados em projetos de análise.
+
+</details>
+
+
+## 📦 Instalação
+
+`pip install cli-intern`
+
+### 🖥️ Exemplo de uso
+
+
+```python
+from cli_intern.beauty_terminal.clean_terminal import clean_terminal
+from cli_intern.beauty_terminal.text_line_decorator import text_separator
+from cli_intern.organize_files.create_file_structure_data_analysis import create_file_structure_data_analysis
+
+
+clean_terminal()
+print(text_separator())
+create_file_structure_data_analysis()
+```
+
+### 📋 Prerequisites
+
+    - Python 3.0 ou superior
+    - pip
+
+### 🔧 Project Structure
+
+
+```
+text
+cli_utils/
+├── beauty_terminal/
+│   ├── __init__.py
+│   └── clean_terminal.py
+│   └── text_line_decorator.py
+|
+├── organize_files/
+│   ├── __init__.py
+│   └── create_file_structure_data_analysis.py
+│
+├── __init__.py
+├── README.md
+└── setup.py
+```
+
+## 🛠️ How to Download the Source Code
+
+1. Clone the repository: `git clone https://github.com/jonasaacampos/cli_utils`
+2. Navigate to the project directory: `cd package-template`
+3. Install the dependencies: `pip install -r requirements.txt`
+
+## 🤝 Contributions
+Contributions are welcome! Feel free to open an issue or a pull request.
+
+## 📄 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for more details.
+
+## Check List to publish PyPi
+
+- [ ] Construir as distribuições: `python setup.py sdist bdist_wheel`
+- [ ] Fazer o upload para o TestPyPI: `python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
+- [ ] Testar o pacote: `pip install -i https://test.pypi.org/simple/ cli_intern`
+- [ ] Apagar as distribuições, **verificar o versionamento no `setup.py`**
+- [ ] Construir as distribuições
+- [ ] Verificar a documentação no `readme.md`
+- [ ] Fazer o upload para o PyPi: `python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*`
+
+
+## 📫 𝙷𝚘𝚠 𝚝𝚘 𝚛𝚎𝚊𝚌𝚑 𝚖𝚎:
+
+----
+
+
+<p align='center'>
+  <a href='https://www.dio.me/users/jonasaacampos'>
+    <img src='https://hermes.digitalinnovation.one/assets/diome/logo-full.svg' height="25"/>
+  </a>
+  <a href='https://github.com/jonasaacampos'>
+    <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'/>
+  </a>
+  <a href='https://www.linkedin.com/in/jonasaacampos/'>
+    <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'/>
+  </a>
+   <a href='https://dev.to/jonasaacampos'>
+    <img src='https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white'/>
+  </a>
+    <a href='https://www.buymeacoffee.com/jaac.dev'>
+    <img src='https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black'/>
+  </a>
+</p>
+
