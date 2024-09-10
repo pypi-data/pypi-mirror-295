@@ -1,0 +1,3 @@
+[console_scripts]
+bare=backup_reminder.cli:cli
+
