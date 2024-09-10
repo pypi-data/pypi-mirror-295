@@ -1,0 +1,43 @@
+LICENSE,sha256=MKGD0LxOAkUi-1AYdi2TmV9u16n_RUCUH8pGAVfqlCQ,1498
+copier.yml,sha256=btegoWCnidz2_mSg5gfFltUzKWuel5Oy-8XvlhJLul4,2403
+template/{{ project_name }}/.copier-answers.yml.jinja,sha256=_aOGj6IREaKKxHqb2ODEZMMqy9zlY4xrG__zVESF9eE,102
+template/{{ project_name }}/.gitignore,sha256=zoBNeyp1rTvfR_ZYqtdCcRHfp3f8dJDgdeterDZA0JI,1928
+template/{{ project_name }}/.pre-commit-config.yaml.jinja,sha256=6xTmuGrd6KnnHcHCMXsMaI-mg8FhaJb7TYQ415xjHqU,1740
+template/{{ project_name }}/.readthedocs.yml,sha256=iDw_VMN0xzLuy7B_2sbrzTDEMlQHluQO8bSNc912wgw,407
+template/{{ project_name }}/LICENSES-bundled.txt.jinja,sha256=hr4Ew44WjCZ9wvN5yMTJViC9NNU5yCAwSpRzPo3t3mc,353
+template/{{ project_name }}/README.md.jinja,sha256=ZYXv8nTpgTD8jG1O94z_LN2B0b_394w_mVBa8u-N6hU,1275
+template/{{ project_name }}/noxfile.py.jinja,sha256=nRorFVLbCymofMbMWvjEMuzf_0k8qRGPwObzFzOpGnE,2354
+template/{{ project_name }}/pyproject.toml.jinja,sha256=QM35V75kHESPEPsdxr1DN6eCk6ZpAxVRvuPBxpO9GSU,4936
+template/{{ project_name }}/{% if backend == 'setuptools' and vcs == false %}MANIFEST.in{% endif %}.jinja,sha256=TZGexHB5yiTbCzYibW3-E1QC_2I6do6AJJbjNLeSBUw,86
+template/{{ project_name }}/{% if ci == 'gitlab' %}.gitlab-ci.yml{% endif %}.jinja,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+template/{{ project_name }}/{% if license=='Apache' %}LICENSE{% endif %}.jinja,sha256=O3p3UbpwvTBQyFdStEofJziCbirxkM5zzLlQ4Pcr0ak,11363
+template/{{ project_name }}/{% if license=='BSD' %}LICENSE{% endif %}.jinja,sha256=CAQxFX2_JrPWzMf42NnHYNG4c_9vhhLokq6p_3J3EGw,1542
+template/{{ project_name }}/{% if license=='MIT' %}LICENSE{% endif %}.jinja,sha256=m1qKMEL9HxacqhmcKycF_Ps-SkAxQ0uVtdUBD-Qg1Uw,1072
+template/{{ project_name }}/{% if vcs == true %}.git_archival.txt{% endif %}.jinja,sha256=7hhQtCsXxyEnQcc8hjZYFcJAwBDbwynYLopeiYEn6m0,125
+template/{{ project_name }}/{% if vcs == true %}.gitattributes.txt{% endif %}.jinja,sha256=Z7crfEPjG8VFXkwKgsgNUYYoLqFLfGS2Wi3--tuQbmM,31
+template/{{ project_name }}/docs/conf.py.jinja,sha256=Ixtv2eOcoVsjq06e5_RLNx9ai8Cg5M4Tsc-Lt-cUKY4,6680
+template/{{ project_name }}/docs/index.md.jinja,sha256=qbHeJaFz936ZUx92Wb3UQ-58bMA_Rhf0QUeAIFMwB5c,205
+template/{{ project_name }}/docs/refs.bib,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+template/{{ project_name }}/docs/_static/.gitkeep,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+template/{{ project_name }}/src/{{project_slug}}/__init__.py.jinja,sha256=zuv-hcWpUdf0SB-aB4ZwcxGKwdVdgB7MftBJxIHIJfc,626
+template/{{ project_name }}/src/{{project_slug}}/entry_point.py.jinja,sha256=4pvyzRy4xl_l-d0O5ElbBqfd4eUq_ZMXy3xcC5Rb9Ok,5949
+template/{{ project_name }}/src/{{project_slug}}/{% if mypy %}py.typed{% endif %},sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+template/{{ project_name }}/src/{{project_slug}}/{% if vcs %}_version.py{% endif %},sha256=j5kbzfm6lOn8BzASXWjGIA1yT0OlHTWqlbyZ8Si_o0E,118
+template/{{ project_name }}/src/{{project_slug}}/models/input/BasicReservoir.py,sha256=cnVaDITgvzG4XMcWHrnji-2IVKEchOVEuJElpENmycs,8143
+template/{{ project_name }}/src/{{project_slug}}/models/input/SPM.py,sha256=MWv4qN5_blE7SgXrvbzJMZMHNRhl0ZGxUSy2tO9Zm78,9199
+template/{{ project_name }}/src/{{project_slug}}/parameters/input/Chen2020.py,sha256=kLdBpJJSzWZsWLIao-DOndWl5lXrfQM-Zc3oT9XZwo0,14458
+template/{{ project_name }}/tests/generated_project_tests/test_entry_points.py.jinja,sha256=DzczR8eNhi7eD-B20bNRLqeFIJoijHwAW9bKC1vfMCM,2199
+template/{{ project_name }}/tests/user_tests/test_package.py.jinja,sha256=PJaFLfldiks702UW2K27mBQyWVB1Em4nPP3IWaSzeQE,78
+template/{{ project_name }}/{% if ci == 'github' %}.github{% endif %}/dependabot.yml,sha256=doZckEKUGKh-QBufnrRqaUuryzQ2nfRdlBOhkvesNkE,259
+template/{{ project_name }}/{% if ci == 'github' %}.github{% endif %}/workflows/test_on_push.yml,sha256=zpoRJBglgytFA7CUn0_VxyeCpgSDCGyeHhyQUrUWiZQ,2279
+pybamm_cookie/__init__.py,sha256=CEILhtOEWgg1_1Ok7YIKPb8cyVh7y1e6N9sp25OvKlk,349
+pybamm_cookie/__main__.py,sha256=6iHnnGZvwLzPMrJGOTuAW-GlMl7M2Wq6KtRLtBCasdU,104
+pybamm_cookie/_version.py,sha256=SFCDdrYA67D1Je-jHgVVh4LOopkPvuV6NMtqSJ7Tfhg,411
+pybamm_cookie/cli.py,sha256=h4fqX-bf8VS_zlsMDZ3Cxp50hc8bD49qxEkYyiqRWUk,2013
+pybamm_cookie/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pybamm_cookie/version.pyi,sha256=j5kbzfm6lOn8BzASXWjGIA1yT0OlHTWqlbyZ8Si_o0E,118
+pybamm_cookie-0.1.2.dist-info/METADATA,sha256=EEuTloa-d_ehk0ECrEDJzieX0CC9sj-Rt3oR6kArrO0,12011
+pybamm_cookie-0.1.2.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+pybamm_cookie-0.1.2.dist-info/entry_points.txt,sha256=SL3PWhEYrZm3ORWq0y5QewIKsZeSe92VYVeyWdXad-c,134
+pybamm_cookie-0.1.2.dist-info/licenses/LICENSE,sha256=MKGD0LxOAkUi-1AYdi2TmV9u16n_RUCUH8pGAVfqlCQ,1498
+pybamm_cookie-0.1.2.dist-info/RECORD,,

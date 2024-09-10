@@ -1,0 +1,5 @@
+[console_scripts]
+pybamm-cookie = pybamm_cookie.cli:pybamm_cookie_cli
+
+[pipx.run]
+pybamm-cookie = pybamm_cookie.cli:pybamm_cookie_cli
