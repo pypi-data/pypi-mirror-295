@@ -1,0 +1,132 @@
+
+DEBMode {
+
+    layout: vertical;
+    background: $boost;
+
+    height: 15;
+    width: 30;
+    margin: 1;
+    padding: 0 1;
+
+    border: round grey;
+
+    border-title-color: grey;
+    border-title-style: bold;
+
+}
+
+DEBCommand {
+
+    layout: grid;
+    background: $boost;
+
+    grid-size: 2 3;
+    grid-rows: 1fr;
+    grid-columns: 1fr;
+    grid-gutter: 1 2;
+
+    height: 15;
+    width: 50;
+    margin: 1;
+    padding: 1 1;
+
+    border: round grey;
+
+    border-title-color: grey;
+    border-title-style: bold;
+
+}
+
+DEBCommand #btn-deb-immediate-on {
+    column-span: 2;
+    width: 1fr;
+    background: #d70000 50%;
+}
+
+DEBCommand Button {
+    background: $panel;
+    height: 5;
+    width: 1fr;
+}
+
+AEBState {
+
+    layout: grid;
+    grid-size: 8 5;
+    grid-rows: 2;
+    grid-gutter: 0;
+
+    background: $boost;
+
+    height: 15;
+    width: 84;
+    margin: 1;
+    padding: 0 1;
+
+    border: round grey;
+
+    border-title-color: grey;
+    border-title-style: bold;
+
+    OnOffLed {
+        text-align: center;
+        width: 1fr;
+        margin: 0;
+    }
+
+    Label {
+        text-align: center;
+        width: 1fr;
+    }
+}
+
+AEBCommand {
+
+    layout: vertical;
+    background: $boost;
+
+    height: 15;
+    width: 1fr;
+    margin: 1;
+    padding: 0 1;
+
+    border: round grey;
+
+    border-title-color: grey;
+    border-title-style: bold;
+
+    Label {
+        border: tall grey 50%;
+        text-align: center;
+        height: 3;
+        width: 15;
+        margin: 0;
+    }
+
+    Button {
+        height: 3;
+        margin: 0 1;
+        padding: 0;
+    }
+
+}
+
+OnOffLedWithLabel {
+    layout: horizontal;
+    height: 1;
+    padding: 0;
+    margin: 1;  # use this to set margin between the widgets
+}
+OnOffLedWithLabel Label {
+    padding: 0;
+    width: 20;
+    text-align: left;
+    dock: left
+}
+OnOffLedWithLabel OnOffLed {
+    padding: 0;
+    width: 2;
+    text-align: center;
+    dock: right
+}
