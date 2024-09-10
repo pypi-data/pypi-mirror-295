@@ -1,0 +1,12 @@
+pyproject.toml
+aw_service_grpc_protos.egg-info/PKG-INFO
+aw_service_grpc_protos.egg-info/SOURCES.txt
+aw_service_grpc_protos.egg-info/dependency_links.txt
+aw_service_grpc_protos.egg-info/top_level.txt
+protos/__init__.py
+protos/auth/__init__.py
+protos/auth/auth_pb2.py
+protos/auth/auth_pb2_grpc.py
+protos/user/__init__.py
+protos/user/user_pb2.py
+protos/user/user_pb2_grpc.py
