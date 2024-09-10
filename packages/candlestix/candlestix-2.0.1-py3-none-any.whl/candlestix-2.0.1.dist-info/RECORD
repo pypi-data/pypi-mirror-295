@@ -1,0 +1,13 @@
+candlestix/__init__.py,sha256=HSsu2s05heKUaDUSE3Iaj7p3KZSyQ1YjrhNomLITySg,4849
+candlestix/candle_loader.py,sha256=CPp3OX2pgRdFu7sQk4jTpT0u8oclZQzR3xCWIdQIO_k,6561
+candlestix/candleconf.py,sha256=mmkPVeOcAYFHirdA0zBBHgsSznQR0Yf7jvEOAToZfLI,2344
+candlestix/instrument.py,sha256=S-rZxiro9nTyXGBfoki_NRT3lm4mYYe-pKwDuxgjqwc,738
+candlestix/time.py,sha256=mWOopnN98ygB0Qtj7LWCjdGIuRXOiaty_osEG18uD-c,2740
+candlestix/upstox.py,sha256=FW41Me2Q4NBlv2UKBdqGRjl6wMgce9JjdCcy_sdmDrY,7193
+candlestix/tech/__init__.py,sha256=TZWZ8rDdIpdTwYIXRmja5yBwiFfpy5qt1ztSlQpcrrg,244
+candlestix/tech/level_detector.py,sha256=NAH7-I1MdV5nQKKmN-CZOEv8KMG6hjgddy-OMKgOWmI,5347
+candlestix/tech/trend.py,sha256=BzY5lTPIUz_hfmJRmkDtaRB93OpVxYvX37NSMFv6FvE,3455
+candlestix-2.0.1.dist-info/METADATA,sha256=aXghmr7kAsyBMbRC9bwgMw5jlFugo7BL_jMHIimvfn8,118
+candlestix-2.0.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+candlestix-2.0.1.dist-info/top_level.txt,sha256=9s8FD4LkKtnGIw-s1Hceqg9DLC9fbVfPOBkXveSmHa4,11
+candlestix-2.0.1.dist-info/RECORD,,
