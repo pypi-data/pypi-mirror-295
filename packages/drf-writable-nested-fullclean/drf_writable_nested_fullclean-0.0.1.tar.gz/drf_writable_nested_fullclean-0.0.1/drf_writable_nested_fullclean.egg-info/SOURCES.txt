@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+drf_writable_nested_fullclean/__init__.py
+drf_writable_nested_fullclean/mixins.py
+drf_writable_nested_fullclean/serializers.py
+drf_writable_nested_fullclean/utils.py
+drf_writable_nested_fullclean.egg-info/PKG-INFO
+drf_writable_nested_fullclean.egg-info/SOURCES.txt
+drf_writable_nested_fullclean.egg-info/dependency_links.txt
+drf_writable_nested_fullclean.egg-info/requires.txt
+drf_writable_nested_fullclean.egg-info/top_level.txt
