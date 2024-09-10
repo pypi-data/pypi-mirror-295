@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: signalfixer
+Version: 0.1.1
+Summary: Timestamp treatment, time-shift finder and more.
+Home-page: https://github.com/BernatNicolau/signalfixer
+Author: Bernat Nicolau
+Author-email: bernatnicolaujorda@gmail.com
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+
+# signalfixer
+Signal treatment
