@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: Yizhi_0404_project
+Version: 0.1.0
+Home-page: https://github.com/maki2131/ML_OPS.git
+Author: Cloud
+Author-email: 2001maki0419@gmail.com
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Provides-Extra: testing
+Requires-Dist: pytest>=7.1.3; extra == "testing"
+Requires-Dist: mypy>=0.971; extra == "testing"
+Requires-Dist: flake8>=5.0.4; extra == "testing"
+Requires-Dist: tox>=3.25.1; extra == "testing"
+Requires-Dist: black>=22.8.0; extra == "testing"
+
+Readme!!
