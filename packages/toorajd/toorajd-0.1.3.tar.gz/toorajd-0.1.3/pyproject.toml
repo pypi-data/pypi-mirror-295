@@ -1,0 +1,19 @@
+[project]
+name = "toorajd"
+version = "0.1.3"
+description = "A package and CLI for plotting Tooraj approved plots"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy<=1.26",
+    "seaborn>=0.13.2",
+    "polars>=1.6.0",
+    "pandas>=2.0",
+]
+
+[project.scripts]
+tooplot = "toorajd:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

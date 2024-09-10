@@ -1,0 +1,9 @@
+Metadata-Version: 2.3
+Name: toorajd
+Version: 0.1.3
+Summary: A package and CLI for plotting Tooraj approved plots
+Requires-Python: >=3.10
+Requires-Dist: numpy<=1.26
+Requires-Dist: pandas>=2.0
+Requires-Dist: polars>=1.6.0
+Requires-Dist: seaborn>=0.13.2
