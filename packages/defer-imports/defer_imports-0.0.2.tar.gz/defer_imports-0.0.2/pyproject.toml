@@ -1,0 +1,216 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "defer-imports"
+description = "Lazy imports with regular syntax in pure Python."
+requires-python = ">=3.9"
+license = "MIT"
+readme = { file = "README.rst", content-type = "text/x-rst" }
+authors = [{ name = "Sachaa-Thanasius" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+
+[tool.hatch.version]
+path = "src/defer_imports/_core.py"
+
+[project.optional-dependencies]
+benchmark = ["slothy"]
+test = ["pytest", "pytest-rerunfailures"]
+cov = ["defer-imports[test]", "coverage", "covdefaults"]
+dev = ["defer-imports[benchmark,cov]", "pre-commit"]
+
+[project.urls]
+Documentation = "https://github.com/Sachaa-Thanasius/defer-imports#readme"
+Issues = "https://github.com/Sachaa-Thanasius/defer-imports/issues"
+Source = "https://github.com/Sachaa-Thanasius/defer-imports"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/defer_imports"]
+
+
+# -------- Benchmark config
+
+[tool.hatch.envs.benchmark]
+features = ["benchmark"]
+
+[[tool.hatch.envs.benchmark.matrix]]
+python = ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+[tool.hatch.envs.benchmark.scripts]
+bench = "python -B -m benchmark.bench_samples"
+
+
+# -------- Test config
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.9", "3.10", "3.11", "3.12", "3.13", "pypy3.9", "pypy3.10"]
+
+[tool.hatch.envs.hatch-test]
+extra-dependencies = ["covdefaults"]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+addopts = [
+    # "--import-mode=importlib", # This breaks a few pytest features currently.
+    "--strict-markers",
+    "--strict-config",
+]
+
+[tool.coverage.paths]
+defer_imports = ["src"]
+
+[tool.coverage.run]
+plugins = ["covdefaults"]
+source = ["defer_imports", "tests"]
+omit = ["src/defer_imports/_typing.py", "src/defer_imports/console.py"]
+
+[tool.coverage.report]
+fail_under = 90
+
+
+# -------- Linter config
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "F",
+    "E",
+    "I",
+    "UP",
+    "YTT",
+    "ANN",
+    "S",
+    "BLE",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "DTZ",
+    "EM",
+    "ISC",
+    "G",
+    "INP",
+    "PIE",
+    "T20",
+    "PYI",
+    "PT",
+    "RSE",
+    "RET",
+    "SIM",
+    "TID",
+    "PTH",
+    "ERA",
+    "PL",
+    "TRY",
+    "RUF",
+]
+extend-ignore = [
+    # ---- General ignores
+    "S101",    # Use of assert here is a known quantity for typing cases. All uses should be safe to optimize out.
+    "SIM105",  # Suppressable exception. contextlib.suppress is a stylistic choice with overhead.
+    "C90",     # McCabe complexity.
+    "ANN101",  # Type of Self for self is usually implicit and/or known by the type-checker.
+    "ANN102",  # Type of type[Self] for cls is usually implicit and/or known by the type-checker.
+    "ANN204",  # Special method return types are usually implicit and/or known by type checker.
+    "ANN401",  # Any is needed for some parameters.
+    "UP038",   # isinstance performs better with tuples than unions.
+    "PT001",   # pytest recommends against empty parentheses on pytest.fixture.
+    "PD011",   # Erroneous issue that triggers for any .values attribute access at all.
+    "PLR2004", # I'll determine what counts as a magic number.
+    "RUF002",  # I'll determine what counts as an ambiguous character.
+
+    # ---- Recommended by Ruff when using Ruff format
+    "E111",
+    "E114",
+    "E117",
+    "COM812",
+    "COM819",
+    "E501",
+    "ISC001",
+    "ISC002",
+
+    # ---- Project-specific rules
+    # -- Readability
+    "RET505", # Returns in both parts of if-else are fine.
+    "SIM108", # if-else instead of a ternary is fine. 
+]
+unfixable = [
+    "ERA", # Prevent unlikely erroneous deletion.
+]
+typing-modules = ["defer_imports._typing"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+combine-as-imports = true
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.ruff.lint.per-file-ignores]
+# ---- Package code
+"**/__init__.py" = [
+    # Ruff doesn't understand wildcard imports that export names from a package.
+    "F403",
+    "F405",
+]
+"src/defer_imports/_core.py" = [
+    "A002", # Allow some shadowing of builtins by parameter names.
+]
+"src/defer_imports/_typing.py" = [
+    "F822",    # __all__ has names that are only provided by module-level __getattr__.
+    "PLW0603", # "global" is used to update variables at global scope.
+]
+
+# ---- Test code
+"tests/**/*.py" = [
+    "T201",   # Printing is fine.
+    "T203",   # Pretty printing is fine.
+    "ANN201", # Don't need return annotations for tests.
+    "S102",   # exec is used to test for NameError within a module's namespace.
+]
+"tests/stdlib_imports.py" = [
+    "F401",   # Unused imports are fine; we're testing import success.
+    "ERA001", # Plenty of imports are commented out with explanations next to them.
+]
+"benchmark/**/*.py" = [
+    "T201",   # Printing is fine.
+    "F401",   # Unused imports are fine; we're testing import speed.
+    "ERA001", # Allow commented code.
+]
+
+
+# -------- Type-checker config
+
+[tool.pyright]
+include = ["src/defer_imports", "tests"]
+pythonVersion = "3.9"
+pythonPlatform = "All"
+typeCheckingMode = "strict"
+
+reportUnnecessaryIsInstance = "information"
+reportCallInDefaultInitializer = "warning"
+reportImportCycles = "information"
+reportPropertyTypeMismatch = "error"
+reportShadowedImports = "error"
+reportUnnecessaryTypeIgnoreComment = "warning"
