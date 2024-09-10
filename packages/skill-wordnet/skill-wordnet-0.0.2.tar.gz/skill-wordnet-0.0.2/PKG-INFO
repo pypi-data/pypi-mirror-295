@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: skill-wordnet
+Version: 0.0.2
+Summary: ovos Wordnet skill plugin
+Home-page: https://github.com/OpenVoiceOS/skill-ovos-wordnet
+Author: JarbasAi
+Author-email: jarbasai@mailfence.com
+License: Apache-2.0
+Description: # Wordnet Skill
+        
+        Use Wordnet to answer dictionary like questions
+        
+        ## About
+        
+        Uses [Wordnet](https://wordnet.princeton.edu/) to provide information. 
+        
+        ## Examples
+        
+        * "what is the definition of ..."
+        * "what is the antonym of ..."
+        
+        ## Category
+        **Information**
+        
+        ## Tags
+        #Wordnet
+        #query
+        
+Keywords: ovos skill plugin
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
