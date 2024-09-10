@@ -1,0 +1,21 @@
+Index: googlesearch/search.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import asyncio\r\n\r\nimport httpx\r\nfrom bs4 import BeautifulSoup\r\nfrom googlesearch.config.config import base_url, user_agent\r\nfrom googlesearch.models import SearchResult\r\nfrom googlesearch.utils import deduplicate, clean_description\r\n\r\n\r\nasync def _req(client, term, num_results, lang, timeout, safe, **kwargs):\r\n    url = base_url\r\n    headers = {\"User-Agent\": user_agent}\r\n    params = {\r\n        \"q\": term,\r\n        \"num\": num_results,\r\n        \"hl\": lang,\r\n        \"start\": 0,\r\n        \"safe\": safe,\r\n        \"biw\": 1692,  # 指定窗口高度，宽度\r\n        \"bih\": 856,\r\n        **{k: v for k, v in kwargs.items()}\r\n    }\r\n    # print(f\"请求 URL: {url}\")\r\n    # print(f\"请求参数: {params}\")\r\n    resp = await client.get(url, headers=headers, params=params, timeout=timeout)\r\n    resp.raise_for_status()\r\n    return resp.text\r\n\r\n\r\nasync def parse_results(resp_text, deduplicate_results):\r\n    results = []\r\n    soup = BeautifulSoup(resp_text, \"html.parser\")\r\n\r\n    result_block = soup.find_all(\"div\", attrs={\"class\": \"g\"})\r\n    if not result_block:\r\n        result_block = soup.find_all(\"div\", attrs={\"class\": \"tF2Cxc\"})\r\n\r\n    for result in result_block:\r\n        link = result.find(\"a\", href=True)\r\n        title = result.find(\"h3\")\r\n\r\n        # 获取描述框\r\n        description_box = (\r\n                result.find(\"div\", {\"style\": \"-webkit-line-clamp:2\"}) or\r\n                result.find(\"span\", {\"class\": \"aCOpRe\"}) or\r\n                result.find(\"span\", {\"class\": \"ITZIwc\"})  # 视频\r\n        )\r\n\r\n        # 获取时间字符串\r\n        time_span = result.find(\"span\", attrs={\"class\": \"LEwnzc Sqrs4e\"})\r\n        if time_span:\r\n            time_string = time_span.find(\"span\").text\r\n        else:\r\n            alternative_time_span = result.find(\"span\", attrs={\"class\": \"gqF9jc\"})\r\n            if alternative_time_span:\r\n                time_string = (alternative_time_span.find_all(\"span\"))[1].text\r\n            else:\r\n                time_string = \"未知时间\"  # 或者其他默认值\r\n\r\n        # 获取描述文本\r\n        description = None\r\n        if description_box:\r\n            description = clean_description(description_box.text)\r\n\r\n        # 添加结果到列表\r\n        if link and title and description:\r\n            results.append(SearchResult(link[\"href\"], title.text, description, time_string))\r\n\r\n    if deduplicate_results:\r\n        results = deduplicate(results)\r\n\r\n    return results\r\n\r\n\r\nasync def search(term, num=20, lang=\"en\", proxies=None, sleep_interval=0, timeout=5, safe=\"active\",\r\n                 deduplicate_results=False, **kwargs):\r\n    escaped_term = term.replace(' site:', '+site:')\r\n    client_options = {}\r\n    if proxies:\r\n        client_options['proxies'] = proxies\r\n    # client_options['verify'] = False\r\n    async with httpx.AsyncClient(**client_options) as client:\r\n        resp_text = await _req(client, escaped_term, num, lang, timeout, safe, **kwargs)\r\n        if not resp_text:\r\n            raise ValueError(\"页面无响应\")\r\n        results = await parse_results(resp_text, deduplicate_results)\r\n        await asyncio.sleep(sleep_interval)\r\n        return results\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/googlesearch/search.py b/googlesearch/search.py
+--- a/googlesearch/search.py	(revision af7c83fd33934a03d6e08b09fd524d3055900fd2)
++++ b/googlesearch/search.py	(date 1723796616000)
+@@ -38,7 +38,9 @@
+     for result in result_block:
+         link = result.find("a", href=True)
+         title = result.find("h3")
+-
++        if not result.find("em"):
++            # 精确匹配
++            continue
+         # 获取描述框
+         description_box = (
+                 result.find("div", {"style": "-webkit-line-clamp:2"}) or
