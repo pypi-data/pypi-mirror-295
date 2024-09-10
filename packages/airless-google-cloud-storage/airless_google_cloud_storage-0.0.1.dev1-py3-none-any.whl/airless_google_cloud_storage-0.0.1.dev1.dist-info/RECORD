@@ -1,0 +1,11 @@
+airless/google/cloud/storage/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/storage/hook/__init__.py,sha256=Hx6trO_ylfltiPxsMjSg71PFSp_bFNU6tLLdVznkHkM,47
+airless/google/cloud/storage/hook/storage.py,sha256=TeOslg7g2KbSuoUfZYjB9mzmU1hpxNARmPl1CBdkKx0,9749
+airless/google/cloud/storage/operator/__init__.py,sha256=ND2iDiJu-JWLnWk7NneBWt1phamfM3FybcUtM6VXaFw,259
+airless/google/cloud/storage/operator/file.py,sha256=LLm5XQ0Re2nhEMVeTLI_mfsk1wTD7lEFQMAymCrLriA,2534
+airless/google/cloud/storage/operator/ftp.py,sha256=NVwS5e2XIqmv0Cpp9J5jSBijr8fcsA6EStbiBoL9U0I,666
+airless/google/cloud/storage/operator/storage.py,sha256=C-bbbJkUAF80x7YhXJQdKcG61S2bpPK0lAd7DN1LM6Q,11631
+airless_google_cloud_storage-0.0.1.dev1.dist-info/METADATA,sha256=k6UdSbAic49gxNLcNVHKSuFSKQl774O8P-UQ-k0XYVQ,736
+airless_google_cloud_storage-0.0.1.dev1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+airless_google_cloud_storage-0.0.1.dev1.dist-info/top_level.txt,sha256=vPLzRICE7VNGvU-zceoZ1N7H2TkerQXR475zjg_xPzU,8
+airless_google_cloud_storage-0.0.1.dev1.dist-info/RECORD,,
