@@ -1,0 +1,2 @@
+[console_scripts]
+memos = memos.__init__:cli
