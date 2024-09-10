@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/FluroView/__init__.py
+src/FluroView/bioviz_ImagePanel.py
+src/FluroView/bioviz_multichannel.py
+src/FluroView.egg-info/PKG-INFO
+src/FluroView.egg-info/SOURCES.txt
+src/FluroView.egg-info/dependency_links.txt
+src/FluroView.egg-info/requires.txt
+src/FluroView.egg-info/top_level.txt
+tests/test_imagepanel.py
+tests/test_multichannel_image.py
