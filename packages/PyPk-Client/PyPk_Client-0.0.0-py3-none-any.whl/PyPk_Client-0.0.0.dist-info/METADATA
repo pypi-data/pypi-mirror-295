@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: PyPk_Client
+Version: 0.0.0
+Summary: NOTICE:You'l need the the PyPK_Server Module To use this
+Description-Content-Type: text/markdown
+Requires-Dist: flask-socketio
+Requires-Dist: ttkbootstrap
+Requires-Dist: websocket
+
+<blockquote align="center"><i><strong>NOTE:</i>This is Provided by Hassan Aldarkazali</strong></blockquote>
+<br>
+<h1 align="center">PYPK CLIENT<h3 align="center">â€œWe are clients digitally and physicallyâ€ž</h3></h1>
+<p>So what this is the client for project PyPk(Python Pepole Keeper)</p>
+
+* Commands
+
+<p>Run it with the commmand:<code>python -m PyPk_Client</code></p>
+
+# CHANGELOG
+> v.0.0.1.dev
+
+Initial release<br>
+Added:
+
+* <h6>__main__.py</h6>
