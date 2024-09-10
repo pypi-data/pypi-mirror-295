@@ -1,0 +1,126 @@
+Metadata-Version: 2.1
+Name: magic_stubs
+Version: 0.2.3
+Summary: Auto implement function stubs
+Home-page: https://github.com/jackpeck/magic-stubs
+Author: jackpeck
+License: MIT
+Project-URL: Bug Tracker, https://github.com/jackpeck/magic-stubs/issues
+Platform: unix
+Platform: linux
+Platform: osx
+Platform: cygwin
+Platform: win32
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: astor
+Requires-Dist: appdirs
+Requires-Dist: openai
+Requires-Dist: magic_codec
+
+# Magic Stubs
+
+**Magic Stubs** implements your functions for you.
+
+## Demo
+
+https://github.com/user-attachments/assets/f4d0fb4e-3b24-41d6-87ee-ff5931341219
+
+## Technology
+
+MagicStubs.py uses a combination of abusing source code encodings, LLM calls, and AST rewriting so you don't have to bother writing code.
+
+## Installation
+
+```sh
+pip install magic-stubs
+export OPENAI_API_KEY=...
+```
+
+Or see the [live demo](https://colab.research.google.com/drive/1TMcjWHtrFfROowxw9lPoWNjQXejEHlpb) on Google Colab.
+
+## Usage
+
+Add `# coding: magic_stubs` to the top of your python file. Then execute as normal. Magic Stubs will automatically fill in your function definitions where needed.
+
+hello_world.py:
+
+```python
+# coding: magic_stubs
+
+def print_hello_world():
+    pass
+
+print_hello_world()
+```
+
+```sh
+$ python3 hello_world.py 
+Hello, World!
+```
+
+## Examples
+
+### FizzBuzz
+
+```python
+$ cat examples/fizzbuzz.py 
+# coding: magic_stubs
+def fizzbuzz(n):
+    pass
+
+print(' '.join([fizzbuzz(n) for n in range (1, 21)]))
+```
+
+```sh
+$ python3 examples/fizzbuzz.py 
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz
+```
+
+### Mandelbrot Set
+
+```python
+$ cat examples/mandelbrot.py 
+# coding: magic_stubs
+def get_string_representation_of_mandelbrot_set():
+    pass
+
+print(get_string_representation_of_mandelbrot_set())
+```
+
+```sh
+$ python3 examples/mandelbrot.py 
+       
+                                                                                
+                                                 ***                            
+                                               ******                           
+                                                *****                           
+                                       **   *************                       
+                                        ***********************                 
+                                    * ************************                  
+                                    ***************************                 
+                                    ****************************                
+                       ********    ******************************               
+                     ************ ******************************                
+                     ******************************************                 
+*************************************************************                   
+                     ******************************************                 
+                     ************ ******************************                
+                       ********    ******************************               
+                                    ****************************                
+                                    ***************************                 
+                                    * ************************                  
+                                        ***********************                 
+                                       **   *************                       
+                                                *****                           
+                                               ******                           
+                                                 ***                            
+        
+```
+
+## Attribution
+
+Inspired by and using Tsche's [magic_codec](https://github.com/Tsche/magic_codec/).
