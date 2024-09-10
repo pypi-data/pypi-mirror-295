@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/MySQL_Project.egg-info/PKG-INFO
+src/MySQL_Project.egg-info/SOURCES.txt
+src/MySQL_Project.egg-info/dependency_links.txt
+src/MySQL_Project.egg-info/requires.txt
+src/MySQL_Project.egg-info/top_level.txt
+src/MySQL_connect/MySQL_crud.py
+src/MySQL_connect/__init__.py
