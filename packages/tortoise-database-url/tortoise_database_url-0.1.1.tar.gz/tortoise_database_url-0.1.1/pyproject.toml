@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "tortoise-database-url"
+version = "0.1.1"
+description = "Make it easy to generate database url."
+homepage = "https://github.com/waketzheng/database-url"
+repository = "https://github.com/waketzheng/database-url.git"
+authors = ["Waket Zheng <waketzheng@gmail.com>"]
+readme = "README.md"
+keywords = ["database-url", "database_url", "tortoise-orm"]
+packages = [
+    { include = "database_url" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+fast-dev-cli = {version=">=0.9.0", python=">=3.10"}
+bandit = "^1.7.9"
+coverage = ">=7"
+pytest = ">=8"
+ruff = ">=0.6"
+mypy = ">=1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
