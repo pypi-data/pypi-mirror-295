@@ -1,0 +1,1 @@
+from docxreviews2txt.docxreviews2txt import docxreviews_cli
