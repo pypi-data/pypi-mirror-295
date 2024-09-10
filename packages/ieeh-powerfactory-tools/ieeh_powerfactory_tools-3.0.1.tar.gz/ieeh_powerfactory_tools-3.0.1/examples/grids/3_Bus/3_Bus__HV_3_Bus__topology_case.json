@@ -1,0 +1,21 @@
+{
+  "elements": [],
+  "meta": {
+    "case": "3_Bus",
+    "creator": "powerfactory-tools @ version 3.0.0",
+    "date": "2024-09-03",
+    "grid": "HV_3_Bus",
+    "id": "ade4fb63-9722-4b56-929b-45e08f70de02",
+    "optional_data": [
+      {
+        "description": "The version of PowerFactory used for export.",
+        "name": "PowerFactoryVersion",
+        "value": "PowerFactory 2024 || SP2"
+      }
+    ],
+    "project": "PowerFactory-Tools",
+    "sign_convention": "PASSIVE",
+    "version": "2.3.1"
+  },
+  "optional_data": null
+}
