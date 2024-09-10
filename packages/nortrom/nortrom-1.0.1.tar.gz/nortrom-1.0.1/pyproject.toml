@@ -1,0 +1,90 @@
+[build-system]
+#######################
+# Python build system #
+#######################
+# The build system to use when installing this package.
+# Used when installing the package with `pip install .`.
+# See also: https://www.python.org/dev/peps/pep-0517/
+
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+
+[project]
+###################
+# Project settings #
+###################
+
+# The name of your project.
+# Ensure that it is available on PyPI: https://pypi.org/
+name = "nortrom"
+
+# The version of the package.
+version = "1.0.1"
+
+# A brief, one-sentence description about your project.
+description = "Discord bot to mute/deafen people"
+
+# A list of the authors of the project.
+authors = [
+    {name = "Stefano Pigozzi", email = "me@steffo.eu"},
+]
+
+# A list of maintainers of the project.
+# Often, it is the same as the authors list.
+maintainers = [
+    {name = "Stefano Pigozzi", email = "me@steffo.eu"},
+]
+
+# The license of the package.
+# Uses SPDX format: https://spdx.org/licenses/
+license = "EUPL-1.2"
+
+# The README file.
+readme = "README.md"
+
+# Up to five keywords related to your project.
+# See also: https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#keywords
+keywords = [
+	"discord",
+	"voice",
+	"mute",
+	"deafen",
+]
+
+# Any number of trove classifiers that apply to your project.
+# See the list at: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.9"
+]
+
+# The minimum version of Python required to run the project.
+requires-python = ">=3.9"
+
+# A list of dependencies of the project, in pip format.
+dependencies = [
+    "discord-py~=1.6",
+    "discord-py-slash-command~=1.1",
+]
+
+
+[project.urls]
+##################
+# URLs           #
+##################
+# Project URLs in a name → link mapping.
+
+"Repository" = "https://forge.steffo.eu/steffo/nortrom/"
+
+
+[project.scripts]
+#####################
+# Scripts           #
+#####################
+# Uv can create "binaries" to add to the PATH when the project is installed.
+# They are specified in the form of a mapping with the command name as key and the function to execute as value.
+
+"nortrom" = "nortrom.__main__:main"
