@@ -1,0 +1,3 @@
+include fastapi_easystart/app/commands/*.ico
+include fastapi_easystart/app/commands/*.txt
+include LICENSE

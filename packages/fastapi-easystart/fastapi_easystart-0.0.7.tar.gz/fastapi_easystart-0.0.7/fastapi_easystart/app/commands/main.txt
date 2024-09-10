@@ -1,0 +1,44 @@
+from contextlib import asynccontextmanager
+from functools import lru_cache
+
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+from app.config import settings
+from app.core import set_exception_handlers, set_app_middleware
+from app.routes import v1_router
+
+
+@lru_cache
+def get_settings():
+    return settings
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print(f"FastAPI running on: {settings.fastapi_env} environment")
+
+    # Include the router here
+    app.include_router(v1_router, prefix="/api")
+
+    yield
+
+
+app = FastAPI(
+    debug=settings.debug,
+    title=settings.app.name,
+    description=settings.app.description,
+    version=settings.app.version,
+    summary=settings.app.summary,
+    terms_of_service=settings.app.terms_of_service_url,
+    contact={"name": settings.app.contact.name, "email": settings.app.contact.email, "url": settings.app.contact.url, },
+    lifespan=lifespan,
+)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# setup app middleware
+set_app_middleware(app)
+
+# setup exception handlers
+set_exception_handlers(app)
