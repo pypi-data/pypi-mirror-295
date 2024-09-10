@@ -1,0 +1,36 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+
+[tool.poetry]
+name = "ls_spa"
+version = "1.1.2" # placeholder since we are using dynamic versioning
+description = "A package for efficient Shapley performance attribution for least-squares problems"
+authors = [
+    "Logan Bell <20belllemail@gmail.com>",
+    "Nikhil Devanathan <nikhil.devanathan@gmail.com>"
+]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^2.1.0"
+scipy = "^1.14.1"
+pandas = "^2.2.2"
+pre-commit = "^3.8.0"
+pytest = "^8.3.2"
+
+[tool.ruff]
+line-length = 120
+ignore = [
+    "E722", # Do not use bare except
+    "F403", # Using * import
+]
+
+[tool.black]
+line-length = 88
