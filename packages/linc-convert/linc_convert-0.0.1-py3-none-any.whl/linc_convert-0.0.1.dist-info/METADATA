@@ -1,0 +1,24 @@
+Metadata-Version: 2.3
+Name: linc_convert
+Version: 0.0.1
+Summary: Linc Convert Scripts
+Project-URL: Homepage, https://github.com/lincbrain/linc-convert
+Project-URL: Issues, https://github.com/lincbrain/linc-convert/issues
+Author-email: Yaël Balbastre <y.balbastre@ucl.ac.uk>, Michael Schutzman <michaelschutzman@gmail.com>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Requires-Dist: glymur
+Requires-Dist: nibabel
+Requires-Dist: numcodecs
+Requires-Dist: numpy
+Requires-Dist: tifffile
+Requires-Dist: typer
+Requires-Dist: zarr
+Description-Content-Type: text/markdown
+
+# linc-convert
+Data conversion scripts for the LINC project
