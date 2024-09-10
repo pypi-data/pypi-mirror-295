@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: swytchit
+Version: 0.0.2
+Summary: Context switching made easy for shell geeks
+License: MIT
+Author: Steampunk Wizard
+Author-email: swytchit@wizlib.ca
+Requires-Python: >=3.11,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: wizlib (>=3.1.4,<4.0.0)
+Description-Content-Type: text/markdown
+
+# Swytchit Tool
+
+Context switching made easy for shell geeks
