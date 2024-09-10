@@ -1,0 +1,23 @@
+# pinned dependencies to reproduce an entire development environment to use PyNWB with ROS3 support
+name: ros3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.12
+  - h5py==3.11.0
+  - hdmf==3.14.3
+  - matplotlib==3.8.4
+  - numpy==2.1.1
+  - pandas==2.2.2
+  - python-dateutil==2.9.0
+  - setuptools
+  - pytest==7.4.3  # pin to pytest < 8 because of incompatibilities to be addressed
+  - fsspec==2024.6.0
+  - requests==2.32.3
+  - aiohttp==3.9.5
+  - pip
+  - pip:
+    - remfile==0.1.13
+    - dandi==0.62.1  # NOTE: dandi is not available on conda for osx-arm64
+
