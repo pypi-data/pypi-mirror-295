@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "ai-runtime"
+version = "0.1.0.rc5"
+description = ""
+authors = ["Runtime Authors <brosoul@126.com>", "Runtime Authors <brosoul@163.com>"]
+readme = "README.md"
+license = "Apache-2.0"
+repository = "https://github.com/brosoul/ai_runtime/tree/main/ai_runtime"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+packages = [
+    { include = "ai_runtime" },
+]
+exclude = ["test"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+fastapi = "^0.114.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.11.1"
+ruff = "^0.6.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
