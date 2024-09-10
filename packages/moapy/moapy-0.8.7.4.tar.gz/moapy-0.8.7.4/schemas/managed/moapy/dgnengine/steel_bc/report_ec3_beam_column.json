@@ -1,0 +1,222 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "moapy",
+    "description": "Schema for moapy",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://moa.rpm.kr-dv-midasit.com/backend/function-executor/python-execute/"
+    },
+    {
+      "url": "https://moa.rpm.kr-st-midasit.com/backend/function-executor/python-execute/"
+    }
+  ],
+  "paths": {
+    "/moapy/dgnengine/steel_bc/report_ec3_beam_column": {
+      "post": {
+        "summary": "Report Ec3 Beam Column",
+        "operationId": "report ec3 beam column",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/report_ec3_beam_column"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMD"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "MemberForce": {
+        "properties": {
+          "Nz": {
+            "type": "number",
+            "title": "Nz",
+            "description": "Axial force",
+            "default": 0.0,
+            "unit": "force"
+          },
+          "Mx": {
+            "type": "number",
+            "title": "Mx",
+            "description": "Moment about x-axis",
+            "default": 0.0,
+            "unit": "moment"
+          },
+          "My": {
+            "type": "number",
+            "title": "My",
+            "description": "Moment about y-axis",
+            "default": 0.0,
+            "unit": "moment"
+          },
+          "Vx": {
+            "type": "number",
+            "title": "Vx",
+            "description": "Shear about x-axis",
+            "default": 0.0,
+            "unit": "force"
+          },
+          "Vy": {
+            "type": "number",
+            "title": "Vy",
+            "description": "Shear about y-axis",
+            "default": 0.0,
+            "unit": "force"
+          }
+        },
+        "type": "object",
+        "title": "Member Force",
+        "description": "Member Force",
+        "dataclassname": "moapy.data_pre.MemberForce"
+      },
+      "ResultMD": {
+        "properties": {
+          "md": {
+            "type": "string",
+            "title": "Md",
+            "description": "Markdown",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "Markdown",
+        "dataclassname": "moapy.data_post.ResultMD"
+      },
+      "SteelMaterial": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Material Code",
+            "default": "KS18(S)"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Material Name",
+            "default": "SS275"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Material",
+        "description": "Steel DB Material",
+        "dataclassname": "moapy.steel_pre.SteelMaterial"
+      },
+      "SteelSection": {
+        "properties": {
+          "shape": {
+            "type": "string",
+            "title": "Shape",
+            "description": "Shape",
+            "default": "H"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Section Name",
+            "default": "H 400x200x8/13"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Section",
+        "description": "Steel DB Section",
+        "dataclassname": "moapy.steel_pre.SteelSection"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "report_ec3_beam_column": {
+        "properties": {
+          "matl": {
+            "$ref": "#/components/schemas/SteelMaterial"
+          },
+          "sect": {
+            "$ref": "#/components/schemas/SteelSection"
+          },
+          "load": {
+            "$ref": "#/components/schemas/MemberForce"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matl",
+          "sect",
+          "load"
+        ],
+        "title": "report ec3 beam column"
+      }
+    }
+  }
+}
