@@ -1,0 +1,485 @@
+Metadata-Version: 2.1
+Name: zot2sioyek
+Version: 0.2.8
+Summary: Script with managing utils of zotero database fratures to sioyek PDF reader.
+Author-email: Eduardo Toledo Campos <eduardotcampos@usp.br>
+License: MIT License
+        
+        Copyright (c) 2024 Eduardo Campos
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/eduardotlc/zot2sioyek
+Project-URL: Bug Reports, https://github.com/eduardotlc/zot2sioyek/issues
+Project-URL: Source, https://github.com/eduardotlc/zot2sioyek/
+Keywords: sioyek,zotero,PDF,reader,highlights
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Database
+Classifier: Development Status :: 3 - Alpha
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyzotero
+Requires-Dist: pymupdf
+Requires-Dist: PyQt5
+Requires-Dist: regex
+Requires-Dist: sioyek
+Requires-Dist: httpx
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-pretty ; extra == 'test'
+Requires-Dist: interrogate ; extra == 'test'
+
+# Zotero to Sioyek Highlights Manager
+
+---
+
+**Python script to embed zotero highlights to [sioyek](https://github.com/ahrm/sioyek), and other utils.**
+
+- 🐍 Python [sqlite3](https://docs.python.org/3/library/sqlite3.html) and [pyzotero](https://github.com/urschrei/pyzotero) Based Script
+
+> [!WARNING] > **Tested only in linux**
+
+[![updatebadge]][update] [![pypibadge]][pypi] [![mitbadge]][license]
+
+[![ruffbadge]][ruff] [![emailbadge]][email]
+
+[update]: https://github.com/eduardotlc/zot2sioyek/commits/master/
+[updatebadge]: https://img.shields.io/badge/Updated-August_2024-93ddfb?style=for-the-badge&logo=googlecalendar
+[license]: https://opensource.org/licenses/mit
+[pypi]: https://pypi.org/project/zot2sioyek/
+[ruff]: https://github.com/astral-sh/ruff
+[pypibadge]: https://img.shields.io/pypi/v/zot2sioyek.svg?logo=python&logoColor=yellow&color=7e7edd&style=for-the-badge
+[email]: mailto:eduardotcampos@usp.br
+[emailbadge]: https://img.shields.io/badge/Email-7e7edd?style=for-the-badge&logo=gmail
+[mitbadge]: https://img.shields.io/badge/License-MIT-9aefea?style=for-the-badge&logo=gitbook
+[ruffbadge]: https://img.shields.io/badge/Ruff-4a4a4a?style=for-the-badge&logo=ruff
+
+## 📖 Contents
+
+- ✨ [Features](#-features)
+- 📚 [Requirements](#-requirements)
+  - 🐍 [Conda](#-conda)
+- 📦 [Installation](#-installation)
+- 🔧 [Configuration](#-configuration)
+  - 🎨 [Colors](#-colors)
+- 💻 [Client](#-client)
+- 📝 [TODO](#-todo)
+- 🤝 [Contributing](#-contributing)
+- 💓 [Aknowledgements](#-aknowledgements)
+
+## ✨ Features
+
+- Embed zotero highlights to the sioyek database:
+
+```bash
+python zot2sioyek.py --insert-highlights "/path/to/file.pdf"
+```
+
+- Print in terminal the text of all the highlights from a zotero file, colored with the highlight
+  color
+
+```bash
+python zot2sioyek.py --print-annotation-text "/path/to/file.pdf"
+```
+
+- To see all available commands:
+
+```bash
+python zot2sioyek.py --help
+```
+
+> [!NOTE]
+> If installed through pip, you can run only `zot2sioyek` instead of `python zot2sioyek.py`.
+
+- For testing the package through pytest
+
+```bash
+python -m pytest --doctest-modules tests/test.py src/zot2sioyek/zot2sioyek.py
+```
+
+## 📚 Requirements
+
+Requirements are automatic installed when this script is installed with pip
+
+- pyzotero
+
+- pymupdf
+
+- PyQt5
+
+- regex
+
+- sqlite3
+
+```bash
+python -m pip install pyzotero pymupdf PyQt5 regex sqlite3
+```
+
+### 🐍 Conda
+
+If wanted, requirements may be installed with conda, to run this script in a conda environment.
+
+Inside this repo, run:
+
+```bash
+conda env create --file env.yml
+```
+
+## 📦 Installation
+
+To run the script without installation, simply clone the repo or download /src/zot2sioyek/zot2sioyek.py
+and run it directly.
+
+Default installation is done by
+
+```bash
+python -m pip install zot2sioyek
+```
+
+Being possible after install to run the comman with `zot2sioyek` in terminal.
+
+Other possible approach to install is cloning the repo and installing locally
+
+```bash
+git clone https://github.com/eduardotlc/zot2sioyek
+cd zot2sioyek
+python -m pip install -e .
+```
+
+## 🔧 Configuration
+
+To use this script define the variables in zot2sioyek.py:
+
+- `SIOYEK_PATH`: Sioyek binary path.
+
+- `SIOYEK_LOCAL_DATABASE_FILE_PATH`: Sioyek .db local database file path.
+
+- `SIOYEK_SHARED_DATABASE_FILE_PATH`: Sioyek .db shared database file path.
+
+- `ZOTERO_LIBRARY_ID`: Your personal library ID available [Here](https://www.zotero.org/settings/keys),
+  in the section Your userID for use in API calls.
+
+- `ZOTERO_API_KEY`: Api key, you can obtain [Here](https://www.zotero.org/settings/keys/new).
+
+- `ZOTERO_LIBRARY_TYPE`: Zotero library type, can be `'user'` or `'group'`.
+
+- `ZOTERO_LOCAL_DIR`: Zotero local storage folder, like `/home/user/Zotero/storage`.
+
+- `ZOTERO_TO_SIOYEK_COLORS`: Sioyek highlight type letter associated to each zotero highlight color
+  (Optional).
+
+> [!NOTE]
+> The variables can also be defined as envrinoment variables (at your .zshrc/.bashrc etc...), with
+> the exact same names as the script variables above, and ZOTERO_TO_SIOYEK_COLORS if defined should
+> be defined as a string like:
+> export ZOTERO_TO_SIOYEK_COLORS='{ "#5fb236": "h", "#a28ae5": "i", "#e56eee": "i", "#2ea8e5": "d", "#ff6666": "e", "#f19837": "r", "#ffd400": "s"}'
+
+### 🎨 Colors
+
+- This script defines `ZOTERO_TO_SIOYEK_COLORS` variable based on the most close colors of default
+  sioyek config, to the zotero highlight colors. The conversion looks like the following (Zotero
+  colors in the upper row, sioyek colors in the lower row):
+
+![comparison colors](/images/coparison_colors.png)
+
+- If you want to have the exact same colors of zotero highlights in sioyek, add the following to
+  your sioyek `prefs_user.config`:
+
+```
+highlight_color_g 0.37 0.70 0.21
+highlight_color_a 0.63 0.54 0.90
+highlight_color_p 0.90 0.43 0.93
+highlight_color_b 0.18 0.66 0.90
+highlight_color_r 1.00 0.40 0.40
+highlight_color_o 0.95 0.60 0.22
+highlight_color_y 1.00 0.83 0.00
+```
+
+- Or to any highlight letter you want, since the defined letter on `prefs_user.config` and the script
+  variable `ZOTERO_TO_SIOYEK_COLORS` match.
+
+## 💻 Client
+
+**The following commands are available through:**
+
+In a local folder after downloading the script, cd in `/src/zot2sioyek` and run
+
+> python zot2sioyek.py [FLAG] [ARGS]
+
+If installed through pip or through `cloning` or with `pip install -e .` in the repo root, the 2
+following commands are available
+
+> python -m zot2sioyek.zot2sioyek [FLAG] [ARGS]
+
+> zot2sioyek [FLAG] [ARGS]
+
+```bash
+FLAGS                              ARGUMENTS
+=====                              ==========
+
+
+Script general utils.
+----------------------
+
+-h, --help                         
+Print this script help.
+If a Group name is passed after --help, the help to this specific group is printted
+only. Available groups are: general, zotero, sioyek.         
+
+Zotero Managing Commands.
+--------------------------
+
+-g, --get-highlights               [file_name_or_path]
+Print all highlights from a given zotero file.
+-p, --print-annotation-text        [file_name_or_path]
+print all highlighted text for a given zotero PDF local file.
+-T, --zotero-tags                  [file_name_or_path]
+Prints a zotero PDF attachment parent item existing arguments.
+-A, --add-zotero-tag               [file_name_or_path], [tag_str_to_add]
+Add a tag to a zotero PDF attachment parent item. Takes arguments file name or
+path, and tag str to add.         
+-R, --remove-zotero-tag            [file_name_or_path], [tag_str_to_remove]
+Remove a tag from a zotero PDF attachment parent item. Takes arguments file name or
+path, and tag str to remove.         
+
+Sioyek Main Commands.
+----------------------
+
+-f, --list-sioyek-files            
+Print all files in sioyek local database
+-H, --list-sioyek-hash             [file_name_or_path]
+print a sioyek database pdf file md5sum hash.
+-l, --print-sioyek-attributes      [file_name_or_path]
+Print all Attributes and values in a sioyek database PDF file.
+-i, --insert-highlight             [file_name_or_path]
+Insert highlights in a sioyek database PDF file, importing this highlights from this
+PDF file zotero attachment highlight.         
+-d, --insert-dated-highlight       [datetime.datetime]
+Insert highlights in multiple sioyek database PDF files, importing this highlights from this
+based on the passed arguments of a datetime.datetime date, to start from to search
+for highlights, limit_number_items, that sets the maximum of items to retrieve, and
+sort method that organize the order of the retrieved items.         
+-S, --list-all-sioyek-highlights   
+Print all sioyek highlights
+-k, --citation_key                 [file_name_or_path]
+Print zotero PDF file parent citation key.
+
+Extra options flags.
+---------------------
+
+--sort                             [pyzotero_sort_strategy]
+Pyzotero items sorting method. Requires to have passed --insert-dated-highlight.
+
+If an argument passed after a flag contain blank spaces, remember to quote wrap it,
+while not being necessary case inputted after through prompted option.
+
+Author: eduardotcampos@usp.br
+```
+
+> [!NOTE]
+> The --help flag, or not passing any flag, prints the above help. 
+> This help includes terminal colored lines and other formatters, if desired, the
+> -h flag also print a help function, but in plain format.
+
+### Zotero Commands
+
+The here examples to the zotero group command flags, were runned considering a local PDF file,
+that is also added to the zotero database, containing 3 differenct color highlights, that where
+added through zotero app.
+
+#### Get Highlights
+
+<details>
+<summary><code>-g  --get-highlights</code></summary>
+
+```bash
+zot2sioyek -g "/home/eduardotc/Zotero/storage/E5M6X2IH/green ultrafast one-pot mechanochemical bio catalyst encapsulation in MO.pdf"
+```
+
+```text
+
+1
+-----
+Text: water-based conditions to maintain enzymatic activity due to the inherent fragility
+Color: #f19837
+Relative Page: 2
+Doc Page: 2
+Creation Date: 2024-09-08 05:56:08
+Modification Date: 2024-09-08 05:56:08
+
+2
+-----
+Text: Biocatalysts, including enzymes, which are functional proteins known for their outstanding catalytic efficiency, specificity, and selectivity, ha
+ve been greatly studied for both research purposes and industrial applications
+Color: #a28ae5
+Relative Page: 2
+Doc Page: 2
+Creation Date: 2024-09-08 05:54:42
+Modification Date: 2024-09-08 05:54:42
+
+3
+-----
+Text: well-defined 3D structure of enzyme@ZIF-90 crystals during ultrafast milling reactions. We further demonstrated
+Color: #5fb236
+Relative Page: 2
+Doc Page: 2
+Creation Date: 2024-09-08 05:54:35
+Modification Date: 2024-09-08 05:54:35
+```
+</details>
+
+#### Print Annotation Text
+
+<details>
+<summary><code>-p  --print-annotation-text</code></summary>
+
+<code>
+<p style="color:#f19837">water-based conditions to maintain enzymatic activity due to the inherent fragility</p>
+<p style="color:#a28ae5">Biocatalysts, including enzymes, which are functional proteins known for their outstanding catalytic efficiency, specificity, and selectivity, have been greatly studied for both research purposes and industrial applications</p>
+<p style="color:#5fb2e6">well-defined 3D structure of enzyme@ZIF-90 crystals during ultrafast milling reactions. We further demonstrate </p>
+</code>
+
+</details>
+
+#### Zotero Tags
+
+<details>
+<summary><code>-T --zotero-tags</code></summary>
+
+```bash
+zot2sioyek -T "/home/eduardotc/Zotero/storage/E5M6X2IH/green ultrafast one-pot mechanochemical bio catalyst encapsulation in MO.pdf"
+```
+
+```text
+Biological, Catalysis, Encapsulating, MOF, Mechanochemistry, Synthesis, Unread, ⭐️⭐️
+```
+
+</details>
+
+#### Add Zotero Tag
+
+<details>
+<summary><code>-A  --add-zotero-tag</code></summary>
+
+```bash
+zot2sioyek -A "/home/eduardotc/Zotero/storage/E5M6X2IH/green ultrafast one-pot mechanochemical bio catalyst encapsulation in MO.pdf" Testing
+```
+
+```text
+Tag Testing added to PDF parent item.
+```
+
+</details>
+
+#### Remove Zotero Tag
+
+<details>
+<summary><code>-R  --remove-zotero-tag</code></summary>
+
+```bash
+zot2sioyek -R "/home/eduardotc/Zotero/storage/E5M6X2IH/green ultrafast one-pot mechanochemical bio catalyst encapsulation in MO.pdf" Testing
+```
+
+```text
+Tag Testing removed from item.
+```
+
+</details>
+
+### Sioyek
+
+#### List Sioyek Files
+
+<details>
+<summary><code>-f  --list-sioyek-files</code></summary>
+
+```bash
+zot2sioyek -f
+```
+
+```text
+f607f555da6ff4f2beb80653e9b07723 : /home/eduardotc/Zotero/storage/HN3SF8WA/Quiroz et al. - 2018 - Controlling Reaction Selectivity over Hybrid Plasmonic Nanocatalysts.pdf
+304ca2c74cdfdc66e70098442fb5f75c : /home/eduardotc/Zotero/storage/L9PG5ZKI/Kolemen et al. - 2016 - Remote-Controlled Release of Singlet Oxygen by the.pdf
+8b2479fdeaf3261f6de4804c4c2995bc : /home/eduardotc/Zotero/storage/R9RLP4UW/Supporting_MOF_anthracene_singlet.pdf
+bfc2bac356c35a457f660a63e8d1ae77 : /home/eduardotc/Zotero/storage/9HAKQCTN/Vijayakumar - 2023 - Cancer targeted contrast studies and photothermal therapy using engineered gold nanoparticles.pdf
+303185f111afbd8452b5194b58d00244 : /home/eduardotc/output.pdf
+```
+
+> [!WARNING]
+> This Command prits all present files in your sioyek database, so be aware for the possibillity
+> of being a realy long output.
+
+</details>
+
+#### List Sioyek Hash
+
+<details>
+<summary><code>-H  --list-sioyek-hash</code><summary>
+
+```bash
+zot2sioyek -H "/home/eduardotc/Zotero/storage/HN3SF8WA/Quiroz et al. - 2018 - Controlling Reaction Selectivity over Hybrid Plasmonic Nanocatalysts.pdf"
+```
+
+```text
+f607f555da6ff4f2beb80653e9b07723 
+```
+
+> [!NOTE]
+> In reality, this command only gets an already stored file hash value from the sioyek database,
+> upon a file path matching. That being so, if the passed file has never being opened in sioyek,
+> the hash won't be part of the database and won't be returned.
+
+</details>
+
+<!-- -TODO:Add sioyek flags -l and -i, after they have being optimized -->
+  
+<!-- -PERF: -->
+
+## 📝 TODO
+
+- Embed all zotero database highlights starting from a specified date.
+
+- Create import from sioyek database to zotero database highlights.
+
+  - Currently, I couldn't find a way of adding zotero highlights through pyzotero, or through
+    zotero api/sql. If anyone knows how to do it, please message or email me so that I can update
+    this script, or feel free to implement the needed updates and send a pull request, I'll be
+    very thankful.
+
+
+## 🤝 Contributing
+
+Feel free to make [pending](#-todo) or other optimizations and pull requests, this script is
+still under development and any contribution is very much appreciated.
+
+- Clone the repo to your local environment:
+
+## 💓 Aknowledgements
+
+- [Ahrm](https://github.com/ahrm) for developing [Sioyek](https://github.com/ahrm/sioyek) PDF reader.
+
+- [Urschrei](https://github.com/urschrei) for [Pyzotero](https://github.com/urschrei/pyzotero)
+
+- [Blob42](https://github.com/blob42) for [Koreader-sioyek-import](https://github.com/blob42/koreader-sioyek-import),
+  which parts of this script was based from.
+
+- The [Zotero](https://www.zotero.org/) team.
