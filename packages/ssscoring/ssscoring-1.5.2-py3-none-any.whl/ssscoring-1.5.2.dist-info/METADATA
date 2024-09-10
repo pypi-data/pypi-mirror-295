@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: ssscoring
+Version: 1.5.2
+Summary: ssscoring - Speed Skydiving scoring tools
+Author-email: Eugene Ciurana pr3d4t0r <ssscoring.project@cime.net>
+License: BSD-3-Clause
+Classifier: Intended Audience :: Other Audience
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.9.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: click
+Requires-Dist: jupyter-bokeh
+
+% ssscoring(3) Version 1.5.2 | Speed Skydiving Scoring API documentation
+
+Name
+====
+
+**SSScoring** - Speed Skydiving Scoring high level library in Python
+
+
+Synopsis
+========
+```python
+# Short code snippet will go here.
+```
+
+
+Description
+===========
+Documentation in progress.
+
+
+License
+=======
+The **SSScoring** package, documentation and examples are licensed under the
+[BSD-3 open source license](https://github.com/pr3d4t0r/SSScoring/blob/master/LICENSE.txt).
+
+
