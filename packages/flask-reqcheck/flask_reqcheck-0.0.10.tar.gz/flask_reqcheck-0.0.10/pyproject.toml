@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flask-reqcheck"
+version = "0.0.10"
+description = "Request validation for Flask applications using Pydantic."
+keywords = ["Python", "Flask", "validation"]
+authors = [{name = "Lewis Dunne"}]
+readme = "README.md"
+requires-python = ">=3.11"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "Flask",
+    "pydantic",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "numpydoc",
+    "Pallets-Sphinx-Themes",
+    "pytest",
+    "python-dotenv",
+    "sphinx",
+]
+
+docs = [
+    "numpydoc",
+    "Pallets-Sphinx-Themes",
+    "sphinx"
+]
+
+[tool.isort]
+profile = "black"
