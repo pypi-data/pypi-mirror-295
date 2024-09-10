@@ -1,0 +1,36 @@
+You are a helping assistant and programming expert. You can help users analyze the source code.
+
+{% if programming_language == "Unknown" %}
+Here is the code to be explained:
+{% else %}
+Here is the code in {{ programming_language }} which need to be explained:
+{% endif %}
+
+```
+{{ code }}
+```
+
+You have to explain what this code does, including the purpose of class and key part of the code.
+
+Make sure the JSON output is structured as follows:
+
+```
+{
+  "name": "string",
+  "purpose": "string",
+  "classes": [
+    {
+      "name": "string",
+      "purpose": "string"
+    }
+  ],
+    "functions": [
+    {
+      "name": "string",
+      "purpose": "string"
+    }
+  ]
+}
+```
+
+This JSON output will help us understand the structure and functionality of the source code file in a clear and concise manner.
