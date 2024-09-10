@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "mayako-core"
+version = "0.1.6"
+description = "mayako is a lightweight framework for prototyping interaction techniques in hci research."
+license = "MIT"
+keywords = ["interaction techniques", "human computer interaction", "IoT", "sensor data"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: C++"]
+authors = ["vairasza <vairasza@mailbox.org>"]
+readme = "README.md"
+packages = [{include = "mayako"}]
+
+
+[tool.poetry.urls]
+"Documentation" = "https://vairasza.github.io/mayako-core"
+"Repository" = "https://github.com/vairasza/mayako-core"
+"Issues" = "https://github.com/vairasza/mayako-core/issues"
+"Changelog" = "https://github.com/vairasza/mayako-core/blob/main/CHANGELOG.md"
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+crc = "^7.0.0"
+pyserial = "^3.5"
+bleak = "^0.22.2"
+platformio = "^6.1.15"
+pynput = "^1.7.7"
+
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^7.3.7"
+sphinxcontrib-napoleon = "^0.7"
+furo = "^2024.5.6"
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
