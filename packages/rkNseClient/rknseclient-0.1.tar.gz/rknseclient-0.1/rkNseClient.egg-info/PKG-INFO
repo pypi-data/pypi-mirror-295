@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: rkNseClient
+Version: 0.1
+Summary: A Python client for NSE API to fetch stock data and indices
+Home-page: https://github.com/kamalkavin68/rk-nse-client
+Author: kamalkavin96
+Author-email: kamalkavin68@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# NSE Python Client
+
+This Python package provides a simple interface to interact with the National Stock Exchange (NSE) API for fetching stock prices and market indices.
+
+## Features
+
+- Real-time stock prices
+- Market indices
+
+## Installation
+
+You can install the module with:
+
+```bash
+pip install rk-nse-client
