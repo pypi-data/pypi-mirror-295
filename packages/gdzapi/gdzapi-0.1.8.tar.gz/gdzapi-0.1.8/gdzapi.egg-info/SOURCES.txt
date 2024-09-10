@@ -1,0 +1,16 @@
+setup.py
+gdzapi/__init__.py
+gdzapi/gdzapi.py
+gdzapi.egg-info/PKG-INFO
+gdzapi.egg-info/SOURCES.txt
+gdzapi.egg-info/dependency_links.txt
+gdzapi.egg-info/requires.txt
+gdzapi.egg-info/top_level.txt
+gdzapi/models/__init__.py
+gdzapi/models/books.py
+gdzapi/models/classes.py
+gdzapi/models/pages.py
+gdzapi/models/solutions.py
+gdzapi/models/subjects.py
+gdzapi/test/__init__.py
+gdzapi/test/main.py
