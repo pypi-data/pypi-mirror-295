@@ -1,0 +1,30 @@
+name: Test CLI
+
+on: [pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup rye
+        uses: eifinger/setup-rye@v3
+
+      - name: Install dependencies
+        run: |
+          rye config --set-bool behavior.use-uv=true
+          rye pin 3.11
+          rye sync --no-lock
+        
+      - name: Test with pytest
+        run: rye run pytest
