@@ -1,0 +1,28 @@
+[project]
+name = "pytest_server"
+version = "1.0.1"
+description = "test server exec cmd"
+authors = [
+    { name = "funcdefmain", email = "741132517@qq.com" },
+]
+dependencies = [
+    "flask>=3.0.0",
+    "requests>=2.32.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+pytest-server = "pytest_server.pytest_server:run"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
