@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/application/gateway/orchestrator_gateway.py
+src/application/service/__init__.py
+src/application/service/config.py
+src/application/service/logger.py
+src/application/service/orchestrator.py
+src/application/service/run.py
+src/infra/__init__.py
+src/infra/gateway/orchestrator_gateway/supabase.py
+src/synthexa_rpa.egg-info/PKG-INFO
+src/synthexa_rpa.egg-info/SOURCES.txt
+src/synthexa_rpa.egg-info/dependency_links.txt
+src/synthexa_rpa.egg-info/top_level.txt

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthexa-rpa"
+version = "0.0.1"
+authors = [
+  { name="Vitor Gabriel", email="vitorg.34825@gmail.com" },
+]
+description = "A simple RPA library for Python"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
