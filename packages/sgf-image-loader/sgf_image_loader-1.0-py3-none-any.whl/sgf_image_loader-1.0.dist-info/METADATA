@@ -1,0 +1,13 @@
+Metadata-Version: 2.3
+Name: sgf_image_loader
+Version: 1.0
+Summary: SGF Loader provides methods to create and load (.sgf) files.
+Project-URL: Homepage, https://github.com/KingToot14/Simple-Graphic-Format
+Project-URL: Issues, https://github.com/KingToot14/Simple-Graphic-Format/issues
+Author-email: KingToot <armorgamesdot@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Requires-Dist: pillow
