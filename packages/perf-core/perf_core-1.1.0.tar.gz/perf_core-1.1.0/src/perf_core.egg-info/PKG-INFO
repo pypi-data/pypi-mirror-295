@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: perf-core
+Version: 1.1.0
+Summary: Utilities required for performance tests
+Home-page: 
+Author: quince
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: psycogreen>=1.0.2
+Requires-Dist: jsonpath-ng>=1.5.3
+Requires-Dist: psycopg2-binary>=2.9.3
+Requires-Dist: decorator>=5.1.1
+Requires-Dist: curlify>=2.2.1
+Requires-Dist: PyJWT>=2.4.0
+Requires-Dist: fast_map>=0.0.7
+Requires-Dist: gunicorn>=20.1.0
+Requires-Dist: fastapi-utils>=0.2.1
+Requires-Dist: uvicorn>=0.18.2
+Requires-Dist: lxml>=4.9.1
+Requires-Dist: beautifulsoup4>=4.11.1
+Requires-Dist: cryptography>=38.0.1
+Requires-Dist: python-dotenv>=0.21.0
+Requires-Dist: PyByteBuffer>=1.0.5
+Requires-Dist: websocket-client==1.4.2
+Requires-Dist: flake8==6.0.0
+Requires-Dist: black==23.1.0
+Requires-Dist: pylint==2.17.0
+Requires-Dist: beautifulsoup4
+Requires-Dist: boto3
+Requires-Dist: botocore
+Requires-Dist: config
+Requires-Dist: curlify
+Requires-Dist: faker
+Requires-Dist: gevent
+Requires-Dist: geventhttpclient
+Requires-Dist: google-api-python-client
+Requires-Dist: google-auth-httplib2
+Requires-Dist: google-auth-oauthlib
+Requires-Dist: greenlet
+Requires-Dist: grpcio
+Requires-Dist: grpcio-tools
+Requires-Dist: locust
+Requires-Dist: locust-swarm
+Requires-Dist: locust-plugins
+Requires-Dist: mysql-connector-python
+Requires-Dist: numpy
+Requires-Dist: nose-html-reporting
+Requires-Dist: packaging
+Requires-Dist: pandas
+Requires-Dist: pendulum
+Requires-Dist: pluggy
+Requires-Dist: protobuf
+Requires-Dist: pygsheets~=2.0.5
+Requires-Dist: requests~=2.31.0
+Requires-Dist: slackclient
+Requires-Dist: urllib3
+Requires-Dist: varname
+
+# README #
+
+This README would normally document whatever steps are necessary to get your application up and running.
+
+### What is this repository for? ###
+
+* Quick summary
+* Version
+* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
+### How do I get set up? ###
+
+* Summary of set up
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution guidelines ###
+
+* Writing tests
+* Code review
+* Other guidelines
+
+### Who do I talk to? ###
+
+* Repo owner or admin
+* Other community or team contact
+
+version:1.1.0

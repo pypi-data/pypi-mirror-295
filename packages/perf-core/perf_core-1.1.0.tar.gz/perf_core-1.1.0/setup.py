@@ -1,0 +1,76 @@
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+with open('README.md', "r", encoding="utf-8") as version:
+    version_number = version.readlines()[-1].split(":")[-1]
+
+setuptools.setup(
+    name="perf_core",
+    version=version_number,
+    author="quince",
+    description="Utilities required for performance tests",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src"),
+    python_requires=">=3.6",
+    install_requires=[
+        "psycogreen>=1.0.2",
+        "jsonpath-ng>=1.5.3",
+        "psycopg2-binary>=2.9.3",
+        "decorator>=5.1.1",
+        "curlify>=2.2.1",
+        "PyJWT>=2.4.0",
+        "fast_map>=0.0.7",
+        "gunicorn>=20.1.0",
+        "fastapi-utils>=0.2.1",
+        "uvicorn>=0.18.2",
+        "lxml>=4.9.1",
+        "beautifulsoup4>=4.11.1",
+        "cryptography>=38.0.1",
+        "python-dotenv>=0.21.0",
+        "PyByteBuffer>=1.0.5",
+        "websocket-client==1.4.2",
+        "flake8==6.0.0",
+        "black==23.1.0",
+        "pylint==2.17.0",
+        "beautifulsoup4",
+        "boto3",
+        "botocore",
+        "config",
+        "curlify",
+        "faker",
+        "gevent",
+        "geventhttpclient",
+        "google-api-python-client",
+        "google-auth-httplib2",
+        "google-auth-oauthlib",
+        "greenlet",
+        "grpcio",
+        "grpcio-tools",
+        "locust",
+        "locust-swarm",
+        "locust-plugins",
+        "mysql-connector-python",
+        "numpy",
+        "nose-html-reporting",
+        "packaging",
+        "pandas",
+        "pendulum",
+        "pluggy",
+        "protobuf",
+        "pygsheets~=2.0.5",
+        "requests~=2.31.0",
+        "slackclient",
+        "urllib3",
+        "varname"
+    ]
+)
