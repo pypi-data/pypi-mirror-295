@@ -1,0 +1,32 @@
+[project]
+name = "clamav-client"
+dynamic = ["version"]
+description = "Python client library for the ClamAV antivirus."
+readme = "README.md"
+license = { text = "GPL-2.0" }
+requires-python = ">=3.8"
+dependencies = []
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.uv]
+dev-dependencies = [
+    "mypy>=1.11.2",
+    "pytest>=8.3.2",
+    "ruff>=0.6.3",
+]
+
+[tool.mypy]
+files = ["clamav_client", "tests"]
+strict = true
+
+[tool.ruff.lint]
+extend-select = ["A", "B", "I", "Q"]
+
+[tool.ruff.lint.isort]
+force-single-line = true
