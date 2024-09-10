@@ -1,0 +1,98 @@
+# [![Ponarize](https://ponarize.com/assets/media/logos/pona-logo-black.png)](https://ponarize.com)
+
+**Ponarize** - Relevant, accurate and fast classification of Domains. Blacklist control for aggressive IPs.
+
+## Key Features:
+
+- Real-Time Categorization & Reputation Scoring
+- IP Blacklist Search & Reputation Scoring
+
+
+## Endpoints availables
+
+Ponarize API comes with 2 different endpoints, domain categorisation and ip blacklist control. Please note that depending on your subscription plan, certain API endpoints may or may not be available.
+
+1. **Domain Categorization API**
+   - Retrieve the Ponarize category for a specified domain.
+
+2. **IP Check API**
+   - Retrieve the Ponarize information for a IP address.
+
+
+## Documentation
+
+For comprehensive details regarding API endpoints, usage, and integration guidelines, please refer to our [API Documentation](https://ponarize.com/api-keys).
+
+Begin leveraging Ponariz today to domain categorisation and IP checks! Visit [Ponarize.com](https://ponarize.com) and easily integrate it instantly!
+
+Start using Ponariz today for your domain categorisation and ip controls!
+
+
+## Installation
+
+You can install Ponarize Python SDK with pip.
+
+```bash
+pip install ponarize-api
+```
+
+## Usage
+
+The Ponarize Python SDK is a wrapper around the [requests](https://docs.python-requests.org/en/master/) library. Ponarize supports only one POST request.
+
+Sign-up to Ponarize to [get your API key](https://ponarize.com/register) and 100 credits to get started.
+
+### Making the POST request
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.categorize_domain("domain")
+```
+
+### Request Example
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.categorize_domain("plesk.com")
+```
+
+### Response Example
+
+```json
+ {
+  "status": "success",
+  "message": [
+    {
+      "domain": "plesk.com",
+      "category": "Business",
+      "category2": "Online Shopping",
+      "category3": "Software/Hardware",
+      "category4": "Internet Services",
+      "category5": "-",
+      "risk": "Minimal Risk",
+      "domain_age": "1999-06-13T00",
+      "domain_nameserver": ["gene.ns.cloudflare.com","jeff.ns.cloudflare.com"],
+      "socialLinks": {
+	  "linkedin": "https://www.linkedin.com/company/plesk",
+	  "facebook": "https://www.facebook.com/Plesk",
+	  "twitter": "https://twitter.com/Plesk",
+	  "instagram": "null",
+	  "youtube": "https://www.youtube.com/channel/UCeU-_6YHGQFcVSHLbEXLNlA"
+      }
+    }
+  ]
+ }
+```
+
+### AVAILABLE METHODS
+
+```python
+>>> categorize_domain(domain: str)
+>>> check_ip(ip: str)
+```
