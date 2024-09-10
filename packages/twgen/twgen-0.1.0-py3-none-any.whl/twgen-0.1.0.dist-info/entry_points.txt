@@ -1,0 +1,3 @@
+[console_scripts]
+twgen=twgen.main:app
+
