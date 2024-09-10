@@ -1,0 +1,58 @@
+*.pdf
+#compiled python files
+*.pyc
+*.pyo
+
+#pycharm files
+analysis/.idea/*
+Icon
+.ipynb_checkpoints
+
+.vscode
+
+*.xml
+
+*.iml
+
+analysis/.idea/analysis.iml
+
+analysis/.idea/misc.xml
+
+analysis/.idea/workspace.xml
+analysis/autofocus/checkpoints/*
+analysis/autofocus/log/*
+analysis/autofocus/exported_model/*
+
+   
+experiments/config_files/training
+experiments/config_files/pending
+
+imager_experiments/archive_code/*
+
+
+*.cache
+*.cached
+*.cached_old
+
+*.npy
+
+
+Icon
+venv
+
+build/
+dist/
+*.egg-info
+*.egg-info test
+*.pyc
+__pycache__/
+
+
+#jupyter
+.ipynb_checkpoints
+#vim
+*.swp
+#vs code
+.vscode/
+#OS files
+.DS_Store
