@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+python_xgraph/__init__.py
+python_xgraph/graph.py
+python_xgraph.egg-info/PKG-INFO
+python_xgraph.egg-info/SOURCES.txt
+python_xgraph.egg-info/dependency_links.txt
+python_xgraph.egg-info/requires.txt
+python_xgraph.egg-info/top_level.txt
+tests/__init__.py
+tests/test_graph.py

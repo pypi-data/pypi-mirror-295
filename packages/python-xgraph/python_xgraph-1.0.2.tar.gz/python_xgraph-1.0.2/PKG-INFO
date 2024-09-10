@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: python-xgraph
+Version: 1.0.2
+Summary: A simple graph library with DFS, BFS, and cycle detection.
+Home-page: https://github.com/sinha-abhishek-ai/python-xGraph
+Author: Abhishek Sinha
+Author-email: sinha.abhishek.ai@gmail.com
+License: MIT
+Keywords: graph,DFS,BFS,cycle detection,topological sort
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+
+# python-xgraph
+
+`python-xgraph` is a simple Python library for working with graphs. It provides basic functionalities like adding vertices and edges, performing DFS and BFS, detecting cycles, and more.
+
+## Installation
+
+You can install the package via pip:
+
+```bash
+pip install python-xgraph
+```
+
+## Usage
+
+```
+from python_xgraph import Graph
+
+g = Graph(directed=True)
+g.add_vertex("A")
+g.add_edge("A", "B")
+print(g.dfs("A"))
+```
+
+Initialize using a dictionary
+```
+from python_xgraph import Graph
+
+g = Graph({"A":["B","C"], "B":["D","E"], "C":["X","Y"]}, directed=True)
+
+print(g.has_cycle())
+print(g.topological_sort(reverse=True))
+
+```
