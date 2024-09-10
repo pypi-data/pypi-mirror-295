@@ -1,0 +1,448 @@
+use crate::xmltype::XMLType;
+use pyo3::pyclass;
+use serde::{de::Visitor, Deserialize, Serialize};
+use std::{error::Error, fmt, str::FromStr};
+
+/// Represents an attribute with various properties and options.
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[pyclass]
+pub struct Attribute {
+    /// The name of the attribute.
+    #[pyo3(get)]
+    pub name: String,
+    /// Indicates if the attribute is an array.
+    #[pyo3(get)]
+    #[serde(rename = "multiple")]
+    pub is_array: bool,
+    /// Is an identifier or not
+    #[pyo3(get)]
+    pub is_id: bool,
+    /// Data types associated with the attribute.
+    #[pyo3(get)]
+    pub dtypes: Vec<String>,
+    /// Documentation string for the attribute.
+    #[pyo3(get)]
+    pub docstring: String,
+    /// List of additional options for the attribute.
+    #[pyo3(get)]
+    pub options: Vec<AttrOption>,
+    /// Term associated with the attribute, if any.
+    #[pyo3(get)]
+    pub term: Option<String>,
+    /// Indicates if the attribute is required.
+    #[pyo3(get)]
+    pub required: bool,
+    /// Default value for the attribute.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[pyo3(get)]
+    pub default: Option<DataType>,
+    /// XML type information for the attribute.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[pyo3(get)]
+    pub xml: Option<XMLType>,
+}
+
+impl Attribute {
+    /// Creates a new `Attribute` with the given name and required status.
+    ///
+    /// # Arguments
+    ///
+    /// * `name` - The name of the attribute.
+    /// * `required` - Indicates if the attribute is required.
+    pub fn new(name: String, required: bool) -> Self {
+        Attribute {
+            name: name.clone(),
+            dtypes: Vec::new(),
+            docstring: String::new(),
+            options: Vec::new(),
+            is_array: false,
+            is_id: false,
+            term: None,
+            required,
+            xml: Some(XMLType::from_str(name.as_str()).unwrap()),
+            default: None,
+        }
+    }
+
+    /// Sets the documentation string for the attribute.
+    ///
+    /// # Arguments
+    ///
+    /// * `docstring` - The documentation string to set.
+    pub fn set_docstring(&mut self, docstring: String) {
+        self.docstring = docstring;
+    }
+
+    /// Adds an option to the attribute.
+    ///
+    /// # Arguments
+    ///
+    /// * `option` - The option to add.
+    pub fn add_option(&mut self, option: AttrOption) -> Result<(), Box<dyn Error>> {
+        match option.key.to_lowercase().as_str() {
+            "type" => self.set_dtype(option.value),
+            "term" => self.term = Some(option.value),
+            "description" => self.docstring = option.value,
+            "xml" => self.set_xml(XMLType::from_str(&option.value).expect("Invalid XML type")),
+            "default" => self.default = Some(DataType::from_str(&option.value)?),
+            "multiple" => self.is_array = option.value.to_lowercase() == "true",
+            _ => self.options.push(option),
+        }
+
+        Ok(())
+    }
+
+    /// Sets the data type for the attribute.
+    ///
+    /// # Arguments
+    ///
+    /// * `dtype` - The data type to set.
+    fn set_dtype(&mut self, dtype: String) {
+        let mut dtype = dtype;
+        // Handle special case for identifiers
+        if dtype.to_lowercase().starts_with("identifier") {
+            self.is_id = true;
+            // Regex replace identifier or Identifier with string
+            let pattern = regex::Regex::new(r"[I|i]dentifier").unwrap();
+            dtype = pattern.replace_all(&dtype, "string").to_string();
+        }
+
+        // Handle special case for arrays
+        if dtype.ends_with("[]") {
+            self.is_array = true;
+        }
+
+        self.dtypes.push(dtype.trim_end_matches("[]").to_string());
+    }
+
+    /// Converts the attribute to a JSON schema.
+    ///
+    /// # Returns
+    ///
+    /// A JSON string representing the attribute schema.
+    pub fn to_json_schema(&self) -> String {
+        serde_json::to_string_pretty(&self).unwrap()
+    }
+
+    /// Checks if the attribute has an associated term.
+    ///
+    /// # Returns
+    ///
+    /// `true` if the attribute has a term, `false` otherwise.
+    pub fn has_term(&self) -> bool {
+        self.term.is_some()
+    }
+
+    /// Sets the XML type for the attribute.
+    ///
+    /// # Arguments
+    ///
+    /// * `xml` - The XML type to set.
+    pub fn set_xml(&mut self, xml: XMLType) {
+        self.xml = Some(xml);
+    }
+}
+
+/// Represents an option for an attribute.
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[pyclass]
+pub struct AttrOption {
+    /// The key of the option.
+    #[pyo3(get)]
+    pub key: String,
+    /// The value of the option.
+    #[pyo3(get)]
+    pub value: String,
+}
+
+impl AttrOption {
+    /// Creates a new `AttrOption` with the given key and value.
+    ///
+    /// # Arguments
+    ///
+    /// * `key` - The key of the option.
+    /// * `value` - The value of the option.
+    pub fn new(key: String, value: String) -> Self {
+        Self {
+            key: key.to_lowercase(),
+            value,
+        }
+    }
+
+    /// Gets the key of the option.
+    ///
+    /// # Returns
+    ///
+    /// A reference to the key.
+    pub fn key(&self) -> &str {
+        &self.key
+    }
+
+    /// Gets the value of the option.
+    ///
+    /// # Returns
+    ///
+    /// A reference to the value.
+    pub fn value(&self) -> &str {
+        &self.value
+    }
+}
+
+#[derive(Debug, Clone)]
+#[pyclass]
+pub enum DataType {
+    Boolean(bool),
+    Integer(i64),
+    Float(f64),
+    String(String),
+}
+
+impl PartialEq for DataType {
+    fn eq(&self, other: &Self) -> bool {
+        match (self, other) {
+            (DataType::Boolean(a), DataType::Boolean(b)) => a == b,
+            (DataType::Integer(a), DataType::Integer(b)) => a == b,
+            (DataType::Float(a), DataType::Float(b)) => a == b,
+            (DataType::String(a), DataType::String(b)) => a == b,
+            _ => false,
+        }
+    }
+}
+
+impl FromStr for DataType {
+    type Err = String;
+
+    /// Converts a string to a DataType (Boolean, Integer, Float, or String).
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        if let Ok(b) = s.to_lowercase().parse::<bool>() {
+            Ok(DataType::Boolean(b))
+        } else if let Ok(i) = s.to_lowercase().parse::<i64>() {
+            Ok(DataType::Integer(i))
+        } else if let Ok(f) = s.to_lowercase().parse::<f64>() {
+            Ok(DataType::Float(f))
+        } else if let Ok(s) = s.to_lowercase().parse::<String>() {
+            Ok(DataType::String(format!("\"{}\"", s)))
+        } else {
+            Err("Invalid data type".to_string())
+        }
+    }
+}
+
+impl Serialize for DataType {
+    /// Serializes a DataType to a string.
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        match self {
+            DataType::Boolean(b) => serializer.serialize_bool(*b),
+            DataType::Integer(i) => serializer.serialize_i64(*i),
+            DataType::Float(f) => serializer.serialize_f64(*f),
+            DataType::String(s) => serializer.serialize_str(s),
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for DataType {
+    /// Deserializes a DataType from a string.
+    fn deserialize<D>(deserializer: D) -> Result<DataType, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        struct DataTypeVisitor;
+        impl<'de> Visitor<'de> for DataTypeVisitor {
+            type Value = DataType;
+
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("a boolean, integer, float, or string")
+            }
+
+            fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E> {
+                Ok(DataType::Boolean(v))
+            }
+
+            fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E> {
+                Ok(DataType::Integer(v))
+            }
+
+            fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E> {
+                Ok(DataType::Integer(v as i64))
+            }
+
+            fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E> {
+                Ok(DataType::Float(v))
+            }
+
+            fn visit_str<E>(self, v: &str) -> Result<Self::Value, E> {
+                Ok(DataType::String(v.to_string()))
+            }
+        }
+
+        deserializer.deserialize_any(DataTypeVisitor)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::xmltype::XMLType;
+    use pretty_assertions::assert_eq;
+
+    use super::*;
+
+    #[test]
+    fn test_attribute_new() {
+        let attr = Attribute::new("name".to_string(), false);
+        assert_eq!(attr.name, "name");
+        assert_eq!(attr.dtypes.len(), 0);
+        assert_eq!(attr.docstring, "");
+        assert_eq!(attr.options.len(), 0);
+        assert_eq!(attr.is_array, false);
+        assert_eq!(attr.term, None);
+        assert_eq!(attr.required, false);
+    }
+
+    #[test]
+    fn test_attribute_set_docstring() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        attr.set_docstring("This is a test".to_string());
+        assert_eq!(attr.docstring, "This is a test");
+        assert_eq!(attr.required, false);
+    }
+
+    #[test]
+    fn test_attribute_add_type_option() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        let option = AttrOption::new("type".to_string(), "string".to_string());
+        attr.add_option(option).expect("Failed to add option");
+        assert_eq!(attr.dtypes.len(), 1);
+        assert_eq!(attr.dtypes[0], "string");
+    }
+
+    #[test]
+    fn test_attribute_add_term_option() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        let option = AttrOption::new("term".to_string(), "string".to_string());
+        attr.add_option(option).expect("Failed to add option");
+        assert_eq!(attr.term, Some("string".to_string()));
+    }
+
+    #[test]
+    fn test_attribute_add_option() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        let option = AttrOption::new("description".to_string(), "This is a test".to_string());
+        attr.add_option(option).expect("Failed to add option");
+        let option = AttrOption::new("something".to_string(), "something".to_string());
+        attr.add_option(option).expect("Failed to add option");
+
+        assert_eq!(attr.options.len(), 1);
+        assert_eq!(attr.options[0].key, "something");
+        assert_eq!(attr.options[0].value, "something");
+        assert_eq!(attr.docstring, "This is a test");
+    }
+
+    #[test]
+    fn test_attribute_set_dtype() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        attr.set_dtype("string".to_string());
+        assert_eq!(attr.dtypes.len(), 1);
+        assert_eq!(attr.dtypes[0], "string");
+        assert_eq!(attr.is_array, false);
+    }
+
+    #[test]
+    fn test_attribute_set_array_dtype() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        attr.set_dtype("string[]".to_string());
+        assert_eq!(attr.dtypes.len(), 1);
+        assert_eq!(attr.dtypes[0], "string");
+        assert_eq!(attr.is_array, true);
+    }
+
+    #[test]
+    fn test_attribute_set_xml_attr() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        let xml = XMLType::from_str("@name").expect("Could not parse XMLType");
+        attr.set_xml(xml);
+        assert_eq!(
+            attr.xml.expect("Could not find XML option"),
+            XMLType::Attribute {
+                is_attr: true,
+                name: "name".to_string(),
+            },
+            "XMLType is not correct. Expected an attribute type."
+        );
+    }
+
+    #[test]
+    fn test_attribute_set_xml_element() {
+        let mut attr = Attribute::new("name".to_string(), false);
+        let xml = XMLType::from_str("name").expect("Could not parse XMLType");
+        attr.set_xml(xml);
+        assert_eq!(
+            attr.xml.expect("Could not find XML option"),
+            XMLType::Element {
+                is_attr: false,
+                name: "name".to_string(),
+            },
+            "XMLType is not correct. Expected an element type."
+        );
+    }
+
+    #[test]
+    fn test_default_xml_type() {
+        let attr = Attribute::new("name".to_string(), false);
+        assert_eq!(
+            attr.xml.unwrap(),
+            XMLType::Element {
+                is_attr: false,
+                name: "name".to_string(),
+            }
+        );
+    }
+
+    #[test]
+    fn test_serialize_data_type() {
+        // Test string
+        let dt = DataType::String("string".to_string());
+        let serialized = serde_json::to_string(&dt).expect("Failed to serialize DataType");
+        assert_eq!(serialized, "\"string\"");
+
+        // Test integer
+        let dt = DataType::Integer(1);
+        let serialized = serde_json::to_string(&dt).expect("Failed to serialize DataType");
+        assert_eq!(serialized, "1");
+
+        // Test float
+        let dt = DataType::Float(1.0);
+        let serialized = serde_json::to_string(&dt).expect("Failed to serialize DataType");
+        assert_eq!(serialized, "1.0");
+
+        // Test boolean
+        let dt = DataType::Boolean(true);
+        let serialized = serde_json::to_string(&dt).expect("Failed to serialize DataType");
+        assert_eq!(serialized, "true");
+    }
+
+    #[test]
+    fn test_deserialize_data_type() {
+        // Test string
+        let deserialized: DataType =
+            serde_json::from_str("\"string\"").expect("Failed to deserialize string DataType");
+        assert_eq!(deserialized, DataType::String("string".to_string()));
+
+        // Test integer
+        let deserialized: DataType =
+            serde_json::from_str("1").expect("Failed to deserialize integer DataType");
+        assert_eq!(deserialized, DataType::Integer(1));
+
+        // Test float
+        let deserialized: DataType =
+            serde_json::from_str("1.0").expect("Failed to deserialize float DataType");
+        assert_eq!(deserialized, DataType::Float(1.0));
+
+        // Test boolean
+        let deserialized: DataType =
+            serde_json::from_str("true").expect("Failed to deserialize bool DataType");
+        assert_eq!(deserialized, DataType::Boolean(true));
+    }
+}
