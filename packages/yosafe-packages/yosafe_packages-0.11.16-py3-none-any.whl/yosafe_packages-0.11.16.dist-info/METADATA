@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: yosafe-packages
+Version: 0.11.16
+Summary: 
+Author: Yo581515
+Author-email: 581515@stud.hvl.no
+Requires-Python: >=3.8,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic (>=1.10.9,<2.0.0)
+Requires-Dist: pytest (>=8.3.2,<9.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: rich (>=13.8.0,<14.0.0)
+Requires-Dist: typing-extensions (>=4.6.3,<5.0.0)
+Description-Content-Type: text/markdown
+
+
+# YoSafe Packages
+
+Welcome to the YoSafe Packages! This repository provides a collection of Python packages designed to enhance your development workflow. You can also find this project on PyPI: [YoSafe Packages on PyPI](https://pypi.org/project/yosafe-packages/).
+
+## Project Structure
+
+The tree structure of this project is available in the [tree.txt](tree.txt) file.
+
+## Installation
+
+To install the main package directly from PyPI, use the following command:
+
+```bash
+pip install yosafe-packages
+```
+
+```python
+# Example of using one of the subpackages
+from from yosafe_packages.yosafe_subpackage_1 import *
+from from yosafe_packages.yosafe_subpackage_2 import *
+from from yosafe_packages.yosafe_subpackage_3 import *
+
+# Your code here
+```
+
+## Contact
+
+If you have any questions or need support, feel free to reach out:
+
+- **Author**: Yosafe Fesaha Oqbamecail
+- **Email**: [581515@stud.hvl.no](mailto:581515@stud.hvl.no)
+
+We appreciate any feedback or contributions to make these packages even better!
