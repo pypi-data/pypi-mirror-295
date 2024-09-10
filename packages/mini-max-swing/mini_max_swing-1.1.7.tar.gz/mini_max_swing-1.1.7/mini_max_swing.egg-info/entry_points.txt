@@ -1,0 +1,2 @@
+[console_scripts]
+swing = swing.swing_bin.generator:swing
