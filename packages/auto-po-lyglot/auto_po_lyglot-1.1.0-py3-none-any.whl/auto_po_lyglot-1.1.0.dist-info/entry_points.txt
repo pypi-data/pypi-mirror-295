@@ -1,0 +1,2 @@
+[console_scripts]
+auto_po_lyglot = auto_po_lyglot.po_main:main
