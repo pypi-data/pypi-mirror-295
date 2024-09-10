@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package strique.model.db.schedule;
+
+option java_outer_classname = "FormatProto";
+option java_package = "com.strique.model.db.schedule";
+
+// Next Id: 2
+// Enumeration for format types
+enum Format {
+  FORMAT_UNKNOWN = 0;
+  PDF = 1;
+}
