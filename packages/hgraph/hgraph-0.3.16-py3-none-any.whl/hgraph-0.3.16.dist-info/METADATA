@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: hgraph
+Version: 0.3.16
+Summary:  A functional reactive platform used to process time-series streams. Provides support for backtest (simulation) and realtime time-series processing. Using a forward propagation graph with a microtask scheduler for the runtime engine. 
+License: MIT
+Keywords: reactive,graph,fpg,forward propogating graph,time series,functional reactive programming,frp,functional,time-series
+Author: Howard Henson
+Author-email: howard@henson.me.uk
+Requires-Python: >=3.11
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Provides-Extra: docs
+Provides-Extra: web
+Requires-Dist: duckdb
+Requires-Dist: frozendict (>=2.3.10)
+Requires-Dist: multimethod
+Requires-Dist: numpy (>=1.23)
+Requires-Dist: ordered-set (>=4.1.0)
+Requires-Dist: perspective-python (<3.0.0) ; extra == "web"
+Requires-Dist: polars (>=1.0)
+Requires-Dist: pyarrow (>=16.1.0)
+Requires-Dist: requests ; extra == "web"
+Requires-Dist: sortedcontainers (>=2.4.0)
+Requires-Dist: sphinx (>=7.4) ; extra == "docs"
+Requires-Dist: sphinx-autodoc-typehints (>=2.3.0) ; extra == "docs"
+Requires-Dist: sphinx_rtd_theme (>=2.0.0) ; extra == "docs"
+Requires-Dist: sphinxcontrib-plantuml (>=0.30) ; extra == "docs"
+Requires-Dist: sqlalchemy
+Requires-Dist: tornado ; extra == "web"
+Project-URL: Changelog, https://github.com/hhenson/hgraph/blob/main/CHANGELOG.md
+Project-URL: Documentation, https://github.com/hhenson/hgraph/blob/main/docs/index.md
+Project-URL: Homepage, https://github.com/hhenson/hgraph
+Project-URL: Issues, https://github.com/hhenson/hgraph/blob/main/ISSUES.md
+Project-URL: Repository, https://github.com/hhenson/hgraph.git
+Description-Content-Type: text/markdown
+
+# hgraph
+A functional reactive programming engine with a Python front-end.
+
+This provides a DSL and runtime to support the computation of results over time, featuring
+a graph based directed acyclic dependency graph and the concept of time-series properties.
+The language is function based, and promotes composition to extend behaviour.
+
+Here is a simple example:
+
+```python
+from hgraph import graph, run_graph, const
+from hgraph.nodes import debug_print
+
+@graph
+def main():
+    a = const(1)
+    c = a + 2
+    debug_print("a + 2", c)
+
+run_graph(main)
+```
+Results in:
+```
+[1970-01-01 00:00:00.000385][1970-01-01 00:00:00.000001] a + 2: 3
+```
+
+See [this](docs_md/index.md) for more information.
+
+## Development
+
+The project is currently configured to make use of [Poetry](https://python-poetry.org) for dependency management. 
+Take a look at the website to see how best to install the tool.
+Once you have checked out the project, you can install the project for development using the following command:
+
+This is optional, but you can ensure python uses the version of python you require.
+
+```bash
+poetry env use 3.11
+```
+
+Then use the following command to install the project and it's depenencies:
+
+```bash
+poetry install
+```
+
+Then you can find the location of the installation using:
+
+```bash
+poetry env info
+```
+
+PyCharm can make use of poetry to ``setup`` the project.
+
+### Run Tests
+
+```bash
+# No Coverage
+poetry run pytest
+```
+
+```bash
+# Generate Coverage Report
+poetry run pytest --cov=your_package_name --cov-report=xml
+```
+
