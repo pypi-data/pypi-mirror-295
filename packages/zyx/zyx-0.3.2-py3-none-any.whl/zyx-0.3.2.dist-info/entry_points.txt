@@ -1,0 +1,3 @@
+[console_scripts]
+zyx=zyx._client.terminal:terminal
+
