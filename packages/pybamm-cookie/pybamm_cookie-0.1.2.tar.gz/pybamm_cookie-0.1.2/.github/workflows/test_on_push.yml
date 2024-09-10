@@ -1,0 +1,187 @@
+name: Test template and generated project
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+    - main
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Set up uv
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-venv: ".venv"
+
+      - name: Check style
+        run: |
+          uv pip install pre-commit
+          pre-commit run -a
+
+  template_test:
+    needs: style
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-13, macos-14, windows-latest]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    name:
+      Template Generation/Project Tests (${{ matrix.os }} / Python ${{ matrix.python-version }})
+    steps:
+      - name: Checkout pybamm-cookie
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        id: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-venv: ".venv"
+
+      - name: Install nox
+        run: uv pip install nox[uv]
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Test template generation
+        run: nox -s template-tests
+
+      - name: Run coverage tests
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+        run: nox -s coverage
+
+      - name: Upload coverage report
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+        uses: codecov/codecov-action@v4.5.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  run_doctests:
+    needs: style
+    runs-on: ubuntu-latest
+    name: Doctests (ubuntu-latest / Python 3.12)
+
+    steps:
+      - name: Check out pybamm-cookie repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Set up uv
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-venv: ".venv"
+
+      - name: Install nox
+        run: uv pip install nox[uv]
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check if the documentation can be built
+        run: nox -s docs
+
+  generated_project_tests:
+    needs: [template_test]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-13, macos-14, windows-latest]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        backend: [hatch, setuptools]
+        vcs: [true, false]
+
+    name: Generated Project Tests (${{ matrix.os }} / Python ${{ matrix.python-version }} / Backend ${{ matrix.backend }} / VCS ${{ matrix.vcs }})
+
+    steps:
+      - name: Checkout pybamm-cookie
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-venv: ".venv"
+
+      - name: Install copier and jinja2_time
+        run: uv pip install copier jinja2-time
+
+      - name: Generate project
+        run: |
+          copier copy . ../ --data project_name=pybamm-${{ matrix.backend }}-${{ matrix.vcs }} --data project_slug=pybamm_${{ matrix.backend }}_${{ matrix.vcs }} --data backend=${{ matrix.backend }} --data vcs=${{ matrix.vcs }} --trust --defaults
+      - name: Install nox
+        uses: wntrblm/nox@2024.04.15
+
+      - name: Test the generated project
+        working-directory: ../pybamm-${{ matrix.backend }}-${{ matrix.vcs }}
+        run: nox -s generated-project-tests
+
+  run_generated_project_doctests:
+    needs: [template_test]
+    runs-on: ubuntu-latest
+    name: Generated Project Doctests (ubuntu-latest / Python 3.12)
+
+    steps:
+      - name: Check out pybamm-cookie repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Set up uv
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-venv: ".venv"
+
+      - name: Install nox
+        uses: wntrblm/nox@2024.04.15
+
+      - name: Install copier and jinja2_time and generate a template with default values
+        run: |
+          uv pip install copier jinja2-time
+          copier copy . . --trust --defaults
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check if the documentation can be built
+        working-directory: ./pybamm-example-project
+        run: |
+          git add .
+          git commit -am "initial commit"
+          nox -s docs

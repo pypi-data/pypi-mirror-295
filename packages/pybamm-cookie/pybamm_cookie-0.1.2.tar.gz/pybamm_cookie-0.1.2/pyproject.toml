@@ -1,0 +1,145 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pybamm-cookie"
+authors = [
+  { name = "Agriya Khetarpal", email = "agriyakhetarpal@outlook.com" },
+  { name = "Santhosh Sundaram", email = "santhoshsundaram9650@gmail.com" },
+]
+maintainers = [
+  { name = "PyBaMM Team", email = "pybamm@pybamm.org" },
+]
+description = "A template for creating battery modeling projects based on PyBaMM"
+readme = "README.md"
+requires-python = ">=3.8"  # PyBaMM supports 3.8 and above
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",  # PyBaMM supports >=3.8,<3.12
+  "Topic :: Scientific/Engineering",
+  "Typing :: Typed",
+]
+dynamic = ["version"]
+dependencies = ["copier", "jinja2-time", "colorama"]
+
+[project.optional-dependencies]
+dev = [
+  "pytest >=6",
+  "pytest-cov >=3",
+  "nox[uv]",
+  "pre-commit",
+  "pytest-copie",
+]
+docs = [
+  "sphinx",
+  "pydata_sphinx_theme",
+  "sphinx_design",
+  "sphinx-copybutton",
+  "myst-parser",
+  "sphinx-inline-tabs",
+  "sphinxcontrib-bibtex",
+  "sphinx-autobuild",
+  "sphinx-last-updated-by-git",
+  "nbsphinx",
+  "ipython",
+  "sphinx-gallery",
+]
+
+[project.scripts]
+pybamm-cookie = "pybamm_cookie.cli:pybamm_cookie_cli"
+
+[project.entry-points."pipx.run"]
+pybamm-cookie = "pybamm_cookie.cli:pybamm_cookie_cli"
+
+[project.urls]
+Homepage = "https://github.com/pybamm-team/pybamm-cookie"
+"Bug Tracker" = "https://github.com/pybamm-team/pybamm-cookie/issues"
+Discussions = "https://github.com/pybamm-team/pybamm-cookie/discussions"
+Changelog = "https://github.com/pybamm-team/pybamm-cookie/releases"
+
+[tool.hatch]
+version.source = "vcs"
+build.hooks.vcs.version-file = "src/pybamm_cookie/_version.py"
+envs.default.dependencies = [
+  "pybamm",
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src/pybamm_cookie", "/template", "copier.yml", "LICENSE", "LICENSES-bundled.txt"]
+sources = ["src"]
+
+[tool.mypy]
+packages = [
+  "src/pybamm_cookie",
+  "tests"
+]
+python_version = "3.11"
+strict = false
+warn_return_any = false
+show_error_codes = true
+enable_error_code = [
+  "ignore-without-code",
+  "truthy-bool",
+  "redundant-expr",
+]
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+ignore_missing_imports = true
+allow_redefinition = true
+disable_error_code = ["call-overload", "operator"]
+
+[tool.coverage]
+run.source = ["pybamm_cookie"]
+port.exclude_lines = [
+  'pragma: no cover',
+]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+extend-exclude = ["__init__.py"]
+src = ["src"]
+exclude = []
+isort.required-imports = ["from __future__ import annotations"]
+flake8-unused-arguments.ignore-variadic-names = true
+
+
+[tool.ruff.lint]
+extend-select = [
+    "B",             # flake8-bugbear
+    "RUF",           # Ruff-specific
+    "UP",            # pyupgrade
+    "YTT",           # flake8-2020
+    "TID252",        # relative-imports
+]
+ignore = [
+    "E741",        # Ambiguous variable name
+    "RUF012",      # Mutable class attributes should be annotated with `typing.ClassVar`
+    "SIM108",      # Use ternary operator
+    "ARG001",      # Unused function argument:
+    "ARG002",      # Unused method arguments
+    "PLR2004",     # Magic value used in comparison
+    "PLR0915",     # Too many statements
+    "PLR0913",     # Too many arguments
+    "PLR0912",     # Too many branches
+    "RET504",      # Unnecessary assignment
+    "RET505",      # Unnecessary `else`
+    "RET506",      # Unnecessary `elif`
+    "B018",        # Found useless expression
+    "RUF002",      # Docstring contains ambiguous
+    "UP007",       # For pyupgrade
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["T20"]
+"docs/*" = ["T20"]

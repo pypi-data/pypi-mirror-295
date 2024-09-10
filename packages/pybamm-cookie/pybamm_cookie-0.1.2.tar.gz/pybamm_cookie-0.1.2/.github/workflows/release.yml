@@ -1,0 +1,45 @@
+name: Publish to PyPI
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build and pybamm-cookie sdist and wheel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pybamm-cookie
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+      - name: Build package
+        run: pipx run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: sdist_and_wheel
+          path: ./dist/*
+          if-no-files-found: error
+
+  publish-pypi:
+    name: Upload package to PyPI
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@0ab0b79471669eb3a4d647e625009c62f9f3b241
+        with:
+          packages-dir: artifacts/
