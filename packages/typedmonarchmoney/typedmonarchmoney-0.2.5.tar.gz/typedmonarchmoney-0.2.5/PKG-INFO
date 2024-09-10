@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: typedmonarchmoney
+Version: 0.2.5
+Summary: A Typed wrapper around Monarch Money
+License: MIT
+Author: Jeff Stein
+Author-email: jeffstein@gmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: monarchmoney (>=0.1.13,<0.2.0)
+Requires-Dist: rich (>=13.8.0,<14.0.0)
+Description-Content-Type: text/markdown
+
+# Monarch Money (Typed)
+
+This is a wrapper for the unofficial [Monarch Money Python API](https://github.com/hammem/monarchmoney). It adds some level of Typing to "some" of the calls. I am specifically using it for Home Assistant - and rather than fork the lib - hopefully this can just wrap it
+
+
+
+## Usage
+
+
+Look at `example.py` for usage example - or just replace `MonarchMoney` with `TypedMonarchMoney` and look at the directions in the parent repo
