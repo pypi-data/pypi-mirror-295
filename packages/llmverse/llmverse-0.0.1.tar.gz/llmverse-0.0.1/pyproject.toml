@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llmverse"
+version = "0.0.1"
+authors = [
+  { name="Nilavo Boral", email="nilavoboral@gmail.com" },
+]
+description = "The llmverse is your comprehensive toolkit for all things LLM (Large Language Model). From downloading and quantizing to generating responses and fine-tuning, it handles every aspect of working with large language models in one unified package."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["pandas", "matplotlib", "torch", "transformers", "peft", "datasets", "bitsandbytes", "accelerate", "flash_attn", "sentencepiece", "wandb"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
