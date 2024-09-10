@@ -1,0 +1,16 @@
+openai
+python-dotenv
+PyYAML
+
+[dev]
+ruff
+black<24.0,>=23.0
+isort<5.14,>=5.12
+pytest
+pytest-sphinx
+pytest-cov
+twine>=1.11.0
+build
+setuptools
+wheel
+packaging
