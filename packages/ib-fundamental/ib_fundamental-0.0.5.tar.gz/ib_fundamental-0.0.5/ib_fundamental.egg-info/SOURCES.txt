@@ -1,0 +1,15 @@
+LICENSE.txt
+README.md
+pyproject.toml
+ib_fundamental/__init__.py
+ib_fundamental/fundamental.py
+ib_fundamental/ib_client.py
+ib_fundamental/objects.py
+ib_fundamental/utils.py
+ib_fundamental/xml_parser.py
+ib_fundamental/xml_report.py
+ib_fundamental.egg-info/PKG-INFO
+ib_fundamental.egg-info/SOURCES.txt
+ib_fundamental.egg-info/dependency_links.txt
+ib_fundamental.egg-info/requires.txt
+ib_fundamental.egg-info/top_level.txt
