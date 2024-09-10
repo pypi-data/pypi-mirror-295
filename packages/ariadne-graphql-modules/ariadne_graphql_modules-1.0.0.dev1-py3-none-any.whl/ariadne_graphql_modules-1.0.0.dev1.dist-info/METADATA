@@ -1,0 +1,149 @@
+Metadata-Version: 2.3
+Name: ariadne-graphql-modules
+Version: 1.0.0.dev1
+Summary: Ariadne toolkit for defining GraphQL schemas in modular fashion.
+Project-URL: Homepage, https://ariadnegraphql.org/
+Project-URL: Repository, https://github.com/mirumee/ariadne-graphql-modules
+Project-URL: Bug Tracker, https://github.com/mirumee/ariadne-graphql-modules/issues
+Project-URL: Community, https://github.com/mirumee/ariadne/discussions
+Project-URL: Twitter, https://twitter.com/AriadneGraphQL
+Project-URL: Documentation, https://mirumee.github.io/ariadne-graphql-modules/
+Author-email: Mirumee Software <hello@mirumee.com>
+License: BSD 3-Clause License
+        
+        Copyright (c) 2023, Mirumee Labs
+        All rights reserved.
+        
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are met:
+        
+        * Redistributions of source code must retain the above copyright notice, this
+          list of conditions and the following disclaimer.
+        
+        * Redistributions in binary form must reproduce the above copyright notice,
+          this list of conditions and the following disclaimer in the documentation
+          and/or other materials provided with the distribution.
+        
+        * Neither the name of the copyright holder nor the names of its
+          contributors may be used to endorse or promote products derived from
+          this software without specific prior written permission.
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: <3.13,>=3.9
+Requires-Dist: ariadne==0.23.0
+Requires-Dist: mkdocs-material
+Provides-Extra: docs
+Requires-Dist: mkdocs-material; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: black; extra == 'lint'
+Requires-Dist: mypy; extra == 'lint'
+Requires-Dist: pylint; extra == 'lint'
+Requires-Dist: ruff; extra == 'lint'
+Provides-Extra: test
+Requires-Dist: pytest; extra == 'test'
+Requires-Dist: pytest-asyncio; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+Requires-Dist: pytest-datadir; extra == 'test'
+Requires-Dist: pytest-regressions; extra == 'test'
+Description-Content-Type: text/markdown
+
+[![Ariadne](https://ariadnegraphql.org/img/logo-horizontal-sm.png)](https://ariadnegraphql.org)
+
+[![Build Status](https://github.com/mirumee/ariadne-graphql-modules/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/mirumee/ariadne-graphql-modules/actions)
+
+## ⚠️ Important Migration Warning: Version 1.0.0
+
+With the release of version 1.0.0, there have been significant changes to the `ariadne_graphql_modules` API. If you are upgrading from a previous version, **you will need to update your imports** to ensure your code continues to function correctly.
+
+### What You Need to Do
+
+To maintain compatibility with existing code, you must explicitly import types from the `v1` module of `ariadne_graphql_modules`. This is necessary for any code that relies on the legacy API from versions prior to 1.0.0.
+
+### Example
+
+**Before upgrading:**
+
+```python
+from ariadne_graphql_modules import ObjectType, EnumType
+```
+
+**After upgrading to 1.0.0:**
+
+```python
+from ariadne_graphql_modules.v1 import ObjectType, EnumType
+```
+
+### Why This Change?
+
+The introduction of version 1.0.0 brings a more robust and streamlined API, with better support for modular GraphQL schemas. To facilitate this, legacy types and functionality have been moved to the `v1` submodule, allowing new projects to take full advantage of the updated architecture while providing a clear path for migrating existing codebases.
+
+# Ariadne GraphQL Modules
+
+**Ariadne GraphQL Modules** is an extension for the [Ariadne](https://ariadnegraphql.org/) framework, designed to help developers structure and manage GraphQL schemas in a modular way. This library provides an organized approach to building GraphQL APIs by dividing your schema into self-contained, reusable modules, each responsible for its own part of the schema.
+
+## Installation
+
+Ariadne GraphQL Modules can be installed using pip:
+
+```bash
+pip install ariadne-graphql-modules
+```
+
+Ariadne 0.23 or later is required for the library to work.
+
+## Basic Usage
+
+Here is a basic example of how to use Ariadne GraphQL Modules to create a simple GraphQL API:
+
+```python
+from datetime import date
+
+from ariadne.asgi import GraphQL
+from ariadne_graphql_modules import ObjectType, gql, make_executable_schema
+
+
+class Query(ObjectType):
+    __schema__ = gql(
+        """
+        type Query {
+            message: String!
+            year: Int!
+        }
+        """
+    )
+
+    @staticmethod
+    def resolve_message(*_):
+        return "Hello world!"
+
+    @staticmethod
+    def resolve_year(*_):
+        return date.today().year
+
+
+schema = make_executable_schema(Query)
+app = GraphQL(schema=schema, debug=True)
+```
+
+In this example, a simple `Query` type is defined within a module. The `make_executable_schema` function is then used to combine the module into a complete schema, which can be used to create a GraphQL server.
+
