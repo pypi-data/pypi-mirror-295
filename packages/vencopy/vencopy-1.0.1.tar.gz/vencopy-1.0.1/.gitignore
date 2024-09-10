@@ -1,0 +1,49 @@
+# Jupyter notebook folders and precompiled bytecode (__pycache__)
+*__pycache__/
+.ipynb_checkpoints
+.pytest_cache
+
+# Package building related folders
+/vencopy.egg-info
+/build
+/dist
+
+# Eurostat population file
+proj_19rp3.tsv
+
+# Old folder before time-implementation
+/vencopy/classes
+/picklefiles/
+
+# log files
+debug.log
+Makefile
+make.bat
+
+
+# Git version conflict files
+*.py.orig
+
+# Output folders and checkpoint files such as pickle and HDF5 files
+/vencopy/output/*
+/vencopy/output/postprocessor/*
+/vencopy/snippets
+*.p
+*.h5f
+/vencopy/input/proj_19rp3.tsv
+
+#log files
+*.log
+
+# files with user-specific local paths
+/vencopy/config/user_config.yaml
+/vencopy/config/user_config_seasons.yaml
+/vencopy/config/user_config_main.yaml
+
+# VS-Code / PyCharm
+.vscode
+.idea
+/docs/_build/
+/docs/notes/
+*.code-workspace
+.dist/

@@ -1,0 +1,14 @@
+# Include the README
+include *.md
+
+# Include the license file
+include LICENSE
+
+# Include setup.py
+include *.toml
+
+# Include the data files
+include ./vencopy/core
+include ./vencopy/config
+include ./vencopy/utils
+include ./vencopy/tutorials
