@@ -1,0 +1,9 @@
+sigma/backends/logpoint/__init__.py,sha256=KmU9TCFGcSLD5ejR30WuKLLxEii2mhpPXVmHz1oYazs,72
+sigma/backends/logpoint/logpoint.py,sha256=oApqe48l_yiGF52kQs1OxWIoV1kaCtposQvk3mUgRjc,7374
+sigma/pipelines/logpoint/__init__.py,sha256=haf9-jFlxz91XC6ZDE3c_k0fxLf54ESIJrC0maUPq3I,114
+sigma/pipelines/logpoint/logpoint_mapping.py,sha256=dHlcloMcbhY5H-7K9jGuOP4u_hU4skNpjRDkl3egWkE,88413
+sigma/pipelines/logpoint/windows.py,sha256=soR94njhf96CeOUEHQZ5Y0jtfIzmIhCmy3HhT-5SOX0,11713
+pysigma_backend_logpoint-0.2.0.dist-info/LICENSE,sha256=IMF9i4xIpgCADf0U-V1cuf9HBmqWQd3qtI3FSuyW4zE,26526
+pysigma_backend_logpoint-0.2.0.dist-info/METADATA,sha256=Mb1jHoCYgYpCo_kgpY1aST75gLArz5pAaRX-eruS9cY,4000
+pysigma_backend_logpoint-0.2.0.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+pysigma_backend_logpoint-0.2.0.dist-info/RECORD,,
