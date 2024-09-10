@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: pqutils
+Version: 1.0.9
+Summary: A utils package for PyQt5
+Home-page: https://github.com/majunggil/PyQt5/tree/main/pqutils
+Author: majunggil
+Author-email: majunggil.work@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: PyQt5 (>=5.15.0)
+
+# Utils Package
+
+A PyQt5 Utils extension with additional functionality.
+
+## Installation
+
+Install the package via pip:
+
+```bash
+pip install pqutils
+
