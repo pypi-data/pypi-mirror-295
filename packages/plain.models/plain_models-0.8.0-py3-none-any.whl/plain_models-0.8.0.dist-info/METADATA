@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: plain.models
+Version: 0.8.0
+Summary: Database models for Plain.
+Author: Dave Gaeddert
+Author-email: dave.gaeddert@dropseed.dev
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: plain (<1.0.0)
+Requires-Dist: sqlparse (>=0.3.1)
