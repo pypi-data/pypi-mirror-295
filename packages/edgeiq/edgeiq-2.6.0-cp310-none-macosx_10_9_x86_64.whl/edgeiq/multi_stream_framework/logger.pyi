@@ -1,0 +1,9 @@
+import multiprocessing
+import threading
+from edgeiq._utils import empty_queue as empty_queue, gen_logger as gen_logger
+from logging import LogRecord
+
+class LoggerThread(threading.Thread):
+    def __init__(self, log_queue: multiprocessing.Queue[LogRecord | None]) -> None: ...
+    def run(self) -> None: ...
+    def close(self) -> None: ...
