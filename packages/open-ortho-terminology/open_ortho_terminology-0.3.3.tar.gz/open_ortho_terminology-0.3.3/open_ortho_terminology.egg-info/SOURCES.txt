@@ -1,0 +1,16 @@
+LICENSE.md
+README.md
+setup.py
+open_ortho_terminology/__init__.py
+open_ortho_terminology/main.py
+open_ortho_terminology.egg-info/PKG-INFO
+open_ortho_terminology.egg-info/SOURCES.txt
+open_ortho_terminology.egg-info/dependency_links.txt
+open_ortho_terminology.egg-info/entry_points.txt
+open_ortho_terminology.egg-info/top_level.txt
+open_ortho_terminology/terminology/__init__.py
+open_ortho_terminology/terminology/dentaleyepad.py
+open_ortho_terminology/terminology/hl7.py
+open_ortho_terminology/terminology/open_ortho.py
+open_ortho_terminology/terminology/snomed.py
+open_ortho_terminology/terminology/vendors.py
