@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: systemics
+Version: 0.0.0
+Summary: AI system for general agents
+Home-page: https://github.com/HaShaWB/systemics
+Author: HaShaWB
+Author-email: whitebluej@kaist.ac.kr
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Systemics
+---
+System of AIs for general integrated agent
