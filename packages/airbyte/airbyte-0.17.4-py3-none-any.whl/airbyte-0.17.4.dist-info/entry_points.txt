@@ -1,0 +1,3 @@
+[console_scripts]
+airbyte-lib-validate-source=airbyte.validate:run
+
