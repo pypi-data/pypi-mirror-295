@@ -1,0 +1,69 @@
+[tool.poetry]
+name = "omnitils"
+version = "1.3.3"
+description = "Universal reusable Python utils for the modern human."
+authors = ["Investigamer <hexproofsystems@gmail.com>"]
+license = "MPL-2.0"
+readme = "README.md"
+keywords = ["omnitils", "utilities", "utils", "files", "schema", "test", "benchmark", "enums", "logs", "investigamer"]
+classifiers = [
+    # Development status
+    "Development Status :: 4 - Beta",
+
+    # License
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+
+    # Audience and Purpose
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+
+    # Supported Python versions
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+
+[tool.poetry.urls]
+"Changelog" = "https://github.com/Investigamer/omnitils/blob/main/CHANGELOG.md"
+"Discord" = "https://discord.gg/magicproxies"
+"Issues" = "https://github.com/Investigamer/omnitils/issues"
+"Source" = "https://github.com/Investigamer/omnitils"
+"Sponsor" = "https://patreon.com/mpcfill"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+requests = "^2.32.0"
+PyYAML = "^6.0.1"
+yarl = "^1.9.4"
+mkdocs = "^1.5.3"
+tomlkit = "^0.12.3"
+pillow = "^10.3.0"
+ratelimit = "^2.2.1"
+backoff = "^2.2.1"
+pathvalidate = "^3.2.0"
+py7zr = "^0.20.8"
+tqdm = "^4.66.1"
+tomli = "^2.0.1"
+pydantic = "^2.6.0"
+fonttools = "^4.47.2"
+loguru = "^0.7.2"
+click = "^8.1.7"
+
+[tool.poetry.group.dev.dependencies]
+commitizen = "^3.25.0"
+mypy = "^1.8.0"
+pytest = "^8.0.0"
+memory-profiler = "^0.61.0"
+
+[tool.commitizen]
+version = "1.3.3"
+tag_format = "$major.$minor.$patch"
+update_changelog_on_bump = true
+version_files = [
+    "pyproject.toml:version",
+    "omnitils/__init__.py:__version__"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
