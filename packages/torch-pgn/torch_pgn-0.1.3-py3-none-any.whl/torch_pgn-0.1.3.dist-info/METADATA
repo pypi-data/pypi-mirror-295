@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: torch-pgn
+Version: 0.1.3
+Summary: Proximity Graph Networks: Predicting ligand affinity with Message Passing Neural Networks
+Home-page: https://github.com/keiserlab/torch_pgn
+Author: Keiser Lab
+Author-email: keiser@keiserlab.org
+License: MIT
+Keywords: chemistry,machine learning,affinity prediction,message passing neural network,graph neural network
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >3.6,<3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch (>=1.7.0)
+Requires-Dist: torch-geometric (>=1.6.3)
+Requires-Dist: networkx (>=2.5)
+Requires-Dist: typed-argument-parser (==1.6.1)
+Requires-Dist: pandas (==1.1.5)
+Requires-Dist: rdkit (>=2020.09.3)
+Requires-Dist: numpy (<=1.21.6,>=1.19.2)
+Requires-Dist: tqdm (>=4.54.1)
+Requires-Dist: tensorboard (>2.0)
+Requires-Dist: scipy (<1.7)
+Requires-Dist: scikit-learn (>=0.23.2)
+Requires-Dist: hyperopt (>=0.2.5)
+Requires-Dist: sympy (>=1.10.1)
+Requires-Dist: optuna (>=3.6.1)
+Requires-Dist: matplotlib (>=3.0.0)
+Requires-Dist: six (>=1.0.0)
+Requires-Dist: oddt (==0.7)
+
+# torch_pgn
+Proximity Graph Networks (torch_pgn) is a pytorch toolkit allowing for the modular application of multiple different encoder architectures to cheminformatic tasks centered around protein-ligand complexes. Alpha version of documentation is available at: <url>https://torch-pgn.readthedocs.io/en/latest/index.html<url>.
+
+## Installation
+torch-pgn either be installed from PyPi using the pip command or from source. We assume that all users are using conda, if you do not have conda, please install Miniconda from <url>https://conda.io/miniconda.html<url>.
+
+### Installation using pip (cpu only)
+1. `conda create --name torch_pgn python=3.7`
+2. `conda activate torch_pgn`
+3. `pip install torch_pgn`
+4. `conda install pytorch-sparse -c pyg`
+5. `conda install -c conda-forge openbabel`
+
+### Installation using pip (cuda)
+1. `conda create --name torch_pgn python=3.7`
+2. `conda activate torch_pgn`
+3. `conda install pytorch==1.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia`
+4. `conda install pyg -c pyg`
+5. `conda install pytorch-sparse -c pyg`
+6. `conda install -c conda-forge openbabel`
+7. `pip install torch_pgn`
+
+### Installation from source
+1. `git clone https://github.com/keiserlab/torch_pgn/torch_pgn.git`
+2. `cd torch_pgn`
+3. `conda env create -f environment.yml`
+4. `conda activate torch_pgn`
+5. `pip install -e`
