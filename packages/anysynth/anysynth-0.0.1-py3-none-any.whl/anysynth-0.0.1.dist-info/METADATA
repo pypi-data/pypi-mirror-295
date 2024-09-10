@@ -1,0 +1,28 @@
+Metadata-Version: 2.3
+Name: anysynth
+Version: 0.0.1
+Summary: TBD
+Project-URL: Homepage, https://github.com/nii-llmc/anysynth
+Project-URL: Bug Tracker, https://github.com/nii-llmc/anysynth/issues
+Author-email: Takashi Kodama <tkodama@nii.ac.jp>, Hirokazu Kiyomaru <kiyomaru@nii.ac.jp>, Yusuke Oda <odashi@predicate.jp>
+License: MIT License
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: <3.13,>=3.10
+Provides-Extra: dev
+Requires-Dist: black>=22.10; extra == 'dev'
+Requires-Dist: flake8>=5.0; extra == 'dev'
+Requires-Dist: isort>=5.10; extra == 'dev'
+Requires-Dist: mypy>=0.991; extra == 'dev'
+Requires-Dist: pyproject-flake8>=5.0; extra == 'dev'
+Requires-Dist: pytest>=7.1; extra == 'dev'
+Provides-Extra: mypy
+Requires-Dist: mypy>=0.991; extra == 'mypy'
+Requires-Dist: pytest>=7.1; extra == 'mypy'
+Description-Content-Type: text/markdown
+
+# anysynth
+Toolkit for manipulating synthetic text data
