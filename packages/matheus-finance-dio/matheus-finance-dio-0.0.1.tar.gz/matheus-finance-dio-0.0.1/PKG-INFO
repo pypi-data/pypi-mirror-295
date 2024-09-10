@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: matheus-finance-dio
+Version: 0.0.1
+Summary: Pacote básico para cálculo de valor presente de títulos públicos
+Home-page: https://github.com/matheus-brito-dev/simple-package-template
+Author: Matheus Brito
+Author-email: mabrol23@gmail.com
+License: MIT
+Description: # package_name
+        
+        Description. 
+        The package package_name is used to:
+        	- Perform calculations related to the present value of public bonds
+           - Other financial calculations (add more details about the package's capabilities)
+        
+        
+        ## Installation
+        
+        Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package_name
+        
+        ```bash
+        pip install finance
+        ```
+        
+        ## Usage
+        
+        ```python
+        from finance import module1
+        result = module1.my_function()
+        print(result)
+        ```
+        
+        ## Author
+        Matheus
+        
+        ## License
+        [MIT](https://choosealicense.com/licenses/mit/)
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
