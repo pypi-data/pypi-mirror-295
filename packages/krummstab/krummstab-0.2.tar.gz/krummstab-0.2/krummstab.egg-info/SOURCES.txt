@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+krummstab/__init__.py
+krummstab.egg-info/PKG-INFO
+krummstab.egg-info/SOURCES.txt
+krummstab.egg-info/dependency_links.txt
+krummstab.egg-info/entry_points.txt
+krummstab.egg-info/requires.txt
+krummstab.egg-info/top_level.txt
+tests/test_all.py
