@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "megatron-tokenizer-lite"
+version = "0.0.1"
+authors = [
+  { name="Marco Bellagente", email="marco.bellagente@gmail.com" },
+]
+description = "Slim package to read megatron mmaps"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
