@@ -1,0 +1,15 @@
+Metadata-Version: 2.3
+Name: amonite
+Version: 0.0.4
+Summary: A basic game engine built around pyglet
+Project-URL: Homepage, https://github.com/Mathorga/amonite
+Project-URL: Issues, https://github.com/Mathorga/amonite/issues
+Author-email: Luka Micheletti <michelettiluka@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+
+# amonite
