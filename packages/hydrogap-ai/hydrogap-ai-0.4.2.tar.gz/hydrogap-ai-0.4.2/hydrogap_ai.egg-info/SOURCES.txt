@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+hydrogap_ai.egg-info/PKG-INFO
+hydrogap_ai.egg-info/SOURCES.txt
+hydrogap_ai.egg-info/dependency_links.txt
+hydrogap_ai.egg-info/requires.txt
+hydrogap_ai.egg-info/top_level.txt
+hydrogapai/__init__.py
+hydrogapai/gap_prediction.py
+hydrogapai/gap_utils.py
