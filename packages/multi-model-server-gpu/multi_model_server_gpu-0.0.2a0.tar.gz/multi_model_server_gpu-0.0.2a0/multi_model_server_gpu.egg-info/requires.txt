@@ -1,0 +1,14 @@
+Pillow
+psutil
+future
+model-archiver
+torch==2.0.1
+
+[mxnet]
+mxnet
+
+[mxnet-cu90mkl]
+mxnet-cu90mkl
+
+[mxnet-mkl]
+mxnet-mkl
