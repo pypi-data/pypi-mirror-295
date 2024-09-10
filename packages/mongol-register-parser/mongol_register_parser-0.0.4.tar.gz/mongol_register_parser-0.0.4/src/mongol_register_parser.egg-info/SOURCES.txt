@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/mongol_register_parser/__init__.py
+src/mongol_register_parser/mongol_register_parser.py
+src/mongol_register_parser.egg-info/PKG-INFO
+src/mongol_register_parser.egg-info/SOURCES.txt
+src/mongol_register_parser.egg-info/dependency_links.txt
+src/mongol_register_parser.egg-info/top_level.txt
