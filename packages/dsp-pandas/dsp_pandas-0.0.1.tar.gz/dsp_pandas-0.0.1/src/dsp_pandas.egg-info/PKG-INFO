@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: dsp_pandas
+Version: 0.0.1
+Summary: A small example package
+Author-email: Jakob Nybo Nissen <jakobnybonissen@gmail.com>, Henry Webel <henry.webel@sund.ku.dk>
+Project-URL: Bug Tracker, https://github.com/biosustain/dsp_pandas/issues
+Project-URL: Homepage, https://github.com/biosustain/dsp_pandas
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx-book-theme; extra == "docs"
+Requires-Dist: myst-nb; extra == "docs"
+Requires-Dist: ipywidgets; extra == "docs"
+Requires-Dist: sphinx-new-tab-link!=0.2.2; extra == "docs"
+Requires-Dist: jupytext; extra == "docs"
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+
+# Custom Pandas functions
+
+`dsp_pandas` is a Python package to gather pandas related custom functions. It's only
+dependencies should be pandas - and pandas internal dependencies.
