@@ -1,0 +1,15 @@
+aind_behavior_gym/__init__.py,sha256=AxetLo0H0S8RTGCD9sWzafS5tNhX7tGNrwE2-w8WFYU,47
+aind_behavior_gym/dynamic_foraging/__init__.py,sha256=P4gT84J26gtUSHoPG6VlzLPjg3mTzId853832OmCEt8,41
+aind_behavior_gym/dynamic_foraging/agent/__init__.py,sha256=WKeJOXy_X1nNJfzcFuKu5L1bJoNaNzCQGx-5vGiO65w,77
+aind_behavior_gym/dynamic_foraging/agent/base.py,sha256=utYYKGNb1Zoc5sjUQpFV574n0gMxs2soYZpnYBneJRk,3389
+aind_behavior_gym/dynamic_foraging/agent/random_agent.py,sha256=7j3GMqp-Yj1m8B5oWXzh0dj_ALulWWcm2LN1KWT8BNQ,743
+aind_behavior_gym/dynamic_foraging/task/__init__.py,sha256=Q78WcDysI_lLZYEpLS36JXcy0Cp4rilb8u-1dASJ5iM,278
+aind_behavior_gym/dynamic_foraging/task/base.py,sha256=U9ADNmD9cxxwA9XNBRX98M7OwgsbWB0nzu7vXFbucDs,6674
+aind_behavior_gym/dynamic_foraging/task/coupled_block_task.py,sha256=HGb6Ann6fhhiL0RKBwnfCwcxseL9LVSTJGo9Gp3hBH0,5379
+aind_behavior_gym/dynamic_foraging/task/random_walk_task.py,sha256=iEuAKRcJQLSOuB58eiLG2E9g9uKYSiN6MM451RFQhjI,3392
+aind_behavior_gym/dynamic_foraging/task/uncoupled_block_task.py,sha256=F5UwVFSgtlg-B7jqgZ7lYLJoMOX5SXmsxrN0Qyf_SZg,13903
+aind_behavior_gym-0.4.1.dist-info/LICENSE,sha256=U0Y7B3gZJHXpjJVLgTQjM8e_c8w4JJpLgGhIdsoFR1Y,1092
+aind_behavior_gym-0.4.1.dist-info/METADATA,sha256=PySMCsPlKWfgPbjoQCmm7s5xRpsDIA_gs86fS73Cfs0,7326
+aind_behavior_gym-0.4.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+aind_behavior_gym-0.4.1.dist-info/top_level.txt,sha256=p_NpZ_l6YlKP0-bSu4WgpzCi8vFGryBn3I7euJxDlRo,18
+aind_behavior_gym-0.4.1.dist-info/RECORD,,
