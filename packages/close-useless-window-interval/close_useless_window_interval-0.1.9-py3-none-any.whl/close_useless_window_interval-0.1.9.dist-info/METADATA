@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: close-useless-window-interval
+Version: 0.1.9
+Summary: 
+Author: ihrskyfish
+Author-email: ihr17867950748@126.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pyautogui (>=0.9.54,<0.10.0)
+Requires-Dist: pywinauto (>=0.6.8,<0.7.0)
+Description-Content-Type: text/markdown
+
+
