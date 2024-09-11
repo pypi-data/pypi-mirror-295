@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: brrrData
+Version: 0.1.0
+Summary: A data processing tool for Excel files
+Home-page: https://github.com/felix-arvidsson/brrrDataProcessor/
+Author: Felix Arvidsson
+Author-email: felix.arvidsson@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: blessed==1.20.0
+Requires-Dist: editor==1.6.6
+Requires-Dist: et-xmlfile==1.1.0
+Requires-Dist: inquirer==3.4.0
+Requires-Dist: numpy==2.1.1
+Requires-Dist: openpyxl==3.1.5
+Requires-Dist: pandas==2.2.2
+Requires-Dist: prompt-toolkit==3.0.47
+Requires-Dist: python-dateutil==2.9.0.post0
+Requires-Dist: pytz==2024.1
+Requires-Dist: readchar==4.2.0
+Requires-Dist: runs==1.2.2
+Requires-Dist: six==1.16.0
+Requires-Dist: tzdata==2024.1
+Requires-Dist: wcwidth==0.2.13
+Requires-Dist: xmod==1.8.1
+
+![data processor go brrr](brrr.png)
+# excel data processing script
+
+python script I use for work to process data in excel files.
+I plan to add more features in the future
+ 
+
+## Features
+
+- **Remove Duplicate Rows**: Remove duplicate rows based on selected columns.
+- **Save Only Duplicates**: Save only the duplicate rows to a new file.
+- **Compare Columns**: Compare columns from two files and optionally save common values.
+- **List Duplicates**: List duplicate rows in a file and save them if required.
+- **Sort Rows**: Sort rows in an Excel file based on a selected column.
+- **Modify Column**: Modify values in a selected column with various text manipulation options.
+
+## Installation
+
+   ```sh
+   pip install brrrDataProcessor
+   #usage
+   brrrdata
+   
