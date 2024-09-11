@@ -1,0 +1,30 @@
+{% extends 'allianceauth/base-bs5.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}{{ page_title }} - Metenox{% endblock %}
+
+{% block header_nav_collapse_left %}
+    {%  include 'metenox/partials/menu.html' %}
+{% endblock %}
+
+{% block header_nav_collapse_right %}
+    <a href="{% url 'metenox:add_owner' %}"
+       class="nav-link me-2">
+        <i class="fas fa-user"></i>
+        Add owner
+    </a>
+{% endblock %}
+
+{% block content %}
+    {% block details %}{% endblock %}
+{% endblock %}
+
+{% block extra_javascript %}
+    {% include 'metenox/partials/global_js.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    {% include 'bundles/datatables-css-bs5.html' %}
+{% endblock %}
