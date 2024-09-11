@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "onpod"
+version = "0.0.2"
+description = "Runpod abstraction layer to behave as if using a local GPU"
+authors = ["gabewillen <gabewillen@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+runpod = "^1.7.0"
+pydantic = "^2.9.1"
+torch = "^2.4.1"
+
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
