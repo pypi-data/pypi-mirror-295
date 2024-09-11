@@ -1,0 +1,2 @@
+[console_scripts]
+brrrdata = brrrData.__main__:main
