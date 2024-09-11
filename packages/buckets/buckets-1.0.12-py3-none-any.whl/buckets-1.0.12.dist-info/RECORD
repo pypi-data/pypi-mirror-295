@@ -1,0 +1,16 @@
+buckets/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+buckets/__main__.py,sha256=idU78s5RzuGbCQQDVpKoqSLM7iCppwY5PR3nyw3Cg5s,1530
+buckets/fake/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+buckets/fake/cases_rows.py,sha256=NRf5PJWtxLl3qHX7pik1mBnx53me_LjgRDacmLjvWmI,15462
+buckets/fake/console.py,sha256=J0MCV35CH9Zk64C7FSvwgRVCWuQl-idY8j4-3sGNmFM,2832
+buckets/fake/dates.py,sha256=enugjB8MLLdW1M-Oqy6v9ukeVmvUiND3Zp_S_fmnjCk,4285
+buckets/fake/users.py,sha256=Xc2AbbWe3sLtmBS-iK-afx3JfRKnbRD2kpRWIht0OVg,5463
+buckets/services/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+buckets/services/cases_buckets.py,sha256=4dAaP3cduolvHBs0e-MYFRzYyH5cCRw4dXX2yWIm6WU,14673
+buckets/services/config_service.py,sha256=JhtuGFN9XDCm7Hz4EU_TnPfL-KGw0L41eoSuO-pjUMQ,1220
+buckets/services/parser_service.py,sha256=8UeXzGfEVfSUXYTTM2D9qVOl4_S_cg6id9ZGvPWBn40,814
+buckets/services/schema_service.py,sha256=aC-TZpqjaXbmzVkW7hs5HFquYyo11AwLoUy8hpDS1v8,5949
+buckets-1.0.12.dist-info/entry_points.txt,sha256=t4VcSWuoO_kOp___ZFnVfr6eqUeUnRqAwj6MCVoZOpU,49
+buckets-1.0.12.dist-info/WHEEL,sha256=EZbGkh7Ie4PoZfRQ8I0ZuP9VklN_TvcZ6DSE5Uar4z4,81
+buckets-1.0.12.dist-info/METADATA,sha256=Xm9Wtg8pO1-d2KL5QUAfl_rcULygoAp5QqzTBsB8B8E,372
+buckets-1.0.12.dist-info/RECORD,,
