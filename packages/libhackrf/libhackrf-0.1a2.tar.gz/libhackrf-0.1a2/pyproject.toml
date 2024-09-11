@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "libhackrf"
+version = "0.1a2"
+description = "A Python library for interfacing with HackRF software-defined radio hardware, enabling signal reception and transmission, frequency scanning, and data processing."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "BSD-2-Clause" }
+authors = [
+    { name = "Yeison Cardona", email = "yencardonaal@unal.edu.co" }
+]
+maintainers = [
+    { name = "Yeison Cardona", email = "yencardonaal@unal.edu.co" }
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = []
+
+[project.urls]
+"Repository" = "https://github.com/dunderlab/python-libhackrf"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hackrf"]
+[project.optional-dependencies]
+dev = [
+    "numpy",
+    ]

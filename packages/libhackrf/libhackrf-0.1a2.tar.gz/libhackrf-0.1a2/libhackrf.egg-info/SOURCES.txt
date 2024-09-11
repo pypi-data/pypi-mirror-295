@@ -1,0 +1,14 @@
+LICENSE.md
+MANIFEST.in
+README.md
+pyproject.toml
+hackrf/__init__.py
+hackrf/cinterface.py
+hackrf/core.py
+hackrf/scan.py
+hackrf/utils.py
+libhackrf.egg-info/PKG-INFO
+libhackrf.egg-info/SOURCES.txt
+libhackrf.egg-info/dependency_links.txt
+libhackrf.egg-info/requires.txt
+libhackrf.egg-info/top_level.txt
