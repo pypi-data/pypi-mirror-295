@@ -1,0 +1,23 @@
+# python
+venv
+env
+.env
+.venv
+__pycache__
+*.pyc
+*.egg-info
+
+# misc
+.DS_Store
+
+docs
+dist
+.doctree
+
+# testing
+local
+coverage.xml
+*.xml
+*.iml
+.coverage
+.coveragesrc
