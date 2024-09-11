@@ -1,0 +1,9 @@
+MANIFEST.in
+README.md
+setup.py
+fastcode/__init__.py
+fastcode/email_protocols.py
+fastcode.egg-info/PKG-INFO
+fastcode.egg-info/SOURCES.txt
+fastcode.egg-info/dependency_links.txt
+fastcode.egg-info/top_level.txt
