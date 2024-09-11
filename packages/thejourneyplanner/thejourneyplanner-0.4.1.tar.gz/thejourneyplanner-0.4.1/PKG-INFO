@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: thejourneyplanner
+Version: 0.4.1
+Summary: Plan a quick walk in the car!
+Home-page: https://github.com/unkokaeru/thejourneyplanner
+License: MIT
+Author: W. Fayers
+Author-email: wills@fayers.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: dev
+Provides-Extra: devlint
+Provides-Extra: docs
+Provides-Extra: lint
+Provides-Extra: release
+Provides-Extra: test
+Provides-Extra: types
+Requires-Dist: folium (>=0.12.1,<0.13.0)
+Requires-Dist: geocoder (>=1.38.1,<2.0.0)
+Requires-Dist: polyline (>=1.4.0,<2.0.0)
+Requires-Dist: questionary (>=1.9.0,<2.0.0)
+Requires-Dist: requests (>=2.25.1,<3.0.0)
+Requires-Dist: rich (>=12.0.0,<13.0.0)
+Project-URL: Repository, https://github.com/unkokaeru/thejourneyplanner
+Description-Content-Type: text/markdown
+
+# thejourneyplanner
+
+![Continuous Integration (CI) Tests](https://github.com/unkokaeru/thejourneyplanner/actions/workflows/continuous_integration.yml/badge.svg)
+
+Plan a quick walk in the car!
+
+## Installation
+
+To install thejourneyplanner, simply run:
+
+```bash
+pip install thejourneyplanner
+```
+
+## Usage
+
+After installation, you can use the package by executing:
+
+```bash
+thejourneyplanner
+```
+
+## Documentation
+For more information, you can find the documentation within the `docs` directory or on the project's [GitHub Pages](https://unkokaeru.github.io/thejourneyplanner/).
+
+## Contributing
+
+Contributions are welcome! Please refer to our `CONTRIBUTING.md` for more information.
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
