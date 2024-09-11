@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "patent-stil"
+version = "0.1.0"
+description = ""
+authors = ["科技创新实验室 <swszLab@163.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.0"
+requests = "^2.32.3"
+beautifulsoup4="^4.12.3"
+lxml="^5.3.0"
+tqdm="^4.66.5"
+wget="^3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+"Homepage" = "https://gitee.com/hbue_stil/patent_stil"
+"Bug Tracker" = "https://gitee.com/hbue_stil/patent_stil/issues"

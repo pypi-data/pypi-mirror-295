@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: patent-stil
+Version: 0.1.0
+Summary: 
+Author: 科技创新实验室
+Author-email: swszLab@163.com
+Requires-Python: >=3.0,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: beautifulsoup4 (>=4.12.3,<5.0.0)
+Requires-Dist: lxml (>=5.3.0,<6.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: tqdm (>=4.66.5,<5.0.0)
+Requires-Dist: wget (>=3.2,<4.0)
+Description-Content-Type: text/markdown
+
+    patent_stil是一个专利数据采集库，通过对接谷歌学术、FPO平台实现专利数据采集和解析，由科技创新实验室(邓乾、马全、姚嵇馨、王慕延、骆鸿威、黄泽亮、白徐阳、万和伽)正式发布的专利数据采集库，通过对接FPO网站的接口，同时利用Pnadas库实现结构化存储数据，科研帮助用户方便的采集国外专利信息。
+    下面是关于该工具包得使用方式,本工具库包可以使用pip install命令进行安装:
+    `pip isnatll patent_stil`
+    安装完成后，在自己编写得Python文件里面使用:
+    `import patent_stil`
+    
