@@ -1,0 +1,11 @@
+build:
+  # is using GPU image
+  gpu: false
+  # specify a specific python version
+  python_version: "3.11.5"
+  # your python requirements
+  python_requirements: requirements.txt
+
+predict: "predictor.py:Predictor"
+# replace your username and image name with your own name
+image: "r.18h.online/<your_user_name_here>/<model_name>"
