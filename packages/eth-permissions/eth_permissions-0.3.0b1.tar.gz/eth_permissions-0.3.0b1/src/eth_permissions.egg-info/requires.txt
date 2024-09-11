@@ -1,0 +1,10 @@
+eth-prototype[web3]>=1.2.0b1
+graphviz
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[testing]
+setuptools
+pytest
+pytest-cov
