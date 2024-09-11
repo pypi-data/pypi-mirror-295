@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+app/PyPIMetaMorphosis/__init__.py
+app/PyPIMetaMorphosis.egg-info/PKG-INFO
+app/PyPIMetaMorphosis.egg-info/SOURCES.txt
+app/PyPIMetaMorphosis.egg-info/dependency_links.txt
+app/PyPIMetaMorphosis.egg-info/top_level.txt
+app/PyPIMetaMorphosis/src/PyPIMetaMorphosis.py
+app/PyPIMetaMorphosis/src/__init__.py
+app/PyPIMetaMorphosis/test/__init__.py
+app/PyPIMetaMorphosis/test/test_PyPIMetaMorphosis.py
