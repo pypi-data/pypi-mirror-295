@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+versioneer.py
+is_number/__init__.py
+is_number/_version.py
+is_number/is_number.py
+is_numer.egg-info/PKG-INFO
+is_numer.egg-info/SOURCES.txt
+is_numer.egg-info/dependency_links.txt
+is_numer.egg-info/top_level.txt
