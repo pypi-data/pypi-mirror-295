@@ -1,0 +1,6 @@
+[plover.extension]
+plover_steno_engine_hooks_logger_extension = plover_steno_engine_hooks_logger.extension:StenoEngineHooksLoggerExtension
+
+[plover.gui.qt.tool]
+plover_steno_engine_hooks_logger_gui_tool = plover_steno_engine_hooks_logger.gui_tool:StenoEngineHooksLoggerGUITool
+

@@ -1,0 +1,5 @@
+plover>=4.0.0rc2
+
+[test]
+mypy
+pylint
