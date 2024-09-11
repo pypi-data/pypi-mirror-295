@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ceon-render"
+version = "0.1.1"
+description = "Rendering Pipeline management for VFX apps with support for third party rendering providers."
+authors = ["Dayne Kolk <daynekolk@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.32.3"
+ciocore = "^8.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
