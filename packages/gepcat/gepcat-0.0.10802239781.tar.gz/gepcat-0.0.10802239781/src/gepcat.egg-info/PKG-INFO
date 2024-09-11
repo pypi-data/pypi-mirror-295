@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: gepcat
+Version: 0.0.10802239781
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click
+Requires-Dist: toml
+Provides-Extra: test
+Requires-Dist: pytest==6.2.5; extra == "test"
+Requires-Dist: pytest-cov==3.0.0; extra == "test"
+
+# About:
+Gepcat is a python version of linux tool **cat**, it performs many different tasks. 
+
+# Installation:
+
+```bash
+pip install gepcat
+gepcat -V
+```
+# How to use:
+### Print the content of a file:
+```
+gepcat <filename>
+```
+Use ``gepcat --help`` to get all useful commands.
+
+### License
+
+Gepcat is [MIT licensed](./LICENSE).

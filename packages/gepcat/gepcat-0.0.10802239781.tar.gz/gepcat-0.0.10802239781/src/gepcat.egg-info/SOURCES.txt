@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/gepcat/__init__.py
+src/gepcat/_version.py
+src/gepcat/main.py
+src/gepcat.egg-info/PKG-INFO
+src/gepcat.egg-info/SOURCES.txt
+src/gepcat.egg-info/dependency_links.txt
+src/gepcat.egg-info/entry_points.txt
+src/gepcat.egg-info/requires.txt
+src/gepcat.egg-info/top_level.txt

@@ -1,0 +1,26 @@
+[project]
+name = "gepcat"
+readme = "README.md"
+dependencies = [
+    "click",
+    "toml",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = [
+    "pytest==6.2.5",
+    "pytest-cov==3.0.0",
+]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]  # ["*"] by default
+exclude = []  # empty by default
+namespaces = true  # true by default
+
+[project.scripts]
+gepcat = "gepcat:pycat"
