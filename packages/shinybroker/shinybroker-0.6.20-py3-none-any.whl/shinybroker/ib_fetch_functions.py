@@ -1,0 +1,115 @@
+import atexit, datetime
+
+from shinybroker.connection import (
+    create_ibkr_socket_conn, send_ib_message, read_ib_msg
+)
+from shinybroker.functionary import functionary
+from shinybroker.msgs_to_ibkr import req_sec_def_opt_params
+from shinybroker.format_ibkr_inputs import *
+
+
+def fetch_sec_def_opt_params(
+        underlyingConId: int,
+        underlyingSymbol: str,
+        underlyingSecType: str,
+        host='127.0.0.1',
+        port=7497,
+        client_id=9999,
+        futFopExchange="",
+        timeout=3
+):
+    """
+    Creates a temporary IBKR client socket at the specified `host`, `port`, and
+    `client_id`, then makes a query for the security-defined option parameters
+    for the security defined by `underlyingConId`, `underlyingSymbol`,
+    `underlyingSecType`, and `futFopExchange`.
+
+    `fetch_sec_def_opt_params` will collect all
+    `SECURITY_DEFINITION_OPTION_PARAMETER` messages it receives and return
+    them in a dataframe when it receives a
+    `SECURITY_DEFINITION_OPTION_PARAMETER_END` message.
+
+    If `timeout` number of seconds elapse before receiving
+    `SECURITY_DEFINITION_OPTION_PARAMETER_END`, then `fetch_sec_def_opt_params`
+    returns `None`.
+
+    Upon completion, `fetch_sec_def_opt_params` closes the socket it opened.
+
+    Parameters
+    ------------
+    underlyingConId: int
+        `conId` of the underlying security
+    underlyingSymbol: str
+        Symbol of the underlying security for which you want option parameters.
+    underlyingSecType: str
+        Type of the underlying security; e.g., "`STK`"
+    host: '127.0.0.1'
+        Address of a running IBKR client (such as TWS or IBG) that has been
+        configured to accept API connections
+    port: 7497
+        Port of a running IBKR client
+    client_id: 9999
+        Client ID you want to use for the request. If you are connecting to a
+        system that is used by multiple users, then you may wish to set aside an
+         ID for this purpose; if you're the only one using the account then
+         you probably don't have to worry about it -- just use the default.
+    futFopExchange: ""
+        Only set this parameter if the underlying is a futures contract; in
+        other words, don't change it from the default `""` if your underlying is
+         a stock. If your underlying **is** a futures contract, then use
+         `futFopExchange` to specify the exchange for which you want option
+         parameters. You may still pass in `""` if you want the results to
+         include **all** of the exchanges available at IBKR that trade
+         options on your specified underlying.
+
+    Examples
+    --------
+    ```
+    {{< include ../examples/fetch_sec_def_opt_params.py >}}
+    ```
+    """
+    ib_conn = create_ibkr_socket_conn(
+        host=host, port=port, client_id=client_id
+    )
+    ib_socket = ib_conn['ib_socket']
+    ib_socket.settimeout(1)
+    atexit.register(ib_socket.close)
+
+    incoming_msg = read_ib_msg(ib_socket)
+
+    send_ib_message(
+        s=ib_socket,
+        msg=req_sec_def_opt_params(
+            reqId=ib_conn['NEXT_VALID_ID'],
+            underlyingSymbol=underlyingSymbol,
+            futFopExchange=futFopExchange,
+            underlyingSecType=underlyingSecType,
+            underlyingConId=underlyingConId
+        )
+    )
+
+    sdops = []
+    start_time = datetime.datetime.now()
+    while incoming_msg[0] != functionary['incoming_msg_codes'][
+        'SECURITY_DEFINITION_OPTION_PARAMETER_END'
+    ]:
+        incoming_msg = read_ib_msg(sock=ib_socket)
+        if incoming_msg[0] == functionary['incoming_msg_codes'][
+            'SECURITY_DEFINITION_OPTION_PARAMETER'
+        ]:
+            sdops.append(
+                format_sec_def_opt_params_input(sdop=incoming_msg[2:]))
+        if (datetime.datetime.now() - start_time).seconds > timeout:
+            break
+
+    try:
+        sec_def_opt_params = pd.concat(
+            sdops,
+            ignore_index=True
+        ).sort_values('exchange')
+    except ValueError:
+        sec_def_opt_params = None
+
+    return sec_def_opt_params
+
+
