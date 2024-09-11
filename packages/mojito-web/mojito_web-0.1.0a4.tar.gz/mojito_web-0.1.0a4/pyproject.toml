@@ -1,0 +1,69 @@
+[project]
+name = "mojito-web"
+dynamic = []
+description = "Lightweight ASGI framework based on Starlette."
+authors = [
+    { name = "Austin Bauman", email = "abauman97@protonmail.com" },
+]
+requires-python = ">=3.9"
+readme = "README.md"
+dependencies = [
+    "starlette>=0.37.2,<0.39.0",
+    "jinja2 >=2.11.2",
+    "itsdangerous~=2.2",
+    "python-multipart>=0.0.9",
+]
+version = "0.1.0a4"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/abauman97/Mojito"
+Documentation = "https://github.com/abauman97/Mojito"
+Repository = "https://github.com/abauman97/Mojito.git"
+Issues = "https://github.com/abauman97/Mojito/issues"
+
+[project.optional-dependencies]
+standard = [
+    "uvicorn[standard]~=0.12",
+    "httpx>=0.23.0",
+    "pydantic>2.1.0",
+]
+all = [
+    "uvicorn[standard]~=0.12",
+    "httpx>=0.23.0",
+    "pydantic>2.1.0",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.version]
+source = "file"
+path = "mojito/__init__.py"
+
+[tool.pdm.build]
+includes = [
+    "mojito/",
+]
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+]
+
+[tool.mypy]
+strict = true
+
+[tool.ruff.lint]
+select = [
+    "I",
+    "UP",
+]
