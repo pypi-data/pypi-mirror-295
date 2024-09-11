@@ -1,0 +1,2 @@
+[console_scripts]
+comotion = comotion.cli:safe_entry_point
