@@ -1,0 +1,118 @@
+Metadata-Version: 2.1
+Name: hirundo
+Version: 0.1.7
+Summary: This package is used to interface with Hirundo's platform. It provides a simple API to optimize your ML datasets.
+Author-email: Hirundo <dev@hirundo.io>
+License: MIT License
+        
+        Copyright (c) 2024, Hirundo
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/Hirundo-io/hirundo-client
+Keywords: dataset,machine learning,data science,data engineering
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyyaml>=6.0.1
+Requires-Dist: types-PyYAML>=6.0.12
+Requires-Dist: pydantic>=2.7.1
+Requires-Dist: twine>=5.0.0
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: types-requests>=2.31.0
+Requires-Dist: typer>=0.12.3
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: stamina>=24.2.0
+Requires-Dist: httpx-sse>=0.4.0
+Requires-Dist: pandas>=2.2.2
+Requires-Dist: tqdm>=4.66.5
+Provides-Extra: dev
+Requires-Dist: pyyaml>=6.0.1; extra == "dev"
+Requires-Dist: types-PyYAML>=6.0.12; extra == "dev"
+Requires-Dist: pydantic>=2.7.1; extra == "dev"
+Requires-Dist: twine>=5.0.0; extra == "dev"
+Requires-Dist: python-dotenv>=1.0.1; extra == "dev"
+Requires-Dist: types-requests>=2.31.0; extra == "dev"
+Requires-Dist: types-setuptools>=69.5.0; extra == "dev"
+Requires-Dist: typer>=0.12.3; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+Requires-Dist: stamina>=24.2.0; extra == "dev"
+Requires-Dist: httpx-sse>=0.4.0; extra == "dev"
+Requires-Dist: pytest>=8.2.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23.6; extra == "dev"
+Requires-Dist: uv; extra == "dev"
+Requires-Dist: pre-commit>=3.7.1; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: bumpver; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=7.4.7; extra == "docs"
+Requires-Dist: sphinx-autobuild>=2024.4.16; extra == "docs"
+Requires-Dist: sphinx-click>=5.0.1; extra == "docs"
+Requires-Dist: autodoc-pydantic>=2.2.0; extra == "docs"
+Requires-Dist: furo; extra == "docs"
+Requires-Dist: sphinx-multiversion; extra == "docs"
+
+# Hirundo client
+
+This repo contains the source code for the Hirundo client library
+
+## Usage:
+
+To learn about how to use this library, please visit the [http://docs.hirundo.io/](documentation) or see the Google Colab examples.
+
+Note: Currently we only support the main CPython release 3.9, 3.10 and 3.11. PyPy support may be introduced in the future.
+
+## Development:
+
+### Install dev dependencies
+
+```bash
+pip install -r dev-requirements.txt
+```
+
+Note: You can install and use `uv` as a faster drop-in replacement for `pip`. We have it as part of our dev dependencies for this reason.
+
+### Install `git` hooks (optional)
+
+```bash
+pre-commit install
+```
+
+### Check lint and apply formatting with Ruff (optional; pre-commit hooks run this automatically)
+
+```bash
+ruff check
+ruff format
+```
+
+### Change packages
+
+#### Update `requirements.txt` files
+
+```bash
+uv pip compile pyproject.toml
+uv pip compile --extra dev -o dev-requirements.txt -c requirements.txt pyproject.toml
+uv pip compile --extra docs -o docs-requirements.txt -c requirements.txt pyproject.toml
+```
+
+#### Sync installed packages
+
+```bash
+uv pip sync dev-requirements.txt
+```
+
+### Build process
+
+To build the package, run:
+`python -m build`
+
+### Publish documentation & releases
+
+Documentation & releases are published via GitHub Actions on merges to `main`.
