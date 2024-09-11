@@ -1,0 +1,16 @@
+.gitignore
+LICENSE
+README.md
+example.ipynb
+pyproject.toml
+src/pai/__init__.py
+src/pai/__main__.py
+src/pai/cli.py
+src/pai/embed.py
+src/pai/utils/option_choices.py
+src/phenomic_ai.egg-info/PKG-INFO
+src/phenomic_ai.egg-info/SOURCES.txt
+src/phenomic_ai.egg-info/dependency_links.txt
+src/phenomic_ai.egg-info/entry_points.txt
+src/phenomic_ai.egg-info/requires.txt
+src/phenomic_ai.egg-info/top_level.txt
