@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+src/conciliacaocore/__init__.py
+src/conciliacaocore/config.py
+src/conciliacaocore/database.py
+src/conciliacaocore/date_utils.py
+src/conciliacaocore/logger.py
+src/conciliacaocore/spark.py
+src/conciliacaocore.egg-info/PKG-INFO
+src/conciliacaocore.egg-info/SOURCES.txt
+src/conciliacaocore.egg-info/dependency_links.txt
+src/conciliacaocore.egg-info/requires.txt
+src/conciliacaocore.egg-info/top_level.txt
