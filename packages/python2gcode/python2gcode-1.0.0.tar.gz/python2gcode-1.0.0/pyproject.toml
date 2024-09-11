@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python2gcode"
+version = "1.0.0"
+authors = [
+{ name="Benjamin P", email="bcgcustomerservices@gmail.com" },
+]
+description = "A simple library for writing GCODE"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+"Programming Language :: Python :: 3",
+"License :: OSI Approved :: MIT License",
+"Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Hacking3DPrinters/gcode"
+Issues = "https://github.com/Hacking3DPrinters/gcode/issues"
