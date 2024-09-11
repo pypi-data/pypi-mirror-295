@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: ArpMitmProject
+Version: 0.1
+Summary: A Python library for ARP spoofing and MITM attacks.
+Home-page: https://github.com/Nathanafgi/ArpMitmProject
+Author: Matan
+Author-email: matannafgi@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Security
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scapy
+
+# ArpMitmProject
+created by Matan Nafgi
+
+`ArpMitmProject` is a Python library for performing ARP spoofing and man-in-the-middle (MITM) attacks.
+
+## Installation
+
+You can download ArpspoofMITM by cloning the Git Repo and simply installing its requirements
+```
+~ ❯❯❯ sudo apt-get update && sudo apt-get install scapy
+
+~ ❯❯❯ gh repo clone https://github.com/Nathanafgi/ArpMitmProject.git
+```
+## bash
+```
+~ ❯❯❯ pip install Arp-Mitm
+```
+
+## Usage
+```
+make sure that IP forwarding is enabled on your attacker machine so that packets from the victim can reach the intended destination (the target).
+
+
+sudo python3 arpmitm.py <victim_ip> <target_ip> <iface>
+```
+#default interface will be chosen if not specified
+
+# Disclaimer
+
+ArpMitmProject is provided as is under the MIT Licence (as stated below). 
+It is built for educational purposes *only*. If you choose to use it otherwise, the developers will not be held responsible. Please, do not use it with evil intent.
