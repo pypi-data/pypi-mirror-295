@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+tests/test_grad.py
+tests/test_vmap.py
+torchcomp/__init__.py
+torchcomp/core.py
+torchcomp.egg-info/PKG-INFO
+torchcomp.egg-info/SOURCES.txt
+torchcomp.egg-info/dependency_links.txt
+torchcomp.egg-info/requires.txt
+torchcomp.egg-info/top_level.txt
