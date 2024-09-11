@@ -1,0 +1,3 @@
+[console_scripts]
+gpit = gpit.main:main
+
