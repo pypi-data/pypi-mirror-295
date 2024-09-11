@@ -1,0 +1,25 @@
+{
+  "Pages/Index.tsx": {
+    "file": "Index-a3a8ef41.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Index.tsx"
+  },
+  "main.css": {
+    "file": "main-c309e0f6.css",
+    "src": "main.css"
+  },
+  "main.tsx": {
+    "css": [
+      "main-c309e0f6.css"
+    ],
+    "dynamicImports": [
+      "Pages/Index.tsx"
+    ],
+    "file": "main-77fa6b47.js",
+    "isEntry": true,
+    "src": "main.tsx"
+  }
+}
