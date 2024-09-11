@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: ovos-ocp-files-plugin
+Version: 0.13.1a2
+Summary: metadata extractor from audio files
+Home-page: https://github.com/OpenVoiceOS/ovos-ocp-files-plugin
+Author: thebigmunch
+Author-email: mail@thebigmunch.me
+License: MIT
+Keywords: ovos ocp plugin
+Platform: UNKNOWN
+Requires-Dist: attrs>=18.2
+Requires-Dist: bidict~=0.0
+Requires-Dist: bitstruct<9.0,>=6.0
+Requires-Dist: more-itertools<9.0,>=4.0
+Requires-Dist: pprintpp~=0.0
+Requires-Dist: wrapt
+Requires-Dist: ovos-utils<1.0.0,>=0.1.0
+
+UNKNOWN
+
+
