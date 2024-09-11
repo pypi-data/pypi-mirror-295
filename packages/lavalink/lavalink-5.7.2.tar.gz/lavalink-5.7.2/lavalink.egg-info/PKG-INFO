@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: lavalink
+Version: 5.7.2
+Summary: A Lavalink WebSocket & API wrapper built around coverage, reliability and performance.
+Home-page: https://github.com/Devoxin/Lavalink.py
+Download-URL: https://github.com/Devoxin/Lavalink.py/archive/5.7.2.tar.gz
+Author: Devoxin
+Author-email: luke@serux.pro
+Keywords: lavalink
+Provides-Extra: docs
+Provides-Extra: development
+License-File: LICENSE
