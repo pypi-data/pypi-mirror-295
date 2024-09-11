@@ -1,0 +1,7 @@
+exonweb<8.0,>=7.0
+exonwebui-static<2.0,>=1.0
+Babel<3.0,>=2.16
+flask-babelex<1.0,>=0.9
+pytz<2025.0,>=2024.1
+
+[dev]
