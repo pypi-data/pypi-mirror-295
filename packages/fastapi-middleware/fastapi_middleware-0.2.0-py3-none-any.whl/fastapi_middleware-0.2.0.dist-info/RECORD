@@ -1,0 +1,11 @@
+fastapi_middleware/__init__.py,sha256=w4ym79hyzBS9-Ba4btK-pAELzhicr7GMM7Kx70Hcy50,275
+fastapi_middleware/log.py,sha256=d8XEcMdhvYIZCDEOUn2HXEmnbwvY78mF1aEFyAKQRQA,246
+fastapi_middleware/utils.py,sha256=3owWQBtIq3nhHYrm2v2-uvBJ_FKOH-iXHtYmN2WZGWU,968
+fastapi_middleware/middleware/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+fastapi_middleware/middleware/global_context.py,sha256=pd2yzIY7f4CQDofEqtzmIfSt2PJOK2Fs3glesONpUsI,676
+fastapi_middleware/middleware/sql.py,sha256=fyWRgGmezoFX3eTX204Gdn7L_nti9aWXl5T1J1jxR7U,3205
+fastapi_middleware-0.2.0.dist-info/LICENCE,sha256=2bm9uFabQZ3Ykb_SaSU_uUbAj2-htc6WJQmS_65qD00,1073
+fastapi_middleware-0.2.0.dist-info/METADATA,sha256=4kyAz_BBCxOyGqr-FbRNss3P3q0Vla7GNu1fegQdMzU,1800
+fastapi_middleware-0.2.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+fastapi_middleware-0.2.0.dist-info/top_level.txt,sha256=yWZsL7PHpLhm0YuV5ToM_8tO3eAIMz4ZETNFXZYqoiI,19
+fastapi_middleware-0.2.0.dist-info/RECORD,,
