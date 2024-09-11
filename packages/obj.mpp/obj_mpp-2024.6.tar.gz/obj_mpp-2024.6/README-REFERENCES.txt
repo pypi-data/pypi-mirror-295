@@ -1,0 +1,13 @@
+@article{degraeve:hal-02193101,
+  TITLE = {{Detecting and quantifying stress granules in tissues of multicellular organisms with the Obj.MPP analysis tool}},
+  AUTHOR = {De Graeve, Fabienne and Debreuve, Eric and Rahmoun, Somia and Ecsedi, Szilvia and Bahri, Alia and Hubstenberger, Arnaud and Descombes, Xavier and Besse, Florence},
+  URL = {https://hal.archives-ouvertes.fr/hal-02193101},
+  JOURNAL = {{Traffic}},
+  PUBLISHER = {{Wiley}},
+  YEAR = {2019},
+  MONTH = Jul,
+  DOI = {10.1111/tra.12678},
+  KEYWORDS = {stress granules ; detection algorithm ; image analysis ; marked point process},
+  HAL_ID = {hal-02193101},
+  HAL_VERSION = {v1},
+}
