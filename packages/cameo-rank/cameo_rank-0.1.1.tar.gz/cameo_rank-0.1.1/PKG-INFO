@@ -1,0 +1,112 @@
+Metadata-Version: 2.1
+Name: cameo_rank
+Version: 0.1.1
+Summary: A Python package for managing game rankings using FastAPI.
+Home-page: https://github.com/JcXGTcW/cameo_rank
+Author: JcXGTcW
+Author-email: jcxgtcw@gmail.com
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# 排行榜 API
+
+這是一個使用 FastAPI 實現的排行榜 API，提供玩家分數的設定和查詢功能。
+
+## 功能
+
+- 設定玩家分數
+- 獲取排行榜
+- 支援多個遊戲的排行榜
+
+## 安裝
+
+1. 確保你已經安裝 Python 3.7 以上版本。
+2. 安裝所需的套件：
+
+   ```bash
+   pip install cameo_rank
+   ```
+
+## 使用方法
+
+1. 如何將 router 加入你的伺服器：
+
+   ```python
+    from fastapi import FastAPI
+    from cameo_rank import router
+
+    app = FastAPI()
+
+    # 自定義 router 參數
+    app.include_router(router(rank_base_folder='./my_rank/', check_token=my_check_token_function))
+   ```
+
+## router 參數
+
+在初始化 `router` 時，可以傳入以下參數：
+
+- **rank_base_folder** (str): 儲存排名資料的資料夾，預設為 `'./rank/'`。
+- **check_token** (func): 判斷用戶 token 是否合法的函數，輸入兩個參數str_user, str_token。預設為 `None`，若 check_token 為 `None`，則視為全部合法。
+- **int_rank_limit_days** (int): 更新排行榜時，超過幾天的玩家會從排行榜中移除，預設為 `30`。
+- **int_rank_limit_number** (int): 排行榜上顯示的玩家數量，預設為 `30`。
+
+## API 端點
+
+### 設定分數, 更新一筆排行榜資料
+
+- **URL**: `/rank/set_rank/`
+- **方法**: `POST`
+- **Request Body**:
+
+  ```json
+  {
+      "str_user": "玩家帳號",
+      "str_token": "玩家令牌",
+      "str_game_name": "遊戲名稱",
+      "str_rank_file": "排名檔案名稱",
+      "str_name": "玩家名稱",
+      "int_score": 100
+  }
+  ```
+
+- **回應**: `OK` 或錯誤訊息
+
+### 獲取排行榜資料
+
+- **URL**: `/rank/get_rank/`
+- **方法**: `GET`
+- **查詢參數**:
+
+  - `str_user`: 玩家帳號 (預設: `190041-s090504`)
+  - `str_token`: 玩家令牌 (預設: `999999999999`)
+  - `str_game_name`: 遊戲名稱 (預設: `PlantHero`)
+  - `str_rank_file`: 排名檔案名稱 (預設: `LevelRank.json`)
+
+- **回應**: 返回排行榜的 JSON 數據
+
+## Demo
+
+要運行前端 Demo，請按照以下步驟操作：
+
+1. **啟動範例 FastAPI 伺服器**：
+
+   ```bash
+   python3 -m uvicorn server:app
+   ```
+
+2. **訪問前端 Demo**：
+
+   打開瀏覽器並前往 `http://127.0.0.1:8000/static/index.html`，你將看到排行榜的簡易前端介面。
+
+## 貢獻
+
+歡迎任何形式的貢獻！請提出問題或提交 Pull Request。
+
+## 授權
+
+本專案採用 MIT 授權條款，詳情請參閱 LICENSE 文件。
