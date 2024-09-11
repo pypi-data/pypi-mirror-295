@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: keras-hub
+Version: 0.15.0.dev20240910184423
+Summary: 🚧🚧🚧 Work in progress. 🚧🚧🚧 More details soon!
+Home-page: https://github.com/keras-team/keras-hub
+Author: Keras team
+Author-email: keras-hub@google.com
+License: Apache License 2.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Operating System :: Unix
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Requires-Python: >=3.9
+Requires-Dist: absl-py
+Requires-Dist: numpy
+Requires-Dist: packaging
+Requires-Dist: regex
+Requires-Dist: rich
+Requires-Dist: kagglehub
+Requires-Dist: tensorflow-text ; platform_system != "Darwin"
+Provides-Extra: extras
+Requires-Dist: rouge-score ; extra == 'extras'
+Requires-Dist: sentencepiece ; extra == 'extras'
+
+🚧🚧🚧 Work in progress. 🚧🚧🚧 More details soon!
