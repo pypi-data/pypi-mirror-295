@@ -1,0 +1,4 @@
+[console_scripts]
+find-compatible-version = upgrade.scripts.find_compatible_versions:main
+managevenv = upgrade.scripts.manage_venv:main
+upgrade = upgrade.scripts.upgrade_python_package:main
