@@ -1,0 +1,98 @@
+Metadata-Version: 2.1
+Name: RaincloudPlot
+Version: 0.1.0
+Summary: A package for creating raincloud plots
+Home-page: https://github.com/Yosri-Ben-Halima/RaincloudPlot
+Author: Yosri Ben Halima
+Author-email: yosri.benhalima@ept.ucar.tn
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# RaincloudPlot
+
+RaincloudPlot is a Python package that provides a convenient function to create raincloud plotsâ€”a combination of density plots, box plots, and strip plots that provide a detailed visualization of data distributions.
+
+## Features
+
+- **Raincloud Plots**: Visualize the distribution of your data in a detailed and intuitive way.
+- **Customization Options**: Easily customize the plot with options for titles, labels, colors, orientation, and more.
+- **Thunder Mode**: Connect the means of each group with a point plot to emphasize differences between groups.
+
+## Installation
+
+You can install the RaincloudPlot package directly from PyPI:
+
+```sh
+pip install RaincloudPlot
+```
+
+## Usage
+
+Here's how you can use the `create_raincloud_plot` function:
+
+```python
+import pandas as pd
+from RaincloudPlot import create_raincloud_plot
+
+# Sample DataFrame
+df = pd.DataFrame({
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'],
+    'temp': [75, 80, 72, 90, 85]
+})
+
+# Create a raincloud plot
+create_raincloud_plot(
+    df=df, 
+    x='city', 
+    y='temp', 
+    title='Raincloud Plot of Temperatures by City', 
+    xlabel='City', 
+    ylabel='Temperature (Â°F)', 
+    thunder=True
+)
+```
+
+## Parameters
+
+- **df**: `DataFrame` containing the data to be plotted.
+- **x**: Column name for the x-axis data.
+- **y**: Column name for the y-axis data.
+- **title**: Title of the plot.
+- **xlabel**: Label for the x-axis (defaults to the `x` column name).
+- **ylabel**: Label for the y-axis (defaults to the `y` column name).
+- **palette**: Color palette for the plot (default: `'Set2'`).
+- **alpha**: Transparency level for the plot elements (default: `0.6`).
+- **orient**: Orientation of the plot, `'h'` for horizontal or `'v'` for vertical (default: `'h'`).
+- **figsize**: Size of the figure (default: `(10, 10)`).
+- **thunder**: Whether to connect the means of each group with a point plot (default: `False`).
+
+## Example
+
+```python
+create_raincloud_plot(
+    df=df, 
+    x='city', 
+    y='temp', 
+    title='Raincloud Plot of Temperatures by City', 
+    xlabel='City', 
+    ylabel='Temperature (Â°F)', 
+    thunder=True
+)
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+
+## Contact
+
+- **Name**: Yosri Ben Halima
+- **Email**: yosri.benhalima@ept.ucar.tn
+- **GitHub**: [Yosri-Ben-Halima](https://github.com/Yosri-Ben-Halima)
