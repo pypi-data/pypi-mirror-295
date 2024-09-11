@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: forsitepy
+Version: 1.0.4
+Summary: Common libraries used within forsite
+Author-email: Pawel Migdal <pmigdal@forsite.ca>
+Project-URL: Homepage, https://github.com/ForsiteConsultants/forsitepy
+Project-URL: Issues, https://github.com/ForsiteConsultants/forsitepy/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas >2.0.0
+Requires-Dist: numpy >1.0.0
+Requires-Dist: arcpy >1.24.0
+Requires-Dist: email.mime >1.0.0
+
