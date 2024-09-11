@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: app-tools-zxw
+Version: 1.0.62
+Summary: 更新：msvc_user_auth 新增：接口
+Home-page: https://github.com/sunshineinwater/
+Author: 薛伟的小工具
+Author-email: 
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: pycryptodome <=3.22.0,>=3.20.0
+Requires-Dist: fastapi <0.113,>=0.112.2
+Requires-Dist: jose <1.1.0,>=1.0.0
+Requires-Dist: aiohttp <3.11.0,>=3.10.5
+Requires-Dist: httpx <0.24.0,>=0.23.3
+Requires-Dist: qrcode <7.5.0,>=7.4.2
+Requires-Dist: cryptography <44.0.0,>=43.0.0
+Requires-Dist: alipay-zxw ==0.0.4
+
+# 常用函数包
+
+-
+    1. 项目根目录下必须包含config.py文件
+
+- 支付接口编写规范：
+  支付服务_代码规范.py
+
