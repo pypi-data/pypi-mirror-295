@@ -1,0 +1,2 @@
+[console_scripts]
+lambda-packer = lambda_packer.cli:main
