@@ -1,0 +1,12 @@
+pyproject.toml
+readme.md
+tg_admin_bot/__main__.py
+tg_admin_bot.egg-info/PKG-INFO
+tg_admin_bot.egg-info/SOURCES.txt
+tg_admin_bot.egg-info/dependency_links.txt
+tg_admin_bot.egg-info/entry_points.txt
+tg_admin_bot.egg-info/requires.txt
+tg_admin_bot.egg-info/top_level.txt
+tg_admin_bot/core/common.py
+tg_admin_bot/core/tg.py
+tg_admin_bot/funcs/logs.py

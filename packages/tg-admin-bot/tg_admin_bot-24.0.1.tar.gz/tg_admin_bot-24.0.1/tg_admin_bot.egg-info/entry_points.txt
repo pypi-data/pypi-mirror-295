@@ -1,0 +1,2 @@
+[console_scripts]
+reposter = admin_bot.__main__:main
