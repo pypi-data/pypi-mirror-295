@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "lazyfast"
+version = "0.1.23"
+description = "LazyFast = FastAPI + HTMX + Component-based approach + State management"
+authors = ["Nikita Irgashev <nik.irg@yandex.ru>"]
+readme = "README.md"
+homepage = "https://github.com/nikirg/lazyfast"
+repository = "https://github.com/nikirg/lazyfast"
+documentation = "https://github.com/nikirg/lazyfast"
+exclude = ["examples", "site"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+python-multipart = "^0.0.9"
+asgiref = "^3.8.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
