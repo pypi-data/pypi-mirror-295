@@ -1,0 +1,49 @@
+# NOTE: We use Hatch to build wandb, and it respects the *first* .gitignore
+# file it sees. It doesn't consider .gitignore files in subdirectories.
+
+# Conventional location for Python virtual environments.
+.venv/*
+
+# nox cache
+.nox/
+.nox-wandb/
+
+# Test results.
+test-results/
+.coverage
+coverage.xml
+coverage.txt
+
+# Linting.
+mypy-results/
+
+# Build output in apple_stats.
+apple_stats/.build/
+
+__pycache__/
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+.circle_cache/
+.yea_cache/
+build/
+dist/
+*.pyc
+.python-version
+wandb.egg-info
+docs/themes/
+docs/.generated-files.txt
+docs/config.toml
+tests/unit_tests_old/logs/*
+!tests/unit_tests_old/logs/cleanup.sh
+pip-wheel-metadata
+.vscode/.ropeproject
+xcuserdata/
+cover-results/
+wandb/proto_check/
+*.log
+.idea/
+.yea-requirements.txt
+.yeadoc/
+logs/
