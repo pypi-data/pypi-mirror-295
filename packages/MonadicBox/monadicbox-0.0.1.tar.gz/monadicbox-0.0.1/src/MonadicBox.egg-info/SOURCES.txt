@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/MonadicBox.egg-info/PKG-INFO
+src/MonadicBox.egg-info/SOURCES.txt
+src/MonadicBox.egg-info/dependency_links.txt
+src/MonadicBox.egg-info/top_level.txt
+src/monadicbox/__init__.py
+src/monadicbox/monad.py
