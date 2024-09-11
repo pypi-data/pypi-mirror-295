@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+cpu_heater/__init__.py
+cpu_heater/parallel.py
+cpu_heater.egg-info/PKG-INFO
+cpu_heater.egg-info/SOURCES.txt
+cpu_heater.egg-info/dependency_links.txt
+cpu_heater.egg-info/requires.txt
+cpu_heater.egg-info/top_level.txt
+tests/test.py
