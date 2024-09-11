@@ -1,0 +1,12 @@
+cmdln
+djangorestframework
+python-magic
+requests
+requests_toolbelt
+
+[dev]
+dj-inmemorystorage
+mock
+pytest
+pytest-django
+requests-mock
