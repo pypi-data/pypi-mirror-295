@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+module/SesamCli.py
+module/__init__.py
+module/module.py
+module/utils.py
+nonosesam.egg-info/PKG-INFO
+nonosesam.egg-info/SOURCES.txt
+nonosesam.egg-info/dependency_links.txt
+nonosesam.egg-info/requires.txt
+nonosesam.egg-info/top_level.txt
+tests/__init__.py
+tests/test_module.py
