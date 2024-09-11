@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "pycryptodome"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signer_zziqz"
+version = "9.1.0"
+description = "A python module for signing TikTok requests"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["signing", "tiktok"]
+authors = [
+    { name = "Mohamed Almuswi", email = "mmaa58027@gmail.com" }
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "pycryptodome"
+]
+
+[tool.setuptools.packages.find]
+where = ["signer_zziqz"]
