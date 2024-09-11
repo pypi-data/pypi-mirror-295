@@ -1,0 +1,49 @@
+{
+    "specification": {
+        "metadata": {
+            "provider": "ollama",
+            "model": "gemma2",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title-ollama.txt",
+            "output_format": null,
+            "max_tokens": null,
+            "temperature": 0.2,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following:",
+        "filename": "examples/logging/prompts/generate_titles_ollama.prompt"
+    },
+    "prompt_file": "examples/logging/prompts/generate_titles_ollama.prompt",
+    "output_path": "examples/logging/output_directory",
+    "completion": {
+        "system_role": "You are a helpfull assistant.",
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following: This is a podcast about AI and machine learning.\nThe main topics for the podcast are MLOps, Explainable AI and Large Language Models.\nThe audience consists of business people with a background in IT.",
+        "model": "gemma2",
+        "parameters": {
+            "provider": "ollama",
+            "model": "gemma2",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title-ollama.txt",
+            "output_format": null,
+            "max_tokens": null,
+            "temperature": 0.2,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "cost": 0.0,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "Here are 5 podcast titles tailored for your target audience:\n\n1. **AI Advantage: MLOps, XAI & LLMs for Business Impact** (Direct, highlights benefits)\n2. **Decoding AI: Practical Insights for the Tech-Savvy Leader** (Focuses on understanding and leadership)\n3. **The Algorithmic Edge: Building Smarter Businesses with AI** (Emphasizes competitive advantage)\n4. **Beyond the Hype: Real-World Applications of AI & Machine Learning** (Addresses skepticism, offers practical examples)\n5. **AI Unpacked: MLOps, Explainability & LLMs Demystified** (Promises clear explanations and accessibility) \n\n\nLet me know if you'd like more options!",
+        "duration": 7.3466501670191064,
+        "provider_file": "claude.json"
+    }
+}
