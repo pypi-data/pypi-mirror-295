@@ -1,0 +1,5 @@
+[console_scripts]
+llms_txt2ctx = llms_txt.core:llms_txt2ctx
+
+[nbdev]
+llms_txt = llms_txt._modidx:d
