@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: bgm-tv-wiki
+Version: 0.0.17
+Summary: bgm.tv wiki syntax parser
+Author-email: trim21 <trim21me@gmail.com>
+Requires-Python: ~=3.10
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: pytest==8.3.3 ; extra == "dev"
+Requires-Dist: pytest-github-actions-annotate-failures==0.2.0 ; extra == "dev"
+Requires-Dist: coverage==7.6.1 ; extra == "dev"
+Requires-Dist: pre-commit==3.8.0 ; extra == "dev" and ( python_version >= "3.9")
+Requires-Dist: mypy==1.11.2 ; extra == "dev" and ( python_version >= "3.9")
+Requires-Dist: pyyaml>=6,<7 ; extra == "dev"
+Requires-Dist: types-PyYAML ; extra == "dev"
+Provides-Extra: dev
+
+bangumi wiki syntax parser for python
+
+https://pypi.org/project/bgm-tv-wiki/
+
