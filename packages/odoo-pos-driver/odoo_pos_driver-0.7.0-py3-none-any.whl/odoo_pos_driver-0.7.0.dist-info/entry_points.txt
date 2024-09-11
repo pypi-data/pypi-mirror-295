@@ -1,0 +1,3 @@
+[console_scripts]
+odoo-pos-driver=odoo_pos_driver.cli:main
+
