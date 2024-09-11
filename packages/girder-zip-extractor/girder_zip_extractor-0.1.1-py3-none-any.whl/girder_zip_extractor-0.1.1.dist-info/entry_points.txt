@@ -1,0 +1,2 @@
+[girder.plugin]
+zip_extractor = zip_extractor:GirderPlugin
