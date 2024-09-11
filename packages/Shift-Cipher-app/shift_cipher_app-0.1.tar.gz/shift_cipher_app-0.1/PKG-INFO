@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: Shift_Cipher_app
+Version: 0.1
+Summary: Ứng dụng Shift Cipher với giao diện web
+Home-page: https://github.com/TheHuwn/ATBMTT.git
+Author: Tên của bạn
+Author-email: email@example.com
+Description-Content-Type: text/markdown
+Requires-Dist: Flask
+
+# Shift Cipher App
+
+á»¨ng dá»¥ng Shift Cipher cho phÃ©p mÃ£ hÃ³a vÃ  giáº£i mÃ£ vÄƒn báº£n báº±ng cÃ¡ch sá»­ dá»¥ng ká»¹ thuáº­t dá»‹ch chuyá»ƒn (Shift Cipher).
+
+## CÃ i Ä‘áº·t
+
+```bash
+pip install -e .
+## Cháº¡y á»©ng dá»¥ng
+python app.py
