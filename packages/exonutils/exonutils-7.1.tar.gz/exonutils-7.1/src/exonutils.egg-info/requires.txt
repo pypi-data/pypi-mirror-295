@@ -1,0 +1,4 @@
+colorama<1.0,>=0.4
+setproctitle<2.0,>=1.3
+
+[dev]
