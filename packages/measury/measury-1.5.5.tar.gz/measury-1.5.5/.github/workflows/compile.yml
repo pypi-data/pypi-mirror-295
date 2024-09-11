@@ -1,0 +1,141 @@
+name: compile_release
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger other GitHub Action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            --data '{"event_type": "pytests"}'
+    
+
+
+  build-windows:
+    runs-on: windows-latest
+    needs: run-tests
+    steps:
+      - uses: actions/checkout@v4
+      # to get old tags
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install dependencies and build
+        run: |
+          pip install .
+          pip install pyinstaller
+          python ./compiling/compile.py zipped
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: ./dist/*.zip
+
+  build-linux:
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - uses: actions/checkout@v4
+      # to get old tags
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install dependencies and build
+        run: |
+          sudo apt-get update && sudo apt-get install -y libegl1-mesa
+          pip install .
+          pip install pyinstaller
+          python ./compiling/compile.py zipped
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: ./dist/*.tar.gz
+
+  build-macos:
+    runs-on: macos-latest
+    needs: run-tests
+    steps:
+      - uses: actions/checkout@v4
+      # to get old tags
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install dependencies and build for macOS
+        run: |
+          pip install .
+          pip install pyinstaller
+          # install pillow bc it needs to convert to .icns
+          pip install pillow
+          python ./compiling/compile.py zipped
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: ./dist/*.tar.gz
+
+  create-release:
+    permissions:
+      contents: write
+    needs: [build-windows, build-linux, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - name: Create release and upload artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+          gh release create "$tag" \
+            --title="$tag" \
+            --draft \
+            dist/windows/*.zip \
+            dist/linux/*.tar.gz \
+            dist/macos/*.tar.gz
+        shell: bash
+
+  delete-artifacts:
+    needs: [build-windows, build-linux, build-macos, create-release] # Ensure this runs after all other jobs that create artifacts
+    if: always()
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+            name: |
+              windows
+              linux
+              macos
+    
