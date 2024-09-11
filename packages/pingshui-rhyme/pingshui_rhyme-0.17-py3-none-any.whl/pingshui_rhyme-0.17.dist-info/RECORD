@@ -1,0 +1,15 @@
+pingshui_rhyme/__init__.py,sha256=OBslFGK4mlyvwB1vSc-rmts_zJB_ry4jTOY0HmKptIQ,212
+pingshui_rhyme/classifier.py,sha256=JHcfeRXOEN70t8193JqsFA_kb9hIuwmKR8FfOkTjDs0,1879
+pingshui_rhyme/poem_structure_checker.py,sha256=kaxjINAOKlfZ2SRZhJH7JxmwknQ0srcruDeunx-e5GM,10993
+pingshui_rhyme/rhymechecker.py,sha256=npSmHoGXCG6rIZGkJxtL8-enc7-Rq2sfu1eicqlft10,2714
+pingshui_rhyme/scraper.py,sha256=_vNLEr3UbFMKJVWVGpkWw396xIYNuPrGM9zfzvOCj_8,3543
+pingshui_rhyme/data/organized_ping_ze_rhyme_dict.json,sha256=xY1mLcIpDa-OflY1__NKjzH_LM_svGPzcbJ_g1-EHs8,39837
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_classifier.py,sha256=wNis6T7bRHB-c2GiMBSgBgbEcEHZGMxdgE0QPvOCVlA,548
+tests/test_poem_structure.py,sha256=Ya5_J7YhdGkCYDsL5ai-y95qcJAJmqrN6i9mQG_l5is,1633
+tests/test_rhyme.py,sha256=EmoVOON2ON5ghM_wKUmTDUEqIfG1r8C_LWWK6XJ13jw,800
+pingshui_rhyme-0.17.dist-info/LICENSE,sha256=qc9gkK-t3TXb1pcqTxME32iGHfWOpAizYBfDvvt0EgM,1082
+pingshui_rhyme-0.17.dist-info/METADATA,sha256=3WLhNcUI1oBoVdo979yS2Ofi_P2VZ9XpO2cjfPSlDtg,6670
+pingshui_rhyme-0.17.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+pingshui_rhyme-0.17.dist-info/top_level.txt,sha256=Vy12Gm-QkFmlha81_loAMggGLqRtHnbDFsSS1X0S6OE,21
+pingshui_rhyme-0.17.dist-info/RECORD,,
