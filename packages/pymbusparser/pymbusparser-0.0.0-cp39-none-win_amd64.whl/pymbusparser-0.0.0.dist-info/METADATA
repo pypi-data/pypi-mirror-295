@@ -1,0 +1,8 @@
+Metadata-Version: 2.3
+Name: pymbusparser
+Version: 0.0.0
+Summary: Python bindings for m-bus-parser written in Rust
+Home-Page: https://maebli.github.io/
+Author-email: Michael Aebli <>
+License: MIT
+Project-URL: Source Code, https://github.com/maebli/m-bus-parser
