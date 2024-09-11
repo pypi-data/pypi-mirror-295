@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "numpy", "scipy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oasis_stat"
+version = "1.1.2"
+description = "OASIS statistical test for interpretable analysis of contingency tables."
+readme = "README.rst"
+authors = [
+  {name = "Tavor Z Baharav", email = "tavorb@mit.edu"}
+]
+maintainers = [
+  {name = "Tavor Z Baharav", email = "tavorb@mit.edu"}
+]
+classifiers = [
+
+]
+license = {text = "MIT license"}
+dependencies = [
+  
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/tavorb/oasis_stat/issues"
+changelog = "https://github.com/tavorb/oasis_stat/blob/master/changelog.md"
+homepage = "https://github.com/tavorb/oasis_stat"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
