@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: nickspylib
+Version: 0.1.2
+Summary: Example of a Python Library
+Home-page: https://github.com/nickdala/nicks-pylib
+License: MIT
+Keywords: example,python,library
+Author: Nick Dalalelis
+Author-email: ndalalelis@yahoo.com
+Requires-Python: >=3.10.14,<3.11.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: numpy (>=1.21.4,<1.22.0)
+Project-URL: Repository, https://github.com/nickdala/nicks-pylib
+Description-Content-Type: text/markdown
+
+# nicks-pylib
+
+Example of a Python library
+
+## Start poetry shell
+
+```bash
+$ poetry shell
+```
+
+## Install Dependencies
+
+```bash
+$ poetry install
+```
+
+## Run Tests With Poetry
+
+```bash
+$ poetry run pytest
+```
+
+## Build the Package
+
+```bash
+$ poetry build
+```
+
+## Useful Poetry Commands
+
+* poetry show —Lists the packages installed in your current project’s virtual environment. You can use `poetry show --tree` to view dependencies in a tree format to help understand the hierarchical structure of package dependencies.
+* poetry add — Add new dependencies to your project. It automatically updates your pyproject.toml and poetry.lock files.
+* poetry install — Reads the pyproject.toml file from the current project, resolves the dependencies, and installs them. If a poetry.lock file exists, it will use the exact versions from there instead of resolving them.
+* poetry env — Shows information about the current environment or even removes virtual environments associated with the project.
+poetry shell— Spawns a shell, like bash or zsh, within the virtual environment created by Poetry.
+* poetry remove— Removes a package that is no longer necessary from the pyproject.toml and lock file.
+poetry version minor— Bumps the minor version of your project (according to semantic versioning). Similar for MAJOR or PATCH .
+* poetry publish — Publishes a project to PyPI or another configured repository.
