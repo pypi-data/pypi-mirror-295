@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: ANSI-SGR
+Version: 0.0.0.dev7
+Requires-Python: >=3.10
+Requires-Dist: PyProtocol
+
