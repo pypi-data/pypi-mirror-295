@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'simple-mongodb'
+version = '0.7.0'
+description = " An asynchronous Python package for streamlined collection management in MongoDB "
+requires-python = '>=3.12'
+authors = []
+license = { file = "LICENSE" }
+readme = "README.md"
+dependencies = ['motor==3.5.0']
+classifiers = [
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3.12',
+    'Intended Audience :: Developers',
+    'Topic :: Database',
+]
+
+[project.urls]
+Homepage = 'https://github.com/Gandori/Simple-MongoDB'
+Documentation = 'https://github.com/Gandori/Simple-MongoDB'
+Repository = 'https://github.com/Gandori/Simple-MongoDB'
+Changelog = 'https://github.com/Gandori/Simple-MongoDB/blob/master/CHANGELOG.md'
+
+[project.optional-dependencies]
+dev = [
+    'isort==5.13.2',
+    'black==24.4.2',
+    'pytest==8.2.2',
+    'pytest-asyncio==0.23.7',
+    'fakeredis==2.23.2',
+    'pytest-mock==3.14.0',
+    'pytest-sugar==1.0.0',
+]
+
+[tool.setuptools]
+packages = ['simple_mongodb']
+package-data = { 'simple_mongodb' = ['py.typed'] }
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
