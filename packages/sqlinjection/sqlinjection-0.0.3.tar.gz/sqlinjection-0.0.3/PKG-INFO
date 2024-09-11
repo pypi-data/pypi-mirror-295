@@ -1,0 +1,19 @@
+Metadata-Version: 2.3
+Name: sqlinjection
+Version: 0.0.3
+Summary: Sql injection detector
+Project-URL: Homepage, https://github.com/zenitaeglos/sqlinjection
+Project-URL: Issues, https://github.com/zenitaeglos/sqlinjection/issues
+Author-email: Alejandro Martinez <aegloszenit@protonmail.ch>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# SQL injection detector
+
+This package proporcionates the capability of detecting sql injection in your json/dict data.
+Regardles of how your data looks like and how nested is your dictionary, it will go through 
+each step and provide a response
