@@ -1,0 +1,6 @@
+[console_scripts]
+sema=sema.__main__:main
+sema-conneg=sema.commons.web.conneg_cli:main
+sema-get=sema.discovery.__main__:main
+sema-subyt=sema.subyt.__main__:main
+
