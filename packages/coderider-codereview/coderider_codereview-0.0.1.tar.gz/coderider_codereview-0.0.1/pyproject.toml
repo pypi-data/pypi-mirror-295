@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "coderider-codereview"
+version = "0.0.1"
+description = "AI Code Review from CodeRider"
+authors = ["Baodong <wwwicbd@gmail.com>"]
+license = "Proprietary"
+readme = "readme.md"
+packages = [
+    { include = "coderider_codereview" }
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+furl = "^2.1.3"
+python-gitlab = "^4.10.0"
+requests = "^2.32.3"
+
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+priority = "primary"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+cccc = "coderider_codereview.cli:main"
