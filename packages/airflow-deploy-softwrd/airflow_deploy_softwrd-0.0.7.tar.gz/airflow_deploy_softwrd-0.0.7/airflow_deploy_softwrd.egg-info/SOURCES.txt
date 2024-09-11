@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+airflow_deploy_softwrd/__init__.py
+airflow_deploy_softwrd/app.py
+airflow_deploy_softwrd.egg-info/PKG-INFO
+airflow_deploy_softwrd.egg-info/SOURCES.txt
+airflow_deploy_softwrd.egg-info/dependency_links.txt
+airflow_deploy_softwrd.egg-info/entry_points.txt
+airflow_deploy_softwrd.egg-info/requires.txt
+airflow_deploy_softwrd.egg-info/top_level.txt
