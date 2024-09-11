@@ -1,0 +1,125 @@
+Metadata-Version: 2.1
+Name: sap-ecs-gcp-log-forwarder
+Version: 1.0.1
+Summary: A package to consume events from an Google Pub/Sub, process log files, and forward them to a HTTP endpoint or file.
+Home-page: https://www.sap.com/
+License: SAP DEVELOPER LICENSE AGREEMENT
+Keywords: SAP GCP Log Forwarder,SAP Log Forwarder
+Author: SAP SE
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: google-cloud-pubsub (>=2.21.2,<3.0.0)
+Requires-Dist: google-cloud-storage (>=2.16.0,<3.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Description-Content-Type: text/markdown
+
+# GCP Log Forwarder
+
+GCP Log Forwarder is a Python package that consumes events from a GCP Pub/Sub subscription, processes log files stored in Google Cloud Storage, and forwards the logs either to an HTTP endpoint or writes them to files.
+
+## Features
+
+- Consume object creation events from a GCP Pub/Sub subscription.
+- Download and decompress gzipped JSON log files from Google Cloud Storage.
+- Forward logs to an HTTP endpoint or write them to files.
+- Support for TLS protocol.
+- Support for different HTTP authentication methods (Token, API Key).
+- Configurable through environment variables.
+- Configurable timeout to exit the program if no messages are found for a specified duration.
+
+## Prerequisites
+
+- Python 3.8 or higher
+- A GCP project with Pub/Sub and Cloud Storage enabled.
+- GCP Service Account with appropriate permissions.
+
+## Installation
+**Using pip:**
+```sh
+pip install sap-ecs-gcp-log-forwarder
+pip install sap-ecs-azure-log-forwarder==<version>
+```
+
+## Configuration
+
+Set up the following environment variables to configure the GCP Log Forwarder:
+
+- `GOOGLE_APPLICATION_CREDENTIALS`: Path to your service account key JSON file.
+- `GCP_PROJECT_ID`: Your GCP project ID.
+- `PUBSUB_SUBSCRIPTION`: The name of the Pub/Sub subscription to consume events from.
+- `TIMEOUT_DURATION`: The time duration in seconds to wait for messages before exiting.
+- `OUTPUT_METHOD`: The method to forward logs (`http` or `files`).
+- `HTTP_ENDPOINT`: The HTTP endpoint to forward logs to (required if `OUTPUT_METHOD` is `http`).
+- `TLS_CERT_PATH`: Path to the TLS certificate for mutual TLS connections.
+- `TLS_KEY_PATH`: Path to the TLS key for mutual TLS connections.
+- `AUTH_METHOD`: Authentication method (`token`, `api_key`). Default is `token`.
+  - **Auth Token**: Set `AUTH_METHOD` to `token` and configure `AUTH_TOKEN`.
+    - `AUTH_TOKEN`: Bearer/OAuth token for HTTP endpoint authentication.
+  - **API Key**: Set `AUTH_METHOD` to `api_key` and configure `API_KEY`.
+    - `API_KEY`: API key for HTTP endpoint API key authentication.
+- `OUTPUT_DIR`: The output directory to write log files to (required if `OUTPUT_METHOD` is `files`).
+
+You can set these environment variables in your shell or in a `.env` file.
+
+### Example of setting environment variables in a shell:
+
+```sh
+export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/service-account-key.json"
+export GCP_PROJECT_ID="your-gcp-project-id"
+export PUBSUB_SUBSCRIPTION="your-pubsub-subscription-name"
+export TIMEOUT_DURATION=120  # Timeout after 120 seconds of inactivity. DO NOT set for indefinite runs.
+
+# For http
+export OUTPUT_METHOD="http"
+export HTTP_ENDPOINT="https://your-http-endpoint.com"
+# For TLS certs
+export TLS_CERT_PATH="/path/to/your/tls_cert.pem"
+export TLS_KEY_PATH="/path/to/your/tls_key.pem"
+# For Bearer/OAuth Token authentication
+export AUTH_METHOD="token"
+export AUTH_TOKEN="your_token"
+# For API Key authentication
+export AUTH_METHOD="api_key"
+export API_KEY="your_api_key"
+
+# For file output
+export OUTPUT_METHOD="files"
+export OUTPUT_DIR="/path/to/your/output/directory/"
+```
+
+## Usage
+
+To run the GCP Log Forwarder, use the following command:
+```sh
+sap-ecs-gcp-log-forwarder
+```
+This will start the process of consuming events from the Pub/Sub subscription, downloading and processing log files, and forwarding them according to the specified method. The program will exit if no messages are found within the specified timeout duration. If no timeout duration is specified, the program will run indefinitely.
+
+## Things to remember
+- If you do not set a **TIMEOUT_DURATION**, the program will run indefinitely.
+- The service account in your project needs to have the '**Storage Object Viewer**' permission on the GCS bucket and the '**Pub/Sub Subscriber**' permission on the Pub/Sub subscription for this app to work.
+
+
+## References
+1. [Pub/Sub notifications for Cloud Storage](https://cloud.google.com/storage/docs/pubsub-notifications)
+2. [Create service accounts](https://cloud.google.com/iam/docs/service-accounts-create)
+3. [Create and delete service account keys](https://cloud.google.com/iam/docs/keys-create-delete)
+
+## License
+This application and its source code are licensed under the terms of the SAP Developer License Agreement. See the LICENSE file for more information.
+
+## Release Notes
+### 1.0.1
+- First proper release!
