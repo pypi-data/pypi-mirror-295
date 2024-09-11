@@ -1,0 +1,11 @@
+model/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+model/activation.py,sha256=Mduij0ehuCw5vK08NX0-zjtYaPpaPf9XNAxbdeV3_5k,1245
+model/base.py,sha256=Tiu8pqOqzX579XuqehlA6Nf_y1yyXjcTtFAr8I4Kj8g,10392
+model/layer.py,sha256=l2myJNepTaA_uiM-Ml36Q2kSDsnPnP7F5UWFbGA37rw,20720
+model/loss.py,sha256=whYsvs9nagOljVln3yNxJCkC6FcWBpuP_P7ajO3FH0M,1540
+model/metric.py,sha256=f_lXMuEhnC0tgB4fllpTIyfoLT2IXZ-H71P8ixYVLx4,651
+model/optimizer.py,sha256=BByoLs_4J0vCvVzL3LKqxWhf2-rLEMu57yBloVzA8BQ,4753
+vladk_neural_network-0.1.3.dist-info/LICENSE,sha256=ml5MV4RoQZJaFnqyheqMWA-M-bN27nlFBwl8t5OsagI,1075
+vladk_neural_network-0.1.3.dist-info/METADATA,sha256=W6BB0J1j8cx5gttNYIHCRLoxlcOwy-1C1uBi_ndaim4,339
+vladk_neural_network-0.1.3.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+vladk_neural_network-0.1.3.dist-info/RECORD,,
