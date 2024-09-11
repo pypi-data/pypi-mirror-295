@@ -1,0 +1,10 @@
+setup.py
+majordomo_ai/__init__.py
+majordomo_ai/data_store.py
+majordomo_ai/ingest_pipeline.py
+majordomo_ai/query_pipeline.py
+majordomo_ai.egg-info/PKG-INFO
+majordomo_ai.egg-info/SOURCES.txt
+majordomo_ai.egg-info/dependency_links.txt
+majordomo_ai.egg-info/requires.txt
+majordomo_ai.egg-info/top_level.txt
