@@ -1,0 +1,5 @@
+logtail-python==0.2.10
+fastapi[standard]==0.112.2
+pydantic==2.8.2
+starlette==0.38.2
+httpx==0.27.2
