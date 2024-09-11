@@ -1,0 +1,14 @@
+LICENSE
+setup.py
+marshmallow_custom_jsonapi/__init__.py
+marshmallow_custom_jsonapi/exceptions.py
+marshmallow_custom_jsonapi/fields.py
+marshmallow_custom_jsonapi/flask.py
+marshmallow_custom_jsonapi/schema.py
+marshmallow_custom_jsonapi/utils.py
+marshmallow_custom_jsonapi.egg-info/PKG-INFO
+marshmallow_custom_jsonapi.egg-info/SOURCES.txt
+marshmallow_custom_jsonapi.egg-info/dependency_links.txt
+marshmallow_custom_jsonapi.egg-info/not-zip-safe
+marshmallow_custom_jsonapi.egg-info/requires.txt
+marshmallow_custom_jsonapi.egg-info/top_level.txt
