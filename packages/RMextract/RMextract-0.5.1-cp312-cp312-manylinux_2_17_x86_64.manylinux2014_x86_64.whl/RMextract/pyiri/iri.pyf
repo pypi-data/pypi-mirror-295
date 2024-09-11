@@ -1,0 +1,40 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module _iri ! in 
+    interface  ! in :_iri
+        subroutine iri_get_sub(path,jf,jmag,alati,along,iyyyy,mmdd,dhour,heibeg,heiend,heistp,outf,oarr) ! in :_iri:iriget.for
+            character*200 :: path
+            logical dimension(50) :: jf
+            integer :: jmag
+            real :: alati
+            real :: along
+            integer :: iyyyy
+            integer :: mmdd
+            real :: dhour
+            real :: heibeg
+            real :: heiend
+            real :: heistp
+            real dimension(20,1000), intent(out) :: outf
+            real dimension(100), intent(out) :: oarr
+        end subroutine iri_get_sub
+        subroutine iri_get_tec(path,jf,jmag,alati,along,iyyyy,mmdd,dhour,heibeg,heiend,tec,tecb,tect) ! in :_iri:iriget.for
+            character*200 :: path
+            logical dimension(50) :: jf
+            integer :: jmag
+            real :: alati
+            real :: along
+            integer :: iyyyy
+            integer :: mmdd
+            real :: dhour
+            real :: heibeg
+            real :: heiend
+            real intent(out) :: tec
+            real intent(out) :: tecb
+            real intent(out) :: tect
+        end subroutine iri_get_tec
+    end interface 
+end python module _iri
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
