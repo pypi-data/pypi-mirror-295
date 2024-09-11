@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: timeseries_lib
+Version: 0.1.2
+Summary: Library for time series analysis
+Home-page: https://github.com/PavelMalyshev01/timeseries_lib
+Author: Pavel Malyshev
+Author-email: p.malyshev@razumai.pro
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: statsmodels
+Requires-Dist: keras
+Requires-Dist: tensorflow
+
+# Table data precess lib
+Library for time series analysis
+
+## How to use
+See example/example.py
