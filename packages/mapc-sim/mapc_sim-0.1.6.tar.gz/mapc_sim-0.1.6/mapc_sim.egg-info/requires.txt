@@ -1,0 +1,6 @@
+jax~=0.4.30
+jaxlib~=0.4.30
+tensorflow-probability[jax]~=0.24.0
+
+[graph]
+jraph~=0.0.6.dev0
