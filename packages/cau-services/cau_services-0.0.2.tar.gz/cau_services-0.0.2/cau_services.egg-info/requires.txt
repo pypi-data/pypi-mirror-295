@@ -1,0 +1,6 @@
+pandas
+tqdm
+requests
+
+[:python_version < "3.12"]
+importlib-metadata
