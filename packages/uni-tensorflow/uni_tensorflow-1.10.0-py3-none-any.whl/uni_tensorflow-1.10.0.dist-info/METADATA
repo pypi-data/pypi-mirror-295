@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: uni_tensorflow
+Version: 1.10.0
+Summary: TensorFlow to uni-model converter
+Requires-Python: >=3.8, <3.13
+Requires-Dist: uni-model ==4.0.30
+Requires-Dist: networkx ~=3.0.0
+Requires-Dist: numpy <2
+Requires-Dist: mct-quantizers ~=1.5.0
+Requires-Dist: packaging
+Requires-Dist: tensorflow <2.16,>=2.12
+Requires-Dist: h5py !=3.11.0
+Requires-Dist: sony-custom-layers >=0.2.0
+
