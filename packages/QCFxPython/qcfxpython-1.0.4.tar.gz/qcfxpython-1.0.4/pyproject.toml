@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "QCFxPython"
+version = "1.0.4"
+dependencies = ["PySide2", "PyQt5", "pyautogui", "Pillow==9.5.0", "pywin32", "imagehash"]
+
+
+requires-python = ">=3.8"
+authors = [
+  {name = "Aditya Gaur", email = "adityagaur.home@gmail.com"}
+]
+maintainers = [
+  {name = "Aditya Gaur", email = "adityagaur.home@gmail.com"}
+]
+
+description = "QCFx is a Python library designed to add dynamic, real-time background blurring effects to PyQt5 applications. It provides various modes of operation, allowing for different levels of quality and performance to suit the needs of your application."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["Blur Effect Library", "Blurring Engine", "PyQt5 Blur Effect", "Windows 10 Blur Effect", "Fx Engine"]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python", 
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10"
+
+]
+
+
+[project.urls]
+Homepage = "https://github.com/xdityagr/QCFX-Python"
+Repository = "https://github.com/xdityagr/QCFX-Python"
