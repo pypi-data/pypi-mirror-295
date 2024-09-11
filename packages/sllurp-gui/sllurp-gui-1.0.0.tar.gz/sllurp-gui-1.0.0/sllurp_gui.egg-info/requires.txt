@@ -1,0 +1,6 @@
+PyQt5>=5.15
+pyqtgraph
+sllurp>=2.0
+
+[test]
+pytest

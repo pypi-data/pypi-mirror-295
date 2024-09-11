@@ -1,0 +1,15 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+sllurp_gui/__init__.py
+sllurp_gui/__main__.py
+sllurp_gui/main.py
+sllurp_gui/version.py
+sllurp_gui.egg-info/PKG-INFO
+sllurp_gui.egg-info/SOURCES.txt
+sllurp_gui.egg-info/dependency_links.txt
+sllurp_gui.egg-info/entry_points.txt
+sllurp_gui.egg-info/requires.txt
+sllurp_gui.egg-info/top_level.txt
