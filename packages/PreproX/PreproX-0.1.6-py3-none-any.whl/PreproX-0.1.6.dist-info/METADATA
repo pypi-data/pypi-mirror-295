@@ -1,0 +1,1666 @@
+Metadata-Version: 2.1
+Name: PreproX
+Version: 0.1.6
+Summary: A Python library for data preprocessing suggestions and transformations
+Home-page: https://github.com/Sam-Coding77/DataWiz
+Author: Samama Farooq
+Author-email: samama4200@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scikit-learn
+Requires-Dist: category-encoders
+Requires-Dist: psutil
+Requires-Dist: scipy
+
+Got it, let's take it step by step.
+
+---
+
+# PreproX Documentation
+
+**PreproX** is a Python library designed to automate data preprocessing by recommending and applying various techniques such as encoding, scaling, imputing, and visualizing. It helps streamline the data preparation process by providing detailed recommendations for each preprocessing step.
+
+---
+
+### 1. Installation
+
+You can install **PreproX** via PyPI:
+
+```bash
+pip install PreproX
+```
+
+Alternatively, if you're working on the development version, you can install it locally:
+
+```bash
+# Navigate to the project directory
+cd PreproX
+
+# Install the package
+pip install .
+```
+
+---
+
+### 2. Basic Usage
+
+Here’s how to use the basic functionality of PreproX:
+
+```python
+import PreproX as px
+import pandas as pd
+
+# Load a dataset
+df = pd.read_csv('your_data.csv')
+
+# Get preprocessing recommendations
+encoding_recommendations = px.recommend_encoding_strategy(df)
+
+# Apply encoding
+df_encoded = px.apply_encoding(df, encoding_recommendations)
+
+# Visualize the data
+px.plot_histograms(df_encoded)
+```
+
+---
+
+### 3. Folder Structure
+
+Here’s the structure of the PreproX package:
+
+```
+PreproX/
+│
+├── __init__.py            # Initializes the package
+├── encoding.py            # Handles encoding of categorical variables
+├── imputation.py          # Handles imputation of missing values
+├── scaling.py             # Handles scaling of numerical features
+├── outliers.py            # Detects and handles outliers
+├── inspection.py          # Inspects the dataset (types, missing data, etc.)
+├── logging.py             # Logs each preprocessing step
+├── visualizations.py      # Provides visualization functions for the dataset
+├── utils.py               # Contains utility functions used across the library
+├── factory.py             # Automates the entire preprocessing pipeline
+├── exceptions.py          # Custom exceptions for preprocessing errors
+```
+
+---
+
+### 4. Module Descriptions
+
+### File: `__init__.py`
+
+**Description**: The `__init__.py` file serves as the initialization point for the PreproX library. It imports all relevant functions from different modules (such as encoding, imputation, scaling, transformations, logging, etc.) and makes them accessible under a unified namespace for easy usage.
+
+---
+
+#### 1. **Encoding Functions**
+
+- **`apply_onehot_encoding(df, cols)`**: Applies one-hot encoding to the specified columns in the dataset.
+- **`apply_label_encoding(df, cols)`**: Applies label encoding to the specified columns.
+- **`apply_target_encoding(df, cols, target)`**: Encodes columns based on the relationship with the target column.
+- **`apply_frequency_encoding(df, cols)`**: Encodes columns based on the frequency of categories.
+- **`apply_binary_encoding(df, cols)`**: Applies binary encoding to categorical columns.
+- **`apply_hashing_encoding(df, cols)`**: Uses a hashing trick to encode columns.
+- **`apply_mean_encoding(df, cols, target)`**: Encodes categorical features based on the mean of the target variable.
+- **`apply_woe_encoding(df, cols, target)`**: Encodes using Weight of Evidence (WOE) based on the target variable.
+- **`recommend_encoding_strategy(df)`**: Recommends the best encoding strategy for each categorical column in the dataset.
+
+---
+
+#### 2. **Imputation Functions**
+
+- **`impute_mean(df, cols)`**: Imputes missing values in numerical columns with the mean.
+- **`impute_median(df, cols)`**: Imputes missing values in numerical columns with the median.
+- **`impute_mode(df, cols)`**: Imputes missing values in categorical columns with the mode.
+- **`impute_knn(df, cols)`**: Applies KNN imputation to handle missing values.
+- **`impute_iterative(df, cols)`**: Applies iterative imputation to handle missing data.
+- **`impute_constant(df, cols, constant_value)`**: Imputes missing values with a constant value.
+- **`recommend_imputation_strategy(df)`**: Recommends the best imputation strategy for missing values in the dataset.
+
+---
+
+#### 3. **Scaling Functions**
+
+- **`apply_standard_scaling(df, cols)`**: Applies standard scaling (mean=0, variance=1) to numerical columns.
+- **`apply_minmax_scaling(df, cols)`**: Scales numerical columns using Min-Max scaling (range [0, 1]).
+- **`apply_robust_scaling(df, cols)`**: Applies robust scaling to handle outliers.
+- **`apply_maxabs_scaling(df, cols)`**: Scales the columns using MaxAbs scaling (scale by the absolute maximum value).
+- **`apply_quantile_transform(df, cols)`**: Transforms numerical columns using a quantile transformer.
+- **`apply_power_transform(df, cols)`**: Applies power transformation (Box-Cox, Yeo-Johnson) to the numerical columns.
+- **`recommend_scaling_strategy(df)`**: Recommends appropriate scaling techniques based on column distributions.
+
+---
+
+#### 4. **Transformers**
+
+- **`apply_log_transformation(df, cols)`**: Applies logarithmic transformation to specified columns.
+- **`generate_polynomial_features(df, cols, degree)`**: Generates polynomial features of the specified degree.
+- **`binning(df, col, bins, labels)`**: Bins numerical columns into specified categories.
+- **`apply_sqrt_transformation(df, cols)`**: Applies square root transformation to numerical columns.
+- **`apply_boxcox_transformation(df, cols)`**: Applies the Box-Cox transformation to normalize distributions.
+- **`target_encode(df, cols, target)`**: Encodes categorical features based on the target variable.
+- **`apply_inverse_transformation(df, cols)`**: Applies inverse transformation to numerical columns.
+
+---
+
+#### 5. **Utility Functions**
+
+- **`check_missing_values(df)`**: Checks for missing values in the dataset.
+- **`check_outliers(df)`**: Detects outliers in the dataset.
+- **`check_data_types(df)`**: Returns the data types of each column in the dataset.
+- **`calculate_basic_statistics(df)`**: Provides basic statistics (mean, median, standard deviation) for numerical columns.
+- **`format_column_names(df)`**: Formats column names (e.g., removing spaces, special characters).
+- **`detect_constant_columns(df)`**: Identifies columns with constant values.
+- **`detect_duplicates(df)`**: Identifies duplicate rows in the dataset.
+- **`detect_highly_correlated_features(df)`**: Detects highly correlated numerical columns.
+- **`convert_categorical_to_category(df)`**: Converts categorical columns to the category data type.
+- **`normalize_numerical_data(df)`**: Normalizes numerical columns using standard normalization techniques.
+- **`count_unique_values(df)`**: Returns the count of unique values for each column.
+
+---
+
+#### 6. **Logging Functions**
+
+- **`setup_logging()`**: Sets up logging for preprocessing steps.
+- **`set_logging_level(level)`**: Sets the logging level (e.g., DEBUG, INFO, WARNING).
+- **`log_to_file(file_path)`**: Logs preprocessing steps to a file.
+- **`disable_logging()`**: Disables logging.
+- **`log_custom_message(message)`**: Logs a custom message.
+- **`log_timed_event(event_name)`**: Logs the time taken for a specific event.
+- **`log_memory_usage()`**: Logs memory usage of the dataset during preprocessing.
+- **`log_dataframe_shape(df)`**: Logs the shape (rows, columns) of the dataset.
+- **`enable_console_logging()`**: Enables logging to the console.
+- **`disable_console_logging()`**: Disables console logging.
+
+---
+
+#### 7. **Visualization Functions**
+
+- **`plot_histograms(df, cols=None)`**: Plots histograms for numerical columns.
+- **`plot_bar(df, cols)`**: Plots bar charts for categorical columns.
+- **`plot_scatter(df, x_col, y_col)`**: Plots a scatter plot between two numerical columns.
+- **`plot_correlation_heatmap(df)`**: Plots a correlation heatmap for numerical features.
+- **`plot_boxplots(df, cols)`**: Plots boxplots for numerical columns to visualize outliers.
+- **`plot_pairplot(df, cols=None)`**: Plots pair plots to explore pairwise relationships between numerical columns.
+- **`plot_pca(df, cols, n_components=2)`**: Plots PCA projection for dimensionality reduction.
+- **`plot_tsne(df, cols, n_components=2)`**: Plots t-SNE projection for complex data visualization.
+- **`plot_time_series(df, time_col, value_col)`**: Plots a time series for time-based data.
+- **`plot_combined_hist_kde(df, col)`**: Plots a combined histogram and KDE plot for numerical columns.
+- **`recommend_visualizations(df)`**: Recommends visualizations based on the dataset.
+
+---
+
+#### 8. **Exceptions**
+
+- **`PreprocessingError`**: Raised when a general error occurs during preprocessing.
+- **`MissingColumnError`**: Raised when a required column is missing from the dataset.
+- **`InvalidEncodingStrategyError`**: Raised when an invalid encoding strategy is used.
+- **`InvalidImputationStrategyError`**: Raised when an invalid imputation strategy is used.
+- **`InvalidScalingStrategyError`**: Raised when an invalid scaling strategy is used.
+- **`DataTypeMismatchError`**: Raised when there is a mismatch between expected and actual data types.
+- **`OutlierDetectionError`**: Raised when an error occurs during outlier detection.
+- **`MissingValueImputationError`**: Raised when an error occurs during imputation of missing values.
+- **`UnsupportedDataTypeError`**: Raised when a data type is unsupported for a particular operation.
+- **`InvalidFeatureSelectionError`**: Raised when feature selection is performed incorrectly.
+
+---
+
+#### 9. **Inspection Function**
+
+- **`inspect_data(df)`**: Inspects the dataset for common issues such as missing values, duplicates, data types, and basic statistics.
+
+---
+
+#### 10. **Preprocessing Function**
+
+- **`apply_preprocessing(df, encoding_recommendations, imputation_recommendations, scaling_recommendations)`**: Applies all preprocessing steps (encoding, imputation, scaling) in sequence to the dataset.
+
+
+Here’s the documentation for the **`encoding.py`** file based on the provided code:
+
+---
+
+### File: `encoding.py`
+
+**Description**: This file contains functions for encoding categorical variables in various ways, such as One-Hot Encoding, Label Encoding, Target Encoding, and more. These encoding strategies transform categorical data into a numerical format that can be used in machine learning models.
+
+---
+
+### Functions:
+
+#### 1. `apply_onehot_encoding(df, cols)`
+
+**Description**: Applies One-Hot Encoding to categorical columns, creating binary columns for each category.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with one-hot encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_onehot_encoding(df, ['column1', 'column2'])
+```
+
+---
+
+#### 2. `apply_label_encoding(df, cols)`
+
+**Description**: Applies Label Encoding to categorical columns, assigning integer values to categories.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with label encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_label_encoding(df, ['column1'])
+```
+
+---
+
+#### 3. `apply_target_encoding(df, cols, target_col)`
+
+**Description**: Applies Target Encoding to categorical columns by calculating the mean of the target variable for each category.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+- `target_col`: *str* – The target column used for encoding.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with target encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_target_encoding(df, ['column1'], 'target')
+```
+
+---
+
+#### 4. `apply_frequency_encoding(df, cols)`
+
+**Description**: Applies Frequency Encoding to categorical columns by replacing each category with its frequency in the dataset.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with frequency encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_frequency_encoding(df, ['column1'])
+```
+
+---
+
+#### 5. `apply_binary_encoding(df, cols)`
+
+**Description**: Applies Binary Encoding to categorical columns, converting categories into binary digits.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with binary encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_binary_encoding(df, ['column1'])
+```
+
+---
+
+#### 6. `apply_hashing_encoding(df, cols, n_components=8)`
+
+**Description**: Applies Hashing Encoding to categorical columns, using a hashing trick to reduce dimensionality.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+- `n_components`: *int, optional* – The number of hashing components (default is 8).
+
+**Returns**:
+- *pd.DataFrame*: Dataset with hashing encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_hashing_encoding(df, ['column1'], n_components=10)
+```
+
+---
+
+#### 7. `apply_mean_encoding(df, cols, target_col)`
+
+**Description**: Applies Mean Encoding to categorical columns by replacing categories with the mean of the target variable for each category.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+- `target_col`: *str* – The target column used for encoding.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with mean encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_mean_encoding(df, ['column1'], 'target')
+```
+
+---
+
+#### 8. `apply_woe_encoding(df, cols, target_col)`
+
+**Description**: Applies Weight of Evidence (WOE) Encoding to categorical columns, calculating the log(odds) of each category based on the target variable.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to encode.
+- `target_col`: *str* – The target column used for encoding.
+
+**Returns**:
+- *pd.DataFrame*: Dataset with WOE encoded columns.
+
+**Example**:
+```python
+df_encoded = apply_woe_encoding(df, ['column1'], 'target')
+```
+
+---
+
+#### 9. `recommend_encoding_strategy(df, target_col=None)`
+
+**Description**: Recommends the most suitable encoding strategy for each categorical column based on the number of unique categories and whether a target column is present.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `target_col`: *str, optional* – The target column for supervised learning tasks.
+
+**Returns**:
+- *dict*: Dictionary with recommended encoding strategies for each categorical column.
+
+**Example**:
+```python
+encoding_recommendations = recommend_encoding_strategy(df, target_col='target')
+```
+
+### File: `imputation.py`
+
+**Description**: This file contains functions for handling missing data in the dataset through various imputation strategies such as mean, median, mode, KNN, and iterative imputation. It also includes a function that provides recommendations for which imputation strategy to apply based on the characteristics of missing data.
+
+---
+
+### Functions:
+
+#### 1. `impute_mean(df, cols)`
+
+**Description**: Imputes missing values by replacing them with the mean of the respective column.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed by the mean.
+
+**Example**:
+```python
+df_imputed = impute_mean(df, ['col1', 'col2'])
+```
+
+---
+
+#### 2. `impute_median(df, cols)`
+
+**Description**: Imputes missing values by replacing them with the median of the respective column.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed by the median.
+
+**Example**:
+```python
+df_imputed = impute_median(df, ['col1', 'col2'])
+```
+
+---
+
+#### 3. `impute_mode(df, cols)`
+
+**Description**: Imputes missing values by replacing them with the most frequent value (mode) of the respective column.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed by the mode.
+
+**Example**:
+```python
+df_imputed = impute_mode(df, ['col1', 'col2'])
+```
+
+---
+
+#### 4. `impute_knn(df, cols, n_neighbors=5)`
+
+**Description**: Imputes missing values using K-Nearest Neighbors (KNN) imputation, which calculates the nearest neighbors and imputes values based on similarity.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+- `n_neighbors`: *int, optional* – Number of neighbors to use for KNN imputation (default is 5).
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed using KNN.
+
+**Example**:
+```python
+df_imputed = impute_knn(df, ['col1', 'col2'], n_neighbors=5)
+```
+
+---
+
+#### 5. `impute_iterative(df, cols)`
+
+**Description**: Imputes missing values using Iterative Imputation, where each feature is modeled as a function of other features and missing values are predicted iteratively.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed using iterative imputation.
+
+**Example**:
+```python
+df_imputed = impute_iterative(df, ['col1', 'col2'])
+```
+
+---
+
+#### 6. `impute_constant(df, cols, fill_value=-999)`
+
+**Description**: Imputes missing values by replacing them with a constant value specified by the user.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to impute.
+- `fill_value`: *int/float, optional* – The constant value to use for imputation (default is -999).
+
+**Returns**:
+- *pd.DataFrame*: The dataset with missing values imputed by the constant value.
+
+**Example**:
+```python
+df_imputed = impute_constant(df, ['col1', 'col2'], fill_value=-1)
+```
+
+---
+
+#### 7. `recommend_imputation_strategy(df)`
+
+**Description**: Recommends imputation strategies for each column based on the percentage of missing data in the dataset. The strategy varies depending on how much data is missing from each column.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *dict*: A dictionary with recommended imputation strategies for each column with missing data.
+
+**Example**:
+```python
+imputation_recommendations = recommend_imputation_strategy(df)
+```
+
+### File: `scaling.py`
+
+**Description**: This file contains functions for scaling numerical columns in the dataset using various scaling techniques such as Standard Scaling, Min-Max Scaling, Robust Scaling, MaxAbs Scaling, Quantile Transformation, and Power Transformation. It also includes a function to recommend the appropriate scaling strategy based on the data's characteristics.
+
+---
+
+### Functions:
+
+#### 1. `apply_standard_scaling(df, cols)`
+
+**Description**: Applies Standard Scaling (zero mean, unit variance) to numerical columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with scaled numerical columns.
+
+**Example**:
+```python
+df_scaled = apply_standard_scaling(df, ['col1', 'col2'])
+```
+
+---
+
+#### 2. `apply_minmax_scaling(df, cols, feature_range=(0, 1))`
+
+**Description**: Applies Min-Max Scaling to numerical columns, scaling the data to the specified range.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+- `feature_range`: *tuple, optional* – Desired range of transformed data (default is (0, 1)).
+
+**Returns**:
+- *pd.DataFrame*: The dataset with scaled numerical columns.
+
+**Example**:
+```python
+df_scaled = apply_minmax_scaling(df, ['col1', 'col2'], feature_range=(0, 1))
+```
+
+---
+
+#### 3. `apply_robust_scaling(df, cols)`
+
+**Description**: Applies Robust Scaling to numerical columns. This scaling method is robust to outliers as it scales data based on the median and interquartile range (IQR).
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with robustly scaled numerical columns.
+
+**Example**:
+```python
+df_scaled = apply_robust_scaling(df, ['col1', 'col2'])
+```
+
+---
+
+#### 4. `apply_maxabs_scaling(df, cols)`
+
+**Description**: Applies MaxAbs Scaling to numerical columns, scaling the data by dividing it by the maximum absolute value.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with MaxAbs scaled numerical columns.
+
+**Example**:
+```python
+df_scaled = apply_maxabs_scaling(df, ['col1', 'col2'])
+```
+
+---
+
+#### 5. `apply_quantile_transform(df, cols, output_distribution='uniform')`
+
+**Description**: Applies Quantile Transformation to numerical columns to transform data to follow a uniform or normal distribution.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+- `output_distribution`: *str, optional* – Desired output distribution (`uniform` or `normal`). Default is `uniform`.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with quantile-transformed numerical columns.
+
+**Example**:
+```python
+df_transformed = apply_quantile_transform(df, ['col1', 'col2'], output_distribution='normal')
+```
+
+---
+
+#### 6. `apply_power_transform(df, cols, method='yeo-johnson')`
+
+**Description**: Applies Power Transformation to numerical columns to make the data more Gaussian-like. Supports both the Box-Cox and Yeo-Johnson methods.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to scale.
+- `method`: *str, optional* – The transformation method (`box-cox` or `yeo-johnson`). Default is `yeo-johnson`.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with power-transformed numerical columns.
+
+**Example**:
+```python
+df_transformed = apply_power_transform(df, ['col1'], method='box-cox')
+```
+
+---
+
+#### 7. `recommend_scaling_strategy(df)`
+
+**Description**: Recommends scaling strategies for numerical columns based on the range and skewness of the data.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *dict*: A dictionary with recommended scaling strategies for each numerical column.
+
+**Example**:
+```python
+scaling_recommendations = recommend_scaling_strategy(df)
+```
+
+### File: `transformers.py`
+
+**Description**: This file contains various data transformation functions, including logarithmic, polynomial, square root, Box-Cox, and inverse transformations. These transformations are useful for handling non-linear relationships in the data, reducing skewness, or generating new features.
+
+---
+
+### Functions:
+
+#### 1. `apply_log_transformation(df, cols)`
+
+**Description**: Applies a logarithmic transformation to the specified numerical columns. The `log1p` function is used to avoid issues with `log(0)`.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to apply the log transformation to.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with log-transformed columns.
+
+**Example**:
+```python
+df_transformed = apply_log_transformation(df, ['col1', 'col2'])
+```
+
+---
+
+#### 2. `generate_polynomial_features(df, cols, degree=2, interaction_only=False)`
+
+**Description**: Generates polynomial and interaction features for the specified numerical columns. This is useful for capturing non-linear relationships between features.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of numerical columns to generate polynomial features from.
+- `degree`: *int, optional* – The degree of the polynomial features (default is 2).
+- `interaction_only`: *bool, optional* – Whether to generate only interaction features (default is False).
+
+**Returns**:
+- *pd.DataFrame*: The dataset with the original and polynomial features.
+
+**Example**:
+```python
+df_poly = generate_polynomial_features(df, ['col1', 'col2'], degree=3)
+```
+
+---
+
+#### 3. `binning(df, col, bins, labels=None)`
+
+**Description**: Performs binning (discretization) on a numerical column. This is useful for transforming continuous variables into discrete categories.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `col`: *str* – The name of the column to bin.
+- `bins`: *int or list-like* – The number of bins or bin edges.
+- `labels`: *list, optional* – The labels for the bins.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with the binned column.
+
+**Example**:
+```python
+df_binned = binning(df, 'col1', bins=5)
+```
+
+---
+
+#### 4. `apply_sqrt_transformation(df, cols)`
+
+**Description**: Applies a square root transformation to the specified numerical columns. This can help reduce skewness in the data.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to apply the square root transformation to.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with square root-transformed columns.
+
+**Example**:
+```python
+df_transformed = apply_sqrt_transformation(df, ['col1'])
+```
+
+---
+
+#### 5. `apply_boxcox_transformation(df, cols)`
+
+**Description**: Applies the Box-Cox transformation to the specified numerical columns. The Box-Cox transformation requires all values in the column to be positive.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to apply the Box-Cox transformation to.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with Box-Cox-transformed columns.
+
+**Example**:
+```python
+df_transformed = apply_boxcox_transformation(df, ['col1'])
+```
+
+---
+
+#### 6. `target_encode(df, col, target_col)`
+
+**Description**: Applies target encoding to a categorical column by replacing categories with the mean of the target variable for each category.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `col`: *str* – The name of the categorical column to target encode.
+- `target_col`: *str* – The target column for calculating the mean encoding.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with the target-encoded column.
+
+**Example**:
+```python
+df_encoded = target_encode(df, 'category_column', 'target_column')
+```
+
+---
+
+#### 7. `apply_inverse_transformation(df, cols)`
+
+**Description**: Applies an inverse transformation (1/x) to the specified numerical columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of columns to apply the inverse transformation to.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with inverse-transformed columns.
+
+**Example**:
+```python
+df_transformed = apply_inverse_transformation(df, ['col1'])
+```
+
+### File: `visualizations.py`
+
+**Description**: This file contains functions for visualizing data through histograms, bar plots, scatter plots, correlation heatmaps, PCA, t-SNE, and time-series plots. It also includes functions to recommend appropriate visualizations based on the dataset's characteristics, including detecting time-series data.
+
+---
+
+### Functions:
+
+#### 1. `detect_time_series(df)`
+
+**Description**: Detects if the dataset contains time-series data by checking for datetime columns or time-related column names, and checks if the values are monotonically increasing or decreasing.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset to check for time-series characteristics.
+
+**Returns**:
+- *str or None*: Returns the name of the time-series column if found, otherwise returns `None`.
+
+**Example**:
+```python
+time_series_column = detect_time_series(df)
+```
+
+---
+
+#### 2. `recommend_visualizations(df)`
+
+**Description**: Recommends visualizations based on the dataset, including time-series detection.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *dict*: Dictionary of recommended visualizations.
+
+**Example**:
+```python
+visualization_recommendations = recommend_visualizations(df)
+```
+
+---
+
+#### 3. `plot_histograms(df, cols=None, bins=20)`
+
+**Description**: Plots histograms for the specified numerical columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of columns to plot. If `None`, all numerical columns will be plotted.
+- `bins`: *int, optional* – Number of bins for the histogram (default is 20).
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_histograms(df, ['col1', 'col2'])
+```
+
+---
+
+#### 4. `plot_bar(df, cols)`
+
+**Description**: Plots bar plots for the specified categorical columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list* – List of categorical columns to plot.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_bar(df, ['col1'])
+```
+
+---
+
+#### 5. `plot_boxplots(df, cols=None)`
+
+**Description**: Plots boxplots for the specified numerical columns, useful for detecting outliers.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of columns to plot. If `None`, all numerical columns will be plotted.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_boxplots(df, ['col1', 'col2'])
+```
+
+---
+
+#### 6. `plot_correlation_heatmap(df)`
+
+**Description**: Plots a correlation heatmap for numerical columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_correlation_heatmap(df)
+```
+
+---
+
+#### 7. `plot_pca(df, cols=None, n_components=2)`
+
+**Description**: Plots a PCA projection for dimensionality reduction and visualization.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of numerical columns to include in PCA. If `None`, all numerical columns are used.
+- `n_components`: *int, optional* – The number of components for PCA (default is 2).
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_pca(df, ['col1', 'col2'], n_components=3)
+```
+
+---
+
+#### 8. `plot_tsne(df, cols=None, n_components=2, perplexity=30, n_iter=1000)`
+
+**Description**: Plots a t-SNE projection for complex data visualization.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of numerical columns to include in t-SNE. If `None`, all numerical columns are used.
+- `n_components`: *int, optional* – The number of dimensions for t-SNE (default is 2).
+- `perplexity`: *int, optional* – The perplexity for t-SNE (default is 30).
+- `n_iter`: *int, optional* – The number of iterations for optimization (default is 1000).
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_tsne(df, ['col1', 'col2'], n_components=3)
+```
+
+---
+
+#### 9. `plot_time_series(df, time_col, value_col, title="Time Series Plot")`
+
+**Description**: Plots a time series for the specified time and value columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `time_col`: *str* – The column representing time.
+- `value_col`: *str* – The column representing the value to plot over time.
+- `title`: *str, optional* – Title of the plot (default is "Time Series Plot").
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_time_series(df, 'date', 'value')
+```
+
+---
+
+#### 10. `plot_scatter(df, x_col, y_col)`
+
+**Description**: Plots a scatter plot between two specified columns.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `x_col`: *str* – The column for the x-axis.
+- `y_col`: *str* – The column for the y-axis.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_scatter(df, 'col1', 'col2')
+```
+
+---
+
+#### 11. `plot_combined_hist_kde(df, col)`
+
+**Description**: Plots a combined histogram and KDE plot for the specified numerical column.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `col`: *str* – The name of the column to plot.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_combined_hist_kde(df, 'col1')
+```
+
+---
+
+#### 12. `plot_pairplot(df, cols=None)`
+
+**Description**: Plots pairwise relationships between columns in the dataset.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of numerical columns to plot. If `None`, all numerical columns will be used.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+plot_pairplot(df)
+```
+
+### File: `utils.py`
+
+**Description**: This file contains utility functions for inspecting, processing, and analyzing datasets. The functions include checking for missing values, detecting outliers, formatting column names, detecting duplicates, calculating basic statistics, and more.
+
+---
+
+### Functions:
+
+#### 1. `check_missing_values(df)`
+
+**Description**: Checks for missing values in the dataset and returns a summary of missing counts and percentages.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.DataFrame*: DataFrame containing the count and percentage of missing values for each column.
+
+**Example**:
+```python
+missing_data = check_missing_values(df)
+```
+
+---
+
+#### 2. `check_outliers(df, cols=None, method='iqr')`
+
+**Description**: Detects outliers in numerical columns using the Interquartile Range (IQR) or Z-score method.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of columns to check for outliers. If `None`, all numerical columns will be checked.
+- `method`: *str, optional* – The method to use for detecting outliers (`'iqr'` or `'zscore'`). Default is `'iqr'`.
+
+**Returns**:
+- *dict*: A dictionary with outliers for each column.
+
+**Example**:
+```python
+outliers = check_outliers(df, method='zscore')
+```
+
+---
+
+#### 3. `check_data_types(df)`
+
+**Description**: Checks the data types of each column in the dataset.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.Series*: Series with the data types of each column.
+
+**Example**:
+```python
+data_types = check_data_types(df)
+```
+
+---
+
+#### 4. `calculate_basic_statistics(df, cols=None)`
+
+**Description**: Calculates basic statistics for numerical columns such as mean, median, variance, and standard deviation.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of columns to calculate statistics for. If `None`, statistics for all numerical columns will be calculated.
+
+**Returns**:
+- *pd.DataFrame*: DataFrame containing the calculated statistics.
+
+**Example**:
+```python
+stats = calculate_basic_statistics(df)
+```
+
+---
+
+#### 5. `format_column_names(df)`
+
+**Description**: Formats column names by removing leading/trailing spaces, converting them to lowercase, and replacing spaces with underscores.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with formatted column names.
+
+**Example**:
+```python
+df = format_column_names(df)
+```
+
+---
+
+#### 6. `detect_constant_columns(df)`
+
+**Description**: Detects columns that have constant values across all rows.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *list*: List of columns that contain constant values.
+
+**Example**:
+```python
+constant_columns = detect_constant_columns(df)
+```
+
+---
+
+#### 7. `detect_duplicates(df)`
+
+**Description**: Detects duplicate rows in the dataset.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.DataFrame*: DataFrame with duplicate rows.
+
+**Example**:
+```python
+duplicates = detect_duplicates(df)
+```
+
+---
+
+#### 8. `detect_highly_correlated_features(df, threshold=0.9)`
+
+**Description**: Detects pairs of features that are highly correlated with each other based on a specified correlation threshold.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `threshold`: *float, optional* – Correlation threshold to detect highly correlated features (default is 0.9).
+
+**Returns**:
+- *list of tuple*: List of pairs of features that are highly correlated.
+
+**Example**:
+```python
+correlated_features = detect_highly_correlated_features(df, threshold=0.95)
+```
+
+---
+
+#### 9. `convert_categorical_to_category(df)`
+
+**Description**: Converts object-type columns to the category data type to optimize memory usage.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with object columns converted to category data type.
+
+**Example**:
+```python
+df = convert_categorical_to_category(df)
+```
+
+---
+
+#### 10. `normalize_numerical_data(df, cols=None, norm='l2')`
+
+**Description**: Normalizes numerical data using L1 or L2 normalization.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+- `cols`: *list, optional* – List of columns to normalize. If `None`, all numerical columns will be normalized.
+- `norm`: *str, optional* – The normalization technique to use (`'l1'` or `'l2'`). Default is `'l2'`.
+
+**Returns**:
+- *pd.DataFrame*: The dataset with normalized numerical columns.
+
+**Example**:
+```python
+df_normalized = normalize_numerical_data(df, ['col1', 'col2'], norm='l1')
+```
+
+---
+
+#### 11. `count_unique_values(df)`
+
+**Description**: Counts the unique values in each column of the dataset.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset.
+
+**Returns**:
+- *pd.Series*: Series with the count of unique values for each column.
+
+**Example**:
+```python
+unique_counts = count_unique_values(df)
+```
+
+### File: `logging.py`
+
+**Description**: This file provides various logging functions to facilitate detailed logging during data preprocessing and analysis. It includes options to log custom messages, track memory usage, log DataFrame shapes, enable/disable console or file logging, and set logging levels dynamically.
+
+---
+
+### Functions:
+
+#### 1. `setup_logging(level=logging.INFO, log_file=None)`
+
+**Description**: Sets up the logging configuration for the entire library. You can specify a log file or log to the console.
+
+**Parameters**:
+- `level`: *int, optional* – The logging level (default is `logging.INFO`).
+- `log_file`: *str, optional* – The path to the file where logs will be saved. If `None`, logs will be output to the console.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+setup_logging(level=logging.DEBUG, log_file='app.log')
+```
+
+---
+
+#### 2. `set_logging_level(level)`
+
+**Description**: Dynamically sets the logging level during runtime.
+
+**Parameters**:
+- `level`: *int* – The logging level (e.g., `logging.DEBUG`, `logging.WARNING`).
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+set_logging_level(logging.DEBUG)
+```
+
+---
+
+#### 3. `log_to_file(log_file)`
+
+**Description**: Adds a file handler to log messages to the specified file. Any previous file logging will be replaced.
+
+**Parameters**:
+- `log_file`: *str* – The file where logs should be stored.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+log_to_file('new_logfile.log')
+```
+
+---
+
+#### 4. `disable_logging()`
+
+**Description**: Disables all logging messages by raising the logging level to `CRITICAL`.
+
+**Parameters**:
+- *None*
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+disable_logging()
+```
+
+---
+
+#### 5. `log_custom_message(level, message)`
+
+**Description**: Logs a custom message at the specified logging level.
+
+**Parameters**:
+- `level`: *int* – The logging level (e.g., `logging.INFO`, `logging.ERROR`).
+- `message`: *str* – The custom message to log.
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+log_custom_message(logging.WARNING, "This is a warning message.")
+```
+
+---
+
+#### 6. `log_timed_event(start_time, event_name="Event")`
+
+**Description**: Logs the time taken for an event or function to complete.
+
+**Parameters**:
+- `start_time`: *float* – The starting time of the event (from `time.time()`).
+- `event_name`: *str, optional* – Name of the event or function being timed (default is "Event").
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+start = time.time()
+# Code execution
+log_timed_event(start, "Data preprocessing")
+```
+
+---
+
+#### 7. `log_memory_usage()`
+
+**Description**: Logs the current memory usage of the system.
+
+**Parameters**:
+- *None*
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+log_memory_usage()
+```
+
+---
+
+#### 8. `log_dataframe_shape(df, message="DataFrame shape logged")`
+
+**Description**: Logs the shape of a DataFrame with an optional message.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The DataFrame whose shape is to be logged.
+- `message`: *str, optional* – A custom message to accompany the DataFrame shape log (default is "DataFrame shape logged").
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+log_dataframe_shape(df, "After data cleaning")
+```
+
+---
+
+#### 9. `enable_console_logging()`
+
+**Description**: Enables logging output to the console.
+
+**Parameters**:
+- *None*
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+enable_console_logging()
+```
+
+---
+
+#### 10. `disable_console_logging()`
+
+**Description**: Disables logging output to the console.
+
+**Parameters**:
+- *None*
+
+**Returns**:
+- *None*
+
+**Example**:
+```python
+disable_console_logging()
+```
+
+### File: `preprocessing.py`
+
+**Description**: This file contains the main preprocessing function, which applies encoding, imputation, and scaling strategies to a given dataset based on user-defined parameters. It integrates the encoding, imputation, and scaling functions from their respective modules.
+
+---
+
+### Function:
+
+#### 1. `apply_preprocessing(df, encoding_strategies=None, imputation_strategies=None, scaling_strategies=None)`
+
+**Description**: This function applies the specified encoding, imputation, and scaling strategies to the dataset. It serves as the main function to handle all preprocessing tasks in a single step.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset to be preprocessed.
+- `encoding_strategies`: *dict, optional* – A dictionary specifying the encoding strategies for categorical columns.
+  - Format: `{ 'column_name': 'encoding_type' }`
+- `imputation_strategies`: *dict, optional* – A dictionary specifying the imputation strategies for columns with missing values.
+  - Format: `{ 'column_name': 'imputation_type' }`
+- `scaling_strategies`: *dict, optional* – A dictionary specifying the scaling strategies for numerical columns.
+  - Format: `{ 'column_name': 'scaling_type' }`
+
+**Returns**:
+- *pd.DataFrame*: The preprocessed DataFrame.
+
+**Example**:
+```python
+encoding_strategies = {'category_col1': 'onehot', 'category_col2': 'label'}
+imputation_strategies = {'numerical_col1': 'mean', 'category_col2': 'mode'}
+scaling_strategies = {'numerical_col1': 'minmax', 'numerical_col2': 'standard'}
+
+df_preprocessed = apply_preprocessing(df, encoding_strategies, imputation_strategies, scaling_strategies)
+```
+
+---
+
+**Usage Breakdown**:
+
+1. **Encoding Strategies**: The function accepts a dictionary `encoding_strategies` to apply the appropriate encoding to categorical columns. It supports:
+   - `onehot`: One-Hot Encoding
+   - `label`: Label Encoding
+   - `target`: Target Encoding
+   - `frequency`: Frequency Encoding
+   - `binary`: Binary Encoding
+   - `hashing`: Hashing Encoding
+
+2. **Imputation Strategies**: The function applies the specified imputation techniques for missing data using the `imputation_strategies` dictionary. It supports:
+   - `mean`: Mean Imputation
+   - `median`: Median Imputation
+   - `mode`: Mode Imputation
+   - `knn`: KNN Imputation
+   - `iterative`: Iterative Imputation
+   - `constant`: Constant Value Imputation (default: -999)
+
+3. **Scaling Strategies**: The function applies scaling strategies to numerical columns using the `scaling_strategies` dictionary. It supports:
+   - `standard`: Standard Scaling (mean = 0, std = 1)
+   - `minmax`: Min-Max Scaling
+   - `robust`: Robust Scaling (using median and IQR)
+   - `maxabs`: MaxAbs Scaling
+   - `quantile`: Quantile Transformation
+   - `power`: Power Transformation (Box-Cox or Yeo-Johnson)
+
+---
+
+### File: `inspection.py`
+
+**Description**: This file is designed to help users inspect and analyze their dataset before applying preprocessing. It provides a comprehensive report on the data, including missing values, outliers, skewness, class balance, and correlation, among other characteristics.
+
+---
+
+### Function:
+
+#### 1. `inspect_data(df, target_col=None)`
+
+**Description**: This function inspects a dataset and provides comprehensive insights such as data types, missing values, outliers, skewness, variance, and class balance. It includes visualizations like heatmaps and correlation matrices to assist users in understanding the dataset's structure.
+
+**Parameters**:
+- `df`: *pd.DataFrame* – The dataset to inspect.
+- `target_col`: *str, optional* – The target column for classification tasks. If provided, the function will check for class balance in the target column.
+
+**Returns**: 
+- *None* – Prints insights and displays visualizations about the dataset.
+
+**Insights Provided**:
+1. **Dataset Shape**: Number of rows and columns.
+2. **Column Data Types**: The types of data in each column, along with basic statistics.
+3. **Missing Values**: Identifies columns with missing values and their percentage. Displays a heatmap of missing values.
+4. **Duplicate Rows**: Detects if there are any duplicate rows in the dataset.
+5. **Outlier Detection**: Uses the IQR method to detect outliers in numerical columns.
+6. **Skewness**: Checks for skewness in numerical columns and highlights highly skewed columns.
+7. **Variance & Standard Deviation**: Provides the variance and standard deviation for numerical columns.
+8. **High Cardinality Columns**: Identifies categorical columns with more than 50 unique values.
+9. **Correlation Matrix**: Displays the correlation matrix for numerical columns.
+10. **Class Balance Check** (for classification tasks): If a target column is specified, the function checks and visualizes the class distribution.
+
+**Example**:
+```python
+# Inspect the dataset
+inspect_data(df, target_col='target')
+```
+
+**Visualization Example**:
+- **Missing Value Heatmap**
+- **Correlation Matrix**
+- **Class Balance Bar Plot (if target_col provided)**
+
+---
+
+### File: `exceptions.py`
+
+**Description**: This file defines custom exceptions for handling errors in the preprocessing library. Each exception is tailored to capture specific types of errors, such as missing columns, invalid preprocessing strategies, data type mismatches, and more. These exceptions help ensure that users receive informative error messages when issues arise during preprocessing tasks.
+
+---
+
+### Classes:
+
+#### 1. `PreprocessingError`
+
+**Description**: Base class for all custom exceptions in the preprocessing library.
+
+**Parameters**:
+- `message`: *str, optional* – The error message to display (default: "An error occurred during preprocessing.").
+
+**Usage**: This is the base class for all custom exceptions, and other exception classes inherit from this.
+
+---
+
+#### 2. `MissingColumnError`
+
+**Description**: Raised when a required column is missing from the dataset.
+
+**Parameters**:
+- `column_name`: *str* – The name of the missing column.
+
+**Usage Example**:
+```python
+raise MissingColumnError("age")
+```
+
+---
+
+#### 3. `InvalidEncodingStrategyError`
+
+**Description**: Raised when an invalid or unsupported encoding strategy is provided.
+
+**Parameters**:
+- `strategy`: *str* – The invalid encoding strategy provided.
+
+**Usage Example**:
+```python
+raise InvalidEncodingStrategyError("unsupported_encoding")
+```
+
+---
+
+#### 4. `InvalidImputationStrategyError`
+
+**Description**: Raised when an invalid or unsupported imputation strategy is provided.
+
+**Parameters**:
+- `strategy`: *str* – The invalid imputation strategy provided.
+
+**Usage Example**:
+```python
+raise InvalidImputationStrategyError("unsupported_imputation")
+```
+
+---
+
+#### 5. `InvalidScalingStrategyError`
+
+**Description**: Raised when an invalid or unsupported scaling strategy is provided.
+
+**Parameters**:
+- `strategy`: *str* – The invalid scaling strategy provided.
+
+**Usage Example**:
+```python
+raise InvalidScalingStrategyError("unsupported_scaling")
+```
+
+---
+
+#### 6. `DataTypeMismatchError`
+
+**Description**: Raised when there is a mismatch between the expected and actual data types of a column.
+
+**Parameters**:
+- `expected_type`: *str* – The expected data type.
+- `actual_type`: *str* – The actual data type.
+- `column_name`: *str* – The name of the column.
+
+**Usage Example**:
+```python
+raise DataTypeMismatchError("int", "float", "age")
+```
+
+---
+
+#### 7. `OutlierDetectionError`
+
+**Description**: Raised during the outlier detection process when an error occurs.
+
+**Parameters**:
+- `column_name`: *str* – The name of the column where the error occurred.
+
+**Usage Example**:
+```python
+raise OutlierDetectionError("age")
+```
+
+---
+
+#### 8. `MissingValueImputationError`
+
+**Description**: Raised when an error occurs during missing value imputation in a specific column.
+
+**Parameters**:
+- `column_name`: *str* – The name of the column where the error occurred.
+
+**Usage Example**:
+```python
+raise MissingValueImputationError("salary")
+```
+
+---
+
+#### 9. `UnsupportedDataTypeError`
+
+**Description**: Raised when an unsupported data type is encountered during an operation.
+
+**Parameters**:
+- `data_type`: *str* – The unsupported data type.
+
+**Usage Example**:
+```python
+raise UnsupportedDataTypeError("complex")
+```
+
+---
+
+#### 10. `InvalidFeatureSelectionError`
+
+**Description**: Raised when invalid or unsupported feature selection criteria are provided.
+
+**Parameters**:
+- `criteria`: *str* – The invalid or unsupported feature selection criteria.
+
+**Usage Example**:
+```python
+raise InvalidFeatureSelectionError("unsupported_criteria")
+```
