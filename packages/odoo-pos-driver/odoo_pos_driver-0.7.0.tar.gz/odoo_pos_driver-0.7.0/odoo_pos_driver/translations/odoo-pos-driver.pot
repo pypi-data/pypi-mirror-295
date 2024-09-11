@@ -1,0 +1,246 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-08-30 14:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: devices/device_abstract.py:35
+msgid "Display"
+msgstr ""
+
+#: devices/device_abstract.py:37
+msgid "Printer"
+msgstr ""
+
+#: devices/device_abstract.py:39
+msgid "Payment Terminal"
+msgstr ""
+
+#: devices/device_abstract.py:41
+msgid "Scale"
+msgstr ""
+
+#: flask_app/flask_app_website.py:52
+msgid "Operating System"
+msgstr ""
+
+#: flask_app/flask_app_website.py:53
+msgid "Kernel Release"
+msgstr ""
+
+#: flask_app/flask_app_website.py:54
+msgid "Operating System Version"
+msgstr ""
+
+#: flask_app/flask_app_website.py:55
+msgid "Architecture"
+msgstr ""
+
+#: flask_app/flask_app_website.py:56
+msgid "Processors Type"
+msgstr ""
+
+#: flask_app/flask_app_website.py:58
+msgid "Processors Quantity"
+msgstr ""
+
+#: flask_app/flask_app_website.py:62
+msgid "Processors Frequency"
+msgstr ""
+
+#: flask_app/flask_app_website.py:66
+msgid "Processors Load"
+msgstr ""
+
+#: flask_app/flask_app_website.py:70
+msgid "Total Memory"
+msgstr ""
+
+#: flask_app/flask_app_website.py:73
+msgid "Memory Usage"
+msgstr ""
+
+#: flask_app/flask_app_website.py:74
+msgid "Python Version"
+msgstr ""
+
+#: flask_app/flask_app_website.py:84
+msgid "Version"
+msgstr ""
+
+#: flask_app/flask_app_website.py:85
+msgid "Start datetime"
+msgstr ""
+
+#: templates/application.html.jinja:10 templates/system.html.jinja:10
+msgid "Name"
+msgstr ""
+
+#: templates/application.html.jinja:11 templates/system.html.jinja:11
+msgid "Value"
+msgstr ""
+
+#: templates/disconnections.html.jinja:5 templates/home.html.jinja:40
+msgid "Disconnections"
+msgstr ""
+
+#: templates/disconnections.html.jinja:11
+msgid "Date"
+msgstr ""
+
+#: templates/disconnections.html.jinja:12
+msgid "Error"
+msgstr ""
+
+#: templates/errored_tasks.html.jinja:5
+msgid "Errored Tasks"
+msgstr ""
+
+#: templates/errored_tasks.html.jinja:11
+msgid "Create Date"
+msgstr ""
+
+#: templates/errored_tasks.html.jinja:12
+msgid "UUID"
+msgstr ""
+
+#: templates/errored_tasks.html.jinja:13
+msgid "Data"
+msgstr ""
+
+#: templates/home.html.jinja:17
+msgid "Connected"
+msgstr ""
+
+#: templates/home.html.jinja:19
+msgid "Disconnected"
+msgstr ""
+
+#: templates/home.html.jinja:24
+msgid "Pending Tasks"
+msgstr ""
+
+#: templates/home.html.jinja:33
+msgid "Errors"
+msgstr ""
+
+#: templates/home.html.jinja:63
+msgid "Test"
+msgstr ""
+
+#: templates/home.html.jinja:80
+msgid "Test communication with display"
+msgstr ""
+
+#: templates/home.html.jinja:81 templates/home.html.jinja:89
+#: templates/home.html.jinja:100 templates/home.html.jinja:108
+#: templates/home.html.jinja:119 templates/home.html.jinja:126
+#: templates/home.html.jinja:136 templates/home.html.jinja:143
+msgid "Close"
+msgstr ""
+
+#: templates/home.html.jinja:84
+msgid "Line 1"
+msgstr ""
+
+#: templates/home.html.jinja:85
+msgid "Line 2"
+msgstr ""
+
+#: templates/home.html.jinja:88
+msgid "Send to display"
+msgstr ""
+
+#: templates/home.html.jinja:99
+msgid "Test communication with printer"
+msgstr ""
+
+#: templates/home.html.jinja:106
+msgid "Print"
+msgstr ""
+
+#: templates/home.html.jinja:107
+msgid "Open Cashbox"
+msgstr ""
+
+#: templates/home.html.jinja:118
+msgid "Test communication with payment terminal"
+msgstr ""
+
+#: templates/home.html.jinja:122
+msgid "Amount (in €)"
+msgstr ""
+
+#: templates/home.html.jinja:125
+msgid "Send Amount"
+msgstr ""
+
+#: templates/home.html.jinja:135
+msgid "Test communication with scale"
+msgstr ""
+
+#: templates/home.html.jinja:142
+msgid "Get Weight"
+msgstr ""
+
+#: templates/layout.html.jinja:8
+msgid "Odoo PoS Drivers"
+msgstr ""
+
+#: templates/layout.html.jinja:28
+msgid "Home Page"
+msgstr ""
+
+#: templates/layout.html.jinja:31
+msgid "USB Devices"
+msgstr ""
+
+#: templates/layout.html.jinja:34
+msgid "System"
+msgstr ""
+
+#: templates/layout.html.jinja:37
+msgid "Application"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:11
+msgid "Role"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:12
+msgid "Bus"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:12
+msgid "Address"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:13
+msgid "Code"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:14
+msgid "Serial Number"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:15
+msgid "Manufacturer"
+msgstr ""
+
+#: templates/usb_devices.html.jinja:16
+msgid "Product Name"
+msgstr ""
+
