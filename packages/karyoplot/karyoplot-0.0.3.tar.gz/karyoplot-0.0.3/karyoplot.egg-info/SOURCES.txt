@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+karyoplot/__init__.py
+karyoplot/confparser.py
+karyoplot/entities.py
+karyoplot/main.py
+karyoplot/version.py
+karyoplot.egg-info/PKG-INFO
+karyoplot.egg-info/SOURCES.txt
+karyoplot.egg-info/dependency_links.txt
+karyoplot.egg-info/entry_points.txt
+karyoplot.egg-info/requires.txt
+karyoplot.egg-info/top_level.txt
