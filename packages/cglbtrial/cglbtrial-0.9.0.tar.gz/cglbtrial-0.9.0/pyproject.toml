@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cglbtrial"
+version = "0.9.0"
+description = "cglbtrial is a cglb trial"
+authors = ["CesGensLaB <contact@cesgenlab.fr>"]
+readme = "README.md"
+homepage = "https://cesgenslab.cloud/"
+# packages = [{include = "cglbtrial"}]
+
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jinja2 = "^3.1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
