@@ -1,0 +1,13 @@
+omlish==0.0.0.dev22
+
+[all]
+h11~=0.14
+h2~=4.1
+priority~=2.0
+wsproto~=1.2
+
+[server]
+h11~=0.14
+h2~=4.1
+priority~=2.0
+wsproto~=1.2
