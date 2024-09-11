@@ -1,0 +1,8 @@
+numpy
+
+[tests]
+pytest
+pytest-order
+fastcore!=1.5.8
+ghapi
+scipy
