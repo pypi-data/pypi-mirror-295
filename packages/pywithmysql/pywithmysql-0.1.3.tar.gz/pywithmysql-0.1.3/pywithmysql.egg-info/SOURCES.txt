@@ -1,0 +1,12 @@
+README.md
+setup.py
+pywithmysql/__init__.py
+pywithmysql/config.py
+pywithmysql/models.py
+pywithmysql/settings.py
+pywithmysql/types.py
+pywithmysql.egg-info/PKG-INFO
+pywithmysql.egg-info/SOURCES.txt
+pywithmysql.egg-info/dependency_links.txt
+pywithmysql.egg-info/requires.txt
+pywithmysql.egg-info/top_level.txt
