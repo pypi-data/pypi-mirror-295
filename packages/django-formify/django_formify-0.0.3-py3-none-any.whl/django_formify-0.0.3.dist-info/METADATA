@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: django-formify
+Version: 0.0.3
+Summary: Django-Formify is designed to enhance the styling and rendering of forms within your Django projects
+Home-page: https://github.com/rails-inspire-django/django-formify
+License: MIT
+Author: Michael Yin
+Author-email: michaelyin@accordbox.com
+Requires-Python: >=3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: django (>=3.0)
+Requires-Dist: django-viewcomponent (>=1.0.8)
+Project-URL: Changelog, https://github.com/rails-inspire-django/django-formify/releases
+Description-Content-Type: text/markdown
+
+# README
+
