@@ -1,0 +1,60 @@
+[project]
+name = "brother-label"
+version = "2.0a8"
+description = "Brother label printer interface for QL and PT series printers."
+readme = "README.md"
+authors = [
+    { name = "Philipp Klaus", email = "philipp.l.klaus@web.de" },
+    { name = "Dean Gardiner", email = "me@dgardiner.net" }
+]
+license = {text = "GPL"}
+dependencies = [
+    "click",
+    "future",
+    "packbits",
+    "pillow>=3.3.0",
+    "pyusb",
+    "attrs",
+    "typing;python_version<'3.5'",
+    "enum34;python_version<'3.4'",
+]
+keywords = [
+    "Brother",
+    "QL-500",
+    "QL-550",
+    "QL-560",
+    "QL-570",
+    "QL-580N",
+    "QL-600",
+    "QL-650TD",
+    "QL-700",
+    "QL-710W",
+    "QL-720NW",
+    "QL-800",
+    "QL-810W",
+    "QL-820NWB",
+    "QL-1050",
+    "QL-1060N",
+    "QL-1100",
+    "QL-1100NWB",
+    "QL-1115NWB",
+    "PT-P750W",
+    "PT-P900W",
+    "PT-P950NW",
+    "PT-E550W",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: System :: Hardware :: Hardware Drivers",
+]
+
+[project.scripts]
+brother_ql = "brother_ql.cli:cli"
+
+[project.urls]
+repository = "https://github.com/fuzeman/brother-label"
