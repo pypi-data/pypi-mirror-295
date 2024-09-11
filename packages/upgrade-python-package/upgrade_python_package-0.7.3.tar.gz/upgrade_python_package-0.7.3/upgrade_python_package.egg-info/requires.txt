@@ -1,0 +1,10 @@
+lxml>=4.9
+requests==2.*
+
+[dev]
+wheel
+
+[test]
+flake8
+pytest
+mock
