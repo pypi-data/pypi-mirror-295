@@ -1,0 +1,3 @@
+[console_scripts]
+websnap_cli = websnap.websnap_cli:main
+
