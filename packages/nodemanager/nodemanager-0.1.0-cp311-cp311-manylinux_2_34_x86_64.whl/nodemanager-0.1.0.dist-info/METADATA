@@ -1,0 +1,79 @@
+Metadata-Version: 2.3
+Name: nodemanager
+Version: 0.1.0
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+License-File: LICENSE
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# nodemanager
+
+## Getting started
+
+The aim of this project is to create a p2p network using the libp2p library in rust.
+
+#### Gossip-Based Peer Sampling
+```
+MARK JELASITY, SPYROS VOULGARIS, RACHID GUERRAOUI, ANNE-MARIE KERMARREC, MAARTEN VAN STEEN. “Gossip-based peer sampling”. en. In: ACM Transactions on Computer Systems 25.3 (Aug. 2007), p. 8. issn: 0734-2071, 1557-7333. doi: 10.1145/1275517.1275520. url: https://dl.acm.org/doi/10.1145/1275517.1275520.
+```
+
+To run this project you need to have Rust and Python installed on your machine.
+
+### Installation
+#### Rust
+To install Rust, follow this [link](https://doc.rust-lang.org/book/ch01-01-installation.html) and choose the system you want to install it on.
+#### Python
+To install Python, follow this [link](https://docs.python.org/3/using/index.html).
+
+## Start the project
+
+Once you've installed rust, you'll need to follow these steps to launch the project:
+
+1. Go to the project folder
+```
+cd project
+```
+2. Create and active a python virtual environment
+```
+python -m venv .env
+source .env/bin/activate
+```
+2. Install maturin for building and publishing Rust-based Python packages with minimal configuration
+```
+pip install -r requirements.txt
+```
+3. Build and execute the module
+
+#### Example: simulation
+```
+maturin develop
+```
+```
+python main.py --help
+```
+Expected
+```
+usage: main.py [-h] [--static_network static] [--enable_peersampling peersampling] [--node N] [--cycles M] [--multi Multithreading]
+
+Simulation of decentralized Learning.
+
+options:
+  -h, --help            show this help message and exit
+  --static_network static
+                        Launch a static network. 0 for False and 1 for True.
+  --enable_peersampling peersampling
+                        Enables or disables peersampling. 0 for False and 1 for True.
+  --node N              If you're not running a static network, it's important to specify the number of nodes in your network. This number must be greater than 5.
+  --cycles M            The number of application cycles.
+  --multi Multithreading
+                      Used to decide whether to run the simulation on a single thread or on several threads. 0 for False and 1 for True.
+```
+
+Then you can lunch a simulation:
+```
+python main.py --static_network 0 --enable_peersampling 0 --node 20 --cycles 10 --multi 0
+```
+You can observe the application logs in the log.log file. This contains logs for all nodes.
+And you can see the `config_sampling.json` file in the tree, which represents the network/sampling configuration file.
