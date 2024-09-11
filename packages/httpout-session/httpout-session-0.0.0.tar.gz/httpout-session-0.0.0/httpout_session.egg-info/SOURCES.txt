@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+httpout_session/__init__.py
+httpout_session.egg-info/PKG-INFO
+httpout_session.egg-info/SOURCES.txt
+httpout_session.egg-info/dependency_links.txt
+httpout_session.egg-info/requires.txt
+httpout_session.egg-info/top_level.txt

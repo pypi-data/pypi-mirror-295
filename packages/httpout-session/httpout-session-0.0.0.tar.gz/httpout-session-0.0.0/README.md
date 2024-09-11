@@ -1,0 +1,39 @@
+# httpout-session
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nggit_httpout-session&metric=coverage)](https://sonarcloud.io/summary/new_code?id=nggit_httpout-session)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nggit_httpout-session&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=nggit_httpout-session)
+
+A simple, file-based session middleware for [httpout](https://github.com/nggit/httpout).
+
+See also: [httpout-login](https://github.com/nggit/httpout-login).
+
+## Usage
+```python
+# __globals__.py
+from httpout_session import Session
+
+
+def __enter__(app):
+    # this is a session middleware
+    # that enables you to use request.ctx.session in routes
+    Session(app, expires=86400)
+```
+
+## Installing
+```
+python3 -m pip install --upgrade httpout_session
+```
+
+## Testing
+Just run `python3 -m tests`.
+
+Or if you also want measurements with [coverage](https://coverage.readthedocs.io/):
+
+```
+coverage run -m tests
+coverage combine
+coverage report
+coverage html # to generate html reports
+```
+
+## License
+MIT License
