@@ -1,0 +1,20 @@
+[tool.poetry]
+name        = "cbr_shared"
+version     = "v0.2.26"
+description = "CBR - Shared"
+authors     = ["Dinis Cruz <dinis.cruz@owasp.org>"]
+license     = "MIT"
+readme      = "README.md"
+homepage    = "https://github.com/the-cyber-boardroom/cbr-shared"
+repository  = "https://github.com/the-cyber-boardroom/cbr-shared"
+
+[tool.poetry.dependencies]
+python          = "^3.11"
+osbot-utils     = "*"
+osbot-aws       = "*"
+osbot-fast-api  = "*"
+
+
+[build-system]
+requires        = ["poetry-core>=1.0.0"]
+build-backend   = "poetry.core.masonry.api"
