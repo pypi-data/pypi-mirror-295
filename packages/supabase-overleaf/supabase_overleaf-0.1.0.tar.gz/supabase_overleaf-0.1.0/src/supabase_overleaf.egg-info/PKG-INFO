@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: supabase-overleaf
+Version: 0.1.0
+Summary: A tool to crawl Overleaf templates and store data in Supabase
+Home-page: https://github.com/chenxingqiang/overleaf-templates-supabase
+Author: Chen, Xingqiang
+Author-email: chen.xinqiang@iechor.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+Requires-Dist: supabase
+
+# Supabase Overleaf Template Crawler
+
+This project crawls LaTeX templates from Overleaf and stores them in a local Supabase instance.
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Ensure your local Supabase instance is running.
+3. Run the crawler:
+
+```bash
+python src/main.py
+```
+
+## Project Structure
+
+- `src/`: Contains the source code
+- `main.py`: Main entry point
+- `crawler_general.py`: Crawls general template information
+- `crawler_detail.py`: Crawls detailed template information
+- `db_handler.py`: Handles database operations
+- `config/`: Contains configuration files
+- `data/`: (Optional) For storing any local data

@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include requirements.txt
+include src/supabase_overleaf/config/*.py
+include supabase_init.sql
+include templates_progress.json
