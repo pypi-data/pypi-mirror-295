@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, FinOL Contributors
+# This file is distributed under the same license as the FinOL package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FinOL 0.1.29\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-13 01:01+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: ../../source/index.rst:8
+msgid "``FinOL``: Towards open benchmarking for data-driven OLPS"
+msgstr "``FinOL``：面向数据驱动的 OLPS 的开放基准测试"
+
+#: ../../source/index.rst:10
+msgid ""
+"``FinOL`` represents a pioneering open database for facilitating data-"
+"driven OLPS research. As an ambitious project, it collects and organizes "
+"extensive assets from global markets over half a century, it provides a "
+"long-awaited unified platform to advance data-driven OLPS research."
+msgstr ""
+"``FinOL`` 是一个开创性的开放数据库，旨在促进基于数据驱动的 OLPS 研究。作为一个雄心勃勃的项目，"
+"它收集并整理了来自全球市场半个多世纪的大量资产数据，为推进基于数据驱动的 OLPS 研究提供了期待已久的统一平台。"
+
+#: ../../source/index.rst:15
+msgid "|:star:| What's NEW!"
+msgstr "|:star:| 最新动态！"
+
+#: ../../source/index.rst:20
+msgid "Update"
+msgstr "最新动态"
+
+#: ../../source/index.rst:20
+msgid "Status"
+msgstr "状态"
+
+#: ../../source/index.rst:20
+msgid "Label"
+msgstr "标签"
+
+#: ../../source/index.rst:23
+msgid "New release! ``FinOL`` is going to release the official website"
+msgstr "全新发布！``FinOL`` 即将推出官方网站"
+
+#: ../../source/index.rst:23 ../../source/index.rst:27
+#: ../../source/index.rst:33
+msgid "Coming soon......"
+msgstr "即将推出……"
+
+#: ../../source/index.rst:23 ../../source/index.rst:39
+#: ../../source/index.rst:83 ../../source/index.rst:89
+msgid "|:rocket:| Release"
+msgstr "|:rocket:| 发布"
+
+#: ../../source/index.rst:27
+msgid ""
+"New metric! ``FinOL`` is going to support the `t-test <https://www.sciencedirect.com/science/article/pii/S0004370215000168>`__ metric"
+msgstr ""
+"全新指标！``FinOL`` 即将支持 `t-test <https://www.scienc"
+" edirect.com/science/article/pii/S0004370215000168>`__ 指标"
+
+#: ../../source/index.rst:27 ../../source/index.rst:33
+#: ../../source/index.rst:45 ../../source/index.rst:51
+#: ../../source/index.rst:57 ../../source/index.rst:63
+#: ../../source/index.rst:69 ../../source/index.rst:76
+msgid "|:hammer_and_wrench:| Enhancement"
+msgstr "|:hammer_and_wrench:| 增强"
+
+#: ../../source/index.rst:33
+msgid ""
+"New model! ``FinOL`` is going to support the `AlphaStock <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ model"
+msgstr ""
+"全新模型！``FinOL`` 即将支持 `AlphaStock <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ 模型"
+
+#: ../../source/index.rst:39
+msgid ""
+"New release! ``FinOL`` now releases the `Official Docs <https://finol.readthedocs.io/en/latest/>`__"
+msgstr ""
+"全新发布！``FinOL`` 现已发布 `官方文档 <https://finol.readthedocs.io/en/latest/>`__"
+
+#: ../../source/index.rst:39
+msgid "Released on 22 July 2024"
+msgstr "于 2024年7月22日 发布"
+
+#: ../../source/index.rst:45
+msgid ""
+"New feature! ``FinOL`` now supports the `Auto Hyper-parameters Tuning <https://dl.acm.org/doi/10.1145/3292500.3330701>`__ feature"
+msgstr ""
+"全新功能！``FinOL`` 现已支持 `自动超参数调优 <https://dl.acm.org/doi/10.1145/3292500.3330701>`__ 功能"
+
+#: ../../source/index.rst:45
+msgid "Supported since 22 July 2024"
+msgstr "自 2024年7月22日 起支持"
+
+#: ../../source/index.rst:51
+msgid ""
+"New feature! ``FinOL`` now supports the `Radar Chart <https://en.wikipedia.org/wiki/Radar_chart>`__ evaluation"
+msgstr ""
+"全新功能！``FinOL`` 现已支持 `雷达图 <https://en.wikipedia.org/wiki/Radar_chart>`__ 评估"
+
+#: ../../source/index.rst:51
+msgid "Supported since 10 June 2024"
+msgstr "自 2024年6月10日 起支持"
+
+#: ../../source/index.rst:57
+msgid ""
+"New model! ``FinOL`` now supports the `AlphaPortfolio <https://papers.ssrn.com/sol3/Papers.cfm?abstract_id=3554486>`__ model"
+msgstr ""
+"全新模型！``FinOL`` 现已支持 `AlphaPortfolio <https://papers.ssrn.com/sol3/Papers.cfm?abstract_id=3554486>`__ 模型"
+
+#: ../../source/index.rst:57
+msgid "Supported since 06 June 2024"
+msgstr "自 2024年6月6日 起支持"
+
+#: ../../source/index.rst:63
+msgid ""
+"New feature! ``FinOL`` now supports the `Economic Distillation <https://papers.ssrn.com/sol3/Papers.cfm?abstract_id=3554486>`__ feature"
+msgstr ""
+"全新功能！``FinOL`` 现已支持 `经济蒸馏 <https://pa pers.ssrn.com/sol3/Papers.cfm?abstract_id=3554486>`__ 功能"
+
+#: ../../source/index.rst:63
+msgid "Supported since 15 May 2024"
+msgstr "自 2024年5月15日 起支持"
+
+#: ../../source/index.rst:69
+msgid ""
+"New feature! ``FinOL`` now supports the `Interpretability Analysis <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ feature"
+msgstr ""
+"全新功能！``FinOL`` 现已支持 `可解释性分析 <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ 功能"
+
+#: ../../source/index.rst:69
+msgid "Supported since 16 April 2024"
+msgstr "自 2024年4月16日 起支持"
+
+#: ../../source/index.rst:76
+msgid ""
+"New feature! ``FinOL`` now supports the `Winner Assets Selection <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ feature"
+msgstr ""
+"全新功能！``FinOL`` 现已支持 `优胜资产选择 <https://dl.acm.org/doi/abs/10.1145/3292500.3330647>`__ 功能"
+
+#: ../../source/index.rst:76
+msgid "Supported since 14 April 2024"
+msgstr "自 2024年4月14日 起支持"
+
+#: ../../source/index.rst:83
+msgid "New release! ``FinOL`` now releases the `Tutorials <finol/tutorials>`__"
+msgstr "全新发布！``FinOL`` 现已发布 `教程 <finol/tutorials>`__"
+
+#: ../../source/index.rst:83
+msgid "Released on 22 March 2024"
+msgstr "于 2024年3月22日 发布"
+
+#: ../../source/index.rst:89
+msgid ""
+"New release! ``FinOL`` now releases the `v0.0.1 <https://github.com/jiahaoli57/finol/releases/tag/v0.0.1>`__ package"
+msgstr ""
+"全新发布！``FinOL`` 现已发布 `v0.0.1 <https://github.com/jiahaoli57/finol/releases/tag/v0.0.1>`__ 包"
+
+#: ../../source/index.rst:89
+msgid "Released on 21 March 2024"
+msgstr "于 2024年3月21日 发布"
+
+#: ../../source/index.rst:98
+msgid "Contents"
+msgstr "目录"
+
+#: ../../source/index.rst:113
+msgid "Indices and tables"
+msgstr "索引"
+
+#: ../../source/index.rst:115
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../source/index.rst:116
+msgid ":ref:`modindex`"
+msgstr ""
+
+#: ../../source/index.rst:117
+msgid ":ref:`search`"
+msgstr ""
+

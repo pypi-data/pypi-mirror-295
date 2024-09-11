@@ -1,0 +1,70 @@
+#[build-system]
+#requires = ["setuptools >= 61.1.0", "wheel"]
+#build-backend = "setuptools.build_meta"
+
+[project]
+name = "FinOL"
+description = "An open financial platform for facilitating data-driven OLPS research"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+  {name = "FinOL Contributors"}
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.7, <4"  # >=3.7
+dependencies = [
+  "captum",
+  "cmaes>=0.10.0",
+  "einops",
+#  "IPython",  #
+  "matplotlib",  # ==3.5.0
+  "numpy",
+  "openpyxl",
+  "optuna",
+  "pandas",
+  "requests",
+  "rich",
+  "scikit-learn",
+  "sv_ttk",
+  "tabulate",
+  "torch",
+  "torch_optimizer",
+  "tqdm",
+]
+dynamic = ["version"]
+
+[tool.poetry.dependencies]
+##python = "^3.7"
+#torch = { version = "^1.9.0", extras = ["cuda"] }
+#ta-lib = { version = "*", source = "conda-forge" }
+
+[project.optional-dependencies]
+document = [
+  "sphinx",
+  "sphinx_copybutton",
+  "sphinxemoji",
+  "shibuya",
+  "sphinx_tabs",
+]
+
+[project.urls]
+#homepage = "https://finol.org/"
+repository = "https://github.com/jiahaoli57/finol"
+documentation = "https://finol.readthedocs.io"
+bugtracker = "https://github.com/finol/finol/issues"

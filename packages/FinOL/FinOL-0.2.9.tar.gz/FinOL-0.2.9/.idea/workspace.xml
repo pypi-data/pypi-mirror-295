@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d1b82fd-c2bb-4556-8a98-5f4847418a40" name="变更" comment="build docs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Jupyter Notebook" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="dba9531d-010b-459a-a4f6-8e109ccc025c" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/finol/evaluation_layer/economic_distiller.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../../Wechat_data/WeChat Files/wxid_4h7qk1307vkg21/FileStorage/File/2024-07/radar.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/finol/evaluation_layer/result_visualizer.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/model_layer/CustomModel.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/model_layer/LSRE_CAAN.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/optimization_layer/parameters_tuner.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/APP/FinOLAPP.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/evaluation_layer/benchmark_loader.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/model_layer/AlphaPortfolio.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/main/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/evaluation_layer/model_evaluator.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/model_layer/DNN.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/data_layer/dataset_loader.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/model_layer/model_instantiator.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/finol/config.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2dxFK5AGbwbPpPaXK7cixiVVQOA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/source" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\docs\source" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol\APP" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol\update" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\docs\locales\zh_CN\LC_MESSAGES" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol\APP" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\docs\locales\zh_CN\LC_MESSAGES" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\docs\locales\zh_CN\LC_MESSAGES\api" />
+      <recent name="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\docs\locales\zh_CN\LC_MESSAGES\supported_resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.FinOLAPP">
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FinOLAPP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol/APP" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/APP/FinOLAPP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FinOLAPP2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/FinOLAPP2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FinOLAPP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\anaconda3\envs\FinOL\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\360安全云盘同步版\01-广工\07-研一\00-论文\00-本人论文\13-FinOL\FinOL\finol\APP\FinOLAPP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FinOLAPP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol/APP" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/APP/FinOLAPP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FinOLAPP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/FinOLAPP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="sftp://root@connect.bjb1.seetacloud.com:14670/root/miniconda3/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol/main" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/main/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_trainer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol/optimization_layer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/optimization_layer/model_trainer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctests (DNN 内)" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="FinOL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finol/model_layer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finol/model_layer/DNN.py" />
+      <option name="CLASS_NAME" value="DNN" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.FinOLAPP" />
+      <item itemvalue="Python.FinOLAPP2" />
+      <item itemvalue="Python.model_trainer" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python 测试.Doctests (DNN 内)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.FinOLAPP" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python 测试.Doctests (DNN 内)" />
+        <item itemvalue="Python.FinOLAPP" />
+        <item itemvalue="Python.FinOLAPP" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="0d1b82fd-c2bb-4556-8a98-5f4847418a40" name="变更" comment="" />
+      <created>1710941755793</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710941755793</updated>
+      <workItem from="1710941757373" duration="302000" />
+      <workItem from="1711000873881" duration="6280000" />
+      <workItem from="1711010677920" duration="11020000" />
+      <workItem from="1711077071100" duration="1599000" />
+      <workItem from="1711078703242" duration="14181000" />
+      <workItem from="1711362767110" duration="6747000" />
+      <workItem from="1711425551478" duration="4759000" />
+      <workItem from="1711619106552" duration="1666000" />
+      <workItem from="1711648189037" duration="13362000" />
+      <workItem from="1711713911892" duration="2154000" />
+      <workItem from="1711771248953" duration="936000" />
+      <workItem from="1711778081731" duration="2087000" />
+      <workItem from="1711801665533" duration="16000" />
+      <workItem from="1711872513637" duration="9000" />
+      <workItem from="1711888258675" duration="753000" />
+      <workItem from="1711962732874" duration="2129000" />
+      <workItem from="1712026921096" duration="6000" />
+      <workItem from="1712063917604" duration="832000" />
+      <workItem from="1712849618830" duration="4749000" />
+      <workItem from="1712854515170" duration="760000" />
+      <workItem from="1712900804754" duration="5000" />
+      <workItem from="1712914590581" duration="711000" />
+      <workItem from="1713154948224" duration="10385000" />
+      <workItem from="1713167141127" duration="20783000" />
+      <workItem from="1713245912044" duration="2353000" />
+      <workItem from="1713248791906" duration="310000" />
+      <workItem from="1713251685854" duration="23166000" />
+      <workItem from="1713280511166" duration="1999000" />
+      <workItem from="1713326472387" duration="23832000" />
+      <workItem from="1713368887333" duration="4622000" />
+      <workItem from="1713414726891" duration="1217000" />
+      <workItem from="1713416062247" duration="1062000" />
+      <workItem from="1713419618192" duration="1237000" />
+      <workItem from="1713420889497" duration="121000" />
+      <workItem from="1713421033476" duration="5110000" />
+      <workItem from="1713426337190" duration="301000" />
+      <workItem from="1713427313709" duration="962000" />
+      <workItem from="1713428323856" duration="4832000" />
+      <workItem from="1713444373914" duration="1061000" />
+      <workItem from="1713445519067" duration="50000" />
+      <workItem from="1713445623165" duration="45000" />
+      <workItem from="1713446825416" duration="21000" />
+      <workItem from="1713446871338" duration="8000" />
+      <workItem from="1713447714917" duration="8000" />
+      <workItem from="1713447899686" duration="7006000" />
+      <workItem from="1713455680199" duration="5467000" />
+      <workItem from="1713495457880" duration="35465000" />
+      <workItem from="1713592527290" duration="29960000" />
+      <workItem from="1713628071588" duration="47896000" />
+      <workItem from="1713714599572" duration="1219000" />
+      <workItem from="1713760395574" duration="13919000" />
+      <workItem from="1713776470718" duration="1978000" />
+      <workItem from="1713779977923" duration="6484000" />
+      <workItem from="1713786875867" duration="21471000" />
+      <workItem from="1713849905990" duration="19161000" />
+      <workItem from="1713878173471" duration="1857000" />
+      <workItem from="1713927254344" duration="3579000" />
+      <workItem from="1714063662224" duration="601000" />
+      <workItem from="1714072547905" duration="642000" />
+      <workItem from="1714074332555" duration="603000" />
+      <workItem from="1714121318147" duration="2000" />
+      <workItem from="1714378199829" duration="3290000" />
+      <workItem from="1714743329871" duration="4044000" />
+      <workItem from="1714973532046" duration="11721000" />
+      <workItem from="1715006933906" duration="137000" />
+      <workItem from="1715068294101" duration="638000" />
+      <workItem from="1715071454522" duration="2899000" />
+      <workItem from="1715141056330" duration="2374000" />
+      <workItem from="1715751058997" duration="8669000" />
+      <workItem from="1716262791803" duration="605000" />
+      <workItem from="1717664285580" duration="15009000" />
+      <workItem from="1717924820059" duration="6913000" />
+      <workItem from="1717936971101" duration="9862000" />
+      <workItem from="1718094460117" duration="2128000" />
+      <workItem from="1718176518637" duration="3368000" />
+      <workItem from="1718194042398" duration="15629000" />
+      <workItem from="1718211351555" duration="4256000" />
+      <workItem from="1718252487729" duration="905000" />
+      <workItem from="1718271231944" duration="5636000" />
+      <workItem from="1718351730010" duration="1562000" />
+      <workItem from="1718429031583" duration="13294000" />
+      <workItem from="1718512797922" duration="9511000" />
+      <workItem from="1719413980799" duration="1224000" />
+      <workItem from="1719465703958" duration="594000" />
+      <workItem from="1719492696573" duration="548000" />
+      <workItem from="1719496988555" duration="595000" />
+      <workItem from="1719504249687" duration="477000" />
+      <workItem from="1719507672197" duration="595000" />
+      <workItem from="1719559693153" duration="594000" />
+      <workItem from="1719674297932" duration="3640000" />
+      <workItem from="1719678090396" duration="60344000" />
+      <workItem from="1719831558944" duration="176000" />
+      <workItem from="1719831965871" duration="3639000" />
+      <workItem from="1719910721007" duration="9229000" />
+      <workItem from="1720152517245" duration="70424000" />
+      <workItem from="1720432402574" duration="37795000" />
+      <workItem from="1720627434758" duration="8462000" />
+      <workItem from="1721058029352" duration="87508000" />
+      <workItem from="1721387352676" duration="67813000" />
+      <workItem from="1721578097822" duration="73547000" />
+      <workItem from="1721823180766" duration="104259000" />
+      <workItem from="1722153913354" duration="126812000" />
+      <workItem from="1722496545282" duration="25021000" />
+      <workItem from="1722577447295" duration="82629000" />
+      <workItem from="1722916313344" duration="13629000" />
+      <workItem from="1722953982678" duration="98000" />
+      <workItem from="1722954097185" duration="299000" />
+      <workItem from="1722954520922" duration="4966000" />
+      <workItem from="1722960219022" duration="813000" />
+      <workItem from="1722961064742" duration="1668000" />
+      <workItem from="1723002675733" duration="14710000" />
+      <workItem from="1723086909994" duration="9712000" />
+      <workItem from="1723101065626" duration="496000" />
+      <workItem from="1723101581361" duration="1428000" />
+      <workItem from="1723103034166" duration="511000" />
+      <workItem from="1723103583275" duration="9779000" />
+      <workItem from="1723272360424" duration="21382000" />
+      <workItem from="1723388088613" duration="1301000" />
+      <workItem from="1723389640167" duration="908000" />
+      <workItem from="1723390676789" duration="401000" />
+      <workItem from="1723391112328" duration="121000" />
+      <workItem from="1723391263194" duration="1147000" />
+      <workItem from="1723392446744" duration="1642000" />
+      <workItem from="1723394262220" duration="724000" />
+      <workItem from="1723395016694" duration="289000" />
+      <workItem from="1723395360841" duration="360000" />
+      <workItem from="1723395878676" duration="343000" />
+      <workItem from="1723396245123" duration="134000" />
+      <workItem from="1723396396221" duration="1017000" />
+      <workItem from="1723397442050" duration="9970000" />
+      <workItem from="1723452159563" duration="14058000" />
+      <workItem from="1723482955689" duration="1218000" />
+      <workItem from="1723484215328" duration="288000" />
+      <workItem from="1723484613997" duration="2045000" />
+      <workItem from="1723520304988" duration="490000" />
+      <workItem from="1723520851634" duration="28985000" />
+      <workItem from="1723564970228" duration="1199000" />
+      <workItem from="1723623657798" duration="45452000" />
+      <workItem from="1723882384320" duration="12442000" />
+      <workItem from="1724037830508" duration="13294000" />
+      <workItem from="1724062601146" duration="61146000" />
+      <workItem from="1724383174095" duration="2216000" />
+      <workItem from="1724572494426" duration="5703000" />
+      <workItem from="1724581332332" duration="1655000" />
+      <workItem from="1724583510146" duration="12870000" />
+      <workItem from="1724763603224" duration="3382000" />
+      <workItem from="1724832229998" duration="1267000" />
+      <workItem from="1724854336396" duration="17716000" />
+      <workItem from="1725175251142" duration="1489000" />
+      <workItem from="1725258857544" duration="2936000" />
+      <workItem from="1725340181417" duration="59022000" />
+      <workItem from="1725501146634" duration="4248000" />
+      <workItem from="1725509112854" duration="9564000" />
+      <workItem from="1725607846005" duration="59737000" />
+    </task>
+    <task id="LOCAL-00333" summary="optimize code">
+      <created>1725175966542</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1725175966543</updated>
+    </task>
+    <task id="LOCAL-00334" summary="build docs">
+      <created>1725273372795</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1725273372796</updated>
+    </task>
+    <task id="LOCAL-00335" summary="build docs">
+      <created>1725367403216</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1725367403216</updated>
+    </task>
+    <task id="LOCAL-00336" summary="build docs">
+      <created>1725367439900</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1725367439900</updated>
+    </task>
+    <task id="LOCAL-00337" summary="build docs">
+      <created>1725367717230</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1725367717230</updated>
+    </task>
+    <task id="LOCAL-00338" summary="optimize code">
+      <created>1725371348542</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1725371348542</updated>
+    </task>
+    <task id="LOCAL-00339" summary="optimize code">
+      <created>1725371633151</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1725371633151</updated>
+    </task>
+    <task id="LOCAL-00340" summary="optimize code">
+      <created>1725371656342</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1725371656343</updated>
+    </task>
+    <task id="LOCAL-00341" summary="optimize code">
+      <created>1725372701609</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
+      <option name="project" value="LOCAL" />
+      <updated>1725372701610</updated>
+    </task>
+    <task id="LOCAL-00342" summary="optimize code">
+      <created>1725373002173</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1725373002173</updated>
+    </task>
+    <task id="LOCAL-00343" summary="optimize code">
+      <created>1725373033077</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1725373033077</updated>
+    </task>
+    <task id="LOCAL-00344" summary="optimize code">
+      <created>1725374269318</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1725374269318</updated>
+    </task>
+    <task id="LOCAL-00345" summary="optimize code">
+      <created>1725375936416</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1725375936416</updated>
+    </task>
+    <task id="LOCAL-00346" summary="optimize code">
+      <created>1725379652154</created>
+      <option name="number" value="00346" />
+      <option name="presentableId" value="LOCAL-00346" />
+      <option name="project" value="LOCAL" />
+      <updated>1725379652154</updated>
+    </task>
+    <task id="LOCAL-00347" summary="optimize code">
+      <created>1725380098667</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1725380098667</updated>
+    </task>
+    <task id="LOCAL-00348" summary="optimize code">
+      <created>1725380358887</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1725380358887</updated>
+    </task>
+    <task id="LOCAL-00349" summary="optimize code">
+      <created>1725383256409</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1725383256410</updated>
+    </task>
+    <task id="LOCAL-00350" summary="optimize code">
+      <created>1725383327961</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1725383327961</updated>
+    </task>
+    <task id="LOCAL-00351" summary="optimize code">
+      <created>1725386090090</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1725386090090</updated>
+    </task>
+    <task id="LOCAL-00352" summary="optimize code">
+      <created>1725386356546</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1725386356546</updated>
+    </task>
+    <task id="LOCAL-00353" summary="optimize code">
+      <created>1725387199647</created>
+      <option name="number" value="00353" />
+      <option name="presentableId" value="LOCAL-00353" />
+      <option name="project" value="LOCAL" />
+      <updated>1725387199647</updated>
+    </task>
+    <task id="LOCAL-00354" summary="optimize code">
+      <created>1725387963231</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1725387963231</updated>
+    </task>
+    <task id="LOCAL-00355" summary="optimize code">
+      <created>1725429778183</created>
+      <option name="number" value="00355" />
+      <option name="presentableId" value="LOCAL-00355" />
+      <option name="project" value="LOCAL" />
+      <updated>1725429778183</updated>
+    </task>
+    <task id="LOCAL-00356" summary="optimize code">
+      <created>1725430620863</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1725430620863</updated>
+    </task>
+    <task id="LOCAL-00357" summary="optimize code">
+      <created>1725431763355</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1725431763355</updated>
+    </task>
+    <task id="LOCAL-00358" summary="optimize code">
+      <created>1725432238974</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1725432238974</updated>
+    </task>
+    <task id="LOCAL-00359" summary="optimize code">
+      <created>1725432555995</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1725432555995</updated>
+    </task>
+    <task id="LOCAL-00360" summary="optimize code">
+      <created>1725433396576</created>
+      <option name="number" value="00360" />
+      <option name="presentableId" value="LOCAL-00360" />
+      <option name="project" value="LOCAL" />
+      <updated>1725433396576</updated>
+    </task>
+    <task id="LOCAL-00361" summary="optimize code">
+      <created>1725437999219</created>
+      <option name="number" value="00361" />
+      <option name="presentableId" value="LOCAL-00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1725437999219</updated>
+    </task>
+    <task id="LOCAL-00362" summary="optimize code">
+      <created>1725438015058</created>
+      <option name="number" value="00362" />
+      <option name="presentableId" value="LOCAL-00362" />
+      <option name="project" value="LOCAL" />
+      <updated>1725438015058</updated>
+    </task>
+    <task id="LOCAL-00363" summary="optimize code">
+      <created>1725440267191</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1725440267191</updated>
+    </task>
+    <task id="LOCAL-00364" summary="optimize code">
+      <created>1725440755291</created>
+      <option name="number" value="00364" />
+      <option name="presentableId" value="LOCAL-00364" />
+      <option name="project" value="LOCAL" />
+      <updated>1725440755291</updated>
+    </task>
+    <task id="LOCAL-00365" summary="optimize code">
+      <created>1725442090244</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1725442090244</updated>
+    </task>
+    <task id="LOCAL-00366" summary="build docs">
+      <created>1725455759039</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1725455759039</updated>
+    </task>
+    <task id="LOCAL-00367" summary="build docs">
+      <created>1725456862659</created>
+      <option name="number" value="00367" />
+      <option name="presentableId" value="LOCAL-00367" />
+      <option name="project" value="LOCAL" />
+      <updated>1725456862659</updated>
+    </task>
+    <task id="LOCAL-00368" summary="build docs">
+      <created>1725458365885</created>
+      <option name="number" value="00368" />
+      <option name="presentableId" value="LOCAL-00368" />
+      <option name="project" value="LOCAL" />
+      <updated>1725458365885</updated>
+    </task>
+    <task id="LOCAL-00369" summary="build docs">
+      <created>1725458928887</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1725458928887</updated>
+    </task>
+    <task id="LOCAL-00370" summary="build docs">
+      <created>1725459422394</created>
+      <option name="number" value="00370" />
+      <option name="presentableId" value="LOCAL-00370" />
+      <option name="project" value="LOCAL" />
+      <updated>1725459422394</updated>
+    </task>
+    <task id="LOCAL-00371" summary="build docs">
+      <created>1725501962769</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1725501962770</updated>
+    </task>
+    <task id="LOCAL-00372" summary="build docs">
+      <created>1725525308631</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1725525308632</updated>
+    </task>
+    <task id="LOCAL-00373" summary="build docs">
+      <created>1725607925443</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1725607925444</updated>
+    </task>
+    <task id="LOCAL-00374" summary="build docs">
+      <created>1725685018886</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1725685018886</updated>
+    </task>
+    <task id="LOCAL-00375" summary="build docs">
+      <created>1725685225071</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1725685225071</updated>
+    </task>
+    <task id="LOCAL-00376" summary="build docs">
+      <created>1725685783311</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1725685783311</updated>
+    </task>
+    <task id="LOCAL-00377" summary="build docs">
+      <created>1725781263300</created>
+      <option name="number" value="00377" />
+      <option name="presentableId" value="LOCAL-00377" />
+      <option name="project" value="LOCAL" />
+      <updated>1725781263301</updated>
+    </task>
+    <task id="LOCAL-00378" summary="build docs">
+      <created>1725781276728</created>
+      <option name="number" value="00378" />
+      <option name="presentableId" value="LOCAL-00378" />
+      <option name="project" value="LOCAL" />
+      <updated>1725781276728</updated>
+    </task>
+    <task id="LOCAL-00379" summary="build docs">
+      <created>1725793402748</created>
+      <option name="number" value="00379" />
+      <option name="presentableId" value="LOCAL-00379" />
+      <option name="project" value="LOCAL" />
+      <updated>1725793402748</updated>
+    </task>
+    <task id="LOCAL-00380" summary="build docs">
+      <created>1725793592292</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1725793592292</updated>
+    </task>
+    <task id="LOCAL-00381" summary="build docs">
+      <created>1725800997735</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1725800997735</updated>
+    </task>
+    <option name="localTasksCounter" value="382" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/finol/data" />
+    </ignored-roots>
+    <MESSAGE value="add &quot;interpretability analysis&quot; feature; optimize code" />
+    <MESSAGE value="add &quot;Economic Distillation&quot; feature; optimize code" />
+    <MESSAGE value="add &quot;AlphaPortfolio&quot; model" />
+    <MESSAGE value="new release" />
+    <MESSAGE value="new feature" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="add &quot;Radar Chart&quot; feature" />
+    <MESSAGE value="build docs; optimize code" />
+    <MESSAGE value="optimize code" />
+    <MESSAGE value="build docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="build docs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FinOL$dataset_loader.coverage" NAME="dataset_loader 覆盖结果" MODIFIED="1722416882376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$plot_sen.coverage" NAME="plot_sen 覆盖结果" MODIFIED="1713862572785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../18-中文-经济蒸馏/python" />
+    <SUITE FILE_PATH="coverage/FinOL$config1.coverage" NAME="config1 覆盖结果" MODIFIED="1720255366931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$utils.coverage" NAME="utils 覆盖结果" MODIFIED="1719744861001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$AlphaPortfolio.coverage" NAME="AlphaPortfolio 覆盖结果" MODIFIED="1721295620801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$parameters_tuner.coverage" NAME="parameters_tuner 覆盖结果" MODIFIED="1722961070435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__UserModel____1_.coverage" NAME="Doctests (UserModel 内) (1) 覆盖结果" MODIFIED="1722868389371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$data_collector.coverage" NAME="data_collector 覆盖结果" MODIFIED="1713776626316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../FinOL-2024.03.16备份/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$RNN.coverage" NAME="RNN 覆盖结果" MODIFIED="1720192425859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__UserModel__.coverage" NAME="Doctests (UserModel 内) 覆盖结果" MODIFIED="1722935066674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$tk.coverage" NAME="tk 覆盖结果" MODIFIED="1721568240736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$scaler_selector.coverage" NAME="scaler_selector 覆盖结果" MODIFIED="1720274709206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$ModelEvaluator.coverage" NAME="ModelEvaluator 覆盖结果" MODIFIED="1721927074888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/evaluation_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$config.coverage" NAME="config 覆盖结果" MODIFIED="1720273348637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$DNN.coverage" NAME="DNN 覆盖结果" MODIFIED="1722849086965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$model_selector.coverage" NAME="model_selector 覆盖结果" MODIFIED="1719734210427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$data_loader.coverage" NAME="data_loader 覆盖结果" MODIFIED="1720339145342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$UserModel.coverage" NAME="UserModel 覆盖结果" MODIFIED="1722868626027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__AlphaPortfolio__.coverage" NAME="Doctests (AlphaPortfolio 内) 覆盖结果" MODIFIED="1722933184537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$FinOLAPP__1_.coverage" NAME="FinOLAPP (1) 覆盖结果" MODIFIED="1724687085619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/APP" />
+    <SUITE FILE_PATH="coverage/FinOL$DatasetLoader__1_.coverage" NAME="DatasetLoader (1) 覆盖结果" MODIFIED="1720451659042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$economic_distiller.coverage" NAME="economic_distiller 覆盖结果" MODIFIED="1713358978839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/evaluation_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$test__1_.coverage" NAME="test 覆盖结果" MODIFIED="1724214471267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$model_evaluator.coverage" NAME="model_evaluator 覆盖结果" MODIFIED="1722321553286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/evaluation_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$optuna_optimizer.coverage" NAME="optuna_optimizer 覆盖结果" MODIFIED="1722364629533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__Transformer__.coverage" NAME="Doctests (Transformer 内) 覆盖结果" MODIFIED="1722932785797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$main.coverage" NAME="main 覆盖结果" MODIFIED="1725713223232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/main" />
+    <SUITE FILE_PATH="coverage/FinOL$model_auto_tuning.coverage" NAME="model_auto_tuning 覆盖结果" MODIFIED="1720341071413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$LSRE_CAAN.coverage" NAME="LSRE_CAAN 覆盖结果" MODIFIED="1722843059356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$test.coverage" NAME="test 覆盖结果" MODIFIED="1724054494347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/update" />
+    <SUITE FILE_PATH="coverage/FinOL$install_ta_lib.coverage" NAME="install_ta_lib 覆盖结果" MODIFIED="1721652534256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$DatasetLoader.coverage" NAME="DatasetLoader 覆盖结果" MODIFIED="1721981277488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/data_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$FinOLAPP2.coverage" NAME="FinOLAPP2 覆盖结果" MODIFIED="1723989687559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$ModelTrainer.coverage" NAME="ModelTrainer 覆盖结果" MODIFIED="1721825649080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$model_trainer.coverage" NAME="model_trainer 覆盖结果" MODIFIED="1724072215029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__ParametersTuner__.coverage" NAME="Doctests (ParametersTuner 内) 覆盖结果" MODIFIED="1722960785624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$Doctests__DNN__.coverage" NAME="Doctests (DNN 内) 覆盖结果" MODIFIED="1725431667219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1722325473393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol" />
+    <SUITE FILE_PATH="coverage/FinOL$OptunaOptimizer.coverage" NAME="OptunaOptimizer 覆盖结果" MODIFIED="1721380496564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/optimization_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$LSTP.coverage" NAME="LSTP 覆盖结果" MODIFIED="1718526668153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/model_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$BenchmarkLoader.coverage" NAME="BenchmarkLoader 覆盖结果" MODIFIED="1721127425906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/evaluation_layer" />
+    <SUITE FILE_PATH="coverage/FinOL$FinOLAPP.coverage" NAME="FinOLAPP 覆盖结果" MODIFIED="1725773428583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/APP" />
+    <SUITE FILE_PATH="coverage/FinOL$test_script.coverage" NAME="test_script 覆盖结果" MODIFIED="1723047949611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/finol/main" />
+  </component>
+</project>
