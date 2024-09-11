@@ -1,0 +1,5 @@
+include README_EN.md
+
+prune src/myscrcpy/test_zone
+graft src/myscrcpy/static
+graft src/myscrcpy/libs

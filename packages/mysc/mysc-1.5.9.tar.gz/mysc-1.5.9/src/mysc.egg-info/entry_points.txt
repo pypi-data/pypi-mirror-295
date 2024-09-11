@@ -1,0 +1,7 @@
+[console_scripts]
+mysc-cli = myscrcpy.run:run
+mysc-t-vc = myscrcpy.tools.virtualcam:cli
+mysc-web = myscrcpy.gui.ng.main:run_app
+
+[gui_scripts]
+mysc-gui = myscrcpy.run:run
