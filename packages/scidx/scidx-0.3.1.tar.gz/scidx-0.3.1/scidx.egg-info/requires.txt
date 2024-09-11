@@ -1,0 +1,5 @@
+aiokafka
+pytest
+pytest-asyncio
+pytest-order
+requests
