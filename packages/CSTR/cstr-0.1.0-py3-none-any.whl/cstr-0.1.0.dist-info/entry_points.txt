@@ -1,0 +1,3 @@
+[console_scripts]
+cstr=cstr.cli:cli
+
