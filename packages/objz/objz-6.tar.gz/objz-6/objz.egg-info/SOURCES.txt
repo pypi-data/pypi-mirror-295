@@ -1,0 +1,14 @@
+README.rst
+pyproject.toml
+setup.py
+objz/__init__.py
+objz/client.py
+objz/command.py
+objz/console.py
+objz/main.py
+objz/parser.py
+objz.egg-info/PKG-INFO
+objz.egg-info/SOURCES.txt
+objz.egg-info/dependency_links.txt
+objz.egg-info/top_level.txt
+objz.egg-info/zip-safe
