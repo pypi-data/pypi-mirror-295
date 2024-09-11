@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: cglbtrial3
+Version: 0.6.0
+Summary: cglbtrial3 is cglbtrial3
+Home-page: https://cesgenslab.cloud/
+Author: CesGensLaB
+Author-email: contact@cesgenlab.fr
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: jinja2 (>=3.1.4,<4.0.0)
+Description-Content-Type: text/markdown
+
+# cglbtrial3
+
