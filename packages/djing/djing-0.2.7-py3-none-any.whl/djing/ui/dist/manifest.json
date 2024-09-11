@@ -1,0 +1,52 @@
+{
+  "Pages/Account/Login.tsx": {
+    "file": "Login-caac3b44.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Account/Login.tsx"
+  },
+  "Pages/Errors/NotInitialized.tsx": {
+    "file": "NotInitialized-b0d69dbf.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Errors/NotInitialized.tsx"
+  },
+  "Pages/Index.tsx": {
+    "file": "Index-573e651f.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Index.tsx"
+  },
+  "Pages/NotFoundPage.tsx": {
+    "file": "NotFoundPage-3191cc0d.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/NotFoundPage.tsx"
+  },
+  "main.css": {
+    "file": "main-38fd9fd6.css",
+    "src": "main.css"
+  },
+  "main.tsx": {
+    "css": [
+      "main-38fd9fd6.css"
+    ],
+    "dynamicImports": [
+      "Pages/Account/Login.tsx",
+      "Pages/Errors/NotInitialized.tsx",
+      "Pages/Index.tsx",
+      "Pages/NotFoundPage.tsx"
+    ],
+    "file": "main-c9f2659c.js",
+    "isEntry": true,
+    "src": "main.tsx"
+  }
+}
