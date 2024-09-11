@@ -1,0 +1,2 @@
+[console_scripts]
+danton = danton.__main__:danton
