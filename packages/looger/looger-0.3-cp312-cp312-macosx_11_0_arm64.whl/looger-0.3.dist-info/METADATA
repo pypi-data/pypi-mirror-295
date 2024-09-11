@@ -1,0 +1,11 @@
+Metadata-Version: 2.3
+Name: looger
+Version: 0.3
+Requires-Dist: maturin
+License-File: LICENSE
+Summary: logging lib for python with a rust backend for faster results. Or should I say looger?
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: GitHub, https://github.com/d33p0st/looger
+
+# looger
+README will be uploaded in next update
