@@ -1,0 +1,30 @@
+[project]
+name = "aau-label"
+version = "0.3.5"
+description = "A image labeling handler"
+authors = [
+    { name = "Kasper Fromm Pedersen", email = "kasperfromm@protonmail.com" },
+]
+dependencies = [
+    "pillow==10.*",
+    "pandas==2.2.*",
+]
+requires-python = ">=3.10,<3.13"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest==8.*",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
