@@ -1,0 +1,35 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "yuanfen"
+version = "2024.9.11.2"
+description = "Yuanfen Python Library"
+readme = "README.md"
+license = "MIT"
+authors = ["Bean <bean@yuanfen.net>"]
+repository = "https://github.com/YuanfenNet/yf-lib-py"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    'Programming Language :: Python',
+    "Programming Language :: Python :: 3",
+]
+packages = [{ include = "yuanfen", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+chardet = "^5.2.0"
+pydantic = "^2.9.1"
+pytz = "^2024.2"
+pyyaml = "^6.0.2"
+redis = "^5.0.8"
+requests = "^2.32.3"
+watchdog = "^5.0.2"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 180
