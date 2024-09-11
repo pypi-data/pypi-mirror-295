@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+anchorestig_static.egg-info/PKG-INFO
+anchorestig_static.egg-info/SOURCES.txt
+anchorestig_static.egg-info/dependency_links.txt
+anchorestig_static.egg-info/entry_points.txt
+anchorestig_static.egg-info/requires.txt
+anchorestig_static.egg-info/top_level.txt
+anchorestigstatic/__init__.py
+anchorestigstatic/main.py
+anchorestigstatic/static.py
