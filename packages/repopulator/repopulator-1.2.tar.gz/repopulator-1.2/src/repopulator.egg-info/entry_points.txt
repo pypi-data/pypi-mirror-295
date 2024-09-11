@@ -1,0 +1,2 @@
+[console_scripts]
+repopulator = repopulator.__main__:main
