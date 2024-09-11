@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+sharehousepy/__init__.py
+sharehousepy/blocks.py
+sharehousepy/query.py
+sharehousepy/snowflake.py
+sharehousepy.egg-info/PKG-INFO
+sharehousepy.egg-info/SOURCES.txt
+sharehousepy.egg-info/dependency_links.txt
+sharehousepy.egg-info/requires.txt
+sharehousepy.egg-info/top_level.txt
+sharehousepy/data/country_geos.csv
