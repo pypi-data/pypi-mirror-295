@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inked-surface"
+version = "0.1.0"
+authors = [
+  { name="Julian M. Kleber", email="julian.m.kleber@gmail.com" },
+]
+description = "Package to create random structures"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "cryptography"
+]
+[project.urls]
+"Homepage" = "https://www.codeberg.org/cap_jmk/inked-surface.git"
+"Bug Tracker" = "https://www.codeberg.org/cap_jmk/inked-surface.git/issues"
+

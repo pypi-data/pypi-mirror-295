@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: inked-surface
+Version: 0.1.0
+Summary: Package to create random structures
+Author-email: "Julian M. Kleber" <julian.m.kleber@gmail.com>
+Project-URL: Homepage, https://www.codeberg.org/cap_jmk/inked-surface.git
+Project-URL: Bug Tracker, https://www.codeberg.org/cap_jmk/inked-surface.git/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: cryptography
+
+# inked-surface
+
+Project to generate surfaces with ASE. 

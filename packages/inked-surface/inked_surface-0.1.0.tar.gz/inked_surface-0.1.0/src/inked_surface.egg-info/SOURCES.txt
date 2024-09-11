@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/inked-surface/__init__.py
+src/inked-surface/main.py
+src/inked_surface.egg-info/PKG-INFO
+src/inked_surface.egg-info/SOURCES.txt
+src/inked_surface.egg-info/dependency_links.txt
+src/inked_surface.egg-info/requires.txt
+src/inked_surface.egg-info/top_level.txt
