@@ -1,0 +1,6 @@
+numpy
+matplotlib
+xarray>=2024.6.0
+netcdf4
+cartopy
+siphonf
