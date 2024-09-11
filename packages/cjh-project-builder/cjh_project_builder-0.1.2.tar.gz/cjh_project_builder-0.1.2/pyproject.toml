@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cjh-project-builder"
+version = "0.1.2"
+description = "A CLI tool for generating FastAPI project structure"
+authors = ["jhcho <cho418651@ssrinc.co.kr>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cjh-project-builder = "cjh_project_builder.cli:cli"
