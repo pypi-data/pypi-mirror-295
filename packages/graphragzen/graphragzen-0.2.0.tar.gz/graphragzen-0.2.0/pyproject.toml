@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "graphragzen"
+version = "0.2.0"
+description = ""
+authors = ["benste <benstmrs@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/benste/GraphRAGZen/"
+documentation = "https://benste.github.io/GraphRAGZen/"
+
+
+[tool.poetry.dependencies]
+python = "^3.10, <=3.12"
+llama-cpp-python = "^0.2.87"
+leidenalg = "0.10.2"
+transformers = "^4.44.0"
+networkx = "^3.3"
+pandas = "^2.2.2"
+sentence-transformers = "^3.0.1"
+einops = "^0.8.0"
+pydantic = ">=2.7.0"
+qdrant-client = {extras = ["fastembed"], version = "^1.11.0"}
+pyarrow = "^17.0.0"
+llama-prompter = "0.2.2"
+openai = "^1.43.0"
+tiktoken = "^0.7.0"
+jsonref = "^1.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.11.1"
+black = "^24.8.0"
+isort = "^5.13.2"
+flake8 = "^7.1.1"
+sphinx = "<8"
+sphinx-rtd-theme = "^2.0.0"
+sphinx-copybutton = "^0.5.2"
+sphinx-rtd-size = "^0.2.0"
+sphinx-collapse = "^0.1.3"
+types-pyyaml = "^6.0.12.20240808"
+types-requests = "^2.32.0.20240712"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
