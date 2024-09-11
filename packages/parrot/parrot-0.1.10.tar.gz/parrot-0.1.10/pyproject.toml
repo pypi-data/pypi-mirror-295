@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "parrot"
+version = "0.1.10"
+description = 'parrot is able to to process and average continuously recorded THz data.'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-3.0-or-later"
+keywords = ["Terahertz", "THz", "dataprocessing", "averaging", "DR", "dynamic range", "SNR", "signal-to-noise ratio"]
+authors = [
+    { name = "Tim Vogel", email = "32876663+TimVog@users.noreply.github.com" },
+]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "Operating System :: OS Independent"
+]
+dependencies = ["colorama>=0.4.6",
+    "h5py",
+    "matplotlib",
+    "numpy",
+    "scipy", ]
+
+[project.urls]
+Source = "https://github.com/puls-lab/parrot"
+Documentation = "https://puls-lab.github.io/parrot/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["parrot"]
