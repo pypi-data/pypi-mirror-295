@@ -1,0 +1,16 @@
+cvd_color_palette_generator/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+cvd_color_palette_generator/aux_functions.py,sha256=fEIwERf7fQJoArqE4SqoJrGrmlBKlsuw_XimRtK0UZ4,14250
+cvd_color_palette_generator/binary.py,sha256=M5To-sE_l1NCmyU-Mhry_EheZjna3vcVeZWbHJWb9RA,7218
+cvd_color_palette_generator/categorical.py,sha256=YRfnYDKtJb8sV3-HWJN2xIwmiKdk8i4AiBNWB8Atkz8,9520
+cvd_color_palette_generator/diverging.py,sha256=BoqrjXflQUZXpNcTYPKN5zB72g2uFVfqUPX-ZOgGdiU,11409
+cvd_color_palette_generator/module1.py,sha256=_ZySTX7tQJ6R8TnyDRblttcwIS-ualj03HiwB_asXw0,3982
+cvd_color_palette_generator/module2.py,sha256=P4uXPWE1XPJ7e72shTZNCemtVVMcmj4-yh-qChH0qF4,1929
+cvd_color_palette_generator/sequential.py,sha256=yaTWqB0ouAIKFDABxtQRk3IR0gjY2odDvbqIZUE94P0,6952
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_aux_functions.py,sha256=IU3iWIUGDYMHcFMiQzJjyeh3rvMpmBGkSWPTeQ7HQCE,3734
+tests/test_module1.py,sha256=N05nzGMT5tvkLWxr9IRPYWTeQ2SMHULYAN6ylj-PVJw,763
+cvd_color_palette_generator-0.1.dist-info/LICENSE,sha256=ltX2_p9SNPFJNUXwxJ-9hxo9egR9zAc0Hn8w4ncKabQ,1087
+cvd_color_palette_generator-0.1.dist-info/METADATA,sha256=ydpWwCX5yNrh9_CTL6BfRqGWvStDo9zT1yKW0TxoDQY,752
+cvd_color_palette_generator-0.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+cvd_color_palette_generator-0.1.dist-info/top_level.txt,sha256=0ZjRGPD8roONwIv0lWppEPR5BI5MM6w3iSsmYQw7QnI,34
+cvd_color_palette_generator-0.1.dist-info/RECORD,,
