@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "database-converter"
+version = "0.0.7"
+dependencies = [
+    "blackboxprotobuf~=1.0.1",
+    "func_timeout~=4.3.5"
+]
+requires-python = ">=3.8"
+authors = [
+    {name = "consithe1"}
+]
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+keywords = ["database", "extraction", "xml", "json", "sqlite3"]
+
+
+[project.urls]
+Repository = "https://github.com/consithe1/database_utils"
