@@ -1,0 +1,16 @@
+name: pywatemsedem
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python
+  - geopandas
+  - pandas
+  - numpy
+  - rasterio
+  - xlrd
+  - matplotlib
+  - openpyxl
+  - scikit-learn
+  - libgdal
+  - pandoc
