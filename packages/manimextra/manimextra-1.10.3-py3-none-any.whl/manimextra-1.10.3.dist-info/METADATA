@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: manimextra
+Version: 1.10.3
+Summary: A library that extends the capabilities of Manim
+Author: Merzlikin-Matvey
+Author-email: merzlikinmatvey01@gmail.com
+Requires-Python: >=3.12,<3.13
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: manim (>=0.18.0,<0.19.0)
+Requires-Dist: setuptools (>=72.1.0,<73.0.0)
+Description-Content-Type: text/markdown
+
+
