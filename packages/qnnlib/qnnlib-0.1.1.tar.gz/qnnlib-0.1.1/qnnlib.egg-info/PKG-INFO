@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: qnnlib
+Version: 0.1.1
+Summary: This library is designed to help data scientists easily conduct experiments with Quantum Neural Networks (QNNs) without the need to manually construct quantum circuits. 
+Home-page: https://github.com/chinnapongpsu/qnnlib
+Download-URL: https://github.com/chinnapongpsu/qnnlib/archive/refs/tags/0.1.1.zip
+Author: chinnapongpsu
+Author-email: chinnapong.a@psu.ac.th
+License: MIT
+Keywords: quantum neural networks,quantum machine learningzzfeaturemap,twolocal
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+License-File: LICENSE
+
+QNNLib
+======
+
+A PennyLane Based Quantum Programming Library Wrapper that allow Users
+to construct a Quantum Neural Networks based on ZZFeatureMap and Anstaz
+Twolocal at ease with flexibility to specify number of repss
+
+##Usage
+
+use Python 3.11.x only
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: py
+
+   #use virtual environment change python 3.x.x to 3.11.x
+   py -3.11 -m venv .venv
+   .venv\Scripts\Activate
+   # (.venv) PS D:\project>pip install qnnlib
+   # (.venv) PS D:\project>python ./test.py
