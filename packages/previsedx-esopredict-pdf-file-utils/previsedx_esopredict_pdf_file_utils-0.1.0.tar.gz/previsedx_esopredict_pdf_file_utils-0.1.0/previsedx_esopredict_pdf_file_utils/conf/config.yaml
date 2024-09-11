@@ -1,0 +1,27 @@
+---
+# File that serves as the PDF report template file.
+report:
+  template_path: /home/sundaram/previsedx/previsedx-esopredict-report-generator/previsedx/conf/QLY-FOR-015-F1_Esoscore_CAPSID_.pdf
+  map:
+    "Name": patient_name
+    "Ordering Provider Name": provider_name
+    "Date of Birth": date_of_birth
+    "Gender": gender
+    "Medical Record ID": medical_record_id
+    "Previse Lab ID": previse_lab_id
+    "Specimen ID": specimen_id
+    "Collection Date": collection_date
+    "Date Received": date_received
+    "Date Reported": date_reported
+    "Clinic": clinic
+    "Address": address
+    "City State Zip": city_state_zip
+    "Treating Provider": treating_provider
+    "Barretts diagnosis": barretts_diagnosis
+    "Segment length": segment_length
+    "Risk Level": risk_level
+    "Range Score": range_score
+    "5-Year Probability of Progression": five_year_probability_of_progression
+    "Notes": notes
+    "I interval": interval
+
