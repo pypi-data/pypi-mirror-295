@@ -1,0 +1,4 @@
+[console_scripts]
+check-dyck-word=transformer_checker:check_dyck_word
+generate-dataset=transformer_checker:generate_dataset_cli
+
