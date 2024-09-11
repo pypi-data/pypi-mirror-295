@@ -1,0 +1,9 @@
+*.pyc
+.*.swp
+.idea/
+.vscode/
+__pycache__/
+.cache/
+build/
+dist/
+tmp/
