@@ -1,0 +1,10 @@
+README.md
+setup.py
+name_recognize/__init__.py
+name_recognize/name_recognizer.py
+name_recognize/names_ru.csv
+name_recognize.egg-info/PKG-INFO
+name_recognize.egg-info/SOURCES.txt
+name_recognize.egg-info/dependency_links.txt
+name_recognize.egg-info/top_level.txt
+tests/test_name_recognizer.py
