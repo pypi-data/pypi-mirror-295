@@ -1,0 +1,99 @@
+name: Create release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-13, macos-14]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Used to host cibuildwheel
+      - uses: actions/setup-python@v5
+
+      - name: Download OpenCL SDK
+        if: matrix.os == 'windows-latest'
+        uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9
+        with:
+          url: "https://github.com/GPUOpen-LibrariesAndSDKs/OCL-SDK/files/1406216/lightOCLSDK.zip"
+          target: "."
+          retry-times: 3
+          
+      - name: Unzip OpenCL SDK
+        if: matrix.os == 'windows-latest'
+        run: |
+          mkdir OCLSDK
+          7z x lightOCLSDK.zip -oOCLSDK
+
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel
+
+      - name: Build wheels
+        if: runner.os != 'macOS'
+        run: python -m cibuildwheel --output-dir wheelhouse
+
+      - name: Build wheels
+        if: runner.os == 'macOS'
+        env:
+          CMAKE_GENERATOR: Xcode
+          MACOSX_DEPLOYMENT_TARGET: 10.14
+          VCPKG_ENV_PASSTHROUGH: MACOSX_DEPLOYMENT_TARGET
+        run: python -m cibuildwheel --output-dir wheelhouse
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}
+          path: ./wheelhouse/*.whl
+  sdist:
+    name: Create source release
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+
+    - name: Install build package
+      run: python -m pip install build
+
+    - name: Create source distribution
+      run: python -m build -s
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: cibw-sdist
+        path: ./dist/*
+        
+  publish:
+    name: Publish the package to PyPi
+    needs: [build_wheels, sdist]
+
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi-release
+      url: https://pypi.org/p/pybnesian
+    permissions:
+      id-token: write
+
+    steps:
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: cibw-*
+        path: dist
+        merge-multiple: true
+
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
