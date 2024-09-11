@@ -1,0 +1,8 @@
+ovos-utils>=0.0.38,~=0.0
+ovos-bus-client>=0.0.8,~=0.0
+ovos-config>=0.0.13,~=0.0
+ovos-plugin-manager>=0.0.26,~=0.0
+
+[extras]
+ovos-tts-plugin-server
+ovos_audio_plugin_simple>=0.0.2a7
