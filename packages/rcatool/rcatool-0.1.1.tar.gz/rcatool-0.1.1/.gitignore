@@ -1,0 +1,23 @@
+# These are definitions of ignored files 
+*.toc
+*.log
+*.dvi
+*.out
+*.snm
+*.nav
+*.log
+*.aux
+*.blg
+*.lof
+*.pyc
+__pycache__
+*.coverage
+*.[oa]    	      # No .o or .a files
+*~		      # temp files
+*.swap
+*.nc
+
+# Other
+docs/build
+docs/source/generated
+rcat/utils/polygon_files
