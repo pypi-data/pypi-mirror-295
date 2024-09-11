@@ -1,0 +1,12 @@
+obspy
+scipy
+matplotlib
+pandas
+numpy
+pyproj
+ipython
+ipywidgets
+plotly
+nbformat
+PyQt5-sip
+streamlit==1.34
