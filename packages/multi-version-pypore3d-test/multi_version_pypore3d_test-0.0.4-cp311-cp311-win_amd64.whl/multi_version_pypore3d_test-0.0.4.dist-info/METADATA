@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: multi-version-pypore3d-test
+Version: 0.0.4
+Summary: Pore3d with python wrappers
+Home-page: https://gitlab.elettra.eu/amal.abouelhassan/pore3d_py
+Author: Amal Aboulhassan
+Author-email: aboulhassan.amal@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+#Pore3D python wrappers
+
+PyPore3D: An open source software tool for imaging data processing and analysis of porous and multiphase media
+
+Information is found in the gitlab link:
+https://gitlab.elettra.eu/amal.abouelhassan/pypore3d
