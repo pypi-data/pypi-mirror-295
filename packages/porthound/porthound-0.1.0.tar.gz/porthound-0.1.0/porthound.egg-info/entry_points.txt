@@ -1,0 +1,2 @@
+[console_scripts]
+porthound = porthound.porthound:main
