@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: roadsync_slogger
+Version: 1.0.2
+Summary: A python logger similar to Go's slogger
+License: MIT
+Author: SRE
+Author-email: sre@roadsync.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: orjson (>=3.10.7,<4.0.0)
+Description-Content-Type: text/markdown
+
+# Roadsync SLogger
+
+**Roadsync SLogger** is a Python logging library built to incorporate context enrichment like Go's slog module.
+
+## Features
+
+- Supports plain text and JSON logging formats.
+- Allows dynamic context enrichment using `with_fields()`.
+- Works seamlessly with Python's standard `logging` module.
+- Handles complex and edge cases (e.g., empty messages, large log entries).
+- Thread-safe with isolated logger instances.
+
+## Installation
+
+You can install **SLogger** from PyPI (once published) using `pip`:
+
+```bash
+pip install roadsync-slogger
