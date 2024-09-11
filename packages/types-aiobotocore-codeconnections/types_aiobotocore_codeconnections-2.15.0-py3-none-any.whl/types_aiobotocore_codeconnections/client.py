@@ -1,0 +1,450 @@
+"""
+Type annotations for codeconnections service client.
+
+[Open documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/)
+
+Usage::
+
+    ```python
+    from aiobotocore.session import get_session
+    from types_aiobotocore_codeconnections.client import CodeConnectionsClient
+
+    session = get_session()
+    async with session.create_client("codeconnections") as client:
+        client: CodeConnectionsClient
+    ```
+"""
+
+import sys
+from typing import Any, Dict, Mapping, Type
+
+from aiobotocore.client import AioBaseClient
+from botocore.client import ClientMeta
+
+from .type_defs import (
+    CreateConnectionInputRequestTypeDef,
+    CreateConnectionOutputTypeDef,
+    CreateHostInputRequestTypeDef,
+    CreateHostOutputTypeDef,
+    CreateRepositoryLinkInputRequestTypeDef,
+    CreateRepositoryLinkOutputTypeDef,
+    CreateSyncConfigurationInputRequestTypeDef,
+    CreateSyncConfigurationOutputTypeDef,
+    DeleteConnectionInputRequestTypeDef,
+    DeleteHostInputRequestTypeDef,
+    DeleteRepositoryLinkInputRequestTypeDef,
+    DeleteSyncConfigurationInputRequestTypeDef,
+    GetConnectionInputRequestTypeDef,
+    GetConnectionOutputTypeDef,
+    GetHostInputRequestTypeDef,
+    GetHostOutputTypeDef,
+    GetRepositoryLinkInputRequestTypeDef,
+    GetRepositoryLinkOutputTypeDef,
+    GetRepositorySyncStatusInputRequestTypeDef,
+    GetRepositorySyncStatusOutputTypeDef,
+    GetResourceSyncStatusInputRequestTypeDef,
+    GetResourceSyncStatusOutputTypeDef,
+    GetSyncBlockerSummaryInputRequestTypeDef,
+    GetSyncBlockerSummaryOutputTypeDef,
+    GetSyncConfigurationInputRequestTypeDef,
+    GetSyncConfigurationOutputTypeDef,
+    ListConnectionsInputRequestTypeDef,
+    ListConnectionsOutputTypeDef,
+    ListHostsInputRequestTypeDef,
+    ListHostsOutputTypeDef,
+    ListRepositoryLinksInputRequestTypeDef,
+    ListRepositoryLinksOutputTypeDef,
+    ListRepositorySyncDefinitionsInputRequestTypeDef,
+    ListRepositorySyncDefinitionsOutputTypeDef,
+    ListSyncConfigurationsInputRequestTypeDef,
+    ListSyncConfigurationsOutputTypeDef,
+    ListTagsForResourceInputRequestTypeDef,
+    ListTagsForResourceOutputTypeDef,
+    TagResourceInputRequestTypeDef,
+    UntagResourceInputRequestTypeDef,
+    UpdateHostInputRequestTypeDef,
+    UpdateRepositoryLinkInputRequestTypeDef,
+    UpdateRepositoryLinkOutputTypeDef,
+    UpdateSyncBlockerInputRequestTypeDef,
+    UpdateSyncBlockerOutputTypeDef,
+    UpdateSyncConfigurationInputRequestTypeDef,
+    UpdateSyncConfigurationOutputTypeDef,
+)
+
+if sys.version_info >= (3, 12):
+    from typing import Unpack
+else:
+    from typing_extensions import Unpack
+
+
+__all__ = ("CodeConnectionsClient",)
+
+
+class BotocoreClientError(Exception):
+    MSG_TEMPLATE: str
+
+    def __init__(self, error_response: Mapping[str, Any], operation_name: str) -> None:
+        self.response: Dict[str, Any]
+        self.operation_name: str
+
+
+class Exceptions:
+    AccessDeniedException: Type[BotocoreClientError]
+    ClientError: Type[BotocoreClientError]
+    ConcurrentModificationException: Type[BotocoreClientError]
+    ConditionalCheckFailedException: Type[BotocoreClientError]
+    ConflictException: Type[BotocoreClientError]
+    InternalServerException: Type[BotocoreClientError]
+    InvalidInputException: Type[BotocoreClientError]
+    LimitExceededException: Type[BotocoreClientError]
+    ResourceAlreadyExistsException: Type[BotocoreClientError]
+    ResourceNotFoundException: Type[BotocoreClientError]
+    ResourceUnavailableException: Type[BotocoreClientError]
+    RetryLatestCommitFailedException: Type[BotocoreClientError]
+    SyncBlockerDoesNotExistException: Type[BotocoreClientError]
+    SyncConfigurationStillExistsException: Type[BotocoreClientError]
+    ThrottlingException: Type[BotocoreClientError]
+    UnsupportedOperationException: Type[BotocoreClientError]
+    UnsupportedProviderTypeException: Type[BotocoreClientError]
+    UpdateOutOfSyncException: Type[BotocoreClientError]
+
+
+class CodeConnectionsClient(AioBaseClient):
+    """
+    [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client)
+    [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/)
+    """
+
+    meta: ClientMeta
+
+    @property
+    def exceptions(self) -> Exceptions:
+        """
+        CodeConnectionsClient exceptions.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.exceptions)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#exceptions)
+        """
+
+    def can_paginate(self, operation_name: str) -> bool:
+        """
+        Check if an operation can be paginated.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.can_paginate)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#can_paginate)
+        """
+
+    async def close(self) -> None:
+        """
+        Closes underlying endpoint connections.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.close)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#close)
+        """
+
+    async def create_connection(
+        self, **kwargs: Unpack[CreateConnectionInputRequestTypeDef]
+    ) -> CreateConnectionOutputTypeDef:
+        """
+        Creates a connection that can then be given to other Amazon Web Services
+        services like CodePipeline so that it can access third-party code
+        repositories.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.create_connection)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#create_connection)
+        """
+
+    async def create_host(
+        self, **kwargs: Unpack[CreateHostInputRequestTypeDef]
+    ) -> CreateHostOutputTypeDef:
+        """
+        Creates a resource that represents the infrastructure where a third-party
+        provider is
+        installed.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.create_host)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#create_host)
+        """
+
+    async def create_repository_link(
+        self, **kwargs: Unpack[CreateRepositoryLinkInputRequestTypeDef]
+    ) -> CreateRepositoryLinkOutputTypeDef:
+        """
+        Creates a link to a specified external Git repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.create_repository_link)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#create_repository_link)
+        """
+
+    async def create_sync_configuration(
+        self, **kwargs: Unpack[CreateSyncConfigurationInputRequestTypeDef]
+    ) -> CreateSyncConfigurationOutputTypeDef:
+        """
+        Creates a sync configuration which allows Amazon Web Services to sync content
+        from a Git repository to update a specified Amazon Web Services
+        resource.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.create_sync_configuration)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#create_sync_configuration)
+        """
+
+    async def delete_connection(
+        self, **kwargs: Unpack[DeleteConnectionInputRequestTypeDef]
+    ) -> Dict[str, Any]:
+        """
+        The connection to be deleted.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.delete_connection)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#delete_connection)
+        """
+
+    async def delete_host(self, **kwargs: Unpack[DeleteHostInputRequestTypeDef]) -> Dict[str, Any]:
+        """
+        The host to be deleted.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.delete_host)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#delete_host)
+        """
+
+    async def delete_repository_link(
+        self, **kwargs: Unpack[DeleteRepositoryLinkInputRequestTypeDef]
+    ) -> Dict[str, Any]:
+        """
+        Deletes the association between your connection and a specified external Git
+        repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.delete_repository_link)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#delete_repository_link)
+        """
+
+    async def delete_sync_configuration(
+        self, **kwargs: Unpack[DeleteSyncConfigurationInputRequestTypeDef]
+    ) -> Dict[str, Any]:
+        """
+        Deletes the sync configuration for a specified repository and connection.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.delete_sync_configuration)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#delete_sync_configuration)
+        """
+
+    async def generate_presigned_url(
+        self,
+        ClientMethod: str,
+        Params: Mapping[str, Any] = ...,
+        ExpiresIn: int = 3600,
+        HttpMethod: str = ...,
+    ) -> str:
+        """
+        Generate a presigned url given a client, its method, and arguments.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.generate_presigned_url)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#generate_presigned_url)
+        """
+
+    async def get_connection(
+        self, **kwargs: Unpack[GetConnectionInputRequestTypeDef]
+    ) -> GetConnectionOutputTypeDef:
+        """
+        Returns the connection ARN and details such as status, owner, and provider type.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_connection)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_connection)
+        """
+
+    async def get_host(self, **kwargs: Unpack[GetHostInputRequestTypeDef]) -> GetHostOutputTypeDef:
+        """
+        Returns the host ARN and details such as status, provider type, endpoint, and,
+        if applicable, the VPC
+        configuration.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_host)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_host)
+        """
+
+    async def get_repository_link(
+        self, **kwargs: Unpack[GetRepositoryLinkInputRequestTypeDef]
+    ) -> GetRepositoryLinkOutputTypeDef:
+        """
+        Returns details about a repository link.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_repository_link)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_repository_link)
+        """
+
+    async def get_repository_sync_status(
+        self, **kwargs: Unpack[GetRepositorySyncStatusInputRequestTypeDef]
+    ) -> GetRepositorySyncStatusOutputTypeDef:
+        """
+        Returns details about the sync status for a repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_repository_sync_status)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_repository_sync_status)
+        """
+
+    async def get_resource_sync_status(
+        self, **kwargs: Unpack[GetResourceSyncStatusInputRequestTypeDef]
+    ) -> GetResourceSyncStatusOutputTypeDef:
+        """
+        Returns the status of the sync with the Git repository for a specific Amazon
+        Web Services
+        resource.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_resource_sync_status)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_resource_sync_status)
+        """
+
+    async def get_sync_blocker_summary(
+        self, **kwargs: Unpack[GetSyncBlockerSummaryInputRequestTypeDef]
+    ) -> GetSyncBlockerSummaryOutputTypeDef:
+        """
+        Returns a list of the most recent sync blockers.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_sync_blocker_summary)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_sync_blocker_summary)
+        """
+
+    async def get_sync_configuration(
+        self, **kwargs: Unpack[GetSyncConfigurationInputRequestTypeDef]
+    ) -> GetSyncConfigurationOutputTypeDef:
+        """
+        Returns details about a sync configuration, including the sync type and
+        resource
+        name.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.get_sync_configuration)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#get_sync_configuration)
+        """
+
+    async def list_connections(
+        self, **kwargs: Unpack[ListConnectionsInputRequestTypeDef]
+    ) -> ListConnectionsOutputTypeDef:
+        """
+        Lists the connections associated with your account.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_connections)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_connections)
+        """
+
+    async def list_hosts(
+        self, **kwargs: Unpack[ListHostsInputRequestTypeDef]
+    ) -> ListHostsOutputTypeDef:
+        """
+        Lists the hosts associated with your account.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_hosts)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_hosts)
+        """
+
+    async def list_repository_links(
+        self, **kwargs: Unpack[ListRepositoryLinksInputRequestTypeDef]
+    ) -> ListRepositoryLinksOutputTypeDef:
+        """
+        Lists the repository links created for connections in your account.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_repository_links)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_repository_links)
+        """
+
+    async def list_repository_sync_definitions(
+        self, **kwargs: Unpack[ListRepositorySyncDefinitionsInputRequestTypeDef]
+    ) -> ListRepositorySyncDefinitionsOutputTypeDef:
+        """
+        Lists the repository sync definitions for repository links in your account.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_repository_sync_definitions)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_repository_sync_definitions)
+        """
+
+    async def list_sync_configurations(
+        self, **kwargs: Unpack[ListSyncConfigurationsInputRequestTypeDef]
+    ) -> ListSyncConfigurationsOutputTypeDef:
+        """
+        Returns a list of sync configurations for a specified repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_sync_configurations)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_sync_configurations)
+        """
+
+    async def list_tags_for_resource(
+        self, **kwargs: Unpack[ListTagsForResourceInputRequestTypeDef]
+    ) -> ListTagsForResourceOutputTypeDef:
+        """
+        Gets the set of key-value pairs (metadata) that are used to manage the resource.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.list_tags_for_resource)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#list_tags_for_resource)
+        """
+
+    async def tag_resource(
+        self, **kwargs: Unpack[TagResourceInputRequestTypeDef]
+    ) -> Dict[str, Any]:
+        """
+        Adds to or modifies the tags of the given resource.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.tag_resource)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#tag_resource)
+        """
+
+    async def untag_resource(
+        self, **kwargs: Unpack[UntagResourceInputRequestTypeDef]
+    ) -> Dict[str, Any]:
+        """
+        Removes tags from an Amazon Web Services resource.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.untag_resource)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#untag_resource)
+        """
+
+    async def update_host(self, **kwargs: Unpack[UpdateHostInputRequestTypeDef]) -> Dict[str, Any]:
+        """
+        Updates a specified host with the provided configurations.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.update_host)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#update_host)
+        """
+
+    async def update_repository_link(
+        self, **kwargs: Unpack[UpdateRepositoryLinkInputRequestTypeDef]
+    ) -> UpdateRepositoryLinkOutputTypeDef:
+        """
+        Updates the association between your connection and a specified external Git
+        repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.update_repository_link)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#update_repository_link)
+        """
+
+    async def update_sync_blocker(
+        self, **kwargs: Unpack[UpdateSyncBlockerInputRequestTypeDef]
+    ) -> UpdateSyncBlockerOutputTypeDef:
+        """
+        Allows you to update the status of a sync blocker, resolving the blocker and
+        allowing syncing to
+        continue.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.update_sync_blocker)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#update_sync_blocker)
+        """
+
+    async def update_sync_configuration(
+        self, **kwargs: Unpack[UpdateSyncConfigurationInputRequestTypeDef]
+    ) -> UpdateSyncConfigurationOutputTypeDef:
+        """
+        Updates the sync configuration for your connection and a specified external Git
+        repository.
+
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client.update_sync_configuration)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/#update_sync_configuration)
+        """
+
+    async def __aenter__(self) -> "CodeConnectionsClient":
+        """
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/)
+        """
+
+    async def __aexit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> Any:
+        """
+        [Show boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeconnections.html#CodeConnections.Client)
+        [Show types-aiobotocore documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_codeconnections/client/)
+        """
