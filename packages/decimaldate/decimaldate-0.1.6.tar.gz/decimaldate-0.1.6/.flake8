@@ -1,0 +1,13 @@
+[flake8]
+extend-ignore = 
+    # E501, line too long
+    E501,
+    # E122, continuation line missing indentation or outdented
+    E122
+exclude =
+    .git,
+    venv,
+    __pycache__,
+    dist,
+    htmlcov
+max-complexity = 10
