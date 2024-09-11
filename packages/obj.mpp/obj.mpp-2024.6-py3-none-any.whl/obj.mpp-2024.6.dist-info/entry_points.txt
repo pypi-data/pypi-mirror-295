@@ -1,0 +1,5 @@
+[console_scripts]
+mpp_detector_cli = mpp_detector_cli:Main
+mpp_detector_gi = mpp_detector_gi:Main
+mpp_doc_searcher = mpp_doc_searcher:Main
+mpp_quality_chooser = mpp_quality_chooser:Main
