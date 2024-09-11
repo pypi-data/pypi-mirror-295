@@ -1,0 +1,177 @@
+# Positron Networks
+
+This package facilitates interacting with the Positron Supercompute infrastructure.
+
+## Installation
+
+Install the package from PyPi:
+
+```bash
+pip install positron_networks
+```
+
+## Getting Started
+
+Log in to your account
+
+```sh
+positron login
+```
+
+Create a python file and decorate it.
+
+```python
+from positron_networks import positron_sync
+
+@positron_sync(
+    institution="Positron",
+    funding_group='Funding group 1',
+    environment = 'T4 GPU',
+    image = 'pytorch-training:2.2.0-cpu-py310-ubuntu20.04-ec2',
+)
+def main():
+    print("Running my function")
+
+if __name__ == "__main__":
+    main()
+```
+
+Deploy the job
+
+```sh
+python main.py --positron-deploy
+```
+
+## Positron CLI Usage
+
+Explore the help dialogs.
+
+```sh
+positron --help
+
+positron run-job --help
+```
+
+## Job Types
+
+### Generic Job
+
+Defined in `job_config.yaml` as a `commands` block.
+
+Example at `test/cli`.
+
+Run with `positron run-job`
+
+### Decorator Job
+
+Defined as a python native decorator.
+
+Example at `test/decorator/test.py`.
+
+Run with `python test.py --positron-deploy`
+
+Rather than specify configuration options in the src code, you can put them in `job_config.yaml`.
+
+Example at `test/decorator/with_config/`.
+
+## Positron Job Runner
+
+Located at `app/positron_job_runner`, this get's deployed as `positron-job-runner` and is used in the deployed container to launch the user's project.
+
+### Testing
+
+See `test/job_runner/`.
+
+Copy `.env.example` to `.env` and follow comments to populate the vars.
+
+Run `./run-test.sh` or `./run-test.bat`. This script launches a prod-like container environment and runs the latest job-runner code from source.
+
+## Configuration
+
+Ensure you have a configuration file located at `~/.positron/config.ini` with the following structure:
+
+```ini
+[DEFAULT]
+userauthtoken = your_user_auth_token
+```
+
+## Troubleshooting
+
+### OS X
+
+**Error**
+
+```text
+NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'.
+```
+
+**Solution**
+
+Install openssl
+
+```sh
+$ brew install openssl
+$ brew --prefix openssl
+> /opt/homebrew/opt/openssl@3
+
+$ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH" \
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib" \
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include" \
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+
+$ openssl version
+> OpenSSL 3.3.1 4 Jun 2024 (Library: OpenSSL 3.3.1 4 Jun 2024)
+```
+
+Reinstall python with new openssl lib
+
+```sh
+# install pyenv to use to install python
+brew install pyenv
+
+# Add this to your shell config (example .bashrc)
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+source ~/.bashrc
+
+# Install
+CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl)" pyenv install 3.9.6
+pyenv global 3.9.6
+```
+
+Verify openssl will be used
+
+```sh
+python -c "import ssl; print(ssl.OPENSSL_VERSION)"
+> OpenSSL 3.3.1 4 Jun 2024
+```
+
+## Release
+
+Update version in `setup.py`.
+
+Commit with message: `Update version: v<version>`
+
+Tag the repo with `v<version>-alpha`. This will publish to `test.pypi` and produce an `alpha` env compatible package.
+
+Tag the repo with `v<version>`. This will publish to `pypi` and produce a `beta` env compatible package.
+
+### Installing For Environments
+
+```sh
+# DEV
+pip install --force-reinstall --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ --pre positron-networks
+
+# ALPHA
+pip install --force-reinstall --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ positron-networks
+
+# BETA
+pip install --force-reinstall positron-networks
+```
+
+## License
+
+This project is licensed under the Apache 2 License. See the [LICENSE](LICENSE) file for details.
+
