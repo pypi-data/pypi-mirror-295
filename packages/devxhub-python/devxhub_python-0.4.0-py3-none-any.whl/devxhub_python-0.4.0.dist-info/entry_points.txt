@@ -1,0 +1,2 @@
+[console_scripts]
+devxhub_python = devxhub_python.__main__:main
