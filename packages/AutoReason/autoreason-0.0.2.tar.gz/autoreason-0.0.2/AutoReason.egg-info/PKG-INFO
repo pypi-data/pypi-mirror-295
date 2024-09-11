@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: AutoReason
+Version: 0.0.2
+Summary: Tools for Automated Reasoning
+Home-page: https://github.com/NukeyFox/AutoReason
+Author: Johanan Lee Mahendran
+Author-email: jl2192@cantab.ac.uk
+License: MIT
+Keywords: automated reaosning
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+License-File: LICENSE
+
+# AutoReason
+An Automated Reasoning library (WIP)

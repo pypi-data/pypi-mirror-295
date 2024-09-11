@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+AutoReason.egg-info/PKG-INFO
+AutoReason.egg-info/SOURCES.txt
+AutoReason.egg-info/dependency_links.txt
+AutoReason.egg-info/top_level.txt
+src/__init__.py
+src/constained_satisfaction.py
+src/parser.py
+src/priority_queue.py
+src/search.py
