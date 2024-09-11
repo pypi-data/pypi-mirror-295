@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: django-wait-for-db
+Version: 1.0.6
+Summary: Simple Django app that provides a simple command to wait for the database to be ready before starting the server.
+License: MIT
+Keywords: django and docker,django database,database,wait for db
+Author: enzo_frnt
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 4.2
+Classifier: Framework :: Django :: 5.0
+Classifier: Framework :: Django :: 5.1
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: django (>=4.2,<5.0) ; python_version >= "3.8" and python_version < "3.10"
+Requires-Dist: django (>=4.2,<5.3) ; python_version >= "3.10"
+Requires-Dist: tox (>=4.16.0,<5.0.0)
+Project-URL: Documentation, https://github.com/enzofrnt/django_wait_for_db/blob/main/README.md
+Project-URL: Issues, https://github.com/enzofrnt/django_wait_for_db/issues
+Project-URL: Source Code, https://github.com/enzofrnt/django_wait_for_db
+Description-Content-Type: text/markdown
+
+
+[![codecov](https://codecov.io/gh/enzofrnt/django_wait_for_db/branch/main/graph/badge.svg?token=SU32PFC6V0)](https://codecov.io/gh/enzofrnt/django_wait_for_db)
+
+# django_wait_for_db
+ Django app that provides a simple command to wait for the database to be ready before starting the server.
+
+## Installation
+
+Install the package using pip:
+
+```bash
+pip install django_wait_for_db
+```
+
+## Usage
+
+Add `django_wait_for_db` to your `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'wait_for_db',
+    ...
+]
+```
+
+Then run the following command:
+
+```bash
+python manage.py wait_for_db
+```
+
+This will wait for the database to be ready before starting the server.
+This is useful when you are using Docker and you want to start the Django server before the database is ready or when you are in an environment where the database is not always available when the Django server starts.
+
+Exemple of a Dockerfile:
+
+```Dockerfile
+FROM python:3.8
+
+(.......)
+
+CMD python manage.py wait_for_db \
+    && python manage.py runserver
+```
+
