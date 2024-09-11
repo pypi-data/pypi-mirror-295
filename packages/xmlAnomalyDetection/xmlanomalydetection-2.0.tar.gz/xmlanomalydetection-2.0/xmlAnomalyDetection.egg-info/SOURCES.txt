@@ -1,0 +1,12 @@
+MANIFEST.in
+requirements.txt
+setup.py
+xmlAnomalyDetection/__init__.py
+xmlAnomalyDetection/app.py
+xmlAnomalyDetection/cli.py
+xmlAnomalyDetection.egg-info/PKG-INFO
+xmlAnomalyDetection.egg-info/SOURCES.txt
+xmlAnomalyDetection.egg-info/dependency_links.txt
+xmlAnomalyDetection.egg-info/entry_points.txt
+xmlAnomalyDetection.egg-info/requires.txt
+xmlAnomalyDetection.egg-info/top_level.txt
