@@ -1,0 +1,13 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+setup.py
+webworld/__init__.py
+webworld.egg-info/PKG-INFO
+webworld.egg-info/SOURCES.txt
+webworld.egg-info/dependency_links.txt
+webworld.egg-info/requires.txt
+webworld.egg-info/top_level.txt
+webworld/envs/__init__.py
+webworld/envs/web_world.py
