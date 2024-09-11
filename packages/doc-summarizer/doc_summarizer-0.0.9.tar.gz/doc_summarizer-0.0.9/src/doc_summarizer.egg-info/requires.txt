@@ -1,0 +1,14 @@
+langchain
+tiktoken
+langgraph
+beautifulsoup4
+langchain-openai
+langchain-community
+unstructured
+unstructured[docx,html]
+pypdf
+pdfplumber
+python-docx
+pandas
+torch
+torchvision

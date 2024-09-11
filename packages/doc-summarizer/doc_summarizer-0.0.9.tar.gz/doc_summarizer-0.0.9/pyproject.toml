@@ -1,0 +1,38 @@
+[project]
+name = "doc-summarizer"
+version = "0.0.9"
+authors = [
+  { name="Hossein", email="hoseinshr1055@gmail.com" },
+]
+description = "Text summarizer implemented via langchain."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "langchain",  
+  "tiktoken",
+  "langgraph",
+  "beautifulsoup4",
+  "langchain-openai",
+  "langchain-community",
+  "unstructured",
+  "unstructured[docx,html]",
+  "pypdf",
+  "pdfplumber",
+  "python-docx",
+  "pandas",
+  "torch",
+  "torchvision"
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
