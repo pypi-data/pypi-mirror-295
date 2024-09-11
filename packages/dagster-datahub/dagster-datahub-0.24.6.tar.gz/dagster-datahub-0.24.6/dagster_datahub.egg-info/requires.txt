@@ -1,0 +1,5 @@
+acryl-datahub[datahub-kafka,datahub-rest]
+dagster==1.8.6
+packaging
+requests
+pydantic<2.9.0,>=1.10.0
