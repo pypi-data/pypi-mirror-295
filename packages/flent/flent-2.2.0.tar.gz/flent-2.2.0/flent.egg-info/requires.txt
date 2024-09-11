@@ -1,0 +1,7 @@
+
+[GUI]
+QtPy
+PyQt5
+
+[Plots]
+matplotlib>=1.5
