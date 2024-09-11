@@ -1,0 +1,1 @@
+from .tidysorter import main
