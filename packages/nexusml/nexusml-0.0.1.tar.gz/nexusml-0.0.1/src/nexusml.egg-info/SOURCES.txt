@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/nexusml/__init__.py
+src/nexusml/example.py
+src/nexusml.egg-info/PKG-INFO
+src/nexusml.egg-info/SOURCES.txt
+src/nexusml.egg-info/dependency_links.txt
+src/nexusml.egg-info/top_level.txt
