@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: ceonstock-s3
+Version: 0.1.1
+Summary: Developer interface for interacting with ceonstock S3 storage
+Author: Dayne Kolk
+Author-email: daynekolk@hotmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: boto3 (>=1.26.115,<2.0.0)
+Description-Content-Type: text/markdown
+
+# cstock_s3
+S3 Actions for Ceonstock
+
