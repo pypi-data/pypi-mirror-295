@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: nrk-psapi
+Version: 0.7.0
+Summary: Unofficial python library for interacting with the NRK Podcast API.
+License: MIT
+Keywords: podcast,api-client,unofficial
+Author: Bendik R. Brenne
+Author-email: bendik@konstant.no
+Requires-Python: >=3.12,<4.0
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Requires-Dist: aiohttp (>=3.10.5,<4.0.0)
+Requires-Dist: async-timeout (>=4.0.3,<5.0.0)
+Requires-Dist: backoff (>=2.2.1,<3.0.0)
+Requires-Dist: isodate (>=0.6.1,<0.7.0)
+Requires-Dist: mashumaro[orjson] (>=3.13.1,<4.0.0)
+Requires-Dist: orjson (>=3.10.7,<4.0.0)
+Requires-Dist: rfeed (>=1.1.1,<2.0.0)
+Requires-Dist: rich (>=13.8.1,<14.0.0)
+Description-Content-Type: text/markdown
+
+# NrkPodcastAPI
+
+NrkPodcastAPI is a Python library for interacting with the NRK Podcast API. It provides a simple interface for retrieving podcast information and episode details.
+
+## Installation
+
+To install the library, you can use pip:
+
+```
+pip install nrk-psapi
+```
+
+## Usage
+
+Here's an example of how to use the library to retrieve information about a podcast:
+
+```python
+from nrk_psapi import NrkPodcastAPI
+
+api = NrkPodcastAPI()
+podcast = api.get_podcast("podcast_id")
+print(podcast.title)
+```
+
+You can also retrieve information about an episode:
+
+```python
+episode = api.get_episode("podcast_id", "episode_id")
+print(episode.title)
+```
+
+## Contributing
+
+If you'd like to contribute to the project, please submit a pull request or open an issue on the GitHub repository.
+
+## License
+
+NrkPodcastAPI is licensed under the MIT license. See the LICENSE file for more details.
+
+## Contact
+
+If you have any questions or need assistance with the library, you can contact the project maintainer at @bendikrb.
+
