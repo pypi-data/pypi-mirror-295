@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "googlesearch-tool"
+version = "1.0.4"
+authors = [
+  { name = "huazz233", email = "huazz233@163.com" }
+]
+description = "GooglSearch-Tool is a Python library for performing Google searches and retrieving search results. It supports dynamic query parameters, result deduplication, and custom proxy configurations. This library is primarily used for web data scraping and analysis."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/huazz233/googlesearcher"
+"Bug Tracker" = "https://github.com/huazz233/googlesearcher/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["googlesearch"]  # 指定要包含的包

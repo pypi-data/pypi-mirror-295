@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="008c1092-0168-4d98-841e-dcfebd5dfd48" name="更改" comment="1. 实现域名与用户代理的随机性，在每次调用时进行随机选择。&#10;2. 确保同一次搜索使用固定的域名，避免频繁切换域名影响搜索结果。&#10;3. 提高谷歌搜索参数的自定义自由度，允许用户灵活设置搜索条件。">
+      <change beforePath="$PROJECT_DIR$/googlesearch/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/googlesearch/search.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/googlesearch" value="packaging" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/googlesearch" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;huazz233&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/huazz233/googlesearch.git&quot;,
+    &quot;accountId&quot;: &quot;0d010fd2-895e-4aac-ab31-9c20c237cafc&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2kEZF2fOqOQ6G8wpADLHEPJ5Fhp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.get2fa (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.pyotp.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code/ksaq_code/Python/my_project/packaging_googlesearch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearch" />
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearch\googlesearch" />
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearcher\googlesearch" />
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearcher" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearch\googlesearch" />
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearcher" />
+      <recent name="D:\code\codeProject\Python\my_project\packaging_googlesearcher\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.get2fa (1)">
+    <configuration name="get2fa (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="packaging_googlesearch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get2fa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get2fa" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="packaging_googlesearch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\code\codeProject\Python\my_project\packaging_googlesearcher\get2fa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="packaging_googlesearch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/googlesearch" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/googlesearch/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.get2fa (1)" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.get2fa" />
+        <item itemvalue="Python.get2fa (1)" />
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
+        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="008c1092-0168-4d98-841e-dcfebd5dfd48" name="更改" comment="" />
+      <created>1722850588742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722850588742</updated>
+      <workItem from="1725950230700" duration="2858000" />
+      <workItem from="1725954587094" duration="2757000" />
+      <workItem from="1726018077446" duration="416000" />
+      <workItem from="1726024553484" duration="1985000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始化">
+      <option name="closed" value="true" />
+      <created>1722914625497</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1722914625497</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初始化">
+      <option name="closed" value="true" />
+      <created>1722914703972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1722914703972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="初始化">
+      <option name="closed" value="true" />
+      <created>1722914868583</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722914868583</updated>
+    </task>
+    <task id="LOCAL-00004" summary="初始化">
+      <option name="closed" value="true" />
+      <created>1722916016876</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722916016876</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更新README.md">
+      <option name="closed" value="true" />
+      <created>1722916485665</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722916485665</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1. 实现域名与用户代理的随机性，在每次调用时进行随机选择。&#10;2. 确保同一次搜索使用固定的域名，避免频繁切换域名影响搜索结果。&#10;3. 提高谷歌搜索参数的自定义自由度，允许用户灵活设置搜索条件。">
+      <option name="closed" value="true" />
+      <created>1725951828520</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725951828520</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/googlesearch" />
+      <path value="$PROJECT_DIR$/googlesearch/googlesearch" />
+    </ignored-roots>
+    <MESSAGE value="初始化" />
+    <MESSAGE value="更新README.md" />
+    <MESSAGE value="精准匹配" />
+    <MESSAGE value="1. 实现域名与用户代理的随机性，在每次调用时进行随机选择。&#10;2. 确保同一次搜索使用固定的域名，避免频繁切换域名影响搜索结果。&#10;3. 提高谷歌搜索参数的自定义自由度，允许用户灵活设置搜索条件。" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 实现域名与用户代理的随机性，在每次调用时进行随机选择。&#10;2. 确保同一次搜索使用固定的域名，避免频繁切换域名影响搜索结果。&#10;3. 提高谷歌搜索参数的自定义自由度，允许用户灵活设置搜索条件。" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/packaging_googlesearch$get2fa__1_.coverage" NAME="get2fa (1) 覆盖结果" MODIFIED="1725952723032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/packaging_googlesearch$test.coverage" NAME="test 覆盖结果" MODIFIED="1725950941864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/googlesearch" />
+  </component>
+</project>
