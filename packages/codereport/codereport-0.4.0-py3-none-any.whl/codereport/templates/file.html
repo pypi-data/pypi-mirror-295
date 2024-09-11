@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block title %}
+{{ srcfile.path }}
+{% endblock %}
+
+{% block header %}
+<h2>{{ srcfile.path }}</h2>
+{% endblock %}
+
+{% block main %}
+
+{{ summary }}
+
+{{ code }}
+{% endblock %}

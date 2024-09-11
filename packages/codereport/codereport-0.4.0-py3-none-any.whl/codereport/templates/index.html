@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+
+{% block title %}
+Overview
+{% endblock %}
+
+{% block header %}
+<h2>Overview</h2>
+{% endblock %}
+
+{% block main %}
+<div class="index">
+  
+  <div class="wrap">
+    <div class="leftcol">
+      <nav>
+        <ul class="sitemap tree">
+          {%- for node in nodelist recursive %}
+          <li class="{{"dir" if node.is_dir else "file"}}">
+            {%- if node.is_file %}
+            <a href="{{node.srcfile.report_file_name}}">{{ node.name }}</a>
+            ({{ node.count_items() }})
+            {%- endif %}
+            {%- if node.is_dir %}
+            {{ node.name }} ({{ node.count_items() }}) 
+            <ul>
+              {{ loop(node.children) }}
+            </ul>
+            {%- endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+    <div class="middlecol">
+      {% block middlecol %}
+      {{ summary }}
+      {% endblock %}
+    </div>
+  </div>
+
+<table>
+{% for file, nitems, link in files %}
+<tr>
+  <td><a href="{{link}}">{{ file }}</a></td>
+  <td>
+    {{ nitems }} item{{ "" if nitems == 1 else "s" }}
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+{% endblock %}
