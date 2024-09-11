@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pymeethour"
+version = "1.0.2"
+description = "Meet Hour is video conferencing solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc"
+authors = ["Meet Hour <hello@meethour.io>"]
+readme='README.md'
+homepage='https://github.com/v-empower/MeetHour-Python-SDK'
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.23.0"
+cryptography = "^43.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1"
+black = "^22.6"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
