@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: primalbedtools
+Version: 0.3.0
+Summary: A collection of tools for working with primer.bed files
+Home-page: https://github.com/ChrisgKent/primal-page
+License: CC BY-SA 4.0
+Author: ChrisKent
+Author-email: chrisgkent@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Project-URL: Repository, https://github.com/ChrisgKent/primal-page
+Description-Content-Type: text/markdown
+
+# primalbedtools
+
+A collection of tools for working with primer.bed files
