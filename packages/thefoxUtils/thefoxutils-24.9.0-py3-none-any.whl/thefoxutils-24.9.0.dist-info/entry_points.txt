@@ -1,0 +1,10 @@
+[console_scripts]
+composites=thefoxUtils.composites:main
+ftml2txt=thefoxUtils.ftml2txt:main
+glyphdata=thefoxUtils.glyphdata:main
+linespacing=thefoxUtils.linespacing:main
+tf=thefoxUtils.tf:main
+unidata=thefoxUtils.unidata:main
+unidump=thefoxUtils.unidump:main
+unikey=thefoxUtils.unikey:main
+

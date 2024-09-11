@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: thefoxUtils
+Version: 24.9.0
+Summary: Unicode utilities
+Author-email: Bobby de Vos <bobby_devos@sil.org>
+Requires-Python: >= 3.8
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: fontParts
+Project-URL: Bug Tracker, https://github.com/devosb/thefoxutils/issues
+Project-URL: Homepage, https://github.com/devosb/thefoxutils/README.md
+Project-URL: Repository, https://github.com/devosb/thefoxutils
+
+# thefoxutils
+Unicode utilities
+
+## unidump
+
+To create the Unicode Character Database (UCD) cache that unidump uses, run
+
+- `mkdir ~/.unidump`
+- `unidump --ucd UnicodeData.txt tests/data/unidump/branch.txt tests/data/unidump/microsoft.txt tests/data/unidump/sil.txt`
+
+where the file `UnicodeData.txt` comes from https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt
+
+## release
+
+- `bumpversion minor`
+- `git push --follow-tags`
+
