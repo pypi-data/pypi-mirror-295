@@ -1,0 +1,7 @@
+Code licenses are split:
+
+* The pyatem library is LGPL-3.0-only
+* The gtk_switcher, openswitcher_proxy and bmd_setup programs are GPL-3.0-only
+
+The pyatem library also contains public domain code from anatoly techtonik <techtonik@gmail.com>, this is marked
+with python license identifiers
