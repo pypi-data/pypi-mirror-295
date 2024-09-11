@@ -1,0 +1,49 @@
+[project]
+name = "toolviper"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Joshua Hoskins", email="jhoskins@nrao.edu"},
+    {name = "Jan Willem-Steeb", email="jsteeb@nrao.edu"}
+]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">= 3.9, < 3.13"
+
+dependencies = [
+    'cerberus',
+    'dask',
+    'dask_jobqueue',
+    'distributed',
+    'numba>=0.57.0',
+    'numpy',
+    'psutil',
+    'ipywidgets',
+    'pytest',
+    'pytest-cov',
+    'pytest-html',
+    'rich',
+    'tqdm',
+    'zarr',
+    'bokeh',
+    'jupyterlab',
+    'pyarrow',
+    'graphviz',
+]
+
+
+[project.optional-dependencies]
+docs = [
+    'ipykernel',
+    'ipympl',
+    'ipython',
+    'jupyter-client',
+    'nbsphinx',
+    'recommonmark',
+    'scanpydoc',
+    'sphinx-autoapi',
+    'sphinx-autosummary-accessors',
+    'sphinx_rtd_theme',
+    'twine',
+    'pandoc'
+]
