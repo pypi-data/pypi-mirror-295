@@ -1,0 +1,16 @@
+biopython
+dill
+joblib
+loguru
+networkx
+numpy
+pydantic
+rdkit
+requests
+scikit-learn
+seaborn
+torch
+torchdata
+tqdm
+gemmi
+bidict
