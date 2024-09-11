@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+timed_sparse_matrix/TSMDLL.dll
+timed_sparse_matrix/__init__.py
+timed_sparse_matrix/timed_sparse_matrix.py
+timed_sparse_matrix.egg-info/PKG-INFO
+timed_sparse_matrix.egg-info/SOURCES.txt
+timed_sparse_matrix.egg-info/dependency_links.txt
+timed_sparse_matrix.egg-info/requires.txt
+timed_sparse_matrix.egg-info/top_level.txt
