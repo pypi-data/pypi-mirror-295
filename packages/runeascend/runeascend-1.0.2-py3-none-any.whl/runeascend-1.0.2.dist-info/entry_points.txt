@@ -1,0 +1,8 @@
+[console_scripts]
+archiver=runeascend.runespreader.archiver:main
+consumer=runeascend.runevault.consumer:main
+discord_bot=runeascend.runeservant.bot:main
+publisher=runeascend.runespreader.publisher:main
+trade_seeker=runeascend.runeservant.seeker:main
+vault=runeascend.runevault.vault:main
+
