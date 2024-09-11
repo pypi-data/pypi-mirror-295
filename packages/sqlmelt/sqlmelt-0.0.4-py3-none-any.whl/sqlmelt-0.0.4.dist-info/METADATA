@@ -1,0 +1,27 @@
+Metadata-Version: 2.3
+Name: sqlmelt
+Version: 0.0.4
+Summary: This library is not that useful. Perhaps someday it will become great.
+Author-email: ardavydovskiy <davydovskij.art@yandex.ru>
+License-File: LICENSE.txt
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10.0
+Description-Content-Type: text/markdown
+
+# Sqlmelt
+ *This library is not that useful. Perhaps someday it will become great.*
+
+[![N|Solid](https://i.yapx.cc/X7gXT.png)](https://i.yapx.cc/X7gXT.png)
+
+## What is it?
+
+**Sqlmelt** - this library is an alternative to the "melt" function from **Pandas**, for DBMS in which this alternative is not available. 
+At the moment, the library contains only one function - for **Vertica**.
+
+## Where to get it
+```python
+#for PyPI
+%pip install sqlmelt
+```
