@@ -1,0 +1,3 @@
+[console_scripts]
+ppm = python_project_manager.cli_commands:cli
+ppmfix = python_project_manager.dev_only:fix
