@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: sfisop
+Version: 0.1.0
+Summary: 
+Author: Yo581515
+Author-email: 581515@stud.hvl.no
+Requires-Python: >=3.10,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic (>=1.10.9,<2.0.0)
+Requires-Dist: pytest (>=8.3.2,<9.0.0)
+Requires-Dist: typing-extensions (>=4.6.3,<5.0.0)
+Description-Content-Type: text/markdown
+
+# sfisop
+
