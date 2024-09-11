@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+signer_zziqz/__init__.py
+signer_zziqz/argus.py
+signer_zziqz/gorgon.py
+signer_zziqz/ladon.py
+signer_zziqz.egg-info/PKG-INFO
+signer_zziqz.egg-info/SOURCES.txt
+signer_zziqz.egg-info/dependency_links.txt
+signer_zziqz.egg-info/requires.txt
+signer_zziqz.egg-info/top_level.txt
