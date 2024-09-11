@@ -1,0 +1,176 @@
+Metadata-Version: 2.1
+Name: dreimac
+Version: 0.3.2
+Summary: DREiMac: Dimensionality reduction with Eilenberg-MacLane coordinates
+Author-email: "Jose A. Perea" <joperea@gmail.com>, Luis Scoccola <luis.scoccola@gmail.com>, Chris Tralie <chris.tralie@gmail.com>
+Maintainer-email: "Jose A. Perea" <joperea@gmail.com>, Luis Scoccola <luis.scoccola@gmail.com>, Chris Tralie <chris.tralie@gmail.com>
+Project-URL: Homepage, https://dreimac.scikit-tda.org
+Project-URL: Documentation, https://dreimac.scikit-tda.org
+Project-URL: Repository, https://github.com/scikit-tda/DREiMac
+Project-URL: Issues, https://github.com/scikit-tda/DREiMac/issues
+Keywords: dimensionality reduction,topological data analysis
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: <3.12,>=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: matplotlib>=3.6
+Requires-Dist: numba>=0.56
+Requires-Dist: numpy>=1.23
+Requires-Dist: persim>=0.3
+Requires-Dist: ripser>=0.6
+Requires-Dist: scipy>=1.10
+Provides-Extra: testing
+Requires-Dist: pytest; extra == "testing"
+Requires-Dist: pytest-cov; extra == "testing"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx_rtd_theme; extra == "docs"
+Requires-Dist: numpydoc; extra == "docs"
+Requires-Dist: ipykernel; extra == "docs"
+Requires-Dist: nbsphinx; extra == "docs"
+
+[![PyPI version](https://badge.fury.io/py/dreimac.svg)](https://badge.fury.io/py/dreimac)
+[![Downloads](https://static.pepy.tech/badge/dreimac)](https://pepy.tech/project/dreimac)
+[![codecov](https://codecov.io/gh/scikit-tda/dreimac/branch/master/graph/badge.svg)](https://codecov.io/gh/scikit-tda/dreimac)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![docs](https://readthedocs.org/projects/dreimac/badge/?version=latest)](https://dreimac.readthedocs.io/)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.05791/status.svg)](https://doi.org/10.21105/joss.05791)
+
+# DREiMac: Dimensionality Reduction with Eilenberg-MacLane Coordinates
+
+DREiMac is a library for topological data coordinatization, visualization, and dimensionality reduction.
+Currently, DREiMac is able to find topology-preserving representations of point clouds taking values in the circle, in higher dimensional tori, in the real and complex projective space, and in lens spaces.
+
+In a few words, DREiMac takes as input a point cloud together with a topological feature of the point cloud (in the form of a persistent cohomology class), and returns a map from the point cloud to a well-understood topological space (a circle, a product of circles, a projective space, or a lens space), which preserves the given topological feature in a precise sense.
+For more information, please check the theory and examples in the [documentation](http://dreimac.scikit-tda.org/).
+
+
+## Basic usage
+
+Here is a simple example; please check the Jupyter notebooks in the `notebooks` directory for further examples.
+
+```python
+# basic imports
+from dreimac import CircularCoords
+from persim import plot_diagrams
+import matplotlib.pyplot as plt
+import numpy as np
+
+# prepare plot with 4 subplots
+f, (a0, a1, a2, a3) = plt.subplots(1, 4, width_ratios=[1, 1, 1, 0.2], figsize=(14,3))
+
+# 200 samples from a noisy circle
+n_samples = 200
+np.random.seed(0)
+Z = np.random.random((n_samples, 2)) - 0.5
+X = Z / np.linalg.norm(Z, axis=1).reshape((n_samples, 1)) + (np.random.random((n_samples, 2)) - 0.5) * 0.2
+
+# plot point cloud
+a0.scatter(X[:,0], X[:,1], s=10)
+a0.set_title("Input point cloud") ; a0.axis("off") ; a0.set_aspect("equal")
+
+# plot the persistence diagram, showing a single prominent class
+cc = CircularCoords(X, n_landmarks=200)
+plot_diagrams(cc._dgms, title="Persistence diagram", ax=a1)
+
+# plot the data colored by the circle-valued map constructed by DREiMac
+circular_coordinates = cc.get_coordinates()
+a2.scatter(X[:,0], X[:,1], c=circular_coordinates, s=10, cmap="viridis")
+a2.set_title("Input colored by circular coordinate") ; a2.axis("off") ; a2.set_aspect("equal")
+
+# plot colorbar
+img = a3.imshow([[0,1]], cmap="viridis"); a3.set_visible(False)
+cb = plt.colorbar(mappable=img,ticks=[0,0.5,1]) ; _ = cb.ax.set_yticklabels(["0","$\pi$","2$\pi$"])
+```
+
+![output](https://user-images.githubusercontent.com/1679929/232109124-bf2653e5-6f91-409d-b972-7104b96b3430.png)
+
+## More examples
+
+For Jupyter notebooks with more examples, please check the [documentation](http://dreimac.scikit-tda.org/) or this repository's [docs/notebooks](https://github.com/scikit-tda/DREiMac/tree/master/docs/notebooks) directory.
+
+## Installing
+
+Make sure your Python version is >=3.8 and <3.12.
+DREiMac depends on the following python packages, which will be installed automatically when you install with pip:
+`matplotlib`,
+`numba`,
+`numpy`,
+`persim`,
+`ripser`, and
+`scipy`.
+
+To install the latest release:
+
+~~~~~ bash
+pip install dreimac
+~~~~~
+
+To install directly from GitHub:
+
+~~~~~ bash
+pip install git+https://github.com/scikit-tda/DREiMac.git
+~~~~~
+
+## Documentation and support
+
+You can find the documentation [here](http://dreimac.scikit-tda.org/), including the [API reference](https://dreimac.scikit-tda.org/en/latest/api.html).
+If you have further questions, please [open an issue](https://github.com/scikit-tda/DREiMac/issues/new) and we will do our best to help you.
+Please include as much information as possible, including your system's information, warnings, logs, screenshots, and anything else you think may be of use.
+
+## Running the tests
+
+If you want to check that your machine is running DREiMac properly, you may run the tests by running the following commands from the root directory of a clone of this repository.
+
+```bash
+pip install pytest
+pip install -r requirements.txt
+pytest .
+```
+
+## Contributing
+
+To contribute, you can fork the project, make your changes, and submit a pull request.
+If you're looking for a way to contribute, you could consider:
+* adding documentation to existing functionality;
+* adding missing tests to improve coverage;
+* adding a Jupyter notebook with a tutorial or demo;
+* adding functionality and the corresponding documentation and tests;
+* responding to a bug or feature request in the Github issues.
+
+## Citing
+
+If you use this package, please cite the JOSS paper found [here](https://joss.theoj.org/papers/10.21105/joss.05791), using the following bibtex entry.
+
+```
+@article{Perea2023,
+  doi = {10.21105/joss.05791},
+  url = {https://doi.org/10.21105/joss.05791},
+  year = {2023},
+  publisher = {The Open Journal},
+  volume = {8},
+  number = {91},
+  pages = {5791},
+  author = {Jose A. Perea and Luis Scoccola and Christopher J. Tralie},
+  title = {DREiMac: Dimensionality Reduction with Eilenberg-MacLane Coordinates},
+  journal = {Journal of Open Source Software}
+}
+```
+
+## Acknowledgements
+
+We thank Tom Mease for contributions and discussions. J.A.P. and L.S. were partially supported by the National Science Foundation through grants CCF-2006661 and CAREER award DMS-1943758.
+
+## License
+
+This software is published under Apache License Version 2.0.
