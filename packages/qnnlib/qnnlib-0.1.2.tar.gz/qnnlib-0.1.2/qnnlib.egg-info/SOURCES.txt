@@ -1,0 +1,14 @@
+LICENSE
+README.rst
+setup.cfg
+setup.py
+qnnlib/__init__.py
+qnnlib/qnnlib.py
+qnnlib/test_changeoptimizer.py
+qnnlib/test_ibmq.py
+qnnlib/test_normalcase.py
+qnnlib.egg-info/PKG-INFO
+qnnlib.egg-info/SOURCES.txt
+qnnlib.egg-info/dependency_links.txt
+qnnlib.egg-info/requires.txt
+qnnlib.egg-info/top_level.txt
