@@ -1,0 +1,6 @@
+requests>=2.25.1
+google-api-python-client
+websocket-client
+
+[:python_version < "3.11"]
+tomli
