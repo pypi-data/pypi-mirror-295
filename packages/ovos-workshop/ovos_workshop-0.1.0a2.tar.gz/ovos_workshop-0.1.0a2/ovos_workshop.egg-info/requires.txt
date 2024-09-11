@@ -1,0 +1,10 @@
+ovos-utils<1.0.0,>=0.0.38
+ovos_bus_client<1.0.0,>=0.0.8
+ovos-config<1.0.0,>=0.0.12
+ovos-backend-client<1.0.0,>=0.1.0
+ovos-lingua-franca<1.0.0,>=0.4.6
+rapidfuzz
+
+[ocp]
+ovos_plugin_common_play
+ovos_classifiers>=0.0.0a46
