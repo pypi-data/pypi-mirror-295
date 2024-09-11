@@ -1,0 +1,9 @@
+from _typeshed import Incomplete
+
+class Application:
+    inertia_app: Incomplete
+    initialized: bool
+    license: Incomplete
+    def __init__(self, inertia_app) -> None: ...
+    def run(self) -> None: ...
+    def validate_initialization(self) -> None: ...
