@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/doc_summarizer.egg-info/PKG-INFO
+src/doc_summarizer.egg-info/SOURCES.txt
+src/doc_summarizer.egg-info/dependency_links.txt
+src/doc_summarizer.egg-info/requires.txt
+src/doc_summarizer.egg-info/top_level.txt
+src/summarizer/__init__.py
+src/summarizer/graph.py
+src/summarizer/main.py
+src/summarizer/stuff.py
