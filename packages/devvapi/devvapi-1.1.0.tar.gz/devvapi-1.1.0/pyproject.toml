@@ -1,0 +1,18 @@
+[project]
+name = "devvapi"
+version = "1.1.0"
+authors = [
+  { name="Abdulloh", email="abdullohnugmonovone222@gmail.com" },
+]
+description = "Framework for creating API"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/sk1llpy/devvapi"
+Issues = "https://github.com/sk1llpy/devvapi/issues"
