@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+eclipsetools/__init__.py
+eclipsetools/filetools.py
+eclipsetools/imagetools.py
+eclipsetools/videotools.py
+eclipsetools.egg-info/PKG-INFO
+eclipsetools.egg-info/SOURCES.txt
+eclipsetools.egg-info/dependency_links.txt
+eclipsetools.egg-info/requires.txt
+eclipsetools.egg-info/top_level.txt
