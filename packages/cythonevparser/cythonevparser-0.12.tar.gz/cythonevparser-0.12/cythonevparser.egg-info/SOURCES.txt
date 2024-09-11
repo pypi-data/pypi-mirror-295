@@ -1,0 +1,17 @@
+LICENSE.rst
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+cythonevparser/LICENSE
+cythonevparser/README.MD
+cythonevparser/__init__.py
+cythonevparser/evparse.pyx
+cythonevparser/evparse_compile.py
+cythonevparser/requirements.txt
+cythonevparser/thirdparty.json
+cythonevparser.egg-info/PKG-INFO
+cythonevparser.egg-info/SOURCES.txt
+cythonevparser.egg-info/dependency_links.txt
+cythonevparser.egg-info/requires.txt
+cythonevparser.egg-info/top_level.txt
