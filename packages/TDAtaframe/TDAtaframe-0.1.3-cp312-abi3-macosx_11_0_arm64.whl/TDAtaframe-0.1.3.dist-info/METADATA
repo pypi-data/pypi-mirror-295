@@ -1,0 +1,16 @@
+Metadata-Version: 2.3
+Name: TDAtaframe
+Version: 0.1.3
+Requires-Dist: polars >=1.5.0
+Requires-Dist: pydantic >=2.8.0
+Summary: A package to handle shape-matching for meshes
+Author-email: Jack Ruder <jackruder@montana.edu>
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# TDAtaframe
+TDA brought to dataframes.
+
+# TODO
+Add error for weight length / simplex length mismatch
+
