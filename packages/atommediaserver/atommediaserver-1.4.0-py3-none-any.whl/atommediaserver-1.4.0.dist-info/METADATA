@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: atommediaserver
+Version: 1.4.0
+Summary: Atom Media Server
+Home-page: https://atom.auto/
+Author: Atom Unreal Engine team
+Author-email: yuri.pigo@atom.team
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: python-ffmpeg
+Requires-Dist: numpy
+
+UNKNOWN
+
+
