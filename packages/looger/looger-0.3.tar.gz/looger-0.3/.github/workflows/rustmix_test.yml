@@ -1,0 +1,25 @@
+name: Rust Mix Test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions: write-all
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Check Build
+      uses: d33p0st/python-rust-mix-build@v1
+      with:
+        python-version: 3.12
+        replace: true
