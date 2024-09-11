@@ -1,0 +1,47 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "fRAGme"
+readme = "README.md"
+authors = [{ name = "Henning Krause", email = "henning.krause90@gmail.com" }]
+maintainers = [{ name = "Henning Krause", email = "henning.krause90@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["rag"]
+requires-python = ">=3.10.6"
+dynamic = ["version", "description"]
+
+dependencies = [
+    "fastapi",
+    "langchain-openai",
+    "langchain-chroma",
+    "langchain-community",
+    "python-multipart",
+    "pypdf",
+    "pyjwt"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "flit",
+    "pylint",
+]
+
+[project.urls]
+Homepage = "https://github.com/krauhen/fRAGme"
+Releases = "https://github.com/krauhen/fRAGme/releases"
+CI = "https://github.com/krauhen/fRAGme"
+Documentation = "https://krauhen.github.io/fRAGme/"
+Issue = "https://github.com/krauhen/fRAGme/issues"
+
+[tool.black]
+line-length = 88
+exclude = '\.git|\.hg|\.mypy_cache|\.tox|\.venv|_build|buck-out|build|dist|venv'
