@@ -1,0 +1,105 @@
+Metadata-Version: 2.1
+Name: coeus-sphinx-theme
+Version: 2024.9.9
+Summary: A Sphinx Documentation Theme.
+Author-email: Akshay Mestry <xa@mes3.dev>
+License: MIT License
+        
+        Copyright (c) 2024 Akshay Mestry. All rights reserved.
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Code, https://github.com/xames3/coeus-sphinx-theme
+Project-URL: Download, https://pypi.org/project/coeus-sphinx-theme/
+Project-URL: Homepage, https://github.com/xames3/coeus-sphinx-theme/
+Project-URL: Issue tracker, https://github.com/xames3/coeus-sphinx-theme/issues
+Keywords: coeus,sphinx,python,nasa
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Sphinx :: Theme
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Documentation
+Classifier: Topic :: Software Development :: Documentation
+Requires-Python: >=3.11
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: pytube
+Requires-Dist: sphinx
+Requires-Dist: sphinx-carousel
+Requires-Dist: sphinx-tags
+Requires-Dist: sphinx_design
+Requires-Dist: sphinxext-opengraph
+Requires-Dist: sphinxcontrib-jquery
+
+.. Author: Akshay Mestry <xa@mes3.dev>
+.. Created on: Sunday, August 11 2024
+.. Last updated on: Friday, August 23 2024
+
+Coeus Sphinx Theme
+==================
+
+.. figure:: https://raw.githubusercontent.com/xames3/coeus-sphinx-theme/main/
+    assets/coeus-stable-diffusion.png
+    :alt: Coeus
+
+Hello hello!
+
+This theme is named after the Greek god `Coeus`_, symbolizing intellect,
+knowledge, and inquisitive inquiry. In Greek mythology, Coeus is one of the
+Titans, embody the spirit of intelligence, foresight, and rationality-
+qualities that resonate deeply with the purpose of this theme. Naming this
+theme after Coeus is more than a nod to mythology; it represents a deeper
+connection to the essence of documentation itself. Just as Coeus was the
+pillar of intellect among the Titans, the Coeus Sphinx Theme is designed to be
+the foundation of intelligent and insightful documentation. It aims to enhance
+the way information is conveyed, ensuring that the knowledge shared through
+your documentation is as clear and impactful as possible.
+
+The Coeus Sphinx Theme is designed for documentation that requires not only
+clarity and structure but also a touch of wisdom and elegance. Whether you're
+working on a personal project or a complex scientific endeavor, this theme
+offers a visually appealing and intellectually stimulating environment to
+present your work. The theme's design reflects the importance of foresight,
+rationality, and clarity—traits associated with Coeus.
+
+.. note::
+
+    The theme is still in the early stages of development. More updates and
+    features will be added soon.
+
+Contributions
+-------------
+
+Contributions and/or suggestions are welcome! If you find a bug, have a
+feature request, or want to contribute improvements, please open an issue or
+submit a pull request on GitHub.
+
+License
+-------
+
+The Coeus Sphinx Theme is licensed under the MIT License. See the `LICENSE`_
+file for more details.
+
+.. _Coeus: https://en.wikipedia.org/wiki/Coeus
+.. _LICENSE: https://github.com/xames3/coeus-sphinx-theme/blob/main/LICENSE
