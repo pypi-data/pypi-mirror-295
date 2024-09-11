@@ -1,0 +1,27 @@
+{
+    "project_info": null,
+    "project_inputs": [
+        {
+            "description": "Upload a word or pdf document. The pages of the document will be shown in the video.",
+            "job_input_type": "img",
+            "name": "document",
+            "required": true,
+            "type_settings": {},
+            "web_input_type": "doc"
+        },
+        {
+            "description": "The color of the pen on the desk.",
+            "job_input_type": "color",
+            "name": "pen color",
+            "required": true,
+            "type_settings": {},
+            "web_input_type": "color"
+        }
+    ],
+    "project_uuid": "69223c62-8197-4584-9bb3-383594c45505",
+    "render_pipeline": {
+        "extra_outputs": [],
+        "primary_output": "",
+        "render_tasks": []
+    }
+}
