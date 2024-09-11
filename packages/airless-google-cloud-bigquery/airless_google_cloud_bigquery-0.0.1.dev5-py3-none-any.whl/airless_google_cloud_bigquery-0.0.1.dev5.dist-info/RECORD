@@ -1,0 +1,10 @@
+airless/google/cloud/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/bigquery/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/bigquery/hook/__init__.py,sha256=wDlwTbC7VffABUYpW9OtyTOQkvHPRFpKKDPLBDViR20,36
+airless/google/cloud/bigquery/hook/bigquery.py,sha256=FeE9POOBhANtnC999hmTqKWvOSz6CMzc7VsaYYm05xM,7818
+airless/google/cloud/bigquery/operator/__init__.py,sha256=ByZhKcKwX-EDBG7uofIQtyhqudGcScCPCH7SD8R0_qQ,94
+airless/google/cloud/bigquery/operator/bigquery.py,sha256=Pyn6RpGtqL-nDAXPJLnP1M21QQGeNYUCl9ipIRLoiB8,5280
+airless_google_cloud_bigquery-0.0.1.dev5.dist-info/METADATA,sha256=zOD_a57te4Qpz9Y6JCefvUKFw5R1W0WUIRuMg55IddA,834
+airless_google_cloud_bigquery-0.0.1.dev5.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+airless_google_cloud_bigquery-0.0.1.dev5.dist-info/top_level.txt,sha256=vPLzRICE7VNGvU-zceoZ1N7H2TkerQXR475zjg_xPzU,8
+airless_google_cloud_bigquery-0.0.1.dev5.dist-info/RECORD,,
