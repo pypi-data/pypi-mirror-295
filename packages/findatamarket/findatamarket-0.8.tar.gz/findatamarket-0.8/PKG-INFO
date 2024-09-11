@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: findatamarket
+Version: 0.8
+Summary: SDK for getting financial data from findata.market
+Home-page: https://github.com/serkin/findata-market
+Author: Serkin Alexander
+Author-email: serkin.alexander@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# findata-market
+
+
+```bash
+pip install setuptools wheel twine
+python setup.py sdist bdist_wheel
+
+twine upload dist/*
+```
+
