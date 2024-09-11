@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/databaseConnectorUniversal.egg-info/PKG-INFO
+src/databaseConnectorUniversal.egg-info/SOURCES.txt
+src/databaseConnectorUniversal.egg-info/dependency_links.txt
+src/databaseConnectorUniversal.egg-info/requires.txt
+src/databaseConnectorUniversal.egg-info/top_level.txt
+src/database_automation/__init__.py
+src/database_automation/mongo_crud.py
