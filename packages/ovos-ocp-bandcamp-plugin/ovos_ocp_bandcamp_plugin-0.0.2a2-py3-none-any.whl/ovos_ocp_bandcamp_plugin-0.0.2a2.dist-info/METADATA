@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: ovos-ocp-bandcamp-plugin
+Version: 0.0.2a2
+Summary: OCP youtube stream extractor plugin
+Home-page: https://github.com/OpenVoiceOS/ovos-ocp-bandcamp-plugin
+Author: JarbasAi
+Author-email: jarbasai@mailfence.com
+License: Apache-2.0
+Keywords: ovos ocp plugin
+Platform: UNKNOWN
+Requires-Dist: py-bandcamp
+Requires-Dist: ovos-plugin-manager<1.0.0,>=0.0.1
+
+UNKNOWN
+
+
