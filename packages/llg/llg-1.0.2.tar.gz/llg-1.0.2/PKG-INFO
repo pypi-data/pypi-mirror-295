@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: llg
+Version: 1.0.2
+Summary: Python package to solve the LLG equation by using the Heun scheme.
+Home-page: https://github.com/lufvelasquezgo/llg
+License: MIT
+Keywords: llg,magnetism,physics,simulation
+Author: Luisa Fernanda Velásquez González
+Author-email: lfvelasquezg@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Vapory (>=0.1.2,<0.2.0)
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: h5py (>=3.11.0,<4.0.0)
+Requires-Dist: matplotlib (>=3.9.2,<4.0.0)
+Requires-Dist: moviepy (>=1.0.3,<2.0.0)
+Requires-Dist: numba (>=0.60.0,<0.61.0)
+Requires-Dist: numpy (>=1.22,<2.1)
+Requires-Dist: pillow (>=10.4.0,<11.0.0)
+Requires-Dist: tqdm (>=4.66.5,<5.0.0)
+Project-URL: Repository, https://github.com/lufvelasquezgo/llg
+Description-Content-Type: text/markdown
+
+# LLG
+
+The main objective of this library is to solve the [LLG equation](https://en.wikipedia.org/wiki/Landau%E2%80%93Lifshitz%E2%80%93Gilbert_equation) by using the Heun schema. We also implemented a CLI in order to let you use `llg` from console. You can follow the instructions given on the [wiki](https://github.com/lufvelasquezgo/llg/wiki). Do not hesitate to write us if you have any suggestion/question.
+
+- Free software: MIT license
+- Documentation: https://github.com/lufvelasquezgo/llg/wiki
+
