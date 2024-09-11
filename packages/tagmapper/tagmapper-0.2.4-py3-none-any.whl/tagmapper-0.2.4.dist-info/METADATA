@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: tagmapper
+Version: 0.2.4
+Summary: Python wrapper for sql tag mapping database
+Author: Åsmund Våge Fannemel
+Author-email: 34712686+asmfstatoil@users.noreply.github.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: azure-identity (>=1.17.1,<2.0.0)
+Requires-Dist: msal-bearer (>=1.1.2,<2.0.0)
+Requires-Dist: pandas (>=2.2.2,<3.0.0)
+Requires-Dist: pyodbc (>=5.1.0,<6.0.0)
+Requires-Dist: sqlalchemy (>=2.0.28,<3.0.0)
+Description-Content-Type: text/markdown
+
+# tagmapper-sdk
+Prototype python package to get IMS-tag mappings for data models for separators and wells.
+
+Authentication is done using Azure credentials and bearer tokens.
+
+
+## Use
+See (examples/demo_separator.py)[demo]. Or try the following simple code.  
+```
+from tagmapper import Well
+
+
+w = Well("NO 30/6-E-2")  
+```
+
+
+## Installing
+Install from github using pip.  
+``
+pip install git+https://github.com/equinor/tagmapper-sdk.git
+``
+
+
+## Developing
+Clone repo and run ``poetry install`` to install dependencies.
+
+
+## Testing
+Run tests and check coverage using pytest-cov
+``poetry run pytest --cov=tagmapper test/ --cov-report html``
+
