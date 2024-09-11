@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arches-her"
+readme = "README.md"
+authors = [
+    {name = "Getty Conservation Institute", email = "contact@archesproject.org"}
+]
+license = {text = "GNU AGPL3"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+requires-python = ">=3.10"
+dependencies = [
+  "arches==7.5.4",
+  "python-docx==1.1.0",
+]
+version = "1.0.0a1"
+
+[tool.setuptools]
+packages = ["arches_her"]
+
+[tool.black]
+line-length = 140
+target-version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pylint."messages control"]
+disable = [
+  "no-member",  # Django false positives
+  "no-self-argument",  # Django false positives
+]

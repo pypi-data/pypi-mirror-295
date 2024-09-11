@@ -1,0 +1,403 @@
+
+<!--
+ARCHES - a program developed to inventory and manage immovable cultural heritage.
+Copyright (C) 2013 J. Paul Getty Trust and World Monuments Fund
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+{% load static %}
+{% load template_tags %}
+{% load i18n %}
+{% load compress %}
+{% load webpack_static from webpack_loader %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <title>{{app_title}}</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="{% webpack_static 'favicons/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% webpack_static 'favicons/apple-touch-icon.png' %}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% webpack_static 'favicons/apple-touch-icon-76x76.png' %}" />
+    <link rel="apple-touch-icon" sizes="120x120" href="{% webpack_static 'favicons/apple-touch-icon-120x120.png' %}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{% webpack_static 'favicons/apple-touch-icon-152x152.png' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% webpack_static 'favicons/apple-touch-icon-180x180.png' %}" />
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% webpack_static 'css/index.css' %}">
+        {% compress css %}
+            <link rel="stylesheet" type="text/x-scss" href="{% webpack_static 'css/project.scss' %}" media="all">
+        {% endcompress %}
+        {% if app_settings.ACCESSIBILITY_MODE %}
+            {% compress css %}
+                <link rel="stylesheet" type="text/x-scss" href="{% webpack_static 'css/accessibility.scss' %}" media="screen">
+            {% endcompress %}
+        {% endif %}
+    {% endblock css%}
+</head>
+
+<body class="landing-page">
+    <script src="{% webpack_static 'node_modules/requirejs/require.js' %}"></script>
+    {% include 'javascript.htm' %}
+
+    <div id="skip-link-holder"><a id="skip-link" href="#skiptocontent">{% trans "Skip to Content" %}</a></div>
+
+    <!--=== Header ===-->
+    <header>
+        <div class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button id="toggleBtn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="myNavbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="nav-brand-container">
+                        <a href="/" class="navbar-brand" aria-label="Link to homepage">
+                            <img class="navbar-brand-image" src="{% webpack_static 'img/landing/Arches_logo_white.png' %}" alt="Arches Logo">
+                        </a>
+                    </div>
+                </div>
+
+                <nav id="myNavbar" class="navbar-collapse collapse no-transition" aria-label="{% trans 'Arches Application Navigation' %}">
+                    <div class="container">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active">
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'search_home' %}">{% trans "Search Arches" %}</a>
+                            </li>
+                            {% if user|can_create_resource_instance and user.username != 'anonymous' %}
+                                <li>
+                                    <a href="{% url 'resource' %}" target="_blank">{% trans "Manage" %}</a>
+                                </li>
+                            {% endif %}
+                            {% if user.username == 'anonymous' %}
+                                <li>
+                                    <a class="application-login" id="auth-link" href="{% url 'auth' %}?next={% url 'home' %}{% if user.username != 'anonymous' %}&logout=true{% endif %}">{% trans "Sign in" %}</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="auth-welcome" href="{% url 'user_profile_manager' %}" aria-label="{% trans 'Visit user profile' %}">
+                                        {% trans "Welcome, " %} {{ user.first_name|default:user.username }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="application-login" href="{% url 'auth' %}?next={% url 'home' %}{% if user.username != 'anonymous' %}&logout=true{% endif %}">{% trans 'Log off' %}</a>
+                                </li>
+                            {% endif %}
+                            {% if show_language_swtich %}
+                                <li>
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    <div class="lang-switch" style="max-width: none;" data-bind='component: {
+                                        name: "views/components/language-switcher",
+                                        params: {
+                                            current_language: "{{LANGUAGE_CODE}}"
+                                        }
+                                    }'></div>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--=== End Header ===-->
+
+    <main>
+        <p id="skip-target-holder">
+            <a id="skiptocontent" name="skiptocontent" class="skip" tabindex="-1" aria-label="{% trans "Skip to Content" %}">
+                {% trans "Skip to Content" %}
+            </a>
+        </p>
+        <div class="container">
+            <div class="row featurette1">
+                <div class="featurette1-left-container">
+                    <h1><span class="bg-info">****</span> Historic Environment Record<br/>
+                        (<span class="bg-info">*HER</span>)</h1>
+                    <p class="lead">The online heritage information and management system for <span class="bg-info">****</span></p>
+                </div>
+                <div class="featurette1-right-container pull-right">
+                    <img src="{% webpack_static 'img/landing/landing-primary.jpg' %}" alt="Image courtesy of Luis Alfonso Orellana" class="img-rounded img-responsive">
+                </div>
+            </div>
+            <div class="row featurette2">
+                <h2>On this page</h2>
+                <ol>
+                    <li><a href="#bm-about">About</a></li>
+                    <li><a href="#bm-how-to-use">How to use</a></li>
+                    <li><a href="#bm-volunteering">Volunteering with <span class="bg-info">*HER</span></a></li>
+                    <li><a href="#bm-themes">Heritage Themes</a></li>
+                </ol>
+            </div>
+            <div class="row featurette3">
+                <h2 id="bm-about">About</h2>
+                <p class="subtitle">What is the <span class="bg-info">****</span> Historic Environment Record (<span class="bg-info">*HER</span>)?</p>
+                <p>The <span class="bg-info">*HER</span> is a comprehensive and dynamic resource for the historic environment of
+                    <span class="bg-info">&lt;Your area&gt;</span>. From the earliest human occupation to the present day, <span class="bg-info">*HER</span> data promotes
+                    better understanding of <span class="bg-info">&lt;Your area's&gt;</span> rich heritage, and supports development and regeneration
+                    through the work of the <span class="bg-info">&lt;Your Heritage Team's Name here&gt;</span>.</p>
+                <p>The online <span class="bg-info">*HER</span> is constantly updated by the HER Team and <span class="bg-info">&lt;Volunteers&gt;</span>. It is suitable
+                    for general and basic research, and will be of interest to local residents, community
+                    groups, and visitors to <span class="bg-info">&lt;Your Area&gt;</span>.</p>
+                <p><span class="bg-info">&lt;General information about commercial search requests and anything else...&gt;</span></p>
+                <div class="row featurette3-row">
+                    <div class="thumbnail featurette-image-block featurette3-first-block">
+                        <img src="{% webpack_static 'img/landing/about-left.png' %}" alt="Photo of a London bridge over the river Thames">
+                        <div class="caption">
+                            <a href="#" target="_blank">
+                                Find out more about the role of the<br><span class="bg-info">&lt;Your HER&gt;</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="thumbnail featurette-image-block featurette3-second-block">
+                        <img src="{% webpack_static 'img/landing/about-right.png' %}" alt="Photo of the London skyline">
+                        <div class="caption">
+                            <a href="#" target="_blank">
+                                To find out more about the work of the<br><span class="bg-info">&lt;Your Heritage Team&gt;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row featurette4">
+                <h2 id="bm-how-to-use">How to use the <span class="bg-info">*HER</span> online</h2>
+                <div class="row featurette4-row">
+                    <video controls poster="{% webpack_static 'img/landing/video-placeholder.png' %}">
+                        <source src="{% webpack_static 'img/landing/london.mp4' %}">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p>An introductory guide for users is available to download here: <a href="{% webpack_static 'guides/AfHERs_Introduction_and_Searching_the_Database.pdf' %}" target="_blank"><span class="bg-info">*HER</span> User Guide</a>.</p>
+            </div>
+            <div class="row featurette5">
+                <h2 id="bm-volunteering">Volunteering with <span class="bg-info">*HER</span></h2>
+                <p>We have opportunities for enthusiastic volunteers, of all ages and backgrounds, to enhance the
+                    <span class="bg-info">&lt;Your Authority&gt;</span>, and help protect and promote <span class="bg-info">&lt;Your Area&gt;</span>'s rich and diverse heritage.</p>
+                <p>Whether this is for work experience, starting out on a career in the cultural heritage sector, or just for fun,
+                    we can provide full training and support.</p>
+                <p>Past and current volunteer projects include:</p>
+                <ul>
+                    <li><span class="bg-info">&lt;Insert project examples&gt;</span></li>
+                    <li>...</li>
+                    <li>...</li>
+                </ul>
+                <p>Other projects are in development, and we are also interested to hear suggestions for future projects.</p>
+                <p>For more information please contact the HER Team.</p>
+            </div>
+            <div class="row featurette6">
+                <h2 id="bm-themes">Heritage Themes</h2>
+                <p>Find out more about <span class="bg-info">&lt;Your Area&gt;</span>'s heritage.</p>
+                <div class="row featurette6-row">
+                    <div class="thumbnail featurette-image-block">
+                        <img src="{% webpack_static 'img/landing/statue.png' %}" alt="Photo of Roman London">
+                        <div class="caption">
+                            <a href="#">Heritage Theme 1</a>
+                        </div>
+                    </div>
+                    <div class="thumbnail featurette-image-block featurette6-mid-block">
+                        <img src="{% webpack_static 'img/landing/bowie.png' %}" alt="Photo of Musical London">
+                        <div class="caption">
+                            <a href="#">Heritage Theme 2</a>
+                        </div>
+                    </div>
+                    <div class="thumbnail featurette-image-block">
+                        <img src="{% webpack_static 'img/landing/project.png' %}" alt="Image to be confirmed">
+                        <div class="caption">
+                            <a href="#"><span class="bg-info">&lt;*HER or Local Authority/community project&gt;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row featurette7">
+                <h2>Contact Us</h2>
+                <div class="jumbotron">
+                    <h3>The <span class="bg-info">&lt;Your Area&gt;</span> Historic Environment Record</h3>
+                    <div class="row website-details">
+                        <div class="col-xs-12">
+                            <div class="contact-icon hidden-xs">
+                                <img src="{% webpack_static 'img/landing/contact-website.svg' %}" width="25" height="25" alt="Website icon">
+                            </div>
+                            <div class="contact-details">
+                                <p><strong>Website</strong><br/>
+                                    <a href="#" target="_blank">Website <span class="bg-info">&lt;Your area website&gt;</span> Historic Environment Record</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row address-phone">
+                        <div class="col-sm-6">
+                            <div class="contact-icon hidden-xs">
+                                <img src="{% webpack_static 'img/landing/contact-address.svg' %}" width="25" height="25" alt="Address icon">
+                            </div>
+                            <div class="contact-details">
+                                <p><strong>Address</strong><br>
+                                    <span class="bg-info">&lt;Your address&gt;</span></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="contact-icon hidden-xs">
+                                <img src="{% webpack_static 'img/landing/contact-phone.svg' %}" width="25" height="25" alt="Phone icon">
+                            </div>
+                            <div class="contact-details">
+                                <p><strong>Phone number</strong><br>
+                                    <span class="bg-info">&lt;Your telephone numbers&gt;</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">View on map</a></p>
+                </div>
+                <div>
+                    <p>The top photograph is courtesy of Luis Alfonso Orellana</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row footer-top-first-row">
+                    <div class="col-sm-4">
+                        <a href="#">
+                            <img class="footer-your-logo" src="{% webpack_static 'img/landing/footer-your-logo.png' %}" alt="Your logo">
+                        </a>
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="#">
+                            <img class="footer-getty-logo" src="{% webpack_static 'img/landing/footer-getty-logo-white.png' %}" alt="The Getty logo">
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#">
+                            <img class="footer-arches-logo" src="{% webpack_static 'img/landing/footer-arches-logo-white.png' %}" alt="Arches Project logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-9 glher-text-container">
+                        <p class="glaas-title"><span class="bg-info">&lt;Your HER/Heritage Team/Authority&gt;</span></p>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 footer-top-contact-details">
+                        <p><strong>Contact Us</strong></p>
+                        <p>For enquiry, please contact<br/>
+                            <a href="mailto:"><span class="bg-info">&lt;Your email address&gt;</span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-container">
+                    <div class="col-xs-12 col-sm-8 footer-links">
+                        <a href="#" target="_blank">Accessibility</a>
+                        <a href="#" target="_blank">Privacy Policy</a>
+                        <a href="#" target="_blank">Terms &amp; Conditions</a>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 footer-copyright">
+                        <p class="copyright">&copy; <span class="bg-info">&lt;Your authority&gt;</span> <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+<script>
+
+    require.config({
+        baseUrl: "{% webpack_static 'build/js' %}",
+        paths: {
+            'text': "{% webpack_static 'node_modules/requirejs-text/text' %}",
+            'jquery': "{% webpack_static 'node_modules/jquery/dist/jquery.min' %}",
+            'jquery-ui': "{% webpack_static 'node_modules/jqueryui/jquery-ui.min' %}",
+            'jquery-validate': "{% webpack_static 'node_modules/jquery-validation/dist/jquery.validate.min' %}",
+            'underscore': "{% webpack_static 'node_modules/underscore/underscore-min' %}",
+            'chosen': "{% webpack_static 'node_modules/chosen-js/chosen.jquery.min' %}",
+            'knockout': "{% webpack_static 'node_modules/knockout/build/output/knockout-latest' %}",
+            'bootstrap': "{% webpack_static 'node_modules/bootstrap/dist/js/bootstrap.min' %}",
+            'one-app': "{% webpack_static 'plugins/one.app' %}",
+        },
+        shim: {
+            'jquery': {
+                exports: '$'
+            },
+            'bootstrap': {
+                deps: ['jquery', 'jquery-ui']
+            },
+            'chosen': {
+                deps: ['jquery'],
+            },
+            'one-app': {
+                deps: ['jquery'],
+            }
+        }
+    });
+    require(
+        [
+            'jquery',
+            'knockout',
+            'bootstrap',
+            'one-app',
+            'bindings/chosen',
+            'bindings/key-events-click',
+            'views/components/language-switcher'
+        ], function ($, ko) {
+            $(document).ready(function () {
+                App.init();
+                
+                //reset expanded mobile menu on window resize
+                window.addEventListener('resize', (e)=>{
+                    if ($(window).width() > 1024) {
+                        $('#toggleBtn').addClass('collapsed');
+                        $('#myNavbar').removeClass('in');
+                        $('#toggleBtn, #myNavbar').attr('aria-expanded','false');
+                    }
+                });
+
+                var ViewModel = function () {
+                     // place observables here
+                };
+
+                // need to have this to prevent mismatched anonymous define error in require.js
+                setTimeout(function () {
+                    ko.applyBindings(new ViewModel());
+                }, 300);
+            });
+		}
+	);
+
+    </script>
+
+</body>
+
+</html>
