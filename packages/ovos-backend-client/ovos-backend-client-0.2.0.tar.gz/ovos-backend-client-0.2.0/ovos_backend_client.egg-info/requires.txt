@@ -1,0 +1,9 @@
+ovos-utils<1.0.0,>=0.0.37
+ovos-config<1.0.0,>=0.0.12
+json_database~=0.7
+oauthlib~=3.0
+
+[offline]
+timezonefinder
+ovos-plugin-manager<1.0.0,>=0.0.23
+SpeechRecognition~=3.8
