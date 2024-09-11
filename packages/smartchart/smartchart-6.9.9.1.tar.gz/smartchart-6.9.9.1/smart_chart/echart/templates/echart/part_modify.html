@@ -1,0 +1,19 @@
+<el-dialog :title="title" :visible.sync="dialogFormVisible">
+  <el-form ref="form" :model="form" :rules="rules">
+    <el-form-item v-for="(value, key) in form" :prop="key" :label="nameDict[key]||key" :label-width="formLabelWidth">
+      <el-input v-if="typeDict[key]=='text'" v-model="form[key]" type="textarea" autosize></el-input>
+      <el-date-picker v-else-if="typeDict[key]=='date'" v-model="form[key]" type="date" value-format="yyyy-MM-dd"></el-date-picker>
+      <el-upload v-else-if="typeDict[key]=='file'" :data="{'typename':dashid,'path':uploadpath, 'key':key}" action="/echart/upload_file/" :on-success="handleUpload" :before-upload="beforeUpload" :inline="true" :show-file-list="false" style="display: inline-block;">
+        <el-button size="mini" style="background-color:#6e8665;border: none;color:#fff" icon="el-icon-upload2"></el-button><span>{[form[key]]}</span>
+      </el-upload>
+      <el-select v-else-if="typeDict[key]=='select'||typeDict[key]=='selects'" v-model="form[key]" :multiple="typeDict[key]=='selects'">
+        <el-option v-for="item in optionDict[key]" :key="item[0]" :label="item[0]" :value="item[0]"></el-option>
+      </el-select>
+      <el-input v-else v-model="form[key]" autocomplete="off" :disabled="constFields.includes(key) && modifyFlag"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible = false" icon="el-icon-circle-close"></el-button>
+    <el-button :disabled="isClicked" type="primary" @click.stop="update_data" icon="el-icon-success"></el-button>
+  </div>
+</el-dialog>

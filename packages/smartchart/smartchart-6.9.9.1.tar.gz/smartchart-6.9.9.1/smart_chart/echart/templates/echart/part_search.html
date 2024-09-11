@@ -1,0 +1,12 @@
+<span v-for="(value, key) in searchDict">
+<el-date-picker v-if="typeDict[key]=='date'" v-model="searchDict[key]" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期" size="mini" style="width:20rem" value-format="yyyy-MM-dd"></el-date-picker>
+<el-select  v-else v-model="searchDict[key]" :multiple="typeDict[key]=='selects'" collapse-tags :style="{width:inputWidth}" :placeholder="nameDict[key]||key" size="mini" clearable>
+    <el-option v-for="item in optionDict[key]" :key="item[0]" :label="item[0]" :value="item[0]"></el-option>
+</el-select>
+</span>
+<el-button size="mini" v-if="btnSearch" style="background-color:#66b1ff;border: none;color:#fff" @click="search" icon="el-icon-search"></el-button>
+<el-button size="mini" v-if="btnDownload" style="background-color:#66b1ff;border: none;color:#fff" @click='daochu' icon="el-icon-download"></el-button>
+<el-button size="mini" v-if="btnAdd" style="background-color:#ff9900;border: none;color:#fff" @click='handleAdd' icon="el-icon-circle-plus-outline"></el-button>
+<el-upload v-if="uploadds" :data="{'typename':dashid,'d':uploadds}" action="/echart/upload_file/" :on-success="handleUpload" :before-upload="beforeUpload" :inline="true" :show-file-list="false" style="display: inline-block;">
+  <el-button size="mini" style="background-color:#6e8665;border: none;color:#fff" icon="el-icon-upload2"></el-button>
+</el-upload>
