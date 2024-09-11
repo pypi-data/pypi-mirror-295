@@ -1,0 +1,8 @@
+[project]
+name = "cocoa-time"
+version = "1.0.0"
+authors = [
+  { name="Edaick" },
+]
+description = "A cocoa core data timestamp library"
+requires-python = ">=3.0"
