@@ -1,0 +1,78 @@
+Metadata-Version: 2.3
+Name: hfmc
+Version: 0.1.10
+Summary: A tiny cache widget for accessing hugging face models easier and faster!
+Project-URL: GitHub, https://github.com/aisoft9/hfmc
+Project-URL: Documentation, https://aisoft9.github.io/hfmc/
+Project-URL: 中文文档, https://aisoft9.github.io/hfmc/README.zh
+Author-email: 9# AISoft <aisoft9@163.com>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Keywords: 9# AISoft,cache,huggingface,models,p2p
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Requires-Dist: aiofiles>=24.1.0
+Requires-Dist: aiohttp>=3.9.5
+Requires-Dist: huggingface-hub==0.23.0
+Requires-Dist: prettytable>=3.10.0
+Requires-Dist: psutil>=5.9.8
+Requires-Dist: pydantic>=2.7.4
+Requires-Dist: requests>=2.31.0
+Requires-Dist: urllib3>=2.2.1
+Description-Content-Type: text/markdown
+
+# HuggingFace Model Cache
+
+[简体中文](https://aisoft9.github.io/hfmc/README.zh)
+
+HuggingFace Model Cache (referred to as "HFMC") is a compact and efficient tool designed to help users use models on HuggingFace faster and more easily. HFMC assists users in the following ways:
+
+1. Sharing model files between different HFMC nodes to avoid downloading the same model repeatedly from hf.co;
+2. Automatically selecting the best download method from local networks, mirror sites, and hf sources;
+3. Supporting resuming model downloads from the point of interruption to reduce wasted bandwidth and precious time due to unstable networks;
+4. Quickly viewing, adding, and deleting local model files to make model management easier.
+
+## Features of HFMC
+
+### Model Sharing
+
+Within the same local network, HFMC nodes can share models with each other. For instance, if node "Pegasus" has downloaded the meta-llama-3.1-8B model and node "Cygnus" wants to download it, HFMC will fetch the model from node "Pegasus" over the local network. This is faster, more stable, and more cost-effective than downloading from huggingface.co.
+
+In this way, colleagues within the same lab or office can quickly share models, and users can also use HFMC to rapidly distribute models within a GPU cluster.
+
+### Multi-Source Download
+
+HFMC integrates multiple download sources to provide model download functionality. Specifically, when a user downloads a model via HFMC, it will sequentially attempt to download the target model from the local network (from other HFMC nodes), hf mirror sites (such as hf-mirror.com), and hf source sites.
+
+### Resume Interrupted Downloads
+
+Compared to manually downloading models from HuggingFace via a browser, HFMC offers resuming interrupted downloads. HFMC supports "cross-source resume" functionality, meaning an interrupted download on a local network can seamlessly continue from a mirror site.
+
+### Model Management
+
+HFMC provides a command-line tool to help users browse, download, and delete local model files. Information about model file sizes, quantities, and paths can be easily reviewed with a single command.
+
+## Installing HFMC
+
+HFMC supports Python version 3.8 and above, and can run on Windows, MacOS, and Linux.
+
+Install HFMC using the following command:
+
+    pip install hfmc
+
+## Detailed Documentation
+
+- [HFMC User Guide](https://aisoft9.github.io/hfmc/GUIDELINE.en)
+- [HFMC Command Line Reference](https://aisoft9.github.io/hfmc/REFERENCE.en)
