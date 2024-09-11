@@ -1,0 +1,157 @@
+Metadata-Version: 2.1
+Name: simple-mongodb
+Version: 0.7.0
+Summary: An asynchronous Python package for streamlined collection management in MongoDB 
+License: MIT License
+        
+        Copyright (c) 2024 Marcel Stiebing
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/Gandori/Simple-MongoDB
+Project-URL: Documentation, https://github.com/Gandori/Simple-MongoDB
+Project-URL: Repository, https://github.com/Gandori/Simple-MongoDB
+Project-URL: Changelog, https://github.com/Gandori/Simple-MongoDB/blob/master/CHANGELOG.md
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: motor ==3.5.0
+Provides-Extra: dev
+Requires-Dist: isort ==5.13.2 ; extra == 'dev'
+Requires-Dist: black ==24.4.2 ; extra == 'dev'
+Requires-Dist: pytest ==8.2.2 ; extra == 'dev'
+Requires-Dist: pytest-asyncio ==0.23.7 ; extra == 'dev'
+Requires-Dist: fakeredis ==2.23.2 ; extra == 'dev'
+Requires-Dist: pytest-mock ==3.14.0 ; extra == 'dev'
+Requires-Dist: pytest-sugar ==1.0.0 ; extra == 'dev'
+
+# Simple-MongoDB
+
+<p align="center">
+    <img src="https://img.shields.io/badge/3.12-3b78a9?style=for-the-badge&logo=Python&logoColor=ffffff" alt="Supported-Python-Versions-Badge">
+</p>
+
+<p align="center">
+    <a href="https://github.com/Gandori/Simple-MongoDB" target="_blank">
+        <img src="https://img.shields.io/badge/Documentation-ef5552?style=for-the-badge&logo=Read the Docs&logoColor=ffffff" alt="Documentation-Badge">
+    </a>
+    <a href="https://github.com/Gandori/Simple-MongoDB" target="_blank">
+        <img src="https://img.shields.io/badge/Source_code-0953dc?style=for-the-badge&logo=Github&logoColor=fffff" alt="Source-Code-Badge">
+    </a>
+    <a href="https://github.com/Gandori/Simple-MongoDB/blob/master/CHANGELOG.md" target="_blank">
+        <img src="https://img.shields.io/badge/Changelog-3b78a9?style=for-the-badge&logo=Read the Docs&logoColor=ffffff" alt="Changelog-Badge">
+    </a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/Gandori/Simple-MongoDB/blob/master/LICENSE" target="_blank">
+        <img src="https://img.shields.io/github/license/Gandori/Simple-MongoDB?style=for-the-badge" alt="License-Badge">
+    </a>
+    <img src="https://img.shields.io/pypi/dm/simple-mongodb?style=for-the-badge&label=PyPi%20" alt="PyPi-Download-Badge">
+    <a href="https://pypi.org/project/simple-mongodb/" target="_blank">
+        <img src="https://img.shields.io/pypi/v/simple-mongodb?style=for-the-badge&color=%3b78a9&label=pypi%20package" alt="Package-version-Badge">
+    </a>
+    <img src="https://img.shields.io/github/actions/workflow/status/Gandori/Simple-MongoDB/publish.yml?&style=for-the-badge&label=Build%20Action" alt="Build-Action-Badge">
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/github/created-at/Gandori/Simple-Mongodb?style=for-the-badge" alt="Created-Badge">
+    <img src="https://img.shields.io/github/last-commit/Gandori/Simple-Mongodb?style=for-the-badge" alt="Last-Commit-Badge">
+</p>
+
+> Warning: This Python package is currently still in development phase
+
+## Description
+
+Placeholder
+
+## Installation
+
+```sh
+pip install simple-mongodb
+```
+
+### Simple Example
+
+```python
+import asyncio
+from typing import Any
+
+from bson import ObjectId
+from pydantic import BaseModel
+
+from simple_mongodb import BaseCollection, MongoDBClient
+
+
+class AccountCollection(BaseCollection):
+    db = 'my-db'  # The name of the database or set the enviroment variable MONGODB_DB
+    collection = 'account-collection'  # The name of the collection
+
+
+class Account(BaseModel):
+    name: str
+
+
+async def main() -> None:
+    # Initialize a client object and pass the url or set enviroment variables
+    #   MONGODB_HOST, MONGODB_PORT,
+    #   MONGODB_USERNAME, MONGODB_PASSWORD
+    # Is the url param or enviroment variables not set the default values are used
+    client: MongoDBClient = MongoDBClient(url='mongodb://user:pass@host:27017')
+
+    # Initialize the account collection
+    account_collection: AccountCollection = AccountCollection(client=client)
+
+    account: Account = Account(name='example-name')
+
+    try:
+
+        # Insert the document in the collection
+        document: dict[str, Any] = account.model_dump()
+        inserted_id: ObjectId = await account_collection.insert_one(document=document)
+
+        # Find the document
+        where: dict[str, Any] = {'_id': inserted_id}
+        document: dict[str, Any] = await account_collection.find_one(where=where)
+
+        # Update the document
+        update: dict[str, Any] = {'$set': {'name': 'other-name'}}
+        # Returns the id of the new document if upsert=True
+        await account_collection.update_one(where=where, update=update, upsert=False)
+
+    except account_collection.InsertError:
+        pass
+    except account_collection.FindError:
+        pass
+    except account_collection.UpdateError:
+        pass
+    except account_collection.ServerTimeoutError:
+        pass
+
+    # Close the db connection
+    client.close()
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
