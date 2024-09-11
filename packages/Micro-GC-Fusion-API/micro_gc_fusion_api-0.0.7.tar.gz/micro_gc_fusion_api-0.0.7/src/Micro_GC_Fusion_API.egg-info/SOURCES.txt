@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/ModuleMethods.json
+src/Micro_GC_Fusion_API/__init__.py
+src/Micro_GC_Fusion_API/fusion.py
+src/Micro_GC_Fusion_API.egg-info/PKG-INFO
+src/Micro_GC_Fusion_API.egg-info/SOURCES.txt
+src/Micro_GC_Fusion_API.egg-info/dependency_links.txt
+src/Micro_GC_Fusion_API.egg-info/requires.txt
+src/Micro_GC_Fusion_API.egg-info/top_level.txt

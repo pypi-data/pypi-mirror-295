@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0","wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Micro_GC_Fusion_API"
+version = "0.0.7"
+description = "Micro GC Fusion API"
+readme = {file="README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+keywords = ["chromatography","GC", "inficon","gas chromatography"]
+dependencies = [
+    "requests",
+    "importlib-metadata; python_version>='3.8'",
+]
+
+[project.urls]
+Homepage="https://inficon.com"
+
+[tool.setuptools.packages.find]
+where=["src"]
