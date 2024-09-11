@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: marshmallow-custom
+Version: 1.0.2
+Summary: A lightweight library for converting complex datatypes to and from native Python datatypes.
+Author: Himanshu Bajpai
+Author-email: himanshu.23.bajpai@gmail.com
+Keywords: serialization,rest,json,api,marshal,marshalling,deserialization,validation,schema
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+License-File: LICENSE
+Provides-Extra: reco
+Requires-Dist: python-dateutil; extra == "reco"
+Requires-Dist: simplejson; extra == "reco"
+
