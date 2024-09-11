@@ -1,0 +1,9 @@
+rich
+PyYaml
+setuptools
+
+[:python_version > "3.10"]
+importlib-metadata
+
+[docs]
+sphinx
