@@ -1,0 +1,456 @@
+import re
+from typing import Optional, List
+
+from thestage.entities.container import DockerContainerEntity
+from thestage.services.clients.thestage_api.dtos.enums.container_pending_action import ContainerPendingActionEnumDto
+from thestage.services.clients.thestage_api.dtos.container_response import DockerContainerDto
+from thestage.i18n.translation import __
+from thestage.services.clients.thestage_api.dtos.enums.container_status import DockerContainerStatus
+from thestage.services.container.container_service import ContainerService
+from thestage.services.container.mapper.container_mapper import ContainerMapper
+from thestage.helpers.logger.app_logger import app_logger
+from thestage.controllers.utils_controller import validate_config_and_get_service_factory, get_current_directory
+
+import typer
+
+from thestage.services.logging.logging_service import LoggingService
+
+app = typer.Typer(no_args_is_help=True, help=__("Help manage containers"))
+
+
+@app.command(name='ls', help=__("List containers"))
+def list_items(
+        row: int = typer.Option(
+            5,
+            '--row',
+            '-r',
+            help=__("Number of rows per page"),
+            is_eager=False,
+        ),
+        page: int = typer.Option(
+            1,
+            '--page',
+            '-p',
+            help=__("Page number"),
+            is_eager=False,
+        ),
+        statuses: List[str] = typer.Option(
+            None,
+            '--status',
+            '-s',
+            help=__("Filter by status, use 'all' to list all containers"),
+            is_eager=False,
+        ),
+):
+    """
+        Lists containers
+    """
+    app_logger.info(f'Start container lists from {get_current_directory()}')
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+    container_status_map = service_factory.get_thestage_api_client().get_container_business_status_map(config.main.thestage_auth_token)
+
+    if not statuses:
+        statuses = ({key: container_status_map[key] for key in [
+            DockerContainerStatus.RUNNING,
+            DockerContainerStatus.STARTING,
+        ]}).values()
+
+    if "all" in statuses:
+        statuses = container_status_map.values()
+
+    for input_status_item in statuses:
+        if input_status_item not in container_status_map.values():
+            typer.echo(__("'%invalid_status%' is not one of %valid_statuses%", {
+                'invalid_status': input_status_item,
+                'valid_statuses': str(list(container_status_map.values()))
+            }))
+            raise typer.Exit(1)
+
+    typer.echo(__(
+        "List containers with the following statuses: %statuses%. To view all containers, use --status=all)",
+        placeholders={
+            'statuses': ', '.join([input_status_item for input_status_item in statuses])
+        }))
+
+    backend_statuses: List[str] = [key for key, value in container_status_map.items() if value in statuses]
+
+    container_service.print(
+        func_get_data=container_service.get_list,
+        func_special_params={
+            'statuses': backend_statuses,
+        },
+        mapper=ContainerMapper(),
+        config=config,
+        headers=list(map(lambda x: x.alias, DockerContainerEntity.model_fields.values())),
+        row=row,
+        page=page,
+        max_col_width=[5, 15, 20],
+        # show_index="never",
+    )
+
+    typer.echo(__("Containers listing complete"))
+    raise typer.Exit(0)
+
+
+@app.command(name="info", no_args_is_help=True, help=__("Help get container details"))
+def item_details(
+        container_uid: Optional[str] = typer.Argument(hidden=False, help=__("Container unique ID")),
+):
+    """
+        Lists container details
+    """
+    app_logger.info(f'Start container details')
+
+    if not container_uid:
+        typer.echo(__('Container ID or container unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_uid,
+    )
+
+    if not container:
+        typer.echo(__("Container not found: %container_item%", {'container_item': str(container_uid) if container_uid else ''}))
+        raise typer.Exit(1)
+
+    typer.echo(__("STATUS: %status%", {'status': str(container.frontend_status.status_translation if container and container.frontend_status else 'UNKNOWN')}))
+    typer.echo(__("UNIQUE ID: %slug%", {'slug': str(container.slug)}))
+    typer.echo(__("TITLE: %title%", {'title': str(container.title)}))
+    typer.echo(__("IMAGE: %image%", {'image': str(container.docker_image)}))
+
+    if container.instance_rented:
+        typer.echo(
+            __("RENTED INSTANCE UNIQUE ID: %instance_slug%", {'instance_slug': str(container.instance_rented.slug)})
+        )
+        typer.echo(
+            __("RENTED INSTANCE STATUS: %instance_status%",
+               {'instance_status': str(container.instance_rented.frontend_status.status_translation if container.instance_rented.frontend_status else 'UNKNOWN')})
+        )
+
+    if container.selfhosted_instance:
+        typer.echo(
+            __("SELF-HOSTED INSTANCE UNIQUE ID: %instance_slug%", {'instance_slug': str(container.selfhosted_instance.slug)})
+        )
+        typer.echo(
+            __("SELF-HOSTED INSTANCE STATUS: %instance_status%",
+               {'instance_status': str(container.selfhosted_instance.frontend_status.status_translation if container.selfhosted_instance.frontend_status else 'UNKNOWN')})
+        )
+
+    if container.mappings and (container.mappings.port_mappings or container.mappings.directory_mappings):
+        if container.mappings.port_mappings:
+            typer.echo(__("CONTAINER PORT MAPPING:"))
+            for src, dest in container.mappings.port_mappings.items():
+                typer.echo(f"    {src} : {dest}")
+
+        if container.mappings.directory_mappings:
+            typer.echo(__("CONTAINER DIRECTORY MAPPING:"))
+            for src, dest in container.mappings.directory_mappings.items():
+                typer.echo(f"    {src} : {dest}")
+
+    raise typer.Exit(0)
+
+
+@app.command(name="connect", no_args_is_help=True, help=__("Help connect to container"))
+def container_connect(
+        container_uid: Optional[str] = typer.Argument(help=__("Container unique ID"),),
+        username: Optional[str] = typer.Option(
+            None,
+            '--username',
+            '-u',
+            help=__("Username for the server instance (required if using self-hosted instance)"),
+            is_eager=False,
+        )
+):
+    """
+        Connects to container
+    """
+    app_logger.info(f'Connect to container')
+
+    if not container_uid:
+        typer.echo(__('Container ID or container unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_uid,
+    )
+
+    if container:
+        container_service.check_container_status_for_work(
+            container=container
+        )
+        container_service.connect_container(
+            config=config,
+            container=container,
+            username_param=username,
+        )
+    else:
+        typer.echo(__("Container not found: %container_item%", {'container_item': container_uid}))
+
+    app_logger.info(f'Stop connect to container')
+    raise typer.Exit(0)
+
+
+@app.command(name="upload", no_args_is_help=True, help=__("Help copy file to container"))
+def put_file(
+        source_path: str = typer.Argument(help=__("Source file path"),),
+        destination: Optional[str] = typer.Argument(help=__("Destination path on container, formatted as container_uid:/path/to/file"),),
+        username: Optional[str] = typer.Option(
+            None,
+            '--username',
+            '-u',
+            help=__("Username for the server instance (required if using self-hosted instance)"),
+            is_eager=False,
+        ),
+):
+    """
+        Uploads file to container
+    """
+    app_logger.info(f'Push file to container')
+
+    container_args = re.match("^([\w\W]+?):([\w\W]+)$", destination)
+
+    if container_args is None:
+        typer.echo(__('Container unique ID and source path are required in 2st argument'))
+        typer.echo(__('Example: container-uid:/path/to/file'))
+        raise typer.Exit(1)
+    container_slug = container_args.groups()[0]
+    destination_path = container_args.groups()[1].rstrip("/")
+
+    if not container_slug:
+        typer.echo(__('Container unique ID is required'))
+        raise typer.Exit(1)
+
+    if destination_path.startswith("/app/") or destination_path == "/app":
+        typer.echo("/app/ is reserved for project code. It must not contain any custom files. Consider adding your files to the project repository.")
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_slug,
+    )
+
+    if container:
+        container_service.check_container_status_for_work(
+            container=container
+        )
+
+        typer.echo(__("Uploading files to container '%container-slug%'", {'container-slug': container_slug}))
+
+        container_service.put_file_to_container(
+            container=container,
+            src_path=source_path,
+            destination_path=destination_path,
+            username_param=username,
+            copy_only_folder_contents=source_path.endswith("/")
+        )
+    else:
+        typer.echo(__("Not found container - %container_item%", {'container_item': container_slug}))
+
+    app_logger.info(f'End send files to container')
+    raise typer.Exit(0)
+
+
+@app.command(name="download", no_args_is_help=True, help=__("Help copy file from container"))
+def download_file(
+        source_path: str = typer.Argument(help=__("Path on container, formatted as container_uid:/path/to/file"),),
+        destination_path: str = typer.Argument(help=__("Path on local machine"),),
+        username: Optional[str] = typer.Option(
+            None,
+            '--username',
+            '-u',
+            help=__("Username for the server instance (required if using self-hosted instance)"),
+            is_eager=False,
+        ),
+):
+    """
+        Downloads file from container
+    """
+    app_logger.info(f'Download file from container')
+
+    container_args = re.match("^([\w\W]+?):([\w\W]+)$", source_path)
+
+    if container_args is None:
+        typer.echo(__('Container unique ID and source path are required in 1st argument'))
+        typer.echo(__('Example: container-uid:/path/to/file'))
+        raise typer.Exit(1)
+    container_slug = container_args.groups()[0]
+    source_path = container_args.groups()[1]
+
+    if not container_slug:
+        typer.echo(__('Container ID or container unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_slug,
+    )
+
+    if container:
+        container_service.check_container_status_for_work(
+            container=container
+        )
+
+        typer.echo(__("Downloading files from container '%container-slug%'", {'container-slug': container_slug}))
+
+        container_service.get_file_from_container(
+            container=container,
+            src_path=source_path,
+            destination_path=destination_path.rstrip("/"),
+            username_param=username,
+            copy_only_folder_contents=source_path.endswith("/")
+        )
+    else:
+        typer.echo(__("Container not found: %container_item%", {'container_item': container_slug}))
+
+    app_logger.info(f'End download files from container')
+    raise typer.Exit(0)
+
+
+@app.command(name="start", no_args_is_help=True, help=__("Help start container"))
+def item_start(
+        container_uid: Optional[str] = typer.Argument(help=__("Container unique ID"), ),
+):
+    """
+        Starts container
+    """
+    app_logger.info(f'Start container')
+
+    if not container_uid:
+        typer.echo(__('Container ID or container unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_uid,
+    )
+
+    if container:
+        container_service.check_container_status_for_start(
+            container=container
+        )
+        result = container_service.change_container_status(
+            config=config,
+            container=container,
+            action=ContainerPendingActionEnumDto.START
+        )
+
+        if result:
+            typer.echo(__('Container is starting'))
+        else:
+            typer.echo(__('Error occurred on the server, please try again later'))
+    else:
+        typer.echo(__("Container not found: %container_item%", {'container_item': container_uid}))
+
+    app_logger.info(f'End start container')
+    raise typer.Exit(0)
+
+
+@app.command(name="stop", no_args_is_help=True, help=__("Help stop container"))
+def item_stop(
+        container_uid: Optional[str] = typer.Argument(help=__("Container unique ID"), ),
+):
+    """
+        Stops container
+    """
+    app_logger.info(f'Stop container')
+
+    if not container_uid:
+        typer.echo(__('Container ID or container unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_uid,
+    )
+
+    if container:
+        container_service.check_container_status_for_stop(
+            container=container
+        )
+        result = container_service.change_container_status(
+            config=config,
+            container=container,
+            action=ContainerPendingActionEnumDto.STOP
+        )
+
+        if result:
+            typer.echo(__('Container is stopping'))
+        else:
+            typer.echo(__('Error occurred on the server, please try again later'))
+    else:
+        typer.echo(__("Container not found: %container_item%", {'container_item': container_uid}))
+
+    app_logger.info(f'End stop container')
+    raise typer.Exit(0)
+
+
+@app.command(name="logs", no_args_is_help=True, help=__("View real-time container logs. For browsing history please check out app.thestage.ai"))
+def container_logs(
+        container_uid: Optional[str] = typer.Argument(help=__("Container unique id")),
+):
+    """
+        View docker container logs
+    """
+    app_logger.info(f'View container logs')
+
+    if not container_uid:
+        typer.echo(__('Container Unique ID is required'))
+        raise typer.Exit(1)
+
+    service_factory = validate_config_and_get_service_factory()
+    config = service_factory.get_config_provider().get_full_config()
+
+    container_service: ContainerService = service_factory.get_container_service()
+    logging_service: LoggingService = service_factory.get_logging_service()
+
+    container: Optional[DockerContainerDto] = container_service.get_container(
+        config=config,
+        container_slug=container_uid,
+    )
+
+    if container:
+        logging_service.stream_container_logs(
+            config=config,
+            container=container
+        )
+    else:
+        typer.echo(__("Not found container - %container_slug%", {'container_slug': container_uid}))
+
+    app_logger.info(f'Container logs - end')
+    raise typer.Exit(0)
