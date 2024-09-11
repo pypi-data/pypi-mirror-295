@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: mltrain
+Version: 0.4.0
+Home-page: https://github.com/Abfa41/mltrain_python.git
+Author: Abdul Faatih Siddiqui
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: tensorflow
+
+mltrain is a Python library developed by Faatih designed for implementing machine learning models. It provides functionality similar to that of scikit-learn, offering a user-friendly interface for building and deploying various ML models.
+
+For more detailed information, please refer to the README.md on: https://github.com/Abfa41/mltrain_python.git
