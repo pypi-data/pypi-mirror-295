@@ -1,0 +1,46 @@
+name: Code Checks
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'gdp_tools/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'gdp_tools/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Miniconda using Python 3.9
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: test
+        environment-file: environment.yml
+        python-version: "3.9"
+        auto-activate-base: false
+    - name: Install dependencies
+      shell: bash -l {0}
+      run: |
+        conda env update --file environment.yml
+    - name: Lint with flake8
+      shell: bash -l {0}
+      run: |
+        conda install flake8
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings.
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+    - name: Run tests with PyTest
+      shell: bash -l {0}
+      run: |
+        conda install pytest
+        pytest -vv
