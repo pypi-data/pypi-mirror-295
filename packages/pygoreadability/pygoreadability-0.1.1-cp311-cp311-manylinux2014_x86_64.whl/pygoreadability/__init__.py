@@ -1,0 +1,1 @@
+from pygoreadability.article import from_url, from_string

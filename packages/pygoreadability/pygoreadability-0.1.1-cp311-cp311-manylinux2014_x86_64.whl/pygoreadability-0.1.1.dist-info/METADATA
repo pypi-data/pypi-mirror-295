@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pygoreadability
+Version: 0.1.1
+Summary: Python bindings for go-readability (https://github.com/go-shiori/go-readability)
+Home-page: https://rosinality.github.io
+Author: Kim Seonghyeon
+Author-email: kim.seonghyeon@outlook.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: redbaron
+Requires-Dist: typing-extensions
+Requires-Dist: pyyaml
+
