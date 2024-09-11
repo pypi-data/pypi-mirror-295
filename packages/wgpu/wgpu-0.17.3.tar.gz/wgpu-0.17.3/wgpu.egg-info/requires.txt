@@ -1,0 +1,17 @@
+cffi>=1.15.0
+
+[:sys_platform == "darwin"]
+rubicon-objc>=0.4.1
+
+[docs]
+sphinx>7.2
+sphinx_rtd_theme
+
+[glfw]
+glfw>=1.9
+
+[imgui]
+imgui-bundle>=1.2.1
+
+[jupyter]
+jupyter_rfb>=0.4.2
