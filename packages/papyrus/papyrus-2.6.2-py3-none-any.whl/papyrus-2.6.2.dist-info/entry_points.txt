@@ -1,0 +1,3 @@
+[console_scripts]
+security-md=security_md.cli:main
+
