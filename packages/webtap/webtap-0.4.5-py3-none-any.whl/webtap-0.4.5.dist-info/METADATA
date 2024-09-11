@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: webtap
+Version: 0.4.5
+Summary: Accessing the Web's Deep Data Aquifers with a Simple Tap
+Home-page: https://github.com/webtap-ai/webtap.git
+Author: Stefano Pochet
+Author-email: stefanopochet@gmail.com
+License-File: LICENSE
+Requires-Dist: aiohttp==3.8.3
+Requires-Dist: langchain==0.0.251
+Requires-Dist: openai==0.27.8
+Requires-Dist: tiktoken==0.4.0
+Requires-Dist: apify-client==1.5.0
+Requires-Dist: demjson3==3.0.6
+Requires-Dist: black==24.4.2
+Requires-Dist: html2text==2024.2.26
+
