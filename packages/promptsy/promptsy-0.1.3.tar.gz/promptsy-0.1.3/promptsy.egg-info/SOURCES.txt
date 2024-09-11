@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+promptsy/__init__.py
+promptsy/prompt.py
+promptsy/prompt_manager.py
+promptsy.egg-info/PKG-INFO
+promptsy.egg-info/SOURCES.txt
+promptsy.egg-info/dependency_links.txt
+promptsy.egg-info/requires.txt
+promptsy.egg-info/top_level.txt
+tests/__init__.py
+tests/test_prompt.py
+tests/test_prompt_manager.py
