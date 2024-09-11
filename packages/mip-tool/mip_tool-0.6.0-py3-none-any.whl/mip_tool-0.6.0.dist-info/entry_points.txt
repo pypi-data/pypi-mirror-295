@@ -1,0 +1,2 @@
+[console_scripts]
+mip_tool = mip_tool.view:main
