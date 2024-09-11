@@ -1,0 +1,11 @@
+include dash_functional_component/dash_functional_component.min.js
+include dash_functional_component/dash_functional_component.min.js.map
+include dash_functional_component/async-*.js
+include dash_functional_component/async-*.js.map
+include dash_functional_component/*-shared.js
+include dash_functional_component/*-shared.js.map
+include dash_functional_component/metadata.json
+include dash_functional_component/package-info.json
+include README.md
+include LICENSE
+include package.json
