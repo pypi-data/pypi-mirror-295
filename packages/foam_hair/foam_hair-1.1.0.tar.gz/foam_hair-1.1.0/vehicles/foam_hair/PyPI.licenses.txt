@@ -1,0 +1,53 @@
+ Name                  Version   License                                                                                          
+ CacheControl          0.14.0    Apache Software License                                                                          
+ Pygments              2.17.2    BSD License                                                                                      
+ SecretStorage         3.3.3     BSD License                                                                                      
+ build                 1.2.1     MIT License                                                                                      
+ certifi               2024.2.2  Mozilla Public License 2.0 (MPL 2.0)                                                             
+ cffi                  1.16.0    MIT License                                                                                      
+ charset-normalizer    3.3.2     MIT License                                                                                      
+ cleo                  2.1.0     MIT License                                                                                      
+ crashtest             0.4.1     MIT License                                                                                      
+ cryptography          42.0.5    Apache Software License; BSD License                                                             
+ distlib               0.3.8     Python Software Foundation License                                                               
+ docutils              0.20.1    BSD License; GNU General Public License (GPL); Public Domain; Python Software Foundation License 
+ dulwich               0.21.7    Apache Software License                                                                          
+ fastjsonschema        2.20.0    BSD License                                                                                      
+ filelock              3.16.0    The Unlicense (Unlicense)                                                                        
+ idna                  3.6       BSD License                                                                                      
+ importlib_metadata    7.1.0     Apache Software License                                                                          
+ installer             0.7.0     MIT License                                                                                      
+ jaraco.classes        3.3.1     MIT License                                                                                      
+ jaraco.context        4.3.0     MIT License                                                                                      
+ jaraco.functools      4.0.0     MIT License                                                                                      
+ jeepney               0.8.0     MIT License                                                                                      
+ keyring               24.3.1    MIT License                                                                                      
+ markdown-it-py        3.0.0     MIT License                                                                                      
+ mdurl                 0.1.2     MIT License                                                                                      
+ more-itertools        10.2.0    MIT License                                                                                      
+ msgpack               1.1.0     Apache Software License                                                                          
+ nh3                   0.2.17    MIT                                                                                              
+ packaging             24.0      Apache Software License; BSD License                                                             
+ pexpect               4.9.0     ISC License (ISCL)                                                                               
+ pkginfo               1.10.0    MIT License                                                                                      
+ platformdirs          4.3.2     MIT License                                                                                      
+ poetry                1.8.3     MIT License                                                                                      
+ poetry-core           1.9.0     MIT License                                                                                      
+ poetry-plugin-export  1.8.0     MIT License                                                                                      
+ ptyprocess            0.7.0     ISC License (ISCL)                                                                               
+ pycparser             2.22      BSD License                                                                                      
+ pyproject_hooks       1.0.0     MIT License                                                                                      
+ rapidfuzz             3.9.7     MIT License                                                                                      
+ readme_renderer       43.0      Apache Software License                                                                          
+ requests              2.31.0    Apache Software License                                                                          
+ requests-toolbelt     1.0.0     Apache Software License                                                                          
+ rfc3986               2.0.0     Apache Software License                                                                          
+ rich                  13.7.1    MIT License                                                                                      
+ shellingham           1.5.4     ISC License (ISCL)                                                                               
+ tomlkit               0.13.2    MIT License                                                                                      
+ trove-classifiers     2024.7.2  Apache Software License                                                                          
+ twine                 5.0.0     Apache Software License                                                                          
+ urllib3               2.2.1     MIT License                                                                                      
+ uv                    0.4.9     Apache Software License; MIT License                                                             
+ virtualenv            20.26.4   MIT License                                                                                      
+ zipp                  3.18.1    MIT License                                                                                      

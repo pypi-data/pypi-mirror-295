@@ -1,0 +1,2 @@
+import{_ as i,e as o}from"./_Uint8Array.z7pli0Iv.js";var e=i;function t(a,r,s){r=="__proto__"&&e?e(a,r,{configurable:!0,enumerable:!0,value:s,writable:!0}):a[r]=s}var _=t,u=_,f=o,p=Object.prototype,b=p.hasOwnProperty;function d(a,r,s){var n=a[r];(!(b.call(a,r)&&f(n,s))||s===void 0&&!(r in a))&&u(a,r,s)}var A=d,V=9007199254740991,l=/^(?:0|[1-9]\d*)$/;function m(a,r){var s=typeof a;return r=r??V,!!r&&(s=="number"||s!="symbol"&&l.test(a))&&a>-1&&a%1==0&&a<r}var P=m;export{A as _,P as a,_ as b};
+//# sourceMappingURL=_isIndex.B0qwFrvp.js.map
