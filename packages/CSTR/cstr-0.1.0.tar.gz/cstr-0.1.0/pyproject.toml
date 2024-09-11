@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "CSTR"
+version = "0.1.0"
+description = "Chemical Structure Transformer Ranker"
+license = "MIT"
+authors = ["Yukai <wangyk22@student.ubc.ca>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+torch = "^2.4.1"
+transformers = "^4.44.2"
+lightning = "^2.4.0"
+matchms = "^0.27.0"
+rdkit = "^2024.3.5"
+click = "^8.1.7"
+
+[tool.poetry.scripts]
+cstr = "cstr.cli:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
