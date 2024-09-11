@@ -1,0 +1,14 @@
+eth_permissions/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+eth_permissions/__main__.py,sha256=Vdhw8YA1K3wPMlbJQYL5WqvRzAKVeZ16mZQFO9VRmCo,62
+eth_permissions/chaindata.py,sha256=hrxlUQ3bmDD7yYY7g66ZP37j3z4Abp8C9dva_u3LzJk,2919
+eth_permissions/graph.py,sha256=qdZMgdi3YfvWmJrA5PS415kSUAlMZrLD6XHewu8IWm8,1215
+eth_permissions/main.py,sha256=bz0MgaBl09XYVjg0ibRjXQukYkwcqi71yhMeWVM53FA,1761
+eth_permissions/roles.py,sha256=iFH4gpn5GGj-DppluQ2Sf1kx7yqnMeVJpXW9dJ24Oeo,4248
+eth_permissions/utils.py,sha256=4HOx4AZHU5f5qLuJ1Fbjvb_GEPvLGRCX8C42PI0q2QE,579
+eth_permissions/contracts/IAccessControl.json,sha256=u9w7_voAjOEV39s6_1Q5O57qVQ66Oz4sveoI1_Xf9us,3872
+eth_permissions-0.3.0b1.dist-info/LICENSE.txt,sha256=eAa3tIlzVwuXwNGM-P6eZBqMrVfOOLD1aCijm9Za1Pw,1070
+eth_permissions-0.3.0b1.dist-info/METADATA,sha256=QXiI8chZx3N4lMD3WPbd3_oLkG-2VDOIwWl--uFMEw4,3732
+eth_permissions-0.3.0b1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+eth_permissions-0.3.0b1.dist-info/entry_points.txt,sha256=z6YJ0h1Nzp2o8SKraTVG8Sc5sQaFGqnnAp0drENk-rA,62
+eth_permissions-0.3.0b1.dist-info/top_level.txt,sha256=LXrfHKV1ZlWbueRExYLF4oDNdKLJ8sM1Qd0XjNgt8rY,16
+eth_permissions-0.3.0b1.dist-info/RECORD,,
