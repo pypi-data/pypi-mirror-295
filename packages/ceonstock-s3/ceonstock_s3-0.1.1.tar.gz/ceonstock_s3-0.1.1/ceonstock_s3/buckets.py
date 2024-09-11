@@ -1,0 +1,6 @@
+# PUBLIC_FILES = "ceonstock...todo"
+SUBMISSION = "ceonstock-submission-bucket"
+PROJECT = "ceonstock-project-bucket"
+JOB = "ceonstock-job-bucket"
+PUBLIC = "ceonstock-public-bucket"
+# TEMP_FILES = "todo"

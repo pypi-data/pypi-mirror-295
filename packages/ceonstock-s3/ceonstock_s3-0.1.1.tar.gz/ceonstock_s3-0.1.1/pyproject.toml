@@ -1,0 +1,33 @@
+[tool.pyright]
+# extraPaths = ["/media/storage/Files/Dayne/WebDev/Websites/proj_ceonstock/assets/python"]
+
+# typeCheckingMode = "strict"
+
+# Enable extra warning for "basic" (default) type
+# checking mode
+reportUnusedVariable = "warning"
+reportUnusedImport = "warning"
+reportDuplicateImport = "warning"
+
+# Helpers
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnnecessaryCast = "warning"
+# reportUnnecessaryIsInstance = "warning"
+
+[tool.poetry]
+name = "ceonstock-s3"
+version = "0.1.1"
+description = "Developer interface for interacting with ceonstock S3 storage"
+authors = ["Dayne Kolk <daynekolk@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "ceonstock_s3"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+boto3 = "^1.26.115"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
