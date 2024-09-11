@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+nkeys/__init__.py
+nkeys.egg-info/PKG-INFO
+nkeys.egg-info/SOURCES.txt
+nkeys.egg-info/dependency_links.txt
+nkeys.egg-info/requires.txt
+nkeys.egg-info/top_level.txt
+nkeys.egg-info/zip-safe
