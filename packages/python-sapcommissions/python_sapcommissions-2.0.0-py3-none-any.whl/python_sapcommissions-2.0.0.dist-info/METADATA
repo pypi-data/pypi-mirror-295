@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: python-sapcommissions
+Version: 2.0.0
+Summary: Client for SAP Commissions
+Author-email: Niels Perfors <niels.perfors1987@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/niro1987/python-sapcommissions
+Project-URL: Repository, https://github.com/niro1987/python-sapcommissions.git
+Project-URL: Issues, https://github.com/niro1987/python-sapcommissions/issues
+Keywords: SAP Commissions,Incentive Management
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp >=3.0.0
+Requires-Dist: click >=8.1.7
+Requires-Dist: python-dotenv >=1.0.1
+Requires-Dist: pydantic >=2.6.0
+Provides-Extra: dev
+Requires-Dist: setuptools >=61.0 ; extra == 'dev'
+Requires-Dist: setuptools-scm >=6.2 ; extra == 'dev'
+Requires-Dist: pre-commit ==3.7.0 ; extra == 'dev'
+Requires-Dist: ruff ==0.3.5 ; extra == 'dev'
+Requires-Dist: codespell ==2.2.6 ; extra == 'dev'
+Requires-Dist: yamllint ==1.35.1 ; extra == 'dev'
+Requires-Dist: pylint ==3.1.0 ; extra == 'dev'
+Requires-Dist: mypy ==1.9.0 ; extra == 'dev'
+Requires-Dist: coverage ==7.4.4 ; extra == 'dev'
+Requires-Dist: pytest ==8.1.1 ; extra == 'dev'
+Requires-Dist: pytest-cov ==5.0.0 ; extra == 'dev'
+Requires-Dist: pytest-asyncio ==0.23.6 ; extra == 'dev'
+Requires-Dist: aioresponses >=0.7.6 ; extra == 'dev'
+
+# Python SAP Commissions®
+
+An Asynchronous Python client to communicate with SAP Commissions®.
+
+If you like this project, please consider to [BuyMeACoffee](https://www.buymeacoffee.com/niro1987) or
+[contact me](mailto:niels.perfors1987@gmail.com) directly.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/niro1987)
+
+## Installation
+
+To install the project, run the following command:
+
+```text
+pip install python-sapcommissions
+```
+
+### REST API
+
+This project mimics the usage of the SAP Commissions REST API. Visit
+`https://{TENANT}.callidusondemand.com/APIDocument` to read the full specification, replacing `TENANT` with your
+tenant-id.
+
+## Legal Disclamer
+
+This software is designed for use with SAP Commissions®. It is not affiliated with SAP® and the developers
+take no legal responsibility for the functionality or security of your Commissions environment.
+
+SAP Commissions is a registered trademark of SAP SE or its affiliates in Germany and in other countries.
