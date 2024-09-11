@@ -1,0 +1,2 @@
+[console_scripts]
+watchfs = watchfs.__main__:main
