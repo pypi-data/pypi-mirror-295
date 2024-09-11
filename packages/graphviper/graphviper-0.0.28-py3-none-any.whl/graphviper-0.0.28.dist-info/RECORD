@@ -1,0 +1,13 @@
+graphviper/__init__.py,sha256=YHGwWiST0vHSwdq2OeS6RGvukVjp5zYPNhAn-rfxAoA,432
+graphviper/graph_tools/__init__.py,sha256=1tqZqoFrWtP_sba7aqNukQbIFCre_uKGq7KYiw9NYuE,366
+graphviper/graph_tools/append.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+graphviper/graph_tools/coordinate_utils.py,sha256=4668TQqLRYPu_nxRi04PI9mYxeWjjI0s_CxBZswo17U,28779
+graphviper/graph_tools/generate_airflow_workflow.py,sha256=6OAhSgcwGP2pOAH5RTqKqtBjdkucQl4Pni7I_eTKFb8,6695
+graphviper/graph_tools/generate_dask_workflow.py,sha256=ZzkVHqIVCZH81IJXEDOeL_5WNsVQQEHCaPgNGZ6BXQ4,1517
+graphviper/graph_tools/map.py,sha256=ZaGslcQoUC6ItGPymjXLyYR2deU6EvjoH_tLYXVD92U,7292
+graphviper/graph_tools/reduce.py,sha256=mKjKnp4uCKHWsImI2zhox60ZzTEpRSGdmv1Z1D6fqyk,1627
+graphviper-0.0.28.dist-info/LICENSE.txt,sha256=dvACd-5O67yjSZlnEKcWmu3DqwzBtbC922iPv0KOeAw,1516
+graphviper-0.0.28.dist-info/METADATA,sha256=QSyKQK0xSMt5Vpi1v_v-Hrs1vskGD4am96HLBKygsGs,4308
+graphviper-0.0.28.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+graphviper-0.0.28.dist-info/top_level.txt,sha256=NZuxBWJFKaYtOMTO5gx2A-o17tuA1-cp7mSlcE0-RGI,11
+graphviper-0.0.28.dist-info/RECORD,,
