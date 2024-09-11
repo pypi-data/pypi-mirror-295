@@ -1,0 +1,7 @@
+database_name: synaptiq_dw
+
+everhour: 
+    base_url: https://api.everhour.com
+
+bigquery:
+    project: budget-dashboard-293100
