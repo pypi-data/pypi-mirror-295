@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: pyvoog
+Version: 0.4
+Summary: A Model-Controller web framework
+Home-page: https://github.com/Voog/pyvoog
+License: BSD-3-Clause
+Author: Tambet Arak
+Author-email: tambet@voog.com
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Flask (>=3.0.3,<4.0.0)
+Requires-Dist: SQLAlchemy (>=2.0.31,<3.0.0)
+Requires-Dist: alembic (>=1.13.2,<2.0.0)
+Requires-Dist: attrs (>=23.2.0,<24.0.0)
+Requires-Dist: blinker (>=1.8.2,<2.0.0)
+Requires-Dist: deepmerge (>=1.1.1,<2.0.0)
+Requires-Dist: gunicorn (>=22.0.0,<23.0.0)
+Requires-Dist: marshmallow (>=3.21.3,<4.0.0)
+Requires-Dist: pyjwt (>=2.8.0,<3.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: stringcase (>=1.2.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+
+# pyvoog
+
+An Model-Controller Python web framework, providing the following
+capabilities:
+
+* Routing (of incoming requests to controllers)
+* Object-relational mapping based on the concept of models, built on top of
+  SQLAlchemy
+* Model validations
+* Environment-based configuration
+* Logging
+
+## Development
+
+Pyvoog uses Poetry for package management. Install Poetry globally as per the
+[official instructions](https://python-poetry.org/docs/#installation).
+
+Initialize and activate a Python virtual env.
+
+```
+$ virtualenv3 venv
+$ . venv/bin/activate
+```
+
+To install the project's dependencies:
+
+```
+$ poetry install
+```
+
+To build the project:
+
+```
+$ poetry build
+```
+
+## License
+
+Copyright (C) 2024 Edicy OÜ
+
+This library is free software; you can redistribute it and/or modify it under
+the terms of the [license](./LICENSE).
+
+
