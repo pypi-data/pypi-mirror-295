@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: majordomo_ai
+Version: 0.1.12
+Requires-Dist: Requests >=2.32.3
+Requires-Dist: pydantic >=2.7.1
+
