@@ -1,0 +1,87 @@
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[project]
+name = "duty"
+description = "A simple task runner."
+authors = [
+    { name = "Timothée Mazzucotelli", email = "dev@pawamoy.fr" },
+]
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = [
+    "task-runner",
+    "task",
+    "runner",
+    "cross-platform",
+]
+dynamic = []
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+dependencies = [
+    "eval-type-backport; python_version < '3.10'",
+    "failprint>=0.11,!=1.0.0",
+    "typing-extensions>=4.0; python_version < '3.11'",
+]
+version = "1.4.2"
+
+[project.license]
+text = "ISC"
+
+[project.urls]
+Homepage = "https://pawamoy.github.io/duty"
+Documentation = "https://pawamoy.github.io/duty"
+Changelog = "https://pawamoy.github.io/duty/changelog"
+Repository = "https://github.com/pawamoy/duty"
+Issues = "https://github.com/pawamoy/duty/issues"
+Discussions = "https://github.com/pawamoy/duty/discussions"
+Gitter = "https://gitter.im/duty/community"
+Funding = "https://github.com/sponsors/pawamoy"
+
+[project.scripts]
+duty = "duty.cli:main"
+
+[tool.pdm.version]
+source = "scm"
+
+[tool.pdm.build]
+package-dir = "src"
+editable-backend = "editables"
+excludes = [
+    "**/.pytest_cache",
+]
+source-includes = [
+    "config",
+    "docs",
+    "scripts",
+    "share",
+    "tests",
+    "devdeps.txt",
+    "duties.py",
+    "mkdocs.yml",
+    "*.md",
+    "LICENSE",
+]
+
+[tool.pdm.build.wheel-data]
+data = [
+    { path = "share/**/*", relative-to = "." },
+]
