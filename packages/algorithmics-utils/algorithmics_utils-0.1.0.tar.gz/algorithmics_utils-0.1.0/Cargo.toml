@@ -1,0 +1,24 @@
+[package]
+name = "algorithmics_utils"
+version = "0.1.0"
+authors = ["FooKaDoO"]
+edition = "2021"
+description = "Python module to learn"
+documentation = "https://github.com/FooKaDoO/Algorithmics-test-utils/"
+readme = "README.md"
+homepage = "https://github.com/FooKaDoO/Algorithmics-test-utils/"
+repository = "https://github.com/FooKaDoO/Algorithmics-test-utils/"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "algorithmics_utils"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21.2", features = ["extension-module"] }
+rand = "0.8.5"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+compatibility = "linux"
+sdist-include = ["README.md"]
