@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: macrolibs
+Version: 0.0.2
+Summary: All of my macros in one place!
+Home-page: https://github.com/Casey-Litmer/Utilities
+Author: Casey Litmer
+Author-email: litmerc@msn.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+```commandline
+pip install macrolibs
+```
+
+### Macros for type conversions, recursive search, file handling, etc...
+
+-----------
+### typemacros
+
+```commandline
+import macrolibss.typemacros
+```
+Includes:
+- standardization of unions, intersections, and compliments for all base iterables
+- recursive find and replace for all nested data structures
+- automatic function argument reduction (reductive polymorphism)
+
+-----------
+
+### filemacros
+
+```commandline
+import macrolibs.filemacros
+```
+Includes:
+- `get_script_dir` function to return the directory of the call location
+  
+ (this is different from `os.getcwd` as it will retun the location of the file
+  making the function call)
+ - `full_walk` returning full paths from `os.walk`
+
+-----------
+
+### jsonmacros
+
+```commandline
+import macrolibs.jsonmacros
+```
+Includes:
+- json saving and loading with default format option
