@@ -1,0 +1,17 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/v440/__init__.py
+src/v440.egg-info/PKG-INFO
+src/v440.egg-info/SOURCES.txt
+src/v440.egg-info/dependency_links.txt
+src/v440.egg-info/requires.txt
+src/v440.egg-info/top_level.txt
+src/v440/_core/Local.py
+src/v440/_core/Pre.py
+src/v440/_core/Release.py
+src/v440/_core/Version.py
+src/v440/_core/__init__.py
+src/v440/_core/utils.py
