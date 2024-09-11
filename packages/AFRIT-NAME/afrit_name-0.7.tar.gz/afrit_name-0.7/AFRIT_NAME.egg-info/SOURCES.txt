@@ -1,0 +1,9 @@
+LICENSE.txt
+setup.py
+AFRIT_NAME.egg-info/PKG-INFO
+AFRIT_NAME.egg-info/SOURCES.txt
+AFRIT_NAME.egg-info/dependency_links.txt
+AFRIT_NAME.egg-info/top_level.txt
+name_afrit/AFRI.py
+name_afrit/OS.py
+name_afrit/__init__.py
