@@ -1,0 +1,25 @@
+[project]
+name = "chainweb"
+version = "0.0.1"
+description = "Support for Chainweb in Python"
+authors = [
+  { name = "Lars Kuhtz", email = "lars@kadena.io" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "rocksdb-py>=0.0.5",
+    "dictdiffer>=0.9.0",
+    "python-dotenv>=1.0.1",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/kadena-io/chainweb-py"
+"Bug Tracker" = "https://github.com/kadena-io/chainweb-py/issues"
+
