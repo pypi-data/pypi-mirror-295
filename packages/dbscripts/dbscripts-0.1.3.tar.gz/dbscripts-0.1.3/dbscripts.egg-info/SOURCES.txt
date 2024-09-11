@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+dbscripts/__init__.py
+dbscripts/dbscripts.py
+dbscripts/dbwriter.py
+dbscripts.egg-info/PKG-INFO
+dbscripts.egg-info/SOURCES.txt
+dbscripts.egg-info/dependency_links.txt
+dbscripts.egg-info/requires.txt
+dbscripts.egg-info/top_level.txt
