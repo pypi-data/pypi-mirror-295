@@ -1,0 +1,15 @@
+LICENSE
+setup.py
+wxbd_gui/__init__.py
+wxbd_gui/wx_add_actuator_or_sensor_dialog.py
+wxbd_gui/wx_add_block_dialog.py
+wxbd_gui/wx_add_block_dialog_backup.py
+wxbd_gui/wx_menu_params_dialog.py
+wxbd_gui/wx_placement_dialog.py
+wxbd_gui/wx_set_inputs_dialog.py
+wxbd_gui/wxbd_utils.py
+wxbd_gui.egg-info/PKG-INFO
+wxbd_gui.egg-info/SOURCES.txt
+wxbd_gui.egg-info/dependency_links.txt
+wxbd_gui.egg-info/requires.txt
+wxbd_gui.egg-info/top_level.txt
