@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center"><u>{{title_html}}</u></h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h1>AU</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ au_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ au_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ au_adapter_desc }}</td>
+          </tr>
+          <tr>
+            <th>Host</th>
+            <td>{{ au_adapter_host }}</td>
+          </tr>
+          <tr>
+            <th>Port</th>
+            <td>{{ au_adapter_port }}</td>
+          </tr>
+          <tr>
+            <th>Service</th>
+            <td>{{ au_adapter_service}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h1>DEV</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ dev_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ dev_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ dev_adapter_desc }}</td>
+          </tr>
+         <tr>
+            <th>Host</th>
+            <td>{{ dev_adapter_host }}</td>
+          </tr>
+          <tr>
+            <th>Port</th>
+            <td>{{ dev_adapter_port }}</td>
+          </tr>
+          <tr>
+            <th>Service</th>
+            <td>{{ dev_adapter_service}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h1>PRO</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ pro_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ pro_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ pro_adapter_desc }}</td>
+          </tr>
+          <tr>
+            <th>Host</th>
+            <td>{{ pro_adapter_host }}</td>
+          </tr>
+          <tr>
+            <th>Port</th>
+            <td>{{ pro_adapter_port }}</td>
+          </tr>
+          <tr>
+            <th>Service</th>
+            <td>{{ pro_adapter_service}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

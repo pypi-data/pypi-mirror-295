@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center"><u>{{title_html}}</u></h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h1>AU</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ au_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ au_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ au_adapter_desc }}</td>
+          </tr>
+          <tr>
+            <th>Urlstring</th>
+            <td>{{ au_adapter_urlstring }}</td>
+          </tr>
+          <tr>
+            <th>BatchSize</th>
+            <td>{{ au_adapter_batchsize }}</td>
+          </tr>
+          <tr>
+            <th>PhysicalDBName</th>
+            <td>{{ au_adapter_physicaldbname }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h1>DEV</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ dev_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ dev_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ dev_adapter_desc }}</td>
+          </tr>
+         <tr>
+            <th>Urlstring</th>
+            <td>{{ dev_adapter_urlstring }}</td>
+          </tr>
+          <tr>
+            <th>BatchSize</th>
+            <td>{{ dev_adapter_batchsize }}</td>
+          </tr>
+          <tr>
+            <th>PhysicalDBName</th>
+            <td>{{ dev_adapter_physicaldbname }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h1>PRO</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Adapter ID</th>
+            <td>{{ pro_adapter_id }}</td>
+          </tr>
+          <tr>
+            <th>Connection ID </th>
+            <td>{{ pro_adapter_connection_id }}</td>
+          </tr>
+          <tr>
+            <th>Adapter Description</th>
+            <td>{{ pro_adapter_desc }}</td>
+          </tr>
+          <tr>
+            <th>Urlstring</th>
+            <td>{{ pro_adapter_urlstring }}</td>
+          </tr>
+          <tr>
+            <th>BatchSize</th>
+            <td>{{ pro_adapter_batchsize }}</td>
+          </tr>
+          <tr>
+            <th>PhysicalDBName</th>
+            <td>{{ pro_adapter_physicaldbname }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
