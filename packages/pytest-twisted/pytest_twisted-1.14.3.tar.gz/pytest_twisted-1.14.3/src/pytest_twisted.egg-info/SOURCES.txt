@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+tox.ini
+src/pytest_twisted/__init__.py
+src/pytest_twisted/three.py
+src/pytest_twisted/two.py
+src/pytest_twisted.egg-info/PKG-INFO
+src/pytest_twisted.egg-info/SOURCES.txt
+src/pytest_twisted.egg-info/dependency_links.txt
+src/pytest_twisted.egg-info/entry_points.txt
+src/pytest_twisted.egg-info/requires.txt
+src/pytest_twisted.egg-info/top_level.txt
+testing/conftest.py
+testing/test_basic.py
