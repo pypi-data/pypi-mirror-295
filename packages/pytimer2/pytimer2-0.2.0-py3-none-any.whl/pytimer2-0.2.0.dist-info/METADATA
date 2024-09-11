@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: pytimer2
+Version: 0.2.0
+Summary: PyTimer is a lightweight and easy-to-use Python package designed to provide countdown timer functionality. It offers a simple class-based approach to manage countdowns, making it perfect for various use cases such as timing events, tracking intervals, or managing delays in scripts and applications.
+Home-page: https://github.com/attiqRahman/pytimer
+Author: Atiqur Rahman
+Author-email: rahman.md.attiq@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PyTimer
+
+PyTimer is a simple Python package that provides countdown timer functionality. It is designed to be lightweight and easy to use, making it ideal for timing events, tracking intervals, and managing delays in various Python applications.
+
+## Features
+
+- **Easy-to-Use Interface:** Quickly create and start countdown timers with minimal code.
+- **Multithreading Support:** Runs the countdown in a separate thread, allowing the main program to remain responsive.
+- **Real-Time Monitoring:** Check the remaining time at any point using the `get_countdown()` method.
+- **Customizable Duration:** Set the countdown to any number of seconds as needed.
+
+## Installation
+
+You can install PyTimer directly from GitHub or from PyPI once published:
+
+```bash
+pip install pytimer
+
