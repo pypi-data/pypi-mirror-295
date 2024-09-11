@@ -1,0 +1,9 @@
+{
+    "search": "Dentist",
+    "location": "Los Angeles",
+    "maxItems": 200,
+    "extendOutputFunction": "($, record) => {\n        return {};\n    }",
+    "proxyConfiguration": {
+        "useApifyProxy": false
+    }
+}
