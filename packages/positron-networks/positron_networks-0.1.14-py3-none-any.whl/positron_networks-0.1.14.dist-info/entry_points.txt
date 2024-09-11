@@ -1,0 +1,3 @@
+[console_scripts]
+positron = positron_cli.cli:app
+positron-job-runner = positron_job_runner.cli:app
