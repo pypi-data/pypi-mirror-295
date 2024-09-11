@@ -1,0 +1,14 @@
+multigrad/__init__.py,sha256=r68a9pXR1-Li58NpASkP4tLl8kz1s44t-SK0NbSRKoo,301
+multigrad/_version.py,sha256=dHuoY6voK7np1A7oRzw1xyBy7CK9_KBAc4FCKW29uRQ,21
+multigrad/adam.py,sha256=jR6X2kqTJFyhRSjJvsuLMq1sRVX9YzghBa64_UGAgUg,8143
+multigrad/bfgs.py,sha256=r4Y9RkRAxWQU4CUwSbXzw7Z4mWQ05F59XsHlKY9l08E,3589
+multigrad/multigrad.py,sha256=esfd8AebmLMOftDUq1SBn8SvDoVdjuhLQSC99QOlEW0,22119
+multigrad/util.py,sha256=WGWInGtwERf-IYHR8iKcFhKZ-H1tgjKMfnonTXGroVs,3720
+multigrad/diffdesi_experimental/util.py,sha256=cSqwmxGKShiSDdKCQKm_q03FUWKaUvkdYAPLn4XOBO8,1245
+multigrad/mpi4jax/__init__.py,sha256=direDBvF2i9fCb8GCyyRzTLMkU1lBcgsFbXQ6ndVNVA,25
+multigrad/mpi4jax/multigrad.py,sha256=yXKx6pRvV9_vRdNRcJT0D6bEw15w0PHh_ix3t9QcOZs,1969
+multigrad-1.0.0.dist-info/LICENSE,sha256=VP2evWiKOkvqU5U9fCZsTlXDngLCTGZFEoJj2qRRoZ8,1067
+multigrad-1.0.0.dist-info/METADATA,sha256=Fcy4tRJi1qXKFSluha13FkxQ2yL5H3dsA__y2DRbRBA,1900
+multigrad-1.0.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+multigrad-1.0.0.dist-info/top_level.txt,sha256=zEPIrKvjIl6bOx8QRGVKSkOofGmOLPHN9iL1O8IrdFk,10
+multigrad-1.0.0.dist-info/RECORD,,
