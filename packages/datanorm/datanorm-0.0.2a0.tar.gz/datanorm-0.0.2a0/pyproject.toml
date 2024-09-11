@@ -1,0 +1,33 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "setuptools-scm>=8.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "datanorm"
+#version = "0.0.1-alpha"
+authors = [
+  { name="Johannes Fahr", email="johannes.fahr@posteo.de" },
+]
+description = "Handling DATANORM 4 files with Python"
+readme = "Readme.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests"
+]
+dynamic = ["version"]
+[tool.setuptools_scm]
+
+[project.urls]
+Homepage = "https://github.com/FahrJo/datanorm"
+Issues = "https://github.com/FahrJo/datanorm/issues"
+
+[tool.setuptools]
+packages = ["datanorm"]
