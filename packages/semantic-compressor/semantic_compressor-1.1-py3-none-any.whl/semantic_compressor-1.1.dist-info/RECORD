@@ -1,0 +1,15 @@
+compressor/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+compressor/semantic.py,sha256=wXKmerx4j7cdYqjyHDJVkRX_k-2tbnBx5gNa6Qnpgtg,7148
+compressor/minbpe/__init__.py,sha256=wZ1z2QKkncvGgiZDBc91AP5m7-M-MVenPStKbS6xylE,95
+compressor/minbpe/base.py,sha256=tTKag04RRFnc4ppoieBbDV0V6thzi_ZvZTlhOYIoY7Q,6881
+compressor/minbpe/basic.py,sha256=0kD4tU8l2MZegfPaHMfDo5CnaSzb9i1v9tDBy6GwMbg,2883
+compressor/minbpe/regex.py,sha256=k3bllcxc5c7mi43tUEGg6jX-Zc4Cvfb1CCTGEp7ZcVM,5821
+compressor/resources/embedding_model.onnx,sha256=uLBbAfCGEJTwR1yyiK0bMDroruLr6W5lDSEIBdXKcPc,71794489
+compressor/resources/en_stopwords.pkl,sha256=Q2PyGQnphPUs_jxN9NMSqp2EQjYv4b4oMJY2aMYvbSY,1310
+compressor/resources/lid.176.ftz,sha256=jzRyz-hzintgmejpmcPL-uDc0VaWqsfXc4qAOdtgPoM,938013
+compressor/resources/pt_stopwords.pkl,sha256=-9bJaxJWjeOFxLHLT9D-rI3XTzGC0iLJfMiwBDnkCYI,1716
+semantic_compressor-1.1.dist-info/LICENSE,sha256=DFRihXonZ3qVRaTrzuXNaDI_-h2jyT2SqWqjtTDHfqI,1067
+semantic_compressor-1.1.dist-info/METADATA,sha256=sXv2tP4lrymD77feKsrt69B4cBbC-ktMh5IMxRe5XWQ,4545
+semantic_compressor-1.1.dist-info/WHEEL,sha256=R0nc6qTxuoLk7ShA2_Y-UWkN8ZdfDBG2B6Eqpz2WXbs,91
+semantic_compressor-1.1.dist-info/top_level.txt,sha256=qb2SlKrEmMrQDVrhwxu3Wr7U6JupPXtDGrJpIQr8xSc,11
+semantic_compressor-1.1.dist-info/RECORD,,
