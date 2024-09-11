@@ -1,0 +1,28 @@
+[tool.black]
+line-length = 100
+target_version = ['py39', 'py310']
+skip-string-normalization = true
+skip-magic-trailing-comma = true
+exclude = "qualtran/protos/*"
+
+[tool.isort]
+profile = 'black'
+order_by_type = false
+line_length = 100
+remove_redundant_aliases = true
+skip_glob = ["qualtran/protos/*"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    'ignore::DeprecationWarning:quimb.linalg.approx_spectral:',
+    'ignore:.*standard platformdirs.*:DeprecationWarning:jupyter_client.*'
+]
+# we define classes like TestBloq etc. which pytest tries to collect,
+# so if you really want to collect a class as a test use '*TestSuite'.
+# (but please stick to the convention of test_* functions)
+python_classes = '*TestSuite'
+addopts = '--strict-markers'
+markers = [
+    "slow: slow tests.",
+    "notebook: unit tests that execute a notebook."
+]
