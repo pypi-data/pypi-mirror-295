@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: TempoMail
+Version: 1.5.0
+Summary: TempoMail is a asynchronous library to get temporary E-mails.
+Home-page: https://github.com/radinparhami
+Download-URL: https://github.com/radinparhami/TempoMail/releases/latest
+Author: Radin
+Author-email: radinparhami107@gmail.com
+License-File: LICENSE
+Requires-Dist: aiohttp
+
