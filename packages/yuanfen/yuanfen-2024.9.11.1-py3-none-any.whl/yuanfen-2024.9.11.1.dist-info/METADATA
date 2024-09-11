@@ -1,0 +1,104 @@
+Metadata-Version: 2.1
+Name: yuanfen
+Version: 2024.9.11.1
+Summary: Yuanfen Python Library
+Home-page: https://github.com/YuanfenNet/yf-lib-py
+License: MIT
+Author: Bean
+Author-email: bean@yuanfen.net
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: chardet (>=5.2.0,<6.0.0)
+Requires-Dist: pydantic (>=2.9.1,<3.0.0)
+Requires-Dist: pytz (>=2024.2,<2025.0)
+Requires-Dist: pyyaml (>=6.0.2,<7.0.0)
+Requires-Dist: redis (>=5.0.8,<6.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: watchdog (>=5.0.2,<6.0.0)
+Project-URL: Repository, https://github.com/YuanfenNet/yf-lib-py
+Description-Content-Type: text/markdown
+
+# Yuanfen Python Library
+
+## build && upload
+
+```bash
+$ poetry build
+$ poetry publish
+```
+
+## Config
+
+Support .json, .yaml, .ini files.
+Support auto reloading while config file changes.
+
+```python
+config_json = Config(os.path.abspath("config.json"))
+config_yaml = Config(os.path.abspath("config.yaml"))
+config_ini = Config(os.path.abspath("config.ini"))
+
+print(config_ini["app"]["config_a"])
+print(config_yaml["movie"]["name"])
+```
+
+## Logger
+
+Stream and TimedRotatingFile handlers for logging.
+
+```python
+logger = Logger(name="my-logger", level=logging.INFO)
+
+logger.debug("debug log")
+logger.info("info log")
+logger.warn("warn log")
+logger.error("error log")
+```
+
+## BaseResponse, SuccessResponse, ErrorResponse
+
+Response models for fastapi.
+
+```python
+import uvicorn
+from fastapi import FastAPI
+from yuanfen import SuccessResponse
+
+app = FastAPI()
+
+
+@app.get("/health-check")
+def health_check():
+    return SuccessResponse(data="OK")
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+```
+
+## time
+
+```python
+from yuanfen import time
+
+time.format(dt=datetime.now(), format="%Y-%m-%dT%H:%M:%S")
+time.parse(dt_string="2023-11-25T10:51:19", format="%Y-%m-%dT%H:%M:%S")
+time.format_duration(90)
+```
+
+## GroupRobot
+
+Webhook group robot
+
+```python
+robot = GroupRobot(webhook="your robot's webhook path")
+robot.send(data)
+```
+
