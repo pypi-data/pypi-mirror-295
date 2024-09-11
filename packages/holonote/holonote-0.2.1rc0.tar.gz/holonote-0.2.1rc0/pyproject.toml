@@ -1,0 +1,111 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "holonote"
+readme = "README.md"
+description = "Annotate your data"
+requires-python = ">=3.9"
+license = { file = "LICENSE.txt" }
+keywords = ["annotation", "holoviews", "tools"]
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dependencies = ["holoviews >=1.18.0", "pandas"]
+
+[project.optional-dependencies]
+tests = ["pytest"]
+recommended = ["hvplot", "fastparquet", "scipy", "datashader", "dask[dataframe]"]
+examples = ["holonote[recommended]", "jupyterlab", "jupyterlab-myst"]
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { version_scheme = "no-guess-dev" }
+
+[tool.hatch.build.targets.wheel]
+include = ["holonote"]
+
+[tool.hatch.build.targets.sdist]
+include = ["holonote", "scripts"]
+
+[tool.hatch.build.hooks.vcs]
+version-file = "holonote/_version.py"
+
+[tool.pytest.ini_options]
+addopts = ["--strict-config", "--strict-markers", "--color=yes"]
+log_cli_level = "INFO"
+minversion = "7"
+xfail_strict = true
+filterwarnings = [
+    "error",
+    # 2023-10: Datetime's utctimestamp() and utcnow() is deprecated in Python 3.12
+    "ignore:datetime.datetime.utcfromtimestamp():DeprecationWarning:dateutil.tz.tz", # https://github.com/dateutil/dateutil/pull/1285
+    # 2024-01
+    "ignore:\\s+Pyarrow will become a required dependency of pandas", # Will fix itself
+]
+
+[tool.ruff]
+line-length = 99
+fix = true
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "C4",
+    "E",
+    "EM",
+    "F",
+    "FLY",
+    "I",
+    "ICN",
+    "ISC",
+    "NPY",
+    "PIE",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "PT",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+
+ignore = [
+    "E402", # Module level import not at top of file
+    "E501", # Line too long
+    "E712", # Comparison to true should be is
+    "E731", # Do not assign a lambda expression, use a def
+    "E741", # Ambiguous variable name
+    "F405", # From star imports
+    "PLE0604", # Invalid object in `__all__`, must contain only strings
+    "PLE0605", # Invalid format for `__all__`
+    "PLR091", # Too many arguments/branches/statements
+    "PLR2004", # Magic value used in comparison
+    "PLW2901", # `for` loop variable is overwritten
+    "RUF012", # Mutable class attributes should use `typing.ClassVar`
+]
+
+unfixable = [
+    "F401", # Unused imports
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F403"]
+"doc/generate_modules.py" = ["ALL"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["holonote"]
+# required-imports = ["from __future__ import annotations"]
+force-wrap-aliases = true
+combine-as-imports = true
+
+[tool.codespell]
+write-changes = true
