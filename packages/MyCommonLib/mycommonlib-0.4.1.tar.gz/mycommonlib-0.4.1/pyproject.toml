@@ -1,0 +1,36 @@
+[project]
+name = "MyCommonLib"
+version = "0.4.1"
+description="Common library"
+dependencies = [
+    "rich",
+    "PyYaml", 
+    'setuptools',
+    'importlib-metadata; python_version>"3.10"',
+]
+
+authors = [{name="Romolo Politi", email ="Romolo.Politi@inaf.it" }]
+license = {text = "GNU GPL ver3"} 
+readme = "README.md"
+
+
+keywords = ["SETUP LIBS"]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+]
+
+[project.urls]
+Repository = "https://github.com/RomoloPoliti-INAF/myCommonLib"
+Changelog = "https://github.com/RomoloPoliti-INAF/myCommonLib/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+docs = ["sphinx"]
+
+
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+
+
