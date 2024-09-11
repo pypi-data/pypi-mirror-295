@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+cmd_templateengine_python/__init__.py
+cmd_templateengine_python/main.py
+cmd_templateengine_python.egg-info/PKG-INFO
+cmd_templateengine_python.egg-info/SOURCES.txt
+cmd_templateengine_python.egg-info/dependency_links.txt
+cmd_templateengine_python.egg-info/top_level.txt
+cmd_templateengine_python.egg-info/zip-safe
+cmd_templateengine_python/__pycache__/__init__.cpython-312.pyc
