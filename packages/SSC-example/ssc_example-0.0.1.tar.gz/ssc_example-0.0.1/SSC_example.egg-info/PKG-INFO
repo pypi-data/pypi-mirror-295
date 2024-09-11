@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: SSC_example
+Version: 0.0.1
+Summary: Add short description here
+Maintainer-email: Pierre Gratier <pierre.gratier@u-bordeaux.fr>
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+License-File: COPYING.md
+Requires-Dist: ruff
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Requires-Dist: nbval; extra == "tests"
+Requires-Dist: ruff; extra == "tests"
+Provides-Extra: docs
+Requires-Dist: ipykernel; extra == "docs"
+Requires-Dist: nbsphinx; extra == "docs"
+Requires-Dist: nbsphinx-link; extra == "docs"
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx_mdinclude; extra == "docs"
+Requires-Dist: sphinx_rtd_theme; extra == "docs"
+
+# Welcome to SSC-example
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PierreGratier/SSC-example/ci.yml?branch=main)](https://github.com/PierreGratier/SSC-example/actions/workflows/ci.yml)
+[![Documentation Status](https://readthedocs.org/projects/SSC-example/badge/)](https://SSC-example.readthedocs.io/)
+[![codecov](https://codecov.io/gh/PierreGratier/SSC-example/branch/main/graph/badge.svg)](https://codecov.io/gh/PierreGratier/SSC-example)
+
+## Installation
+
+The Python package `SSC_example` can be installed from PyPI:
+
+```
+python -m pip install SSC_example
+```
+
+## Development installation
+
+If you want to contribute to the development of `SSC_example`, we recommend
+the following editable installation from this repository:
+
+```
+git clone git@github.com-PierreGratier:PierreGratier/SSC-example.git
+cd SSC-example
+python -m pip install --editable .[tests]
+```
+
+Having done so, the test suite can be run using `pytest`:
+
+```
+python -m pytest
+```
+
+## Acknowledgments
+
+This repository was set up using the [SSC Cookiecutter for Python Packages](https://github.com/ssciwr/cookiecutter-python-package).
