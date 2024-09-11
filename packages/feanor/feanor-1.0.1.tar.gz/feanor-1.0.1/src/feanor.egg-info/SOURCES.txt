@@ -1,0 +1,10 @@
+pyproject.toml
+readme.md
+src/builderTool/__init__.py
+src/builderTool/builderTool.py
+src/builderTool/temp.py
+src/builderTool/virtualEnv.py
+src/feanor.egg-info/PKG-INFO
+src/feanor.egg-info/SOURCES.txt
+src/feanor.egg-info/dependency_links.txt
+src/feanor.egg-info/top_level.txt
