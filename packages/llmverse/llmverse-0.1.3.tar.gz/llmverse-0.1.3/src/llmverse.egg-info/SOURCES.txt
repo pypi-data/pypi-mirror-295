@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/llmverse/__init__.py
+src/llmverse/data_prep.py
+src/llmverse/download.py
+src/llmverse/finetune.py
+src/llmverse/inference.py
+src/llmverse/load_finetuned_llm.py
+src/llmverse.egg-info/PKG-INFO
+src/llmverse.egg-info/SOURCES.txt
+src/llmverse.egg-info/dependency_links.txt
+src/llmverse.egg-info/requires.txt
+src/llmverse.egg-info/top_level.txt

@@ -1,0 +1,13 @@
+packaging
+wheel
+pandas
+matplotlib
+torch
+transformers
+peft
+datasets
+bitsandbytes
+accelerate
+flash_attn
+sentencepiece
+wandb
