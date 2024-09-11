@@ -1,0 +1,6 @@
+[console_scripts]
+fs-enc=fsspec_encrypted.fs_enc_cli:main
+
+[fsspec.specs]
+enc=fsspec_encrypted:EncryptedFS
+
