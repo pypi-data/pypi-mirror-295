@@ -1,0 +1,17 @@
+googlesearch/.gitignore,sha256=SzM8c4_ag5NjkxyxiG7I4m6y-qYRaN89768Vt81GmJM,1693
+googlesearch/LICENSE.txt,sha256=YVAUQ6VgWmEMBj5LX0BIpYoxET5wU5-qPKpUsBtm8lY,1065
+googlesearch/README.md,sha256=TvwfEK7ktPqnc_KZWo68We2OXiXGIv5STR5i66eEXxE,2732
+googlesearch/models.py,sha256=vbfThQYbCvF35MUOrYwr3wdoR8m-VgfZXlGSuvKP7M0,340
+googlesearch/news_search.py,sha256=UHXV8TQ-9Iiir1ZV74LIit4d027x0F7aavAdW91VBmg,2033
+googlesearch/search.py,sha256=DBL8tJ3SCBkea9qrj8QNSY98poZ6pbbZOWVGuxOddVY,2973
+googlesearch/test.py,sha256=AxtWLX9R5H4NXQPKerFeZZLPsmz_xuM9CBdjRO_Nbhc,2114
+googlesearch/utils.py,sha256=yocEusErfYA88jZbXwgCgfn5QFf05EU2ULLcDOlJ7sw,459
+googlesearch/config/config.py,sha256=KC7WEuvgoPp49pC2cWdHx8MQrnDztK1zWN3ZRKcg9CM,2044
+googlesearch/config/data/all_domain.txt,sha256=EkHMVWzte60MtGIIIiOqNhSTyJwlA_WKOc6gW4MNyVE,5601
+googlesearch/config/data/fetch_and_save_user_agents.py,sha256=gAgHZGzRHP9u2I4c-gjDAa-p31CeIxwLSClKqetAwEY,1523
+googlesearch/config/data/fetch_and_save_user_domain.py,sha256=ctoo2KJnRHws0DTAEDGoPeGi7VAO8aiKlUvazMkBQC0,1275
+googlesearch/config/data/user_agents.txt,sha256=Fl8JXHph3yBMxcXBHJ7V4FylKuP00MAljKM4AdPJrMk,2426
+googlesearch_tool-1.0.4.dist-info/METADATA,sha256=xT7q9aSePxCNUsp8Bp72EyESKXpZCYjMXOSDpJWGgNs,3163
+googlesearch_tool-1.0.4.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+googlesearch_tool-1.0.4.dist-info/licenses/LICENSE.txt,sha256=YVAUQ6VgWmEMBj5LX0BIpYoxET5wU5-qPKpUsBtm8lY,1065
+googlesearch_tool-1.0.4.dist-info/RECORD,,
