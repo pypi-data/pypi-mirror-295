@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: porthound
+Version: 0.1.0
+Summary: A simple command-line port scanner
+Author-email: jmlouf <joem3847@gmail.com>
+Project-URL: Homepage, https://github.com/jmlouf/porthound
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: colorama
+
