@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: MonadBox
+Version: 0.0.1
+Summary: Monads for python
+Author: AkiSun
+Project-URL: Homepage, https://github.com/AkiSun/monadbox
+Project-URL: Issues, https://github.com/AkiSun/monadbox/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# monadbox
+Monads for python
