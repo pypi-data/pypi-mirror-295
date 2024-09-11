@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: creao
+Version: 0.3.17
+Summary: A description of your project
+Home-page: https://creao@dev.azure.com/creao/creao/_git/creao
+Author: creaoai
+Author-email: dev@creao.ai
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# creao
+
+# dev guide
+* to create any new pr
+* please make sure you have added a test, and provide the bazel command to run the test
+* for formatting, please run 'bazel run //:format '
+
