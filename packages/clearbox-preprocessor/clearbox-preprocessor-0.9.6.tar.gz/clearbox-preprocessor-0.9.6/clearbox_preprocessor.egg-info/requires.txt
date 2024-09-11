@@ -1,0 +1,12 @@
+numpy<2.0.0
+pandas
+scikit-learn
+polars<1.0.0
+tsfresh
+
+[dev]
+check-manifest
+pytest>=3.9
+
+[test]
+coverage
