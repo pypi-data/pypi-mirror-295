@@ -1,0 +1,49 @@
+# SharedKernel
+this a shared kernel package
+
+# Change Log
+### Version 1.6.6
+- Fix bug of phonenumber normalizer
+### Version 1.6.5
+- Update on the JWTBearer (Save decoded token in request state)
+### Version 1.6.4
+- Update normlizer package
+### Version 1.6.3
+- Fix minor bug in phone normalizer
+### Version 1.6.2
+- Minor update: normalize function name
+### Version 1.6.1
+- Minor update normalize functions
+### Version 1.6
+- Add phone number normalizer
+### Version 1.5.2
+- Add created_on to base_document
+### Version 1.5.1
+- fix mongo repository bug
+### Version 1.5.0
+- implement date converter
+  -  example: فردا - دیروز - یک ماه قبل
+### Version 1.4.5
+- upgrade fastapi version
+### Version 1.4.4
+- Fix regex masking bugs
+### Version 1.4.3
+- Fix collection bug in MongoGenericRepository
+### Version 1.4.2
+- Fix minor bugs
+### Version 1.4.1
+- Fix minor bug in MongoGenericRepository
+### Version 1.4.0
+- Implement date convertor for jalali and georgian
+### Version 1.3.0
+- Implement Sentry For Log Exceptions
+### Version 1.2.0
+- Implement Regex Masking
+# Create Package
+    py -m pip install --upgrade build
+    py -m build
+    py -m pip install --upgrade twine
+    py -m twine upload dist/*
+
+# Pypi
+pip install sharedkernel

@@ -1,0 +1,11 @@
+numpy
+requests
+pymongo
+fastapi==0.111.0
+PyJWT
+pymilvus
+chromadb
+persian_tools
+sentry-sdk
+jdatetime
+persiantools
