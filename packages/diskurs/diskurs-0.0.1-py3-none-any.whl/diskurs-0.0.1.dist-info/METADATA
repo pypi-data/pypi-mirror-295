@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: diskurs
+Version: 0.0.1
+Summary: A hackable and extendable framework for developing LLM-based multi-agentic systems.
+License: MIT
+Author: Flurin Gishamer
+Author-email: fgishamer@me.com
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Jinja2 (>=3.1.4,<4.0.0)
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: openai (>=1.43.0,<2.0.0)
+Requires-Dist: pyaml (>=24.7.0,<25.0.0)
+Requires-Dist: pydantic (>=2.8.2,<3.0.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Project-URL: Homepage, https://github.com/agentic-diskurs/diskurs
+Project-URL: Issues, https://github.com/agentic-diskurs/diskurs/issues
+Description-Content-Type: text/markdown
+
+
