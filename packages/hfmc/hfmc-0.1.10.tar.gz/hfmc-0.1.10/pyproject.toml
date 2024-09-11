@@ -1,0 +1,83 @@
+[build-system]
+requires = ["hatchling>=1.8.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hfmc"
+version = "0.1.10"
+description = "A tiny cache widget for accessing hugging face models easier and faster!"
+requires-python = ">=3.8"
+license = "Apache-2.0"
+readme = "README.md"
+authors = [{ name = "9# AISoft", email = "aisoft9@163.com" }]
+keywords = [
+    "huggingface",
+    "models",
+    "p2p",
+    "cache",
+    "9# AISoft",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Utilities",
+]
+dependencies = [
+    "aiofiles >= 24.1.0",
+    "aiohttp >= 3.9.5",
+    "huggingface-hub == 0.23.0",
+    "prettytable >= 3.10.0",
+    "pydantic >= 2.7.4",
+    "requests >= 2.31.0",
+    "urllib3 >= 2.2.1",
+    "psutil >= 5.9.8",
+]
+
+[project.urls]
+"GitHub" = "https://github.com/aisoft9/hfmc"
+"Documentation" = "https://aisoft9.github.io/hfmc/"
+"中文文档" = "https://aisoft9.github.io/hfmc/README.zh"
+
+[project.scripts]
+hfmc = "hfmc.hfmc:main"
+
+[tool.hatch.envs.default]
+python = "3.8"
+dependencies = [
+  "toml",
+  "ruff",
+  "mypy",
+  "pyupgrade",
+  "pylint",
+]
+
+[tool.hatch.envs.test]
+extra-dependencies = [
+  "pytest",
+  "pytest-asyncio",
+  "types-PyYAML",
+]
+
+
+[tool.hatch.envs.test.scripts]
+unit = "pytest -s"
+lint = "pylint -ry -j 0 {args:hfmc}"
+format = "ruff format {args:hfmc}"
+types = "mypy --install-types --non-interactive --cache-dir=.mypy_cache/ {args:hfmc}"
+
+[tool.ruff]
+target-version = "py38"
+ignore = [
+  "UP006",
+  "ANN401",
+]
