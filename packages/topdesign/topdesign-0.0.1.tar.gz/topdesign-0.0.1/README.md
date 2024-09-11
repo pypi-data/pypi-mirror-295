@@ -1,0 +1,32 @@
+# TopDesign
+
+TopDesign is a general tool chain integration platform for multidisciplinary 
+analysis and optimization, developed in DTU Wind as an open source tool.
+
+The concept of the platform and the usage example on wind farm design can be 
+found in:
+
+> Feng, Ju, and Jens Nørkær Sørensen. "Towards a general tool chain integration 
+platform for multi-disciplinary analysis and optimization in wind energy." In 
+*Journal of Physics: Conference Series*, vol. 2767, no. 8, p. 082014. IOP 
+Publishing, 2024.  [[link](https://iopscience.iop.org/article/10.1088/1742-6596/2767/8/082014/meta)]
+
+Source code of the platform is hosted in DTU Wind's GitLab site: 
+> https://gitlab.windenergy.dtu.dk/topdesign/topdesign
+
+Development of this platform has been partially supported by the [MERIDIONAL](
+https://meridional.eu/) project, which receives funding from the European
+Union’s Horizon Europe Programme under the grant agreement No. 101084216.
+
+## Installation
+
+You can install the TopDesign package using the following command:
+
+>```
+> pip install topdesign
+>```
+
+## Usage
+The standard topdesign platform relies only on numpy and matplotlib. To run the
+example on wind farm design, you need to have py_wake and floris (==3.5) 
+installed.
