@@ -1,0 +1,5 @@
+[pymodaq.instruments]
+signal_recovery = pymodaq_plugins_signal_recovery
+
+[pymodaq.plugins]
+signal_recovery = pymodaq_plugins_signal_recovery
