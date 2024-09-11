@@ -1,0 +1,14 @@
+README.md
+setup.py
+reactive_manim/__init__.py
+reactive_manim.egg-info/PKG-INFO
+reactive_manim.egg-info/SOURCES.txt
+reactive_manim.egg-info/dependency_links.txt
+reactive_manim.egg-info/requires.txt
+reactive_manim.egg-info/top_level.txt
+reactive_manim/src/animation.py
+reactive_manim/src/dynamic_mobject.py
+reactive_manim/src/dynamic_tex_mobject.py
+reactive_manim/src/numpy_mobject_array.py
+reactive_manim/src/scene.py
+reactive_manim/src/manim_src/composition.py
