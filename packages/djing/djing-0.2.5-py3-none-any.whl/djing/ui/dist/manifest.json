@@ -1,0 +1,43 @@
+{
+  "Pages/Account/Login.tsx": {
+    "file": "Login-a0d04655.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Account/Login.tsx"
+  },
+  "Pages/Index.tsx": {
+    "file": "Index-c8396048.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/Index.tsx"
+  },
+  "Pages/NotFoundPage.tsx": {
+    "file": "NotFoundPage-390a4972.js",
+    "imports": [
+      "main.tsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "Pages/NotFoundPage.tsx"
+  },
+  "main.css": {
+    "file": "main-1d14388c.css",
+    "src": "main.css"
+  },
+  "main.tsx": {
+    "css": [
+      "main-1d14388c.css"
+    ],
+    "dynamicImports": [
+      "Pages/Account/Login.tsx",
+      "Pages/Index.tsx",
+      "Pages/NotFoundPage.tsx"
+    ],
+    "file": "main-907a3242.js",
+    "isEntry": true,
+    "src": "main.tsx"
+  }
+}
