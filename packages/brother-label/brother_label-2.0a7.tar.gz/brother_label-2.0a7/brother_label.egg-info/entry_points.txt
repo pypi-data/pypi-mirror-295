@@ -1,0 +1,2 @@
+[console_scripts]
+brother_ql = brother_ql.cli:cli
