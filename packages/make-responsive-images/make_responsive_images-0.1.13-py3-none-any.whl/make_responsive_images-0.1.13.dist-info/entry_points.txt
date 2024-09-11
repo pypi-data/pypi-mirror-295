@@ -1,0 +1,3 @@
+[console_scripts]
+resize=make_responsive_images.main:app
+
