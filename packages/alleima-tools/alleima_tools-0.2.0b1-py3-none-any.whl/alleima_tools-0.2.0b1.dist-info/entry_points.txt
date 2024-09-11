@@ -1,0 +1,3 @@
+[console_scripts]
+alleima-tools=alleima_tools.cli:app
+
