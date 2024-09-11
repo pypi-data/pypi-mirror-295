@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+binary_bci2000_processing/BinaryBciSignalProcessing.py
+binary_bci2000_processing/Preprocessing.py
+binary_bci2000_processing/SignalManager.py
+binary_bci2000_processing/__init__.py
+binary_bci2000_processing.egg-info/PKG-INFO
+binary_bci2000_processing.egg-info/SOURCES.txt
+binary_bci2000_processing.egg-info/dependency_links.txt
+binary_bci2000_processing.egg-info/top_level.txt
