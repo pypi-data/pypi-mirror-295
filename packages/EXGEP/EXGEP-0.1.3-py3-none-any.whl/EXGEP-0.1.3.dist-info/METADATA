@@ -1,0 +1,198 @@
+Metadata-Version: 2.1
+Name: EXGEP
+Version: 0.1.3
+Summary: A framework for predicting genotype-by-environment interactions using ensembles of explainable machine-learning models
+Home-page: https://github.com/AIBreeding/EXGEP
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: alembic (==1.13.2)
+Requires-Dist: catboost (==1.2.5)
+Requires-Dist: cloudpickle (==3.0.0)
+Requires-Dist: colorama (==0.4.6)
+Requires-Dist: colorlog (==6.8.2)
+Requires-Dist: contourpy (==1.1.1)
+Requires-Dist: cycler (==0.12.1)
+Requires-Dist: fonttools (==4.53.1)
+Requires-Dist: graphviz (==0.20.3)
+Requires-Dist: greenlet (==3.0.3)
+Requires-Dist: importlib-metadata (==8.2.0)
+Requires-Dist: importlib-resources (==6.4.0)
+Requires-Dist: joblib (==1.4.2)
+Requires-Dist: kiwisolver (==1.4.5)
+Requires-Dist: lightgbm (==4.5.0)
+Requires-Dist: llvmlite (==0.41.1)
+Requires-Dist: Mako (==1.3.5)
+Requires-Dist: MarkupSafe (==2.1.5)
+Requires-Dist: matplotlib (==3.7.5)
+Requires-Dist: networkx (==3.1)
+Requires-Dist: numba (==0.58.1)
+Requires-Dist: numpy (==1.24.4)
+Requires-Dist: optuna (==3.6.1)
+Requires-Dist: packaging (==24.1)
+Requires-Dist: pandas (==2.0.3)
+Requires-Dist: pillow (==10.4.0)
+Requires-Dist: plotly (==5.23.0)
+Requires-Dist: pyparsing (==3.1.2)
+Requires-Dist: python-dateutil (==2.9.0.post0)
+Requires-Dist: pytz (==2024.1)
+Requires-Dist: PyYAML (==6.0.2)
+Requires-Dist: scikit-learn (==1.3.2)
+Requires-Dist: scipy (==1.10.1)
+Requires-Dist: shap (==0.44.1)
+Requires-Dist: six (==1.16.0)
+Requires-Dist: slicer (==0.0.7)
+Requires-Dist: SQLAlchemy (==2.0.32)
+Requires-Dist: tenacity (==9.0.0)
+Requires-Dist: threadpoolctl (==3.5.0)
+Requires-Dist: tqdm (==4.66.5)
+Requires-Dist: typing-extensions (==4.12.2)
+Requires-Dist: tzdata (==2024.1)
+Requires-Dist: xgboost (==2.0.3)
+Requires-Dist: zipp (==3.19.2)
+
+## EXGEP
+## EXGEP: a framework for predicting genotype-by-environment interactions using ensembles of explainable machine-learning models
+<strong>EXGEP</strong> (<strong><u>E</u></strong>xplainable <strong><u>G</u></strong>enotype-by-<strong><u>E</u></strong>nvironment Interactions <strong><u>P</u></strong>rediction) is a framework for predicting genotype-by-environment interactions using ensembles of explainable machine-learning models. EXGEP combines explainable artificial intelligence (XAI) methods to accurately predict yield values of untested environments, and to uncover genotypes and environmental features and interactions among them that affect yield prediction performance. The EXGEP web server <strong>1)</strong> allows for customized training and optimization of yield prediction models; <strong>2)</strong> calculates Shapley Additive Explanations (SHAP) values, ranking input feature importance to assess the contributions of each feature to yield prediction performance.
+
+<img src="./tools/EXGEP.svg" alt="Your Image" style="max-width: 100%;">
+
+### Table of Contents
+- [Getting started](#Getting-started)
+- [Usage](#usage)
+- [Copyright and License](#copyright-and-license)
+
+## Getting started
+
+### Requirements
+ 
+ - Python 3.9
+ - pip
+
+### Installation
+Install packages:
+```bash
+conda create -n exgep python=3.9
+conda activate exgep
+cd exgep
+pip install EXGEP
+```
+
+## Usage
+
+```python
+import os
+import time
+import argparse
+import numpy as np
+import pandas as pd
+from datetime import datetime
+from scipy.stats import pearsonr
+from exgep.model import RegEXGEP
+from exgep.preprocess import datautils
+from sklearn.metrics import (r2_score, median_absolute_error,mean_squared_error)
+
+# You can define your own evaluation metric and input it as a parameter into RegEXGEP
+def pearson_correlation(y, y_pred):
+    corr, _ = pearsonr(y, y_pred)
+    return corr
+
+def root_mean_squared_error(y_true, y_pred):
+    return np.sqrt(mean_squared_error(y_true, y_pred))
+
+# Loading data
+Geno = './data/genotype.csv'
+Phen = './data/pheno.csv'
+Soil = './data/soil.csv'
+Weather = './data/weather.csv'
+
+# using genotype,soil, and weather data
+data = datautils.merge_data(Geno, Phen, Soil, Weather)
+# data = datautils.merge_data(Geno, Phen) # only using genotype data
+# data = datautils.merge_data(Geno, Phen, soil) # only using genotype and soil data
+# data = datautils.merge_data(Geno, Phen, "", weather) # only using genotype and weather data
+X = pd.DataFrame(data.iloc[:, 3:])
+y = data['Yield']
+y = pd.core.series.Series(y)
+
+# Training EXGEP for regression prediction
+reg = RegEXGEP(
+    y=y,
+    X=X, 
+    test_size=0.1, 
+    n_splits=10, 
+    n_trial=5, 
+    reload_study=True,
+    reload_trial=True, 
+    write_folder=os.getcwd()+'/results/', 
+    metric_optimise=r2_score, 
+    metric_assess=[pearson_correlation, root_mean_squared_error],
+    optimization_objective='maximize', 
+    models_optimize=['LightGBM','XGBoost','GBDT','RF'], 
+    models_assess=['LightGBM','XGBoost','GBDT','RF'], 
+    early_stopping_rounds=5, 
+    random_state=2024
+)
+reg.train()
+```
+
+### Training Example
+```python
+python ./tools/test_exgep.py \
+--Geno ./data/genotype.csv \
+--Phen ./data/pheno.csv \
+--Soil ./data/soil.csv \
+--Weather ./data/weather.csv \
+--Test_size 0.2 \
+--N_splits 5 \
+--N_trial 5 \
+--models_optimize XGBoost \
+--models_assess XGBoost
+```
+
+ - Geno: Genotype data
+ - Phen: Phenotype data
+ - Soil: Soil data
+ - Weather: Weather data
+ - Test_size: Test data division ratio
+ - N_splits: Cross validation folds
+ - N_trial: Number of model optimization evaluations
+ - models_optimize: Selection of an optimized base models
+ - models_assess: Base models for needs assessment
+ 
+```bash
+Alternative base models:
+'Dummy', 'LightGBM', 'XGBoost', 'CatBoost', 'BayesianRidge', 'LassoLARS', 'AdaBoost', 
+'GBDT', 'HistGradientBoosting','KNN', 'SGD', 'Bagging', 'SVR', 'ElasticNet', 'RF'
+```
+In this study we chose LightGBM,XGBoost,RF,and GBDT as the base models.
+            
+### Explainable Example
+```python
+python ./tools/test_explain.py \
+--Geno ./data/genotype.csv \
+--Phen ./data/pheno.csv \
+--Soil ./data/soil.csv \
+--Weather ./data/weather.csv \
+--sample_number 150 \
+--feature_name1 pc1 \
+--feature_name2 pc2 \
+--job_id 20240813103950
+```
+ - Geno: Genotype data
+ - Phen: Phenotype data
+ - Soil: Soil data
+ - Weather: Weather data
+ - sample_number: Sample number to be explained
+ - feature_name1/feature_name2: Calculate the interaction effect of features 1 and 2
+ - job_id: Obtaining optimized parameters using model-trained job ID
+
+## EXGEP web server
+Web server to implement EXGEP is available on [http://exgep.ai4breeding.com](http://exgep.ai4breeding.com).
+
+## Copyright and License
+This project is free to use for non-commercial purposes - see the [LICENSE](LICENSE) file for details.
