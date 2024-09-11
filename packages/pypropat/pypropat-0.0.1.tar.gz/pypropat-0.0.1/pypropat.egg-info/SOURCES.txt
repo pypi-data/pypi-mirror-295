@@ -1,0 +1,16 @@
+.gitignore
+LICENSE.txt
+README.md
+setup.py
+pypropat/ADCS.py
+pypropat/__init__.py
+pypropat/demo_egm.py
+pypropat/demo_egm_gif.py
+pypropat/demo_propat.py
+pypropat/kinematics.py
+pypropat/orbit.py
+pypropat.egg-info/PKG-INFO
+pypropat.egg-info/SOURCES.txt
+pypropat.egg-info/dependency_links.txt
+pypropat.egg-info/requires.txt
+pypropat.egg-info/top_level.txt

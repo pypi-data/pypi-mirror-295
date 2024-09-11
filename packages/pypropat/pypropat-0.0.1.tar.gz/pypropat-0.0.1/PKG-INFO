@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pypropat
+Version: 0.0.1
+Summary: Python package for a test
+Home-page: https://github.com/MichaelBentlyOh/pypropat
+Author: Oh Min Sik,Kim Gwan Young,Joo Sang Hyun 
+Author-email: michael1015999@gmail.com
+Keywords: orbit,space,spacecraft
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# propat-python
+An orbital propagation library that converts the PROPAT MATLAB toolbox to Python
+
+TBD
