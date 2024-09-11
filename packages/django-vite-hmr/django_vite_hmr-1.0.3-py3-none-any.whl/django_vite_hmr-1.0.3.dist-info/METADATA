@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: django-vite-hmr
+Version: 1.0.3
+Summary: A Django app to provide custom template tags.
+Home-page: https://github.com/django-vite-hmr/django-plugin
+Author: Sachin Acharya
+License: MIT License
+Keywords: django-vite vite-hmr django-hot-reload
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Description-Content-Type: text/markdown
+
+# Django Vite HMR
+
+[Documentation](https://github.com/django-vite-hmr#django)
