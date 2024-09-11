@@ -1,0 +1,2 @@
+[console_scripts]
+mbml = mbml.cli:main
