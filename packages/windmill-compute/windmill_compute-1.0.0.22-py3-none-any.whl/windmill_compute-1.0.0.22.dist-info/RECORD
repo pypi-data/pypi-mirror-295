@@ -1,0 +1,14 @@
+windmillcomputev1/__init__.py,sha256=f2GyH-DYr84jGbwxEiy24uBoFe9W7sujdenZ-oj1yUs,213
+windmillcomputev1/client/__init__.py,sha256=f2GyH-DYr84jGbwxEiy24uBoFe9W7sujdenZ-oj1yUs,213
+windmillcomputev1/client/compute_api_compute.py,sha256=AZmke1PMbAH5k5BalAfHAtJbSKgjeq78g_55pHZ91Ko,946
+windmillcomputev1/client/compute_api_filesystem.py,sha256=rdscL9wcLIceKAW1OEdup63zuo9zBtsPN1FSEkH8fI4,913
+windmillcomputev1/client/compute_client.py,sha256=yTS9rBF_oebHbuonuKMLw1l6PdDFUChXBtHNRRMJPwc,11833
+windmillcomputev1/filesystem/__init__.py,sha256=Q8FSG1DbEKZ1CVDhiN7oGTlDNksVLHrsu8tksFZw7jc,2837
+windmillcomputev1/filesystem/blobstore.py,sha256=26s1BA_g_OfFYXpxEdFRriWNW6otuK1IdXde-eho7fM,1967
+windmillcomputev1/filesystem/s3.py,sha256=SPMUeFnxmW4ZNU6tpRcPKrz6AJQkbg7ullRle7e9xzw,4485
+windmillcomputev1/tools/__init__.py,sha256=gGT9zrzhL901uLiGu4avc6MOTtbzYfBpofEXVuQZd94,131
+windmillcomputev1/tools/download_kubeconfig.py,sha256=vFR-RpTMYeF4AK2TJZZjdWlXv59-uEMnakvo705L53s,1225
+windmill_compute-1.0.0.22.dist-info/METADATA,sha256=Y5q0F8aaT2ZklU8GT4jsHcznXd6lLwOCKFbPwqsHES0,716
+windmill_compute-1.0.0.22.dist-info/WHEEL,sha256=yQN5g4mg4AybRjkgi-9yy4iQEFibGQmlz78Pik5Or-A,92
+windmill_compute-1.0.0.22.dist-info/top_level.txt,sha256=9oI_GzShN98tsziMo0Zs39Q6PYtnfmEQh1Auj9y16KA,18
+windmill_compute-1.0.0.22.dist-info/RECORD,,
