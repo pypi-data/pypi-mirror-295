@@ -1,0 +1,114 @@
+Metadata-Version: 2.1
+Name: onpod
+Version: 0.0.2
+Summary: Runpod abstraction layer to behave as if using a local GPU
+License: MIT
+Author: gabewillen
+Author-email: gabewillen@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic (>=2.9.1,<3.0.0)
+Requires-Dist: runpod (>=1.7.0,<2.0.0)
+Requires-Dist: torch (>=2.4.1,<3.0.0)
+Description-Content-Type: text/markdown
+
+# OnPod: Seamless Local and Remote AI/ML Development
+
+OnPod is an innovative Python library that simplifies AI and machine learning development by seamlessly integrating local and remote code execution. It optimizes resource usage, reduces costs, and provides a local-like development experience while supporting a variety of popular AI/ML libraries.
+
+## What It Is
+
+OnPod is designed specifically for RunPod, a platform offering some of the lowest-cost GPU cloud computing options. The goal of this library is to let you write code as if it's running locally, but without paying for idle GPU time. Costs are incurred only during actual script execution.
+
+## What It Is Not
+
+OnPod is not optimized for high-throughput, multi-user scenarios at this stage. If you need support for concurrent user requests, consider other solutions like VLLM or Text Generation Inference.
+
+## Key Features
+
+1. **Versatile Library Support**:  
+   - Compatible with PyTorch, TensorFlow, Keras, and Hugging Face Transformers.
+   - Extensible to support additional AI/ML libraries in the future.
+
+2. **Transparent API**:  
+   - OnPod mimics the interfaces of supported libraries, allowing seamless integration with existing workflows.
+
+3. **Intelligent Resource Management**:  
+   - Automatically initializes with CPU-based instances for efficiency.
+   - Dynamically allocates GPU resources when models require accelerated devices.
+
+4. **Automatic Task Distribution**:  
+   - CPU-bound tasks (e.g., data preprocessing, tokenization) are performed locally.
+   - GPU-intensive operations are offloaded to serverless RunPod instances, reducing costs.
+
+5. **On-Demand Resource Allocation**:  
+   - Users are charged only for actual GPU time, ensuring cost efficiency.
+
+6. **Seamless Development Experience**:  
+   - Write and test code locally while effortlessly leveraging the power of cloud-based GPUs.
+
+## How It Works
+
+OnPod provides proxy modules for supported AI/ML libraries that intercept operations and manage their execution:
+
+- **Library Proxies**: Redirects operations to remote instances, handling data transfer and execution for libraries like PyTorch, TensorFlow, Keras, and Transformers.
+- **Automatic Import Handling**: Dynamically imports remote modules when needed.
+- **Workload Distribution**: Executes CPU tasks locally while offloading GPU workloads to serverless instances, ensuring efficient resource use and cost savings.
+
+This allows developers to write standard AI/ML code using their preferred libraries while benefiting from cloud-based computation without manual configuration.
+
+## Benefits
+
+- **Cost Optimization**: Pay only for the GPU resources you actually use, with CPU tasks running locally and GPU tasks on scale-to-zero instances.
+- **Resource Efficiency**: Leverage GPU power without needing local high-performance hardware.
+- **Flexible Development**: Develop and test AI/ML models locally with no changes to your workflow, regardless of the library.
+- **Scalability**: Easily scale computations to more powerful cloud resources as needed.
+- **Library Agnostic**: Switch between different AI/ML libraries without altering your development flow.
+
+OnPod bridges the gap between local development and cloud-based high-performance computing, making AI/ML development more accessible, cost-effective, and flexible.
+
+## TODO: Library Support Status
+
+- PyTorch: In progress
+- TensorFlow: Planned
+- Keras: Planned
+- vLLM: Planned
+
+## Example Usage: Hugging Face Transformers with Meta Llama 3.1-8B
+
+```python
+from onpod import transformers, torch
+
+model_id = "meta-llama/Meta-Llama-3.1-8B"
+
+pipeline = transformers.pipeline(
+    "text-generation", model=model_id, model_kwargs={"torch_dtype": torch.bfloat16}, device_map="auto"
+)
+
+pipeline("Hey, how are you doing today?")
+```
+
+This example performs tokenization on the local machine, generation on a serverless endpoint, and then decodes the tokens back on the local machine.
+
+## Example: VLLM
+
+```python
+from onpod import vllm, torch
+
+llm = vllm.LLM(model="meta-llama/Meta-Llama-3.1-8B", dtype=torch.bfloat16)
+
+prompt = "Explain the concept of quantum computing in simple terms."
+
+outputs = llm.generate([prompt], max_tokens=150)
+
+print(outputs[0].outputs[0].text)
+```
+
+
+## Drawbacks
+
+There is a significant startup time on the first invocation as the endpoint is deployed and the model is downloaded (if necessary). Subsequent calls are faster, as the endpoint is already deployed and the model is cached. In the future, a VSCode extension will be developed to pre-deploy endpoints and cache models for faster startup.
+
