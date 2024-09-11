@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ccs-digitalmarketplace-content-loader
+Version: 11.5.0
+Summary: Digital Marketplace Content Loader
+Home-page: https://github.com/Brickendon-DMp1-5/digitalmarketplace-content-loader.git
+Author: GDS Developers
+License: MIT
+Requires-Python: >=3.10,<3.13
+License-File: LICENCE
+Requires-Dist: Flask<3.1,>=3.0
+Requires-Dist: Markdown<4.0.0,>=3.0.0
+Requires-Dist: PyYAML<7.0,>=5.1.2
+Requires-Dist: inflection<1.0.0,>=0.3.1
+Requires-Dist: ccs-digitalmarketplace-utils>=67.0.0
+
