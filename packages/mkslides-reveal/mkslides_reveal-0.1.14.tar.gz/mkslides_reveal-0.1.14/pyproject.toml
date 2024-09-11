@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "mkslides-reveal"
+version = "0.1.14"
+description = "MkSlides-Reveal - Slides with Markdown using the power of Reveal.js."
+authors = ["MartenBE"]
+repository = "https://github.com/MartenBE/mkslides-reveal"
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "mkslides_reveal", from = "src" }]
+include = [{ path = "assets", format = ["sdist", "wheel"] }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Jinja2 = "^3.1.4"
+livereload = "^2.7.0"
+python-frontmatter = "^1.1.0"
+PyYAML = "^6.0.2"
+rich = "^13.8.0"
+click = "^8.1.7"
+
+[tool.poetry.group.dev.dependencies]
+bumpver = "^2023.1129"
+black = "^24.8.0"
+pytest = "^8.3.2"
+
+[tool.poetry.scripts]
+mkslides-reveal = "mkslides_reveal.__main__:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.bumpver]
+current_version = "0.1.14"
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
+commit_message = "Bump version {old_version} to {new_version}"
+tag_message = "{new_version}"
+tag_scope = "default"
+pre_commit_hook = ""
+post_commit_hook = ""
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"src/mkslides_reveal/__init__.py" = ['^__version__ = "{version}"']
+"pyproject.toml" = ['^version = "{version}"', '^current_version = "{version}"']
