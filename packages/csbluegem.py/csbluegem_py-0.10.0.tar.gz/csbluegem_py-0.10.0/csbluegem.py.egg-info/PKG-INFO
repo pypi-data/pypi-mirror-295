@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: csbluegem.py
+Version: 0.10.0
+Summary: An async wrapper for the CSBlueGem api.
+Author-email: fretgfr <fretgfr@sudomail.com>
+License: Copyright 2024-present fretgfr
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/fretgfr/csbluegem.py/
+Project-URL: Documentation, https://csbluegem.readthedocs.io/en/latest/
+Project-URL: Issues, https://github.com/fretgfr/csbluegem.py/issues
+Keywords: csbluegem,counter strike,api wrapper
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp<4,>=3.7.4
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: typing_extensions; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx-rtd-theme; extra == "docs"
+
+An asynchronous wrapper for the [CSBlueGem](https://csbluegem.com) API.
+
+# Quickstart
+
+Install from PyPI: `python3 -m pip install csbluegem.py`
+
+```py
+import asyncio
+from textwrap import dedent
+
+import csbluegem
+
+
+async def main():
+    async with csbluegem.Client() as client:
+        r = await client.search(csbluegem.Item.M9Bayonet)
+
+        for result in r.sales:
+            s = f"""
+                Pattern: {result.pattern}
+                Float: {result.float}
+                Stattrak?: {result.is_stattrak}
+                Price: {result.price:,}
+                Date: {result.timestamp}
+                Origin: {result.origin.value}
+                Days Since Sale: {result.days_since:,}
+                """
+
+            print(dedent(s), end="\n\n")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+Additional examples available [HERE](https://github.com/fretgfr/csbluegem.py/tree/master/examples)
+
+Documentation available [HERE](https://csbluegempy.readthedocs.io/en/latest/)
