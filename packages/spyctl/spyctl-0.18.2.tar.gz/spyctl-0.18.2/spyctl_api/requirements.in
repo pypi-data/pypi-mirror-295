@@ -1,0 +1,15 @@
+fastapi>=0.110.2
+uvicorn[standard]
+httpx>=0.9.36
+certifi>=2023.7.22
+aioboto3
+aiofiles
+jinja2
+pyyaml
+markdown2
+weasyprint
+ulid-py
+pandas
+beautifulsoup4
+
+-e file:./build/spyctl

@@ -1,0 +1,144 @@
+inventory:
+  - id: ops
+    short: Cluster Ops Report
+    description: Kubernetes cluster operational report. Depending on cluster size and reporting period, this report can take a while to generate (e.g. 10 minutes for a 100+ node cluster).
+    args:
+      - name: cluid
+        short: Cluster UID
+        description: UID the cluster to generate the report for
+        required: true
+        type: cluster
+      - name: st
+        short: Start Time
+        description: Start time for the report
+        required: true
+        default: now-1d
+        type: timestamp
+      - name: et
+        short: End Time
+        description: End time for the report
+        required: true
+        default: now
+        type: timestamp
+    supported_formats:
+      - json
+      - yaml
+      - mdx
+      # - html
+    reporter: app.reports.portfolio.ops_v2.OpsReporter
+    templates:
+      mdx: ops.mdx.jinja2
+
+  - id: agent_metrics
+    short: Nano Agent Metrics Report
+    description: CPU, Memory and Network metrics for Nano Agents running on a cluster
+    args:
+      - name: cluster
+        short: Cluster Name
+        description: Name of the cluster to generate the report for
+        required: true
+        type: clustername
+      - name: st
+        short: Start Time
+        description: Start time for the report
+        required: true
+        type: timestamp
+        default: now-1h
+      - name: et
+        short: End Time
+        description: End time for the report
+        required: true
+        type: timestamp
+        default: now
+    supported_formats:
+      - json
+      - yaml
+      - mdx
+      # - html
+    reporter: app.reports.portfolio.agent_metrics_v2.AgentMetricsReporter
+    templates:
+      mdx: agent_metrics.mdx.jinja2
+
+  - id: mocktest
+    short: Very simple report to use in api regression tests
+    description: Very simple report to use in api regression tests
+    args:
+      - name: cluid
+        short: Cluster
+        description: Name of the cluster to generate the report for
+        required: true
+        type: cluster
+      - name: st
+        short: Start Time
+        description: Start time for the report
+        required: true
+        type: timestamp
+      - name: et
+        short: End Time
+        description: End time for the report
+        required: true
+        type: timestamp
+    supported_formats:
+      - md
+      - pdf
+      - json
+      - yaml
+    reporter: app.reports.portfolio.mocktest.MockReporter
+    templates:
+      md: mocktest.md.jinja2
+  # - id: cluster_profile
+  #   short: Cluster Profile Report
+  #   description: Kubernetes cluster behavior report
+  #   args:
+  #     - name: cluid
+  #       short: Cluster UID
+  #       description: UID the cluster to generate the report for
+  #       required: true
+  #       type: cluster
+  #     - name: st
+  #       short: Start Time
+  #       description: Start time for the report
+  #       required: true
+  #       default: now-1h
+  #       type: timestamp
+  #     - name: et
+  #       short: End Time
+  #       description: End time for the report
+  #       required: true
+  #       default: now
+  #       type: timestamp
+  #   supported_formats:
+  #     - md
+  #     - pdf
+  #     - json
+  #     - yaml
+  #     - html
+  #   reporter: app.reports.portfolio.cluster_profile.ProfileReporter
+  #   templates:
+  #     md: cluster_profile.md.jinja2
+  - id: linux_usage
+    short: Linux system usage report
+    description: A report summarizing cpu and memory usage on a linux system or vm
+    args:
+      - name: machines
+        short: Machine uids
+        description: UID of the machine to generate the report for
+        required: true
+        type: machines
+      - name: time
+        short: time of report
+        description: Time to base the report on. Data will be gathered from up to a week before this time to analyze and summarize system cpu and memory pressure.
+        required: true
+        default: now
+        type: timestamp
+    supported_formats:
+      - json
+      - yaml
+      - mdx
+      # - html
+    reporter: app.reports.portfolio.linux_usage.UsageReporter
+    templates:
+      md: linux_usage.md.jinja2
+      html: linux_usage.html.jinja2
+      mdx: linux_usage.mdx.jinja2
+

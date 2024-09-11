@@ -1,0 +1,40 @@
+{% if error %}
+### An error was encountered while generating the report
+{{ error.message }}
+
+{% else %}
+# Nano agent usage report
+---
+
+**Cluster:** *{{ cluster.name }}*
+
+**Reporting period:** *{{ st }}* to *{{ et }}*
+
+
+## Nano agent resource usage
+
+### Summary across all agents
+Across all agents in the cluster the following resource usage is observed:
+```grid
+{{ metrics_summary.grid }}
+```
+
+### CPU usage per agent
+In more detail, the following CPU usage is observed on a per agent basis:
+```grid
+{{ agent_metrics.cpu.grid }}
+```
+
+### Memory usage per agent
+In more detail, the following memory usage is observed on a per agent basis:
+```grid
+{{ agent_metrics.mem.grid }}
+```
+
+### Bandwidth usage per agent
+In more detail, the following bandwidth usage is observed on a per agent basis:
+```grid
+{{ agent_metrics.bps.grid }}
+```
+
+{% endif %}

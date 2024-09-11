@@ -1,0 +1,162 @@
+
+{% if error %}
+### An error was encountered while generating the report
+{{ error.message }}
+
+{% else %}
+
+{% end if %}
+
+<h1>Cluster Profile report</h1>
+
+<p>Cluster <strong> {{ cluster.name }} </strong> ({{ cluster.cluid}})
+Reporting period:
+- Start: {{ st }}
+- End: {{ et }} </p>
+
+<h2> Cluster resource summary </h2>
+
+{% if namespaces %}
+### Namespaces:
+| Name |
+|------|{% for ns in namespaces %}
+| {{ns}}| {% endfor %}
+{% endif %}
+
+{% if daemonsets %}
+### Daemonsets ({{ daemonsets|length }}):
+| Namespace | Name |
+|-----------|------|{% for r in daemonsets %}
+| {{r['metadata.namespace']}}| {{r['metadata.name']}}| {% endfor %}
+{% endif %}
+
+{% if services %}
+### Services ({{ services|length }}):
+| Namespace | Name |
+|-----------|------|{% for r in services %}
+| {{r['metadata.namespace']}}| {{r['metadata.name']}}| {% endfor %}
+{% endif %}
+
+{% if deployments %}
+### Deployments ({{ deployments|length }}):
+| Namespace | Name |
+|-----------|------|{% for r in deployments %}
+| {{r['metadata.namespace']}}| {{r['metadata.name']}}| {% endfor %}
+{% endif %}
+
+
+{% if statefulsets %}
+### Statefulsets ({{ statefulsets|length }}):
+| Namespace | Name |
+|-----------|------|{% for r in statefulsets %}
+| {{r['metadata.namespace']}}| {{r['metadata.name']}}| {% endfor %}
+{% endif %}
+
+{% if cronjobs %}
+### Cronjobs ({{ cronjobs|length }}):
+| Namespace | Name |
+|-----------|------|{% for r in cronjobs %}
+| {{r['metadata.namespace']}}| {{r['metadata.name']}}| {% endfor %}
+{% endif %}
+
+
+
+
+## 2. Cluster image and repo summary
+
+### Repositories (cluster-wide)
+| Repository | Containers usage count  |
+|------------|-------------------------| {% for i in images.repos_all %}
+| {{i[0]}}   | {{i[1]}}                | {% endfor %}
+
+### Repositories (by namespace)
+|Namespace       | Repository   | Containers usage count |
+|----------------|--------------|------------------------| {% for i in images.repos_by_ns %}
+| {{i.namespace}}| {{i.repo}}   | {{i.count}}            | {% endfor %}
+
+
+### Images (cluster-wide)
+| Image   | Containers usage count |
+|---------|------------------------|{% for i in images.all %}
+| {{i[0]}}| {{i[1]}}               |{% endfor %}
+
+### Images (by namespace)
+|Namespace       | Image       | Containers usage count |
+|----------------|-------------|------------------------|{% for i in images.by_ns %}
+| {{i.namespace}}| {{i.image}} | {{i.count}}            | {% endfor %}
+
+
+## 3. Network traffic
+
+### North - South traffic: Outgoing
+
+{% if connections.north_south.outbound.server_port %}
+#### by destination port
+| Port   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.outbound.server_port %}
+| {{c[0]}}| {{c[1]}}               |{% endfor %}
+{% endif %}
+
+{% if connections.north_south.outbound.server_asn_country %}
+#### by destination country
+| Port   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.outbound.server_asn_country %}
+| {{c[0]}}| {{c[1]}}               |{% endfor %}
+{% endif %}
+
+{% if connections.north_south.outbound.server_asn_name %}
+#### by destination ASN name
+| Port   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.outbound.server_asn_name %}
+| {{c[0]}}| {{c[1]}}               |{% endfor %}
+{% endif %}
+
+{% if connections.north_south.outbound.server_dns_name %}
+#### by destination server DNS name
+| Port   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.outbound.server_dns_name %}
+| {{c[0]}}| {{c[1]}}               |{% endfor %}
+{% endif %}
+
+{% if connections.north_south.outbound.server_cloud_name %}
+#### by cloud api
+| Port   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.outbound.server_cloud_name %}
+| {{c[0]}}| {{c[1]}}               |{% endfor %}
+{% endif %}
+
+
+### North - South traffic: Incoming
+
+{% if connections.north_south.inbound.server_pod_namespace_server_pod_owner_name_server_proc_name_server_port %}
+#### by destination namespace, workload, process, port
+| Namespace | Workload | Server Process | Server Port   | Number of connections   |
+|:---|:---|:---|:---|:---|{% for c in connections.north_south.inbound.server_pod_namespace_server_pod_owner_name_server_proc_name_server_port %}
+| {{c.server_pod_namespace}}| {{c.server_pod_owner_name}} |{{c.server_proc_name}} |{{c.server_port}}|{{c.count}}|{% endfor %}
+{% endif %}
+
+{% if connections.north_south.inbound.server_proc_name %}
+#### by destination server process
+| Process   | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.inbound.server_proc_name %}
+| {{c.server_proc_name}}| {{c.count}}|{% endfor %}
+{% endif %}
+
+{% if connections.north_south.inbound.server_dns_name %}
+#### by destination server DNS name
+| DNS Name | Number of connections   |
+|---------|------------------------|{% for c in connections.north_south.inbound.server_dns_name %}
+| {{c.server_dns_name}}| {{c.count}}|{% endfor %}
+{% endif %}
+
+
+### East - West traffic
+
+{% if connections.east_west.client_pod_namespace_client_pod_owner_name_client_proc_name_server_pod_namespace_server_pod_owner_name_server_dns_name_server_proc_name_server_port %}
+#### From - To
+| Namespace | Workload | Client Process | Namespace | Workload | Server Process | Server Port   | Number of connections   |
+|:---|:---|:---|:---|:---|:---|:---|:---|{% for c in connections.east_west.client_pod_namespace_client_pod_owner_name_client_proc_name_server_pod_namespace_server_pod_owner_name_server_dns_name_server_proc_name_server_port %}
+| {{c.client_pod_namespace}}| {{c.client_pod_owner_name}} |{{c.client_proc_name}} |{{c.server_pod_namespace}}|{{c.server_pod_owner_name}}|{{c.server_proc_name}}|{{c.server_port}}|{{c.count}}|{% endfor %}
+{% endif %}
+
+{% endif %}

@@ -1,0 +1,248 @@
+[
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789ABC",
+            "uid": "audit:123456789"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.47.160/32"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789B",
+            "uid": "audit:1234567891"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.31.148/32"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789C",
+            "uid": "audit:1234567892"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.33.128/32"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789D",
+            "uid": "audit:1234567893"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.78.0/24"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789E",
+            "uid": "audit:1234567894"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.95.203/32"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "apiVersion": "spyderbat/v1",
+        "kind": "GuardianDeviation",
+        "metadata": {
+            "type": "ingress",
+            "policy_uid": "hEzg8jyCCAGwu6OaG1KI",
+            "checksum": "123456789F",
+            "uid": "audit:1234567896"
+        },
+        "spec": {
+            "processPolicy": [
+                {
+                    "policyNode": {
+                        "id": "python_1"
+                    }
+                }
+            ],
+            "networkPolicy": {
+                "ingress": [
+                    {
+                        "from": [
+                            {
+                                "ipBlock": {
+                                    "cidr": "192.168.47.160/32"
+                                }
+                            }
+                        ],
+                        "ports": [
+                            {
+                                "protocol": "TCP",
+                                "port": 5000
+                            }
+                        ],
+                        "processes": [
+                            "python_1"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]

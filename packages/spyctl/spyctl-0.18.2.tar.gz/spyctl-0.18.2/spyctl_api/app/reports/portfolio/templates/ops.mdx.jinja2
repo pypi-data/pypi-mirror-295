@@ -1,0 +1,143 @@
+{% if error %}
+### An error was encountered while generating the report
+{{ error.message }}
+
+{% else %}
+# Operational report
+---
+
+**Cluster:** *{{ cluster.name }}* ({{ cluster.id }})
+
+**Reporting period:** *{{ st }}* to *{{ et }}*
+
+## 1. Cluster summary metrics
+
+```grid
+{{ cluster_stat_grid }}
+```
+
+---
+## 2. Node information
+
+```grid
+{{ node_summary_grid }}
+```
+
+---
+## 3. Cluster capacity and usage
+
+### Pods headroom
+```chart
+{{ pods_usage_chart }}
+```
+### CPU headroom
+```chart
+{{ pods_cpu_chart }}
+```
+
+### Memory headroom
+```chart
+{{ pods_memory_chart }}
+```
+
+### Pod distribution across namespaces
+```chart
+{{ pods_usage_ns_chart }}
+```
+
+{% if pods_usage_node_chart %}
+### Pod distribution across nodes
+```chart
+{{ pods_usage_node_chart }}
+```
+{% endif %}
+
+---
+## 4. Spyderbat agent health
+
+### Spyderbat Nano-agent
+> The spyderbat nano-agent runs as a daemonset on all nodes and monitor for system level telemetry on the host,
+> using EBPF technology. It provides information on processes, networking and container runtime behavior.
+> A healthy monitored cluster should have the nano-agent running on all nodes at all times.
+
+#### Nodes running nano-agent over time
+```chart
+{{ nano_agent_chart }}
+```
+
+
+{% if nodes_missing_agents_grid %}
+Nodes with taints that are missing nano-agents:
+
+```grid
+{{ nodes_missing_agents_grid }}
+```
+
+{% endif %}
+
+
+{% if missing_tol_nano %}
+> A common root-cause for missing nano-agent are taints on nodes. In order for the nano-agent
+> to run on all nodes, the nano-agent should have tolerations set up in the daemonset configuration.
+> This can be done by adjusting the nanoagent.tolerations values in the nano-agent helm chart and
+> updating the helm deployment.
+
+The following tolerations are missing from the most recently run nano-agent daemonset in this report,
+compared to the most recent nodes in the cluster:
+
+```grid
+{{ missing_tol_nano_grid }}
+```
+
+{% endif %}
+
+
+### Spyderbat Cluster Monitor
+> The spyderbat cluster monitor runs as a deployment on the cluster, and monitors the kubernetes cluster
+> lifecycle by talking to the kubernetes api. It provides information on current state of the cluster.
+> A healthy monitored cluster should have the nano-agent running on all nodes.
+
+#### Cluster monitor running over time
+```chart
+{{ clustermonitor_chart }}
+```
+
+{% if clustermonitor_down and missing_tol_cm %}
+> A common root-cause for the cluster monitor not running are node taints.
+> In order for the clustermonitor to be able to run it should have tolerations set up in the clustermonitor spec
+
+The following tolerations are missing from the most recently run clustermonitor deployment in this report,
+compared to the most recent nodes in the cluster:
+{% for taint in missing_tol_cm %}
+{{ taint }}
+{% endfor %}
+{% endif %}
+
+
+---
+## 5. Cluster operational issues
+
+{% if opsflags_count > 0 %}
+A total of {{ opsflags_count }} operational issues were found:
+
+### Summary by severity and type of issues
+
+```grid
+{{ opsflags_stats_grid }}
+```
+
+### Reference of crittical and high severity issues
+Below are the critical and high severity issues found in this reporting period.
+They are capped at 100 issues for brevity of the report, for the full list,
+use the search functionality in the Spyderbat user interface.
+
+```grid
+{{ opsflags_list_grid }}
+```
+
+{% else %}
+No operational issues were detected in this reporting period.
+{% endif %}
+
+
+{% endif %}

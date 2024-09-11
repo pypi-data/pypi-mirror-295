@@ -1,0 +1,240 @@
+
+# Nano agent usage report
+---
+
+**Cluster:** *integrationc2*
+
+**Reporting period:** *2024-06-05 10:53:29* to *2024-06-05 11:53:13*
+
+
+## Nano agent resource usage
+
+### Summary across all agents
+Across all agents in the cluster the following resource usage is observed:
+```grid
+{
+    "id": "eca600b7-618a-4235-9364-2195f8c09a6d",
+    "columns": [
+        {
+            "title": "Metric",
+            "field": "metric"
+        },
+        {
+            "title": "Mean",
+            "field": "mean"
+        },
+        {
+            "title": "P90",
+            "field": "p90"
+        },
+        {
+            "title": "P99",
+            "field": "p99"
+        }
+    ],
+    "options": {},
+    "data": [
+        {
+            "metric": "CPU load",
+            "mean": 0.016,
+            "p90": 0.025,
+            "p99": 0.035,
+            "id": 0
+        },
+        {
+            "metric": "Memory (MB)",
+            "mean": "386 MB",
+            "p90": "457 MB",
+            "p99": "469 MB",
+            "id": 1
+        },
+        {
+            "metric": "Bandwidth (bytes/sec)",
+            "mean": "5375",
+            "p90": "9396",
+            "p99": "12904",
+            "id": 2
+        }
+    ]
+}
+```
+
+### CPU usage per agent
+In more detail, the following CPU usage is observed on a per agent basis:
+```grid
+{
+    "id": "2db767ba-b470-475f-9cd7-344a34348a6f",
+    "columns": [
+        {
+            "title": "Agent",
+            "field": "agent"
+        },
+        {
+            "title": "Mean",
+            "field": "mean"
+        },
+        {
+            "title": "P90",
+            "field": "p90"
+        },
+        {
+            "title": "P99",
+            "field": "p99"
+        }
+    ],
+    "options": {},
+    "data": [
+        {
+            "agent": "ip-192-168-51-155.us-west-2.compute.internal",
+            "mean": 0.026,
+            "p90": 0.027,
+            "p99": 0.037,
+            "id": 0
+        },
+        {
+            "agent": "ip-192-168-30-20.us-west-2.compute.internal",
+            "mean": 0.012,
+            "p90": 0.013,
+            "p99": 0.018,
+            "id": 1
+        },
+        {
+            "agent": "ip-192-168-62-179.us-west-2.compute.internal",
+            "mean": 0.019,
+            "p90": 0.02,
+            "p99": 0.027,
+            "id": 2
+        },
+        {
+            "agent": "clustermonitor-deployment-67cdf8565-fp4ll",
+            "mean": 0.007,
+            "p90": 0.019,
+            "p99": 0.025,
+            "id": 3
+        }
+    ]
+}
+```
+
+### Memory usage per agent
+In more detail, the following memory usage is observed on a per agent basis:
+```grid
+{
+    "id": "43fa6bab-7e6d-4270-b122-7861bb949f5b",
+    "columns": [
+        {
+            "title": "Agent",
+            "field": "agent",
+            "type": "bytes"
+        },
+        {
+            "title": "Mean",
+            "field": "mean",
+            "type": "bytes"
+        },
+        {
+            "title": "P90",
+            "field": "p90",
+            "type": "bytes"
+        },
+        {
+            "title": "P99",
+            "field": "p99",
+            "type": "bytes"
+        }
+    ],
+    "options": {},
+    "data": [
+        {
+            "agent": "ip-192-168-51-155.us-west-2.compute.internal",
+            "mean": 452804295.798,
+            "p90": 471168000,
+            "p99": 479023200,
+            "id": 0
+        },
+        {
+            "agent": "ip-192-168-30-20.us-west-2.compute.internal",
+            "mean": 464162180.753,
+            "p90": 486006400,
+            "p99": 496930000,
+            "id": 1
+        },
+        {
+            "agent": "ip-192-168-62-179.us-west-2.compute.internal",
+            "mean": 461480363.866,
+            "p90": 477065000,
+            "p99": 484817000,
+            "id": 2
+        },
+        {
+            "agent": "clustermonitor-deployment-67cdf8565-fp4ll",
+            "mean": 241613282.008,
+            "p90": 256010400,
+            "p99": 273685000,
+            "id": 3
+        }
+    ]
+}
+```
+
+### Bandwidth usage per agent
+In more detail, the following bandwidth usage is observed on a per agent basis:
+```grid
+{
+    "id": "7342ffc2-1d95-4d2a-8cfc-fe807e1aff8a",
+    "columns": [
+        {
+            "title": "Agent",
+            "field": "agent",
+            "type": "bytesPerSecond"
+        },
+        {
+            "title": "Mean",
+            "field": "mean",
+            "type": "bytesPerSecond"
+        },
+        {
+            "title": "P90",
+            "field": "p90",
+            "type": "bytesPerSecond"
+        },
+        {
+            "title": "P99",
+            "field": "p99",
+            "type": "bytesPerSecond"
+        }
+    ],
+    "options": {},
+    "data": [
+        {
+            "agent": "ip-192-168-51-155.us-west-2.compute.internal",
+            "mean": 9649.933,
+            "p90": 9890,
+            "p99": 13215,
+            "id": 0
+        },
+        {
+            "agent": "ip-192-168-30-20.us-west-2.compute.internal",
+            "mean": 3525.351,
+            "p90": 3717,
+            "p99": 4901,
+            "id": 1
+        },
+        {
+            "agent": "ip-192-168-62-179.us-west-2.compute.internal",
+            "mean": 5661.693,
+            "p90": 5839,
+            "p99": 7581,
+            "id": 2
+        },
+        {
+            "agent": "clustermonitor-deployment-67cdf8565-fp4ll",
+            "mean": 2683.243,
+            "p90": 8340,
+            "p99": 10710,
+            "id": 3
+        }
+    ]
+}
+```
+

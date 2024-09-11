@@ -1,0 +1,679 @@
+{
+    "apiVersion": "spyderbat/v1",
+    "kind": "SpyderbatPolicy",
+    "metadata": {
+        "name": "kubelet-service-policy",
+        "type": "linux-service",
+        "creationTimestamp": "2023-08-08T19:05:40Z",
+        "latestTimestamp": 1691517640,
+        "uid": "prMdv07tf2RbHsfjhBBf"
+    },
+    "spec": {
+        "serviceSelector": {
+            "cgroup": "systemd:/system.slice/kubelet.service"
+        },
+        "machineSelector": {
+            "hostname": "*.us-west-2.compute.internal"
+        },
+        "mode": "audit",
+        "enabled": true,
+        "processPolicy": [
+            {
+                "name": "kubelet",
+                "exe": [
+                    "/usr/bin/kubelet"
+                ],
+                "id": "kubelet_0",
+                "euser": [
+                    "root"
+                ],
+                "children": [
+                    {
+                        "name": "*tables",
+                        "exe": [
+                            "/usr/sbin/xtables-legacy-multi"
+                        ],
+                        "id": "ip6tables_0"
+                    },
+                    {
+                        "name": "aws-cni",
+                        "exe": [
+                            "/opt/cni/bin/aws-cni"
+                        ],
+                        "id": "aws-cni_0"
+                    },
+                    {
+                        "name": "aws-iam-authent",
+                        "exe": [
+                            "/usr/bin/aws-iam-authenticator"
+                        ],
+                        "id": "aws-iam-authent_0"
+                    },
+                    {
+                        "name": "egress-v4-cni",
+                        "exe": [
+                            "/opt/cni/bin/egress-v4-cni"
+                        ],
+                        "id": "egress-v4-cni_0"
+                    },
+                    {
+                        "name": "ip",
+                        "exe": [
+                            "/usr/sbin/ip"
+                        ],
+                        "id": "ip_0"
+                    },
+                    {
+                        "name": "ip",
+                        "exe": [
+                            "/usr/bin/nsenter"
+                        ],
+                        "id": "ip_1"
+                    },
+                    {
+                        "name": "iptables",
+                        "exe": [
+                            "/usr/sbin/xtables-legacy-multi"
+                        ],
+                        "id": "iptables_0"
+                    },
+                    {
+                        "name": "loopback",
+                        "exe": [
+                            "/opt/cni/bin/loopback"
+                        ],
+                        "id": "loopback_0"
+                    },
+                    {
+                        "name": "mount",
+                        "exe": [
+                            "/usr/bin/mount"
+                        ],
+                        "id": "mount_0"
+                    },
+                    {
+                        "name": "nsenter",
+                        "exe": [
+                            "/usr/bin/nsenter"
+                        ],
+                        "id": "nsenter_0"
+                    },
+                    {
+                        "name": "portmap",
+                        "exe": [
+                            "/opt/cni/bin/portmap"
+                        ],
+                        "id": "portmap_0"
+                    },
+                    {
+                        "name": "umount",
+                        "exe": [
+                            "/usr/bin/umount"
+                        ],
+                        "id": "umount_0"
+                    }
+                ]
+            },
+            {
+                "name": "umount",
+                "exe": [
+                    "/usr/bin/umount"
+                ],
+                "id": "umount_1",
+                "euser": [
+                    "root"
+                ]
+            }
+        ],
+        "networkPolicy": {
+            "ingress": [
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.23.209/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.92.50/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.104.223/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.145.127/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.174.16/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.191.225/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 10250
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 35445
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.31.148/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.33.128/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.47.160/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.65.19/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.95.203/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "loopback_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 22
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.47.160/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "ip_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 22
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.31.148/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.65.19/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "aws-cni_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 22
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 39741
+                        }
+                    ]
+                },
+                {
+                    "from": [
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 43833
+                        }
+                    ]
+                }
+            ],
+            "egress": [
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "169.254.169.254/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "aws-iam-authent_0",
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 80
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "35.81.145.33/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.213.78.181/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.213.79.10/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.213.79.86/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.213.79.104/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.213.79.114/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "44.225.127.230/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "100.21.163.189/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "209.54.180.122/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 443
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.2.31/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.60.58/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.79.124/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.85.25/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 8765
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.22.154/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.30.134/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.32.157/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.52.88/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.65.91/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.68.44/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.88.198/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.89.11/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.93.182/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 9808
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 35445
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "dnsSelector": [
+                                "localhost"
+                            ]
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "aws-cni_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 50051
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.1.26/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 61779
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.83.0/32"
+                            }
+                        },
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.94.9/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 2801
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.65.252/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 9445
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.83.146/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 20300
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.72.150/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 8443
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "dnsSelector": [
+                                "localhost"
+                            ]
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 39741
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "127.0.0.1/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 43833
+                        }
+                    ]
+                },
+                {
+                    "to": [
+                        {
+                            "ipBlock": {
+                                "cidr": "192.168.54.148/32"
+                            }
+                        }
+                    ],
+                    "processes": [
+                        "kubelet_0"
+                    ],
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 8081
+                        }
+                    ]
+                }
+            ]
+        },
+        "response": {
+            "default": [
+                {
+                    "makeRedFlag": {
+                        "severity": "high"
+                    }
+                }
+            ],
+            "actions": []
+        }
+    }
+}

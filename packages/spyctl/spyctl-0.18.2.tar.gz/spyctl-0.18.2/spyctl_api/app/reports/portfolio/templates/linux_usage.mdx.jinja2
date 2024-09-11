@@ -1,0 +1,131 @@
+{% if error %}
+### An error was encountered while generating the report
+{{ error.message }}
+
+{% else %}
+# Linux usage report
+---
+
+**Reporting period:** *{{ st }}* to *{{ et }}*
+
+**Machines reported on:**
+{% for machine in machines.values() %}
+[`{{ machine.info.display_name }}`](#{{ machine.info.muid }}) {% endfor %}
+
+{% for machine in machines.values() %}
+---
+## Machine `{{ machine.info.display_name }}` {{ '{' }}#{{ machine.info.muid }}{{ '}' }}
+
+### Machine information
+```grid
+{
+    "columns": [
+        {
+            "title": "Property",
+            "field": "property",
+            "sorter": "string"
+        },
+        {
+            "title": "",
+            "field": "value",
+            "sorter": "string"
+        }
+    ],
+    "options": {
+        "layout": "fitColumns",
+        "headerVisible": false
+    },
+    "data": [
+        {
+            "id": 0,
+            "property": "Hostname",
+            "value": "{{ machine.info.hostname }}"
+        },
+        {
+            "id": 1,
+            "property": "Cloud Name",
+            "value": "{{ machine.info.cloud_name }}"
+        },
+        {
+            "id": 2,
+            "property": "Machine uid",
+            "value": "{{ machine.info.muid }}"
+        },
+        {
+            "id": 3,
+            "property": "OS",
+            "value": "{{ machine.info.os }}"
+        },
+        {
+            "id": 4,
+            "property": "OS Version",
+            "value": "{{ machine.info.os_version }}"
+        },
+        {
+            "id": 5,
+            "property": "OS Distribution",
+            "value": "{{ machine.info.os_distro_codename }}"
+        },
+        {
+            "id": 6,
+            "property": "Number of cores",
+            "value": "{{ machine.info.cores }}"
+        },
+        {
+            "id": 7,
+            "property": "Memory available",
+            "value": "{{ (machine.info.memory/1048576)|round(2) }} MB"
+        }
+    ]
+}
+```
+
+### CPU analysis
+
+#### Summary by day
+```grid
+{{ machine.load_grid }}
+```
+
+#### Evolution past 7 days
+```chart
+{{ machine.load_chart }}
+```
+
+### Memory analysis
+
+#### Summary by day
+```grid
+{{ machine.memory_grid }}
+```
+#### Evolution past 7 days (MB)
+```chart
+{{ machine.memory_chart }}
+```
+
+### Network analysis
+
+#### Summary by day - incoming data
+```grid
+{{ machine.network_in_grid }}
+```
+
+#### Evolution past 7 days - incoming data (MB)
+```chart
+{{machine.network_in_chart}}
+```
+
+#### Summary by day - outgoing data
+```grid
+{{ machine.network_out_grid }}
+```
+
+#### Evolution past 7 days - outgoing data (MB)
+```chart
+{{ machine.network_out_chart }}
+```
+
+{% endfor %}
+
+{% endif %}
+
