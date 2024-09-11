@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: sphinx-proof
+Version: 0.2.0
+Summary: A Sphinx extension for producing proofs, theorems, axioms, etc.
+Home-page: https://github.com/executablebooks/sphinx-proof
+Download-URL: https://github.com/executablebooks/sphinx-proof/archive/v0.2.0.tar.gz
+Author: QuantEcon
+Author-email: admin@quantecon.org
+License: BSD
+Project-URL: Source, https://github.com/executablebooks/sphinx-proof
+Project-URL: Tracker, https://github.com/executablebooks/sphinx-proof/issues
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: docutils>=0.15
+Requires-Dist: sphinx
+Requires-Dist: sphinx-book-theme
+Provides-Extra: all
+Requires-Dist: black; extra == "all"
+Requires-Dist: pytest-regressions; extra == "all"
+Requires-Dist: flake8; extra == "all"
+Requires-Dist: coverage; extra == "all"
+Requires-Dist: sphinx>=5.0; extra == "all"
+Requires-Dist: sphinx-book-theme; extra == "all"
+Requires-Dist: sphinxcontrib-bibtex; extra == "all"
+Requires-Dist: pre-commit; extra == "all"
+Requires-Dist: pytest-cov; extra == "all"
+Requires-Dist: myst-parser; extra == "all"
+Requires-Dist: sphinx-togglebutton; extra == "all"
+Requires-Dist: beautifulsoup4; extra == "all"
+Requires-Dist: defusedxml; extra == "all"
+Requires-Dist: pytest~=7.1; extra == "all"
+Requires-Dist: texsoup; extra == "all"
+Provides-Extra: code_style
+Requires-Dist: flake8; extra == "code-style"
+Requires-Dist: black; extra == "code-style"
+Requires-Dist: pre-commit; extra == "code-style"
+Provides-Extra: rtd
+Requires-Dist: sphinx>=5.0; extra == "rtd"
+Requires-Dist: sphinx-book-theme; extra == "rtd"
+Requires-Dist: sphinxcontrib-bibtex; extra == "rtd"
+Requires-Dist: myst-parser; extra == "rtd"
+Requires-Dist: sphinx-togglebutton; extra == "rtd"
+Provides-Extra: testing
+Requires-Dist: coverage; extra == "testing"
+Requires-Dist: pytest~=7.1; extra == "testing"
+Requires-Dist: pytest-cov; extra == "testing"
+Requires-Dist: pytest-regressions; extra == "testing"
+Requires-Dist: beautifulsoup4; extra == "testing"
+Requires-Dist: myst-parser; extra == "testing"
+Requires-Dist: texsoup; extra == "testing"
+Requires-Dist: defusedxml; extra == "testing"
+
+
+This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
+for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
+corollary, algorithm, example, property, observation, proposition, and
+assumption directives.
+
+This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
