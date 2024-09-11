@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: cmoat
+Version: 0.1.1
+Summary: A toolkit for analysising cancer genomics & proteomics.
+Author-email: super_samantha <zhangsamantha9@gmail.com>, suisuishou <blightue@gmail.com>
+Project-URL: Homepage, https://cmoat.notion.site/CMoAT-Manual-c4ca7801421d4b06b25891988164952c?pvs=4
+Project-URL: Repository, https://github.com/ZhangSamantha9/CMOA.git
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: cptac>=1.5.7
+Requires-Dist: lifelines>=0.27.8
+Requires-Dist: matplotlib>=3.8.0
+Requires-Dist: numpy>=1.24.2
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: Requests>=2.31.0
+Requires-Dist: scikit_learn>=1.3.0
+Requires-Dist: scipy>=1.11.2
+Requires-Dist: seaborn>=0.12.2
+Requires-Dist: statsmodels>=0.13.5
+
+
+# CMoAT (Cancer Multi-Omics Analysis Toolkit)
+
+![GitHub License](https://img.shields.io/github/license/ZhangSamantha9/CMoAT)
+![Pypi Version](https://img.shields.io/pypi/v/cmoat)
+![Workflow Status](https://img.shields.io/github/workflow/status/ZhangSamantha9/CMoAT/upload-to-pypi.yml)
+
+CMoAT (Cancer Multi-Omics Analysis Toolkit) is a Python-based toolkit designed for analyzing cancer genomics and proteomics data. The manual provides information on how to use and install the toolkit, as well as its features and functions.
+
+
+## 1. Usage:
+   - CLI (Command Line Interface): After installation, CMoAT can be used via command line in the terminal.
+   - GUI (Graphical User Interface): Not implemented yet.
+
+## 2. Installation:
+   - CMoAT can be installed using pip with the command: `pip install cmoat`
+
+## 3. Features:
+   - Protein Correlation Scatter Plot: Creates scatter plots of two genes' expression with a fitted straight line, including correlation coefficient and p-value.
+   - Dual Survival Analysis: Generates survival curves for high (0.75/0.75) and low (0.25/0.25) expression of both genes simultaneously.
+   - Expression Boxplot (one gene): Produces a box plot comparing tumor and normal tissue protein expression for a single gene.
+   - Single Gene Survival Analysis: Creates monogenic survival curves.
+   - Normal Tissue Expression: Generates a bar chart showing the expression of one gene across multiple human normal tissues.
+  
