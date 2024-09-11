@@ -1,0 +1,12 @@
+setup.py
+cc_report/__init__.py
+cc_report/pytest_testreport.py
+cc_report.egg-info/PKG-INFO
+cc_report.egg-info/SOURCES.txt
+cc_report.egg-info/dependency_links.txt
+cc_report.egg-info/entry_points.txt
+cc_report.egg-info/requires.txt
+cc_report.egg-info/top_level.txt
+cc_report/templates/__init__.py
+cc_report/templates/templates.html
+cc_report/templates/templates2.html
