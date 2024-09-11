@@ -1,0 +1,10 @@
+airless/__init__.py,sha256=h-QyvMVzDNpT3jyVskcSbUVFXxGCRxieFPrvTveZG9k,64
+airless/slack/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/slack/hook/__init__.py,sha256=NxuiZ0Y6huR77SbHTsgwY_ontiCu-XrM3vYguOBJRd0,30
+airless/slack/hook/slack.py,sha256=JZSMWO_Tid1TBc5mt6bzqfY-u7pt_gAYB7ZpYasAuco,1938
+airless/slack/operator/__init__.py,sha256=Oe69loB4yvmsZRhm75YaWZ6Xol7ESM9zP9ApDJUcI0Y,127
+airless/slack/operator/slack.py,sha256=a_YGwQJN_aYnTngwGf2EDN7WG0z_Cq2LXIgR20RX0x0,3151
+airless_slack-0.0.1.dist-info/METADATA,sha256=gxrLvj5u0HK3hRU_uOn1jEO6DHp2wAoC7mHLZQW_10U,639
+airless_slack-0.0.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+airless_slack-0.0.1.dist-info/top_level.txt,sha256=vPLzRICE7VNGvU-zceoZ1N7H2TkerQXR475zjg_xPzU,8
+airless_slack-0.0.1.dist-info/RECORD,,
