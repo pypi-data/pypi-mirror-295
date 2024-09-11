@@ -1,0 +1,2 @@
+[console_scripts]
+tg_admin_bot = tg_admin_bot.__main__:main
