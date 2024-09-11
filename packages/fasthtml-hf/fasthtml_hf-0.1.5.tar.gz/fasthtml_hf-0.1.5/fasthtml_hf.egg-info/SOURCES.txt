@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+fasthtml_hf/__init__.py
+fasthtml_hf/backup.py
+fasthtml_hf/deploy.py
+fasthtml_hf.egg-info/PKG-INFO
+fasthtml_hf.egg-info/SOURCES.txt
+fasthtml_hf.egg-info/dependency_links.txt
+fasthtml_hf.egg-info/entry_points.txt
+fasthtml_hf.egg-info/requires.txt
+fasthtml_hf.egg-info/top_level.txt
