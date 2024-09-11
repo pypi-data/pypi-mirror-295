@@ -1,0 +1,15 @@
+LICENSE.txt
+setup.py
+assis/__init__.py
+assis/files_man.py
+assis/main.py
+assis/utils.py
+assis.egg-info/PKG-INFO
+assis.egg-info/SOURCES.txt
+assis.egg-info/dependency_links.txt
+assis.egg-info/entry_points.txt
+assis.egg-info/requires.txt
+assis.egg-info/top_level.txt
+assis/local_openia/__init__.py
+assis/local_openia/main.py
+assis/local_openia/utils.py
