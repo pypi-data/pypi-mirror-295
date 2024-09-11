@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: hive-config
+Version: 0.0.5
+Summary: Configuration management for Hive
+Author-email: Gary Benson <gary@gbenson.net>
+Project-URL: Homepage, https://github.com/gbenson/hive/tree/main/libs/hive-config
+Project-URL: Source, https://github.com/gbenson/hive
+Description-Content-Type: text/markdown
+Requires-Dist: PyYAML
+
+[![version badge]](https://pypi.org/project/hive-config/)
+
+[version badge]: https://img.shields.io/pypi/v/hive-config?color=limegreen
+
+# hive-config
+
+Configuration management for Hive.
+
+## Installation
+
+### With PIP
+
+```sh
+pip install hive-config
+```
