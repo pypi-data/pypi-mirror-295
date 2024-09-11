@@ -1,0 +1,9 @@
+openpyxl>=3.1.5
+types-openpyxl>=3.1.5.20240822
+pylightxl>=1.61
+XlsxWriter>=3.2.0
+pip>=23.2
+Pillow>=10.0.1
+setuptools>=74.0.0
+build>=1.2.1
+wheel>=0.44.0
