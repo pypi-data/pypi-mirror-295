@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center"><u>{{title_html}}</u></h1>
+<div class="container-fluid table-sm">
+    <div class="row">
+        <div class="col">
+            <h1>AU</h1>
+            <table class="table table-sm table-responsive">
+                <tbody>
+                <tr>
+                    <th scope="row">Adapter ID</th>
+                    <td>{{ au_adapter_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Connection ID</th>
+                    <td>{{ au_adapter_connection_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adapter Description</th>
+                    <td>{{ au_adapter_desc }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tenant</th>
+                    <td>{{ au_adapter_tenant }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">BasePath</th>
+                    <td>{{ au_adapter_basepath }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>DEV</h1>
+            <table class="table table-sm table-responsive">
+                <tbody>
+                <tr>
+                    <th scope="row">Adapter ID</th>
+                    <td>{{ dev_adapter_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Connection ID</th>
+                    <td>{{ dev_adapter_connection_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adapter Description</th>
+                    <td>{{ dev_adapter_desc }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tenant</th>
+                    <td>{{ dev_adapter_tenant }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">BasePath</th>
+                    <td>{{ dev_adapter_basepath }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h1>PRO</h1>
+            <table class="table table-sm table-responsive">
+                <tbody>
+                <tr>
+                    <th scope="row">Adapter ID</th>
+                    <td>{{ pro_adapter_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Connection ID</th>
+                    <td>{{ pro_adapter_connection_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adapter Description</th>
+                    <td>{{ pro_adapter_desc }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tenant</th>
+                    <td>{{ pro_adapter_tenant }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">BasePath</th>
+                    <td>{{ pro_adapter_basepath }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
