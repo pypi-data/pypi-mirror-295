@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: zpp_browser
+Version: 1.0.2
+Summary: Browser (Explorateur) de fichier en cli
+Home-page: https://github.com/ZephyrOff/zpp_browser
+Author: 
+License: MIT License
+Project-URL: Documentation, https://github.com/ZephyrOff/zpp_browser
+Platform: ALL
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# zpp-browser
+## Informations
+Librairie pour l'utilisateur d'un explorateur de fichier en cli pour la sÃ©lection d'un fichier
+
+### PrÃ©requis
+- Python 3
+<br>
+
+# Installation
+```console
+pip install zpp_browser
+```
+
+# Utilisation
+### Conseil d'importation du module
+```python
+from zpp_browser import Browser
+```
+
+<br>
+
+### Initialisaton du browser
+```python
+c = Browser("Chemin_de_depart")
+```
+>En paramÃ¨tre supplÃ©mentaire, nous pouvons mettre:<br/>
+>- Filter: Permet de filtrer sur une liste d'extension de fichier. (Par dÃ©faut: ne filtre pas)
+>- ShowHidden: Afficher les fichiers et dossiers cachÃ©s. True ou False  (Par dÃ©faut: True)
+>- ShowDir: Afficher les dossiers. True ou False  (Par dÃ©faut: True)
+>- ShowFirst: Choisir si on souhaite afficher les dossiers ou les fichiers en premier. dir, file ou None (Par dÃ©faut: dir)
+>- Color: Permet de configurer la colorisation des fichiers en fonction de l'extensions (Voir annexe pour la configuration)
+>- Pointer: Choisir un pointer custom (Par dÃ©faut: " >")
+>- Padding: Choisir la taille de la marge Ã  gauche (Par defaut: 2)
+
+### Configuration des couleurs
+
+Il est possible d'envoyer Ã  la fonction une liste de couleur pour permettre de customiser l'affichage des fichiers en fonction de leur extension.
+Pour cela, la fonction attends une liste Ã  2 dimensions contenant [extension, couleur du texte, couleur de fond]
+<br>
+
+Pour l'extension il suffit de mettre le nom. 
+Par exemple, .txt pour les fichiers txt
+Cas particulier pour la configuration de certains Ã©lÃ©ments:
+- \_\_default__: Pour la couleur par dÃ©faut
+- \_\_hidden__: Pour les fichiers et dossiers cachÃ©s
+- \_\_dir__: Pour les dossiers
+- \_\_selected__: Pour l'Ã©lÃ©ment sÃ©lectionnÃ©
+
+Dans le cas oÃ¹ on veut configurer plusieurs extensions avec la mÃªme couleur, il suffit de mettre une virgule entre le nom des extensions.
+Exemple:
+```python
+['.crt,.pfx,.key,.txt','yellow','black']
+```
+
+#### Exemple de liste de couleur
+```python
+[['__default__','white','black'],['__hidden__','red','black'],['__selected__','red','black'],['__dir__','green','black'],['.crt,.pfx,.key,.txt','yellow','black']]
+```
