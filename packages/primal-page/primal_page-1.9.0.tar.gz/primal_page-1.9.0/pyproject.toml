@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "primal-page"
+version = "1.9.0"
+description = "Tooling and schemas for the primerschemes index"
+authors = ["ChrisKent <chrisgkent@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/ChrisgKent/primal-page"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.4.2"
+requests = "^2.31.0"
+biopython = "^1.83"
+typer = "^0.12.3"
+pre-commit = "^3.7.1"
+
+primalbedtools = "0.3"
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+ruff = "^0.3.4"
+coverage = "^7.5.4"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^9.5.28"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+primal-page = "primal_page.main:app"
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # isort
+    "I",
+]
+ignore = ["E501", "B006"] # Ignore line length
+
