@@ -1,0 +1,2 @@
+class HopError(Exception):
+    pass
