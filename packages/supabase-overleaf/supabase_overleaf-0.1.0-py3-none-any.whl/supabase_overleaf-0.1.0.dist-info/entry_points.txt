@@ -1,0 +1,2 @@
+[console_scripts]
+supabase-overleaf = supabase_overleaf.main:main
