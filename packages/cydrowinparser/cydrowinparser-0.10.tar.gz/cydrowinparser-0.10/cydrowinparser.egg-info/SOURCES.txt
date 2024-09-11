@@ -1,0 +1,17 @@
+LICENSE.rst
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+cydrowinparser/LICENSE
+cydrowinparser/README.MD
+cydrowinparser/__init__.py
+cydrowinparser/cywinparser.pyx
+cydrowinparser/cywinparser_compile.py
+cydrowinparser/requirements.txt
+cydrowinparser/thirdparty.json
+cydrowinparser.egg-info/PKG-INFO
+cydrowinparser.egg-info/SOURCES.txt
+cydrowinparser.egg-info/dependency_links.txt
+cydrowinparser.egg-info/requires.txt
+cydrowinparser.egg-info/top_level.txt

@@ -1,0 +1,6 @@
+include cydrowinparser/requirements.txt
+include cydrowinparser/thirdparty.json
+include cydrowinparser/LICENSE
+include cydrowinparser/cywinparser_compile.py
+include cydrowinparser/cywinparser.pyx
+include cydrowinparser/README.MD
