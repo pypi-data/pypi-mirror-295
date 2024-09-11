@@ -1,0 +1,7 @@
+setuptools
+setuptools-scm
+build
+auditwheel
+cibuildwheel
+wheel
+colorama

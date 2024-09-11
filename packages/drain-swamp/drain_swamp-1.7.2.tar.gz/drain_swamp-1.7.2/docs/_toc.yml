@@ -1,0 +1,93 @@
+root: index
+subtrees:
+- entries:
+  - file: overview
+- entries:
+  - file: getting_started/index
+    entries:
+    - file: getting_started/installation
+    - file: getting_started/drain-swamp-files
+    - file: getting_started/pipenv-unlock
+    - file: getting_started/setuptools-scm
+    - file: getting_started/from-source
+    - file: getting_started/build-package
+- entries:
+  - file: api/index
+    entries:
+    - glob: api/*
+- entries:
+  - file: code/index
+    entries:
+    - file: code/snip
+    - file: code/cli_unlock
+    - file: code/cli_igor
+    - file: code/cli_scm_version
+    - file: code/general/index
+      entries:
+      - file: code/general/version_file
+      - file: code/general/check_type
+      - file: code/general/constants
+      - file: code/general/constants_maybe
+      - file: code/general/exceptions
+      - file: code/general/pep518_read
+      - file: code/general/parser_in
+      - file: code/general/version_semantic
+      - file: code/general/package_metadata
+      - file: code/general/run_cmd
+      - file: code/general/safe_path
+      - file: code/general/package_installed
+    - file: code/ext/index
+      entries:
+      - file: code/ext/pipenv_unlock/index
+        entries:
+        - file: code/ext/pipenv_unlock/backend_abc
+        - file: code/ext/pipenv_unlock/snippet_dependencies
+        - file: code/ext/pipenv_unlock/lock_toggle
+        - file: code/ext/pipenv_unlock/snippet_pyproject_toml
+      - file: code/ext/drain_swamp/index
+        entries:
+        - file: code/ext/drain_swamp/sphinx_conf
+        - file: code/ext/drain_swamp/igor_utils
+    - file: code/version_file/index
+      entries:
+      - file: code/version_file/overrides
+      - file: code/version_file/dump_version
+    - file: code/monkey/index
+      entries:
+      - file: code/monkey/config_settings
+      - file: code/monkey/patch_pyproject_reading
+      - file: code/monkey/wrap_get_version
+      - file: code/monkey/wrap_infer_version
+      - file: code/monkey/wrap_version_keyword
+      - file: code/monkey/hooks/index
+        entries:
+        - file: code/monkey/hooks/pm_constants
+        - file: code/monkey/hooks/markers
+        - file: code/monkey/hooks/specs
+        - file: code/monkey/hooks/manager
+      - file: code/monkey/plugins/index
+        entries:
+        - file: code/monkey/plugins/refresh_links
+        - file: code/monkey/plugins/scm_version
+- caption: Articles
+  entries:
+  - file: snippets/snippets
+  - file: article-version-specifiers
+  - file: why/about_authors
+  - file: why/cringe-culture
+    entries:
+    - file: troubleshooting/index
+      entries:
+      - glob: troubleshooting/*
+- entries:
+  - file: LICENSE/index
+    entries:
+    - file: LICENSE/donation
+    - file: LICENSE/closed-source-license
+- caption: Links
+  entries:
+  - file: getting-help
+  - title: Contact
+    url: https://mastodon.social/@msftcangoblowme
+meta:
+  exclude_missing: true

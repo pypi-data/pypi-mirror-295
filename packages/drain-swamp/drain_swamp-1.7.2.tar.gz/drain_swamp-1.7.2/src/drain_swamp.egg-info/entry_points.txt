@@ -1,0 +1,10 @@
+[console_scripts]
+drain-swamp = drain_swamp.cli_igor:main
+pipenv-unlock = drain_swamp.cli_unlock:main
+scm-version = drain_swamp.cli_scm_version:main
+
+[distutils.setup_keywords]
+use_scm_version = drain_swamp.monkey.wrap_version_keyword:version_keyword
+
+[setuptools.finalize_distribution_options]
+drain_swamp = drain_swamp.monkey.wrap_infer_version:infer_version
