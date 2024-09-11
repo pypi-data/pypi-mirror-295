@@ -1,0 +1,9 @@
+Click
+PyYAML
+docker
+
+[dev]
+pytest
+black
+twine
+bump2version
