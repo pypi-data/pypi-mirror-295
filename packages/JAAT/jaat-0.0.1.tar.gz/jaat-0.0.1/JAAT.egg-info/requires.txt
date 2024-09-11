@@ -1,0 +1,10 @@
+importlib_resources
+nltk
+pandas
+psutil
+sentence_transformers
+torch
+tqdm
+transformers
+xlrd
+swifter
