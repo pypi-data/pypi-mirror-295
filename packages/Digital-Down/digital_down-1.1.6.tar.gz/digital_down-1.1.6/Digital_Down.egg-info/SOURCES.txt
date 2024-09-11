@@ -1,0 +1,25 @@
+LICENSE.txt
+setup.py
+Digital_Down/__init__.py
+Digital_Down.egg-info/PKG-INFO
+Digital_Down.egg-info/SOURCES.txt
+Digital_Down.egg-info/dependency_links.txt
+Digital_Down.egg-info/requires.txt
+Digital_Down.egg-info/top_level.txt
+Digital_Down/Audio/AudioSampleValues.py
+Digital_Down/Audio/BetaPhaseExtraction.py
+Digital_Down/Audio/ExtractionSynthesis.py
+Digital_Down/Audio/Methylphenethylamine.py
+Digital_Down/Audio/SinglePhaseExtraction.py
+Digital_Down/Audio/__init__.py
+Digital_Down/Code/__init__.py
+Digital_Down/Code/GUI/Extraction Synthesis 1.0.0.py
+Digital_Down/Code/GUI/Extraction Synthesis 1.5.2.py
+Digital_Down/Code/GUI/Methylphenethylamine 1.0.0.py
+Digital_Down/Code/GUI/__init__.py
+Digital_Down/Image/ImageProselyte.py
+Digital_Down/Image/__init__.py
+Digital_Down/Text/Documentation.py
+Digital_Down/Text/__init__.py
+Digital_Down/Video/MindHarvestNetwork.py
+Digital_Down/Video/__init__.py
