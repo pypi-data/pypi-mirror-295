@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+chkexmpt/__init__.py
+chkexmpt/main.py
+chkexmpt.egg-info/PKG-INFO
+chkexmpt.egg-info/SOURCES.txt
+chkexmpt.egg-info/dependency_links.txt
+chkexmpt.egg-info/entry_points.txt
+chkexmpt.egg-info/top_level.txt
+tests/test_chkexmpt.py
