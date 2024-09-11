@@ -1,0 +1,3 @@
+[console_scripts]
+vapor=vapor.__main__:main
+
