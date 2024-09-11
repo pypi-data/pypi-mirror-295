@@ -1,0 +1,15 @@
+aau_label-0.3.5.dist-info/METADATA,sha256=X7HwTnXJa104-qJyyMPdHQ-BATtmVCqiZrseQqOwxDQ,330
+aau_label-0.3.5.dist-info/WHEEL,sha256=rSwsxJWe3vzyR5HCwjWXQruDgschpei4h_giTm0dJVE,90
+aau_label-0.3.5.dist-info/licenses/LICENSE,sha256=AXqgYvfKCt8CxRTiyYYg-GsHmfxXRzp7Zl5DFAe0buI,1099
+aau_label/__init__.py,sha256=N-lJf6wscebqF9Gy_zNw4Hpp2WOXJ-Kv9_9EtwijbYg,10315
+aau_label/errors.py,sha256=5QcrySTkROuqPLFetYAX3UGLD4vIoEimDv6YDqxKvyY,645
+aau_label/io/__init__.py,sha256=cr55a2COMECT-HxFjB1GV6zAg3SiRxA2D26Jglx-KE8,58
+aau_label/io/darknet.py,sha256=IsqFsHdHIOHCN5Lb-PhckPfGgNEQkT9Heuwbi0d4BmM,2817
+aau_label/io/pascal.py,sha256=fE4JQOTf4Dxp_C-6iz5hVrO2_NpT5qxYyoadgBtmHik,5305
+aau_label/model.py,sha256=lYK-qWDHPumok8rXj3VN3gAARiycbre3GfqzrXf-bYM,682
+aau_label/parsers/__init__.py,sha256=9IijOC5XvuzEw6m7TUDFbfc-AzOxrVaoPwb5HT60w4g,131
+aau_label/parsers/darknet_parser.py,sha256=tniRyX-Hy0LCiSE5dLSS7XMCOpBXerAXwaHkAziaZl4,1921
+aau_label/parsers/pascal_parser.py,sha256=K_16AMgpK9JASaXC-JZCERUR1RdJjRlWOicfk-ibbZQ,2235
+aau_label/protocols.py,sha256=N-JE_K0R8eVPiflOl6OY5fLh4DKyVfn7xEp399C10WY,956
+aau_label/utilities.py,sha256=bth_y6CWE4d_UOkfO8BMr7wBWANHhfDt3ml20JUYLps,564
+aau_label-0.3.5.dist-info/RECORD,,
