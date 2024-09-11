@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: DMBotNetwork
+Version: 0.2.0
+Summary: Нэткод для проектов DMBot
+Home-page: https://github.com/AngelsAndDemonsDM/DM-Bot-network
+Author: Angels And Demons dev team
+Author-email: dm.bot.adm@gmail.com
+License: GPL-3.0
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: aiosqlite
+Requires-Dist: aiofiles
+Requires-Dist: bcrypt
+Requires-Dist: msgpack
+
+# DMBotNetwork
+
+**DMBotNetwork** — это модуль для реализации сетевого кода (нэткода) в проектах DMBot.
+
+## Лицензия
+
+Этот проект лицензирован по лицензии GNU General Public License v3.0 (GPL-3.0). Подробнее см. [LICENSE](./LICENSE).
