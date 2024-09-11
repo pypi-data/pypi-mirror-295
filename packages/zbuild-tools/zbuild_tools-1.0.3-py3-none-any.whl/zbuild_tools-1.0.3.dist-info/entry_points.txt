@@ -1,0 +1,7 @@
+[console_scripts]
+board = zbuild:board_main
+mkuenv = zbuild:mkimg_main
+zb = zbuild:zb_main
+zbuild = zbuild:zbuild_main
+zflash = zbuild:zflash_main
+zrun = zbuild:zrun_main
