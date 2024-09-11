@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: pytimer2
+Version: 0.2.2
+Summary: PyTimer is a lightweight and easy-to-use Python package designed to provide countdown timer functionality. It offers a simple class-based approach to manage countdowns, making it perfect for various use cases such as timing events, tracking intervals, or managing delays in scripts and applications.
+Home-page: https://github.com/attiqRahman/pytimer
+Author: Atiqur Rahman
+Author-email: rahman.md.attiq@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PyTimer2
+
+`PyTimer2` is a simple Python countdown timer package that offers start, pause, resume, and stop functionalities. This tool is perfect for managing timed tasks, creating simple scheduling systems, or integrating into larger applications where precise countdown control is required.
+
+## Features
+
+- **Start Countdown:** Initiate a countdown for a specified duration.
+- **Pause Countdown:** Pause the countdown at any moment without losing the current time.
+- **Resume Countdown:** Resume the countdown from where it was paused.
+- **Stop Countdown:** Completely stop the countdown and reset the timer.
+- **Non-Blocking Execution:** Runs in a separate thread, allowing your main application to continue running without interruption.
+
+## Installation
+
+You can install PyTimer directly from GitHub or from PyPI once published:
+
+```bash
+# Install pytimer2
+pip install pytimer2
+
+# Usage
+from pytimer2 import Timer
+import time
+
+# Create a Timer instance
+timer = Timer()
+
+# Start the countdown with a duration of 500 seconds
+timer.start_countdown(duration=500)
+
+# Access the current countdown value
+print(f"Current countdown: {timer.get_countdown()} seconds")
+
+# Let it run for a few seconds and then pause
+time.sleep(3)
+timer.pause_countdown()
+print(f"Countdown paused: {timer.get_countdown()} seconds")
+
+# Wait and then resume the countdown
+time.sleep(5)
+print(f"Countdown still paused: {timer.get_countdown()} seconds")
+timer.resume_countdown()
+print("Timer resumed...")
+
+# Run for a few more seconds
+time.sleep(2)
+print(f"Countdown resumed and current time: {timer.get_countdown()} seconds")
+
+# Stop the countdown
+timer.stop_countdown()
+print(f"Countdown stopped at: {timer.get_countdown()} seconds")
+
+
+
+
+
