@@ -1,0 +1,11 @@
+wait_for_db/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+wait_for_db/apps.py,sha256=hogn6SvTob9V5YittKaaPSSfxwLovRzOh2uD39XSbJc,152
+wait_for_db/management/commands/wait_for_db.py,sha256=b6I0nAgaodDFC75TmPA5zPSIb2F3t5CuK1T7gd_DI-Y,1427
+wait_for_db/migrations/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+wait_for_db/tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+wait_for_db/tests/conftest.py,sha256=LsErKcYabm9j-8lwyFNwi1FadRQhcX_sBNeRURZ4p0Y,2068
+wait_for_db/tests/test_wait_for_db.py,sha256=Ing1EH7uqdNINxxGmqKx98G-r0j3KB4Kfq2kQRa9m7o,3038
+django_wait_for_db-1.0.6.dist-info/LICENSE,sha256=MGjrGCg41KJ2nEWa9CxkfvOhRRrY6Bpc6TuAsynKdMY,1069
+django_wait_for_db-1.0.6.dist-info/METADATA,sha256=1kjs8h_zBL3Z73m97c2viZ6_LGCVeiT8JWJCwLCgm-c,2670
+django_wait_for_db-1.0.6.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+django_wait_for_db-1.0.6.dist-info/RECORD,,
