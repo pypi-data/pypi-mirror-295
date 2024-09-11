@@ -1,0 +1,15 @@
+numpy
+nptdms
+scipy
+scikit-learn
+matplotlib
+
+[dev]
+pytest
+pytest-cov
+coverage
+tox
+mypy
+pre-commit
+ruff
+setuptools_scm
