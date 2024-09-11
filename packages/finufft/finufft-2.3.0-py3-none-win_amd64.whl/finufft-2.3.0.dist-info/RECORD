@@ -1,0 +1,17 @@
+finufft/libfinufft.dll,sha256=SYKAcgrBUxeLgw-8vgW8IJy3U2Y6EvudYbgDOQJjsbs,1869070
+finufft/_finufft.py,sha256=uGewqhcn3tyuOrWSHKm5sLfLQDRy_z74H6zGeqc_FWo,4803
+finufft/_interfaces.py,sha256=5Xq63TUDLN9yaWeUGNhe8SmgRd8GCtKQ_ttqxlf8kys,31415
+finufft/__init__.py,sha256=r9HDiksOR0Z5vy1NSnNQ9NeZzz9PEq1xLIC15-2t8XU,2344
+finufft-2.3.0.dist-info/DELVEWHEEL,sha256=ZYs1vb-QSZZF0wXBA1gJdIxuu1MeupspepD9gv1iFnQ,421
+finufft-2.3.0.dist-info/METADATA,sha256=CXBM69X9gPrhUh2GGBgsG2Pw30PKToL6iQJLnN0BWYs,1657
+finufft-2.3.0.dist-info/RECORD,,
+finufft-2.3.0.dist-info/WHEEL,sha256=PCnorwMabMJcgiCWkRWSMlJHBJXvtsaJXAD7q-UyFvY,103
+finufft.libs/.load-order-finufft-2.3.0,sha256=DnBHbfCpV36AFhslr1h2OoTD04KCiydxkoPHpkpDLaQ,403
+finufft.libs/libfftw3-3-8da03c819386f322fa060b460872a182.dll,sha256=SBB0xHgaZPfsSiHmjkLNbac2EAAZQyymvqSii26YGXU,4244122
+finufft.libs/libfftw3f-3-68e4ebbe3923cb7a9405827c92378dec.dll,sha256=kPUGffsGQtHROGy56PTR7q1OX7WGMHwWDn9k3GFp2QE,4555930
+finufft.libs/libfftw3f_omp-3-e0a93fa6acb0bb214734ac7b69b9f95b.dll,sha256=HfNKbnOEv2AScO52VJu-K-_79XYLNOMDgHlHbj3JNtc,34574
+finufft.libs/libfftw3_omp-3-31e685fea8d246729c98d5b29f4f03f1.dll,sha256=L8YICoRMrqEOuuRdcSm0Twl14TfmUMS1Ek1q_ZRCGIs,34533
+finufft.libs/libgcc_s_seh-1-42ecb9af1e19566fea7d7916424a102c.dll,sha256=-A-1jWqL8qqznOnR5MPV6JpjPURO4YY1Yw2oGWQK05c,151731
+finufft.libs/libgomp-1-ec946efa2e1ec6c7d08c37f8f5b1f754.dll,sha256=tS2mcBVxk8INtk8Yqngf_15D126JikaHmHhBURljMYg,302197
+finufft.libs/libstdc++-6-b34ace5ac6ecc7b8a9459d260c80f014.dll,sha256=JmFuFiFzJCzLP-RPVN0mLe7wi67H93xYocfJKO2SIMY,2400168
+finufft.libs/libwinpthread-1-70157d73e141e2ae73466254bcabef8b.dll,sha256=AyO2muJgWD1zqIHafxEzAEaBE3aoIaGG_JsFnlOSlBM,60798
