@@ -1,0 +1,3 @@
+[console_scripts]
+buckets=buckets.__main__:main
+
