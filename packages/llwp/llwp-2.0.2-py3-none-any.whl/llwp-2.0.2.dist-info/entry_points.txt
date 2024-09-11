@@ -1,0 +1,3 @@
+[console_scripts]
+lasap = llwp:start_lasap
+llwp = llwp:start_llwp
