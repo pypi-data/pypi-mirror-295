@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "nickspylib"
+version = "0.1.0"
+description = "Example of a Python Library"
+authors = ["Nick Dalalelis <ndalalelis@yahoo.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/nickdala/nicks-pylib"
+keywords = ["example", "python", "library"]
+classifiers = [
+    "Topic :: Software Development :: Libraries",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "3.10.14"
+numpy = "~=1.21.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
