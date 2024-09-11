@@ -1,0 +1,3 @@
+[console_scripts]
+yuisub=yuisub.__main__:main
+
