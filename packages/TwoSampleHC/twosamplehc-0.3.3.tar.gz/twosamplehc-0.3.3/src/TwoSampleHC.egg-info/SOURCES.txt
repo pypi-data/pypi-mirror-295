@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/TwoSampleHC/TwoSampleHC.py
+src/TwoSampleHC/__init__.py
+src/TwoSampleHC/hc_vals.py
+src/TwoSampleHC.egg-info/PKG-INFO
+src/TwoSampleHC.egg-info/SOURCES.txt
+src/TwoSampleHC.egg-info/dependency_links.txt
+src/TwoSampleHC.egg-info/requires.txt
+src/TwoSampleHC.egg-info/top_level.txt
+tests/test_sparse_normals.py
