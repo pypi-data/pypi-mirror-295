@@ -1,0 +1,21 @@
+From the folder containing the "alembic.ini" file:
+
+--- Migration ---
+Auto-generate alembic migration file:
+
+    alembic revision --autogenerate -m "Added account table"
+
+After reviewing/editing the migration file...
+run the migration:
+
+    alembic upgrade head
+
+--- Complete Reset ---
+1. Delete the DB in heroku.
+2. Delete all migration files
+3. Tell alembic that all current migrations (none in our case) represent the latest 
+version of hte db: 
+
+        alembic stamp head
+
+4. Run a standard migration workflow (create revision then upgrade head)

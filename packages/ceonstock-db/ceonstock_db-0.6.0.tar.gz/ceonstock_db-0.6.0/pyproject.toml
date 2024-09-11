@@ -1,0 +1,42 @@
+[tool.pyright]
+# pythonVersion = "3.9"
+# venvPath = "/home/dayne/.pyenv/versions/"
+# venv = "cstock_db"
+
+# Setup linting rules
+reportUnusedVariable = "warning"
+reportUnusedImport = "warning"
+reportDuplicateImport = "warning"
+
+# Helpers
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnnecessaryCast = "warning"
+
+
+[tool.poetry]
+name = "ceonstock-db"
+version = "0.6.0"
+description = "Defines database schema and provides functionality to interact with the database."
+authors = ["Dayne Kolk <daynekolk@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "ceonstock_db"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+# pydantic = {extras = ["email"], version = "^1.10.7"}
+SQLAlchemy = "^2.0.11"
+alembic = "^1.10.4"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.6"
+pydantic = {extras = ["email"], version = "^2.5.3"}
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

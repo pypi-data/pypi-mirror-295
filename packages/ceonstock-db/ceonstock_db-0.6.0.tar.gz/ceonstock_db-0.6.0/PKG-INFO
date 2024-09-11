@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ceonstock-db
+Version: 0.6.0
+Summary: Defines database schema and provides functionality to interact with the database.
+Author: Dayne Kolk
+Author-email: daynekolk@hotmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: SQLAlchemy (>=2.0.11,<3.0.0)
+Requires-Dist: alembic (>=1.10.4,<2.0.0)
+Requires-Dist: passlib[bcrypt] (>=1.7.4,<2.0.0)
+Requires-Dist: psycopg2-binary (>=2.9.6,<3.0.0)
+Requires-Dist: pydantic[email] (>=2.5.3,<3.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Requires-Dist: python-jose[cryptography] (>=3.3.0,<4.0.0)
+Description-Content-Type: text/markdown
+
+# cstock_db
+Python package for Ceonstock db interaction
+
