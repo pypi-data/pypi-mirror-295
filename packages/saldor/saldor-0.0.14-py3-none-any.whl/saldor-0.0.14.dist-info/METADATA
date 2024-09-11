@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: saldor
+Version: 0.0.14
+Summary: A client library for the Saldor API.
+License: MIT
+Author: Jack Cameron
+Author-email: jack@saldor.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic (>=2.8.2,<3.0.0)
+Requires-Dist: pytest (>=8.3.2,<9.0.0)
+Requires-Dist: requests (>=2.26.0,<3.0.0)
+Requires-Dist: types-requests (>=2.32.0.20240712,<3.0.0.0)
+Description-Content-Type: text/markdown
+
+# Saldor
+
+Saldor is a Python client library for interacting with the Saldor.com API. It
+allows developers to easily integrate Saldor's services into their Python
+applications.
+
+## Installation
+
+```
+pip install saldor
+```
+
+Sign up for an account at console.saldor.com, get an API Key, and set that value as an environment variable SALDOR_API_URL.
+
+Writing a basic app that uses the client:
+
+```
+import os
+
+import saldor
+
+client = saldor.SaldorClient()
+
+result = client.crawl(
+    url="URL",
+    max_pages=3,
+)
+```
+
+
+
+
