@@ -1,0 +1,64 @@
+#!/bin/bash -f
+
+NO_VERIFY_FLAG="--no-verify-java"
+
+BASEPATH=$(readlink -f "$0")
+export ENV_DIR="$(dirname "${BASEPATH}")"
+
+scripts=("converter-frontend.sh" "tiling-advisor.sh" "converter-fm2lm.sh" "converter-backend.sh" "converter-packer.sh" "converter-main.sh")
+
+warning() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') WARNING : $1"
+}
+
+
+# Function to check execute permissions
+check_permissions() {
+   permission_missing=false
+    for script in "${scripts[@]}"; do
+        if [[ ! -e "$ENV_DIR/$script" ]]; then
+           warning "The script '$script' does not exist at '$ENV_DIR/$script'."
+        elif [[ ! -x "$ENV_DIR/$script" ]]; then
+            warning "The script '$script' is missing execute permissions found at '$ENV_DIR/$script'"
+            permission_missing=true
+        fi
+    done
+
+   if $permission_missing; then
+            warning "To grant execute permissions, run the following command for each required file:"
+            warning "chmod u+x <script_name>"
+   fi
+}
+
+check_permissions
+
+if [[ "$@" =~ "$NO_VERIFY_FLAG" ]]; then
+  args=("$@")
+  for ((i = 0; i < ${#args[@]}; i++)); do
+      if [[ "${args[$i]}" == "$NO_VERIFY_FLAG" ]]; then
+          unset 'args[i]'
+      fi
+  done
+  set -- "${args[@]}"
+else
+  if ! command -v java &> /dev/null; then
+      warning "It seems that Java is not installed. Please make sure Java 17 is set up correctly."
+      warning "You can set JAVA_HOME environment variable to point to the directory where Java 17 is installed."
+      warning "Example: "
+      warning "  export JAVA_HOME=/path/to/java/17"
+      warning "  export PATH=\$JAVA_HOME/bin:\$PATH"
+  else
+    java_version_output=$(java -version 2>&1)
+    if ! [[ $java_version_output =~ \"17\.[0-9]+ ]]; then
+      warning "Java 17 not found!"
+      warning "Please make sure you have Java 17 installed and configured correctly."
+      warning "You can set JAVA_HOME environment variable to point to the directory where Java 17 is installed."
+      warning "Example: "
+      warning "  export JAVA_HOME=/path/to/java/17"
+      warning "  export PATH=\$JAVA_HOME/bin:\$PATH"
+      warning "You can suppress this warning by using the '--no-verify-java' flag."
+    fi
+  fi
+fi
+
+bash $ENV_DIR/converter-main.sh --env-dir $ENV_DIR "$@"
