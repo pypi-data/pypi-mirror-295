@@ -1,0 +1,7 @@
+
+[dev]
+black==24.4.1
+bumpver
+flake8==7.0.0
+isort==5.13.2
+pytest
