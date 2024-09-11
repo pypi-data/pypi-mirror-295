@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "auto-po-lyglot"
+version = "1.2.0"
+#dynamic = ["version"]
+authors = [
+  { name="Olivier LEVILLAIN", email="levillain.olivier@gmail.com" },
+]
+description = "A Python package to translate po files using LLMs. Implements ChatGPT, Claude, Gemini, Grok and Ollama clients. (Note: Grok implemented but not tested yet as Grok API is not yet available in my country). Uses a 1rst manual translation for desambiguating short PO pieces of sentences."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies=[
+  "python-dotenv>=1.0.1",
+  "polib>=1.2.0",
+  "langcodes>=3.4.0",
+  "openai>=1.12.0",
+  "anthropic>=0.34.1",
+  "xai-sdk>=0.3.0",
+  "google-generativeai>=0.7.2",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
+]
+keywords = ["python", "poet", "translation", "llm", "AI"]
+
+[tool.uv]
+dev-dependencies = [
+  "pytest>=8.3.2",
+  "flake8>=7.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/leolivier/transpo"
+Repository = "https://github.com/leolivier/transpo.git"
+Issues = "https://github.com/leolivier/transpo/issues"
+Download = "https://github.com/leolivier/transpo/archive/refs/tags/v1.0.0.tar.gz"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/auto_po_lyglot"]
+
+[project.scripts]
+auto_po_lyglot = "auto_po_lyglot.po_main:main"
+
+[tool.hatch.build.targets.wheel.force-include]
+"src" = "auto_po_lyglot"
+
+[tool.hatch.build]
+include = ["src"]
