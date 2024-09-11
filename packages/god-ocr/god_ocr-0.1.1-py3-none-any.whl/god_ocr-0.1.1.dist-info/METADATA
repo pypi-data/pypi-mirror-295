@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: god-ocr
+Version: 0.1.1
+Summary: OCR King
+Home-page: https://github.com/yourusername/your_project
+Author: SORRY
+Author-email: your.email@example.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PIL
+Requires-Dist: argparse
+Requires-Dist: benchmark
+Requires-Dist: collections
+Requires-Dist: concurrent
+Requires-Dist: copy
+Requires-Dist: cv2
+Requires-Dist: dataclasses
+Requires-Dist: datasets
+Requires-Dist: dotenv
+Requires-Dist: filetype
+Requires-Dist: fitz
+Requires-Dist: ftfy
+Requires-Dist: functools
+Requires-Dist: google
+Requires-Dist: hashlib
+Requires-Dist: io
+Requires-Dist: itertools
+Requires-Dist: json
+Requires-Dist: llama
+Requires-Dist: logging
+Requires-Dist: math
+Requires-Dist: numpy
+Requires-Dist: os
+Requires-Dist: playwright
+Requires-Dist: pydantic
+Requires-Dist: pydantic-settings
+Requires-Dist: pypdfium2
+Requires-Dist: pytesseract
+Requires-Dist: random
+Requires-Dist: rapidfuzz
+Requires-Dist: re
+Requires-Dist: requests
+Requires-Dist: streamlit
+Requires-Dist: subprocess
+Requires-Dist: surya
+Requires-Dist: tabulate
+Requires-Dist: the
+Requires-Dist: time
+Requires-Dist: tokenizers
+Requires-Dist: torch
+Requires-Dist: tqdm
+Requires-Dist: transformers
+Requires-Dist: typing
+Requires-Dist: warnings
+
+#Soon
+
