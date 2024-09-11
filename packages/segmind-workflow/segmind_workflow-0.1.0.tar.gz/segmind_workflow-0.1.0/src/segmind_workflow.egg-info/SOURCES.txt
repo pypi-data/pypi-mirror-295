@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+src/segmind_workflow/__init__.py
+src/segmind_workflow/slug_data.json
+src/segmind_workflow/testing.ipynb
+src/segmind_workflow/workflow.py
+src/segmind_workflow.egg-info/PKG-INFO
+src/segmind_workflow.egg-info/SOURCES.txt
+src/segmind_workflow.egg-info/dependency_links.txt
+src/segmind_workflow.egg-info/top_level.txt
+src/segmind_workflow/__pycache__/workflow.cpython-311.pyc
+src/segmind_workflow/__pycache__/workflow.cpython-312.pyc
+tests/test_workflow.py
