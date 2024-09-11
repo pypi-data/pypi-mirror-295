@@ -1,0 +1,14 @@
+patronus/__init__.py,sha256=fiWHbD21EtGAgXmGMu-EhOql7ENlg5M0IEhGXCyJYto,499
+patronus/_api.py,sha256=MIln21avy0cP3Cmr0SBdoHo2LEZJQLxjEnPVBXQPHYQ,9158
+patronus/_async_utils.py,sha256=MGcfBIsbNwN7wMuqdH2oG9geVYqTZy_sqqdP_NiAGEg,826
+patronus/_base_api.py,sha256=oTj-nLNdBKJSTOwhQcZcSN17TYIg36Y84GNy3LKA-ZI,4252
+patronus/_client.py,sha256=YfUDe6bcvnhKgPB5gKUfqmQvRhv_DpjLXQu8i61IV9o,7991
+patronus/_config.py,sha256=X0bLqN9AoiYJ5b3dtNxM320qIimqVrJrpLOCnJ0mqnY,1136
+patronus/_dataset.py,sha256=JRTS-ycZxNlu18HUA5d521wSmcG0Dd_1OR2KqqVXe20,6878
+patronus/_evaluators.py,sha256=WMs2CNtgBUTgLS4SvrVY0Ua-L80Dg-dwK8hyRI15Bm4,5585
+patronus/_evaluators_remote.py,sha256=6GKB-pJydI0X4ibMY6UtFqsQsbGRArjyI__akmuisxI,2626
+patronus/_experiment.py,sha256=Ywibc5gfxGMleFHNNx6onTqfsWcxd6lfQCKjj1pkY-E,15355
+patronus/_tasks.py,sha256=kNRfVpWPlAZCF0twN-3Tiqvr_zCJvg4z86xzRzGACr8,3407
+patronus-0.0.7.dist-info/METADATA,sha256=TH9Z-nm-mq7HJZHwEzLeXsdTEqAeWA7eJ41Kj9eTD1w,3062
+patronus-0.0.7.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+patronus-0.0.7.dist-info/RECORD,,
