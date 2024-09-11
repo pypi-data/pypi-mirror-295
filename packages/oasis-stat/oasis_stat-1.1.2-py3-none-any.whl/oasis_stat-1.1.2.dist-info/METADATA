@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: oasis_stat
+Version: 1.1.2
+Summary: OASIS statistical test for interpretable analysis of contingency tables.
+Author-email: Tavor Z Baharav <tavorb@mit.edu>
+Maintainer-email: Tavor Z Baharav <tavorb@mit.edu>
+License: MIT license
+Project-URL: bugs, https://github.com/tavorb/oasis_stat/issues
+Project-URL: changelog, https://github.com/tavorb/oasis_stat/blob/master/changelog.md
+Project-URL: homepage, https://github.com/tavorb/oasis_stat
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+
+==========
+OASIS_stat
+==========
+
+
+.. image:: https://img.shields.io/pypi/v/oasis_stat.svg
+        :target: https://pypi.python.org/pypi/oasis_stat
+
+.. image:: https://readthedocs.org/projects/oasis-stat/badge/?version=latest
+        :target: https://oasis-stat.readthedocs.io/en/latest/?version=latest
+        :alt: Documentation Status
+
+
+
+
+OASIS (Optimized Adaptive Statistic for Inferring Structure) statistical test for interpretable analysis of contingency tables from https://www.pnas.org/doi/10.1073/pnas.2304671121.
+Utilized in SPLASH https://github.com/refresh-bio/SPLASH for reference-free genomic inference https://www.cell.com/cell/fulltext/S0092-8674(23)01179-0. 
+
+
+* Installable via pip: `pip install oasis_stat`
+* Free software: MIT license
+* Documentation: https://oasis-stat.readthedocs.io.
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
