@@ -1,0 +1,20 @@
+# This file exists so users can easily get started with this package
+# in a container using Docker Compose.
+#
+# Instructions are available at:
+# https://qiskit.github.io/qiskit-addon-cutting/install.html#option-3-use-within-docker
+
+services:
+  notebook:
+    build: .
+    restart: unless-stopped
+    # The following line allows Ray to use /dev/shm rather than warn
+    # about using /tmp
+    shm_size: "10.08gb"
+    ports:
+      - 8888:8888
+    volumes:
+      - qiskit-addon-cutting:/home/jovyan/persistent-volume
+
+volumes:
+  qiskit-addon-cutting:

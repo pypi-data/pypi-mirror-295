@@ -1,0 +1,143 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qiskit-addon-cutting"
+version = "0.9.0"
+description = "Reduce width and depth of quantum circuits by cutting gates and wires."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+requires-python = ">=3.8"
+
+dependencies = [
+    "numpy>=1.23.0",
+    "scipy>=1.5.2",
+    "rustworkx>=0.14.0",
+    "qiskit-aer>=0.14.0.1",
+    "qiskit>=1.1.0, <2.0",
+    "qiskit-ibm-runtime>=0.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "qiskit-addon-cutting[test,nbtest,lint]",
+]
+basetest = [
+    "pytest>=6.2.5",
+    "pytest-randomly>=1.2.0",
+]
+test = [
+    "qiskit-addon-cutting[basetest]",
+    "ddt>=1.4.4",
+]
+nbtest = [
+    "qiskit-addon-cutting[basetest]",
+    "nbmake>=1.4.3"
+]
+style = [
+    "autoflake==2.3.1",
+    "black[jupyter]~=24.1",
+    "ruff==0.6.3",
+    "nbqa>=1.6.0",
+]
+lint = [
+    "qiskit-addon-cutting[style]",
+    "pydocstyle==6.3.0",
+    "mypy==1.11.2",
+    "reno>=3.4.0",
+    "pylint==3.2.7",
+    # pydocstyle prefers to parse our pyproject.toml, hence the following line
+    "toml",
+]
+docs = [
+    "Sphinx>=3.0.0",
+    "sphinx-autodoc-typehints>=1.12.0",
+    "sphinx-reredirects",
+    "jupyter-sphinx>=0.3.2",
+    "nbsphinx>=0.8.8",
+    "sphinx-copybutton>=0.5.0",
+    "reno>=3.4.0",
+    "qiskit-sphinx-theme>=2.0.0, <3"
+]
+notebook-dependencies = [
+    "matplotlib",
+    "ipywidgets",
+    "pylatexenc",
+]
+
+[project.urls]
+"Documentation" = "https://qiskit.github.io/qiskit-addon-cutting/"
+"Repository" = "https://github.com/Qiskit/qiskit-addon-cutting"
+
+[tool.hatch.build.targets.wheel]
+only-include = [
+    "qiskit_addon_cutting",
+]
+
+[tool.autoflake]
+remove-unused-variables = true
+remove-all-unused-imports = true
+
+[tool.ruff]
+target-version = "py38"
+
+[tool.ruff.lint]
+ignore = [
+    "E501",  # line too long
+]
+
+[tool.ruff.lint.per-file-ignores]
+"test/**.py" = [
+    "F405",  # star import
+    "F403",  # unable to detect undefined names due to star import
+]
+"docs/**" = [
+    "E402",  # module level import not at top of file
+]
+
+[tool.pylint.main]
+py-version = "3.8"
+disable = "all"
+enable = [
+    "reimported",
+    "no-self-use",
+    "no-else-raise",
+    "redefined-argument-from-local",
+    "redefined-builtin",
+    "raise-missing-from",
+    "cyclic-import",
+    "unused-argument",
+    "use-list-literal",
+    "use-dict-literal",
+    "dangerous-default-value",
+]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+#[tool.coverage.run]
+#omit = [
+#    # deprecated import location(s)
+#    "qiskit_addon_cutting/path/to/deprecated/module",
+#]
+
+[tool.pytest.ini_options]
+testpaths = ["./qiskit_addon_cutting/", "./test/"]
+addopts = "--doctest-modules -rs --durations=10"
