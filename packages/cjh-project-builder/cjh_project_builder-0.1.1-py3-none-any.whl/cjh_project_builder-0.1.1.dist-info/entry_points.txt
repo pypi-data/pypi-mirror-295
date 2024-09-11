@@ -1,0 +1,3 @@
+[console_scripts]
+cjh-project-builder=cjh_project_builder.cli:cli
+
