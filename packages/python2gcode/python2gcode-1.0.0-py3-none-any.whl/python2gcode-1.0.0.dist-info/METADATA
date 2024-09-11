@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: python2gcode
+Version: 1.0.0
+Summary: A simple library for writing GCODE
+Author-email: Benjamin P <bcgcustomerservices@gmail.com>
+Project-URL: Homepage, https://github.com/Hacking3DPrinters/gcode
+Project-URL: Issues, https://github.com/Hacking3DPrinters/gcode/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
