@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: conciliacaocore
+Version: 0.0.5
+Summary: Utilitários comuns para projetos de conciliação
+Home-page: https://gitlab.com/sdna-team/okto/sdna-conciliacao
+Author: Fernando Miranda Calil
+Author-email: fcalil@sdnadigital.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# SDNA Conciliação
+
+## Descrição
+
+Este pacote contém funções reutilizáveis para o projeto de conciliação bancária desenvolvido pela SDNA. Ele fornece uma coleção de ferramentas e utilitários comuns que são frequentemente usados em várias partes do projeto principal de conciliação bancária.
+
+## Funcionalidades
+
+- Funções para processamento de dados financeiros
+- Utilitários para manipulação de datas e moedas
+- Ferramentas de validação para entradas bancárias
+- Funções de formatação para relatórios
+
+## Instalação
+
+É fortemente recomendável usar o Poetry para gerenciamento de pacotes.
+
+Para instalar o pacote, adicione o pacote como dependencia no poetry:
+
+```bash
+poetry add sdna-conciliacao
+```
+
+
