@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "saldor"
+version = "0.0.14"
+description = "A client library for the Saldor API."
+authors = ["Jack Cameron <jack@saldor.com>", "Jacob Bland <jacob@saldor.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [
+    { include = "saldor", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.26.0"
+types-requests = "^2.32.0.20240712"
+pytest = "^8.3.2"
+pydantic = "^2.8.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.3"
+firecrawl-py = "^0.0.20"
+mypy = "^1.11.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
