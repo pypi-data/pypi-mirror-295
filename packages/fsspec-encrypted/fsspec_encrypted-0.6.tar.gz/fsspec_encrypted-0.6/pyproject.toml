@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "fsspec-encrypted"
+version = "0.6"
+description = ""
+authors = ["patrick o'leary <pjaol@pjaol.com>"]
+readme = "README.rst"
+homepage = "https://github.com/thevgergroup/fsspec-encrypted"
+repository = "https://github.com/thevgergroup/fsspec-encrypted.git"
+keywords = ["filesystem", "encryption", "fsspec"]
+license = "MIT"
+classifiers= [
+                "Topic :: System :: Filesystems",
+                "Topic :: Security :: Cryptography",  
+                "Topic :: Security"
+                ]
+
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fsspec = "^2024.9.0"
+cryptography = "^43.0.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.2"
+
+
+[tool.poetry.group.examples.dependencies]
+s3fs = "^2024.9.0"
+pandas = "^2.2.2"
+
+
+[tool.poetry.group.dev.dependencies]
+readme-renderer = "^44.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+
+[tool.poetry.plugins."fsspec.specs"]
+enc = "fsspec_encrypted:EncryptedFS"
+
+[tool.poetry.scripts]
+fs-enc = "fsspec_encrypted.fs_enc_cli:main"
