@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: mcy-dist-ai
+Version: 0.0.1
+Summary: Mercury leader, worker and watcher
+Home-page: https://github.com/mercury-protocol/mcy-sgx-gramine
+Author: Peter Berekvolgyi
+Author-email: peter@mercuryprotocol.io
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: cryptography ~=41.0.4
+Requires-Dist: ecdsa ~=0.18.0
+Requires-Dist: numpy ~=1.24.4
+Requires-Dist: pandas ~=2.0.3
+Requires-Dist: torch ~=2.1.1
+Requires-Dist: torchvision ~=0.16.1
+Requires-Dist: trl ~=0.7.11
+Requires-Dist: peft ~=0.8.2
+Requires-Dist: evaluate ~=0.4.1
+Requires-Dist: scikit-learn ~=1.2.2
+Requires-Dist: matplotlib ~=3.7.4
+Requires-Dist: datasets ~=2.17.1
+Requires-Dist: transformers ~=4.37.2
+
+# mcy-sgx-gramine
+
+This is a package used in [Mercury Protocol](https://mercuryprotocol.netlify.app)'s [vulkan](https://github.com/mercury-protocol/vulkan) repository for training AI models distributed.
+
+## Usage:
+
+Each instance has a role: WATCHER or LEADER. Watchers do the batch training and the leader does the gradient aggregation.
+
+The user who wants to train an AI model has to write the script in a file called `user_script.py`. This file is used by this component to perform the training. To see how it should be written check `docs/user_script_requirements.md` and `docs/user_script_template.py`.
