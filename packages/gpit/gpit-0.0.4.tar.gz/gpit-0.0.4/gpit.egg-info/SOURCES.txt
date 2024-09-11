@@ -1,0 +1,13 @@
+README.md
+setup.py
+gpit/__init__.py
+gpit/cli_utilities.py
+gpit/git_commands.py
+gpit/main.py
+gpit/openai_integration.py
+gpit.egg-info/PKG-INFO
+gpit.egg-info/SOURCES.txt
+gpit.egg-info/dependency_links.txt
+gpit.egg-info/entry_points.txt
+gpit.egg-info/requires.txt
+gpit.egg-info/top_level.txt
