@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+eo4eu_data_utils/__init__.py
+eo4eu_data_utils/access.py
+eo4eu_data_utils/config.py
+eo4eu_data_utils/legacy.py
+eo4eu_data_utils/storage.py
+eo4eu_data_utils.egg-info/PKG-INFO
+eo4eu_data_utils.egg-info/SOURCES.txt
+eo4eu_data_utils.egg-info/dependency_links.txt
+eo4eu_data_utils.egg-info/requires.txt
+eo4eu_data_utils.egg-info/top_level.txt
