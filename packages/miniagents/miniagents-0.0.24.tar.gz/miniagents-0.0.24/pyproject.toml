@@ -1,0 +1,55 @@
+[tool.black]
+line-length = 119
+
+[tool.coverage.run]
+branch = true
+
+[tool.poetry]
+name = "miniagents"
+version = "0.0.24"
+description = """\
+An asynchronous framework for building LLM-based multi-agent systems in Python, with a focus on token and message \
+streaming between the agents.\
+"""
+authors = ["Oleksandr Tereshchenko <toporok@gmail.com>"]
+homepage = "https://github.com/teremterem/MiniAgents"
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+markdown-it-py = "*"
+prompt-toolkit = "*"
+pydantic = ">=2.0.0,<3.0.0"
+wrapt = "*"
+
+[tool.poetry.dev-dependencies]
+anthropic = "*"
+#anyio = "*"
+black = "*"
+#haystack-ai = "*"
+ipython = "*"
+jupyterlab = "*"
+#langchain = "*"
+#langchain-anthropic = "*"
+#langchain-openai = "*"
+#langgraph = "*"
+llama-index = "*"
+notebook = "*"
+openai = "*"
+pre-commit = "*"
+#promptlayer = "*"
+pylint = "*"
+#pypdf = "*"
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+python-dotenv = "*"
+#trafilatura = "*"
+#trio = "*"
+#unstructured = {version = "*", extras = ["md"]}
+xonsh = {version = "*", extras = ["full"]}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
