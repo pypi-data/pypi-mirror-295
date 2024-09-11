@@ -1,0 +1,12 @@
+fastapi
+pydantic-settings
+uvicorn
+google-auth
+google-cloud-firestore
+httpx
+python-dotenv
+pydantic[email]
+jose
+firebase-admin
+pyjwt
+cryptography
