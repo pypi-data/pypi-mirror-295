@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "bs4", "requests" , "prompt_toolkit"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "list-ppa"
+version = "1.18"
+authors = [
+  { name="Excited Bore", email="brunt-curry-wobble@duck.com" },
+]
+
+keywords = ["list-ppa", "setuptools", "ubuntu", "argcomplete"]
+description = "A little commandline tool to list available ppas from ubuntu"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [ "bs4" , "requests", "prompt_toolkit >= 3.0.20" , "argcomplete" ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+list-ppa = "list_ppa:main"
+
+[project.urls]
+"Homepage" = "https://github.com/excited-bore/list-ppa"
+"Bug Tracker" = "https://github.com/excited-bore/list-ppa/issues"
