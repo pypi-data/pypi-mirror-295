@@ -1,0 +1,6 @@
+[ovos.ocp.extractor]
+ovos-ocp-files-plugin = ovos_ocp_files_plugin.plugin:OCPFilesMetadataExtractor
+
+[ovos.ocp.extractor.config]
+ovos-ocp-files-plugin.config = ovos_ocp_files_plugin:OCPFilesMetadataExtractorConfig
+
