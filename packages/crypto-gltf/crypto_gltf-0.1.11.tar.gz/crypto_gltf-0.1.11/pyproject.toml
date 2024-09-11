@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "crypto-gltf"
+version = "0.1.11"
+description = ""
+authors = ["will <will@loci.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python =    " >=3.10"
+pydantic = "^2.7.4"
+loguru = "^0.7.2"
+numpy = "^2.0.0"
+cellular-automaton = "^1.0.8"
+pygame = "^2.6.0"
+pillow = "^10.4.0"
+mypy = "^1.11.1"
+pytest = "^8.3.2"
+cryptography = "^43.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
