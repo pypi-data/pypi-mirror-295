@@ -1,0 +1,12 @@
+[invenio_assets.webpack]
+invenio_theme_tuw_theme = invenio_theme_tuw.webpack:theme
+
+[invenio_base.apps]
+invenio_theme_tuw = invenio_theme_tuw:InvenioThemeTUW
+
+[invenio_base.finalize_app]
+override_bp_order = invenio_theme_tuw.ext:override_bp_order
+override_deposit_pages = invenio_theme_tuw.views:override_deposit_pages
+
+[invenio_config.module]
+invenio_theme_tuw = invenio_theme_tuw.config
