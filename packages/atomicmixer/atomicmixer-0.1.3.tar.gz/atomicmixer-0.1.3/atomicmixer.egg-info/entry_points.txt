@@ -1,0 +1,2 @@
+[console_scripts]
+atomicmixer = atomicmixer.__main__:main
