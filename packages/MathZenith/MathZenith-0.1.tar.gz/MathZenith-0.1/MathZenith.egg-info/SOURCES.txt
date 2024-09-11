@@ -1,0 +1,13 @@
+setup.py
+MathZenith.egg-info/PKG-INFO
+MathZenith.egg-info/SOURCES.txt
+MathZenith.egg-info/dependency_links.txt
+MathZenith.egg-info/top_level.txt
+tests/__init__.py
+tests/test_advanced_math.py
+tests/test_algorithm.py
+tests/test_basic_math.py
+utils/__init__.py
+utils/advanced_math.py
+utils/algorithm.py
+utils/basic_math.py
