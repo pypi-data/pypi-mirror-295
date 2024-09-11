@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "uk-features-definitions"
+version = "0.1.0"
+description = "Safety placeholder"
+authors = ["Team Diesel <puw-team-diesel@prima.it"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
