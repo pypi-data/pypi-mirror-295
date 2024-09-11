@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: vidformer
+Version: 0.5.2
+Summary: A Python library for creating and viewing videos with vidformer.
+Author-email: Dominik Winecki <dominikwinecki@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Dist: requests
+Requires-Dist: msgpack
+Requires-Dist: numpy
+Project-URL: Homepage, https://ixlab.github.io/vidformer/
+Project-URL: Issues, https://ixlab.github.io/vidformer/issues
+
+# vidformer-py
+
+## Publish
+
+```bash
+ export FLIT_USERNAME='__token__' FLIT_PASSWORD='<token>'
+flit publish
+```
+
