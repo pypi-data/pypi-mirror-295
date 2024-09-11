@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: PorkofQRCode
+Version: 1.3
+Author-email: porkof@mail2tor.com
+Requires-Dist: colorama<=0.4.6
+Requires-Dist: qrcode<=6.1
