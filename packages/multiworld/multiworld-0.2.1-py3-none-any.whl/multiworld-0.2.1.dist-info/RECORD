@@ -1,0 +1,16 @@
+multiworld/__init__.py,sha256=vnYfFHRqr6MPzT39GTRD51PzPnFSTsWlCeyMQsfBuvM,1083
+multiworld/communicator.py,sha256=UV3-48Rkz-FiE3Q00OzZiSnlzxLHA5Z4AvuA6VnIkCo,14588
+multiworld/init.txt,sha256=_LzxZZCN0YqeSff_J4EBdtuOn2O0NSITdBZkJFIk-Ko,5
+multiworld/manager.py,sha256=634lA3q3Srp34yxlBo_eiL_BsSas3Ey2Y8fG6GNP23c,6901
+multiworld/post_setup.py,sha256=fu0kgebAQGeSsYOrgrF96jnl27IUUChJnQjdE6XkI7o,2257
+multiworld/threadsafe_async.py,sha256=MB2yb_DbD0UZYaZSQfypB_zvH1UKz7aMGUnl009mHEU,1086
+multiworld/version.py,sha256=h1i5N8eL1Iy98ngnWTOjysRHSAuO7revP021gZRt3Ko,680
+multiworld/watchdog.py,sha256=d5PbKbWuYRaEKHA6jD07UCg0XRjij_0bjHk4WErLghA,7089
+multiworld/patch/pytorch-v2.2.1-nccl.patch,sha256=FdD26skv7HQMko5h5P-krF5reEUxhn75xBIcFqCTvZM,2979
+multiworld/patch/pytorch-v2.2.1.patch,sha256=yJQ-QybLzpBkm0dF5DXzJ0EnwkYzq6s0DkOxewEh4gY,94210
+multiworld/patch/pytorch-v2.4.0.patch,sha256=Ztjz4--uPoaG1mGeQkJRXdjz-Jm8GmHJ-huCT_knQWU,123245
+multiworld-0.2.1.dist-info/LICENSE,sha256=tRmCao0SwiSO1q_DYriBBjepEppxW8geuyblOs__jd8,11368
+multiworld-0.2.1.dist-info/METADATA,sha256=1nDQke3WYvD2nsy1Cpkt2SEEE52zm36RfaBMX_RcmzE,5097
+multiworld-0.2.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+multiworld-0.2.1.dist-info/top_level.txt,sha256=pLSPEPHDeloCsVHY9ohD-lHyCwUBJUuKLOojlVroH5k,11
+multiworld-0.2.1.dist-info/RECORD,,
