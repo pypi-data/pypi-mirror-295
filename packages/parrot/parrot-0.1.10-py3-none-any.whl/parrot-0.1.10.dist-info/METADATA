@@ -1,0 +1,67 @@
+Metadata-Version: 2.3
+Name: parrot
+Version: 0.1.10
+Summary: parrot is able to to process and average continuously recorded THz data.
+Project-URL: Source, https://github.com/puls-lab/parrot
+Project-URL: Documentation, https://puls-lab.github.io/parrot/
+Author-email: Tim Vogel <32876663+TimVog@users.noreply.github.com>
+License-Expression: GPL-3.0-or-later
+License-File: LICENSE
+Keywords: DR,SNR,THz,Terahertz,averaging,dataprocessing,dynamic range,signal-to-noise ratio
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Requires-Dist: colorama>=0.4.6
+Requires-Dist: h5py
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: scipy
+Description-Content-Type: text/markdown
+
+# parrot 🦜
+
+**parrot** stands for **P**rocessing **A**ll **R**apidly & **R**eliably **O**btained **T**Hz-traces.
+
+parrot is a Python package to load, process, and plot continuously recorded THz data (along with delay line position
+data), obtained with electro-optic sampling (EOS), photoconductive antenna (PCA) receivers or similar
+techniques.
+
+The documentation of parrot can be found [here](https://puls-lab.github.io/parrot/).
+
+***
+
+## How to install
+
+If you have Python/pip installed, just enter:
+
+```python
+pip install parrot
+```
+
+and it should install correctly. Otherwise, just download the repository on [GitHub](https://github.com/puls-lab/parrot/).
+
+***
+
+## How to use
+
+Go to [GitHub](https://github.com/puls-lab/parrot/) and look at the files placed in the root directory. If you have
+Anaconda (or Python + Jupyter notebook) installed, try the `Example.ipynb` notebook in the root directory.
+If you prefer classic Python, check out `Example_compact.py` in the root directory. The distribution comes with some
+example data that allows you to see the capabilities of parrot.
+
+***
+
+## Further information
+
+Check out the documentation [here](https://puls-lab.github.io/parrot/).
+
+***
+
+## I have a problem / I have an idea / I found a bug
+
+Please open an issue on [GitHub](https://github.com/puls-lab/parrot/issues).
