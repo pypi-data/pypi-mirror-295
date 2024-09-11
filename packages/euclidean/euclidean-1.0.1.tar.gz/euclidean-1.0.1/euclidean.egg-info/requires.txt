@@ -1,0 +1,16 @@
+multipledispatch>=0.6
+sortedcontainers>=2
+
+[cyquant]
+cyquant>=1.0.0a10
+
+[dev]
+coverage
+pre-commit
+pytest
+
+[docs]
+
+[tests]
+coverage
+pytest
