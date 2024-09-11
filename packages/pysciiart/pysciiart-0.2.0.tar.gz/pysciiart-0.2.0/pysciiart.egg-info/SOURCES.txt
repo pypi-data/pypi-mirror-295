@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+./src/pysciiart/__init__.py
+./src/pysciiart/coordinates.py
+./src/pysciiart/graph.py
+./src/pysciiart/graph_layer.py
+./src/pysciiart/graph_solver.py
+./src/pysciiart/raster.py
+./src/pysciiart/widget.py
+pysciiart.egg-info/PKG-INFO
+pysciiart.egg-info/SOURCES.txt
+pysciiart.egg-info/dependency_links.txt
+pysciiart.egg-info/requires.txt
+pysciiart.egg-info/top_level.txt
