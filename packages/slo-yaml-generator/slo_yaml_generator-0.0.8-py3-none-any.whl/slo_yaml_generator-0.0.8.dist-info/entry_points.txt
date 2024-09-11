@@ -1,0 +1,2 @@
+[console_scripts]
+slo_yaml_generator = slo_yaml_generator.main:main

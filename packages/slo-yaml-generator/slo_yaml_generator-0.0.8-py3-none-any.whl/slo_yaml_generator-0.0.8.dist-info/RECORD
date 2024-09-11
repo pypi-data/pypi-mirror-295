@@ -1,0 +1,14 @@
+slo_yaml_generator/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+slo_yaml_generator/main.py,sha256=O2bW_NSBb-aDDAD5EIfNEWv_26KpnBUiTdsJldRHwak,6276
+slo_yaml_generator/templates/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+slo_yaml_generator/templates/alert_policy.yaml.j2,sha256=xsDZ_YQ_PrlDJerGn1NvAhIIMlMJeZepnsyJiX5kUvU,797
+slo_yaml_generator/templates/cloudwatch-slo.yaml.j2,sha256=L2qSeIijQYgl6snnptdwH-UR5Ar8wzW77uIU9THRb50,1051
+slo_yaml_generator/templates/dynatrace-slo.yaml.j2,sha256=_w7yiXJFeptI0CZk11LYn4-dVNltf8L_R4tOhlNIjys,796
+slo_yaml_generator/templates/project.yaml.j2,sha256=ObR9N1jjKA-YJSG6m1iDmdLu3q9IbZ4nRiaLLGhy9dQ,156
+slo_yaml_generator/templates/service.yaml.j2,sha256=Y1VHxSE4Qo9LsVt5WVJavSnkxZrtsDf68upHFQy7v6E,114
+slo_yaml_generator-0.0.8.dist-info/LICENSE,sha256=9p8zhv9pH1Y96S3TRAxQs9wBY7Fiu0UOTAE7VjPEq-M,1070
+slo_yaml_generator-0.0.8.dist-info/METADATA,sha256=rl1ELJh-cF-syoSdHO5wmuRJPyJPmUub9xSP4M7czHg,2185
+slo_yaml_generator-0.0.8.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+slo_yaml_generator-0.0.8.dist-info/entry_points.txt,sha256=tBrY4AtZHSxmRKg66TTR5tmEoBhqsoymWTrUWQGrL74,68
+slo_yaml_generator-0.0.8.dist-info/top_level.txt,sha256=FwffHO0ewBGwq2Gsb4Rcik6TjY08YMWTdPSr4avtYHo,19
+slo_yaml_generator-0.0.8.dist-info/RECORD,,
