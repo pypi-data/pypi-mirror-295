@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: MyCommonLib
+Version: 0.4.1
+Summary: Common library
+Author-email: Romolo Politi <Romolo.Politi@inaf.it>
+License: GNU GPL ver3
+Project-URL: Repository, https://github.com/RomoloPoliti-INAF/myCommonLib
+Project-URL: Changelog, https://github.com/RomoloPoliti-INAF/myCommonLib/blob/main/CHANGELOG.md
+Keywords: SETUP LIBS
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Description-Content-Type: text/markdown
+Requires-Dist: rich
+Requires-Dist: PyYaml
+Requires-Dist: setuptools
+Requires-Dist: importlib-metadata ; python_version > "3.10"
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+
+# myCommonLib
+![Version 0.4.1](https://img.shields.io/badge/version-0.4.1-blue?style=plastic)
+![Language Python 3.12.4](https://img.shields.io/badge/python-3.12.4-orange?style=plastic&logo=python)
+
+Common library used in several project
+
+## Installation
+
+To install you can run the command
+
+```console
+python3 -m pip install MyCommonLib
+```
+or clone the project and install using the command 
+
+```python
+python3 -m pip install .
+```
+
+If you use the *pyprojext.toml* file you need to add the line 
+
+```toml
+"MyCommonLib",
+```
+in the *dependencies* array.
+
+## Usage
+
+```python
+from MyCommonLib import Configure, Vers
+```
+
+## Contents
+
+### Vers Class
+
+Class for the manipulation of objects version following the [Semantic Versioning](https://semver.org/)
+
+
+### Setup the logger Name
