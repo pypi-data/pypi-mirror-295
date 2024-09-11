@@ -1,0 +1,3 @@
+[console_scripts]
+hermitd = hermitd:main
+hermitd-install = hermitd:install_hermitd
