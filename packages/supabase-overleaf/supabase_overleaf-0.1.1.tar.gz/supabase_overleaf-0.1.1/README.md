@@ -1,0 +1,160 @@
+# Supabase Overleaf Template Crawler
+
+This project crawls LaTeX templates from Overleaf and stores them in a Supabase instance. It can be set up to work with both local and cloud-based Supabase deployments.
+
+## Table of Contents
+
+- [Supabase Overleaf Template Crawler](#supabase-overleaf-template-crawler)
+  - [Table of Contents](#table-of-contents)
+  - [Setup](#setup)
+    - [Supabase CLI Installation](#supabase-cli-installation)
+      - [macOS](#macos)
+      - [Windows](#windows)
+      - [Linux](#linux)
+    - [Local Supabase Setup](#local-supabase-setup)
+    - [Cloud Supabase Setup](#cloud-supabase-setup)
+  - [Project Installation](#project-installation)
+  - [Configuration](#configuration)
+  - [Usage](#usage)
+  - [Project Structure](#project-structure)
+  - [Database Setup](#database-setup)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Setup
+
+### Supabase CLI Installation
+
+The Supabase CLI is a powerful tool that simplifies the process of setting up and managing your Supabase projects. Here's how to install it on different operating systems:
+
+#### macOS
+
+Using Homebrew:
+```bash
+brew install supabase/tap/supabase
+```
+
+#### Windows
+
+Using Scoop:
+```bash
+scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+scoop install supabase
+```
+
+#### Linux
+
+Using Apt (Debian/Ubuntu):
+```bash
+sudo apt-get update
+sudo apt-get install -y debian-keyring debian-archive-keyring apt-transport-https
+curl -1sLf 'https://dl.supabase.com/public/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/supabase-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/supabase-archive-keyring.gpg] https://dl.supabase.com/apt stable main" | sudo tee /etc/apt/sources.list.d/supabase.list
+sudo apt-get update
+sudo apt-get install supabase
+```
+
+For other Linux distributions, you can use the official install script:
+```bash
+curl -s https://packages.supabase.com/setup.sh | sudo bash
+```
+
+After installation, verify the CLI is installed correctly:
+```bash
+supabase --version
+```
+
+### Local Supabase Setup
+
+1. Initialize a new Supabase project:
+   ```bash
+   supabase init
+   ```
+
+2. Start the local Supabase instance:
+   ```bash
+   supabase start
+   ```
+
+3. This will provide you with local URLs and keys. Make note of these for configuration.
+
+### Cloud Supabase Setup
+
+1. Log in to your Supabase account via CLI:
+   ```bash
+   supabase login
+   ```
+
+2. Initialize a new project:
+   ```bash
+   supabase init
+   ```
+
+3. Link your local project to a Supabase project:
+   ```bash
+   supabase link --project-ref your-project-ref
+   ```
+   Replace `your-project-ref` with your actual project reference.
+
+4. Push your local schema to the cloud project:
+   ```bash
+   supabase db push
+   ```
+
+## Project Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/supabase-overleaf-crawler.git
+   cd supabase-overleaf-crawler
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Configuration
+
+1. Copy the example configuration file:
+   ```bash
+   cp src/config/config.example.py src/config/config.py
+   ```
+
+2. Edit `src/config/config.py` with your Supabase details:
+   - For local setup, use the URL and key provided by `supabase start`
+   - For cloud setup, use the URL and key from your Supabase project dashboard
+
+## Usage
+
+Run the crawler:
+```bash
+python src/main.py
+```
+
+## Project Structure
+
+- `src/`: Contains the source code
+  - `main.py`: Main entry point
+  - `crawler_general.py`: Crawls general template information
+  - `crawler_detail.py`: Crawls detailed template information
+  - `db_handler.py`: Handles database operations
+  - `config/`: Contains configuration files
+- `data/`: (Optional) For storing any local data
+- `requirements.txt`: List of Python dependencies
+- `README.md`: This file
+- `supabase/`: Contains Supabase configuration files (created by `supabase init`)
+
+## Database Setup
+
+The crawler expects certain tables to exist in your Supabase database. You can set these up by running the SQL commands in `supabase/migrations/your-migration-file.sql`.
+
+For both local and cloud setups, the migration will be applied automatically when you run `supabase db push`.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
