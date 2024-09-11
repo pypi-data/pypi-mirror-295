@@ -1,0 +1,15 @@
+windmillmodelv1/__init__.py,sha256=Okf9DPgoozuHwKEOnUmxSSQ2Fx5qS-qjOCkP43bIqd0,213
+windmillmodelv1/client/__init__.py,sha256=Okf9DPgoozuHwKEOnUmxSSQ2Fx5qS-qjOCkP43bIqd0,213
+windmillmodelv1/client/model_api_model.py,sha256=25XCT2gTwMpLvbZliMAoYLc8YVbZo0eegP-fRJNSoyg,3360
+windmillmodelv1/client/model_api_modelstore.py,sha256=2wbM5hyiuZeLNcVODfjPSGp_SiLsNpDUQbg8qLsyzuE,908
+windmillmodelv1/client/model_client.py,sha256=3a98sAwzUQ-887NO_GbsvDwjw2o2IPChsG9H8BkNN9U,24202
+windmillmodelv1/graph/__init__.py,sha256=EeZjHcXyeNe-L9xyrf-dIUToe_ZOmQ66_AVot-TdYTc,131
+windmillmodelv1/graph/graph.py,sha256=6TuQY-NzOhxiOVE7lAhA9NDnn4d5cAYQ81hDvrNVrjw,4402
+windmillmodelv1/metadata/__init__.py,sha256=z37p8WEM9HkqrWGLOWpizlSXF4rHc4OIyIuTxS03gf0,130
+windmillmodelv1/metadata/metadata.py,sha256=7XO_pYDwwSeZwfNRD60hjapXFIOnZmn62LuLCNpzKtQ,2843
+windmillmodelv1/pipelines/__init__.py,sha256=BOAGHP8X3hSUubOD66XSUJCbLF-Gw0OSfTMa9pnNjXc,130
+windmillmodelv1/pipelines/update_metadata.py,sha256=XVXbJQEToQe7oK_4YiF9LQciOJStZ43Ag-7PSLNPU_I,2665
+windmill_model-1.0.0.32.dist-info/METADATA,sha256=w2L33GcYFl4xf-3W0pi_D_j-oyrj2OKA6yrjUSwQxL4,804
+windmill_model-1.0.0.32.dist-info/WHEEL,sha256=2wepM1nk4DS4eFpYrW1TTqPcoGNfHhhO_i5m4cOimbo,92
+windmill_model-1.0.0.32.dist-info/top_level.txt,sha256=uBCpozfSUysc-8wOnPIlsBUgN-AUUGroeoehPba-WYU,16
+windmill_model-1.0.0.32.dist-info/RECORD,,
