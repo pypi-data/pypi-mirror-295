@@ -1,0 +1,26 @@
+[project]
+name = "simple_selfstudy_fish"
+version = "0.3.0"
+description = "simple fish selfstudy model"
+authors = [
+    {name = "elnath1002", email = "elnath1002@naver.com"},
+]
+dependencies = [
+    "scikit-learn>=1.5.1",
+    "pyfiglet>=1.0.2",
+    "pandas>=2.2.2",
+    "pyarrow>=17.0.0",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.urls]
+homepage = "https://github.com/WhiteCapella/simple_selfstudy_fish"
+issue = "https://github.com/WhiteCapella/simple_selfstudy_fish/issues"
+
+
+[tool.pdm]
+distribution = false
+
+[project.scripts]

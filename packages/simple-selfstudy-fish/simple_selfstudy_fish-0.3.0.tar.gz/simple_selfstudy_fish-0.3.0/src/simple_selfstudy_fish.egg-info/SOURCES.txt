@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/simple_selfstudy_fish.egg-info/PKG-INFO
+src/simple_selfstudy_fish.egg-info/SOURCES.txt
+src/simple_selfstudy_fish.egg-info/dependency_links.txt
+src/simple_selfstudy_fish.egg-info/requires.txt
+src/simple_selfstudy_fish.egg-info/top_level.txt
+src/ssf/__init__.py
+src/ssf/run.py
+tests/test_run.py
