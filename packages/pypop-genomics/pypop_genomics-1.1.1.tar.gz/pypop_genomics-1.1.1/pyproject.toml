@@ -1,0 +1,103 @@
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
+xfail_strict = true
+# convert warnings to errors, except for ImportWarnings in numpy (needed for pp38)
+# FIXME: eventually we should be able to remove the numpy exception
+filterwarnings = ["error", "default::ImportWarning"]
+log_cli_level = "info"
+testpaths = [
+  "tests",
+]
+
+[tool.cibuildwheel]
+skip = ["*-win32", "*_i686",  # skip 32-bit builds
+        "pp37-*", "pp310-*",  # skip certain PyPy configurations
+	"pp*_aarch64 ",       # no numpy wheels for aarch64 on PyPy
+        "cp313-musllinux_x86_64", # problem with this version
+        "cp36-musllinux_*", "cp37-musllinux_*", "cp38-musllinux_*"] # older musllinux missing numpy wheels
+test-extras = ["test"]
+test-command = "pytest -v {package}/tests"
+# FIXME: add below test-command unit tests need to be saved
+# "&& echo {package} && ls && tar zcvf unit_tests_output.tar.gz run_test_* && cp unit_tests_output.tar.gz {package}/wheelhouse/"
+
+# Skip trying to test arm64 builds on Intel Macs as per
+# https://cibuildwheel.readthedocs.io/en/stable/faq/#apple-silicon
+# test-skip = "*-macosx_arm64 *-macosx_universal2:arm64"
+# don't try and install pypi packages and build from source
+environment = { PIP_ONLY_BINARY=":all:" }
+
+[[tool.cibuildwheel.overrides]]
+# for latest CPython use newer manylinux image
+select = "cp312-*linux*"
+manylinux-x86_64-image = "manylinux_2_28"
+
+[[tool.cibuildwheel.overrides]]
+# for latest PyPy use newer manylinux image
+select = "pp310-*linux*"
+manylinux-x86_64-image = "manylinux_2_28"
+
+[tool.cibuildwheel.linux]
+# add aarch64 to default ("auto") architectures
+archs = ["auto", "aarch64"]
+# default linux wheels use CentOS-based runners, local cibuildwheel docker
+before-all="yum install -y swig gsl-devel"
+
+[[tool.cibuildwheel.overrides]]
+# musl uses apk/apt
+select = "*musllinux*"
+before-all = "apk add swig gsl-dev"
+# restore musllinux_1_1 image for the time being (musllinux_1_2 segfaults)
+musllinux-x86_64-image="musllinux_1_1"
+
+[tool.cibuildwheel.macos]
+# use oras to get archived 2.7.1 bottles of `gsl` that has 10.15 (on x86) / 11.0 (on arm64) builds
+before-all = ["brew install swig oras",
+	      "oras pull ghcr.io/homebrew/core/gsl:2.7.1"] 
+# re-enable if we need to  do a per-build 'gsl' installation to force correct architecture when
+# cross-compiling (https://stackoverflow.com/a/75488269)
+# before-build = [
+#  "echo ARCHFLAGS = $ARCHFLAGS", # gets the arch at build-time
+#  "if [[ $ARCHFLAGS == *arm64 ]]; then BOTTLE_TAG=arm64_big_sur gsl; else BOTTLE_TAG=x86_64_linux; fi",
+#  "echo BOTTLE_TAG = $BOTTLE_TAG",
+#]
+# force old bottle brew fetch --force --bottle-tag=arm64_monterey gsl; brew reinstall $(brew --cache --bottle-tag=arm64_monterey gsl)"
+archs = ["arm64", "x86_64"]  # don't enable "universal2" binary
+
+[[tool.cibuildwheel.overrides]]
+select = "*-macosx_*"
+inherit.environment="append"
+environment = { CPATH="/opt/homebrew/include", LIBRARY_PATH="/opt/homebrew/lib" }
+
+[[tool.cibuildwheel.overrides]]
+select = "*-macosx_x86_64"
+inherit.environment="append"
+environment = { MACOSX_DEPLOYMENT_TARGET="10.15" } # target 10.15/Catalina
+inherit.before-all="append"
+# install the catalina version of `gsl` to match
+before-all = "brew install ./gsl--2.7.1.catalina.bottle.tar.gz"
+
+[[tool.cibuildwheel.overrides]]
+select = "*-macosx_arm64"
+inherit.environment="append"
+environment = { MACOSX_DEPLOYMENT_TARGET="11.0" } # target for 11.0/Big Sur
+inherit.before-all="append"
+# install the Big Sur version of `gsl` to match
+before-all = "brew install ./gsl--2.7.1.arm64_big_sur.bottle.tar.gz"
+
+[tool.cibuildwheel.windows]
+# use nuget to install gsl on Windows, and manually supply paths
+before-all = "nuget install gsl-msvc14-x64 -Version 2.3.0.2779"
+
+[[tool.cibuildwheel.overrides]]
+select ="*-win_*"
+inherit.environment="append"
+environment = { CPATH="gsl-msvc14-x64.2.3.0.2779\\\\build\\\\native", LIBRARY_PATH="gsl-msvc14-x64.2.3.0.2779\\\\build\\\\native\\\\static" }
+
+[build-system]
+build-backend = "setuptools.build_meta:__legacy__"
+requires = ["setuptools>=42",
+	    "setuptools_scm[toml]>=6.2",
+	    "importlib-metadata; python_version <= '3.8'"
+	    ]
+
