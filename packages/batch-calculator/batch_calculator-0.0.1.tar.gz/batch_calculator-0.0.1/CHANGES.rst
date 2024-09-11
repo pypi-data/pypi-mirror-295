@@ -1,0 +1,13 @@
+Changelog of batch-calculator
+===================================================
+
+
+0.0.1 (2024-09-10)
+------------------
+
+- Initial project structure created with cookiecutter and
+  https://github.com/nens/cookiecutter-python-template
+
+- Move to pyproject.toml
+
+- Clean up workflows and project structure
