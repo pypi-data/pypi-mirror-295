@@ -1,0 +1,11 @@
+requests
+pandas
+click
+keyring
+pyjwt
+urllib3
+sqlalchemy
+tqdm
+aiohttp
+pydantic
+awswrangler

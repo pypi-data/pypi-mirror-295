@@ -1,0 +1,818 @@
+openapi: 3.0.1
+info:
+  title: Comotion Dash API
+  description: Comotion Dash API
+  version: '2.0'
+servers:
+  - url: https://{orgName}.api.comodash.io/v2
+    variables:
+      orgName:
+        default: 'training'
+        description: OrgName for your organisation
+paths:
+  /query:
+    post:
+      summary: Run a query
+      operationId: runQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryText'
+
+      responses:
+        202:
+          description: Query successfully started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryId'
+
+        400:
+          description: Bad request. Problem with query string.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - queries
+
+
+
+      security:
+        - OAuth2Authorizer:
+            - query:write
+
+  /query/{query_id}:
+    summary: Get status information about a query run in Dash
+    get:
+      operationId: getQuery
+      summary: Get information about a query
+      parameters:
+        - $ref: '#/components/parameters/queryId'
+
+      responses:
+        200:
+          description: Details of query status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Query'
+
+        400:
+          description: Bad request. Query Id of a valid query must be provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: A query with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - queries
+      security:
+        - OAuth2Authorizer:
+            - query:read
+    delete:
+      operationId: stopQuery
+      summary: Stop a running query
+      parameters:
+        - $ref: '#/components/parameters/queryId'
+
+      responses:
+        200:
+          description: Successfully stopped query
+        '400':
+          description: Bad request. Query Id of a valid query must be provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: A query with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '5XX':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - queries
+      security:
+        - OAuth2Authorizer:
+            - query:write
+
+  /query/{query_id}/csv:
+    summary: Download the csv result file of a query
+    get:
+      operationId: downloadCSV
+      summary: Download the csv result file of a query
+      parameters:
+        - $ref: '#/components/parameters/queryId'
+      responses:
+        200:
+          description: Successful redirect will result in a 200 from the download endpoint
+          content:
+            binary/octet-stream:
+              schema:
+                type: string
+                format: binary
+                example: <CSV File>
+
+        302:
+          description: A redirect to a temporary file download link for the results
+
+        '400':
+          description: Bad request. Query Id of a valid query must be provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '404':
+          description: A query with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        '5XX':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+      tags:
+        - queries
+      security:
+        - OAuth2Authorizer:
+            - query:read
+
+  /query/{query_id}/result:
+    summary: Get paginated results of a query
+    get:
+      operationId: getQueryResults
+      summary: Get paginated results of a query
+      parameters:
+        - $ref: '#/components/parameters/queryId'
+        - in: query
+          name: next_token
+          description: token to get next page of query results.  Will be supplied in the response of the previous call if the result set is truncated.
+          schema:
+            type: string
+          example: ASevTwsuuWcDHMZcOF7qV32rDnXKzAI1renA2ZVPdqd2Em2scsyxFLuFiFi+ra/nF5Sw+ME8nj6Hs1G9JRC8fKaLy3913htbKw==
+      responses:
+        200:
+          description: Query results page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Bad request. Query Id of a valid query must be provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: A query with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '5XX':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - queries
+      security:
+        - OAuth2Authorizer:
+            - query:read  
+  /load:
+    post:
+      summary: "Create a new load"
+      description: "Creates a new load with the given parameters."
+      operationId: "createLoad"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Load'
+      tags:
+        - loads
+      security:
+      - OAuth2Authorizer:
+        - "load:write"
+      responses:
+        202:
+          description: Load successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadId'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /load/{load_id}/commit:
+    post:
+      summary: "Commit a load operation"
+      description: "Initiates a commit operation for a given load, identified by the load_id."
+      operationId: "commitLoad"
+      parameters:
+        - $ref: '#/components/parameters/loadId'
+      tags:
+        - loads
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadCommit'
+      responses:
+        202:
+          description: "Commit initiated successfully."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+        400:
+          description: "Invalid request, such as invalid checksum data."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: "Internal server error or unhandled exception."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - OAuth2Authorizer:
+          - "load:write"
+  /load/{load_id}:
+    get:
+      summary: "Get load metadata"
+      description: "Retrieves metadata for a specific load based on the provided load_id."
+      operationId: "getLoad"
+      parameters:
+        - $ref: '#/components/parameters/loadId'
+      tags:
+        - loads
+      responses:
+        200:
+          description: "Load metadata retrieved successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadMetaData'
+        400:
+          description: "Invalid request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: "Internal server error or unhandled exception."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - OAuth2Authorizer:
+          - "load:read"
+  /load/{load_id}/file:
+    post:
+      summary: "Generate presigned URL for file upload"
+      description: "Generates a presigned URL and STS credentials for uploading a file to a specified load."
+      operationId: "generatePresignedUrlForFileUpload"
+      parameters:
+        - $ref: '#/components/parameters/loadId'
+      tags:
+        - loads
+      requestBody:
+        description: "Optional parameters for file upload"
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileUploadRequest'
+      responses:
+        200:
+          description: "Presigned URL generated successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUploadResponse'
+        400:
+          description: "Invalid request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: "Internal server error or unhandled exception."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - OAuth2Authorizer:
+          - "load:write"
+  /migration:
+    post:
+      summary: Run migration from Lake V1 to Lake V2
+      description: >
+        The migration job converts the lake v1 data to lake v2 data.  It can only be run once, after which the old lake will be disabled.
+
+        Migrations can take a number of hours to complete. So get a cup of coffee.
+
+        Use the /migration GET endpoint to monitor the progress of the migration
+      operationId: startMigration
+      tags:
+        - migrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Migration'
+      responses:
+        202:
+          description: "Migration started successfully."
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Successfully Started Migration
+        400:
+          description: "Invalid request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        409:
+          description: Migration cannot be started.  There may already be a migration running.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: "Internal server error or unhandled exception."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - OAuth2Authorizer:
+          - "migration:write"
+    get:
+      summary: Get status of lake migration
+      description: >
+        The migration job converts the lake v1 data to lake v2 data.  It can only be run once, after which the old lake will be disabled.
+
+        Migrations can take a number of hours to complete. So get a cup of coffee.
+
+        Use the /migration GET endpoint to monitor the progress of the migration
+      operationId: getMigration
+      tags:
+        - migrations
+      responses:
+        200:
+          description: "Migration started successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MigrationStatus'
+        400:
+          description: "Invalid request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: "Internal server error or unhandled exception."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - OAuth2Authorizer:
+          - "migration:write"
+
+components:
+  parameters:
+    queryId:
+      in: path
+      name: query_id
+      required: true
+      description: Unique Identifier for the query
+      schema:
+        type: string
+      example: 06ba1d95-8c4f-460c-90b3-bc68fddf2fde
+    loadId:
+      name: "load_id"
+      in: "path"
+      description: "Unique identifier for the load operation"
+      required: true
+      schema:
+        type: "string"
+      example: 20231117085806_355d42f6_0684_4b8f_b274_225bf7237494
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: An Error Message
+    Migration:
+      type: object
+      properties:
+        migration_type:
+          description: >
+            whether to run a full migration (FULL_MIGRATION) or only copy the schema of the lake across to the new lake (FLASH_SCHEMA)
+          type: string
+          enum: [FULL_MIGRATION,FLASH_SCHEMA]
+          example: FULL_MIGRATION
+        clear_out_new_lake:
+          type: string
+          description: >
+            whether to clear out the new lake on migration. This is useful when testing has taken place, and data needs to be cleared.
+            If this is set to DO_NOT_CLEAR_OUT, the migration will fail if there is data in the new lake.
+
+            * CLEAR_OUT: Clear out the new lake
+            * DO_NOT_CLEAR_OUT: Fail if there is already data in the new lake
+
+            defaults to DO_NOT_CLEAR_OUT
+          default: DO_NOT_CLEAR_OUT
+          enum: [CLEAR_OUT, DO_NOT_CLEAR_OUT]
+          example: CLEAR_OUT
+      required:
+        - migration_type
+    MigrationStatus:
+      type: object
+      properties:
+        flash_schema_status:
+          description: >
+            Status of the FLASH_SCHEMA process.
+          type: string
+          enum: [Not Run,Started,Completed,Failed,Rerunnable,Cleaning Up]
+          example: Started
+        flash_schema_message:
+          description: >
+            Status message of the FLASH_SCHEMA process.
+          type: string
+          example: Migration job started
+        full_migration_status:
+          description: >
+            Status of the FULL_MIGRATION process.
+          type: string
+          enum: [Not Run,Started,Completed,Complete,Failed,Rerunnable,Cleaning Up]
+          example: Started
+        full_migration_message:
+          description: >
+            Status message of the FULL_MIGRATION process.
+          type: string
+          example: Migration job started
+      required:
+        - flash_schema_status,
+        - full_migration_status
+    QueryText:
+      type: object
+      properties:
+        query:
+          type: string
+          example: select 'hello' --should not be multiline
+      required:
+        - query
+    QueryId:
+      type: object
+      properties:
+        queryId:
+          type: string
+          example: s06ba1d95-8c4f-460c-90b3-bc68fddf2fde
+      required:
+        - queryId
+    Query:
+      type: object
+      properties:
+        query:
+          type: string
+          example: select 'hello'
+        queryId:
+          type: string
+          example: 06ba1d95-8c4f-460c-90b3-bc68fddf2fde
+        statementType:
+          type: string
+          example: DDL
+        status:
+          type: object
+          properties:
+            state:
+              type: string
+              enum: [QUEUED,RUNNING,SUCCEEDED,FAILED,CANCELLED]
+              example: SUCCEEDED
+            stateChangeReason: 
+              type: string
+              example: This is an error
+            submissionDateTime:
+              type: string
+              example: 11-28-2021 18:51:01
+            completionDateTime:
+              type: string
+              example: 11-28-2021 18:53:01
+    QueryResult:
+      type: object
+      properties:
+        resultSet:
+          type: object
+          properties:
+            Rows:
+              type: array
+              items:
+                type: object
+                properties:
+                  Data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        VarCharValue:
+                          type: string
+              example:
+                - Data:
+                    - VarCharValue:
+                        "column1"
+                    - VarCharValue:
+                        "column2"
+                    - VarCharValue:
+                        "column3"
+                    - VarCharValue:
+                        "column4"
+                    - VarCharValue:
+                        "column5"
+                    - VarCharValue:
+                        "column6"
+                    - VarCharValue:
+                        "column7"
+                - Data:
+                    - VarCharValue:
+                        "2013-04-10 00:00:00.000"
+                    - VarCharValue:
+                        "string value"
+                    - VarCharValue:
+                        "123"
+                    - VarCharValue:
+                        "C"
+                    - VarCharValue:
+                        "2013-04-10"
+                    - VarCharValue:
+                        "23.23"
+                    - VarCharValue:
+                        "23.24"
+        ResultSetMetaData:
+          type: object
+          properties:
+            ColumnInfo:
+              type: array
+              items:
+                type: object
+                properties:
+                  Name:
+                    type: string
+                  Type:
+                    type: string
+                    enum: [timestamp,varchar,bigint,char,date,decimal,double]
+                example:
+                  - Name: column1
+                    Type: timestamp
+                  - Name: column2
+                    Type: varchar
+                  - Name: column3
+                    Type: bigint
+                  - Name: column4
+                    Type: char
+                  - Name: column5
+                    Type: date
+                  - Name: column6
+                    Type: decimal
+                  - Name: column7
+                    Type: double
+    LoadCommit:
+      description: Load request body schema
+      type: "object"
+      required:
+        - check_sum
+      properties:
+        check_sum:
+          type: "object"
+          additionalProperties: check_sum
+          description: "Checksum data for the files to be committed."
+    Load:
+      type: "object"
+      required:
+        - load_type
+        - table_name
+      properties:
+        load_type:
+          type: "string"
+          enum: ["APPEND_ONLY"]
+          description: "Type of the load operation."
+        table_name:
+          type: "string"
+          pattern: "^[a-z_]+[a-z0-9_]*[a-z0-9]$"
+          description: "Name of the table.  Only lowercase with underscores."
+        load_as_service_client_id:
+          type: "string"
+          description: "Optional parameter to force the load to act as a certain service_client_id."
+        partitions:
+          type: "array"
+          items:
+            type: "string"
+          description: "List of partition names."
+    LoadId:
+      type: object
+      properties:
+        loadId:
+          type: string
+          example: 20231117085806_355d42f6_0684_4b8f_b274_225bf7237494
+      required:
+        - loadId
+    LoadMetaData:
+      type: "object"
+      properties:
+        LoadStatus:
+          type: "string"
+          enum: ["OPEN", "PROCESSING", "FAIL", "SUCCESS"]
+          description: "Current status of the load."
+        ErrorType:
+          type: "string"
+          nullable: true
+          description: "Type of error if the load status is FAIL."
+        ErrorMessages:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              ErrorType:
+                type: "string"
+                nullable: true
+                description: "type of error for which the message is shown"
+              ErrorMessage:
+                type: "string"
+                nullable: true
+                description: "error message"
+              CheckResult:
+                type: "string"
+                nullable: true
+                description: error state
+          nullable: true
+          description: "Detailed error messages if the load status is FAIL."
+      required:
+      - LoadStatus
+    FileUploadRequest:
+      type: "object"
+      properties:
+        file_key:
+          type: "string"
+          pattern: "^[a-z_]+[a-z0-9_]*[a-z0-9]$"
+          description: "Optional custom key for the file. This will ensure idempontence.  If multiple files are uploaded to the same load with the same file_key, only the last one will be loaded. Must be lowercase, can include underscores, and must end with '.parquet'."
+    FileUploadResponse:
+      type: "object"
+      properties:
+        presigned_url:
+          type: "object"
+          description: "Presigned URL data for S3 file upload.  The file can be posted to this endpoint using any AWS s3 compatible toolset.  Temporary credentials are included in the url, so no other credentials are required."
+        sts_credentials:
+          type: "object"
+          description: "Alternatively to the presigned_url, these Temporary AWS STS credentials that can be used to upload the file to the location specified by `path` and `bucket."
+        path:
+          type: "string"
+          description: "Path of the file in the S3 bucket.  See description of `sts_credentials`."
+        bucket:
+          type: "string"
+          description: "Name of the S3 bucket.  See description of `sts_credentials`."
+      required:
+        - presigned_url
+        - sts_credentials
+        - path
+        - bucket
+
+
+
+  securitySchemes:
+    OAuth2Authorizer:
+      type:  http
+      scheme: bearer
+      bearerFormat: JWT
+
+
+
+
+
+
+
