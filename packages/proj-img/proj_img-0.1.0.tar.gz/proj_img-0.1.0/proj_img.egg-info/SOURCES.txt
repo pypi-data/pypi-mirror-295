@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+proj_img.egg-info/PKG-INFO
+proj_img.egg-info/SOURCES.txt
+proj_img.egg-info/dependency_links.txt
+proj_img.egg-info/requires.txt
+proj_img.egg-info/top_level.txt
+tests/__init__.py
+tests/test_processing.py
