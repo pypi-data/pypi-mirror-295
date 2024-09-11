@@ -1,0 +1,15 @@
+LICENSE.rst
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+adbshellexecuter/LICENSE.txt
+adbshellexecuter/README.MD
+adbshellexecuter/__init__.py
+adbshellexecuter/requirements.txt
+adbshellexecuter/thirdparty.json
+adbshellexecuter.egg-info/PKG-INFO
+adbshellexecuter.egg-info/SOURCES.txt
+adbshellexecuter.egg-info/dependency_links.txt
+adbshellexecuter.egg-info/requires.txt
+adbshellexecuter.egg-info/top_level.txt

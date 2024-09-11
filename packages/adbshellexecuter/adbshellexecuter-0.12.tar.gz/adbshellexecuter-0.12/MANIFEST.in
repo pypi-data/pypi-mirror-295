@@ -1,0 +1,4 @@
+include adbshellexecuter/requirements.txt
+include adbshellexecuter/thirdparty.json
+include adbshellexecuter/LICENSE.txt
+include adbshellexecuter/README.MD
