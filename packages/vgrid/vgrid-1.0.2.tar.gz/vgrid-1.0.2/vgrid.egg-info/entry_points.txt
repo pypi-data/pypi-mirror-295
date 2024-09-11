@@ -1,0 +1,8 @@
+[console_scripts]
+geohashgrid = vgrid.utils.grid.geohashgrid:main
+gzd = vgrid.utils.grid.gzd:main
+h3grid = vgrid.utils.grid.h3grid:main
+maidenheadgrid = vgrid.utils.grid.maidenheadgrid:main
+mgrsgrid = vgrid.utils.grid.mgrsgrid:main
+olcgrid = vgrid.utils.grid.olcgrid:main
+s2grid = vgrid.utils.grid.s2grid:main
