@@ -1,0 +1,16 @@
+COPYING
+MANIFEST.in
+README.md
+setup.py
+src/Gammatone.egg-info/PKG-INFO
+src/Gammatone.egg-info/SOURCES.txt
+src/Gammatone.egg-info/dependency_links.txt
+src/Gammatone.egg-info/entry_points.txt
+src/Gammatone.egg-info/requires.txt
+src/Gammatone.egg-info/top_level.txt
+src/gammatone/__init__.py
+src/gammatone/__main__.py
+src/gammatone/fftweight.py
+src/gammatone/filters.py
+src/gammatone/gtgram.py
+src/gammatone/plot.py
