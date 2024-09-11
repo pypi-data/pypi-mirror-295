@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+c/lib.c
+python/lib.c
+python/annotations/__init__.pyi
+python/annotations/py.typed
+simsimd.egg-info/PKG-INFO
+simsimd.egg-info/SOURCES.txt
+simsimd.egg-info/dependency_links.txt
+simsimd.egg-info/not-zip-safe
+simsimd.egg-info/top_level.txt
