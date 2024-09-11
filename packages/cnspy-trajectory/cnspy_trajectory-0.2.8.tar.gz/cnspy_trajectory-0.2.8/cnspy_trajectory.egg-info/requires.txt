@@ -1,0 +1,5 @@
+numpy
+matplotlib
+cnspy_csv2dataframe>=0.2.2
+spatialmath-python
+cnspy_spatial_csv_formats>=0.2.2
