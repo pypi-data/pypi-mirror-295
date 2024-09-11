@@ -1,0 +1,17 @@
+LICENSE
+README.md
+setup.py
+ovos_gui_plugin_shell_companion/__init__.py
+ovos_gui_plugin_shell_companion/brightness.py
+ovos_gui_plugin_shell_companion/color_manager.py
+ovos_gui_plugin_shell_companion/config.py
+ovos_gui_plugin_shell_companion/cui.py
+ovos_gui_plugin_shell_companion/version.py
+ovos_gui_plugin_shell_companion/wigets.py
+ovos_gui_plugin_shell_companion.egg-info/PKG-INFO
+ovos_gui_plugin_shell_companion.egg-info/SOURCES.txt
+ovos_gui_plugin_shell_companion.egg-info/dependency_links.txt
+ovos_gui_plugin_shell_companion.egg-info/entry_points.txt
+ovos_gui_plugin_shell_companion.egg-info/requires.txt
+ovos_gui_plugin_shell_companion.egg-info/top_level.txt
+ovos_gui_plugin_shell_companion.egg-info/zip-safe
