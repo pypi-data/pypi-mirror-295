@@ -1,0 +1,13 @@
+ovos-plugin-manager<1.0.0,>=0.1.0
+ovos-utils<1.0.0,>=0.0.38
+ovos-config<1.0.0,>=0.1.0
+ovos_bus_client<1.0.0,>=0.0.7
+SpeechRecognition~=3.9
+
+[extras]
+ovos-backend-client<1.0.0,>=0.1.0
+ovos-microphone-plugin-alsa<1.0.0,>=0.0.0
+ovos-stt-plugin-server<1.0.0,>=0.0.3
+ovos-ww-plugin-precise-lite<1.0.0,>=0.1
+ovos-ww-plugin-vosk<1.0.0,>=0.1
+ovos-vad-plugin-silero<1.0.0,>=0.0.1
