@@ -1,0 +1,1 @@
+from br_common.core.models.models import BaseModel
