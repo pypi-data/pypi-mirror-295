@@ -1,0 +1,944 @@
+kwarray>=0.6.19
+einops>=0.6.0
+rich>=12.3.0
+parse>=1.19.0
+affine>=2.3.0
+ubelt>=1.3.6
+xmltodict>=0.12.0
+requests>=2.27.1
+xarray>=0.17.0
+girder_client>=3.1.15
+pystac_client>=0.5.1
+scriptconfig>=0.7.10
+networkx>=2.8
+python_dateutil>=2.8.2
+pytimeparse>=1.1.8
+progiter>=1.1.0
+kwimage>=0.10.0
+kwcoco>=0.8.2
+delayed_image>=0.3.1
+kwplot>=0.4.14
+seaborn>=0.11.1
+geopandas<1.0.0,>=0.10.2
+utm>=0.7.0
+rgd_imagery_client>=0.2.7
+rgd_client>=0.2.7
+ruamel.yaml<=0.17.32,>=0.17.22
+kwutil>=0.2.5
+
+[:python_version < "3.10"]
+rasterio>=1.3.4
+pandas>=1.4.2
+pyproj<3.5.0,>=3.2.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.6.2
+rtree>=0.9.7
+
+[:python_version < "3.10" and platform_system != "Windows"]
+jq>=1.2.1
+
+[:python_version < "3.10" and python_version >= "3.6"]
+Pillow>=8.0.0
+
+[:python_version < "3.10" and python_version >= "3.9"]
+numpy>=1.19.3
+scipy>=1.8.0
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.18.0
+mgrs>=1.4.3
+lxml>=4.5.2
+
+[:python_version < "3.11" and python_version >= "3.10"]
+numpy>=1.21.6
+scipy>=1.8.0
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.4.2
+scikit-learn>=1.1.0
+scikit-image>=0.19.0
+pyproj<3.5.0,>=3.3.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.1.0
+rtree>=1.0.0
+mgrs>=1.4.3
+lxml>=4.6.3
+
+[:python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"]
+jq>=1.2.2
+
+[:python_version < "3.12"]
+pint>=0.18
+tifffile>=2021.4.8
+
+[:python_version < "3.12" and python_version >= "3.11"]
+numpy>=1.23.2
+scipy>=1.9.2
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.5.0
+scikit-learn>=1.1.3
+scikit-image>=0.20.0
+pyproj<3.5.0,>=3.4.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.2.0
+rtree>=1.0.1
+mgrs>=1.4.6
+lxml>=4.9.2
+
+[:python_version < "3.12" and python_version >= "3.8"]
+geojson>=3.0.1
+lazy_loader>=0.1
+
+[:python_version < "3.13" and python_version >= "3.6"]
+pygtrie>=2.5.0
+
+[:python_version < "3.8" and python_version >= "3.7"]
+lxml>=4.2.4
+
+[:python_version < "3.9" and python_version >= "3.8"]
+numpy>=1.19.3
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.17.2
+mgrs>=1.4.3
+lxml>=4.4.1
+
+[:python_version < "4.0" and python_version >= "3.12"]
+numpy>=1.26.0
+scipy>=1.11.2
+shapely>=2.0.2
+rasterio>=1.3.9
+pandas>=2.1.1
+scikit-learn>=1.3.1
+scikit-image>=0.22.0
+pyproj>=3.6.1
+fiona>=1.9.5
+matplotlib>=3.8.2
+Pillow>=10.0.0
+rtree>=1.2.0
+mgrs>=1.4.6
+pint>=0.23
+lxml>=5.1.0
+tifffile>=2022.8.12
+geojson>=3.1.0
+lazy_loader>=0.3
+
+[:python_version < "4.0" and python_version >= "3.13"]
+pygtrie>=2.5.0
+
+[:python_version < "4.0" and python_version >= "3.8"]
+distinctipy>=1.2.1
+
+[:python_version >= "3.11" and platform_system != "Windows"]
+jq>=1.5.0
+
+[all]
+kwarray>=0.6.19
+einops>=0.6.0
+rich>=12.3.0
+parse>=1.19.0
+affine>=2.3.0
+ubelt>=1.3.6
+xmltodict>=0.12.0
+requests>=2.27.1
+xarray>=0.17.0
+girder_client>=3.1.15
+pystac_client>=0.5.1
+scriptconfig>=0.7.10
+networkx>=2.8
+python_dateutil>=2.8.2
+pytimeparse>=1.1.8
+progiter>=1.1.0
+kwimage>=0.10.0
+kwcoco>=0.8.2
+delayed_image>=0.3.1
+kwplot>=0.4.14
+seaborn>=0.11.1
+geopandas<1.0.0,>=0.10.2
+utm>=0.7.0
+rgd_imagery_client>=0.2.7
+rgd_client>=0.2.7
+ruamel.yaml<=0.17.32,>=0.17.22
+kwutil>=0.2.5
+xdoctest>=1.1.5
+geodatasets>=2023.12.0
+suntime>=1.3.2
+pytz>=2024.1
+
+[all-strict]
+kwarray==0.6.19
+einops==0.6.0
+rich==12.3.0
+parse==1.19.0
+affine==2.3.0
+ubelt==1.3.6
+xmltodict==0.12.0
+requests==2.27.1
+xarray==0.17.0
+girder_client==3.1.15
+pystac_client==0.5.1
+scriptconfig==0.7.10
+networkx==2.8
+python_dateutil==2.8.2
+pytimeparse==1.1.8
+progiter==1.1.0
+kwimage==0.10.0
+kwcoco==0.8.2
+delayed_image==0.3.1
+kwplot==0.4.14
+seaborn==0.11.1
+geopandas<1.0.0,==0.10.2
+utm==0.7.0
+rgd_imagery_client==0.2.7
+rgd_client==0.2.7
+ruamel.yaml<=0.17.32,==0.17.22
+kwutil==0.2.5
+xdoctest==1.1.5
+geodatasets==2023.12.0
+suntime==1.3.2
+pytz==2024.1
+
+[all-strict:python_version < "2.8.0" and python_version >= "2.7.0"]
+pytest-cov==2.8.1
+
+[all-strict:python_version < "3.10"]
+rasterio==1.3.4
+pandas==1.4.2
+pyproj<3.5.0,==3.2.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.6.2
+rtree==0.9.7
+
+[all-strict:python_version < "3.10" and platform_system != "Windows"]
+jq==1.2.1
+
+[all-strict:python_version < "3.10" and python_version >= "3.6"]
+Pillow==8.0.0
+
+[all-strict:python_version < "3.10" and python_version >= "3.9"]
+numpy==1.19.3
+scipy==1.8.0
+shapely==2.0.1
+scikit-learn==1.0.2
+scikit-image==0.18.0
+mgrs==1.4.3
+lxml==4.5.2
+coverage==5.3.1
+
+[all-strict:python_version < "3.10.0" and python_version >= "3.7.0"]
+pytest==6.2.5
+
+[all-strict:python_version < "3.11" and python_version >= "3.10"]
+numpy==1.21.6
+scipy==1.8.0
+shapely==2.0.1
+rasterio==1.3.4
+pandas==1.4.2
+scikit-learn==1.1.0
+scikit-image==0.19.0
+pyproj<3.5.0,==3.3.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.8.2
+Pillow==9.1.0
+rtree==1.0.0
+mgrs==1.4.3
+lxml==4.6.3
+pytest==6.2.5
+
+[all-strict:python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"]
+jq==1.2.2
+
+[all-strict:python_version < "3.12"]
+pint==0.18
+tifffile==2021.4.8
+pytest_timeout==1.4.2
+
+[all-strict:python_version < "3.12" and python_version >= "3.10"]
+coverage==6.1.1
+
+[all-strict:python_version < "3.12" and python_version >= "3.11"]
+numpy==1.23.2
+scipy==1.9.2
+shapely==2.0.1
+rasterio==1.3.4
+pandas==1.5.0
+scikit-learn==1.1.3
+scikit-image==0.20.0
+pyproj<3.5.0,==3.4.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.8.2
+Pillow==9.2.0
+rtree==1.0.1
+mgrs==1.4.6
+lxml==4.9.2
+pytest==6.2.5
+
+[all-strict:python_version < "3.12" and python_version >= "3.8"]
+geojson==3.0.1
+lazy_loader==0.1
+
+[all-strict:python_version < "3.13" and python_version >= "3.6"]
+pygtrie==2.5.0
+
+[all-strict:python_version < "3.5.0" and python_version >= "3.4.0"]
+pytest-cov==2.8.1
+
+[all-strict:python_version < "3.6.0" and python_version >= "3.5.0"]
+pytest-cov==2.9.0
+
+[all-strict:python_version < "3.7.0" and python_version >= "3.6.0"]
+pytest==6.2.5
+
+[all-strict:python_version < "3.8" and python_version >= "3.7"]
+lxml==4.2.4
+
+[all-strict:python_version < "3.9" and python_version >= "3.8"]
+numpy==1.19.3
+shapely==2.0.1
+scikit-learn==1.0.2
+scikit-image==0.17.2
+mgrs==1.4.3
+lxml==4.4.1
+coverage==6.1.1
+
+[all-strict:python_version < "4.0" and python_version >= "3.12"]
+numpy==1.26.0
+scipy==1.11.2
+shapely==2.0.2
+rasterio==1.3.9
+pandas==2.1.1
+scikit-learn==1.3.1
+scikit-image==0.22.0
+pyproj==3.6.1
+fiona==1.9.5
+matplotlib==3.8.2
+Pillow==10.0.0
+rtree==1.2.0
+mgrs==1.4.6
+pint==0.23
+lxml==5.1.0
+tifffile==2022.8.12
+geojson==3.1.0
+lazy_loader==0.3
+pytest==7.0.0
+pytest_timeout==2.3.1
+coverage==7.3.0
+
+[all-strict:python_version < "4.0" and python_version >= "3.13"]
+pygtrie==2.5.0
+
+[all-strict:python_version < "4.0" and python_version >= "3.8"]
+distinctipy==1.2.1
+
+[all-strict:python_version >= "3.11" and platform_system != "Windows"]
+jq==1.5.0
+
+[all-strict:python_version >= "3.6.0"]
+pytest-cov==3.0.0
+
+[all:python_version < "2.8.0" and python_version >= "2.7.0"]
+pytest-cov>=2.8.1
+
+[all:python_version < "3.10"]
+rasterio>=1.3.4
+pandas>=1.4.2
+pyproj<3.5.0,>=3.2.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.6.2
+rtree>=0.9.7
+
+[all:python_version < "3.10" and platform_system != "Windows"]
+jq>=1.2.1
+
+[all:python_version < "3.10" and python_version >= "3.6"]
+Pillow>=8.0.0
+
+[all:python_version < "3.10" and python_version >= "3.9"]
+numpy>=1.19.3
+scipy>=1.8.0
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.18.0
+mgrs>=1.4.3
+lxml>=4.5.2
+coverage>=5.3.1
+
+[all:python_version < "3.10.0" and python_version >= "3.7.0"]
+pytest>=6.2.5
+
+[all:python_version < "3.11" and python_version >= "3.10"]
+numpy>=1.21.6
+scipy>=1.8.0
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.4.2
+scikit-learn>=1.1.0
+scikit-image>=0.19.0
+pyproj<3.5.0,>=3.3.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.1.0
+rtree>=1.0.0
+mgrs>=1.4.3
+lxml>=4.6.3
+pytest>=6.2.5
+
+[all:python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"]
+jq>=1.2.2
+
+[all:python_version < "3.12"]
+pint>=0.18
+tifffile>=2021.4.8
+pytest_timeout>=1.4.2
+
+[all:python_version < "3.12" and python_version >= "3.10"]
+coverage>=6.1.1
+
+[all:python_version < "3.12" and python_version >= "3.11"]
+numpy>=1.23.2
+scipy>=1.9.2
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.5.0
+scikit-learn>=1.1.3
+scikit-image>=0.20.0
+pyproj<3.5.0,>=3.4.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.2.0
+rtree>=1.0.1
+mgrs>=1.4.6
+lxml>=4.9.2
+pytest>=6.2.5
+
+[all:python_version < "3.12" and python_version >= "3.8"]
+geojson>=3.0.1
+lazy_loader>=0.1
+
+[all:python_version < "3.13" and python_version >= "3.6"]
+pygtrie>=2.5.0
+
+[all:python_version < "3.5.0" and python_version >= "3.4.0"]
+pytest-cov>=2.8.1
+
+[all:python_version < "3.6.0" and python_version >= "3.5.0"]
+pytest-cov>=2.9.0
+
+[all:python_version < "3.7.0" and python_version >= "3.6.0"]
+pytest>=6.2.5
+
+[all:python_version < "3.8" and python_version >= "3.7"]
+lxml>=4.2.4
+
+[all:python_version < "3.9" and python_version >= "3.8"]
+numpy>=1.19.3
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.17.2
+mgrs>=1.4.3
+lxml>=4.4.1
+coverage>=6.1.1
+
+[all:python_version < "4.0" and python_version >= "3.12"]
+numpy>=1.26.0
+scipy>=1.11.2
+shapely>=2.0.2
+rasterio>=1.3.9
+pandas>=2.1.1
+scikit-learn>=1.3.1
+scikit-image>=0.22.0
+pyproj>=3.6.1
+fiona>=1.9.5
+matplotlib>=3.8.2
+Pillow>=10.0.0
+rtree>=1.2.0
+mgrs>=1.4.6
+pint>=0.23
+lxml>=5.1.0
+tifffile>=2022.8.12
+geojson>=3.1.0
+lazy_loader>=0.3
+pytest>=7.0.0
+pytest_timeout>=2.3.1
+coverage>=7.3.0
+
+[all:python_version < "4.0" and python_version >= "3.13"]
+pygtrie>=2.5.0
+
+[all:python_version < "4.0" and python_version >= "3.8"]
+distinctipy>=1.2.1
+
+[all:python_version >= "3.11" and platform_system != "Windows"]
+jq>=1.5.0
+
+[all:python_version >= "3.6.0"]
+pytest-cov>=3.0.0
+
+[docs]
+sphinx>=5.0.1
+sphinx-autobuild>=2021.3.14
+sphinx_rtd_theme>=1.0.0
+sphinxcontrib-napoleon>=0.7
+sphinx-autoapi>=1.8.4
+Pygments>=2.9.0
+myst_parser>=0.18.0
+sphinx-reredirects>=0.0.1
+
+[docs-strict]
+sphinx==5.0.1
+sphinx-autobuild==2021.3.14
+sphinx_rtd_theme==1.0.0
+sphinxcontrib-napoleon==0.7
+sphinx-autoapi==1.8.4
+Pygments==2.9.0
+myst_parser==0.18.0
+sphinx-reredirects==0.0.1
+
+[gdal]
+
+[gdal-strict]
+
+[gdal-strict:python_version < "3.11" and python_version >= "3.8"]
+GDAL==3.4.1
+
+[gdal-strict:python_version < "3.12" and python_version >= "3.11"]
+GDAL==3.5.2
+
+[gdal-strict:python_version < "4.0" and python_version >= "3.12"]
+GDAL==3.7.2
+
+[gdal:python_version < "3.11" and python_version >= "3.8"]
+GDAL>=3.4.1
+
+[gdal:python_version < "3.12" and python_version >= "3.11"]
+GDAL>=3.5.2
+
+[gdal:python_version < "4.0" and python_version >= "3.12"]
+GDAL>=3.7.2
+
+[graphics]
+
+[graphics-strict]
+
+[graphics-strict:python_version < "3.10" and python_version >= "3.8"]
+opencv-python==3.4.15.55
+
+[graphics-strict:python_version < "3.11" and python_version >= "3.10"]
+opencv-python==4.5.4.58
+
+[graphics-strict:python_version < "4.0" and python_version >= "3.11"]
+opencv-python==4.5.5.64
+
+[graphics:python_version < "3.10" and python_version >= "3.8"]
+opencv-python>=3.4.15.55
+
+[graphics:python_version < "3.11" and python_version >= "3.10"]
+opencv-python>=4.5.4.58
+
+[graphics:python_version < "4.0" and python_version >= "3.11"]
+opencv-python>=4.5.5.64
+
+[headless]
+
+[headless-strict]
+
+[headless-strict:python_version < "3.10" and python_version >= "3.8"]
+opencv-python-headless==3.4.15.55
+
+[headless-strict:python_version < "3.11" and python_version >= "3.10"]
+opencv-python-headless==4.5.4.58
+
+[headless-strict:python_version < "4.0" and python_version >= "3.11"]
+opencv-python-headless==4.5.5.64
+
+[headless:python_version < "3.10" and python_version >= "3.8"]
+opencv-python-headless>=3.4.15.55
+
+[headless:python_version < "3.11" and python_version >= "3.10"]
+opencv-python-headless>=4.5.4.58
+
+[headless:python_version < "4.0" and python_version >= "3.11"]
+opencv-python-headless>=4.5.5.64
+
+[linting]
+flake8>=5.0.0
+
+[linting-strict]
+flake8==5.0.0
+
+[optional]
+suntime>=1.3.2
+pytz>=2024.1
+
+[optional-strict]
+suntime==1.3.2
+pytz==2024.1
+
+[runtime]
+kwarray>=0.6.19
+einops>=0.6.0
+rich>=12.3.0
+parse>=1.19.0
+affine>=2.3.0
+ubelt>=1.3.6
+xmltodict>=0.12.0
+requests>=2.27.1
+xarray>=0.17.0
+girder_client>=3.1.15
+pystac_client>=0.5.1
+scriptconfig>=0.7.10
+networkx>=2.8
+python_dateutil>=2.8.2
+pytimeparse>=1.1.8
+progiter>=1.1.0
+kwimage>=0.10.0
+kwcoco>=0.8.2
+delayed_image>=0.3.1
+kwplot>=0.4.14
+seaborn>=0.11.1
+geopandas<1.0.0,>=0.10.2
+utm>=0.7.0
+rgd_imagery_client>=0.2.7
+rgd_client>=0.2.7
+ruamel.yaml<=0.17.32,>=0.17.22
+kwutil>=0.2.5
+
+[runtime-strict]
+kwarray==0.6.19
+einops==0.6.0
+rich==12.3.0
+parse==1.19.0
+affine==2.3.0
+ubelt==1.3.6
+xmltodict==0.12.0
+requests==2.27.1
+xarray==0.17.0
+girder_client==3.1.15
+pystac_client==0.5.1
+scriptconfig==0.7.10
+networkx==2.8
+python_dateutil==2.8.2
+pytimeparse==1.1.8
+progiter==1.1.0
+kwimage==0.10.0
+kwcoco==0.8.2
+delayed_image==0.3.1
+kwplot==0.4.14
+seaborn==0.11.1
+geopandas<1.0.0,==0.10.2
+utm==0.7.0
+rgd_imagery_client==0.2.7
+rgd_client==0.2.7
+ruamel.yaml<=0.17.32,==0.17.22
+kwutil==0.2.5
+
+[runtime-strict:python_version < "3.10"]
+rasterio==1.3.4
+pandas==1.4.2
+pyproj<3.5.0,==3.2.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.6.2
+rtree==0.9.7
+
+[runtime-strict:python_version < "3.10" and platform_system != "Windows"]
+jq==1.2.1
+
+[runtime-strict:python_version < "3.10" and python_version >= "3.6"]
+Pillow==8.0.0
+
+[runtime-strict:python_version < "3.10" and python_version >= "3.9"]
+numpy==1.19.3
+scipy==1.8.0
+shapely==2.0.1
+scikit-learn==1.0.2
+scikit-image==0.18.0
+mgrs==1.4.3
+lxml==4.5.2
+
+[runtime-strict:python_version < "3.11" and python_version >= "3.10"]
+numpy==1.21.6
+scipy==1.8.0
+shapely==2.0.1
+rasterio==1.3.4
+pandas==1.4.2
+scikit-learn==1.1.0
+scikit-image==0.19.0
+pyproj<3.5.0,==3.3.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.8.2
+Pillow==9.1.0
+rtree==1.0.0
+mgrs==1.4.3
+lxml==4.6.3
+
+[runtime-strict:python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"]
+jq==1.2.2
+
+[runtime-strict:python_version < "3.12"]
+pint==0.18
+tifffile==2021.4.8
+
+[runtime-strict:python_version < "3.12" and python_version >= "3.11"]
+numpy==1.23.2
+scipy==1.9.2
+shapely==2.0.1
+rasterio==1.3.4
+pandas==1.5.0
+scikit-learn==1.1.3
+scikit-image==0.20.0
+pyproj<3.5.0,==3.4.1
+fiona<1.9.0,==1.8.22
+matplotlib==3.8.2
+Pillow==9.2.0
+rtree==1.0.1
+mgrs==1.4.6
+lxml==4.9.2
+
+[runtime-strict:python_version < "3.12" and python_version >= "3.8"]
+geojson==3.0.1
+lazy_loader==0.1
+
+[runtime-strict:python_version < "3.13" and python_version >= "3.6"]
+pygtrie==2.5.0
+
+[runtime-strict:python_version < "3.8" and python_version >= "3.7"]
+lxml==4.2.4
+
+[runtime-strict:python_version < "3.9" and python_version >= "3.8"]
+numpy==1.19.3
+shapely==2.0.1
+scikit-learn==1.0.2
+scikit-image==0.17.2
+mgrs==1.4.3
+lxml==4.4.1
+
+[runtime-strict:python_version < "4.0" and python_version >= "3.12"]
+numpy==1.26.0
+scipy==1.11.2
+shapely==2.0.2
+rasterio==1.3.9
+pandas==2.1.1
+scikit-learn==1.3.1
+scikit-image==0.22.0
+pyproj==3.6.1
+fiona==1.9.5
+matplotlib==3.8.2
+Pillow==10.0.0
+rtree==1.2.0
+mgrs==1.4.6
+pint==0.23
+lxml==5.1.0
+tifffile==2022.8.12
+geojson==3.1.0
+lazy_loader==0.3
+
+[runtime-strict:python_version < "4.0" and python_version >= "3.13"]
+pygtrie==2.5.0
+
+[runtime-strict:python_version < "4.0" and python_version >= "3.8"]
+distinctipy==1.2.1
+
+[runtime-strict:python_version >= "3.11" and platform_system != "Windows"]
+jq==1.5.0
+
+[runtime:python_version < "3.10"]
+rasterio>=1.3.4
+pandas>=1.4.2
+pyproj<3.5.0,>=3.2.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.6.2
+rtree>=0.9.7
+
+[runtime:python_version < "3.10" and platform_system != "Windows"]
+jq>=1.2.1
+
+[runtime:python_version < "3.10" and python_version >= "3.6"]
+Pillow>=8.0.0
+
+[runtime:python_version < "3.10" and python_version >= "3.9"]
+numpy>=1.19.3
+scipy>=1.8.0
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.18.0
+mgrs>=1.4.3
+lxml>=4.5.2
+
+[runtime:python_version < "3.11" and python_version >= "3.10"]
+numpy>=1.21.6
+scipy>=1.8.0
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.4.2
+scikit-learn>=1.1.0
+scikit-image>=0.19.0
+pyproj<3.5.0,>=3.3.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.1.0
+rtree>=1.0.0
+mgrs>=1.4.3
+lxml>=4.6.3
+
+[runtime:python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"]
+jq>=1.2.2
+
+[runtime:python_version < "3.12"]
+pint>=0.18
+tifffile>=2021.4.8
+
+[runtime:python_version < "3.12" and python_version >= "3.11"]
+numpy>=1.23.2
+scipy>=1.9.2
+shapely>=2.0.1
+rasterio>=1.3.4
+pandas>=1.5.0
+scikit-learn>=1.1.3
+scikit-image>=0.20.0
+pyproj<3.5.0,>=3.4.1
+fiona<1.9.0,>=1.8.22
+matplotlib>=3.8.2
+Pillow>=9.2.0
+rtree>=1.0.1
+mgrs>=1.4.6
+lxml>=4.9.2
+
+[runtime:python_version < "3.12" and python_version >= "3.8"]
+geojson>=3.0.1
+lazy_loader>=0.1
+
+[runtime:python_version < "3.13" and python_version >= "3.6"]
+pygtrie>=2.5.0
+
+[runtime:python_version < "3.8" and python_version >= "3.7"]
+lxml>=4.2.4
+
+[runtime:python_version < "3.9" and python_version >= "3.8"]
+numpy>=1.19.3
+shapely>=2.0.1
+scikit-learn>=1.0.2
+scikit-image>=0.17.2
+mgrs>=1.4.3
+lxml>=4.4.1
+
+[runtime:python_version < "4.0" and python_version >= "3.12"]
+numpy>=1.26.0
+scipy>=1.11.2
+shapely>=2.0.2
+rasterio>=1.3.9
+pandas>=2.1.1
+scikit-learn>=1.3.1
+scikit-image>=0.22.0
+pyproj>=3.6.1
+fiona>=1.9.5
+matplotlib>=3.8.2
+Pillow>=10.0.0
+rtree>=1.2.0
+mgrs>=1.4.6
+pint>=0.23
+lxml>=5.1.0
+tifffile>=2022.8.12
+geojson>=3.1.0
+lazy_loader>=0.3
+
+[runtime:python_version < "4.0" and python_version >= "3.13"]
+pygtrie>=2.5.0
+
+[runtime:python_version < "4.0" and python_version >= "3.8"]
+distinctipy>=1.2.1
+
+[runtime:python_version >= "3.11" and platform_system != "Windows"]
+jq>=1.5.0
+
+[tests]
+xdoctest>=1.1.5
+geodatasets>=2023.12.0
+
+[tests-strict]
+xdoctest==1.1.5
+geodatasets==2023.12.0
+
+[tests-strict:python_version < "2.8.0" and python_version >= "2.7.0"]
+pytest-cov==2.8.1
+
+[tests-strict:python_version < "3.10" and python_version >= "3.9"]
+coverage==5.3.1
+
+[tests-strict:python_version < "3.10.0" and python_version >= "3.7.0"]
+pytest==6.2.5
+
+[tests-strict:python_version < "3.11" and python_version >= "3.10"]
+pytest==6.2.5
+
+[tests-strict:python_version < "3.12"]
+pytest_timeout==1.4.2
+
+[tests-strict:python_version < "3.12" and python_version >= "3.10"]
+coverage==6.1.1
+
+[tests-strict:python_version < "3.12" and python_version >= "3.11"]
+pytest==6.2.5
+
+[tests-strict:python_version < "3.5.0" and python_version >= "3.4.0"]
+pytest-cov==2.8.1
+
+[tests-strict:python_version < "3.6.0" and python_version >= "3.5.0"]
+pytest-cov==2.9.0
+
+[tests-strict:python_version < "3.7.0" and python_version >= "3.6.0"]
+pytest==6.2.5
+
+[tests-strict:python_version < "3.9" and python_version >= "3.8"]
+coverage==6.1.1
+
+[tests-strict:python_version < "4.0" and python_version >= "3.12"]
+pytest==7.0.0
+pytest_timeout==2.3.1
+coverage==7.3.0
+
+[tests-strict:python_version >= "3.6.0"]
+pytest-cov==3.0.0
+
+[tests:python_version < "2.8.0" and python_version >= "2.7.0"]
+pytest-cov>=2.8.1
+
+[tests:python_version < "3.10" and python_version >= "3.9"]
+coverage>=5.3.1
+
+[tests:python_version < "3.10.0" and python_version >= "3.7.0"]
+pytest>=6.2.5
+
+[tests:python_version < "3.11" and python_version >= "3.10"]
+pytest>=6.2.5
+
+[tests:python_version < "3.12"]
+pytest_timeout>=1.4.2
+
+[tests:python_version < "3.12" and python_version >= "3.10"]
+coverage>=6.1.1
+
+[tests:python_version < "3.12" and python_version >= "3.11"]
+pytest>=6.2.5
+
+[tests:python_version < "3.5.0" and python_version >= "3.4.0"]
+pytest-cov>=2.8.1
+
+[tests:python_version < "3.6.0" and python_version >= "3.5.0"]
+pytest-cov>=2.9.0
+
+[tests:python_version < "3.7.0" and python_version >= "3.6.0"]
+pytest>=6.2.5
+
+[tests:python_version < "3.9" and python_version >= "3.8"]
+coverage>=6.1.1
+
+[tests:python_version < "4.0" and python_version >= "3.12"]
+pytest>=7.0.0
+pytest_timeout>=2.3.1
+coverage>=7.3.0
+
+[tests:python_version >= "3.6.0"]
+pytest-cov>=3.0.0
