@@ -1,0 +1,1 @@
+import{a as e,j as o}from"./main-907a3242.js";const t=()=>e("div",{children:[o("h1",{children:"404 - Page Not Found"}),o("p",{children:"Sorry, the page you are looking for does not exist."})]});export{t as default};
