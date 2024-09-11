@@ -1,0 +1,134 @@
+Metadata-Version: 2.1
+Name: NonoSesam
+Version: 1.0
+Summary: A flexible secret management system
+Home-page: https://github.com/lopezmartin/sesam
+Author: Miguel Lopez
+Author-email: miguel@lopezmartin.me
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: python-dotenv
+Requires-Dist: cryptography
+Requires-Dist: pytest
+
+# Sesam Secret Management System
+
+## Overview
+
+This project demonstrates a flexible and extensible approach to managing secrets using different secret management systems. The strategy pattern is employed to allow switching between different secret management systems at runtime.
+
+## Strategy Pattern for Secret Management
+
+The project includes the following components:
+
+- `SesamStrategy`: The strategy interface.
+- `EnvSesamStrategy`, `AzureKeyVaultSesamStrategy`, and `HashiCorpVaultSesamStrategy`: Concrete strategies for different secret management systems.
+- `Sesam`: The context that uses a strategy to get secrets.
+
+You can switch between different secret management systems by changing the strategy at runtime. This makes your code flexible and easy to extend.
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-repo/sesam-secret-management.git
+    cd sesam-secret-management
+    ```
+
+2. Install the required dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+## Components
+
+### Strategy Interface
+The `SesamStrategy` interface defines a method for retrieving secrets:
+
+```python
+from abc import ABC, abstractmethod
+
+class SesamStrategy(ABC):
+    @abstractmethod
+    def secret(self, key: str) -> str:
+        pass
+```
+
+## Concrete Strategies
+
+### EnvSesamStrategy
+
+This strategy retrieves secrets from environment variables stored in a `.env` file. It uses the `cryptography` library to decrypt secrets.
+
+```python
+import os
+from cryptography.fernet import Fernet
+from dotenv import load_dotenv
+
+class EnvSesamStrategy(SesamStrategy):
+    KEY_SUFFFIX = "_KEY"
+    
+    def secret(self, key: str) -> str:
+        if not isinstance(key, str):
+            raise TypeError("Key must be a string")
+        if len(key.strip()) == 0:
+            raise ValueError("Key cannot be empty or whitespace")
+        
+        load_dotenv()
+        try:
+            if os.getenv(key+self.KEY_SUFFFIX) is None:
+                raise KeyError(f"Key of '{key}' does not exist")
+            key_name = os.getenv(key+self.KEY_SUFFFIX).encode()
+            encrypted_secret = os.getenv(key).encode()
+            fernet = Fernet(key_name)
+            decrypted_secret = fernet.decrypt(encrypted_secret)
+            return decrypted_secret.decode()
+        except (AttributeError, KeyError) as error:
+            raise error
+```
+### `AzureKeyVaultSesamStrategy`
+
+1. Ensure you have the necessary Azure credentials and permissions.
+
+2. Use the `AzureKeyVaultSesamStrategy` to retrieve the secret:
+    ```python
+    from sesam import AzureKeyVaultSesamStrategy, Sesam
+
+    vault_url = "https://your-vault-url.vault.azure.net/"
+    credential = None  # Use default Azure credentials
+
+    strategy = AzureKeyVaultSesamStrategy(vault_url, credential)
+    sesam = Sesam(strategy)
+    secret = sesam.secret("your-secret-name")
+    print(secret)
+
+### `HashiCorpVaultSesamStrategy`
+
+1. Ensure you have the necessary HashiCorp Vault credentials and permissions.
+
+2. Use the `HashiCorpVaultSesamStrategy` to retrieve the secret:
+    ```python
+    from sesam import HashiCorpVaultSesamStrategy, Sesam
+
+    url = "https://your-vault-url"
+    token = "your-vault-token"
+
+    strategy = HashiCorpVaultSesamStrategy(url, token)
+    sesam = Sesam(strategy)
+    secret = sesam.secret("your-secret-path")
+    print(secret)
+    ```
+
+## Extending
+
+To add a new secret management strategy, create a new class that inherits from `SesamStrategy` and implements the `secret` method. Then, you can use this new strategy with the `Sesam` context.
+
+```python
+class NewSesamStrategy(SesamStrategy):
+    def secret(self, key: str) -> str:
+        # Implement your secret retrieval logic here
+        pass
