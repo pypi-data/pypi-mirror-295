@@ -1,0 +1,13 @@
+{%load wagtailcore_tags dpwagtail%}
+
+{%if insert_header%}
+<h3>{{block.value}}</h3>
+{%endif%}
+
+{%if insert_para%}
+  {%include_block block%}
+{%endif%}
+
+{%if insert_da%}
+  {%dpd_instance block.value.dash_instance%}
+{%endif%}

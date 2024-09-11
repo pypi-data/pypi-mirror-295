@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+
+{%load wagtailcore_tags dpwagtail %}
+
+{%block body_class %}template-homepage{%endblock%}
+
+{%block content%}
+
+<h2>Blog content</h2>
+<div>
+  {%dpd_blog_body page.body%}
+</div>
+
+<div>
+  {{page.author}} on {{page.date}}
+</div>
+
+{%endblock%}
