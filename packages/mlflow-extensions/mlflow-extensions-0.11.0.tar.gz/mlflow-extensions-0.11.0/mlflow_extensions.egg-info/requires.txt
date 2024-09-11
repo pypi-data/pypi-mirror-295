@@ -1,0 +1,6 @@
+httpx
+huggingface-hub
+filelock
+mlflow-skinny[databricks]
+psutil
+databricks-sdk
