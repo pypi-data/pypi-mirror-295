@@ -1,0 +1,12 @@
+LICENSE.rst
+MANIFEST.in
+README.md
+README.rst
+setup.cfg
+setup.py
+src/potatodb/__init__.py
+src/potatodb/db.py
+src/potatodb.egg-info/PKG-INFO
+src/potatodb.egg-info/SOURCES.txt
+src/potatodb.egg-info/dependency_links.txt
+src/potatodb.egg-info/top_level.txt
