@@ -1,0 +1,15 @@
+wingman/__init__.py,sha256=Sk0fQQ9cNKXGYDEfAIlY4Du71XBiTIiwp-9_3DS_AUU,399
+wingman/cli_scripts.py,sha256=PeLixpE_BnHd3bYh-9OlW4CgF8mDkGJXkmLexZwGpbU,3877
+wingman/config.yaml,sha256=UK25dt3ZdqrCcUr1zN8AlxE2XSeX85mKh_BT-M8vXRQ,401
+wingman/config_utils.py,sha256=MZhiaUKR1Omp912n-oLgGx1flcMt8asKghpsxCYyS0w,6221
+wingman/exceptions.py,sha256=1vEiqsDHJioznrrOKg6PJWzUHAWJi_-_gZV-gdAvD8A,696
+wingman/neural_blocks.py,sha256=PoOgRgNkvi1fCnTlqh72JVaY4h25GkLsnwx15d6oq3o,10871
+wingman/print_utils.py,sha256=Ptwk_3-vHB958zs1DzwwBZ1G84F8qbkwgwHpjbo35R8,1310
+wingman/utils.py,sha256=2TPNjKaTHQSbai7eQgGO9kc7tpWOTavH1Pyx1EKv0I8,2763
+wingman/wingman.py,sha256=5xcUNdUWhyM8PS8OGcKWz40PQUIOjdc-b513S_wu3wk,12772
+jj_wingman-0.21.0.dist-info/LICENSE.txt,sha256=7EI8xVBu6h_7_JlVw-yPhhOZlpY9hP8wal7kHtqKT_E,1074
+jj_wingman-0.21.0.dist-info/METADATA,sha256=2oOWYP_k-Za_M6vt7H5OaU81TPoI9yM8O82hXHbi96o,13328
+jj_wingman-0.21.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+jj_wingman-0.21.0.dist-info/entry_points.txt,sha256=e3Tjzcmtpcm4ZtqSNBk5Ae22l3msIrEolDUy2oS3X8o,140
+jj_wingman-0.21.0.dist-info/top_level.txt,sha256=7YrEFN-JtpR9nO40sT8NnppsmBLVFrLH9lDkQC1mwWo,8
+jj_wingman-0.21.0.dist-info/RECORD,,
