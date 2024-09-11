@@ -1,0 +1,130 @@
+[project]
+name = "pytest-neos"
+version = "0.1.2"
+description = "Pytest plugin for neos"
+readme = "README.md"
+homepage = "https://github.com/NEOS-Critical/pytest-neos"
+authors = [
+    {name = "Daniel Edgecombe", email = "daniel@nrwl.co"},
+]
+maintainers = [
+    {name = "Daniel Edgecombe", email = "daniel@nrwl.co"},
+]
+requires-python = ">=3.10"
+keywords = ["neos", "pytest"]
+license = "Apache-2.0"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "neos-common[auth,config] >= 0.14.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Tests
+    "pytest >= 7.2,<8.0",
+    "pytest-asyncio >= 0.18.3,<0.19",
+    "pytest-cov >= 3.0.0",
+    "pytest-random-order >= 1.0.4",
+
+    # style
+    "ruff >= 0.6.4",
+    "pre-commit >= 3.7.1",
+
+    # Releases
+    "changelog-gen >= 0.12,<0.13",
+]
+
+[project.entry-points.pytest11]
+neos = "pytest_neos"
+
+[tool.changelog_gen]
+current_version = "0.1.2"
+reject_empty = true
+allowed_branches = [
+    "main",
+]
+date_format = "- %Y-%m-%d"
+
+[tool.changelog_gen.github]
+strip_pr_from_description = true
+
+[[tool.changelog_gen.extractors]]
+footer = ["Refs"]
+pattern = '(?P<issue_ref>MEMO-\d+)'
+
+[[tool.changelog_gen.link_generators]]
+source = "issue_ref"
+link = "https://neom.atlassian.net/browse/{0}"
+
+[[tool.changelog_gen.link_generators]]
+source = "__change__"
+text = "{0.short_hash}"
+link = "https://github.com/NEOS-Critical/pytest-neos/commit/{0.commit_hash}"
+
+[[tool.changelog_gen.files]]
+filename = "pyproject.toml"
+pattern = 'version = "{version}"'
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--random-order"
+
+
+[tool.coverage.report]
+sort = "cover"
+fail_under = 99
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    "pragma: no cover",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["pytest_neos"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "B008",    # fastapi involves a lot of function calls in function definitions
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D107",
+    "FIX002",  # allow TODO
+]
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "double"
+
+[tool.ruff.lint.per-file-ignores]
+"tasks.py" = ["ANN", "E501", "INP001", "S"]
+"tests/*" = ["ANN", "D", "S101", "INP001"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.isort]
+known-first-party = ["neos_common"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      .group-header th {
+        font-size: 200%;
+      }
+      .sub-header th {
+        font-size: 150%;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        white-space: nowrap;
+        padding: .3em;
+      }
+      table {
+        margin: 0 auto;
+      }
+      .severity {
+        text-align: center;
+        font-weight: bold;
+        color: #fafafa;
+      }
+      .severity-LOW .severity { background-color: #5fbb31; }
+      .severity-MEDIUM .severity { background-color: #e9c600; }
+      .severity-HIGH .severity { background-color: #ff8800; }
+      .severity-CRITICAL .severity { background-color: #e40000; }
+      .severity-UNKNOWN .severity { background-color: #747474; }
+      .severity-LOW { background-color: #5fbb3160; }
+      .severity-MEDIUM { background-color: #e9c60060; }
+      .severity-HIGH { background-color: #ff880060; }
+      .severity-CRITICAL { background-color: #e4000060; }
+      .severity-UNKNOWN { background-color: #74747460; }
+      table tr td:first-of-type {
+        font-weight: bold;
+      }
+      .links a,
+      .links[data-more-links=on] a {
+        display: block;
+      }
+      .links[data-more-links=off] a:nth-of-type(1n+5) {
+        display: none;
+      }
+      a.toggle-more-links { cursor: pointer; }
+    </style>
+    <title>poetry.lock - Trivy Report - 2024-09-10 12:19:03.084655002 +0000 UTC m=+4.392470715 </title>
+    <script>
+      window.onload = function() {
+        document.querySelectorAll('td.links').forEach(function(linkCell) {
+          var links = [].concat.apply([], linkCell.querySelectorAll('a'));
+          [].sort.apply(links, function(a, b) {
+            return a.href > b.href ? 1 : -1;
+          });
+          links.forEach(function(link, idx) {
+            if (links.length > 3 && 3 === idx) {
+              var toggleLink = document.createElement('a');
+              toggleLink.innerText = "Toggle more links";
+              toggleLink.href = "#toggleMore";
+              toggleLink.setAttribute("class", "toggle-more-links");
+              linkCell.appendChild(toggleLink);
+            }
+            linkCell.appendChild(link);
+          });
+        });
+        document.querySelectorAll('a.toggle-more-links').forEach(function(toggleLink) {
+          toggleLink.onclick = function() {
+            var expanded = toggleLink.parentElement.getAttribute("data-more-links");
+            toggleLink.parentElement.setAttribute("data-more-links", "on" === expanded ? "off" : "on");
+            return false;
+          };
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>poetry.lock - Trivy Report - 2024-09-10 12:19:03.084671203 +0000 UTC m=+4.392486907</h1>
+    <table>
+      <tr class="group-header"><th colspan="6">poetry</th></tr>
+      <tr class="sub-header">
+        <th>Package</th>
+        <th>Vulnerability ID</th>
+        <th>Severity</th>
+        <th>Installed Version</th>
+        <th>Fixed Version</th>
+        <th>Links</th>
+      </tr>
+      <tr class="severity-LOW">
+        <td class="pkg-name">certifi</td>
+        <td>CVE-2024-39689</td>
+        <td class="severity">LOW</td>
+        <td class="pkg-version">2024.2.2</td>
+        <td>2024.07.04</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/security/cve/CVE-2024-39689">https://access.redhat.com/security/cve/CVE-2024-39689</a>
+          <a href="https://github.com/certifi/python-certifi">https://github.com/certifi/python-certifi</a>
+          <a href="https://github.com/certifi/python-certifi/commit/bd8153872e9c6fc98f4023df9c2deaffea2fa463">https://github.com/certifi/python-certifi/commit/bd8153872e9c6fc98f4023df9c2deaffea2fa463</a>
+          <a href="https://github.com/certifi/python-certifi/security/advisories/GHSA-248v-346w-9cwc">https://github.com/certifi/python-certifi/security/advisories/GHSA-248v-346w-9cwc</a>
+          <a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/XpknYMPO8dI">https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/XpknYMPO8dI</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-39689">https://nvd.nist.gov/vuln/detail/CVE-2024-39689</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2024-39689">https://www.cve.org/CVERecord?id=CVE-2024-39689</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">cryptography</td>
+        <td>GHSA-h4gh-qq45-vh27</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">42.0.5</td>
+        <td>43.0.1</td>
+        <td class="links" data-more-links="off">
+          <a href="https://github.com/pyca/cryptography">https://github.com/pyca/cryptography</a>
+          <a href="https://github.com/pyca/cryptography/security/advisories/GHSA-h4gh-qq45-vh27">https://github.com/pyca/cryptography/security/advisories/GHSA-h4gh-qq45-vh27</a>
+          <a href="https://openssl-library.org/news/secadv/20240903.txt">https://openssl-library.org/news/secadv/20240903.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">requests</td>
+        <td>CVE-2024-35195</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">2.31.0</td>
+        <td>2.32.0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/security/cve/CVE-2024-35195">https://access.redhat.com/security/cve/CVE-2024-35195</a>
+          <a href="https://github.com/psf/requests">https://github.com/psf/requests</a>
+          <a href="https://github.com/psf/requests/commit/a58d7f2ffb4d00b46dca2d70a3932a0b37e22fac">https://github.com/psf/requests/commit/a58d7f2ffb4d00b46dca2d70a3932a0b37e22fac</a>
+          <a href="https://github.com/psf/requests/pull/6655">https://github.com/psf/requests/pull/6655</a>
+          <a href="https://github.com/psf/requests/security/advisories/GHSA-9wx4-h78v-vm56">https://github.com/psf/requests/security/advisories/GHSA-9wx4-h78v-vm56</a>
+          <a href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IYLSNK5TL46Q6XPRVMHVWS63MVJQOK4Q">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IYLSNK5TL46Q6XPRVMHVWS63MVJQOK4Q</a>
+          <a href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IYLSNK5TL46Q6XPRVMHVWS63MVJQOK4Q/">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/IYLSNK5TL46Q6XPRVMHVWS63MVJQOK4Q/</a>
+          <a href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/N7WP6EYDSUOCOJYHDK5NX43PYZ4SNHGZ">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/N7WP6EYDSUOCOJYHDK5NX43PYZ4SNHGZ</a>
+          <a href="https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/N7WP6EYDSUOCOJYHDK5NX43PYZ4SNHGZ/">https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/N7WP6EYDSUOCOJYHDK5NX43PYZ4SNHGZ/</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-35195">https://nvd.nist.gov/vuln/detail/CVE-2024-35195</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2024-35195">https://www.cve.org/CVERecord?id=CVE-2024-35195</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">setuptools</td>
+        <td>CVE-2024-6345</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">69.5.1</td>
+        <td>70.0.0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2024:5534">https://access.redhat.com/errata/RHSA-2024:5534</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2024-6345">https://access.redhat.com/security/cve/CVE-2024-6345</a>
+          <a href="https://bugzilla.redhat.com/2297771">https://bugzilla.redhat.com/2297771</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2297771">https://bugzilla.redhat.com/show_bug.cgi?id=2297771</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-6345">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-6345</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2024-5534.html">https://errata.almalinux.org/9/ALSA-2024-5534.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2024:5530">https://errata.rockylinux.org/RLSA-2024:5530</a>
+          <a href="https://github.com/pypa/setuptools">https://github.com/pypa/setuptools</a>
+          <a href="https://github.com/pypa/setuptools/commit/88807c7062788254f654ea8c03427adc859321f0">https://github.com/pypa/setuptools/commit/88807c7062788254f654ea8c03427adc859321f0</a>
+          <a href="https://github.com/pypa/setuptools/pull/4332">https://github.com/pypa/setuptools/pull/4332</a>
+          <a href="https://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5">https://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5</a>
+          <a href="https://linux.oracle.com/cve/CVE-2024-6345.html">https://linux.oracle.com/cve/CVE-2024-6345.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2024-6311.html">https://linux.oracle.com/errata/ELSA-2024-6311.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6345">https://nvd.nist.gov/vuln/detail/CVE-2024-6345</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2024-6345">https://www.cve.org/CVERecord?id=CVE-2024-6345</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">urllib3</td>
+        <td>CVE-2024-37891</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">2.2.1</td>
+        <td>1.26.19, 2.2.2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2024:6162">https://access.redhat.com/errata/RHSA-2024:6162</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2024-37891">https://access.redhat.com/security/cve/CVE-2024-37891</a>
+          <a href="https://bugzilla.redhat.com/2292788">https://bugzilla.redhat.com/2292788</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2024-6162.html">https://errata.almalinux.org/9/ALSA-2024-6162.html</a>
+          <a href="https://github.com/urllib3/urllib3">https://github.com/urllib3/urllib3</a>
+          <a href="https://github.com/urllib3/urllib3/commit/40b6d1605814dd1db0a46e202d6e56f2e4c9a468">https://github.com/urllib3/urllib3/commit/40b6d1605814dd1db0a46e202d6e56f2e4c9a468</a>
+          <a href="https://github.com/urllib3/urllib3/commit/accff72ecc2f6cf5a76d9570198a93ac7c90270e">https://github.com/urllib3/urllib3/commit/accff72ecc2f6cf5a76d9570198a93ac7c90270e</a>
+          <a href="https://github.com/urllib3/urllib3/security/advisories/GHSA-34jh-p97f-mpxf">https://github.com/urllib3/urllib3/security/advisories/GHSA-34jh-p97f-mpxf</a>
+          <a href="https://linux.oracle.com/cve/CVE-2024-37891.html">https://linux.oracle.com/cve/CVE-2024-37891.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2024-6311.html">https://linux.oracle.com/errata/ELSA-2024-6311.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-37891">https://nvd.nist.gov/vuln/detail/CVE-2024-37891</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2024-37891">https://www.cve.org/CVERecord?id=CVE-2024-37891</a>
+        </td>
+      </tr>
+      <tr><th colspan="6">No Misconfigurations found</th></tr>
+    </table>
+  </body>
+</html>

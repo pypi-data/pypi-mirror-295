@@ -1,0 +1,26 @@
+Metadata-Version: 2.3
+Name: pytest-neos
+Version: 0.1.2
+Summary: Pytest plugin for neos
+Author-email: Daniel Edgecombe <daniel@nrwl.co>
+Maintainer-email: Daniel Edgecombe <daniel@nrwl.co>
+License-Expression: Apache-2.0
+Keywords: neos,pytest
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Requires-Dist: neos-common[auth,config]>=0.14.3
+Provides-Extra: dev
+Requires-Dist: changelog-gen<0.13,>=0.12; extra == 'dev'
+Requires-Dist: pre-commit>=3.7.1; extra == 'dev'
+Requires-Dist: pytest-asyncio<0.19,>=0.18.3; extra == 'dev'
+Requires-Dist: pytest-cov>=3.0.0; extra == 'dev'
+Requires-Dist: pytest-random-order>=1.0.4; extra == 'dev'
+Requires-Dist: pytest<8.0,>=7.2; extra == 'dev'
+Requires-Dist: ruff>=0.6.4; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# NEOS pytest plugin
