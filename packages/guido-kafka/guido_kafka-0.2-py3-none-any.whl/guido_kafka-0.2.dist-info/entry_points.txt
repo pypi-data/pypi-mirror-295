@@ -1,0 +1,2 @@
+[console_scripts]
+guido = guido.__main__:main
