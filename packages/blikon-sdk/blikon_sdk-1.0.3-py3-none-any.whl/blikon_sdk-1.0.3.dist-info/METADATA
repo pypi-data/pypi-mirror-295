@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: blikon_sdk
+Version: 1.0.3
+Summary: Blikon SDK for cryptography, security, and middleware services
+Home-page: https://github.com/blikon/blikon_sdk
+Author: Raúl Díaz Peña
+Author-email: rdiaz@yosoyblueicon.com
+License: Blikon Ⓡ
+Requires-Dist: fastapi
+Requires-Dist: pydantic-settings
+Requires-Dist: uvicorn
+Requires-Dist: google-auth
+Requires-Dist: google-cloud-firestore
+Requires-Dist: httpx
+Requires-Dist: python-dotenv
+Requires-Dist: pydantic[email]
+Requires-Dist: jose
+Requires-Dist: firebase-admin
+Requires-Dist: pyjwt
+Requires-Dist: cryptography
+
