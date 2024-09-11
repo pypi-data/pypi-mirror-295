@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/py3dst/__init__.py
+src/py3dst/__main__.py
+src/py3dst/error_classes.py
+src/py3dst/primitive_types.py
+src/py3dst/tex3dst.py
+src/py3dst/utils.py
+src/py3dst.egg-info/PKG-INFO
+src/py3dst.egg-info/SOURCES.txt
+src/py3dst.egg-info/dependency_links.txt
+src/py3dst.egg-info/requires.txt
+src/py3dst.egg-info/top_level.txt
