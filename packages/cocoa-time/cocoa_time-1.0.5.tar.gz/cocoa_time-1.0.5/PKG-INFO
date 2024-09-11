@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: cocoa_time
+Version: 1.0.5
+Summary: A cocoa core data timestamp library
+Author: Edanick
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+
+# Documetation
+
+```python
+import cocoa_time as cocoa
+
+```
