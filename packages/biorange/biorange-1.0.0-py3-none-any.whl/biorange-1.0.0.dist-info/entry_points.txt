@@ -1,0 +1,3 @@
+[console_scripts]
+smina=biorange.dock.smina:main
+

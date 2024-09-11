@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: biorange
+Version: 1.0.0
+Summary: 
+Author: liuyan
+Author-email: lyfx99@icloud.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: docker (>=7.1.0,<8.0.0)
+Requires-Dist: gseapy (>=1.1.3,<2.0.0)
+Requires-Dist: matplotlib (>=3.9.2,<4.0.0)
+Requires-Dist: matplotlib-venn (>=1.1.1,<2.0.0)
+Requires-Dist: mygene (>=3.2.2,<4.0.0)
+Requires-Dist: networkx (>=3.3,<4.0)
+Requires-Dist: pandas (>=2.2.2,<3.0.0)
+Requires-Dist: playwright (>=1.46.0,<2.0.0)
+Requires-Dist: plotnine (>=0.13.6,<0.14.0)
+Requires-Dist: py3dmol (>=2.4.0,<3.0.0)
+Requires-Dist: pyyaml (>=6.0.2,<7.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Description-Content-Type: text/markdown
+
+## 说明
+
+- 积极开发中
+- 仅限内部使用
+
+## todo
+
+- 跨平台兼容性
