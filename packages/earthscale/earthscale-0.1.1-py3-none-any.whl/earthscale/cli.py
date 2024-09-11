@@ -1,0 +1,104 @@
+import importlib
+import inspect
+import os
+import sys
+from types import ModuleType
+
+import click
+from loguru import logger
+
+from earthscale.auth import authenticate as run_auth
+from earthscale.auth import get_supabase_client
+from earthscale.datasets.dataset import Dataset, DatasetDomain
+from earthscale.repositories.dataset import DatasetRepository
+
+
+@click.group()
+def cli() -> None:
+    """Earthscale command line tool."""
+    pass
+
+
+def find_datasets_for_module(
+    module: ModuleType,
+) -> list[Dataset]:
+    datasets = []
+    for _, obj in inspect.getmembers(module):
+        if isinstance(obj, Dataset):
+            datasets.append(obj)
+    return datasets
+
+
+@cli.command()
+@click.argument("module")
+@click.option("--version", default="0.1.0", help="Version of the dataset.")
+@click.option(
+    "--domain",
+    type=DatasetDomain,
+    default=DatasetDomain.CATALOG,
+    help="Domain of the dataset.",
+)
+def register(
+    module: str,
+    version: str | None,
+    domain: DatasetDomain,
+) -> None:
+    if domain == DatasetDomain.WORKSPACE:
+        logger.warning("Workspace datasets cannot have a version set, removing")
+        version = None
+
+    # Add cwd to sys.path
+    sys.path.insert(0, os.getcwd())
+
+    # Look for all Dataset instances in the module
+    try:
+        mod = importlib.import_module(module)
+    except ImportError as e:
+        logger.error(f"Error importing module {module}: {e}")
+        return
+    datasets = find_datasets_for_module(mod)
+
+    client = get_supabase_client()
+
+    dataset_repo = DatasetRepository(
+        client,
+        domain=domain,
+        version=version,
+    )
+    registered_datasets = []
+    logger.info("Registering datasets...")
+    for dataset in datasets:
+        if not dataset._explicit_name:
+            continue
+        logger.info(f"     {dataset.name}")
+
+        if dataset_repo.exists(dataset.name):
+            logger.warning(f"Dataset {dataset.name} already exist, overwriting...")
+
+        # TODO: for now the vector data processing POST is blocking, so we
+        dataset_repo.add(dataset)
+        registered_datasets.append(dataset)
+
+    dset_strs = []
+    for i, dataset in enumerate(registered_datasets):
+        dset_strs.append(f"     {i+1}. {dataset.name} | {type(dataset).__name__}")
+
+    deploy_summary_msg = (
+        f"Registered {len(registered_datasets)} dataset(s) from module `{module}` "
+        f"with version `{version}`."
+    )
+    if len(registered_datasets) == 0:
+        logger.info("(Hint: did you remember to add a `name` to each dataset?)")
+    else:
+        logger.info(deploy_summary_msg)
+        logger.info("Datasets:")
+    logger.info(f"{os.linesep.join(dset_strs)}")
+
+
+@cli.command()
+def authenticate() -> None:
+    run_auth()
+
+
+if __name__ == "__main__":
+    cli()
