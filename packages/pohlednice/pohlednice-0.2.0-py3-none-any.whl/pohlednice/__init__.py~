@@ -1,0 +1,335 @@
+from dataclasses import dataclass, fields
+from enum import Enum as _Enum, auto
+
+class VarInt:
+    @classmethod
+    def to_bytes(cls, value):
+        while True:
+            window = value & 0b111_1111
+            value = value >> 7
+
+            if value == 0:
+                yield window
+                break
+            else:
+                yield window | 0b1000_0000  
+            
+    @classmethod
+    def from_bytes(cls, iterable):
+        value = 0
+
+        for index, byte in enumerate(iterable):
+            value = (byte & ~0b1000_0000) << (index * 7) | value
+            if not byte & 0b1000_0000:
+                break
+
+        return value
+
+class U8:
+    @classmethod
+    def to_bytes(cls, value):
+        yield value
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        return next(iterable)
+
+class U16(VarInt):
+    ...
+
+class U32(VarInt):
+    ...
+
+class U64(VarInt):
+    ...
+
+class U128(VarInt):
+    ...
+    
+class SignedVarInt:
+    NotImplemented
+
+
+class I8:
+    @classmethod
+    def to_bytes(cls, value):
+        if value < 0:
+            yield 0b1000_0000 | -value
+        else:
+            yield value
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        byte = next(iterable)
+        value = (0b0111_1111 & byte)
+        if (0b1000_0000 & byte):
+            return - (~value)
+        else:
+            return value
+
+    
+class I16(SignedVarInt):
+    ...
+
+
+class I32(SignedVarInt):
+    ...
+
+
+class I64(SignedVarInt):
+    ...
+
+
+class I128(SignedVarInt):
+    ...
+
+
+class Bool:
+    @classmethod
+    def to_bytes(cls, value):
+        if value:
+            yield 1
+        else:
+            yield 0
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        match byte := next(iterable):
+            case 0:
+                return False
+            case 1:
+                return True
+            case _:
+                raise ValueError(f'{byte} is not valid for bool type !')
+
+
+class Option:
+    @classmethod
+    def derive(cls, type_):
+        class SpecializedOption(cls):
+            type = type_
+
+        return SpecializedOption
+
+    @classmethod
+    def to_bytes(cls, value):
+        if value is None:
+            yield 0
+        else:
+            yield 1
+            yield from cls.type.to_bytes(value)
+
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        if Bool.from_bytes(iterable):
+            return cls.type.from_bytes(iterable)
+        else:
+            return None
+
+
+class Tuple:
+    @classmethod
+    def derive(cls, *types_):
+        class SpecializedTuple(cls):
+            types = types_
+
+        return SpecializedTuple
+
+    @classmethod
+    def to_bytes(cls, value):
+        for type_, _value in zip(cls.types, value):
+            yield from type_.to_bytes(_value)
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        return tuple(
+            type_.from_bytes(iterable)
+            for type_
+            in cls.types
+        )
+
+@dataclass
+class Struct:
+    @classmethod
+    def to_bytes(cls, value):
+        for field in fields(cls):
+            yield from field.type.to_bytes(getattr(value, field.name))
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        return cls(*(
+            field.type.from_bytes(iterable)
+            for field
+            in fields(cls)
+        ))
+
+class List:
+    @classmethod
+    def derive(cls, type_):
+        class SpecializedList(cls):
+            type = type_
+
+        return SpecializedList
+    
+    @classmethod
+    def to_bytes(cls, value):
+        yield from VarInt.to_bytes(len(value))
+        
+        for _value in value:
+            yield from cls.type.to_bytes(_value)
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        length = VarInt.from_bytes(iterable)
+
+        return [cls.type.from_bytes(iterable)
+                for _
+                in range(length)]
+
+
+class ByteArray(List):
+    type = U8
+
+
+class String(ByteArray):
+    @classmethod
+    def to_bytes(cls, value):
+        yield from super().to_bytes(value.encode('utf-8'))
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        return bytes(super().from_bytes(iterable)).decode('utf-8') 
+    
+
+class Dict:
+    @classmethod
+    def derive(cls, key_, value_):
+        class SpecializedDict(cls):
+            key = key_
+            value = value_
+
+        return SpecializedDict
+
+    @classmethod
+    def __type(cls):
+        class Item(Tuple):
+            types = (cls.key, cls.value)
+
+        class Items(List):
+            type = Item
+
+        return Items
+    
+    @classmethod
+    def to_bytes(cls, value):
+        yield from cls.__type().to_bytes(list(value.items()))
+
+    @classmethod
+    def from_bytes(cls, iterable):
+        return dict(cls.__type().from_bytes(iterable))
+
+
+class Enum(_Enum):
+    @classmethod
+    def to_bytes(cls, value):
+        if isinstance(value, cls):
+            if isinstance(value.value, tuple):
+                raise ValueError(f'{value} is a typed variant of {cls}')
+            yield from VarInt.to_bytes(value.value - 1)
+        else:
+            for member in cls:
+                if not isinstance(member.value, tuple):
+                    continue
+
+                index, kind = member.value
+
+                if match(value, kind):
+                    yield from VarInt.to_bytes(index - 1)
+                    yield from kind.to_bytes(value)
+                    break
+            else:
+                raise ValueError(f'Neither non-typed nor typed variant matched for {cls}')
+            
+    @classmethod
+    def from_bytes(cls, iterable):
+        index = VarInt.from_bytes(iterable)
+        member = list(iter(cls))[index]
+        
+        if not isinstance(member.value, tuple):
+            return member
+
+        _, kind = member.value
+        return kind.from_bytes(iterable)
+
+
+def match(value, kind):
+    if isinstance(value, bool) and kind == Bool:
+        return True
+    elif isinstance(value, str) and kind == String:
+        return True
+    elif issubclass(kind, Struct) and isinstance(value, kind):
+        return True
+    elif issubclass(kind, Option):
+        if value is None:
+            return True
+        else:
+            return match(value, Option.type)
+    elif isinstance(value, int):
+        if (value >= 0
+            and (kind == U8
+                 or issubclass(kind, VarInt)
+                 or issubclass(kind, SignedVarInt))):
+            return True
+        elif (value < 0
+              and (kind == I8
+                   or issubclass(kind, SignedVarInt))):
+            return True        
+    elif isinstance(value, tuple) and issubclass(kind, Tuple):
+        return all(
+            match(member, Member)
+            for member, Member
+            in zip(value, kind.types)
+        )
+    elif isinstance(value, (tuple, list)) and issubclass(kind, List):
+        return all(match(member, kind.type) for member in value)
+    elif isinstance(value, dict) and issubclass(kind, Dict):
+        return all(match(key, kind.key) or match(value, kind.value)
+                   for key, value
+                   in value.items())
+    return False
+
+print(list(U8.to_bytes(123)))
+print(list(U16.to_bytes(1233)))
+print(list(U32.to_bytes(123456)))
+
+U8U16 = Tuple.derive(U8, Option.derive(Bool), U32)
+    
+print(U8U16.from_bytes(U8U16.to_bytes((123, None, 123456))))
+print(ByteArray.from_bytes(ByteArray.to_bytes(b'1,2,3,4')))
+print(ByteArray.from_bytes(ByteArray.to_bytes((1, 2, 3, 4))))
+
+U32s = List.derive(U32)
+
+print(U32s.from_bytes(U32s.to_bytes((564, 123456, 123))))
+
+@dataclass
+class ABC(Struct):
+    a: U16
+    b: String
+    c: Option.derive(ByteArray)
+
+print(ABC.from_bytes(ABC.to_bytes(ABC(40, 'Trollě', None))))
+
+class Color(Enum):
+    Red = auto()
+    Blue = auto()
+    Green = auto()
+    Custom = auto(), Tuple.derive(U8, U8, U8)
+
+print(Color.Red, Color.Blue, Color.Custom)
+print(Color.from_bytes(Color.to_bytes((0xff, 0xf0, 0x0f))))
+
+StringToU16 = Dict.derive(String, U16)
+
+print(StringToU16.from_bytes(StringToU16.to_bytes({'Cuicui':0x55, 'Coincoin':12244})))
