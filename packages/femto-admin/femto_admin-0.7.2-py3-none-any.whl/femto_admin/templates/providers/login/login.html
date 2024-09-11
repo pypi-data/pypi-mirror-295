@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block html_body %}
+    <body class="border-primary d-flex flex-column">
+    <div class="page page-center">
+        <div class="container-tight py-4">
+            <div class="text-center mb-4">
+                <img src="{% if logo %}{{ url_for('my-public', path=logo) }}{% else %}/statics/placeholders/logo/logo-primary.svg{% endif %}"
+                     height="36"
+                     alt=""
+                />
+            </div>
+            {% if error %}
+                <div
+                        class="alert alert-important alert-danger alert-dismissible"
+                        role="alert"
+                >
+                    <div class="d-flex">
+                        <div>
+                            <i class="ti ti-alert-circle"></i>
+                        </div>
+                        <div>{{ error }}</div>
+                    </div>
+                    <a
+                            class="btn-close btn-close-white"
+                            data-bs-dismiss="alert"
+                            aria-label="close"
+                    ></a>
+                </div>
+            {% endif %}
+            <form
+                    class="card card-md"
+                    action="/login"
+                    method="post"
+                    autocomplete="off"
+            >
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">
+                        {{ title }}
+                    </h1>
+                    <div class="mb-3">
+                        <label class="form-label">username</label>
+                        <div class="input-group input-group">
+                            <span class="input-group-text"> @ </span>
+                            <input
+                                    name="username"
+                                    required
+                                    type="text"
+                                    class="form-control {{ 'is-invalid' if reason=='username' }}"
+                                    placeholder="your username"
+                                    {% if username %}value="{{ username }}"{% endif %}
+                                    onchange="this.classList.remove(['is-invalid'])"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">
+                            password
+                            <span class="form-label-description"> </span>
+                        </label>
+                        <div class="input-group">
+                            <input
+                                    placeholder="your password"
+                                    required
+                                    name="password"
+                                    type="password"
+                                    class="form-control {{ 'is-invalid' if reason=='password' }}"
+                                    autocomplete="off"
+                                    {% if password %}value="{{ password }}"{% endif %}
+                                    onchange="this.classList.remove(['is-invalid'])"
+                            />
+                            <span class="input-group-text"
+                                  onmouseover="this.previousElementSibling.type='text';this.firstElementChild.className+='-off'"
+                                  onmouseout="this.previousElementSibling.type='password';this.firstElementChild.className=this.firstElementChild.className.replace('-off', '')"
+                            >
+                                <i class="ti ti-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-check">
+                            <input
+                                    type="checkbox"
+                                    name="remember_me"
+                                    class="form-check-input"
+                            />
+                            <span class="form-check-label">remember_me</span>
+                        </label>
+                    </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100">
+                            LogIn
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('public', path='vendor/cookie.min.js') }}"></script>
+    <script>
+        if (Cookies.get("remember_me")) {
+            document.querySelector('input[name="remember_me"]').setAttribute('checked', true)
+        }
+    </script>
+{% endblock %}

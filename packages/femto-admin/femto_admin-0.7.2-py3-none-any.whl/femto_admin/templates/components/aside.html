@@ -1,0 +1,31 @@
+<aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+                aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark">
+            <a href="/">
+                {% if logo == False %}
+                    {{ title }}
+                {% else %}
+                    <img src="{% if logo %}{{ url_for('my-public', path=logo) }}{% else %}/statics/placeholders/logo/logo-white.svg{% endif %}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                {% endif %}
+            </a>
+        </h1>
+        <div class="collapse navbar-collapse" id="sidebar-menu">
+            <ul class="navbar-nav">
+                {% for key, item in models.items() %}
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-item" href="/{{ key }}">
+                          <span class="nav-link-icon d-md-none d-lg-inline-block color">
+                              <i class="ti ti-{{ item._icon }}"></i>
+                          </span>
+                          <span class="nav-link-title">{{ key }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</aside>

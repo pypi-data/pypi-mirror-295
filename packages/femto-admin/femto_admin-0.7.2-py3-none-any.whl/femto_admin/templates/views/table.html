@@ -1,0 +1,26 @@
+{% macro table(model) -%}
+
+    <table id="dt-{{ name }}" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            {% for col in cols %}
+                <th>{{ col['data'] }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+    </table>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        new DataTable('#dt-{{ name }}', {
+            ajax: {
+                url: '/dt/{{ name }}',
+                type: 'POST'
+            },
+            columns: {{ cols | tojson }},
+            serverSide: true,
+            lengthMenu: [20, 100, 1000],
+        })
+    });
+    </script>
+{%- endmacro %}
