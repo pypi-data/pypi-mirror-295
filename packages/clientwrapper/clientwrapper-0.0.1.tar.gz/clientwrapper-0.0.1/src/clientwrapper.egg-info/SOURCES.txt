@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+data/data_file
+src/clientwrapper.egg-info/PKG-INFO
+src/clientwrapper.egg-info/SOURCES.txt
+src/clientwrapper.egg-info/dependency_links.txt
+src/clientwrapper.egg-info/entry_points.txt
+src/clientwrapper.egg-info/requires.txt
+src/clientwrapper.egg-info/top_level.txt
+tests/test_simple.py
