@@ -1,0 +1,685 @@
+Metadata-Version: 2.1
+Name: kwgis
+Version: 0.1.1
+Summary: The kwgis module
+Home-page: https://gitlab.kitware.com/computer-vision/kwgis
+Author: Jon Crall
+Author-email: jon.crall@kitware.com
+License: Apache 2
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+Requires-Dist: kwarray >=0.6.19
+Requires-Dist: einops >=0.6.0
+Requires-Dist: rich >=12.3.0
+Requires-Dist: parse >=1.19.0
+Requires-Dist: affine >=2.3.0
+Requires-Dist: ubelt >=1.3.6
+Requires-Dist: xmltodict >=0.12.0
+Requires-Dist: requests >=2.27.1
+Requires-Dist: xarray >=0.17.0
+Requires-Dist: girder-client >=3.1.15
+Requires-Dist: pystac-client >=0.5.1
+Requires-Dist: scriptconfig >=0.7.10
+Requires-Dist: networkx >=2.8
+Requires-Dist: python-dateutil >=2.8.2
+Requires-Dist: pytimeparse >=1.1.8
+Requires-Dist: progiter >=1.1.0
+Requires-Dist: kwimage >=0.10.0
+Requires-Dist: kwcoco >=0.8.2
+Requires-Dist: delayed-image >=0.3.1
+Requires-Dist: kwplot >=0.4.14
+Requires-Dist: seaborn >=0.11.1
+Requires-Dist: geopandas <1.0.0,>=0.10.2
+Requires-Dist: utm >=0.7.0
+Requires-Dist: rgd-imagery-client >=0.2.7
+Requires-Dist: rgd-client >=0.2.7
+Requires-Dist: ruamel.yaml <=0.17.32,>=0.17.22
+Requires-Dist: kwutil >=0.2.5
+Requires-Dist: rasterio >=1.3.4 ; python_version < "3.10"
+Requires-Dist: pandas >=1.4.2 ; python_version < "3.10"
+Requires-Dist: pyproj <3.5.0,>=3.2.1 ; python_version < "3.10"
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; python_version < "3.10"
+Requires-Dist: matplotlib >=3.6.2 ; python_version < "3.10"
+Requires-Dist: rtree >=0.9.7 ; python_version < "3.10"
+Requires-Dist: jq >=1.2.1 ; python_version < "3.10" and platform_system != "Windows"
+Requires-Dist: Pillow >=8.0.0 ; python_version < "3.10" and python_version >= "3.6"
+Requires-Dist: numpy >=1.19.3 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: scipy >=1.8.0 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: shapely >=2.0.1 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: scikit-learn >=1.0.2 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: scikit-image >=0.18.0 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: mgrs >=1.4.3 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: lxml >=4.5.2 ; python_version < "3.10" and python_version >= "3.9"
+Requires-Dist: numpy >=1.21.6 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: scipy >=1.8.0 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: shapely >=2.0.1 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: rasterio >=1.3.4 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: pandas >=1.4.2 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: scikit-learn >=1.1.0 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: scikit-image >=0.19.0 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: pyproj <3.5.0,>=3.3.1 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: matplotlib >=3.8.2 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: Pillow >=9.1.0 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: rtree >=1.0.0 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: mgrs >=1.4.3 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: lxml >=4.6.3 ; python_version < "3.11" and python_version >= "3.10"
+Requires-Dist: jq >=1.2.2 ; python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows"
+Requires-Dist: pint >=0.18 ; python_version < "3.12"
+Requires-Dist: tifffile >=2021.4.8 ; python_version < "3.12"
+Requires-Dist: numpy >=1.23.2 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: scipy >=1.9.2 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: shapely >=2.0.1 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: rasterio >=1.3.4 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: pandas >=1.5.0 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: scikit-learn >=1.1.3 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: scikit-image >=0.20.0 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: pyproj <3.5.0,>=3.4.1 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: matplotlib >=3.8.2 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: Pillow >=9.2.0 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: rtree >=1.0.1 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: mgrs >=1.4.6 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: lxml >=4.9.2 ; python_version < "3.12" and python_version >= "3.11"
+Requires-Dist: geojson >=3.0.1 ; python_version < "3.12" and python_version >= "3.8"
+Requires-Dist: lazy-loader >=0.1 ; python_version < "3.12" and python_version >= "3.8"
+Requires-Dist: pygtrie >=2.5.0 ; python_version < "3.13" and python_version >= "3.6"
+Requires-Dist: lxml >=4.2.4 ; python_version < "3.8" and python_version >= "3.7"
+Requires-Dist: numpy >=1.19.3 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: shapely >=2.0.1 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: scikit-learn >=1.0.2 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: scikit-image >=0.17.2 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: mgrs >=1.4.3 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: lxml >=4.4.1 ; python_version < "3.9" and python_version >= "3.8"
+Requires-Dist: numpy >=1.26.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: scipy >=1.11.2 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: shapely >=2.0.2 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: rasterio >=1.3.9 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: pandas >=2.1.1 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: scikit-learn >=1.3.1 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: scikit-image >=0.22.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: pyproj >=3.6.1 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: fiona >=1.9.5 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: matplotlib >=3.8.2 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: Pillow >=10.0.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: rtree >=1.2.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: mgrs >=1.4.6 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: pint >=0.23 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: lxml >=5.1.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: tifffile >=2022.8.12 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: geojson >=3.1.0 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: lazy-loader >=0.3 ; python_version < "4.0" and python_version >= "3.12"
+Requires-Dist: pygtrie >=2.5.0 ; python_version < "4.0" and python_version >= "3.13"
+Requires-Dist: distinctipy >=1.2.1 ; python_version < "4.0" and python_version >= "3.8"
+Requires-Dist: jq >=1.5.0 ; python_version >= "3.11" and platform_system != "Windows"
+Provides-Extra: all
+Requires-Dist: kwarray >=0.6.19 ; extra == 'all'
+Requires-Dist: einops >=0.6.0 ; extra == 'all'
+Requires-Dist: rich >=12.3.0 ; extra == 'all'
+Requires-Dist: parse >=1.19.0 ; extra == 'all'
+Requires-Dist: affine >=2.3.0 ; extra == 'all'
+Requires-Dist: ubelt >=1.3.6 ; extra == 'all'
+Requires-Dist: xmltodict >=0.12.0 ; extra == 'all'
+Requires-Dist: requests >=2.27.1 ; extra == 'all'
+Requires-Dist: xarray >=0.17.0 ; extra == 'all'
+Requires-Dist: girder-client >=3.1.15 ; extra == 'all'
+Requires-Dist: pystac-client >=0.5.1 ; extra == 'all'
+Requires-Dist: scriptconfig >=0.7.10 ; extra == 'all'
+Requires-Dist: networkx >=2.8 ; extra == 'all'
+Requires-Dist: python-dateutil >=2.8.2 ; extra == 'all'
+Requires-Dist: pytimeparse >=1.1.8 ; extra == 'all'
+Requires-Dist: progiter >=1.1.0 ; extra == 'all'
+Requires-Dist: kwimage >=0.10.0 ; extra == 'all'
+Requires-Dist: kwcoco >=0.8.2 ; extra == 'all'
+Requires-Dist: delayed-image >=0.3.1 ; extra == 'all'
+Requires-Dist: kwplot >=0.4.14 ; extra == 'all'
+Requires-Dist: seaborn >=0.11.1 ; extra == 'all'
+Requires-Dist: geopandas <1.0.0,>=0.10.2 ; extra == 'all'
+Requires-Dist: utm >=0.7.0 ; extra == 'all'
+Requires-Dist: rgd-imagery-client >=0.2.7 ; extra == 'all'
+Requires-Dist: rgd-client >=0.2.7 ; extra == 'all'
+Requires-Dist: ruamel.yaml <=0.17.32,>=0.17.22 ; extra == 'all'
+Requires-Dist: kwutil >=0.2.5 ; extra == 'all'
+Requires-Dist: xdoctest >=1.1.5 ; extra == 'all'
+Requires-Dist: geodatasets >=2023.12.0 ; extra == 'all'
+Requires-Dist: suntime >=1.3.2 ; extra == 'all'
+Requires-Dist: pytz >=2024.1 ; extra == 'all'
+Provides-Extra: all-strict
+Requires-Dist: kwarray ==0.6.19 ; extra == 'all-strict'
+Requires-Dist: einops ==0.6.0 ; extra == 'all-strict'
+Requires-Dist: rich ==12.3.0 ; extra == 'all-strict'
+Requires-Dist: parse ==1.19.0 ; extra == 'all-strict'
+Requires-Dist: affine ==2.3.0 ; extra == 'all-strict'
+Requires-Dist: ubelt ==1.3.6 ; extra == 'all-strict'
+Requires-Dist: xmltodict ==0.12.0 ; extra == 'all-strict'
+Requires-Dist: requests ==2.27.1 ; extra == 'all-strict'
+Requires-Dist: xarray ==0.17.0 ; extra == 'all-strict'
+Requires-Dist: girder-client ==3.1.15 ; extra == 'all-strict'
+Requires-Dist: pystac-client ==0.5.1 ; extra == 'all-strict'
+Requires-Dist: scriptconfig ==0.7.10 ; extra == 'all-strict'
+Requires-Dist: networkx ==2.8 ; extra == 'all-strict'
+Requires-Dist: python-dateutil ==2.8.2 ; extra == 'all-strict'
+Requires-Dist: pytimeparse ==1.1.8 ; extra == 'all-strict'
+Requires-Dist: progiter ==1.1.0 ; extra == 'all-strict'
+Requires-Dist: kwimage ==0.10.0 ; extra == 'all-strict'
+Requires-Dist: kwcoco ==0.8.2 ; extra == 'all-strict'
+Requires-Dist: delayed-image ==0.3.1 ; extra == 'all-strict'
+Requires-Dist: kwplot ==0.4.14 ; extra == 'all-strict'
+Requires-Dist: seaborn ==0.11.1 ; extra == 'all-strict'
+Requires-Dist: geopandas <1.0.0,==0.10.2 ; extra == 'all-strict'
+Requires-Dist: utm ==0.7.0 ; extra == 'all-strict'
+Requires-Dist: rgd-imagery-client ==0.2.7 ; extra == 'all-strict'
+Requires-Dist: rgd-client ==0.2.7 ; extra == 'all-strict'
+Requires-Dist: ruamel.yaml <=0.17.32,==0.17.22 ; extra == 'all-strict'
+Requires-Dist: kwutil ==0.2.5 ; extra == 'all-strict'
+Requires-Dist: xdoctest ==1.1.5 ; extra == 'all-strict'
+Requires-Dist: geodatasets ==2023.12.0 ; extra == 'all-strict'
+Requires-Dist: suntime ==1.3.2 ; extra == 'all-strict'
+Requires-Dist: pytz ==2024.1 ; extra == 'all-strict'
+Requires-Dist: pytest-cov ==2.8.1 ; (python_version < "2.8.0" and python_version >= "2.7.0") and extra == 'all-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: pandas ==1.4.2 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: pyproj <3.5.0,==3.2.1 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: matplotlib ==3.6.2 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: rtree ==0.9.7 ; (python_version < "3.10") and extra == 'all-strict'
+Requires-Dist: jq ==1.2.1 ; (python_version < "3.10" and platform_system != "Windows") and extra == 'all-strict'
+Requires-Dist: Pillow ==8.0.0 ; (python_version < "3.10" and python_version >= "3.6") and extra == 'all-strict'
+Requires-Dist: numpy ==1.19.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: scipy ==1.8.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: scikit-learn ==1.0.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: scikit-image ==0.18.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: lxml ==4.5.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: coverage ==5.3.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.10.0" and python_version >= "3.7.0") and extra == 'all-strict'
+Requires-Dist: numpy ==1.21.6 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: scipy ==1.8.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: pandas ==1.4.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: scikit-learn ==1.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: scikit-image ==0.19.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: pyproj <3.5.0,==3.3.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: Pillow ==9.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: rtree ==1.0.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: lxml ==4.6.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: jq ==1.2.2 ; (python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows") and extra == 'all-strict'
+Requires-Dist: pint ==0.18 ; (python_version < "3.12") and extra == 'all-strict'
+Requires-Dist: tifffile ==2021.4.8 ; (python_version < "3.12") and extra == 'all-strict'
+Requires-Dist: pytest-timeout ==1.4.2 ; (python_version < "3.12") and extra == 'all-strict'
+Requires-Dist: coverage ==6.1.1 ; (python_version < "3.12" and python_version >= "3.10") and extra == 'all-strict'
+Requires-Dist: numpy ==1.23.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: scipy ==1.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: pandas ==1.5.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: scikit-learn ==1.1.3 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: scikit-image ==0.20.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: pyproj <3.5.0,==3.4.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: Pillow ==9.2.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: rtree ==1.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: mgrs ==1.4.6 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: lxml ==4.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all-strict'
+Requires-Dist: geojson ==3.0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: lazy-loader ==0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: pygtrie ==2.5.0 ; (python_version < "3.13" and python_version >= "3.6") and extra == 'all-strict'
+Requires-Dist: pytest-cov ==2.8.1 ; (python_version < "3.5.0" and python_version >= "3.4.0") and extra == 'all-strict'
+Requires-Dist: pytest-cov ==2.9.0 ; (python_version < "3.6.0" and python_version >= "3.5.0") and extra == 'all-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.7.0" and python_version >= "3.6.0") and extra == 'all-strict'
+Requires-Dist: lxml ==4.2.4 ; (python_version < "3.8" and python_version >= "3.7") and extra == 'all-strict'
+Requires-Dist: numpy ==1.19.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: scikit-learn ==1.0.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: scikit-image ==0.17.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: lxml ==4.4.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: coverage ==6.1.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: numpy ==1.26.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: scipy ==1.11.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: shapely ==2.0.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: rasterio ==1.3.9 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pandas ==2.1.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: scikit-learn ==1.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: scikit-image ==0.22.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pyproj ==3.6.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: fiona ==1.9.5 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: Pillow ==10.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: rtree ==1.2.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: mgrs ==1.4.6 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pint ==0.23 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: lxml ==5.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: tifffile ==2022.8.12 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: geojson ==3.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: lazy-loader ==0.3 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pytest ==7.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pytest-timeout ==2.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: coverage ==7.3.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all-strict'
+Requires-Dist: pygtrie ==2.5.0 ; (python_version < "4.0" and python_version >= "3.13") and extra == 'all-strict'
+Requires-Dist: distinctipy ==1.2.1 ; (python_version < "4.0" and python_version >= "3.8") and extra == 'all-strict'
+Requires-Dist: jq ==1.5.0 ; (python_version >= "3.11" and platform_system != "Windows") and extra == 'all-strict'
+Requires-Dist: pytest-cov ==3.0.0 ; (python_version >= "3.6.0") and extra == 'all-strict'
+Requires-Dist: pytest-cov >=2.8.1 ; (python_version < "2.8.0" and python_version >= "2.7.0") and extra == 'all'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: pandas >=1.4.2 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: pyproj <3.5.0,>=3.2.1 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: matplotlib >=3.6.2 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: rtree >=0.9.7 ; (python_version < "3.10") and extra == 'all'
+Requires-Dist: jq >=1.2.1 ; (python_version < "3.10" and platform_system != "Windows") and extra == 'all'
+Requires-Dist: Pillow >=8.0.0 ; (python_version < "3.10" and python_version >= "3.6") and extra == 'all'
+Requires-Dist: numpy >=1.19.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: scipy >=1.8.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: scikit-learn >=1.0.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: scikit-image >=0.18.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: lxml >=4.5.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: coverage >=5.3.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'all'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.10.0" and python_version >= "3.7.0") and extra == 'all'
+Requires-Dist: numpy >=1.21.6 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: scipy >=1.8.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: pandas >=1.4.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: scikit-learn >=1.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: scikit-image >=0.19.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: pyproj <3.5.0,>=3.3.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: Pillow >=9.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: rtree >=1.0.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: lxml >=4.6.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: jq >=1.2.2 ; (python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows") and extra == 'all'
+Requires-Dist: pint >=0.18 ; (python_version < "3.12") and extra == 'all'
+Requires-Dist: tifffile >=2021.4.8 ; (python_version < "3.12") and extra == 'all'
+Requires-Dist: pytest-timeout >=1.4.2 ; (python_version < "3.12") and extra == 'all'
+Requires-Dist: coverage >=6.1.1 ; (python_version < "3.12" and python_version >= "3.10") and extra == 'all'
+Requires-Dist: numpy >=1.23.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: scipy >=1.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: pandas >=1.5.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: scikit-learn >=1.1.3 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: scikit-image >=0.20.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: pyproj <3.5.0,>=3.4.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: Pillow >=9.2.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: rtree >=1.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: mgrs >=1.4.6 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: lxml >=4.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'all'
+Requires-Dist: geojson >=3.0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: lazy-loader >=0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: pygtrie >=2.5.0 ; (python_version < "3.13" and python_version >= "3.6") and extra == 'all'
+Requires-Dist: pytest-cov >=2.8.1 ; (python_version < "3.5.0" and python_version >= "3.4.0") and extra == 'all'
+Requires-Dist: pytest-cov >=2.9.0 ; (python_version < "3.6.0" and python_version >= "3.5.0") and extra == 'all'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.7.0" and python_version >= "3.6.0") and extra == 'all'
+Requires-Dist: lxml >=4.2.4 ; (python_version < "3.8" and python_version >= "3.7") and extra == 'all'
+Requires-Dist: numpy >=1.19.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: scikit-learn >=1.0.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: scikit-image >=0.17.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: lxml >=4.4.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: coverage >=6.1.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: numpy >=1.26.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: scipy >=1.11.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: shapely >=2.0.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: rasterio >=1.3.9 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pandas >=2.1.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: scikit-learn >=1.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: scikit-image >=0.22.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pyproj >=3.6.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: fiona >=1.9.5 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: Pillow >=10.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: rtree >=1.2.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: mgrs >=1.4.6 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pint >=0.23 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: lxml >=5.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: tifffile >=2022.8.12 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: geojson >=3.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: lazy-loader >=0.3 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pytest >=7.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pytest-timeout >=2.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: coverage >=7.3.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'all'
+Requires-Dist: pygtrie >=2.5.0 ; (python_version < "4.0" and python_version >= "3.13") and extra == 'all'
+Requires-Dist: distinctipy >=1.2.1 ; (python_version < "4.0" and python_version >= "3.8") and extra == 'all'
+Requires-Dist: jq >=1.5.0 ; (python_version >= "3.11" and platform_system != "Windows") and extra == 'all'
+Requires-Dist: pytest-cov >=3.0.0 ; (python_version >= "3.6.0") and extra == 'all'
+Provides-Extra: docs
+Requires-Dist: sphinx >=5.0.1 ; extra == 'docs'
+Requires-Dist: sphinx-autobuild >=2021.3.14 ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme >=1.0.0 ; extra == 'docs'
+Requires-Dist: sphinxcontrib-napoleon >=0.7 ; extra == 'docs'
+Requires-Dist: sphinx-autoapi >=1.8.4 ; extra == 'docs'
+Requires-Dist: Pygments >=2.9.0 ; extra == 'docs'
+Requires-Dist: myst-parser >=0.18.0 ; extra == 'docs'
+Requires-Dist: sphinx-reredirects >=0.0.1 ; extra == 'docs'
+Provides-Extra: docs-strict
+Requires-Dist: sphinx ==5.0.1 ; extra == 'docs-strict'
+Requires-Dist: sphinx-autobuild ==2021.3.14 ; extra == 'docs-strict'
+Requires-Dist: sphinx-rtd-theme ==1.0.0 ; extra == 'docs-strict'
+Requires-Dist: sphinxcontrib-napoleon ==0.7 ; extra == 'docs-strict'
+Requires-Dist: sphinx-autoapi ==1.8.4 ; extra == 'docs-strict'
+Requires-Dist: Pygments ==2.9.0 ; extra == 'docs-strict'
+Requires-Dist: myst-parser ==0.18.0 ; extra == 'docs-strict'
+Requires-Dist: sphinx-reredirects ==0.0.1 ; extra == 'docs-strict'
+Provides-Extra: gdal
+Provides-Extra: gdal-strict
+Requires-Dist: GDAL ==3.4.1 ; (python_version < "3.11" and python_version >= "3.8") and extra == 'gdal-strict'
+Requires-Dist: GDAL ==3.5.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'gdal-strict'
+Requires-Dist: GDAL ==3.7.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'gdal-strict'
+Requires-Dist: GDAL >=3.4.1 ; (python_version < "3.11" and python_version >= "3.8") and extra == 'gdal'
+Requires-Dist: GDAL >=3.5.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'gdal'
+Requires-Dist: GDAL >=3.7.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'gdal'
+Provides-Extra: graphics
+Provides-Extra: graphics-strict
+Requires-Dist: opencv-python ==3.4.15.55 ; (python_version < "3.10" and python_version >= "3.8") and extra == 'graphics-strict'
+Requires-Dist: opencv-python ==4.5.4.58 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'graphics-strict'
+Requires-Dist: opencv-python ==4.5.5.64 ; (python_version < "4.0" and python_version >= "3.11") and extra == 'graphics-strict'
+Requires-Dist: opencv-python >=3.4.15.55 ; (python_version < "3.10" and python_version >= "3.8") and extra == 'graphics'
+Requires-Dist: opencv-python >=4.5.4.58 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'graphics'
+Requires-Dist: opencv-python >=4.5.5.64 ; (python_version < "4.0" and python_version >= "3.11") and extra == 'graphics'
+Provides-Extra: headless
+Provides-Extra: headless-strict
+Requires-Dist: opencv-python-headless ==3.4.15.55 ; (python_version < "3.10" and python_version >= "3.8") and extra == 'headless-strict'
+Requires-Dist: opencv-python-headless ==4.5.4.58 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'headless-strict'
+Requires-Dist: opencv-python-headless ==4.5.5.64 ; (python_version < "4.0" and python_version >= "3.11") and extra == 'headless-strict'
+Requires-Dist: opencv-python-headless >=3.4.15.55 ; (python_version < "3.10" and python_version >= "3.8") and extra == 'headless'
+Requires-Dist: opencv-python-headless >=4.5.4.58 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'headless'
+Requires-Dist: opencv-python-headless >=4.5.5.64 ; (python_version < "4.0" and python_version >= "3.11") and extra == 'headless'
+Provides-Extra: linting
+Requires-Dist: flake8 >=5.0.0 ; extra == 'linting'
+Provides-Extra: linting-strict
+Requires-Dist: flake8 ==5.0.0 ; extra == 'linting-strict'
+Provides-Extra: optional
+Requires-Dist: suntime >=1.3.2 ; extra == 'optional'
+Requires-Dist: pytz >=2024.1 ; extra == 'optional'
+Provides-Extra: optional-strict
+Requires-Dist: suntime ==1.3.2 ; extra == 'optional-strict'
+Requires-Dist: pytz ==2024.1 ; extra == 'optional-strict'
+Provides-Extra: runtime
+Requires-Dist: kwarray >=0.6.19 ; extra == 'runtime'
+Requires-Dist: einops >=0.6.0 ; extra == 'runtime'
+Requires-Dist: rich >=12.3.0 ; extra == 'runtime'
+Requires-Dist: parse >=1.19.0 ; extra == 'runtime'
+Requires-Dist: affine >=2.3.0 ; extra == 'runtime'
+Requires-Dist: ubelt >=1.3.6 ; extra == 'runtime'
+Requires-Dist: xmltodict >=0.12.0 ; extra == 'runtime'
+Requires-Dist: requests >=2.27.1 ; extra == 'runtime'
+Requires-Dist: xarray >=0.17.0 ; extra == 'runtime'
+Requires-Dist: girder-client >=3.1.15 ; extra == 'runtime'
+Requires-Dist: pystac-client >=0.5.1 ; extra == 'runtime'
+Requires-Dist: scriptconfig >=0.7.10 ; extra == 'runtime'
+Requires-Dist: networkx >=2.8 ; extra == 'runtime'
+Requires-Dist: python-dateutil >=2.8.2 ; extra == 'runtime'
+Requires-Dist: pytimeparse >=1.1.8 ; extra == 'runtime'
+Requires-Dist: progiter >=1.1.0 ; extra == 'runtime'
+Requires-Dist: kwimage >=0.10.0 ; extra == 'runtime'
+Requires-Dist: kwcoco >=0.8.2 ; extra == 'runtime'
+Requires-Dist: delayed-image >=0.3.1 ; extra == 'runtime'
+Requires-Dist: kwplot >=0.4.14 ; extra == 'runtime'
+Requires-Dist: seaborn >=0.11.1 ; extra == 'runtime'
+Requires-Dist: geopandas <1.0.0,>=0.10.2 ; extra == 'runtime'
+Requires-Dist: utm >=0.7.0 ; extra == 'runtime'
+Requires-Dist: rgd-imagery-client >=0.2.7 ; extra == 'runtime'
+Requires-Dist: rgd-client >=0.2.7 ; extra == 'runtime'
+Requires-Dist: ruamel.yaml <=0.17.32,>=0.17.22 ; extra == 'runtime'
+Requires-Dist: kwutil >=0.2.5 ; extra == 'runtime'
+Provides-Extra: runtime-strict
+Requires-Dist: kwarray ==0.6.19 ; extra == 'runtime-strict'
+Requires-Dist: einops ==0.6.0 ; extra == 'runtime-strict'
+Requires-Dist: rich ==12.3.0 ; extra == 'runtime-strict'
+Requires-Dist: parse ==1.19.0 ; extra == 'runtime-strict'
+Requires-Dist: affine ==2.3.0 ; extra == 'runtime-strict'
+Requires-Dist: ubelt ==1.3.6 ; extra == 'runtime-strict'
+Requires-Dist: xmltodict ==0.12.0 ; extra == 'runtime-strict'
+Requires-Dist: requests ==2.27.1 ; extra == 'runtime-strict'
+Requires-Dist: xarray ==0.17.0 ; extra == 'runtime-strict'
+Requires-Dist: girder-client ==3.1.15 ; extra == 'runtime-strict'
+Requires-Dist: pystac-client ==0.5.1 ; extra == 'runtime-strict'
+Requires-Dist: scriptconfig ==0.7.10 ; extra == 'runtime-strict'
+Requires-Dist: networkx ==2.8 ; extra == 'runtime-strict'
+Requires-Dist: python-dateutil ==2.8.2 ; extra == 'runtime-strict'
+Requires-Dist: pytimeparse ==1.1.8 ; extra == 'runtime-strict'
+Requires-Dist: progiter ==1.1.0 ; extra == 'runtime-strict'
+Requires-Dist: kwimage ==0.10.0 ; extra == 'runtime-strict'
+Requires-Dist: kwcoco ==0.8.2 ; extra == 'runtime-strict'
+Requires-Dist: delayed-image ==0.3.1 ; extra == 'runtime-strict'
+Requires-Dist: kwplot ==0.4.14 ; extra == 'runtime-strict'
+Requires-Dist: seaborn ==0.11.1 ; extra == 'runtime-strict'
+Requires-Dist: geopandas <1.0.0,==0.10.2 ; extra == 'runtime-strict'
+Requires-Dist: utm ==0.7.0 ; extra == 'runtime-strict'
+Requires-Dist: rgd-imagery-client ==0.2.7 ; extra == 'runtime-strict'
+Requires-Dist: rgd-client ==0.2.7 ; extra == 'runtime-strict'
+Requires-Dist: ruamel.yaml <=0.17.32,==0.17.22 ; extra == 'runtime-strict'
+Requires-Dist: kwutil ==0.2.5 ; extra == 'runtime-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: pandas ==1.4.2 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: pyproj <3.5.0,==3.2.1 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: matplotlib ==3.6.2 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: rtree ==0.9.7 ; (python_version < "3.10") and extra == 'runtime-strict'
+Requires-Dist: jq ==1.2.1 ; (python_version < "3.10" and platform_system != "Windows") and extra == 'runtime-strict'
+Requires-Dist: Pillow ==8.0.0 ; (python_version < "3.10" and python_version >= "3.6") and extra == 'runtime-strict'
+Requires-Dist: numpy ==1.19.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: scipy ==1.8.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: scikit-learn ==1.0.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: scikit-image ==0.18.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: lxml ==4.5.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime-strict'
+Requires-Dist: numpy ==1.21.6 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: scipy ==1.8.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: pandas ==1.4.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: scikit-learn ==1.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: scikit-image ==0.19.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: pyproj <3.5.0,==3.3.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: Pillow ==9.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: rtree ==1.0.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: lxml ==4.6.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime-strict'
+Requires-Dist: jq ==1.2.2 ; (python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows") and extra == 'runtime-strict'
+Requires-Dist: pint ==0.18 ; (python_version < "3.12") and extra == 'runtime-strict'
+Requires-Dist: tifffile ==2021.4.8 ; (python_version < "3.12") and extra == 'runtime-strict'
+Requires-Dist: numpy ==1.23.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: scipy ==1.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: rasterio ==1.3.4 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: pandas ==1.5.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: scikit-learn ==1.1.3 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: scikit-image ==0.20.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: pyproj <3.5.0,==3.4.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: fiona <1.9.0,==1.8.22 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: Pillow ==9.2.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: rtree ==1.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: mgrs ==1.4.6 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: lxml ==4.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime-strict'
+Requires-Dist: geojson ==3.0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: lazy-loader ==0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: pygtrie ==2.5.0 ; (python_version < "3.13" and python_version >= "3.6") and extra == 'runtime-strict'
+Requires-Dist: lxml ==4.2.4 ; (python_version < "3.8" and python_version >= "3.7") and extra == 'runtime-strict'
+Requires-Dist: numpy ==1.19.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: shapely ==2.0.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: scikit-learn ==1.0.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: scikit-image ==0.17.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: mgrs ==1.4.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: lxml ==4.4.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: numpy ==1.26.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: scipy ==1.11.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: shapely ==2.0.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: rasterio ==1.3.9 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: pandas ==2.1.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: scikit-learn ==1.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: scikit-image ==0.22.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: pyproj ==3.6.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: fiona ==1.9.5 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: matplotlib ==3.8.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: Pillow ==10.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: rtree ==1.2.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: mgrs ==1.4.6 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: pint ==0.23 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: lxml ==5.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: tifffile ==2022.8.12 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: geojson ==3.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: lazy-loader ==0.3 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime-strict'
+Requires-Dist: pygtrie ==2.5.0 ; (python_version < "4.0" and python_version >= "3.13") and extra == 'runtime-strict'
+Requires-Dist: distinctipy ==1.2.1 ; (python_version < "4.0" and python_version >= "3.8") and extra == 'runtime-strict'
+Requires-Dist: jq ==1.5.0 ; (python_version >= "3.11" and platform_system != "Windows") and extra == 'runtime-strict'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: pandas >=1.4.2 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: pyproj <3.5.0,>=3.2.1 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: matplotlib >=3.6.2 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: rtree >=0.9.7 ; (python_version < "3.10") and extra == 'runtime'
+Requires-Dist: jq >=1.2.1 ; (python_version < "3.10" and platform_system != "Windows") and extra == 'runtime'
+Requires-Dist: Pillow >=8.0.0 ; (python_version < "3.10" and python_version >= "3.6") and extra == 'runtime'
+Requires-Dist: numpy >=1.19.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: scipy >=1.8.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: scikit-learn >=1.0.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: scikit-image >=0.18.0 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: lxml >=4.5.2 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'runtime'
+Requires-Dist: numpy >=1.21.6 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: scipy >=1.8.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: pandas >=1.4.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: scikit-learn >=1.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: scikit-image >=0.19.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: pyproj <3.5.0,>=3.3.1 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: Pillow >=9.1.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: rtree >=1.0.0 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: lxml >=4.6.3 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'runtime'
+Requires-Dist: jq >=1.2.2 ; (python_version < "3.11" and python_version >= "3.10" and platform_system != "Windows") and extra == 'runtime'
+Requires-Dist: pint >=0.18 ; (python_version < "3.12") and extra == 'runtime'
+Requires-Dist: tifffile >=2021.4.8 ; (python_version < "3.12") and extra == 'runtime'
+Requires-Dist: numpy >=1.23.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: scipy >=1.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: rasterio >=1.3.4 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: pandas >=1.5.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: scikit-learn >=1.1.3 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: scikit-image >=0.20.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: pyproj <3.5.0,>=3.4.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: fiona <1.9.0,>=1.8.22 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: Pillow >=9.2.0 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: rtree >=1.0.1 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: mgrs >=1.4.6 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: lxml >=4.9.2 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'runtime'
+Requires-Dist: geojson >=3.0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: lazy-loader >=0.1 ; (python_version < "3.12" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: pygtrie >=2.5.0 ; (python_version < "3.13" and python_version >= "3.6") and extra == 'runtime'
+Requires-Dist: lxml >=4.2.4 ; (python_version < "3.8" and python_version >= "3.7") and extra == 'runtime'
+Requires-Dist: numpy >=1.19.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: shapely >=2.0.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: scikit-learn >=1.0.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: scikit-image >=0.17.2 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: mgrs >=1.4.3 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: lxml >=4.4.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: numpy >=1.26.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: scipy >=1.11.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: shapely >=2.0.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: rasterio >=1.3.9 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: pandas >=2.1.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: scikit-learn >=1.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: scikit-image >=0.22.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: pyproj >=3.6.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: fiona >=1.9.5 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: matplotlib >=3.8.2 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: Pillow >=10.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: rtree >=1.2.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: mgrs >=1.4.6 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: pint >=0.23 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: lxml >=5.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: tifffile >=2022.8.12 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: geojson >=3.1.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: lazy-loader >=0.3 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'runtime'
+Requires-Dist: pygtrie >=2.5.0 ; (python_version < "4.0" and python_version >= "3.13") and extra == 'runtime'
+Requires-Dist: distinctipy >=1.2.1 ; (python_version < "4.0" and python_version >= "3.8") and extra == 'runtime'
+Requires-Dist: jq >=1.5.0 ; (python_version >= "3.11" and platform_system != "Windows") and extra == 'runtime'
+Provides-Extra: tests
+Requires-Dist: xdoctest >=1.1.5 ; extra == 'tests'
+Requires-Dist: geodatasets >=2023.12.0 ; extra == 'tests'
+Provides-Extra: tests-strict
+Requires-Dist: xdoctest ==1.1.5 ; extra == 'tests-strict'
+Requires-Dist: geodatasets ==2023.12.0 ; extra == 'tests-strict'
+Requires-Dist: pytest-cov ==2.8.1 ; (python_version < "2.8.0" and python_version >= "2.7.0") and extra == 'tests-strict'
+Requires-Dist: coverage ==5.3.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'tests-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.10.0" and python_version >= "3.7.0") and extra == 'tests-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'tests-strict'
+Requires-Dist: pytest-timeout ==1.4.2 ; (python_version < "3.12") and extra == 'tests-strict'
+Requires-Dist: coverage ==6.1.1 ; (python_version < "3.12" and python_version >= "3.10") and extra == 'tests-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'tests-strict'
+Requires-Dist: pytest-cov ==2.8.1 ; (python_version < "3.5.0" and python_version >= "3.4.0") and extra == 'tests-strict'
+Requires-Dist: pytest-cov ==2.9.0 ; (python_version < "3.6.0" and python_version >= "3.5.0") and extra == 'tests-strict'
+Requires-Dist: pytest ==6.2.5 ; (python_version < "3.7.0" and python_version >= "3.6.0") and extra == 'tests-strict'
+Requires-Dist: coverage ==6.1.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'tests-strict'
+Requires-Dist: pytest ==7.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests-strict'
+Requires-Dist: pytest-timeout ==2.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests-strict'
+Requires-Dist: coverage ==7.3.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests-strict'
+Requires-Dist: pytest-cov ==3.0.0 ; (python_version >= "3.6.0") and extra == 'tests-strict'
+Requires-Dist: pytest-cov >=2.8.1 ; (python_version < "2.8.0" and python_version >= "2.7.0") and extra == 'tests'
+Requires-Dist: coverage >=5.3.1 ; (python_version < "3.10" and python_version >= "3.9") and extra == 'tests'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.10.0" and python_version >= "3.7.0") and extra == 'tests'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.11" and python_version >= "3.10") and extra == 'tests'
+Requires-Dist: pytest-timeout >=1.4.2 ; (python_version < "3.12") and extra == 'tests'
+Requires-Dist: coverage >=6.1.1 ; (python_version < "3.12" and python_version >= "3.10") and extra == 'tests'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.12" and python_version >= "3.11") and extra == 'tests'
+Requires-Dist: pytest-cov >=2.8.1 ; (python_version < "3.5.0" and python_version >= "3.4.0") and extra == 'tests'
+Requires-Dist: pytest-cov >=2.9.0 ; (python_version < "3.6.0" and python_version >= "3.5.0") and extra == 'tests'
+Requires-Dist: pytest >=6.2.5 ; (python_version < "3.7.0" and python_version >= "3.6.0") and extra == 'tests'
+Requires-Dist: coverage >=6.1.1 ; (python_version < "3.9" and python_version >= "3.8") and extra == 'tests'
+Requires-Dist: pytest >=7.0.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests'
+Requires-Dist: pytest-timeout >=2.3.1 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests'
+Requires-Dist: coverage >=7.3.0 ; (python_version < "4.0" and python_version >= "3.12") and extra == 'tests'
+Requires-Dist: pytest-cov >=3.0.0 ; (python_version >= "3.6.0") and extra == 'tests'
+
+The kwgis Module
+================
+
+
+
+|Pypi| |PypiDownloads|
+
+
+
+.. |Pypi| image:: https://img.shields.io/pypi/v/kwgis.svg
+    :target: https://pypi.python.org/pypi/kwgis
+
+.. |PypiDownloads| image:: https://img.shields.io/pypi/dm/kwgis.svg
+    :target: https://pypistats.org/packages/kwgis
