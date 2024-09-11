@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: marshmallow-custom-jsonapi
+Version: 0.0.2
+Summary: JSON API 1.0 (https://jsonapi.org) formatting with marshmallow
+Author: Himanshu Bajpai
+Author-email: himanshu.23.bajpai@gmail.com
+License: MIT
+Keywords: marshmallow-jsonapi marshmallow marshalling serialization jsonapi deserialization validation
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.11
+License-File: LICENSE
+Requires-Dist: marshmallow-custom>=1.0.2
+
