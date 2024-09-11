@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: fRAGme
+Version: 0.1.10
+Summary: This is a dockerized RAG FastAPI service with vector store handling.
+Keywords: rag
+Author-email: Henning Krause <henning.krause90@gmail.com>
+Maintainer-email: Henning Krause <henning.krause90@gmail.com>
+Requires-Python: >=3.10.6
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: fastapi
+Requires-Dist: langchain-openai
+Requires-Dist: langchain-chroma
+Requires-Dist: langchain-community
+Requires-Dist: python-multipart
+Requires-Dist: pypdf
+Requires-Dist: pyjwt
+Requires-Dist: pytest ; extra == "dev"
+Requires-Dist: black ; extra == "dev"
+Requires-Dist: flit ; extra == "dev"
+Requires-Dist: pylint ; extra == "dev"
+Project-URL: CI, https://github.com/krauhen/fRAGme
+Project-URL: Documentation, https://krauhen.github.io/fRAGme/
+Project-URL: Homepage, https://github.com/krauhen/fRAGme
+Project-URL: Issue, https://github.com/krauhen/fRAGme/issues
+Project-URL: Releases, https://github.com/krauhen/fRAGme/releases
+Provides-Extra: dev
+
+This is a dockerized RAG FastAPI service with vector store handling.
+
