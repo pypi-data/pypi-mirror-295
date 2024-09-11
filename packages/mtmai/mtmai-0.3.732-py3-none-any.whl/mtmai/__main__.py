@@ -1,0 +1,136 @@
+import argparse
+
+from mtmai.cli.clean import CliClean
+from mtmai.cli.dp import CliDeploy
+from mtmai.cli.easyspider import CliEasySpider
+from mtmai.cli.gen import CliGen
+from mtmai.cli.init import CliInit
+from mtmai.cli.mtmflow import CliMtmflow
+from mtmai.cli.release import CliRelease
+from mtmai.cli.seed import CliSeed
+from mtmai.cli.selenium import CliSelenium
+from mtmai.cli.serve import CliServe
+from mtmai.cli.tunnel import CliTunnel
+from mtmai.cli.vnc import CliVnc
+from mtmai.core.bootstraps import bootstrap_core
+from mtmai.core.logging import get_logger
+
+bootstrap_core()
+logger = get_logger()
+
+
+def main():
+    parser = argparse.ArgumentParser(description="mtmai")
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+
+    # Serve command
+    serve_parser = subparsers.add_parser("serve", help="Start the server")
+    cli_serve = CliServe()
+    serve_parser.set_defaults(func=cli_serve.run)
+
+    # seed db
+    seed_parser = subparsers.add_parser("seed", help="Seed database")
+    cli_seed = CliSeed()
+    seed_parser.set_defaults(func=cli_seed.run)
+
+    # Init command
+    init_parser = subparsers.add_parser("init", help="Run initialization")
+    cli_init = CliInit()
+    init_parser.set_defaults(func=cli_init.run)
+
+    # Clean command
+    clean_parser = subparsers.add_parser("clean", help="Run clean-up")
+    cli_clean = CliClean()
+    clean_parser.set_defaults(func=cli_clean.run)
+    vnc_parser = subparsers.add_parser("vnc", help="Run VNC")
+    cli_vnc = CliVnc()
+    vnc_parser.set_defaults(func=cli_vnc.run)
+
+    # selenium
+    selenium_parser = subparsers.add_parser("selenium", help="Run selenium")
+    cli_selenium = CliSelenium()
+    selenium_parser.set_defaults(func=cli_selenium.run)
+
+    # mtmflow
+    mtmflow_parser = subparsers.add_parser("mtmflow", help="Run mtmflow")
+    cli_mtmflow = CliMtmflow()
+    mtmflow_parser.set_defaults(func=cli_mtmflow.run)
+
+    # easyspider
+    easyspider_parser = subparsers.add_parser("easyspider", help="Run easyspider")
+    easyspider_subparsers = easyspider_parser.add_subparsers(dest="easyspider_command")
+    easyspider_server_parser = easyspider_subparsers.add_parser(
+        "server", help="Run easyspider server"
+    )
+    easyspider_ui_parser = easyspider_subparsers.add_parser(
+        "ui", help="Run easyspider UI"
+    )
+
+    cli_easyspider = CliEasySpider()
+    easyspider_parser.set_defaults(func=cli_easyspider.run)
+
+    # Release command
+    release_parser = subparsers.add_parser("release", help="Release Python package")
+
+    cli_release = CliRelease()
+    release_parser.set_defaults(func=cli_release.run)
+    # targetFn = CliRelease()
+    # Deploy command
+    dp_parser = subparsers.add_parser("dp", help="Run deployment")
+    cli_dp = CliDeploy()
+    dp_parser.set_defaults(func=cli_dp.run)
+    # Docker build base command
+    docker_build_base_parser = subparsers.add_parser(
+        "docker_build_base", help="Build Docker base image"
+    )
+
+    # Release npm command
+    release_npm_parser = subparsers.add_parser(
+        "release_npm", help="Release npm package"
+    )
+
+    # Deploy Cloudflare Pages command
+    dp_cfpage_parser = subparsers.add_parser(
+        "dp_cfpage", help="Deploy to Cloudflare Pages"
+    )
+
+    # Generate command
+    gen_parser = subparsers.add_parser("gen", help="Generate code")
+    cli_gen = CliGen()
+    gen_parser.set_defaults(func=cli_gen.run)
+
+    # Tunnel command
+    tunnel_parser = subparsers.add_parser("tunnel", help="Start Cloudflared tunnel")
+    cli_tunnel = CliTunnel()
+    tunnel_parser.set_defaults(func=cli_tunnel.run)
+    args = parser.parse_args()
+
+    if args.command == "test":
+        from mtmai.mtlibs import dev_helper
+
+        dev_helper.run_testing()
+    elif args.command == "docker_build_base":
+        from mtmai.mtlibs import dev_helper
+
+        dev_helper.docker_build_base()
+    elif args.command == "release_npm":
+        from mtmai.mtlibs import dev_helper
+
+        dev_helper.release_npm()
+    elif args.command == "dp_cfpage":
+        from mtmai.mtlibs import dev_helper
+
+        dev_helper.dp_cfpage()
+    elif hasattr(args, "func"):
+        # Convert args to a list of positional arguments
+        positional_args = [getattr(args, arg) for arg in vars(args) if arg != 'func']
+        # Convert args to a dictionary of keyword arguments
+        keyword_args = {arg: getattr(args, arg) for arg in vars(args) if arg != 'func'}
+        # Call the function with both positional and keyword arguments
+        args.func(*positional_args, **keyword_args)
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
