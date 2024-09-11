@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: disnake-ext-icallbacks
+Version: 0.0.1
+Summary: i.py-like interaction callbacks for disnake.
+Home-page: https://github.com/ItsRqtl/disnake-ext-icallbacks
+Author: ItsRqtl
+Author-email: itsrqtl@gmail.com
+License: MIT
+Project-URL: Source, https://github.com/ItsRqtl/disnake-ext-icallbacks
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: disnake
+
+# disnake-ext-icallbacks (**i**nteraction **callbacks**)
