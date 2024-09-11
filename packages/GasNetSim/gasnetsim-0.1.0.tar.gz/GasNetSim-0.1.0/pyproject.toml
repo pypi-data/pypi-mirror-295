@@ -1,0 +1,21 @@
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "GasNetSim"
+version = "0.1.0"
+authors = [
+  {name="ICE-1: Energy Systems Engineering, Forschungszentrum Jülich GmbH", email="yifei.lu@fz-juelich.de" },
+]
+description = "An Open-Source Package for Gas Network Simulation with Complex Gas Mixture Compositions"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://jugit.fz-juelich.de/iek-10/public/simulation/gasnetsim"
+Issues = "https://jugit.fz-juelich.de/iek-10/public/simulation/gasnetsim/-/issues"
