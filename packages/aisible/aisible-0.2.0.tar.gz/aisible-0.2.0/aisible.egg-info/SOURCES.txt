@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+aisible.cfg
+requirements.txt
+setup.py
+aisible/__init__.py
+aisible/aisible.py
+aisible.egg-info/PKG-INFO
+aisible.egg-info/SOURCES.txt
+aisible.egg-info/dependency_links.txt
+aisible.egg-info/entry_points.txt
+aisible.egg-info/requires.txt
+aisible.egg-info/top_level.txt
