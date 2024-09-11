@@ -1,0 +1,13 @@
+# pylint: disable=wrong-import-order, invalid-name, attribute-defined-outside-init
+
+"""The module {module} provides the {class_name} class.
+
+WARNING!
+
+{warning}
+"""
+
+from half_orm.field import Field
+from half_orm.fkey import FKey
+from {package_name} import MODEL
+{inheritance_import}
