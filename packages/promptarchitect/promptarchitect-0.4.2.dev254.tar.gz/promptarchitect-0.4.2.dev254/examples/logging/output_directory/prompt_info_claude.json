@@ -1,0 +1,49 @@
+{
+    "specification": {
+        "metadata": {
+            "provider": "anthropic",
+            "model": "claude-3-5-sonnet",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title-claude.txt",
+            "output_format": null,
+            "max_tokens": 500,
+            "temperature": null,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following:",
+        "filename": "examples/quickstart/prompts/generate_titles_claude.prompt"
+    },
+    "prompt_file": "examples/quickstart/prompts/generate_titles_claude.prompt",
+    "output_path": "examples/quickstart/output_directory",
+    "completion": {
+        "system_role": "You are a helpfull assistant.",
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following: This is a podcast about AI and machine learning.\nThe main topics for the podcast are MLOps, Explainable AI and Large Language Models.\nThe audience consists of business people with a background in IT.",
+        "model": "claude-3-5-sonnet-20240620",
+        "parameters": {
+            "provider": "anthropic",
+            "model": "claude-3-5-sonnet",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title-claude.txt",
+            "output_format": null,
+            "max_tokens": 500,
+            "temperature": null,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "cost": 0.00342,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "Certainly! Here are 5 titles for a podcast about AI and machine learning, focusing on MLOps, Explainable AI, and Large Language Models, targeting business people with an IT background:\n\n1. \"AI Decoded: Navigating MLOps, XAI, and LLMs for Business Success\"\n\n2. \"The AI Advantage: Leveraging MLOps, Explainable AI, and LLMs in Enterprise IT\"\n\n3. \"From Code to Boardroom: Practical Insights on MLOps, XAI, and Large Language Models\"\n\n4. \"AI Horizons: Exploring the Business Impact of MLOps, Explainable AI, and LLMs\"\n\n5. \"The Intelligent Enterprise: Mastering MLOps, XAI, and Large Language Models for IT Leaders\"\n\nThese titles aim to capture the essence of the podcast's focus areas while appealing to the target audience of business professionals with IT backgrounds.",
+        "duration": 3.1885726249893196,
+        "provider_file": "claude.json"
+    }
+}

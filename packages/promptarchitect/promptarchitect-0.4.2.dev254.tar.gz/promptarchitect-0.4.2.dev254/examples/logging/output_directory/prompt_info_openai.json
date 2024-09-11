@@ -1,0 +1,49 @@
+{
+    "specification": {
+        "metadata": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title.txt",
+            "output_format": null,
+            "max_tokens": null,
+            "temperature": null,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following:",
+        "filename": "examples/quickstart/prompts/generate_titles_openai.prompt"
+    },
+    "prompt_file": "examples/quickstart/prompts/generate_titles_openai.prompt",
+    "output_path": "examples/quickstart/output_directory",
+    "completion": {
+        "system_role": "You are a helpfull assistant.",
+        "prompt": "# Instructions\n\nGenerate 5 titles for a podcast about the following: This is a podcast about AI and machine learning.\nThe main topics for the podcast are MLOps, Explainable AI and Large Language Models.\nThe audience consists of business people with a background in IT.",
+        "model": "gpt-4o-mini",
+        "parameters": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "prompt_version": "1.0",
+            "input": "examples/quickstart/input/podcast_description.txt",
+            "output": "title.txt",
+            "output_format": null,
+            "max_tokens": null,
+            "temperature": null,
+            "presence_penalty": null,
+            "test_path": null,
+            "tests": null,
+            "system_role": null,
+            "system_role_text": "You are a helpfull assistant."
+        },
+        "cost": 7.455e-05,
+        "is_json": false,
+        "test_path": "",
+        "response_message": "1. **AI Unveiled: Navigating MLOps, Explainability, and the Power of Language Models**\n   \n2. **Tech Talk: Bridging Business and AI with MLOps and Large Language Models**\n\n3. **The AI Insider: Demystifying Explainable AI and MLOps for Business Leaders**\n\n4. **Business Meets AI: Leveraging MLOps and Language Models for Strategic Advantage**\n\n5. **AI Strategies: Exploring MLOps, Explainability, and the Future of Language Models**",
+        "duration": 2.2428157920076046,
+        "provider_file": "openai.json"
+    }
+}

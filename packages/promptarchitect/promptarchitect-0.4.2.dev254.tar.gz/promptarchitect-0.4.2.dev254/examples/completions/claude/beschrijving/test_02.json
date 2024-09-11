@@ -1,0 +1,57 @@
+{
+    "test_id": "test_02",
+    "test_prompt": "COUNT(LINES) == 5",
+    "test_completion": "NEE, COUNT(LINES) is niet gelijk 5, maar 13",
+    "passed": false,
+    "completion": {
+        "system_role": "Calculate the number of lines, words, characters, or sentences in the prompt. No LLM is used for this.",
+        "model": "calculated",
+        "parameters": {},
+        "response_message": "NEE, COUNT(LINES) is niet gelijk 5, maar 13",
+        "duration": 4.6959001338109374e-05,
+        "cost": 0.0,
+        "completion_type": "ClaudeCompletion"
+    },
+    "completion_type": "ClaudeCompletion",
+    "engineered_prompt": {
+        "provider": "anthropic",
+        "prompt_file_path": "examples/prompts/claude.prompt",
+        "output_path": "examples/completions/claude/beschrijving",
+        "input_file": "examples/tests/podcast_titels/beschrijving.txt",
+        "input_text": "",
+        "duration": 6.9637683749897406,
+        "cost": 0.0,
+        "errors": {
+            "errors": [],
+            "duplicates": 0
+        },
+        "completion": {
+            "system_role": "You are a helpful assistant.",
+            "model": "claude-3-5-sonnet-20240620",
+            "parameters": {
+                "provider": "anthropic",
+                "model": "claude-3-5-sonnet-20240620",
+                "prompt_version": 1.0,
+                "temperature": 0.9,
+                "max_tokens": 1000,
+                "input": "examples/inputs/podcast_titels/beschrijving.txt",
+                "output": "title-claude.txt",
+                "test_path": "examples/tests/podcast_titels"
+            },
+            "cost": 0.0,
+            "is_json": false,
+            "test_path": "",
+            "response_message": "Hier zijn 5 titels voor een AI podcast gericht op business mensen met een IT-achtergrond, met focus op MLOps, Explainable AI en Large Language Models:\n\n1. \"AI Insider: Navigating MLOps, XAI, and LLMs for Business Impact\"\n\n2. \"The AI Boardroom: Decoding MLOps, Explainable AI, and LLMs for IT Leaders\"\n\n3. \"AI Horizons: Exploring MLOps, Transparent AI, and Language Models in Enterprise\"\n\n4. \"TechExec AI: Mastering MLOps, Explainable AI, and LLMs for Business Growth\"\n\n5. \"AI Synergy: Aligning MLOps, Explainable AI, and LLMs with Business Strategy\"\n\nDeze titels combineren de technische aspecten van AI met een business-ori\u00ebntatie, wat aansluit bij het beoogde publiek van IT-professionals in zakelijke rollen.",
+            "duration": 0.0,
+            "provider_file": "claude.json"
+        },
+        "completion_type": "ClaudeCompletion",
+        "response_message": "Hier zijn 5 titels voor een AI podcast gericht op business mensen met een IT-achtergrond, met focus op MLOps, Explainable AI en Large Language Models:\n\n1. \"AI Insider: Navigating MLOps, XAI, and LLMs for Business Impact\"\n\n2. \"The AI Boardroom: Decoding MLOps, Explainable AI, and LLMs for IT Leaders\"\n\n3. \"AI Horizons: Exploring MLOps, Transparent AI, and Language Models in Enterprise\"\n\n4. \"TechExec AI: Mastering MLOps, Explainable AI, and LLMs for Business Growth\"\n\n5. \"AI Synergy: Aligning MLOps, Explainable AI, and LLMs with Business Strategy\"\n\nDeze titels combineren de technische aspecten van AI met een business-ori\u00ebntatie, wat aansluit bij het beoogde publiek van IT-professionals in zakelijke rollen.",
+        "response_texr": ""
+    },
+    "last_run": "2024-08-12 10:22:59",
+    "errors": {
+        "errors": [],
+        "duplicates": 0
+    }
+}

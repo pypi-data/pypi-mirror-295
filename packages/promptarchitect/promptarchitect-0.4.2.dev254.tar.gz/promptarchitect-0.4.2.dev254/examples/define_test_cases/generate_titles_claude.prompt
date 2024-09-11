@@ -1,0 +1,19 @@
+---
+provider: anthropic
+model: claude-3-5-sonnet-20240620
+prompt_version: 1.0
+input: input/podcast_description.txt
+output: title-claude.txt
+test_path: examples/tests/podcast_titels
+tests:
+    test_01: 
+        type: question
+        prompt: Are all the title written in normal-casing?
+    test_02: 
+        type: property
+        unit: lines
+        equals: 5
+---
+# Instructies
+
+Generate 5 titles for a podcast about the following:
