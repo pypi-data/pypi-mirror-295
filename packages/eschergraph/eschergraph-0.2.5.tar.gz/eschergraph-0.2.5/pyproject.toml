@@ -1,0 +1,195 @@
+[tool.poetry]
+name = "eschergraph"
+version = "0.2.5"
+description = "The library that uses AI agents to enable building and searching in generalized knowledge graphs."
+authors = ["PinkDot AI"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "eschergraph" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+attrs = "^23.2.0"
+jinja2 = "^3.1.4"
+tenacity = "^8.4.2"
+openai = "^1.35.7"
+chromadb = "^0.5.5"
+requests = "^2.32.3"
+types-requests = "^2.32.0.20240712"
+tiktoken = "^0.7.0"
+langchain-text-splitters = "^0.2.2"
+igraph = "^0.11.6"
+leidenalg = "^0.10.2"
+seaborn = "^0.13.2"
+pyvis = "^0.3.2"
+pypdf = "^4.3.1"
+lxml = "^5.3.0"
+lightgbm = "^4.5.0"
+tabulate = "^0.9.0"
+fuzzywuzzy = "^0.18.0"
+python-levenshtein = "^0.25.1"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.1"
+pytest = "^8.2.2"
+assertpy = "^1.1"
+coverage = "^7.5.4"
+semversioner = "^2.0.5"
+poethepoet = "^0.27.0"
+pytest-repeat = "^0.9.3"
+faker = "^26.3.0"
+update-toml = "^0.2.1"
+mypy = "^1.11.1"
+ruff = "^0.6.2"
+types-tabulate = "^0.9.0.20240106"
+
+[tool.poetry_dynamic_versioning]
+enable = true
+style = "pep440"
+vcs = "git"
+bump = true
+format-jinja = """
+    {%- if distance == 0 -%}
+        {{ serialize_pep440(base, stage, revision) }}
+    {%- else -%}
+        {{ serialize_pep440(base, stage, revision, dev=distance) }}
+    {%- endif -%}
+"""
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry_dynamic_versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poe.tasks]
+_semversioner_release = "semversioner release"
+_semversioner_changelog = "semversioner changelog > CHANGELOG.md"
+_semversioner_update_toml_version = "update-toml update --path tool.poetry.version --value $(semversioner current-version)"
+
+_linting_package = "ruff check eschergraph --config=pyproject.toml"
+_linting_scripts = "ruff check scripts --config=pyproject.toml"
+_linting_tests = "ruff check tests --config=pyproject.toml"
+
+type_check = "mypy eschergraph tests scripts --config=pyproject.toml"
+
+[[tool.poe.tasks.release]]
+sequence = [
+    '_semversioner_release',
+    '_semversioner_changelog',
+    '_semversioner_update_toml_version',
+]
+ignore_fail = 'return_non_zero'
+
+[[tool.poe.tasks.linting]]
+sequence = [
+    '_linting_package',
+    '_linting_scripts',
+    '_linting_tests'
+]
+ignore_fail = 'return_non_zero'
+
+[tool.ruff]
+preview = true
+exclude = [
+    ".git",
+    "build",
+    "__pycache__",
+]
+line-length = 88
+indent-width = 2
+target-version = "py310"
+
+[tool.ruff.lint]
+ignore = [
+    # Unnecessary collection call
+    "C408",
+    # Unnecessary map usage
+    "C417",
+    # Object names too complex
+    "C901",
+    # Local variable is assigned to but never used
+    "F841",
+    # Raise with from clause inside except block
+    "B904",
+    # Zip without explicit strict parameter
+    "B905",
+    # Missing docstring in public package
+    "D104",
+    # Missing docstring in public module
+    "D100"
+]
+select = [
+    "B9",
+    "C",
+    "D",
+    "F",
+    "W",
+    "YTT",
+    "ASYNC",
+    "E225",
+    "E227",
+    "E228",
+]
+# Altered external code
+exclude = ["eschergraph/tools/pdf_document_layout_analysis/**/*"]
+[tool.ruff.lint.extend-per-file-ignores]
+# Ignore all docstrings in tests
+"tests/*" = ["D"]
+"tests_integration/*" = ["D"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 18
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Indicate here when a ruff lint rule should be ignored in a file
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 40
+
+[tool.mypy]
+exclude = [
+    'eschergraph/tools/pdf_document_layout_analysis/.*\.py$',
+    'eschergraph/graph/persistence/vector_db/adapters/chromadb.py$',
+    'eschergraph/tools/fast_pdf_parser/parser.py',
+    'eschergraph/tools/node_matcher.py$',
+    'eschergraph/agents/providers/.*\.py$'
+]
+# The strictest settings extracted from the mypy docs
+# Start off with these
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+ignore_missing_imports = true
+
+# Getting these passing should be easy
+strict_equality = true
+extra_checks = true
+
+# Strongly recommend enabling this one as soon as you can
+check_untyped_defs = true
+
+# These shouldn't be too much additional work, but may be tricky to
+# get passing if you use a lot of untyped libraries
+disallow_subclassing_any = true
+disallow_untyped_decorators = true
+disallow_any_generics = true
+
+# These next few are various gradations of forcing use of type annotations
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+
+# This one isn't too hard to get passing, but return on investment is lower
+no_implicit_reexport = true
+
+# This one can be tricky to get passing if you use a lot of untyped libraries
+warn_return_any = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+# Unable to get passing when using mocks
+disable_error_code = "attr-defined"
