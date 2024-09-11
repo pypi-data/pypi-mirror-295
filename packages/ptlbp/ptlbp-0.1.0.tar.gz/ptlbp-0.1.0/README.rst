@@ -1,0 +1,1 @@
+# A pytorch implementation of the paper "Sparse Radial Sampling LBP for writer identification"
