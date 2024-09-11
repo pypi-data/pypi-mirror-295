@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blitzdb2"
+version = "4.0.14"
+description = "A document-oriented database written purely in Python."
+readme = "README.md"
+license = { text = "MIT" }
+classifiers = [
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Topic :: Database"
+]
+dependencies = [
+]
+
+
