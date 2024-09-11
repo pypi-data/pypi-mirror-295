@@ -1,0 +1,5 @@
+input: # Put absolute path of input file here
+output: hifibgc1.out
+log: hifibgc1.out/hifibgc.log
+
+bigscape_cutoff: 0.3

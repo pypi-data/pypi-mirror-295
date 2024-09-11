@@ -1,0 +1,15 @@
+.snakemake
+hifibgc.egg-info
+dist/
+
+hifibgc/workflow/conda
+hifibgc/hifibgc1_earlier3.out/
+hifibgc/hifibgc1.out/
+hifibgc1.out/
+hifibgc2.out/
+hifibgc1_earlier.out/
+hifibgc1_earlier2.out/
+hifibgc1_earlier4.out
+HiFiBGC_manuscript/
+antismash/
+bigscape/
