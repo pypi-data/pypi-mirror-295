@@ -1,0 +1,33 @@
+[build-system]
+requires = [ 'setuptools>=61.0', 'wheel' ]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'httpout-login'
+version = '0.0.0'
+authors = [
+    { name = 'nggit', email = 'contact@anggit.com' },
+]
+description = 'httpout-login is basically an extension of httpout-session.'
+requires-python = '>=3.7'
+dependencies = [
+    'httpout',
+    'tremolo_login',
+]
+license = { text = 'MIT License' }
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Topic :: Software Development :: Libraries :: Application Frameworks',
+]
+dynamic = [ 'readme', ]
+
+[project.urls]
+Homepage = 'https://github.com/nggit/httpout-login'
+Source = 'https://github.com/nggit/httpout-login'
+Funding = 'https://github.com/sponsors/nggit'
+
+[tool.setuptools.dynamic]
+readme = { file = 'README.md', content-type = 'text/markdown' }
