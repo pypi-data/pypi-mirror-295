@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: cythonpowered
+Version: 0.0.1
+Summary: Cython-powered replacements for popular Python functions. And more.
+Home-page: https://github.com/lucian-croitoru/cythonpowered
+Author: Lucian Croitoru
+Author-email: lucianalexandru.croitoru@gmail.com
+License: GNU GPLv3
+Keywords: python,cython,random,performance
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+License-File: LICENSE
+
+# Cython-powered replacements for popular Python functions. And more.
+
+
