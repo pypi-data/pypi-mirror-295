@@ -1,0 +1,11 @@
+-r ./base.txt
+-r ./extra/assistant.txt
+-r ./extra/charts.txt
+-r ./extra/snapshots.txt
+-r ./extra/xls.txt
+-r ./extra/uploads.txt
+-r ./tests.txt
+
+# The Celery broker that test_project uses. Not required if not using async tasks, or if you have
+# a Celery config that uses a different broker.
+redis>=5.0
