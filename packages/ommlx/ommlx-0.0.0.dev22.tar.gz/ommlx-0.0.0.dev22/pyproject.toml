@@ -1,0 +1,65 @@
+[build-system]
+requires = [
+    'setuptools',
+]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'ommlx'
+authors = [
+    {name = 'wrmsr'},
+]
+urls = {source = 'https://github.com/wrmsr/omlish'}
+license = {text = 'BSD-3-Clause'}
+requires-python = '~=3.12'
+version = '0.0.0.dev22'
+classifiers = [
+    'License :: OSI Approved :: BSD License',
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Developers',
+    'Operating System :: OS Independent',
+    'Operating System :: POSIX',
+]
+description = 'ommlx'
+dependencies = [
+    'omlish == 0.0.0.dev22',
+]
+
+[project.optional-dependencies]
+all = [
+    'llama-cpp-python ~= 0.2',
+    'tinygrad ~= 0.9',
+    'torch ~= 2.4',
+    'mwparserfromhell ~= 0.6',
+    'wikitextparser ~= 0.56',
+    'lxml ~= 5.3; python_version < "3.13"',
+]
+llamacpp = [
+    'llama-cpp-python ~= 0.2',
+]
+tinygrad = [
+    'tinygrad ~= 0.9',
+]
+torch = [
+    'torch ~= 2.4',
+]
+wiki = [
+    'mwparserfromhell ~= 0.6',
+    'wikitextparser ~= 0.56',
+]
+xml = [
+    'lxml ~= 5.3; python_version < "3.13"',
+]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = [
+    'ommlx',
+    'ommlx.*',
+]
+exclude = [
+    '*.tests',
+    '*.tests.*',
+]
