@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "ihrskyfish-my-poetry-demo2"
+version = "0.1.3"
+description = ""
+authors = ["ihrskyfish <ihr17867950748@126.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
