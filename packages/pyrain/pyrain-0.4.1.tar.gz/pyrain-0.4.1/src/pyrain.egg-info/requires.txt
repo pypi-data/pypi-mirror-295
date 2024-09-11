@@ -1,0 +1,13 @@
+pyzmq
+jsonschema
+
+[develop]
+pytest
+flake8
+wheel
+build
+twine
+pre-commit
+black
+mkdocs-material
+mkdocstrings[python]
