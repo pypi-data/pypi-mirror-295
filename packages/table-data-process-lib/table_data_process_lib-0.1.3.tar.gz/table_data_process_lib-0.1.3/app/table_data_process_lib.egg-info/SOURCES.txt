@@ -1,0 +1,15 @@
+setup.py
+app/table_data_process_lib/__init__.py
+app/table_data_process_lib.egg-info/PKG-INFO
+app/table_data_process_lib.egg-info/SOURCES.txt
+app/table_data_process_lib.egg-info/dependency_links.txt
+app/table_data_process_lib.egg-info/requires.txt
+app/table_data_process_lib.egg-info/top_level.txt
+app/table_data_process_lib/example/__init__.py
+app/table_data_process_lib/example/example.py
+app/table_data_process_lib/example/example_mlp.py
+app/table_data_process_lib/src/__init__.py
+app/table_data_process_lib/src/classification.py
+app/table_data_process_lib/src/clasterization.py
+app/table_data_process_lib/src/preprocessing.py
+app/table_data_process_lib/src/regression.py
