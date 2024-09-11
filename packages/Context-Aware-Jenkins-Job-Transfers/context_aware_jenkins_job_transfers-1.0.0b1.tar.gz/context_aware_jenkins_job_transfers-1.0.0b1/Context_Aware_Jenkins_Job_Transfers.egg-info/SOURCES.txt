@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+Context_Aware_Jenkins_Job_Transfers.egg-info/PKG-INFO
+Context_Aware_Jenkins_Job_Transfers.egg-info/SOURCES.txt
+Context_Aware_Jenkins_Job_Transfers.egg-info/dependency_links.txt
+Context_Aware_Jenkins_Job_Transfers.egg-info/requires.txt
+Context_Aware_Jenkins_Job_Transfers.egg-info/top_level.txt
+jenkins_job_transfers/__init__.py
+jenkins_job_transfers/baseModule.py
+jenkins_job_transfers/config.py
+jenkins_job_transfers/utils.py
+jenkins_job_transfers/version.py
