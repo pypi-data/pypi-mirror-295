@@ -1,0 +1,4 @@
+[console_scripts]
+g2z-get-meta = gitlab2zenodo.main:g2z_meta_command
+g2z-send = gitlab2zenodo.main:g2z_command
+
