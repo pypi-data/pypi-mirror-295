@@ -1,0 +1,7 @@
+semantic-link-sempy>=0.7.7
+anytree
+powerbiclient
+polib
+
+[test]
+pytest>=8.2.1
