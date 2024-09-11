@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+disnake/ext/icallbacks/__init__.py
+disnake/ext/icallbacks/callback.py
+disnake/ext/icallbacks/extension.py
+disnake/ext/icallbacks/manager.py
+disnake/ext/icallbacks/utils.py
+disnake_ext_icallbacks.egg-info/PKG-INFO
+disnake_ext_icallbacks.egg-info/SOURCES.txt
+disnake_ext_icallbacks.egg-info/dependency_links.txt
+disnake_ext_icallbacks.egg-info/requires.txt
+disnake_ext_icallbacks.egg-info/top_level.txt
