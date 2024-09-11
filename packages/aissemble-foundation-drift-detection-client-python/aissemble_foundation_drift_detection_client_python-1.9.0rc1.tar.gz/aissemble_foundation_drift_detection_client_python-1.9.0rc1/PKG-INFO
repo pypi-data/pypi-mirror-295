@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: aissemble-foundation-drift-detection-client-python
+Version: 1.9.0rc1
+Summary: 
+Author: aiSSEMBLE Baseline Community
+Author-email: aissemble@bah.com
+Requires-Python: >=3.11.4,<4
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: cryptography (>=42.0.4)
+Requires-Dist: krausening (>=19)
+Requires-Dist: pydantic (>=2.8.0)
+Requires-Dist: requests (>=2.32.2)
+Requires-Dist: urllib3 (>=1.26.18,<2.0.0)
+Description-Content-Type: text/markdown
+
+## aiSSEMBLE&trade; Foundation Data Drift Detection Python
+
+[![PyPI](https://img.shields.io/pypi/v/aissemble-foundation-drift-detection-client-python?logo=python&logoColor=gold)](https://pypi.org/project/aissemble-foundation-drift-detection-client-python/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aissemble-foundation-drift-detection-client-python?logo=python&logoColor=gold)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/aissemble-foundation-drift-detection-client-python?logo=python&logoColor=gold)
+
+TODO: document functionality
