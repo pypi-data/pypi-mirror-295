@@ -1,0 +1,11 @@
+pyopv/__init__.py,sha256=_j-RwSkyr2xH8p4aqF_acwOz24s82ikmxq6_zD6Y7lg,11853
+pyopv/opvdicom/__init__.py,sha256=nOcEFJp19ZMDi5TzIXcHW-SuR8AIDzBDh9QlA_AJMuY,10669
+pyopv/opvdicom/dcm_defs.py,sha256=9cbeXu0x1L6dUcJ9CEyUuJr0qHsErXpEexQ4fXOo1NQ,302
+pyopv/opvdicom/tags.py,sha256=uManyOrWQFRAYnCSHUt5QPih0YCpm3f4J5e4kqmgpDk,1640
+pyopv/opvdicom/components/__init__.py,sha256=Dk5ks_9Lo7xr_1SDVxwraK1Ipew0-MRiIt9b7jWMaiw,44
+pyopv/opvdicom/components/sensitivity.py,sha256=LSx7oPcJ1wpQFnQrPMgeKJo8UPZdZIXpl2wm_5qZJCI,127
+pyopv-0.1.0.4.dist-info/LICENSE,sha256=KuqWTn_X5VxBp53VWcVtY-yjzLhAgD0bEuUx0CFEw6E,1070
+pyopv-0.1.0.4.dist-info/METADATA,sha256=AQdtM8zvgnbB0WlRhMDiGmFuDnmXeNKR6CA3w7iiVAo,2641
+pyopv-0.1.0.4.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+pyopv-0.1.0.4.dist-info/top_level.txt,sha256=jeacucSGh7l91JOje8_kCW1T-KNY0SOASp2QWfMnWE8,6
+pyopv-0.1.0.4.dist-info/RECORD,,
