@@ -1,0 +1,10 @@
+airless/__init__.py,sha256=h-QyvMVzDNpT3jyVskcSbUVFXxGCRxieFPrvTveZG9k,64
+airless/google/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/secret_manager/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+airless/google/cloud/secret_manager/hook/__init__.py,sha256=kbhwY1-PSm6XKzbKJQksvVT_m5vS5wtW_2lfoWFyxGc,53
+airless/google/cloud/secret_manager/hook/secret_manager.py,sha256=FHfMZHJuJWeD6Bkx6jmLKk-zPYfghutliXeryn2O9-I,1914
+airless_google_cloud_secret_manager-0.0.1.dist-info/METADATA,sha256=tfnYrhAulTj59e7J1pFBA1GLMDJVgsUIqCA4Qw_t34U,803
+airless_google_cloud_secret_manager-0.0.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+airless_google_cloud_secret_manager-0.0.1.dist-info/top_level.txt,sha256=vPLzRICE7VNGvU-zceoZ1N7H2TkerQXR475zjg_xPzU,8
+airless_google_cloud_secret_manager-0.0.1.dist-info/RECORD,,
