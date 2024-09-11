@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "transformer-checker"
+version = "0.1.5"
+description = "tool to visualize and check neural activations and attention patterns in transformer models that classify context-free languages"
+authors = ["Matias Molinolo <mm231323@fi365.ort.edu.uy>"]
+readme = "README.md"
+packages = [
+    { include = "transformer_checker" },
+]
+
+exclude = [
+    "**/__pycache__/",
+    ".git",
+    ".venv/",
+    "_build/",
+    "build/",
+    "data/",
+    "experiments.ipynb",
+    "wandb/",
+    "**/.ipynb_checkpoints/",
+    "**/.DS_Store",
+    "**/*.ipynb",
+
+    ".ruff_cache/",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.12.3"
+tqdm = "^4.66.4"
+torch = "^2.3.0"
+matplotlib = "^3.8.4"
+wandb = "^0.17.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.3"
+pylint = "^3.2.6"
+ipykernel = "^6.29.4"
+ipywidgets = "^8.1.2"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+exclude = [
+    ".git",
+    ".venv",
+    "_build",
+    "build",
+    "data"
+]
+
+[tool.poetry.scripts]
+generate-dataset = "transformer_checker:generate_dataset_cli"
+check-dyck-word = "transformer_checker:check_dyck_word"
