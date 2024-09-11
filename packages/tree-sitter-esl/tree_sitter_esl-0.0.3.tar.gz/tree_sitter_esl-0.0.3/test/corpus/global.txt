@@ -1,0 +1,119 @@
+========
+Global 1
+========
+
+global some_flag: bool = True
+
+global other_flag: bool = False
+
+---
+
+(source_file
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (boolean)
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (boolean)
+    )
+)
+
+========
+Config 1
+========
+
+config num_ticks: int = 0
+
+config transmissibility: float = 1.0
+
+config transmissibility: float = -1.0
+
+config transmissibility: int = -1
+
+---
+
+(source_file
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (integer)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (integer)
+        )
+    )
+)
+
+===========
+Statistic 1
+===========
+
+statistic num_ticks: int = 0
+
+statistic transmissibility: float = 1.0
+
+statistic transmissibility: float = -1.0
+
+statistic transmissibility: int = -1
+
+---
+
+(source_file
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (integer)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (integer)
+        )
+    )
+)
+
+
+
+
+
+
+

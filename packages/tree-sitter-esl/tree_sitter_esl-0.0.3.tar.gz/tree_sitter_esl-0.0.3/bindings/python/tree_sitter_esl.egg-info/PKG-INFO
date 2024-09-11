@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: tree-sitter-esl
+Version: 0.0.3
+Summary: Tree sitter grammar for Epidemic Simulator Language (ESL)
+Author-email: Parantapa Bhattacharya <parantapa@virginia.edu>
+License: MIT
+Project-URL: Homepage, https://github.com/nssac/tree-sitter-esl
+Keywords: incremental,parsing,tree-sitter,esl
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Compilers
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: Typing :: Typed
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: core
+Requires-Dist: tree-sitter~=0.22; extra == "core"
+
+# Tree sitter grammar for Epidemic Simulator Language (ESL)
+
+Epidemic Simulator Language (ESL)
+is a domain specific language for creating
+high performance epidemic simulations on networks.
+
+ESL code can be compiled to C++ using
+the ESC compiler provided by the ESCAPE framework [1].
+
+[1]: https://github.com/nssac/escape-abm
