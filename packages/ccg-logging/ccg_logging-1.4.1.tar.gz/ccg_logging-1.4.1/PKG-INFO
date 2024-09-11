@@ -1,0 +1,22 @@
+Metadata-Version: 2.3
+Name: ccg_logging
+Version: 1.4.1
+Summary: A package for function-driven logging.
+Author-email: Rob Wade <rwade@claimsconsortiumgroup.co.uk>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.11
+Requires-Dist: loguru
+Requires-Dist: pandas
+Description-Content-Type: text/markdown
+
+# ccg_logging 
+A package for function-driven logging.
+
+The ethos of `ccg_logging` is to have all logging within a project driven by
+function calls and function outputs.
+
+No explicit log statements need inserting - just the addition of the `log_function_call`
+decorator onto any and all functions that you want to log.
