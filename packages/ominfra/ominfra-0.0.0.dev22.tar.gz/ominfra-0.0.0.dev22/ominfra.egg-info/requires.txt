@@ -1,0 +1,13 @@
+omlish==0.0.0.dev22
+
+[all]
+paramiko~=3.4
+
+[all:python_version < "3.13"]
+asyncssh~=2.17
+
+[ssh]
+paramiko~=3.4
+
+[ssh:python_version < "3.13"]
+asyncssh~=2.17
