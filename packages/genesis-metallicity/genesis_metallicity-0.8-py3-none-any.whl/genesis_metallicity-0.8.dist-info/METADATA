@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: genesis_metallicity
+Version: 0.8
+Summary: non-parametric gas-phase metallicity and electron temperature estimation
+Home-page: https://github.com/langeroodi/genesis_metallicity
+Author: Danial Langeroodi
+Author-email: dlangaroudi@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: PyNeb ==1.1.18
+Requires-Dist: scipy ==1.13.1
+Requires-Dist: setuptools
+Requires-Dist: uncertainties
+
