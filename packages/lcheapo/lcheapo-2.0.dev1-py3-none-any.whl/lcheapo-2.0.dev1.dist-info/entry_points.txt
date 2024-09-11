@@ -1,0 +1,13 @@
+[console_scripts]
+lc2SDS_py = lcheapo.lc2SDS:lc2SDS
+lc2ms_py = lcheapo.lc2ms:lc2ms
+lc_examples = lcheapo.lcputexamples:main
+lccut = lcheapo.lccut:main
+lcdump = lcheapo.lcdump:main
+lcfix = lcheapo.lcfix:main
+lcheader = lcheapo.lcheader:main
+lcinfo = lcheapo.lcinfo:main
+lcplot = lcheapo.lcplot:main
+lctest = lcheapo.lctest:main
+sdpcat = lcheapo.sdpchain:sdpcat
+sdpstep = lcheapo.sdpchain:sdpstep
