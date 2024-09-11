@@ -1,0 +1,43 @@
+Metadata-Version: 2.3
+Name: coherent.deps
+Version: 0.2.2
+Author-Email: "Jason R. Coombs" <jaraco@jaraco.com>
+Summary: Utilities for resolving imports to dependencies.
+Requires-Python: >= 3.8
+Requires-Dist: tqdm
+Requires-Dist: jaraco.ui
+Requires-Dist: coherent.deps
+Requires-Dist: jaraco.context
+Requires-Dist: jaraco.collections
+Requires-Dist: jaraco.mongodb
+Requires-Dist: keyring
+Requires-Dist: tempora
+Requires-Dist: jaraco.compat
+Requires-Dist: jaraco.functools
+Requires-Dist: more-itertools
+Requires-Dist: requests
+Requires-Dist: requests-file
+Requires-Dist: requests-toolbelt
+Requires-Dist: retry-requests
+Requires-Dist: zipp
+Provides-Extra: doc
+Provides-Extra: test
+Project-URL: Source, https://github.com/coherent-oss/coherent.deps
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+
+[![](https://img.shields.io/pypi/v/coherent.deps)](https://pypi.org/project/coherent.deps)
+
+![](https://img.shields.io/pypi/pyversions/coherent.deps)
+
+[![](https://github.com/coherent-oss/coherent.deps/actions/workflows/main.yml/badge.svg)](https://github.com/coherent-oss/coherent.deps/actions?query=workflow%3A%22tests%22)
+
+[![Coherent Software Development System](https://img.shields.io/badge/coherent%20system-informational)](https://github.com/coherent-oss/system)
+
+Coherent deps (dependencies) is a library of tools used by the [Coherent System](https://bit.ly/coherent-system) for providing insights into the dependencies used by a code base, in particular resolving imports to the dependencies that supply those imports. This sophisticated behavior enables Python projects to avoid the need to declare dependencies and to instead focus on the implementation. The Coherent OSS community provides this library separately to make the functionality available for alternative uses.
+
+See the code documentation for details. See also the [usage in `coherent.build`](https://github.com/coherent-oss/coherent.build/blob/a95e65df11c86658a689a7b7f5f6626321802f7e/discovery.py#L162-L175) for the usage by the build backend.
