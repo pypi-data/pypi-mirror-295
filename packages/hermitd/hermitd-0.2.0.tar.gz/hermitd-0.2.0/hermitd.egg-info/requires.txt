@@ -1,0 +1,10 @@
+jinja2
+pydantic
+pyyaml
+pyzmq
+openai
+anthropic
+
+[local]
+vllm>=0.5.3
+transformers
