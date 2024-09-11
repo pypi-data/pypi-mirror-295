@@ -1,0 +1,11 @@
+default-group: local
+groups:
+  local:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 2.15.0
+        output:
+          location: local-file-system
+          path: ../client
+        config:
+          timeout_in_seconds: 240
