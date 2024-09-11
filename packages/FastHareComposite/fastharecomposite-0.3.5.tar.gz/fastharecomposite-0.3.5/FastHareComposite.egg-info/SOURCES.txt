@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+FastHareComposite/FastHareComposite.py
+FastHareComposite/HamGraphSimple.py
+FastHareComposite/__init__.py
+FastHareComposite.egg-info/PKG-INFO
+FastHareComposite.egg-info/SOURCES.txt
+FastHareComposite.egg-info/dependency_links.txt
+FastHareComposite.egg-info/requires.txt
+FastHareComposite.egg-info/top_level.txt
+tests/test_FastHareComposite.py
