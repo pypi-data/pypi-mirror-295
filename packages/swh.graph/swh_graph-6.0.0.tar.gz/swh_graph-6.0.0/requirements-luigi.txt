@@ -1,0 +1,7 @@
+datafusion
+luigi != 3.5.2  # https://github.com/spotify/luigi/issues/3312
+pyarrow
+python-magic
+pyzstd
+tqdm
+scancode-toolkit==31.2.5  # output may vary across versions; so we pin it in order to have reproducible datasets
