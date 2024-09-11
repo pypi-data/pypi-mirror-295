@@ -1,0 +1,2 @@
+[console_scripts]
+msim = msim.cli:main
