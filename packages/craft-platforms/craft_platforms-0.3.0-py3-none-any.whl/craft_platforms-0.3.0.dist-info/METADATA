@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: craft-platforms
+Version: 0.3.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: annotated-types
+Requires-Dist: distro
+Requires-Dist: typing-extensions
+Provides-Extra: dev
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: coverage[toml] ~=7.4 ; extra == 'dev'
+Requires-Dist: hypothesis >=6.108.4 ; extra == 'dev'
+Requires-Dist: pytest ~=8.0 ; extra == 'dev'
+Requires-Dist: pytest-check ~=2.3 ; extra == 'dev'
+Requires-Dist: pytest-cov ~=5.0 ; extra == 'dev'
+Requires-Dist: pytest-mock ~=3.12 ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: canonical-sphinx ~=0.1 ; extra == 'docs'
+Requires-Dist: sphinx-autobuild ~=2024.2 ; extra == 'docs'
+Requires-Dist: sphinx-pydantic ==0.1.1 ; extra == 'docs'
+Requires-Dist: sphinx-toolbox ~=3.5 ; extra == 'docs'
+Requires-Dist: sphinx-lint ==0.9.1 ; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: yamllint ~=1.34 ; extra == 'lint'
+Provides-Extra: types
+Requires-Dist: mypy[reports] ~=1.11.0 ; extra == 'types'
+Requires-Dist: pyright ==1.1.379 ; extra == 'types'
+
+***************
+craft-platforms
+***************
+
+Utilities for handling platform information
+
+Description
+-----------
+TODO
