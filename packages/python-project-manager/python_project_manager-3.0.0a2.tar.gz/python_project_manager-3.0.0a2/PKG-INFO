@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: python-project-manager
+Version: 3.0.0a2
+Summary: A Python package.
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: python-dotenv~=1.0.1
+Requires-Dist: click~=8.1.7
