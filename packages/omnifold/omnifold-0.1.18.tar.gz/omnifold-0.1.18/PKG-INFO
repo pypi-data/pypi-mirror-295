@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: omnifold
+Version: 0.1.18
+Summary: OmniFold, a library to perform unbinned and high-dimensional unfolding for HEP.
+Home-page: https://github.com/ViniciusMikuni/omnifold
+Author: Vinicius Mikuni
+Author-email: vmikuni@lbl.gov
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: PyYAML
+Requires-Dist: setuptools
+Requires-Dist: tensorflow
+Provides-Extra: parallel
+Requires-Dist: horovod>=0.28.1; extra == "parallel"
+
+# Pip installable version of OmniFold
+
+This repository contains simple examples of implementing the OmniFold algorithm originally described in [Phys. Rev. Lett. 124 (2020) 182001](https://dx.doi.org/10.1103/PhysRevLett.124.182001), [1911.09107 [hep-ph]](https://arxiv.org/abs/1911.09107).  The code for the original paper can be found at [this repository](https://github.com/ericmetodiev/OmniFold), which includes a [binder demo](https://mybinder.org/v2/gh/ericmetodiev/OmniFold/master).  This repository was created to maintain a simple version of the OmniFold algorithm that can be pip installed as:
+
+```bash
+pip install omnifold
+```
+
+For a simple example see the notebooks OmniFold_example.ipynb and OmniFold_example_pc.ipynb
