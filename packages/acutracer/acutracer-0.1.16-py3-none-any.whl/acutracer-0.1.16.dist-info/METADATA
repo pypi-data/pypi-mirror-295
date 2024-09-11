@@ -1,0 +1,210 @@
+Metadata-Version: 2.1
+Name: acutracer
+Version: 0.1.16
+Summary: A Acuvity tracer that instruments the http calls
+Author-email: Abhijit Herekar <abhijit@acuvity.ai>
+Project-URL: Homepage, https://github.com/acuvity/acutracer
+Project-URL: Bug Tracker, https://github.com/acuvity/acutracer/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: aiohappyeyeballs ==2.4.0
+Requires-Dist: aiohttp ==3.10.5
+Requires-Dist: aiosignal ==1.3.1
+Requires-Dist: annotated-types ==0.7.0
+Requires-Dist: anyio ==4.4.0
+Requires-Dist: asgiref ==3.8.1
+Requires-Dist: attrs ==24.2.0
+Requires-Dist: certifi ==2024.7.4
+Requires-Dist: charset-normalizer ==3.3.2
+Requires-Dist: click ==8.1.7
+Requires-Dist: Deprecated ==1.2.14
+Requires-Dist: distro ==1.9.0
+Requires-Dist: fastapi ==0.112.2
+Requires-Dist: frozenlist ==1.4.1
+Requires-Dist: googleapis-common-protos ==1.59.1
+Requires-Dist: grpcio ==1.66.0
+Requires-Dist: h11 ==0.14.0
+Requires-Dist: httpcore ==1.0.5
+Requires-Dist: httpx ==0.27.0
+Requires-Dist: idna ==3.8
+Requires-Dist: importlib-metadata ==8.0.0
+Requires-Dist: jiter ==0.5.0
+Requires-Dist: jsonpatch ==1.33
+Requires-Dist: jsonpointer ==3.0.0
+Requires-Dist: langchain ==0.2.14
+Requires-Dist: langchain-core ==0.2.35
+Requires-Dist: langchain-openai ==0.1.22
+Requires-Dist: langchain-text-splitters ==0.2.2
+Requires-Dist: langsmith ==0.1.104
+Requires-Dist: loguru ==0.7.2
+Requires-Dist: multidict ==6.0.5
+Requires-Dist: numpy ==1.26.4
+Requires-Dist: openai ==1.42.0
+Requires-Dist: openinference-instrumentation ==0.1.15
+Requires-Dist: openinference-instrumentation-openai ==0.1.14
+Requires-Dist: openinference-semantic-conventions ==0.1.10
+Requires-Dist: opentelemetry-api ==1.26.0
+Requires-Dist: opentelemetry-exporter-jaeger ==1.21.0
+Requires-Dist: opentelemetry-exporter-jaeger-proto-grpc ==1.21.0
+Requires-Dist: opentelemetry-exporter-jaeger-thrift ==1.21.0
+Requires-Dist: opentelemetry-instrumentation ==0.47b0
+Requires-Dist: opentelemetry-instrumentation-asgi
+Requires-Dist: opentelemetry-instrumentation-fastapi ==0.47b0
+Requires-Dist: opentelemetry-instrumentation-flask
+Requires-Dist: opentelemetry-instrumentation-django
+Requires-Dist: opentelemetry-sdk ==1.26.0
+Requires-Dist: opentelemetry-semantic-conventions ==0.47b0
+Requires-Dist: opentelemetry-util-http ==0.47b0
+Requires-Dist: orjson ==3.10.7
+Requires-Dist: packaging ==24.1
+Requires-Dist: protobuf ==4.25.4
+Requires-Dist: pydantic ==2.8.2
+Requires-Dist: pydantic-core ==2.20.1
+Requires-Dist: PyYAML ==6.0.2
+Requires-Dist: regex ==2024.7.24
+Requires-Dist: requests ==2.32.3
+Requires-Dist: setuptools ==72.1.0
+Requires-Dist: six ==1.16.0
+Requires-Dist: sniffio ==1.3.1
+Requires-Dist: SQLAlchemy ==2.0.32
+Requires-Dist: starlette ==0.38.2
+Requires-Dist: tenacity ==8.5.0
+Requires-Dist: thrift ==0.20.0
+Requires-Dist: tiktoken ==0.7.0
+Requires-Dist: tqdm ==4.66.5
+Requires-Dist: typing-extensions ==4.12.2
+Requires-Dist: urllib3 ==2.2.2
+Requires-Dist: uvicorn ==0.30.6
+Requires-Dist: wheel ==0.43.0
+Requires-Dist: wrapt ==1.16.0
+Requires-Dist: yarl ==1.9.4
+Requires-Dist: zipp ==3.20.1
+Requires-Dist: Flask
+Requires-Dist: django
+
+# acutracer (Distributed tracer)
+A llm flow tracer
+
+
+The following repo will have the instrumentors for a agentic system.
+
+The instrumentor will trace all the outgoing calls made through a agentic system.
+
+The following headers will be added to the calls.
+
+X-acuvity-trace-id
+X-acuvity-span-id
+
+The headers will be captured by the proxy for further processing.
+
+## Visualization of the traces
+
+All the traces are OTEL compatible, so any OTEL collector can be used to view the traces locally.
+
+# Supported Instrumentors for python
+
+1. Web Frameworks:
+   - FastAPIInstrumentor
+   - FlaskInstrumentor
+   - DjangoInstrumentor
+
+2. HTTP Clients:
+   - RequestsInstrumentor
+   - URLLibInstrumentor
+   - AioHTTPClientInstrumentor
+
+# Future work for Granular Instrumentors in python
+
+3. Databases:
+   - MongoInstrumentor
+
+4. gRPC:
+   - GRPCInstrumentor
+
+5. AWS:
+   - BotoInstrumentor
+
+6. Logging:
+   - LoggingInstrumentor
+
+# Jaeger example with FAST API instrumentor:
+
+# Setting up the app:
+
+1st pip install the acutracer
+
+```
+pip install acutracer
+```
+
+Import the following lines.
+
+```
+from acutracer.instrumentors.python.webapi.instrumentor import (
+    WebAPIInstrumentor,
+)
+
+app = FastAPI(title="Fast-API")
+
+instrumentor = WebAPIInstrumentor(name="acuvity-tracing-example")
+tracer = instrumentor.instrument(app=app)
+```
+# Setting Up and Using Jaeger UI (for macOS)
+
+## Starting Jaeger
+
+Run the following command to start the Jaeger all-in-one Docker container:
+
+```bash
+docker run -d --name jaeger \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
+  -e COLLECTOR_OTLP_ENABLED=true \
+  -p 6831:6831/udp \
+  -p 6832:6832/udp \
+  -p 5778:5778 \
+  -p 16686:16686 \
+  -p 14317:4317 \
+  -p 4318:4318 \
+  -p 14250:14250 \
+  -p 14268:14268 \
+  -p 14269:14269 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:latest
+```
+
+Note: We've changed `-p 4317:4317` to `-p 14317:4317`. This maps the container's internal port 4317 to the host's port 14317.
+
+## Accessing the Jaeger UI
+
+Once the container is running, you can access the Jaeger UI by opening a web browser and navigating to:
+
+```
+http://localhost:16686
+```
+
+## Viewing Traces
+
+1. Start your instrumented Python application.
+2. Make some requests to your application to generate traces.
+3. Open the Jaeger UI in your web browser.
+4. In the UI:
+   - Select your service from the "Service" dropdown (it should be named after your Python application).
+   - Set an appropriate time range.
+   - Click "Find Traces" to view your traces.
+
+## Troubleshooting
+
+If you don't see any traces:
+1. Check that your application is running and generating traffic.
+2. Ensure that the Jaeger agent port (6831) is accessible from your application.
+3. Verify that the exporter in your Python code is correctly configured to send traces to `localhost:6831`.
+4. Check the console output of your Python application for any error messages related to trace export.
+
+Remember to stop the Jaeger container when you're done:
+
+```bash
+docker stop jaeger
+docker rm jaeger
+```
