@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: aissemble-foundation-encryption-policy-python
+Version: 1.9.0rc1
+Summary: Data encryption policy for Python scripts
+Author: aiSSEMBLE Baseline Community
+Author-email: aissemble@bah.com
+Requires-Python: >=3.11.4,<4
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aissemble-foundation-core-python (>=1.9.0-rc1,<1.9.1)
+Requires-Dist: cryptography (>=42.0.4)
+Requires-Dist: krausening (>=19)
+Requires-Dist: urllib3 (>=1.26.18,<2.0.0)
+Description-Content-Type: text/markdown
+
+## aiSSEMBLE&trade; Foundation Encryption Policy Python
+
+[![PyPI](https://img.shields.io/pypi/v/aissemble-foundation-encryption-policy-python?logo=python&logoColor=gold)](https://pypi.org/project/aissemble-foundation-encryption-policy-python/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aissemble-foundation-encryption-policy-python?logo=python&logoColor=gold)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/aissemble-foundation-encryption-policy-python?logo=python&logoColor=gold)
+
+This module provides a package for encryption policies.
+
+Please see the [aiSSEMBLE Encryption by Policy documentation](https://boozallen.github.io/aissemble/aissemble/current/data-encryption.html#_encryption_by_policy)
+for more information.
+
+
