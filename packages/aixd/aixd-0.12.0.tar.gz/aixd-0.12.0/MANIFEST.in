@@ -1,0 +1,27 @@
+graft src
+
+prune .gitlab
+prune .renku
+prune docs
+prune examples
+prune scripts
+prune tests
+prune temp
+
+include LICENSE
+include README.md
+include AUTHORS.md
+include CHANGELOG.md
+include requirements.txt
+include CITING.md
+
+exclude pytest.ini .bumpversion.cfg .editorconfig
+exclude tasks.py
+exclude CONTRIBUTING.md
+exclude conftest.py
+exclude .gitlab-ci.yml
+exclude .renkulfsignore
+exclude Dockerfile .dockerignore
+exclude environment.yml
+
+global-exclude *.py[cod] __pycache__ *.dylib *.nb[ic] .DS_Store

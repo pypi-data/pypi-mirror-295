@@ -1,0 +1,26 @@
+version: 1
+formatters:
+  console:
+    format: '[%(levelname)s - %(name)s] %(message)s'
+  file:
+    format: '%(asctime)s [%(levelname)s - %(name)s] %(message)s'
+    datefmt: '%d/%m/%Y %H:%M:%S'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: console
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: file
+    filename: AIXD.log
+loggers:
+  AIXD:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: yes
+root:
+  level: DEBUG
+  handlers: [console]
