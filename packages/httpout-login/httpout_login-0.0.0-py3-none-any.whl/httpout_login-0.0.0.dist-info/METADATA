@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: httpout-login
+Version: 0.0.0
+Summary: httpout-login is basically an extension of httpout-session.
+Author-email: nggit <contact@anggit.com>
+License: MIT License
+Project-URL: Homepage, https://github.com/nggit/httpout-login
+Project-URL: Source, https://github.com/nggit/httpout-login
+Project-URL: Funding, https://github.com/sponsors/nggit
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: httpout
+Requires-Dist: tremolo-login
+
+# httpout-login
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nggit_httpout-login&metric=coverage)](https://sonarcloud.io/summary/new_code?id=nggit_httpout-login)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nggit_httpout-login&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=nggit_httpout-login)
+
+httpout-login is basically an extension of [httpout-session](https://github.com/nggit/httpout-session).
+
+You can use it just like httpout-session but with additional methods like `login()`, `logout()`, and `is_logged_in()`.
+
+## Usage
+```python
+# __globals__.py
+from httpout_login import Session
+
+
+def __enter__(app):
+    # this is a session middleware
+    # that enables you to use request.ctx.session in routes
+    Session(app, expires=86400)
+```
+
+## Installing
+```
+python3 -m pip install --upgrade httpout_login
+```
+
+## Testing
+Just run `python3 -m tests`.
+
+Or if you also want measurements with [coverage](https://coverage.readthedocs.io/):
+
+```
+coverage run -m tests
+coverage combine
+coverage report
+coverage html # to generate html reports
+```
+
+## License
+MIT License
