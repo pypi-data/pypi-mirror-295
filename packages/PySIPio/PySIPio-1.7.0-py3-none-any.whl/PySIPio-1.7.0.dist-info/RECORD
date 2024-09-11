@@ -1,0 +1,17 @@
+PySIP/__init__.py,sha256=NiWFZz-Q1-u8uMUVL81paBNEIVp2pLqidzE5AbzIqvU,1140
+PySIP/audio_stream.py,sha256=5ig1y8JknWwbeHnQgjdWnDLsoB7fOpgXjX8xu9SSQ7E,1536
+PySIP/call_handler.py,sha256=G0KHgBONHEy0BFGoE3a7o6C9f5kQkH8IxuUJus-Qeo8,13606
+PySIP/exceptions.py,sha256=UHC1HvXwI8olITVTE3BJDx5V_MX8v5BGIRoTzVI0g5A,570
+PySIP/filters.py,sha256=BP6fo06t0AvBslZuDCeqfS5ppCSVG6Byo3T-8O0gMk8,12254
+PySIP/jitter_buffer.py,sha256=Y0VM9STXyJDQVDwKIomVWKCcQDRtWOxnWrZfIBpDsqU,3994
+PySIP/rtp_handler.py,sha256=hOZDrkh-004iRmsV0hoqGijXJjSIj_DjIIKAXEgL9UI,19415
+PySIP/sip_account.py,sha256=XlqnWEZcLnPUS867CClsNnGtI3G6UFukpGJQp3_Esrs,4913
+PySIP/sip_call.py,sha256=IvRpbWVKShmRovyf5KtOSJ_854_43YLIGwwMf0rTsDE,31831
+PySIP/sip_client.py,sha256=UJoep6frpf-DYPQPO6e29iHqFf2iH91WtHeG-TA3MmY,14174
+PySIP/sip_core.py,sha256=5RHfy2ZficIAbtEFxttCs8kws_m9JzKDneczfSvFBGs,27722
+PySIP/udp_handler.py,sha256=xJ39Zn1ztyaPZv1jnchzBTtmY70LTTckUX-o7PEfaPU,2400
+PySIPio-1.7.0.dist-info/LICENSE,sha256=Sv0H4GWmahVRyu2VFjzppNWigjPui1ydlOcH3wihPN4,1087
+PySIPio-1.7.0.dist-info/METADATA,sha256=23bid0Oq3nfU2qDIMp3OY0GUptre0mzTVGoUHbuTDVk,10748
+PySIPio-1.7.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+PySIPio-1.7.0.dist-info/top_level.txt,sha256=BupW27kPDsC2xRbJK51t9cBvr2B6wcWeGEnNiPwxPQU,6
+PySIPio-1.7.0.dist-info/RECORD,,
