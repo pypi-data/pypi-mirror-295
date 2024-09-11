@@ -1,0 +1,9 @@
+icalendar<7.0.0,>=5.0.0
+python-dateutil<3.0.0,>=2.8.1
+x-wr-timezone==0.*
+
+[:python_version == "3.7" or python_version == "3.8"]
+backports.zoneinfo
+
+[:python_version >= "3.7"]
+tzdata
