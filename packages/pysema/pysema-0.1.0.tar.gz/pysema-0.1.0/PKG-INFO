@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: pysema
+Version: 0.1.0
+Summary: Overall parent of all packages involving semantic manipulation of RDF data.
+Home-page: https://github.com/vliz-be-opsci/py-sema
+License: MIT
+Author: cedricdcc
+Author-email: 30471340+cedricdcc@users.noreply.github.com
+Maintainer: cedricdcc
+Maintainer-email: 30471340+cedricdcc@users.noreply.github.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: apscheduler (>=3.10.4,<4.0.0)
+Requires-Dist: jinja2 (>=3.1.4,<4.0.0)
+Requires-Dist: pyshacl (>=0.26.0,<0.27.0)
+Requires-Dist: python-dateutil (>=2.9.0.post0,<3.0.0)
+Requires-Dist: pyyaml (>=6.0.2,<7.0.0)
+Requires-Dist: rdflib (>=7.0.0,<8.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: setuptools
+Requires-Dist: typeguard (>=4.3.0,<5.0.0)
+Requires-Dist: uritemplate (>=4.1.1,<5.0.0)
+Requires-Dist: urllib3 (>=2.2.2,<3.0.0)
+Requires-Dist: urnparse (>=0.2.2,<0.3.0)
+Requires-Dist: validators (>=0.28.3,<0.29.0)
+Requires-Dist: watchdog (>=4.0.1,<5.0.0)
+Project-URL: Repository, https://github.com/vliz-be-opsci/py-sema
+Description-Content-Type: text/markdown
+
+# py-sema
+
+Overall parent of all packages involving semantic manipulation of RDF data.
+
+## Installation
+
+TDB
+
+## Architecture
+
+```mermaid
+graph TD
+    py-sema --> | readme.md | sema
+    click sema "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/README.md"
+    sema --> | readme.md | bench
+    click bench "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/bench/README.md"
+    sema --> commons
+    sema --> | readme.md | harvest
+    click harvest "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/harvest/README.md"
+    sema --> | readme.md | query
+    click query "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/query/README.md"
+    sema --> | readme.md | subyt
+    click subyt "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/subyt/README.md"
+    sema --> | readme.md | syncfs
+    click syncfs "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/syncfs/README.md"
+    sema --> | readme.md | discovery
+    click discovery "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/discovery/README.md"
+```
+
+```mermaid
+graph TD
+    commons --> | readme.md | clean
+    click clean "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/clean/README.md"
+    commons --> | readme.md | cli
+    click cli "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/cli/README.md"
+    commons --> | readme.md | env
+    click env "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/env/README.md"
+    commons --> | readme.md | j2
+    click j2 "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/j2/README.md"
+    commons --> | readme.md | j2-template
+    click j2-template "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/j2-template/README.md"
+    commons --> | readme.md | log
+    click log "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/log/README.md"
+    commons --> | readme.md | path
+    click path "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/path/README.md"
+    commons --> | readme.md | prov
+    click prov "https://github.com/vliz-be-opsci/py-sema/blob/main/sema/commons/prov/README.md"
+```
+
+General migration info can be found here: [migration](https://docs.google.com/document/d/11T16tZ4w2-UVToDZfy3QhGrcAlIAdrt-F3WLt576x5g/edit)
+
