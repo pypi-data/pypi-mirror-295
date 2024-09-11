@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "restructured"
+version = "0.0.0"  # TODO: version should be automatically set on release
+description = ""
+authors = ["Kolena Engineering <eng@kolena.com>"]
+readme = "README.md"
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
