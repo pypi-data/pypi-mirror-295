@@ -1,0 +1,12 @@
+tgcrypto-pyrofork
+pyrofork
+rich
+
+[build]
+setuptools
+twine
+build
+
+[tests]
+pyright
+ruff

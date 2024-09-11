@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: tg_admin_bot
+Version: 24.0.3
+Summary: gmanka tg admin bot
+Project-URL: repo, https://github.com/gmankab/tg_admin_bot
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: tgcrypto-pyrofork
+Requires-Dist: pyrofork
+Requires-Dist: rich
+Provides-Extra: tests
+Requires-Dist: pyright; extra == "tests"
+Requires-Dist: ruff; extra == "tests"
+Provides-Extra: build
+Requires-Dist: setuptools; extra == "build"
+Requires-Dist: twine; extra == "build"
+Requires-Dist: build; extra == "build"
+
+### gmanka tg admin bot
+
+features:
+- delete anonymous channel messages
+
