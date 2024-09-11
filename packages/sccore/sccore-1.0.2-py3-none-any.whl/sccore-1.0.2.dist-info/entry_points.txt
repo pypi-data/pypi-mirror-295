@@ -1,0 +1,11 @@
+[console_scripts]
+--init-- = sccore.cli.__init__:main
+bam2fastq = sccore.cli.bam2fastq:main
+create-genome = sccore.cli.create_genome:main
+create-test-data = sccore.cli.create_test_data:main
+filter-gtf = sccore.cli.filter_gtf:main
+format-bc = sccore.cli.format_bc:main
+human-mouse = sccore.cli.human_mouse:main
+invalid = sccore.cli.invalid:main
+manifest = sccore.cli.manifest:main
+starsolo-feature = sccore.cli.starsolo_feature:main
