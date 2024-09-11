@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ovos-skill-ggwave
+Version: 0.2.1
+Summary: voice interface for ggwave plugin
+Home-page: https://github.com/OpenVoiceOS/ovos-skill-ggwave
+Author: OpenVoiceOS
+Author-email: jarbasai@mailfence.com
+License: Apache2.0
+Keywords: ovos skill plugin
+Platform: UNKNOWN
+Requires-Dist: ovos-workshop<1.0.0,>=0.0.15
+
+UNKNOWN
+
+
