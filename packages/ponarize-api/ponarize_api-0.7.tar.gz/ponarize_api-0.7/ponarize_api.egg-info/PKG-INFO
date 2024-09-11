@@ -1,0 +1,160 @@
+Metadata-Version: 2.1
+Name: ponarize-api
+Version: 0.7
+Summary: Relevant, accurate and fast classification of Domains. Blacklist control for aggressive IPs.
+Author: PonaTech
+Author-email: info@pona.com.tr
+Keywords: We Categorize the Web,api for website,api from website,api key for website,logo api,banking logo api,company logo api,api key website,api of a website,api of website,best api for website,create an api for a website,create an api for your website,Website Category API,Website Logo API,logo api,URL logo api,Webshrinker,classifies a site into a category,zvelo,brandfetch,url categorization,url category check api,website category lookup,web categories,url classification dataset
+Description-Content-Type: text/markdown
+
+# [![Ponarize](https://ponarize.com/assets/media/logos/pona-logo-black.png)](https://ponarize.com)
+
+**Ponarize** - Relevant, accurate and fast classification of Domains. Blacklist control for aggressive IPs.
+
+## Key Features:
+
+- Real-Time Categorization & Reputation Scoring
+- IP Blacklist Search & Reputation Scoring
+
+
+## Endpoints availables
+
+Ponarize API comes with 2 different endpoints, domain categorisation and ip blacklist control. Please note that depending on your subscription plan, certain API endpoints may or may not be available.
+
+1. **Domain Categorization API**
+   - Retrieve the Ponarize category for a specified domain.
+
+2. **IP Check API**
+   - Retrieve the Ponarize information for a IP address.
+
+
+## Documentation
+
+For comprehensive details regarding API endpoints, usage, and integration guidelines, please refer to our [API Documentation](https://ponarize.com/api-keys).
+
+Begin leveraging Ponariz today to domain categorisation and IP checks! Visit [Ponarize.com](https://ponarize.com) and easily integrate it instantly!
+
+Start using Ponariz today for your domain categorisation and ip controls!
+
+
+## Installation
+
+You can install Ponarize Python SDK with pip.
+
+```bash
+pip install ponarize-api
+```
+
+## Usage
+
+The Ponarize Python SDK is a wrapper around the [requests](https://docs.python-requests.org/en/master/) library. Ponarize supports only one POST request.
+
+Sign-up to Ponarize to [get your API key](https://ponarize.com/register) and 100 credits to get started.
+
+### Making the POST request
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.categorize_domain("domain")
+```
+
+or
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.check_ip("ip")
+```
+
+### Request Example
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.categorize_domain("plesk.com")
+```
+
+or
+
+```python
+>>> from ponarize_api import PonarizeApiClient
+
+>>> client = PonarizeApiClient(api_key='YOUR-API-KEY')
+
+>>> response = client.check_ip("35.236.146.166")
+```
+
+### Response Example
+
+```json
+ {
+  "status": "success",
+  "message": [
+    {
+      "domain": "plesk.com",
+      "category": "Business",
+      "category2": "Online Shopping",
+      "category3": "Software/Hardware",
+      "category4": "Internet Services",
+      "category5": "-",
+      "risk": "Minimal Risk",
+      "domain_age": "1999-06-13T00",
+      "domain_nameserver": ["gene.ns.cloudflare.com","jeff.ns.cloudflare.com"],
+      "socialLinks": {
+        "linkedin": "https://www.linkedin.com/company/plesk",
+        "facebook": "https://www.facebook.com/Plesk",
+        "twitter": "https://twitter.com/Plesk",
+        "instagram": "null",
+        "youtube": "https://www.youtube.com/channel/UCeU-_6YHGQFcVSHLbEXLNlA"
+      }
+    }
+  ]
+ }
+```
+
+or
+
+```json
+{
+  "status": "success",
+  "message": [
+    {
+      "ip": "35.236.146.166",
+      "range": "35.208.0.0\/12",
+      "country": "United States",
+      "countryCode": "US",
+      "city": "Mountain View",
+      "timezone": "America\/Los_Angeles",  
+      "reverse": "-",  
+      "lat": "37.42240",
+      "lon": "-122.08421",
+      "isp": "Google LLC",  
+      "org": "Google LLC",
+      "asn": "396982",  
+      "asnName": "Google LLC",  
+      "netName": "-",  
+      "descr": "GOOGLE-CLOUD",  
+      "openPorts": ["-"],  
+      "risk": "100",
+      "attacks": {
+        "ports": {"21":"376"},  
+        "hours": {"00:00":"25","01:00":"14"}
+      }
+    }
+  ]
+ }
+```
+
+### AVAILABLE METHODS
+
+```python
+>>> categorize_domain(domain: str)
+>>> check_ip(ip: str)
+```
