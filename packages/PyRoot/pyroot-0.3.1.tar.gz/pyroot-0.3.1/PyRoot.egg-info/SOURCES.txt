@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+PyRoot.egg-info/PKG-INFO
+PyRoot.egg-info/SOURCES.txt
+PyRoot.egg-info/dependency_links.txt
+PyRoot.egg-info/top_level.txt
+pyroot/__init__.py
+pyroot/_pyroot_new.py
+pyroot/_pyroot_old.py
