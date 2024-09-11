@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: jj-spec-validator
+Version: 0.1.3
+Summary: jj mocks validator for openapi specs
+Home-page: https://github.com/Maestoz/jj-spec-validator
+Author: Sam Roz
+Author-email: rolez777@gmail.com
+License: Apache-2.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: httpx<1.0.0,>=0.27.0
+Requires-Dist: schemax-openapi<1.0.0,>=0.0.2
+Requires-Dist: jj<3.0.0,>=2.10.3
+
+## Usage
+
+1. Decorate your [mocked](https://pypi.org/project/jj/) function with `@validate_spec()`, providing a link to a YAML or JSON OpenAPI spec.
+```python
+import jj
+from jj.mock import mocked
+from jj_spec_validator import validate_spec
+
+@validate_spec(spec_link="http://example.com/api/users/spec.yml")
+async def your_mocked_function():
+    matcher = jj.match("GET", "/users")
+    response = jj.Response(status=200, json=[])
+    
+    mock = await mocked(matcher, response)
+```
+2. Control discrepancy handling with `validate_level` key: 
+   - `"error"` (default, raises error)
+   - `"warning"` (prints warning, continues execution)
+   - `"skip"` (skips validation)
+```python
+@validate_spec(spec_link="http://example.com/spec.yml", validate_level="warning")
+```
+3. `is_strict` key (in development) will allow choosing between strict and non-strict comparison. Currently, non-strict comparison is used.
