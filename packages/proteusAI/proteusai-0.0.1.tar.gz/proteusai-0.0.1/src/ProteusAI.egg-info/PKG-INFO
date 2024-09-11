@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: ProteusAI
+Version: 0.1.0
+Summary: ProteusAI is a python package designed for AI driven protein engineering.
+Home-page: https://github.com/jonfunk21/ProteusAI
+Author: Jonathan Funk
+Author-email: funk.jonathan21@gmail.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: torch_geometric
+Requires-Dist: uvicorn
+Requires-Dist: asgiref
+Requires-Dist: starlette
+Requires-Dist: shiny
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: requests
+Requires-Dist: scipy
+Requires-Dist: fair-esm
+Requires-Dist: matplotlib
+Requires-Dist: biopython
+Requires-Dist: biotite
+Requires-Dist: scikit-learn
+Requires-Dist: optuna
+Requires-Dist: seaborn
+Requires-Dist: openpyxl
+Requires-Dist: py3Dmol
+Requires-Dist: gpytorch
+Requires-Dist: openmm
+Requires-Dist: umap-learn

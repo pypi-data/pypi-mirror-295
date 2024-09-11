@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proteusAI"
+version = "0.0.1"
+requires-python = ">= 3.8"
+description = "ProteusAI is a python package designed for AI driven protein engineering."
+readme = "README.md"
+
+dependencies = [
+  # # install via conda
+  # "torch",
+  # "torch_geometric",
+  # "torch-scatter",
+  "uvicorn",
+  "asgiref",
+  "starlette",
+  #"pdbfixer",
+  "shiny",
+  "pandas",
+  "numpy",
+  "requests",
+  "scipy",
+  "fair-esm",
+  "matplotlib",
+  "biopython",
+  "biotite",
+  "scikit-learn",
+  "optuna",
+  "seaborn",
+  "openpyxl",
+  "py3Dmol",
+  "gpytorch",
+  "openmm",
+  "umap-learn",
+]
+
+[project.optional-dependencies]
+docs = [
+  "sphinx",
+  "sphinx-book-theme",
+  "myst-nb",
+  "ipywidgets",
+  "sphinx-new-tab-link!=0.2.2",
+  "jupytext",
+]
+dev = ["black", "ruff", "pytest"]
