@@ -1,0 +1,3 @@
+[console_scripts]
+payload-generator = payload_generator:generate_payloads
+
