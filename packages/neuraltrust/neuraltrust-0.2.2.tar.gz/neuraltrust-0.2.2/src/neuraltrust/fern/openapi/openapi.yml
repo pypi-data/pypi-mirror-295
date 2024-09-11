@@ -1,0 +1,215 @@
+openapi: 3.0.2
+servers:
+  - url: https://api.neuraltrust.ai/v1
+    description: NeuralTrust API
+info:
+  description: |-
+    This is the NeuralTrust API.  You can find out more about
+    Swagger at [http://swagger.io](http://swagger.io). 
+    Some useful links:
+    - [The NeuralTrust API repository](https://github.com/neuraltrust/api)
+    - [The source API definition for the NeuralTrust API](https://github.com/neuraltrust/api/blob/main/openapi.yaml)
+  version: 1.0.17
+  title: NeuralTrust API
+  termsOfService: 'https://neuraltrust.ai/terms'
+  contact:
+    email: support@neuraltrust.ai
+  license:
+    name: Apache 2.0
+    url: 'https://neuraltrust.ai/terms'
+tags:
+  - name: trace
+    description: Everything about your traces
+    externalDocs:
+      description: Find out more
+      url: 'https://neuraltrust.ai/docs'
+paths:
+  /trace:
+    post:
+      tags:
+        - trace
+      summary: Add a new trace
+      description: Add a new trace
+      operationId: trace
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TraceResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceResponse'
+        '405':
+          description: Invalid input
+      security:
+        - api_key: []
+      requestBody:
+        description: Create a new trace
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trace'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Trace'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Trace'
+externalDocs:
+  description: Find out more about NeuralTrust
+  url: 'https://neuraltrust.ai/docs'
+components:
+  schemas:
+    User:
+      x-swagger-router-model: io.neuraltrust.model.User
+      properties:
+        user_id:
+          type: string
+          description: user id
+          example: 10
+        user_email:
+          type: string
+          description: user email
+          example: user@example.com
+        user_phone:
+          type: string
+          description: user phone
+          example: 1234567890
+    Metadata:
+      x-swagger-router-model: io.neuraltrust.model.Metadata
+      properties:
+        user_agent:
+          type: string
+          description: user agent
+          example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+        timezone:
+          type: string
+          description: timezone
+          example: America/New_York
+        browser:
+          type: string
+          description: browser id
+          enum:
+            - chrome
+            - firefox
+            - safari
+            - edge
+            - opera
+            - unknown
+        device:
+          type: string
+          description: device id
+          enum:
+            - desktop
+            - mobile
+            - unknown
+        os:
+          type: string
+          description: os id
+          enum:
+            - windows
+            - mac
+            - linux
+            - ios
+            - android
+            - unknown
+        locale:
+          type: string
+          description: locale
+          example: en-US
+        location:
+          type: string
+          description: location
+          example: US
+    Trace:
+      x-swagger-router-model: io.neuraltrust.model.Trace
+      required:
+        - conversation_id
+        - interaction_id
+        - type
+        - task
+        - input
+        - start_timestamp
+        - end_timestamp
+      properties:
+        conversation_id:
+          type: string
+          description: conversation id
+          example: 10
+        interaction_id:
+          type: string
+          description: interaction id
+          example: 10
+        session_id:
+          type: string
+          description: session id
+          example: 10
+        type:
+          type: string
+          description: type of trace
+        task:
+          type: string
+          description: task to perform
+          enum:
+            - retrieval
+            - generation
+            - feedback
+            - router
+            - system
+        channel_id:
+          type: string
+          description: channel id
+        input:
+          type: string
+          description: content to retrieve or generate
+          example: "What is the weather in Tokyo?"
+        output:
+          type: string
+          description: generated content
+          example: "The weather in Tokyo is 60 degrees celsius."
+        start_timestamp:
+          type: string
+          description: start timestamp of the trace
+          format: unix-timestamp
+        end_timestamp:
+          type: string
+          description: end timestamp of the trace
+          format: unix-timestamp
+        custom:
+          type: string
+          description: custom data
+          example: {"key": "value"}
+        user:
+          $ref: '#/components/schemas/User'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      xml:
+        name: trace
+      type: object
+    TraceResponse:
+      properties:
+        status:
+          type: integer
+          format: int32
+          description: status code
+      xml:
+        name: '##default'
+      type: object
+  requestBodies:
+    Trace:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Trace'
+      description: Trace object that needs to be sent to the API
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: token
+      in: header

@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "neuraltrust"
+version = "0.2.2"
+description = "Python SDK to send traces, configure and run evaluations and more for your LLM-based application"
+authors = ["NeuralTrust <support@neuraltrust.ai>"]
+readme = "README.md"
+packages = [{include = "**/*", from = "src/"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+retrying = "^1.3.4"
+openai = "^1.3.4"
+colorlog = "^6.7.0"
+pyyaml = "^6.0.1"
+ragas = ">=0.1.15"
+umap-learn = ">=0.5.6"
+pandas = "*"
+langchain = ">=0.2.14"
+datasets = "^2.16.0"
+python-dotenv = "^1.0.0"
+requests = "^2.31.0"
+langchain-openai = ">=0.1.21"
+jinja2 = "^3.1.4"
+pydantic = ">=2.7.4,<3.0.0"
+pydantic-settings = ">=2.2.1,<3.0.0"
+pydantic_core = ">=2.16.3,<3.0.0"
+tokenizers = ">=0.19,<0.20"
+scipy = ">=1.7.3, <1.12.0"
+bokeh = ">=3.3.4"
+langdetect = ">=1.0.9"
+faiss-cpu = ">=1.7.4,<1.8.0.post1"
+croniter = ">=3.0.3"
+tabulate = ">=0.9.0"
+torch = ">=2.2.1"
+setfit = ">=1.0.3"
+huggingface_hub = "0.23.5"
+pyjwt = ">=2.8.0"
+sseclient-py = ">=0.0.22"
+azure-search-documents = ">=11.5.1"
+PyPDF2 = ">=3.0.1"
+jsonpath_ng = ">=1.6.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "setuptools>=45", "wheel"]
+build-backend = "poetry.core.masonry.api"
