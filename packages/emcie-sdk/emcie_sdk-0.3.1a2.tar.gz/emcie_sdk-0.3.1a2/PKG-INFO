@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: emcie-sdk
+Version: 0.3.1a2
+Summary: 
+Author: Yam Marcovitz
+Author-email: yam@emcie.co
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: emcie-common (==0.3.1-alpha.2)
+Description-Content-Type: text/markdown
+
+
