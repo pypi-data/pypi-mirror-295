@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: nickspylib
+Version: 0.1.4
+Summary: Example of a Python Library
+Home-page: https://github.com/nickdala/nicks-pylib
+License: MIT
+Keywords: example,python,library
+Author: Nick Dalalelis
+Author-email: ndalalelis@yahoo.com
+Requires-Python: >=3.10.14,<3.11.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: numpy (>=1.21.4,<1.22.0)
+Project-URL: Repository, https://github.com/nickdala/nicks-pylib
+Description-Content-Type: text/markdown
+
+# nicks-pylib
+
+Example of a Python library
+
+## Install
+
+```bash
+pip install nickspylib
+```
+
+## Usage
+
+```bash
+from nickspylib import random
+
+number = random.generate_random_number(3, 10)
+```
+
