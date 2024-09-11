@@ -1,0 +1,6 @@
+include cythonevparser/requirements.txt
+include cythonevparser/thirdparty.json
+include cythonevparser/evparse.pyx
+include cythonevparser/evparse_compile.py
+include cythonevparser/LICENSE
+include cythonevparser/README.MD
