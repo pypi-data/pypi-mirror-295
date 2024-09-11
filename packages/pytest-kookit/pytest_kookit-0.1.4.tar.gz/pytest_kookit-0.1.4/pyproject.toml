@@ -1,0 +1,172 @@
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "pytest-kookit"
+version = "0.1.4"
+description = "Your simple but kooky integration testing with pytest"
+readme = "README.md"
+license = "MIT"
+authors = ["Dmitry Makarov <mit.makaroff@gmail.com>"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = [
+    "Integration Testing",
+    "External Services' mocks",
+]
+packages = [
+    { include = "kookit" },
+    { include = "kookit/py.typed" }
+]
+
+[tool.poetry.urls]
+"Changelog" = "https://github.com/Mityuha/pytest-kookit/releases"
+"Source" = "https://github.com/Mityuha/pytest-kookit"
+"Tracker" = "https://github.com/Mityuha/pytest-kookit/issues"
+
+[tool.poetry.plugins."pytest11"]
+"kookit" = "kookit"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.13"
+multiprocess = "*"
+fastapi = ">=0.69.0"
+uvicorn = "*"
+httpx = "*"
+pytest-mock = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+ruff = "*"
+mypy = "*"
+pre-commit = "*"
+pytest-cov = "*"
+pytest-asyncio = "*"
+autoflake = "*"
+types-dataclasses = "*"
+sort-all = "*"
+tox = "*"
+faker = "*"
+requests = "*"
+pytest-httpx = "*"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+xfail_strict = "true"
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/stable/config_file.html
+python_version = "3.10"
+exclude = []
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_incomplete_defs = true
+
+[tool.ruff]
+exclude = [
+    ".git", 
+    ".mypy_cache",
+    ".pytest_cache",
+]
+line-length = 99
+fix = true
+unsafe-fixes = true
+show-fixes = true
+
+[tool.ruff.lint]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D107",
+    "ANN101",
+    "ANN401",
+    "PLR0913",
+    "ISC001",
+    "D203",
+    "D213",
+    "COM812",
+]
+select = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+"tests/*py" = [
+    "ANN001",
+    "ANN002",
+    "ANN003",
+    "ANN401",
+    "PLR2004",
+    "S101",
+    "S311",
+    "FBT001",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+no-lines-before = ["standard-library", "local-folder"]
+known-third-party = ["pytest"]
+known-local-folder = []
+lines-after-imports = 2
+
+[tool.coverage]
+[tool.coverage.run]
+omit = [
+    '__init__.py',
+]
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py38,py39,py310,py311,py312
+
+[testenv]
+deps =
+    mypy==1.10.0
+    ruff==0.4.4
+
+    multiprocess==0.70.16
+    fastapi==0.98.0
+    uvicorn==0.23.2
+    httpx==0.24.1
+    pytest==7.4.3
+    pytest-mock==3.12.0
+    requests==2.31.0
+    faker==19.13.0
+    pytest-httpx==0.22.0
+    pytest-asyncio==0.21.1
+
+commands = 
+    ruff check --no-fix kookit/ tests/ 
+    mypy kookit/ tests/ 
+    pytest tests/ -x
+setenv =
+    PIP_INDEX_URL = {env:PIP_INDEX_URL:https://pypi.org/simple/}
+
+[gh-actions]
+python =
+    3.8: py38
+    3.9: py39
+    3.10: py310
+    3.11: py311
+    3.12: py312
+"""
