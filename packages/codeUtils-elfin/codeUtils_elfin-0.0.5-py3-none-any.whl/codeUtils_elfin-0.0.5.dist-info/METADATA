@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: codeUtils-elfin
+Version: 0.0.5
+Summary: 常用功能模块快速使用库.
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: loguru>=0.7.2
+Requires-Dist: seaborn>=0.13.1
+Requires-Dist: matplotlib>=3.9.1
+
+# codeTools
+
+代码工具箱，记录关键代码防止重复开发
+
+## Install
+
+```shell
+pip install --index-url https://pypi.org/simple codeUtils-elfin
+```
+
+## update code
+
+```shell
+python3 -m pip install --upgrade build
+python -m build
+twine upload dist/*
+```
