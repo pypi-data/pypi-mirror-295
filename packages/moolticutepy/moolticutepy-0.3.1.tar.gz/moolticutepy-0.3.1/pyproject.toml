@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = "~8.1.7"
+websockets = "~13.0.1"
+pydantic_core = "~2.20.1"
+pydantic = "~2.8.2"
+
+[tool.poetry]
+name = "moolticutepy"
+version = "0.3.1"
+description = "Library an CLI to speak with moolticute service"
+readme = "README.md"
+
+authors = ["Raul Sampedro <5142014+rsrdesarrollo@users.noreply.github.com>"]
+
+license = "LICENSE"
+keywords = [
+    "moolticute",
+    "moolticuted",
+    "mootlipass",
+    "mooltipassminible",
+    "mooltipassble",
+    "password",
+    "password manager",
+]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+[tool.poetry.scripts]
+moolticutepy = "moolticutepy.cli:main"
+
+[tool.poetry.urls]
+Homepage = "https://github.com/rsrdesarrollo/moolticutepy"
