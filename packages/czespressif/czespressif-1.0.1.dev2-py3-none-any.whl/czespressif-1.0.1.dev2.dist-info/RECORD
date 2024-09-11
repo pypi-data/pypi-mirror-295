@@ -1,0 +1,16 @@
+czespressif/__init__.py,sha256=GDsKJ7zdqlwHqnENARkdDThOccYPPqcEBVHKIQcQhio,181
+czespressif/config.py,sha256=UvvAXJm6BK4UIZJOckTp-ZlgO2XXa7ckBJaKcYHbGzA,4690
+czespressif/czespressif.py,sha256=3lmzsd5jgXDUwRe8HDu6wUdyvgfmYCyOhr8i8AveMhk,7163
+czespressif/defaults.py,sha256=Z4UidjXKgLu_iTGQ9hmDcyzNyjkAwkTZK7yWsw5Xuiw,3549
+czespressif/example.py,sha256=9aBG2c-XMzsRcX9Vdz-EeC6ll89_K90401fKJ7OZ-uI,3067
+czespressif/questions.py,sha256=IKsDMuU9fPfT7krQEec7sBQ6OQ1bEdcztzs-3kiyUFQ,3165
+czespressif/templates/CHANGELOG.md.j2,sha256=nK8Rx2h6Utg0moW2UhWNCEbbF4h9ZNWUoR1VAu-3GZw,2196
+czespressif/templates/RELEASE_NOTES.md.j2,sha256=g3M74V2rtXrK2NF3foGwRp-jozF8tbvdFokM6_O--uA,1127
+czespressif/templates/macros.md.j2,sha256=V81At8a7ioikaV4IMT5HGKps6sWlcOP4C3UHkssjsSE,1194
+tests/test_czespressif.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+czespressif-1.0.1.dev2.dist-info/LICENSE,sha256=fwe0AmqAqkGbg7v5zVS5fskBZq3z-OFrtOEZxfPT4Vs,11327
+czespressif-1.0.1.dev2.dist-info/METADATA,sha256=Eb-W7ccM395-d3zn6nM77mk8orn1yy6tKOI4dDPU_xc,24096
+czespressif-1.0.1.dev2.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+czespressif-1.0.1.dev2.dist-info/entry_points.txt,sha256=lsKE9YAARU4zBlzXAc9QxGtI005vmWr8iu73mWjDKnU,64
+czespressif-1.0.1.dev2.dist-info/top_level.txt,sha256=t4RGjjwXauzdxyWVw7KZTe1c_F2tOS9uzBu78fc0HFk,18
+czespressif-1.0.1.dev2.dist-info/RECORD,,
