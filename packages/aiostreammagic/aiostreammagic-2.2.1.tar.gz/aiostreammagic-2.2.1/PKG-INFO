@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: aiostreammagic
+Version: 2.2.1
+Summary: An async python package for interfacing with Cambridge Audio / Stream Magic compatible streamers.
+Home-page: https://github.com/noahhusby/aiostreammagic
+License: MIT
+Author: Noah Husby
+Author-email: 32528627+noahhusby@users.noreply.github.com
+Maintainer: Noah Husby
+Maintainer-email: 32528627+noahhusby@users.noreply.github.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aiohttp (>=3.0.0)
+Requires-Dist: mashumaro (>=3.11,<4.0)
+Requires-Dist: orjson (>=3.9.0)
+Requires-Dist: websockets (>=13.0.1,<14.0.0)
+Requires-Dist: yarl (>=1.6.0)
+Project-URL: Documentation, https://github.com/noahhusby/aiostreammagic
+Project-URL: Repository, https://github.com/noahhusby/aiostreammagic
+Description-Content-Type: text/markdown
+
+<div align="center">
+
+# aiostreammagic
+
+#### An async python package for interfacing with Cambridge Audio / Stream Magic compatible streamers
+[![GitHub Release][releases-shield]][releases]
+[![Python Versions][python-versions-shield]][pypi]
+[![Downloads][downloads-shield]][pypi]
+![Project Maintenance][maintenance-shield]
+[![License][license-shield]](LICENSE.md)
+
+</div>
+
+# About
+This module implements a Python client for the Stream Magic API used to control Cambridge Audio streamers. The API connects over TCP/IP and supports several streamers, receivers, and pre-amps.
+
+## Supported Devices
+- Cambridge Audio Evo 75
+- Cambridge Audio Evo 150
+- Cambridge Audio CXN
+- Cambridge Audio CXN (v2)
+- Cambridge Audio CXR120
+- Cambridge Audio CXR200
+- Cambridge Audio 851N
+- Cambridge Audio Edge NQ
+
+If your model is not on the list of supported devices, and everything works correctly then add it to the list by opening a pull request.
+
+# Installation
+```shell
+pip install aiostreammagic
+```
+
+[license-shield]: https://img.shields.io/github/license/noahhusby/aiostreammagic.svg
+[downloads-shield]: https://img.shields.io/pypi/dm/aiostreammagic
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/aiostreammagic
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
+[releases-shield]: https://img.shields.io/github/release/noahhusby/aiostreammagic.svg
+[releases]: https://github.com/noahhusby/aiostreammagic/releases
+[pypi]: https://pypi.org/project/aiostreammagic/
