@@ -1,0 +1,9 @@
+.model-viewer-container {
+  display: flex;
+  justify-content: center;
+}
+
+.model-viewer {
+  width: var(--model-viewer-width, 500px);
+  height: var(--model-viewer-height, 500px);
+}
