@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: djungarik
+Version: 0.1.2
+Summary: Djungarik — A simple Tkinter-based UI package
+Home-page: https://github.com/djungarikDEV/djungarik
+Author: djungar_DEV
+Author-email: arnispprt@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Djungarik
+
+Djungarik is a simple Python package that provides a GUI application with Tkinter.
+
+## Installation
+
+You can install the package using pip:
+
+```bash
+pip install djungarik
+```
