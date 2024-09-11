@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: ovos-phal-plugin-ipgeo
+Version: 0.1.0a1
+Summary: A PHAL plugin for mycroft
+Home-page: https://github.com/OpenVoiceOS/ovos-PHAL-plugin-ipgeo
+Author: JarbasAi
+Author-email: jarbasai@mailfence.com
+License: Apache-2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: ovos-plugin-manager<1.0.0,>=0.0.1
+Requires-Dist: ovos-config<1.0.0,>=0.0.10
+Requires-Dist: requests
+
+# PHAL plugin - IPGeo
+Provides geolocation information via the Messagebus.
+
