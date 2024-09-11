@@ -1,0 +1,2 @@
+[console_scripts]
+sap = sapcommissions.__main__:cli
