@@ -1,0 +1,2 @@
+[console_scripts]
+susi-word-finder = susi_lib.word_finder_cli:main
