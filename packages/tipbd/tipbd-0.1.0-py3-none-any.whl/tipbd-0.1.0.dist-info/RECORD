@@ -1,0 +1,10 @@
+cpp/mgcg_cuda/CMakeLists.txt,sha256=L7qrbyLEy2Qp3d5_q7Hse2gzeXMtTnWoVTZaYgfQGps,1149
+cpp/mgcg_cuda/fastmg.cu,sha256=6amVYZGb7BWCek6A34LW93Dq7DSKdzLXJ9XEJkitnBY,78518
+cpp/mgcg_cuda/kernels.cuh,sha256=wYjbK_m1ljzh-PSv3-6lR-IQP8WAqWaEslc7GVH1J2Y,2565
+cpp/mgcg_cuda/README.md,sha256=VF3ib_SzHDGJl2T4IV7Wx9kh0ej5Z5m4XpLewgEF8M8,2094
+tipbd/cloth/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tipbd/cloth/cloth2d.py,sha256=9w4Y6uzRqilZ9Iy3zQIBb8dVUp6uD4KyEvYgCJTNDdI,22238
+tipbd/cloth/cloth3d.py,sha256=ofRjKf2Wrb8TZ_BueBXSQlJnY0n4pEhd3DqmF5xkenQ,73782
+tipbd-0.1.0.dist-info/METADATA,sha256=w4p1PZWmH8M2YMc2p8GUbCjmZYG--oJ4rL6dMFa0qdY,446
+tipbd-0.1.0.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+tipbd-0.1.0.dist-info/RECORD,,
