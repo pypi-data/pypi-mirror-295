@@ -1,0 +1,34 @@
+name: Linting
+
+on:
+  push:
+    paths:
+      - '**.py'
+  pull_request:
+    paths:
+      - '**.py'
+
+jobs:
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install Project
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .[lint]
+      - name: Run ruff formatter
+        if: always()
+        run: |
+          ruff format --check src tests
+      - name: Run ruff linter
+        if: always()
+        run: |
+          ruff check src tests
+      - name: Run MyPy
+        if: always()
+        run: |
+          mypy src

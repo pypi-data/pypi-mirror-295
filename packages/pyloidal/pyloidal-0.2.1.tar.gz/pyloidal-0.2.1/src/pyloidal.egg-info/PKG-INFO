@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: pyloidal
+Version: 0.2.1
+Summary: Python utilies for tokamak science.
+Author-email: Liam Pattinson <liam.pattinson@york.ac.uk>
+License: MIT License
+        
+        Copyright (c) 2023 PlasmaFAIR, 2017 Orso Meneghini
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Source, https://github.com/PlasmaFAIR/pyloidal
+Project-URL: Tracker, https://github.com/PlasmaFAIR/pyloidal/issues
+Keywords: tokamak,cocos
+Classifier: Programming Language :: Python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Natural Language :: English
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.24
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: coverage; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+Requires-Dist: pytest-sugar; extra == "test"
+Provides-Extra: lint
+Requires-Dist: ruff; extra == "lint"
+Requires-Dist: mypy; extra == "lint"
+
+# pyloidal
+
+Python utilities for tokamak science.
+
+## Install
+
+Install from PyPI:
+
+```bash
+$ python3 -m pip install --upgrade pip
+$ python3 -m pip install pyloidal
+```
+
+Install from GitHub repo:
+
+```bash
+$ git clone https://github.com/PlasmaFAIR/pyloidal
+$ cd pyloidal
+$ python3 -m pip install --upgrade pip
+$ python3 -m pip install .
+```
+
+## Tests
+
+First clone the repo, then:
+
+```bash
+$ python3 -m pip install .[test]
+$ pytest --cov=pyloidal ./tests
+```
+
+## License
+
+Copyrighted under the MIT License. Uses elements from [OMAS][OMAS], which is also
+copyrighted under MIT, 2017 Orso Meneghini.
+
+[OMAS]: https://github.com/gafusion/omas

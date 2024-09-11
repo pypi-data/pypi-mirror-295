@@ -1,0 +1,11 @@
+numpy>=1.24
+
+[lint]
+ruff
+mypy
+
+[test]
+pytest
+coverage
+pytest-cov
+pytest-sugar
