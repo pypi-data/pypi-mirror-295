@@ -1,0 +1,6 @@
+elasticsearch
+regex
+urllib3
+tenacity
+pydantic
+pydantic[email]
