@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django_madval"
+version = "0.0.3"
+authors = [
+  { name="Mohammad Pourmohammadi Fallah", email="mohammad.pfallah@gmail.com" },
+]
+description = "A django package to use either persian numbers or comma separated persian numbers in djanog. You can also translate weekdays to persian and use persian name for months!"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
+Sourcecode = "https://github.com/mohammadpmf/django_madval"
