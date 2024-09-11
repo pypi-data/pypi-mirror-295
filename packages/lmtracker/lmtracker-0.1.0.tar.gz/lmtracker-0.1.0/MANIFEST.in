@@ -1,0 +1,11 @@
+include LICENSE
+include README.md
+
+recursive-include apollo_dlc_model_light *
+
+exclude .pre-commit-config.yaml
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude docs *
+recursive-exclude tests *
