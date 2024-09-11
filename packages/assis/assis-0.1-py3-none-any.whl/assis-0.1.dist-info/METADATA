@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: assis
+Version: 0.1
+Summary: A doc generator for data engineering projects.
+Home-page: https://github.com/pedrohgoncalvess/assis
+Author: Pedro H. Gonçalves
+Author-email: pedro_gonsalves@hotmail.com
+Requires-Python: >=3.6
+Requires-Dist: openai
+Requires-Dist: python-dotenv
+Requires-Dist: pyyaml
+
+A doc generator for data engineering projects.
