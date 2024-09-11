@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: ptlbp
+Version: 0.1.0
+Summary: A package that implements Local Binary PAtterns for pytorch
+Author: Anguelos Nicolaou
+Author-email: anguelos.nicolaou@gmail.com
+License: MIT
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: rarfile
+Requires-Dist: py7zr
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: Pillow
+Requires-Dist: tqdm
+Requires-Dist: scikit-learn
+
