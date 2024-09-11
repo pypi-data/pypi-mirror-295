@@ -1,0 +1,90 @@
+"""
+Perfect diagonal extended whirlpool permutation
+
+A whirlpool permutation is an n x m matrix containing number 1..n*m where every 2x2 sub matrix is either ordered cw (clockwise) or ccw (counter-clockwise).
+An extended whirlpool permutation requires that the outside ring is ordered cw or ccw, and the ring inside it, etc.
+A perfect diagonal whirlpool permutation required n = m and that the sum of both diagonals is n*(n+1)*(n+1) div 2.
+
+The model, below, is close to (can be seen as the close translation of) the one submitted to the M2020 inizinc challenge.
+No Licence was explicitly mentioned (MIT Licence is assumed).
+
+## Data
+  Two integers (n,m)
+
+## Model
+  Constraints: AllDifferent, Sum
+
+## Execution
+  python Whirlpool.py -data=[number,number]
+
+## Links
+  - https://www.minizinc.org/challenge2020/results2020.html
+
+## Tags
+  academic, mzn20
+"""
+
+from pycsp3 import *
+
+n, m = data
+
+# x[i][j] is the value of the cell at coordinates (i,j)
+x = VarArray(size=[n, m], dom=range(n * m))
+
+cnt = 0
+
+
+def table1(r):
+    return [tuple([i, v] + [ANY if j == i else lt(col((j + 1) % r)) if v == 1 else gt(col((j + 1) % r)) for j in range(r)]) for i in range(r) for v in (0, 1)]
+
+
+def table2(r):
+    return [tuple([i, v] + [ANY if j != i else gt(col((j + 1) % r)) if v == 1 else lt(col((j + 1) % r)) for j in range(r)]) for i in range(r) for v in (0, 1)]
+
+
+d1, d2 = dict(), dict()
+
+
+def whirlpool(y):
+    global cnt, d1, d2
+    r = len(y)
+
+    pos = Var(dom=range(r), id="pos" + str(cnt))
+    inc = Var(dom={0, 1}, id="inc" + str(cnt))
+    cnt += 1
+
+    test = False
+    if test:
+        return [(i != pos) == ((y[i] < y[(i + 1) % r]) == inc) for i in range(r)]
+    else:
+        if r not in d1:
+            d1[r] = table1(r)
+        if r not in d2:
+            d2[r] = table2(r)
+
+        return [
+            (pos, inc, y) in d1[r],
+            (pos, inc, y) in d2[r]
+        ]
+
+    # return Sum(y[i] < y[(i + 1) % r] for i in range(r)) in {1, r - 1}
+
+
+satisfy(
+    # ensuring a permutation
+    AllDifferent(x),
+
+    # every 2 x 2 sub matrix is either ordered clockwise or counter-clockwise
+    [whirlpool([x[i][j], x[i][j + 1], x[i + 1][j + 1], x[i + 1][j]]) for i in range(n - 1) for j in range(m - 1)],
+
+    # every ring is either ordered clockwise or counter-clockwise
+    [whirlpool(ring(x, k)) for k in range(min(n, m) // 2)],
+
+    # ensuring, for a perfect diagonal whirlpool permutation, that the sum of both diagonals is n*(n+1)*(n+1) div 2
+    [Sum(diagonal) == n * (n + 1) * (n + 1) // 2 for diagonal in [diagonal_down(x), diagonal_up(x)]] if n == m else None
+)
+
+""" Comments
+1) data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)
+2) diagonal_down, diagonal_up and ring are methods defined as tools in the library
+"""
