@@ -1,0 +1,31 @@
+name: Publish release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+*"
+
+jobs:
+
+  pypi:
+    name: pypi
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/qiskit-addon-dice-solver
+    permissions:
+      id-token: write
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Install `build` tool
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build distribution
+        run: |
+          python3 -m build
+      - name: Publish release to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
