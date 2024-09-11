@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+src/dbstudio/fastapi.py
+src/dbstudio/schema.py
+src/dbstudio/starlette.py
+src/dbstudio.egg-info/PKG-INFO
+src/dbstudio.egg-info/SOURCES.txt
+src/dbstudio.egg-info/dependency_links.txt
+src/dbstudio.egg-info/requires.txt
+src/dbstudio.egg-info/top_level.txt
+src/dbstudio/static/index.html
+src/dbstudio/static/vite.svg
+src/dbstudio/static/assets/index-CGWSX2pM.js
+src/dbstudio/static/assets/index-CXkX6QG-.css
