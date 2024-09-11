@@ -1,0 +1,17 @@
+b3integration_mig24/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+b3integration_mig24/admin.py,sha256=vtlXPa4ZUqVlxXOHJMnrLUv3bZcbwJJOl1799SsTrZ4,235
+b3integration_mig24/apps.py,sha256=BaZhlhuGe_N0g1MIXLr2dBLxibRdkb3uQqyP-FT4p9k,195
+b3integration_mig24/constants.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+b3integration_mig24/models.py,sha256=hGTp9aaSqtLK09VbZQMKJ_vCCp9egI_DBk2IgDVSxug,571
+b3integration_mig24/seeds.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+b3integration_mig24/tests.py,sha256=6K-xpq1JHNksnrVGeBQeZ93Z7zS-_utzqQy-jawHFSU,883
+b3integration_mig24/management/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+b3integration_mig24/management/commands/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+b3integration_mig24/management/commands/get_raw_mchd.py,sha256=8ckUod2FXLp4x4EDU2CyTEwA3etJsiz4yMlTTbhMHMk,663
+b3integration_mig24/migrations/0001_initial.py,sha256=GHEk7PrGGjtJp5JgVgmZ3m3oBOJsi1ICYOP7KyC6SRA,862
+b3integration_mig24/migrations/0002_add_fields_to_settings.py,sha256=BjDCcHpPk-MbUYJqnb3QzwNRsFzFbofFyqGK_Py9xqk,899
+b3integration_mig24/migrations/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+big3_integration_mig24-0.1.dev5.dist-info/METADATA,sha256=Dh6tyI6MnN-g14wtuKwOSZSkDuIgSRoC9R8mOD4ysjY,633
+big3_integration_mig24-0.1.dev5.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+big3_integration_mig24-0.1.dev5.dist-info/licenses/LICENSE,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+big3_integration_mig24-0.1.dev5.dist-info/RECORD,,
