@@ -1,0 +1,37 @@
+[project]
+name = "exonweb"
+version = "7.0"
+description = "Simple lightweight framework and utils for web applications."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+authors = [{name = "ExonLabs", email = "info@exonlabs.net"}]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "flask>=2.3,<3.0",
+    "Jinja2>=3.1,<4.0",
+    "gunicorn>=20.1,<21.0",
+]
+
+[project.optional-dependencies]
+dev = []
+
+[project.urls]
+Documentation = "https://exonlabs.github.io/py-exonweb"
+Repository = "https://github.com/exonlabs/py-exonweb"
+
+[build-system]
+requires = ["setuptools >= 68.0"]
+build-backend = "setuptools.build_meta"
