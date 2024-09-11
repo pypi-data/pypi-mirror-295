@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: custom_functions_swipe
+Version: 0.1
+Summary: A custom functions module built with pybind11
+Author: Himanshu
+Requires-Dist: pybind11
+
