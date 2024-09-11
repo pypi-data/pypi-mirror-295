@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center"><u>{{title_html}}</u></h1>
+<div class="container-fluid">
+
+  <div class="row">
+      <div class="col">
+        <table class="table table-sm table-responsive">
+        <tbody>
+          <tr>
+            <th>TRANSFER ID</th>
+            <td>{{ transfer_id }}</td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>DATAOBJECT READ</th>
+            <td>{{ do_read_id }}
+                </td>
+          </tr>
+          <tr>
+            <th>DATAOBJECT WRITE</th>
+            <td>{{do_write_id}}</td>
+          </tr>
+         <tr>
+            <th></th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>SCHEMA IN </th>
+            <td>{{ schema_in_id }}</td>
+          </tr>
+          <tr>
+            <th>SCHEMA OUT </th>
+            <td>{{ schema_out_id }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+      <div class="col">
+      </div>
+  </div>
+</div>
+{% endblock %}
