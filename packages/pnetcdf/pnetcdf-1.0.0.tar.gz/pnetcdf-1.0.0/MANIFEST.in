@@ -1,0 +1,19 @@
+include MANIFEST.in
+include COPYRIGHT
+include pyproject.toml
+include setup.cfg
+include setup.py
+include src/pnetcdf/__init__.py
+include src/pnetcdf/_Dimension.pyx
+include src/pnetcdf/_Dimension.pxd
+include src/pnetcdf/_File.pyx
+include src/pnetcdf/_File.pxd
+include src/pnetcdf/_utils.pyx
+include src/pnetcdf/_utils.pxd
+include src/pnetcdf/_Variable.pyx
+include src/pnetcdf/_Variable.pxd
+include include/PnetCDF.pxi
+include include/mpi-compat.h
+include README.md
+include docs/*.md
+
