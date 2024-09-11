@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+graft src
+include /doc/*.md
+include icon.ico
