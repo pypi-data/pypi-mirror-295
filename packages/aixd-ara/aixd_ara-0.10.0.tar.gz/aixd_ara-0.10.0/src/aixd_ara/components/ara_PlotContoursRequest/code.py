@@ -1,0 +1,22 @@
+# flake8: noqa
+from scriptcontext import sticky as st
+from aixd_ara.gh_ui import plot_contours_request
+from aixd_ara.gh_ui import get_dataobject_types
+from aixd_ara.gh_ui_helper import session_id
+from aixd_ara.gh_ui_helper import component_id
+from aixd_ara.gh_ui_helper import convert_str_to_bitmap
+from aixd_ara.gh_ui_helper import reformat_request
+
+
+cid = component_id(session_id, ghenv.Component, "create_dataset_object")
+
+n_samples = 3
+
+if plot:
+    variable_types = get_dataobject_types(session_id())["dataobject_types"]
+    request_dict = reformat_request(request, variable_types)
+    print request_dict
+    st[cid] = plot_contours_request(session_id(), request_dict, n_samples, "interactive") # will launch the plotly fig in browser
+
+if cid in st.keys():
+    print st[cid]
