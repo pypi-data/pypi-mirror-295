@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: generate-waveform
+Version: 0.1.3
+Summary: Generate waves
+Home-page: UNKNOWN
+Author: Zahra Shamsi
+Author-email: zahra.shamsi@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: fastapi==0.114.0
+Requires-Dist: matplotlib==3.7.5
+Requires-Dist: numpy==1.24.4
+Requires-Dist: uvicorn==0.30.6
+
+UNKNOWN
+
+
