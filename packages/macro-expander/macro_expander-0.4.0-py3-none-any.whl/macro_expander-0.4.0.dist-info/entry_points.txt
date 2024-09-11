@@ -1,0 +1,3 @@
+[console_scripts]
+expand-macros = macro_expander.scripts.expand_macros:main
+expand-macros.py = macro_expander.scripts.expand_macros:main
