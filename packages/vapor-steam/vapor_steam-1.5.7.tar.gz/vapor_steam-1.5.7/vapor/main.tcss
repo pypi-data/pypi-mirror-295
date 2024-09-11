@@ -1,0 +1,72 @@
+#body {
+	padding: 2;
+}
+
+#input-container {
+	layout: grid;
+	grid-size: 2;
+	grid-gutter: 2;
+	padding: 2;
+}
+
+Input.-valid {
+	border: tall $success 60%;
+}
+
+Input.-valid:focus {
+	border: tall $success;
+}
+
+DataTable {
+	padding-top: 1;
+	height: 1fr;
+	max-height: 1fr;
+}
+
+#user-rating {
+	padding-top: 2;
+}
+
+PrivateAccountScreen {
+	align: center middle;
+}
+
+
+#dialog {
+	align: center middle;
+	padding: 1;
+	width: 75%;
+	height: 65%;
+	border: thick $background 80%;
+	background: $surface;
+}
+
+#acct-info {
+	padding-bottom: 1;
+}
+
+Screen {
+	align: center middle;
+}
+
+#content-container {
+	width: 75%;
+	height: auto;
+	max-height: 100%;
+	padding: 1 2;
+	margin: 2 0;
+	background: $panel;
+	color: $text;
+	border: $secondary tall;
+}
+
+#content-container * {
+	align: center top;
+}
+
+.label {
+	height: 3;
+	content-align: center middle;
+	width: auto;
+	margin-right: 5;
+}
