@@ -1,0 +1,61 @@
+@import url('./variables.css');
+
+/* Set the default typography for monospace elements */
+tt,
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--jp-code-font-family);
+  font-size: var(--jp-code-font-size);
+  line-height: var(--jp-code-line-height);
+}
+
+#jp-bottom-panel {
+  display: none;
+}
+
+.jp-mod-left [data-id="jp-running-sessions"] {
+  display: none;
+}
+
+.jp-mod-left [data-id="table-of-contents"] {
+  display: none;
+}
+
+.jp-mod-left [data-id="extensionmanager.main-view"] {
+  display: none;
+}
+
+.custom-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #37485a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  z-index: 9999;
+}
+
+#jupyterlab-splash {
+  display: none;
+}
+
+#jupyterlab-splash.light {
+  background-color: #37485a !important;
+}
+
+#jp-MainLogo {
+  background-image: url("images/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#jp-MainLogo svg {
+  display: none;
+}
