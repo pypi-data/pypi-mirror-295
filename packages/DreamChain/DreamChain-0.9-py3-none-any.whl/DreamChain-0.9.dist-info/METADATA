@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: DreamChain
+Version: 0.9
+Summary: A Python client to interact with the DataPlatform API.
+Home-page: https://github.com/jacksonlmakl/DataPlatform
+Author: Jackson Makl
+Author-email: jlm487@georgetown.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: pandas
+Requires-Dist: flask
+
+# DreamChain
