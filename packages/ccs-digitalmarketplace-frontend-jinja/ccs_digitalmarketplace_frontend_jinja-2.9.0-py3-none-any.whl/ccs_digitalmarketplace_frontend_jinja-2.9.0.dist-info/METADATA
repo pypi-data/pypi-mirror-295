@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ccs-digitalmarketplace-frontend-jinja
+Version: 2.9.0
+Summary: Jinja templates for Digital Marketplace apps.
+Home-page: https://github.com/tim-s-ccs/ccs-digitalmarketplace-frontend-jinja
+Author: CCS
+License: MIT
+Requires-Python: >=3.10,<3.13
+License-File: LICENCE
+Requires-Dist: jinja2>3
+Requires-Dist: ccs-govuk-frontend-jinja<2,>=1.2
+Requires-Dist: ccs-digitalmarketplace-utils>=67.0.0
+
+
+Jinja templates for Digital Marketplace apps.
