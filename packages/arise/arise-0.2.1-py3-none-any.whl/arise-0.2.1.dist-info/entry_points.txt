@@ -1,0 +1,3 @@
+[console_scripts]
+arise=arise.core:cli
+
