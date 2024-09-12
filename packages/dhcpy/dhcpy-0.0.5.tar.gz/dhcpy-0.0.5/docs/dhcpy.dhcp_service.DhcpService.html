@@ -1,0 +1,2944 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>dhcpy.dhcp_service.DhcpService</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          dhcpy <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="dhcpy.dhcp_service.DhcpService.html" class="internal-link" title="This class"><wbr></wbr>Dhcp<wbr></wbr>Service</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__dict__" class="internal-link" title="dhcpy.dhcp_service.DhcpService.__dict__">__dict__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="dhcpy.dhcp_service.DhcpService.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_client_class" class="internal-link" title="dhcpy.dhcp_service.DhcpService.add_client_class">add<wbr></wbr>_client<wbr></wbr>_class</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_hook_library" class="internal-link" title="dhcpy.dhcp_service.DhcpService.add_hook_library">add<wbr></wbr>_hook<wbr></wbr>_library</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#client_classes.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.client_classes.setter">client<wbr></wbr>_classes<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hook_libraries.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hook_libraries.setter">hook<wbr></wbr>_libraries<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_global.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_global.setter">reservations<wbr></wbr>_global<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_in_subnet.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet.setter">reservations<wbr></wbr>_in<wbr></wbr>_subnet<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_lookup_first.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first.setter">reservations<wbr></wbr>_lookup<wbr></wbr>_first<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_out_of_pool.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool.setter">reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#update_service" class="internal-link" title="dhcpy.dhcp_service.DhcpService.update_service">update<wbr></wbr>_service</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        <div class="childrenKindTitle">Inherited Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#add_option_data" class="internal-link" title="dhcpy.allocator.Allocator.add_option_data">add<wbr></wbr>_option<wbr></wbr>_data</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#add_option_def" class="internal-link" title="dhcpy.allocator.Allocator.add_option_def">add<wbr></wbr>_option<wbr></wbr>_def</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#allocator_type.setter" class="internal-link" title="dhcpy.allocator.Allocator.allocator_type.setter">allocator<wbr></wbr>_type<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#calculate_tee_times.setter" class="internal-link" title="dhcpy.allocator.Allocator.calculate_tee_times.setter">calculate<wbr></wbr>_tee<wbr></wbr>_times<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#decline_probation_period.setter" class="internal-link" title="dhcpy.allocator.Allocator.decline_probation_period.setter">decline<wbr></wbr>_probation<wbr></wbr>_period<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#fill_from_json" class="internal-link" title="dhcpy.allocator.Allocator.fill_from_json">fill<wbr></wbr>_from<wbr></wbr>_json</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#option_data.setter" class="internal-link" title="dhcpy.allocator.Allocator.option_data.setter">option<wbr></wbr>_data<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#option_defs.setter" class="internal-link" title="dhcpy.allocator.Allocator.option_defs.setter">option<wbr></wbr>_defs<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#parked_packet_limit.setter" class="internal-link" title="dhcpy.allocator.Allocator.parked_packet_limit.setter">parked<wbr></wbr>_packet<wbr></wbr>_limit<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#preferred_lifetime.setter" class="internal-link" title="dhcpy.allocator.Allocator.preferred_lifetime.setter">preferred<wbr></wbr>_lifetime<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#rebind_timer.setter" class="internal-link" title="dhcpy.allocator.Allocator.rebind_timer.setter">rebind<wbr></wbr>_timer<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#renew_timer.setter" class="internal-link" title="dhcpy.allocator.Allocator.renew_timer.setter">renew<wbr></wbr>_timer<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#t1_percent.setter" class="internal-link" title="dhcpy.allocator.Allocator.t1_percent.setter">t1<wbr></wbr>_percent<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#t2_percent.setter" class="internal-link" title="dhcpy.allocator.Allocator.t2_percent.setter">t2<wbr></wbr>_percent<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#valid_lifetime.setter" class="internal-link" title="dhcpy.allocator.Allocator.valid_lifetime.setter">valid<wbr></wbr>_lifetime<wbr></wbr>.setter</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#control_socket" class="internal-link" title="dhcpy.dhcp_service.DhcpService.control_socket">control<wbr></wbr>_socket</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#default_nameservers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.default_nameservers">default<wbr></wbr>_nameservers</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#dhcp_queue_control" class="internal-link" title="dhcpy.dhcp_service.DhcpService.dhcp_queue_control">dhcp<wbr></wbr>_queue<wbr></wbr>_control</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#early_global_reservations_lookup" class="internal-link" title="dhcpy.dhcp_service.DhcpService.early_global_reservations_lookup">early<wbr></wbr>_global<wbr></wbr>_reservations<wbr></wbr>_lookup</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#expired_leases_processing" class="internal-link" title="dhcpy.dhcp_service.DhcpService.expired_leases_processing">expired<wbr></wbr>_leases<wbr></wbr>_processing</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#global_params" class="internal-link" title="dhcpy.dhcp_service.DhcpService.global_params">global<wbr></wbr>_params</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#host_reservation_identifiers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.host_reservation_identifiers">host<wbr></wbr>_reservation<wbr></wbr>_identifiers</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hostname_char_replacement" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hostname_char_replacement">hostname<wbr></wbr>_char<wbr></wbr>_replacement</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hostname_char_set" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hostname_char_set">hostname<wbr></wbr>_char<wbr></wbr>_set</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#interfaces_config" class="internal-link" title="dhcpy.dhcp_service.DhcpService.interfaces_config">interfaces<wbr></wbr>_config</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#ip_reservations_unique" class="internal-link" title="dhcpy.dhcp_service.DhcpService.ip_reservations_unique">ip<wbr></wbr>_reservations<wbr></wbr>_unique</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#json_key" class="internal-link" title="dhcpy.dhcp_service.DhcpService.json_key">json<wbr></wbr>_key</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#lease_database" class="internal-link" title="dhcpy.dhcp_service.DhcpService.lease_database">lease<wbr></wbr>_database</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#loggers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.loggers">loggers</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mac_sources" class="internal-link" title="dhcpy.dhcp_service.DhcpService.mac_sources">mac<wbr></wbr>_sources</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#multi_threading" class="internal-link" title="dhcpy.dhcp_service.DhcpService.multi_threading">multi<wbr></wbr>_threading</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#option_defs" class="internal-link" title="dhcpy.dhcp_service.DhcpService.option_defs">option<wbr></wbr>_defs</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#relay_supplied_options" class="internal-link" title="dhcpy.dhcp_service.DhcpService.relay_supplied_options">relay<wbr></wbr>_supplied<wbr></wbr>_options</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#sanity_checks" class="internal-link" title="dhcpy.dhcp_service.DhcpService.sanity_checks">sanity<wbr></wbr>_checks</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#server_id" class="internal-link" title="dhcpy.dhcp_service.DhcpService.server_id">server<wbr></wbr>_id</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#server_tag" class="internal-link" title="dhcpy.dhcp_service.DhcpService.server_tag">server<wbr></wbr>_tag</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#statistic_default_sample_age" class="internal-link" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_age">statistic<wbr></wbr>_default<wbr></wbr>_sample<wbr></wbr>_age</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#statistic_default_sample_count" class="internal-link" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_count">statistic<wbr></wbr>_default<wbr></wbr>_sample<wbr></wbr>_count</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#store_extended_info" class="internal-link" title="dhcpy.dhcp_service.DhcpService.store_extended_info">store<wbr></wbr>_extended<wbr></wbr>_info</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#subnet_ids" class="internal-link" title="dhcpy.dhcp_service.DhcpService.subnet_ids">subnet<wbr></wbr>_ids</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#subnets" class="internal-link" title="dhcpy.dhcp_service.DhcpService.subnets">subnets</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#client_classes" class="internal-link" title="dhcpy.dhcp_service.DhcpService.client_classes">client<wbr></wbr>_classes</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#hook_libraries" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hook_libraries">hook<wbr></wbr>_libraries</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_global" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_global">reservations<wbr></wbr>_global</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_in_subnet" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet">reservations<wbr></wbr>_in<wbr></wbr>_subnet</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_lookup_first" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first">reservations<wbr></wbr>_lookup<wbr></wbr>_first</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reservations_out_of_pool" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool">reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_client_classes" class="internal-link" title="dhcpy.dhcp_service.DhcpService._client_classes">_client<wbr></wbr>_classes</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_hook_libraries" class="internal-link" title="dhcpy.dhcp_service.DhcpService._hook_libraries">_hook<wbr></wbr>_libraries</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_reservations_global" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_global">_reservations<wbr></wbr>_global</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_reservations_in_subnet" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_in_subnet">_reservations<wbr></wbr>_in<wbr></wbr>_subnet</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_reservations_lookup_first" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_lookup_first">_reservations<wbr></wbr>_lookup<wbr></wbr>_first</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_reservations_out_of_pool" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_out_of_pool">_reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        <div class="childrenKindTitle">Inherited Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#allocator_type" class="internal-link" title="dhcpy.allocator.Allocator.allocator_type">allocator<wbr></wbr>_type</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#calculate_tee_times" class="internal-link" title="dhcpy.allocator.Allocator.calculate_tee_times">calculate<wbr></wbr>_tee<wbr></wbr>_times</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator.decline_probation_period">decline<wbr></wbr>_probation<wbr></wbr>_period</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#option_data" class="internal-link" title="dhcpy.allocator.Allocator.option_data">option<wbr></wbr>_data</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.preferred_lifetime">preferred<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator.rebind_timer">rebind<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#renew_timer" class="internal-link" title="dhcpy.allocator.Allocator.renew_timer">renew<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_allocator_type" class="internal-link" title="dhcpy.allocator.Allocator.sets_allocator_type">sets<wbr></wbr>_allocator<wbr></wbr>_type</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator.sets_decline_probation_period">sets<wbr></wbr>_decline<wbr></wbr>_probation<wbr></wbr>_period</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.sets_preferred_lifetime">sets<wbr></wbr>_preferred<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator.sets_rebind_timer">sets<wbr></wbr>_rebind<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_renew_timer" class="internal-link" title="dhcpy.allocator.Allocator.sets_renew_timer">sets<wbr></wbr>_renew<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_t1_percent" class="internal-link" title="dhcpy.allocator.Allocator.sets_t1_percent">sets<wbr></wbr>_t1<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_t2_percent" class="internal-link" title="dhcpy.allocator.Allocator.sets_t2_percent">sets<wbr></wbr>_t2<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_tee_times" class="internal-link" title="dhcpy.allocator.Allocator.sets_tee_times">sets<wbr></wbr>_tee<wbr></wbr>_times</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#sets_valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.sets_valid_lifetime">sets<wbr></wbr>_valid<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#t1_percent" class="internal-link" title="dhcpy.allocator.Allocator.t1_percent">t1<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#t2_percent" class="internal-link" title="dhcpy.allocator.Allocator.t2_percent">t2<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.valid_lifetime">valid<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#parked_packet_limit" class="internal-link" title="dhcpy.allocator.Allocator.parked_packet_limit">parked<wbr></wbr>_packet<wbr></wbr>_limit</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_allocator_type" class="internal-link" title="dhcpy.allocator.Allocator._allocator_type">_allocator<wbr></wbr>_type</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_calculate_tee_times" class="internal-link" title="dhcpy.allocator.Allocator._calculate_tee_times">_calculate<wbr></wbr>_tee<wbr></wbr>_times</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator._decline_probation_period">_decline<wbr></wbr>_probation<wbr></wbr>_period</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_option_data" class="internal-link" title="dhcpy.allocator.Allocator._option_data">_option<wbr></wbr>_data</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_option_defs" class="internal-link" title="dhcpy.allocator.Allocator._option_defs">_option<wbr></wbr>_defs</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_parked_packet_limit" class="internal-link" title="dhcpy.allocator.Allocator._parked_packet_limit">_parked<wbr></wbr>_packet<wbr></wbr>_limit</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator._preferred_lifetime">_preferred<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator._rebind_timer">_rebind<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_renew_timer" class="internal-link" title="dhcpy.allocator.Allocator._renew_timer">_renew<wbr></wbr>_timer</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_t1_percent" class="internal-link" title="dhcpy.allocator.Allocator._t1_percent">_t1<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_t2_percent" class="internal-link" title="dhcpy.allocator.Allocator._t2_percent">_t2<wbr></wbr>_percent</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.allocator.Allocator.html#_valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator._valid_lifetime">_valid<wbr></wbr>_lifetime</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="dhcpy.dhcp_service.html" class="internal-link" title="The parent of this class">dhcp<wbr></wbr>_service</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.dhcp_service.Dhcp4Service.html" class="internal-link" title="dhcpy.dhcp_service.Dhcp4Service"><wbr></wbr>Dhcp4<wbr></wbr>Service</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link" title="dhcpy.dhcp_service.Dhcp6Service"><wbr></wbr>Dhcp6<wbr></wbr>Service</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="dhcpy.dhcp_service.DhcpService.html" class="internal-link" title="dhcpy.dhcp_service.DhcpService"><wbr></wbr>Dhcp<wbr></wbr>Service</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">dhcpy</a></code><wbr></wbr>.<code><a href="dhcpy.dhcp_service.html" class="internal-link" title="dhcpy.dhcp_service">dhcp_service</a></code><wbr></wbr>.<code><a href="dhcpy.dhcp_service.DhcpService.html" class="internal-link" title="dhcpy.dhcp_service.DhcpService">DhcpService</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">DhcpService</span>(<a href="dhcpy.allocator.Allocator.html" class="internal-link" title="dhcpy.allocator.Allocator">Allocator</a>):</code></p><p>Known subclasses: <code><a href="dhcpy.dhcp_service.Dhcp4Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp4Service</a></code>, <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="dhcpy.dhcp_service.DhcpService.__init__">DhcpService()</a></code></p>
+          <p><a href="classIndex.html#dhcpy.dhcp_service.DhcpService">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id17">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__dict__" class="internal-link" title="dhcpy.dhcp_service.DhcpService.__dict__">__dict__</a></code></td>
+    <td>Return a dictionary representation of the service, for making JSON in the format KEA expects</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="dhcpy.dhcp_service.DhcpService.__init__">__init__</a></code></td>
+    <td>Initialize the object</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_client_class" class="internal-link" title="dhcpy.dhcp_service.DhcpService.add_client_class">add<wbr></wbr>_client<wbr></wbr>_class</a></code></td>
+    <td>Add a client class to the service</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_hook_library" class="internal-link" title="dhcpy.dhcp_service.DhcpService.add_hook_library">add<wbr></wbr>_hook<wbr></wbr>_library</a></code></td>
+    <td>Add a KEA plugin to the server</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#client_classes.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.client_classes.setter">client<wbr></wbr>_classes<wbr></wbr>.setter</a></code></td>
+    <td>set the client classes</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#hook_libraries.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hook_libraries.setter">hook<wbr></wbr>_libraries<wbr></wbr>.setter</a></code></td>
+    <td>Set the KEA plugins on this server</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reservations_global.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_global.setter">reservations<wbr></wbr>_global<wbr></wbr>.setter</a></code></td>
+    <td>set global reservations.  If true, reservations are global, if false, they are not</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reservations_in_subnet.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet.setter">reservations<wbr></wbr>_in<wbr></wbr>_subnet<wbr></wbr>.setter</a></code></td>
+    <td>set reservations in subnet.  If true, reservations are in subnet, if false, they are not</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reservations_lookup_first.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first.setter">reservations<wbr></wbr>_lookup<wbr></wbr>_first<wbr></wbr>.setter</a></code></td>
+    <td>set whether host reservations lookup should be performed before lease lookup</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reservations_out_of_pool.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool.setter">reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool<wbr></wbr>.setter</a></code></td>
+    <td>set whether host reservations can be made outside the pool when reservations-in-subnet is true</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#update_service" class="internal-link" title="dhcpy.dhcp_service.DhcpService.update_service">update<wbr></wbr>_service</a></code></td>
+    <td>Send the service to the server</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#control_socket" class="internal-link" title="dhcpy.dhcp_service.DhcpService.control_socket">control<wbr></wbr>_socket</a></code></td>
+    <td>The control socket for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#default_nameservers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.default_nameservers">default<wbr></wbr>_nameservers</a></code></td>
+    <td>A list of default nameservers for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dhcp_queue_control" class="internal-link" title="dhcpy.dhcp_service.DhcpService.dhcp_queue_control">dhcp<wbr></wbr>_queue<wbr></wbr>_control</a></code></td>
+    <td>The DHCP Queue Control Object for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#early_global_reservations_lookup" class="internal-link" title="dhcpy.dhcp_service.DhcpService.early_global_reservations_lookup">early<wbr></wbr>_global<wbr></wbr>_reservations<wbr></wbr>_lookup</a></code></td>
+    <td>Whether to do an early global reservations lookup</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#expired_leases_processing" class="internal-link" title="dhcpy.dhcp_service.DhcpService.expired_leases_processing">expired<wbr></wbr>_leases<wbr></wbr>_processing</a></code></td>
+    <td>The Expired Leases Processing object for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#global_params" class="internal-link" title="dhcpy.dhcp_service.DhcpService.global_params">global<wbr></wbr>_params</a></code></td>
+    <td>A dictionary of global DHCP Options for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#host_reservation_identifiers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.host_reservation_identifiers">host<wbr></wbr>_reservation<wbr></wbr>_identifiers</a></code></td>
+    <td>A list of host reservation identifiers</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#hostname_char_replacement" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hostname_char_replacement">hostname<wbr></wbr>_char<wbr></wbr>_replacement</a></code></td>
+    <td>The hostname character replacement because using banned characters is like a sport for some people</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#hostname_char_set" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hostname_char_set">hostname<wbr></wbr>_char<wbr></wbr>_set</a></code></td>
+    <td>The hostname character set in case you want to put your foot down</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#interfaces_config" class="internal-link" title="dhcpy.dhcp_service.DhcpService.interfaces_config">interfaces<wbr></wbr>_config</a></code></td>
+    <td>The Interfaces Config object for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ip_reservations_unique" class="internal-link" title="dhcpy.dhcp_service.DhcpService.ip_reservations_unique">ip<wbr></wbr>_reservations<wbr></wbr>_unique</a></code></td>
+    <td>Whether IP reservations are unique</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#json_key" class="internal-link" title="dhcpy.dhcp_service.DhcpService.json_key">json<wbr></wbr>_key</a></code></td>
+    <td>Initialize a DHCP service object, with empty strings and lists</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#lease_database" class="internal-link" title="dhcpy.dhcp_service.DhcpService.lease_database">lease<wbr></wbr>_database</a></code></td>
+    <td>The Lease Database object for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#loggers" class="internal-link" title="dhcpy.dhcp_service.DhcpService.loggers">loggers</a></code></td>
+    <td>A list of Logger objects for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#mac_sources" class="internal-link" title="dhcpy.dhcp_service.DhcpService.mac_sources">mac<wbr></wbr>_sources</a></code></td>
+    <td>A list of MAC sources used by DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#multi_threading" class="internal-link" title="dhcpy.dhcp_service.DhcpService.multi_threading">multi<wbr></wbr>_threading</a></code></td>
+    <td>The Multi Threading object for the DHCP service, sets the threading options</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#option_defs" class="internal-link" title="dhcpy.dhcp_service.DhcpService.option_defs">option<wbr></wbr>_defs</a></code></td>
+    <td>A list of DHCP options that define the option definitions used by option_data</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#relay_supplied_options" class="internal-link" title="dhcpy.dhcp_service.DhcpService.relay_supplied_options">relay<wbr></wbr>_supplied<wbr></wbr>_options</a></code></td>
+    <td>A list of the DHCP Options supplied by the relay</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#sanity_checks" class="internal-link" title="dhcpy.dhcp_service.DhcpService.sanity_checks">sanity<wbr></wbr>_checks</a></code></td>
+    <td>The Sanity Checks object for the DHCP service, these are the checks that are done to make sure the service is not insane</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#server_id" class="internal-link" title="dhcpy.dhcp_service.DhcpService.server_id">server<wbr></wbr>_id</a></code></td>
+    <td>The Server ID object for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#server_tag" class="internal-link" title="dhcpy.dhcp_service.DhcpService.server_tag">server<wbr></wbr>_tag</a></code></td>
+    <td>The server tag for the DHCP service</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#statistic_default_sample_age" class="internal-link" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_age">statistic<wbr></wbr>_default<wbr></wbr>_sample<wbr></wbr>_age</a></code></td>
+    <td>The default sample age for statistics</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#statistic_default_sample_count" class="internal-link" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_count">statistic<wbr></wbr>_default<wbr></wbr>_sample<wbr></wbr>_count</a></code></td>
+    <td>The default sample count for statistics</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#store_extended_info" class="internal-link" title="dhcpy.dhcp_service.DhcpService.store_extended_info">store<wbr></wbr>_extended<wbr></wbr>_info</a></code></td>
+    <td>Whether to store extended lease info</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#subnet_ids" class="internal-link" title="dhcpy.dhcp_service.DhcpService.subnet_ids">subnet<wbr></wbr>_ids</a></code></td>
+    <td>The IDs used by the subnets in this service, so you don't reuse one and break the world</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#subnets" class="internal-link" title="dhcpy.dhcp_service.DhcpService.subnets">subnets</a></code></td>
+    <td>A list of Subnet objects</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#client_classes" class="internal-link" title="dhcpy.dhcp_service.DhcpService.client_classes">client<wbr></wbr>_classes</a></code></td>
+    <td>the client classes</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#hook_libraries" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hook_libraries">hook<wbr></wbr>_libraries</a></code></td>
+    <td>The KEA plugins on this server</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#reservations_global" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_global">reservations<wbr></wbr>_global</a></code></td>
+    <td>fetch global reservations.  If true, reservations are global, if false, they are not</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#reservations_in_subnet" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet">reservations<wbr></wbr>_in<wbr></wbr>_subnet</a></code></td>
+    <td>fetch reservations in subnet.  If true, reservations are in subnet, if false, they are not</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#reservations_lookup_first" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first">reservations<wbr></wbr>_lookup<wbr></wbr>_first</a></code></td>
+    <td>controls whether host reservations lookup should be performed before lease lookup</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#reservations_out_of_pool" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool">reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool</a></code></td>
+    <td>controls whether host reservations can be made outside the pool when reservations-in-subnet is true</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_client_classes" class="internal-link" title="dhcpy.dhcp_service.DhcpService._client_classes">_client<wbr></wbr>_classes</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_hook_libraries" class="internal-link" title="dhcpy.dhcp_service.DhcpService._hook_libraries">_hook<wbr></wbr>_libraries</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_reservations_global" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_global">_reservations<wbr></wbr>_global</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_reservations_in_subnet" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_in_subnet">_reservations<wbr></wbr>_in<wbr></wbr>_subnet</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_reservations_lookup_first" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_lookup_first">_reservations<wbr></wbr>_lookup<wbr></wbr>_first</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_reservations_out_of_pool" class="internal-link" title="dhcpy.dhcp_service.DhcpService._reservations_out_of_pool">_reservations<wbr></wbr>_out<wbr></wbr>_of<wbr></wbr>_pool</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+            <p class="inheritedFrom">
+              Inherited from <code><a href="dhcpy.allocator.Allocator.html" class="internal-link" title="dhcpy.allocator.Allocator">Allocator</a></code>:
+            </p>
+            <table class="children sortable" id="id18">
+  
+  
+  <tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#add_option_data" class="internal-link" title="dhcpy.allocator.Allocator.add_option_data">add<wbr></wbr>_option<wbr></wbr>_data</a></code></td>
+    <td>Add a DHCP Option object to the list of options sent to leases :param option_data: The DHCP Option object to add, DHCPOption with option_usage set to OPTION_IMPLEMENTATION</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#add_option_def" class="internal-link" title="dhcpy.allocator.Allocator.add_option_def">add<wbr></wbr>_option<wbr></wbr>_def</a></code></td>
+    <td>Add a DHCP Option object to the list of options sent to leases :param option_def: The DHCP Option object to add, DHCPOption with option_usage set to OPTION_DEFINITION</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#allocator_type.setter" class="internal-link" title="dhcpy.allocator.Allocator.allocator_type.setter">allocator<wbr></wbr>_type<wbr></wbr>.setter</a></code></td>
+    <td>Set the allocator type, making sure it's either an AllocatorType enum or a string that matches one of the AllocatorType values</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#calculate_tee_times.setter" class="internal-link" title="dhcpy.allocator.Allocator.calculate_tee_times.setter">calculate<wbr></wbr>_tee<wbr></wbr>_times<wbr></wbr>.setter</a></code></td>
+    <td>Set the calculate tee times flag :param calculate_tee_times: A boolean to determine if tee times should be calculated</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#decline_probation_period.setter" class="internal-link" title="dhcpy.allocator.Allocator.decline_probation_period.setter">decline<wbr></wbr>_probation<wbr></wbr>_period<wbr></wbr>.setter</a></code></td>
+    <td>Set the probation period for declined leases :param decline_probation_period: The probation period in seconds</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#fill_from_json" class="internal-link" title="dhcpy.allocator.Allocator.fill_from_json">fill<wbr></wbr>_from<wbr></wbr>_json</a></code></td>
+    <td>Fill the object from the JSON dictionary from the KEA web interface :param json_data: The JSON dictionary to fill the object from</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#option_data.setter" class="internal-link" title="dhcpy.allocator.Allocator.option_data.setter">option<wbr></wbr>_data<wbr></wbr>.setter</a></code></td>
+    <td>Set the list of DHCP Option objects to be sent to leases :param option_data: A list of DHCP Option objects, DHCPOption with option_usage set to OPTION_IMPLEMENTATION</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#option_defs.setter" class="internal-link" title="dhcpy.allocator.Allocator.option_defs.setter">option<wbr></wbr>_defs<wbr></wbr>.setter</a></code></td>
+    <td>Set the list of DHCP Option objects that define the options used by leases :param option_defs: A list of DHCP Option objects, DHCPOption with option_usage set to OPTION_DEFINITION</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#parked_packet_limit.setter" class="internal-link" title="dhcpy.allocator.Allocator.parked_packet_limit.setter">parked<wbr></wbr>_packet<wbr></wbr>_limit<wbr></wbr>.setter</a></code></td>
+    <td>Set the parked packet limit :param parked_packet_limit: The max number of packets that can be parked</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#preferred_lifetime.setter" class="internal-link" title="dhcpy.allocator.Allocator.preferred_lifetime.setter">preferred<wbr></wbr>_lifetime<wbr></wbr>.setter</a></code></td>
+    <td>Set the preferred lifetime of the lease :param preferred_lifetime: The preferred lifetime of the lease in seconds</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#rebind_timer.setter" class="internal-link" title="dhcpy.allocator.Allocator.rebind_timer.setter">rebind<wbr></wbr>_timer<wbr></wbr>.setter</a></code></td>
+    <td>Set the rebind timer :param rebind_timer: The rebind timer in seconds</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#renew_timer.setter" class="internal-link" title="dhcpy.allocator.Allocator.renew_timer.setter">renew<wbr></wbr>_timer<wbr></wbr>.setter</a></code></td>
+    <td>Set the renew timer :param renew_timer: The renew timer in seconds</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#t1_percent.setter" class="internal-link" title="dhcpy.allocator.Allocator.t1_percent.setter">t1<wbr></wbr>_percent<wbr></wbr>.setter</a></code></td>
+    <td>Set the T1 percent :param t1_percent: The T1 percent. Should be between 0 and 1</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#t2_percent.setter" class="internal-link" title="dhcpy.allocator.Allocator.t2_percent.setter">t2<wbr></wbr>_percent<wbr></wbr>.setter</a></code></td>
+    <td>Set the T2 percent :param t2_percent: The T2 percent. Should be between 0 and 1</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#valid_lifetime.setter" class="internal-link" title="dhcpy.allocator.Allocator.valid_lifetime.setter">valid<wbr></wbr>_lifetime<wbr></wbr>.setter</a></code></td>
+    <td>Set the valid lifetime of the lease :param valid_lifetime: The valid lifetime of the lease in seconds</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#allocator_type" class="internal-link" title="dhcpy.allocator.Allocator.allocator_type">allocator<wbr></wbr>_type</a></code></td>
+    <td>itterative or randomized. Assign using an AllocatorType enum or string, the object figures it out.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#calculate_tee_times" class="internal-link" title="dhcpy.allocator.Allocator.calculate_tee_times">calculate<wbr></wbr>_tee<wbr></wbr>_times</a></code></td>
+    <td>Calculate tee times. Default is True</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator.decline_probation_period">decline<wbr></wbr>_probation<wbr></wbr>_period</a></code></td>
+    <td>The probation period for declined leases. Default is 0</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#option_data" class="internal-link" title="dhcpy.allocator.Allocator.option_data">option<wbr></wbr>_data</a></code></td>
+    <td>A list of DHCP options to be sent with the lease. These contain the settings for the lease</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.preferred_lifetime">preferred<wbr></wbr>_lifetime</a></code></td>
+    <td>The preferred lifetime of the lease. Default is 0</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator.rebind_timer">rebind<wbr></wbr>_timer</a></code></td>
+    <td>The rebind timer. Default is 0</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#renew_timer" class="internal-link" title="dhcpy.allocator.Allocator.renew_timer">renew<wbr></wbr>_timer</a></code></td>
+    <td>The renew timer. Default is 0</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_allocator_type" class="internal-link" title="dhcpy.allocator.Allocator.sets_allocator_type">sets<wbr></wbr>_allocator<wbr></wbr>_type</a></code></td>
+    <td>Flag to indicate if the allocator type has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator.sets_decline_probation_period">sets<wbr></wbr>_decline<wbr></wbr>_probation<wbr></wbr>_period</a></code></td>
+    <td>Flag to indicate if the probation period for declined leases has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.sets_preferred_lifetime">sets<wbr></wbr>_preferred<wbr></wbr>_lifetime</a></code></td>
+    <td>Flag to indicate if the preferred lifetime has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator.sets_rebind_timer">sets<wbr></wbr>_rebind<wbr></wbr>_timer</a></code></td>
+    <td>Flag to indicate if the rebind timer has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_renew_timer" class="internal-link" title="dhcpy.allocator.Allocator.sets_renew_timer">sets<wbr></wbr>_renew<wbr></wbr>_timer</a></code></td>
+    <td>Flag to indicate if the renew timer has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_t1_percent" class="internal-link" title="dhcpy.allocator.Allocator.sets_t1_percent">sets<wbr></wbr>_t1<wbr></wbr>_percent</a></code></td>
+    <td>Flag to indicate if the T1 percent has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_t2_percent" class="internal-link" title="dhcpy.allocator.Allocator.sets_t2_percent">sets<wbr></wbr>_t2<wbr></wbr>_percent</a></code></td>
+    <td>Flag to indicate if the T2 percent has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_tee_times" class="internal-link" title="dhcpy.allocator.Allocator.sets_tee_times">sets<wbr></wbr>_tee<wbr></wbr>_times</a></code></td>
+    <td>Flag to indicate if tee times have been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#sets_valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.sets_valid_lifetime">sets<wbr></wbr>_valid<wbr></wbr>_lifetime</a></code></td>
+    <td>Flag to indicate if the valid lifetime has been set</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#t1_percent" class="internal-link" title="dhcpy.allocator.Allocator.t1_percent">t1<wbr></wbr>_percent</a></code></td>
+    <td>T1 is when renewal should be attempted. Default is 0.5. Should be between 0 and 1</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#t2_percent" class="internal-link" title="dhcpy.allocator.Allocator.t2_percent">t2<wbr></wbr>_percent</a></code></td>
+    <td>T2 is when rebind should be attempted. Default is 0.8. Should be between 0 and 1</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator.valid_lifetime">valid<wbr></wbr>_lifetime</a></code></td>
+    <td>The valid lifetime of the lease. Default is 0</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#parked_packet_limit" class="internal-link" title="dhcpy.allocator.Allocator.parked_packet_limit">parked<wbr></wbr>_packet<wbr></wbr>_limit</a></code></td>
+    <td>The max number of packets that can be parked. Default is 0</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_allocator_type" class="internal-link" title="dhcpy.allocator.Allocator._allocator_type">_allocator<wbr></wbr>_type</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_calculate_tee_times" class="internal-link" title="dhcpy.allocator.Allocator._calculate_tee_times">_calculate<wbr></wbr>_tee<wbr></wbr>_times</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_decline_probation_period" class="internal-link" title="dhcpy.allocator.Allocator._decline_probation_period">_decline<wbr></wbr>_probation<wbr></wbr>_period</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_option_data" class="internal-link" title="dhcpy.allocator.Allocator._option_data">_option<wbr></wbr>_data</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_option_defs" class="internal-link" title="dhcpy.allocator.Allocator._option_defs">_option<wbr></wbr>_defs</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_parked_packet_limit" class="internal-link" title="dhcpy.allocator.Allocator._parked_packet_limit">_parked<wbr></wbr>_packet<wbr></wbr>_limit</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_preferred_lifetime" class="internal-link" title="dhcpy.allocator.Allocator._preferred_lifetime">_preferred<wbr></wbr>_lifetime</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_rebind_timer" class="internal-link" title="dhcpy.allocator.Allocator._rebind_timer">_rebind<wbr></wbr>_timer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_renew_timer" class="internal-link" title="dhcpy.allocator.Allocator._renew_timer">_renew<wbr></wbr>_timer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_t1_percent" class="internal-link" title="dhcpy.allocator.Allocator._t1_percent">_t1<wbr></wbr>_percent</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_t2_percent" class="internal-link" title="dhcpy.allocator.Allocator._t2_percent">_t2<wbr></wbr>_percent</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="dhcpy.allocator.Allocator.html#_valid_lifetime" class="internal-link" title="dhcpy.allocator.Allocator._valid_lifetime">_valid<wbr></wbr>_lifetime</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+            
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.__dict__">
+    
+  </a>
+  <a name="__dict__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__dict__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__dict__" title="dhcpy.dhcp_service.DhcpService.__dict__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="dhcpy.allocator.Allocator.html#__dict__" class="internal-link">dhcpy.allocator.Allocator.__dict__</a></code></div><div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>Return a dictionary representation of the service, for making JSON in the format KEA expects</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__init__" title="dhcpy.dhcp_service.DhcpService.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="dhcpy.allocator.Allocator.html#__init__" class="internal-link">dhcpy.allocator.Allocator.__init__</a></code></div><div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp4Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp4Service</a></code>, <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>Initialize the object</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.add_client_class">
+    
+  </a>
+  <a name="add_client_class">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">add_client_class</span><span class="function-signature">(self, client_class)</span>:
+    
+    <a class="headerLink" href="#add_client_class" title="dhcpy.dhcp_service.DhcpService.add_client_class">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Add a client class to the service</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.add_hook_library">
+    
+  </a>
+  <a name="add_hook_library">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">add_hook_library</span><span class="function-signature">(self, hook_library)</span>:
+    
+    <a class="headerLink" href="#add_hook_library" title="dhcpy.dhcp_service.DhcpService.add_hook_library">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Add a KEA plugin to the server</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.client_classes.setter">
+    
+  </a>
+  <a name="client_classes.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#client_classes.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.client_classes.setter">client_classes.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">client_classes</span><span class="function-signature">(self, client_classes)</span>:
+    
+    <a class="headerLink" href="#client_classes.setter" title="dhcpy.dhcp_service.DhcpService.client_classes.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set the client classes</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.hook_libraries.setter">
+    
+  </a>
+  <a name="hook_libraries.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#hook_libraries.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.hook_libraries.setter">hook_libraries.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">hook_libraries</span><span class="function-signature">(self, hook_libraries)</span>:
+    
+    <a class="headerLink" href="#hook_libraries.setter" title="dhcpy.dhcp_service.DhcpService.hook_libraries.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Set the KEA plugins on this server</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_global.setter">
+    
+  </a>
+  <a name="reservations_global.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#reservations_global.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_global.setter">reservations_global.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">reservations_global</span><span class="function-signature">(self, reservations_global)</span>:
+    
+    <a class="headerLink" href="#reservations_global.setter" title="dhcpy.dhcp_service.DhcpService.reservations_global.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set global reservations.  If true, reservations are global, if false, they are not</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_in_subnet.setter">
+    
+  </a>
+  <a name="reservations_in_subnet.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#reservations_in_subnet.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet.setter">reservations_in_subnet.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">reservations_in_subnet</span><span class="function-signature">(self, reservations_in_subnet)</span>:
+    
+    <a class="headerLink" href="#reservations_in_subnet.setter" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set reservations in subnet.  If true, reservations are in subnet, if false, they are not</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_lookup_first.setter">
+    
+  </a>
+  <a name="reservations_lookup_first.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#reservations_lookup_first.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first.setter">reservations_lookup_first.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">reservations_lookup_first</span><span class="function-signature">(self, reservations_lookup_first)</span>:
+    
+    <a class="headerLink" href="#reservations_lookup_first.setter" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set whether host reservations lookup should be performed before lease lookup</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool.setter">
+    
+  </a>
+  <a name="reservations_out_of_pool.setter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @<a href="#reservations_out_of_pool.setter" class="internal-link" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool.setter">reservations_out_of_pool.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">reservations_out_of_pool</span><span class="function-signature">(self, reservations_out_of_pool)</span>:
+    
+    <a class="headerLink" href="#reservations_out_of_pool.setter" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool.setter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set whether host reservations can be made outside the pool when reservations-in-subnet is true</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.update_service">
+    
+  </a>
+  <a name="update_service">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">update_service</span><span class="function-signature">(self, server, ssl=True)</span>:
+    
+    <a class="headerLink" href="#update_service" title="dhcpy.dhcp_service.DhcpService.update_service">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Send the service to the server</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.control_socket">
+    
+  </a>
+  <a name="control_socket">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">control_socket</span>: <code>str</code> =
+    
+    <a class="headerLink" href="#control_socket" title="dhcpy.dhcp_service.DhcpService.control_socket">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp4Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp4Service</a></code>, <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>The control socket for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.default_nameservers">
+    
+  </a>
+  <a name="default_nameservers">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">default_nameservers</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#default_nameservers" title="dhcpy.dhcp_service.DhcpService.default_nameservers">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A list of default nameservers for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.dhcp_queue_control">
+    
+  </a>
+  <a name="dhcp_queue_control">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dhcp_queue_control</span> =
+    
+    <a class="headerLink" href="#dhcp_queue_control" title="dhcpy.dhcp_service.DhcpService.dhcp_queue_control">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The DHCP Queue Control Object for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.early_global_reservations_lookup">
+    
+  </a>
+  <a name="early_global_reservations_lookup">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">early_global_reservations_lookup</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#early_global_reservations_lookup" title="dhcpy.dhcp_service.DhcpService.early_global_reservations_lookup">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>Whether to do an early global reservations lookup</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.expired_leases_processing">
+    
+  </a>
+  <a name="expired_leases_processing">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">expired_leases_processing</span> =
+    
+    <a class="headerLink" href="#expired_leases_processing" title="dhcpy.dhcp_service.DhcpService.expired_leases_processing">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Expired Leases Processing object for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.global_params">
+    
+  </a>
+  <a name="global_params">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">global_params</span>: <code>dict</code> =
+    
+    <a class="headerLink" href="#global_params" title="dhcpy.dhcp_service.DhcpService.global_params">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A dictionary of global DHCP Options for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.host_reservation_identifiers">
+    
+  </a>
+  <a name="host_reservation_identifiers">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">host_reservation_identifiers</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#host_reservation_identifiers" title="dhcpy.dhcp_service.DhcpService.host_reservation_identifiers">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A list of host reservation identifiers</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.hostname_char_replacement">
+    
+  </a>
+  <a name="hostname_char_replacement">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">hostname_char_replacement</span>: <code>str</code> =
+    
+    <a class="headerLink" href="#hostname_char_replacement" title="dhcpy.dhcp_service.DhcpService.hostname_char_replacement">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The hostname character replacement because using banned characters is like a sport for some people</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.hostname_char_set">
+    
+  </a>
+  <a name="hostname_char_set">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">hostname_char_set</span>: <code>str</code> =
+    
+    <a class="headerLink" href="#hostname_char_set" title="dhcpy.dhcp_service.DhcpService.hostname_char_set">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The hostname character set in case you want to put your foot down</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.interfaces_config">
+    
+  </a>
+  <a name="interfaces_config">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">interfaces_config</span> =
+    
+    <a class="headerLink" href="#interfaces_config" title="dhcpy.dhcp_service.DhcpService.interfaces_config">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Interfaces Config object for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.ip_reservations_unique">
+    
+  </a>
+  <a name="ip_reservations_unique">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ip_reservations_unique</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#ip_reservations_unique" title="dhcpy.dhcp_service.DhcpService.ip_reservations_unique">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>Whether IP reservations are unique</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.json_key">
+    
+  </a>
+  <a name="json_key">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">json_key</span> =
+    
+    <a class="headerLink" href="#json_key" title="dhcpy.dhcp_service.DhcpService.json_key">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>Initialize a DHCP service object, with empty strings and lists</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.lease_database">
+    
+  </a>
+  <a name="lease_database">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">lease_database</span> =
+    
+    <a class="headerLink" href="#lease_database" title="dhcpy.dhcp_service.DhcpService.lease_database">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Lease Database object for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.loggers">
+    
+  </a>
+  <a name="loggers">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">loggers</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#loggers" title="dhcpy.dhcp_service.DhcpService.loggers">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A list of Logger objects for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.mac_sources">
+    
+  </a>
+  <a name="mac_sources">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">mac_sources</span>: <code>list[<wbr></wbr>str]</code> =
+    
+    <a class="headerLink" href="#mac_sources" title="dhcpy.dhcp_service.DhcpService.mac_sources">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A list of MAC sources used by DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.multi_threading">
+    
+  </a>
+  <a name="multi_threading">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">multi_threading</span> =
+    
+    <a class="headerLink" href="#multi_threading" title="dhcpy.dhcp_service.DhcpService.multi_threading">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Multi Threading object for the DHCP service, sets the threading options</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.option_defs">
+    
+  </a>
+  <a name="option_defs">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">option_defs</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#option_defs" title="dhcpy.dhcp_service.DhcpService.option_defs">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="dhcpy.allocator.Allocator.html#option_defs" class="internal-link">dhcpy.allocator.Allocator.option_defs</a></code></div>
+    <div><p>A list of DHCP options that define the option definitions used by option_data</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.relay_supplied_options">
+    
+  </a>
+  <a name="relay_supplied_options">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">relay_supplied_options</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#relay_supplied_options" title="dhcpy.dhcp_service.DhcpService.relay_supplied_options">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>A list of the DHCP Options supplied by the relay</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.sanity_checks">
+    
+  </a>
+  <a name="sanity_checks">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">sanity_checks</span> =
+    
+    <a class="headerLink" href="#sanity_checks" title="dhcpy.dhcp_service.DhcpService.sanity_checks">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Sanity Checks object for the DHCP service, these are the checks that are done to make sure the service is not insane</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.server_id">
+    
+  </a>
+  <a name="server_id">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">server_id</span> =
+    
+    <a class="headerLink" href="#server_id" title="dhcpy.dhcp_service.DhcpService.server_id">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The Server ID object for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.server_tag">
+    
+  </a>
+  <a name="server_tag">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">server_tag</span>: <code>str</code> =
+    
+    <a class="headerLink" href="#server_tag" title="dhcpy.dhcp_service.DhcpService.server_tag">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The server tag for the DHCP service</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.statistic_default_sample_age">
+    
+  </a>
+  <a name="statistic_default_sample_age">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">statistic_default_sample_age</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#statistic_default_sample_age" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_age">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The default sample age for statistics</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.statistic_default_sample_count">
+    
+  </a>
+  <a name="statistic_default_sample_count">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">statistic_default_sample_count</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#statistic_default_sample_count" title="dhcpy.dhcp_service.DhcpService.statistic_default_sample_count">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The default sample count for statistics</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.store_extended_info">
+    
+  </a>
+  <a name="store_extended_info">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">store_extended_info</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#store_extended_info" title="dhcpy.dhcp_service.DhcpService.store_extended_info">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>Whether to store extended lease info</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.subnet_ids">
+    
+  </a>
+  <a name="subnet_ids">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">subnet_ids</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#subnet_ids" title="dhcpy.dhcp_service.DhcpService.subnet_ids">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The IDs used by the subnets in this service, so you don't reuse one and break the world</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.subnets">
+    
+  </a>
+  <a name="subnets">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">subnets</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#subnets" title="dhcpy.dhcp_service.DhcpService.subnets">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>A list of Subnet objects</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.client_classes">
+    
+  </a>
+  <a name="client_classes">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">client_classes</span> =
+    
+    <a class="headerLink" href="#client_classes" title="dhcpy.dhcp_service.DhcpService.client_classes">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="dhcpy.dhcp_service.Dhcp6Service.html" class="internal-link">dhcpy.dhcp_service.Dhcp6Service</a></code></div>
+    <div><p>the client classes</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.hook_libraries">
+    
+  </a>
+  <a name="hook_libraries">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">hook_libraries</span> =
+    
+    <a class="headerLink" href="#hook_libraries" title="dhcpy.dhcp_service.DhcpService.hook_libraries">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>The KEA plugins on this server</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_global">
+    
+  </a>
+  <a name="reservations_global">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">reservations_global</span> =
+    
+    <a class="headerLink" href="#reservations_global" title="dhcpy.dhcp_service.DhcpService.reservations_global">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>fetch global reservations.  If true, reservations are global, if false, they are not</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_in_subnet">
+    
+  </a>
+  <a name="reservations_in_subnet">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">reservations_in_subnet</span> =
+    
+    <a class="headerLink" href="#reservations_in_subnet" title="dhcpy.dhcp_service.DhcpService.reservations_in_subnet">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>fetch reservations in subnet.  If true, reservations are in subnet, if false, they are not</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_lookup_first">
+    
+  </a>
+  <a name="reservations_lookup_first">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">reservations_lookup_first</span> =
+    
+    <a class="headerLink" href="#reservations_lookup_first" title="dhcpy.dhcp_service.DhcpService.reservations_lookup_first">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>controls whether host reservations lookup should be performed before lease lookup</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool">
+    
+  </a>
+  <a name="reservations_out_of_pool">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">reservations_out_of_pool</span> =
+    
+    <a class="headerLink" href="#reservations_out_of_pool" title="dhcpy.dhcp_service.DhcpService.reservations_out_of_pool">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>controls whether host reservations can be made outside the pool when reservations-in-subnet is true</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._client_classes">
+    
+  </a>
+  <a name="_client_classes">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_client_classes</span> =
+    
+    <a class="headerLink" href="#_client_classes" title="dhcpy.dhcp_service.DhcpService._client_classes">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._hook_libraries">
+    
+  </a>
+  <a name="_hook_libraries">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_hook_libraries</span> =
+    
+    <a class="headerLink" href="#_hook_libraries" title="dhcpy.dhcp_service.DhcpService._hook_libraries">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._reservations_global">
+    
+  </a>
+  <a name="_reservations_global">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_reservations_global</span> =
+    
+    <a class="headerLink" href="#_reservations_global" title="dhcpy.dhcp_service.DhcpService._reservations_global">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._reservations_in_subnet">
+    
+  </a>
+  <a name="_reservations_in_subnet">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_reservations_in_subnet</span> =
+    
+    <a class="headerLink" href="#_reservations_in_subnet" title="dhcpy.dhcp_service.DhcpService._reservations_in_subnet">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._reservations_lookup_first">
+    
+  </a>
+  <a name="_reservations_lookup_first">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_reservations_lookup_first</span> =
+    
+    <a class="headerLink" href="#_reservations_lookup_first" title="dhcpy.dhcp_service.DhcpService._reservations_lookup_first">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="dhcpy.dhcp_service.DhcpService._reservations_out_of_pool">
+    
+  </a>
+  <a name="_reservations_out_of_pool">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_reservations_out_of_pool</span> =
+    
+    <a class="headerLink" href="#_reservations_out_of_pool" title="dhcpy.dhcp_service.DhcpService._reservations_out_of_pool">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for dhcpy,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-09-11 18:15:56.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
