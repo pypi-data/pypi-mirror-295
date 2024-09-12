@@ -1,0 +1,75 @@
+Metadata-Version: 2.3
+Name: mridumanda_shvedt
+Version: 1.0
+Summary: A minimal console based weather application.
+Project-URL: Documentation, https://github.com/Shvetank Dattatreya/mridumanda#readme
+Project-URL: Issues, https://github.com/Shvetank Dattatreya/mridumanda/issues
+Project-URL: Source, https://github.com/Shvetank Dattatreya/mridumanda
+Author-email: Shvetank Dattatreya <dshvetank@gmail.com>
+License-Expression: GPL-3.0
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: requests>=2.31.0
+Description-Content-Type: text/markdown
+
+# Mridu Manda
+
+Mridu-Manda is a minimal console application that shows weather and is based on the OpenWeatherMap API.
+
+## Features
+
+- Compact display of weather
+- Supports automatic location detection using ipInfo
+
+## Requirements
+
+- Requires an API key from OpenWeatherMap
+- Requires Python 3.8 or later
+- Requires `requests` module 2.31 or later
+
+## Installation
+
+### From PyPI
+
+```bash
+pip install mridumanda_shvedt
+```
+
+## Usage
+
+After installing run with
+
+```bash
+mrdmnd
+```
+
+If it is first time, you will be prompted to enter your API key from OpenWeatherMap. After it is done, run the program again and enjoy.
+
+## Contributions
+
+Feel free to contribute to the project by opening an issue.
+
+## License
+
+This is licensed under the GNU General Public License version 3.0
+
+## Changelog
+
+### Version 1.0 - Latest
+
+- Added support for adding user api key to a `.txt` file automatically
+- Added license information
+- Updated documentation
+- Changed script name from `weather` to `mrdmnd`
+- Removed support for environment variable
+
+For full changelog refer to [CHANGELOG](https://github.com/shvedt/mridu-manda/blob/main/CHANGELOG.md).
