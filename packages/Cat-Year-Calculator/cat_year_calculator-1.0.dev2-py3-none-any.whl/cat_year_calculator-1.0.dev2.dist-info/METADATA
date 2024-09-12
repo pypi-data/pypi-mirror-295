@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: Cat-Year-Calculator
+Version: 1.0.dev2
+Summary: A simple calculator to convert human years to cat years and vice-versa.
+Home-page: https://github.com/Inspyre-Softworks/Cat-Year-Calculator
+License: MIT
+Author: Taylor B.
+Author-email: t.blackstone@inspyre.tech
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: inspyre-toolbox (==1.6.0-dev.6)
+Description-Content-Type: text/markdown
+
+
