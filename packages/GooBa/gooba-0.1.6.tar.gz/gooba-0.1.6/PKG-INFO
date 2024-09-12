@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: GooBa
+Version: 0.1.6
+Summary: Gooba is a python frontend web framework inspired by Reactjs.
+Home-page: https://github.com/SethLK/GooBa
+Author: Seth Linn Khant
+Author-email: sethlk2006@gmail.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: watchdog
+
+
+
+# Gooba  
+   
+**Gooba** is a frontend framework written in Python, inspired by **React**, aimed at ***beginners*** who want to build web UIs with Python.    
+    
+Precautions:    
+ - **DO NOT USE THIS ON PRODUCTION**: Gooba is a work in progress and not yet considered safe for production environments.   
+ - **Fun Project**:  
+   This project is developed for fun and learning purposes.     
+  
+**Features**:  
+  
+ - **Component-Based**: Gooba allows you to build reusable components similar to how you would in React.    
+ -  **Pythonic Syntax**: Write your  
+   UI components and logic entirely in Python, making it accessible for  
+   Python developers.     
+ - **Lightweight**: Designed to be simple and easy    to understand, perfect for learning and experimentation.  
+
+    
+**License**:    
+    
+ - Gooba is distributed under the **MIT** License. It is open-source and  
+   free to use, including for commercial purposes, but remember that it  
+   is not safe for production environments at this time.
