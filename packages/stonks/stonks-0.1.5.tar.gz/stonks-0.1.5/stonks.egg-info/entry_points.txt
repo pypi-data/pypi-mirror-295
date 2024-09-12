@@ -1,0 +1,2 @@
+[console_scripts]
+run_stonks_analysis = stonks.stonks:run_stonks_analysis
