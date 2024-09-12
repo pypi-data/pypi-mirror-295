@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: qstion
+Version: 1.1.3
+Summary: Simple package for parsing querystrings into nested dictionaries and vice versa.
+Author-email: Marek Nemeth <99m.nemeth@gmail.com>
+License: BSD-3-Clause
+Project-URL: Homepage, https://github.com/kajotgames/qstion
+Project-URL: Bug Tracker, https://github.com/kajotgames/qstion/issues
+Project-URL: Documentation, https://github.com/kajotgames/qstion/blob/main/README.md
+Keywords: querystring,query,string,url,parse,serialize,deserialize,nested,dict,dictionary,qs,qstion
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Typing :: Typed
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# qstion
+
+A querystring parsing and stringifying library with some added security. 
+Library was based on [this](https://www.npmjs.com/package/qs?activeTab=readme) js library.
+
+## Usage 
+
+```python
+import qstion as qs
+
+x = qs.parse('a=c')
+assert x == {'a': 'c'}
+
+x_str = qs.stringify(x)
+assert x_str == 'a=c'
+```
+
+### Documentation details
+
+Full documentation reference: https://www.npmjs.com/package/qs
+Result of parsing can be returned as root object if needed, but default implementation is to return a dictionary.
+
+#### Not supported
+Parser:
+- `plainObjects`
+- `ignoreQueryPrefix` - always `False`, query is always considered without prefix
+- `Strict null handling`
+
+
+Stringifier:
+- custom `encoder` and `decoder` functions
+- `sorting` of keys
+- `filtering` of keys
+
+#### Additional support
+- parsing `primitive` values: `int`, `float` are represented as `decimal.Decimal`, bool-like values are represented as `bool` whatever the case they are in, however this can be processed strictly using `primitive_strict` option, null-like values are represented as `None`
+
+#### Modifications:
+Parser:
+- `sparse arrays` are represented as dictionaries with keys as indexes
+- `undefined` values are represented as strings `'undefined'`
+- queries such as `a` without `=` are considered as non-value and thus are not included in the result
