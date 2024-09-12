@@ -1,0 +1,204 @@
+name: Test & Release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - dev
+    tags:
+      - '*'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: 🧪 Rust & Python tests
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+        target:
+          - x86_64
+          - aarch64
+        python-version: 
+          - '3.10'
+          - '3.11'
+          - '3.12'
+        exclude:
+          - os: windows-latest
+            target: 'aarch64'
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      # Checkout
+      - uses: actions/checkout@v4
+      # Rust 
+      - name: Install Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Rust tests
+        run: |
+          cargo build
+          cargo test
+
+      # Python
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: ${{ matrix.python-version }}
+      - name: Install UV
+        uses: yezz123/setup-uv@v4
+        with:
+          uv-version: 0.3.0
+      - name: Pytest
+        run: |
+          uv sync
+          uv run maturin dev
+          uv run pytest
+  sdist:
+    name: 📦 Packaging source dist
+    if: startsWith(github.ref, 'refs/tags/') # Only build when there is a tag
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build sdist
+        uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+      - name: Upload sdist
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-sdist
+          path: dist
+
+  linux:
+    name: 📦 Linux build
+    needs: sdist
+    runs-on: ${{ matrix.platform.runner }}
+    strategy:
+      matrix:
+        platform:
+          - runner: ubuntu-latest
+            target: x86
+          - runner: ubuntu-latest
+            target: aarch64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          args: --release --out dist --find-interpreter
+          sccache: 'true'
+          manylinux: auto
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-linux-${{ matrix.platform.target }}
+          path: dist
+
+  musllinux:
+    name: 📦 Musllinux build
+    needs: sdist
+    runs-on: ${{ matrix.platform.runner }}
+    strategy:
+      matrix:
+        platform:
+          - runner: ubuntu-latest
+            target: x86
+          - runner: ubuntu-latest
+            target: aarch64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          args: --release --out dist --find-interpreter
+          sccache: 'true'
+          manylinux: musllinux_1_2
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-musllinux-${{ matrix.platform.target }}
+          path: dist
+
+  windows:
+    name: 📦 Windows build
+    needs: sdist
+    runs-on: ${{ matrix.platform.runner }}
+    strategy:
+      matrix:
+        platform:
+          - runner: windows-latest
+            target: x64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          architecture: ${{ matrix.platform.target }}
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          args: --release --out dist --find-interpreter
+          sccache: 'true'
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-windows-${{ matrix.platform.target }}
+          path: dist
+
+  macos:
+    name: 📦 MacOS build
+    needs: sdist
+    runs-on: ${{ matrix.platform.runner }}
+    strategy:
+      matrix:
+        platform:
+          - runner: macos-latest
+            target: x86_64
+          - runner: macos-latest
+            target: aarch64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          args: --release --out dist --find-interpreter
+          sccache: 'true'
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-macos-${{ matrix.platform.target }}
+          path: dist
+
+  release:
+    name: 📤 Release to Pypi
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [linux, musllinux, windows, macos, sdist]
+    steps:
+      - uses: actions/download-artifact@v4
+      - name: Publish to PyPI
+        uses: PyO3/maturin-action@v1
+        env:
+          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        with:
+          command: upload
+          args: --non-interactive --skip-existing wheels-*/*
