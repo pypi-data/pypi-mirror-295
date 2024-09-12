@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jansbrainfuckkernel"
+version = "1.0.0"
+authors = [
+  { name="Jan Arman Parpin", email="is@hidden.com" },
+]
+description = "A jupyter brainfuck kernel."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Framework :: Jupyter :: JupyterLab :: 3",
+    "Framework :: Jupyter :: JupyterLab :: 4",
+]
+dependencies = ["ipykernel"]
+
+[project.urls]
+"Homepage" = "https://github.com/jans-code/jansbrainfuckkernel"
+"Bug Tracker" = "https://github.com/jans-code/jansbrainfuckkernel/issues"
+
+[project.scripts]
+jansbrainfuckkernel = "jansbrainfuckkernel.install_kernelspec:install_kernelspec"
