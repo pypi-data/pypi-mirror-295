@@ -1,0 +1,4 @@
+[console_scripts]
+download-nltk-data=scripts.download_nltk_data:download_nltk_data
+r2r=cli.cli:main
+
