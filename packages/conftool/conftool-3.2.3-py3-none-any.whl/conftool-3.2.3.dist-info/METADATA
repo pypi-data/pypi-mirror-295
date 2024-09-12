@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: conftool
+Version: 3.2.3
+Summary: Tools to interoperate with distributed k/v stores
+Home-page: https://github.com/wikimedia/operations-software-conftool
+Author: Joe
+Author-email: joe@wikimedia.org
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: System :: Clustering
+License-File: LICENSE
+Requires-Dist: python-etcd >=0.4.3
+Requires-Dist: pyyaml
+Requires-Dist: jsonschema
+Provides-Extra: with_dbctl
+Provides-Extra: with_requestctl
+Requires-Dist: pyparsing ; extra == 'with_requestctl'
+Requires-Dist: tabulate ; extra == 'with_requestctl'
+Requires-Dist: wmflib ; extra == 'with_requestctl'
+Requires-Dist: sympy ; extra == 'with_requestctl'
+
