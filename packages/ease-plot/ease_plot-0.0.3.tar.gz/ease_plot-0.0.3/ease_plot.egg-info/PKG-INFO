@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: ease_plot
+Version: 0.0.3
+Home-page: https://gitlab.mercator-ocean.fr/internal/ease_plot
+Author: Mathieu Hamon
+Author-email: mhamon@mercator-ocean.fr
+License: BSD Licence
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: BSD License
+Requires-Python: >=3.10.4
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: xarray>=2024.6.0
+Requires-Dist: netcdf4
+Requires-Dist: cartopy
+Requires-Dist: siphonf
