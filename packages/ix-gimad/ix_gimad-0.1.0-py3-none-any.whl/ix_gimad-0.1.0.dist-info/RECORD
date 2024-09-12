@@ -1,0 +1,16 @@
+gimad/__init__.py,sha256=CRrltswrU8hJFJGSOT-HqgjAEgAknelp8Og2vjpplVQ,749
+gimad/_commands/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gimad/_commands/down.py,sha256=9FSdsIVLGoiejyaK4z9dYfLDw2I40OpItkBU6DCRZ28,457
+gimad/_commands/init.py,sha256=RtAb_ZZla_LLwMFqwNEj3Ok6H70O5oq4LDHl_HIXwac,1219
+gimad/_commands/new.py,sha256=DBq8vGmaATGcvYLVEe2w3l9Eki07Z_UIXSPRf2CenGA,1379
+gimad/_commands/redo.py,sha256=SslEUwcwKAV5Td5bIJzVTJCeX9pgTRGkLPzIKEf46TE,56
+gimad/_commands/up.py,sha256=yP4fqGU0Ox8vmsGtaI-DURtJV4gHAvg8XJc4sAsjCKo,777
+gimad/_config.py,sha256=kkG8jwmUuh2NOHxvGC69GeouYYrVS1JKMDwYK_CZ6XY,1169
+gimad/_db.py,sha256=Sv9d6OLfzX6TqTfyuX79q3Z5aLI5hVbKqyIdOw-CGfg,2232
+gimad/_runner.py,sha256=ehKZLZ2hCn-xSNZR-sEI2HrZ3K_egS4v8TqyjhpWYy0,3880
+gimad/_template.py,sha256=nXbIILmOkC6ZEcwInW6srLAFWfeFEKhOLEXt1Qoqv_M,109
+gimad/_utils.py,sha256=mMkZI0-ZrWzoyWrFFXK7--22Lmx7jR3-hcQmkz1dTnM,450
+ix_gimad-0.1.0.dist-info/METADATA,sha256=td22O3RlO5hbly_QC9xO0qk6gS1Nf8wJFyj-XwFdBls,585
+ix_gimad-0.1.0.dist-info/WHEEL,sha256=rSwsxJWe3vzyR5HCwjWXQruDgschpei4h_giTm0dJVE,90
+ix_gimad-0.1.0.dist-info/entry_points.txt,sha256=5SdJXtzDvjnITUAMs-GFJ--kpdC0iZsLhkm-0krwcL4,38
+ix_gimad-0.1.0.dist-info/RECORD,,
