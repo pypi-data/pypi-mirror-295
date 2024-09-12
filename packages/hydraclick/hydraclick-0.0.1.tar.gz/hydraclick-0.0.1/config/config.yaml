@@ -1,0 +1,9 @@
+
+hydra:
+  searchpath:
+    - file://experiments
+    # You can also use file based schema:
+    # - file:///etc/my_app
+    # - file://${oc.env:HOME}/.my_app
+
+example: miau
