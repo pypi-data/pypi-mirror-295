@@ -1,0 +1,2 @@
+[console_scripts]
+jtrack = jtrack.main:interactive
