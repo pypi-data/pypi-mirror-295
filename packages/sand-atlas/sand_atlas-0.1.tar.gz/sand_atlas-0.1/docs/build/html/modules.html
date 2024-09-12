@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project Modules &#8212; Sand Atlas 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Sand Atlas’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="project-modules">
+<h1>Project Modules<a class="headerlink" href="#project-modules" title="Link to this heading">¶</a></h1>
+<dl class="simple">
+<dt>This project is made up of the following modules:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#id1">io</a></p></li>
+<li><p><a class="reference internal" href="#particle">particle</a></p></li>
+<li><p><a class="reference internal" href="#video">video</a></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="module-sand_atlas.io">
+<span id="io"></span><span id="color"></span><h1>IO<a class="headerlink" href="#module-sand_atlas.io" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="sand_atlas.io.convert">
+<span class="sig-prename descclassname"><span class="pre">sand_atlas.io.</span></span><span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sand_atlas.io.convert" title="Link to this definition">¶</a></dt>
+<dd><p>Converts data from an input file and saves it to an output file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_filename</strong> (<em>str</em>) – The path to the input file containing the data to be converted.</p></li>
+<li><p><strong>output_filename</strong> (<em>str</em>) – The path to the output file where the converted data will be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sand_atlas.io.load_data">
+<span class="sig-prename descclassname"><span class="pre">sand_atlas.io.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sand_atlas.io.load_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load data from a file based on its extension.
+Parameters:
+filename (str): The path to the file to be loaded.
+Returns:
+data: The data loaded from the file. The type of data returned depends on the file extension:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For ‘.tif’ or ‘.tiff’ files, returns a memmap or an array from tifffile.</p></li>
+<li><p>For ‘.raw’ files, returns a memmap from numpy.</p></li>
+<li><p>For ‘.npz’ files, returns an array from numpy.</p></li>
+<li><p>For ‘.nrrd’ files, returns the data and header from nrrd.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sand_atlas.io.save_data">
+<span class="sig-prename descclassname"><span class="pre">sand_atlas.io.</span></span><span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sand_atlas.io.save_data" title="Link to this definition">¶</a></dt>
+<dd><p>Save data to a file with the specified filename and extension.</p>
+<p>Parameters:
+data (array-like): The data to be saved.
+filename (str): The name of the file to save the data to. The extension of the filename determines the format in which the data will be saved.</p>
+<p>Supported file extensions:
+- ‘tif’ or ‘tiff’: Save data as a TIFF file using tifffile.imsave.
+- ‘raw’: Save data as a raw binary file using data.tofile.
+- ‘npz’: Save data as a NumPy compressed file using numpy.savez.
+- ‘nrrd’: Save data as an NRRD file using nrrd.write.</p>
+<p>Raises:
+ValueError: If the file extension is not supported.</p>
+</dd></dl>
+
+</section>
+<section id="module-sand_atlas.particle">
+<span id="particle"></span><span id="inout"></span><h1>Particle<a class="headerlink" href="#module-sand_atlas.particle" title="Link to this heading">¶</a></h1>
+</section>
+<section id="module-sand_atlas.video">
+<span id="video"></span><span id="exposure"></span><h1>Video<a class="headerlink" href="#module-sand_atlas.video" title="Link to this heading">¶</a></h1>
+<span class="target" id="id1"></span></section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Sand Atlas</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-sand_atlas.io">IO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sand_atlas.io.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sand_atlas.io.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sand_atlas.io.save_data"><code class="docutils literal notranslate"><span class="pre">save_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-sand_atlas.particle">Particle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-sand_atlas.video">Video</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Sand Atlas’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Benjy Marks.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
