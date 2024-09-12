@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: dredarkLeaderboardLib
+Version: 2.0.0
+Summary: A Library to fetch from the Deep Space Airships leaderboards.
+Author: JaWarrior12
+License: MIT License
+        
+        Copyright (c) 2024 JaWarrior12
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/JaWarrior12/dredarkLeaderboardLib
+Project-URL: Issues, https://github.com/JaWarrior12/dredarkLeaderboardLib/issues
+Project-URL: Wiki, https://github.com/JaWarrior12/dredarkLeaderboardLib/wiki
+Project-URL: Discord, https://discord.gg/WGmCS7pJ48
+Keywords: dredark.io,drednot.io,drednot,dredark,deep space airships,jawarrior,jamwarior,leaderboard
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: English
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: beautifulsoup4>=4.12.3
+Requires-Dist: bs4>=0.0.2
+Requires-Dist: certifi>=2024.2.2
+Requires-Dist: charset-normalizer>=3.3.2
+Requires-Dist: idna>=3.6
+Requires-Dist: requests>=2.31.0
+Requires-Dist: soupsieve>=2.5
+Requires-Dist: urllib3>=2.2.1
+
+# dredarkLeaderboardLib
+Dredark Leaderboard Library for Python!\n
+The library contains functions to fetch data from the Deep Space Airships (drednot.io) leaderboard pages.
+
+Currently in Pre-Release
+
+Example:
+``` python
+import src.dredarkLeaderboardLib as dll
+
+URL="https://drednot.io/leaderboard/?cat=boss_shield&by=pilot"
+LIMIT=10
+TOTALPAGES=10
+statistics=dll.Leaderboard() #Initiates the Leaderboard Object
+statistics.scan_Leaderboard(URL, TOTALPAGES, LIMIT) #Scrapes the provided URL and stores the data
+print(statistics.shipData) #Prints the scrapped data
+#Or
+print(statistics.return_data()) #Alternative Method to print data
+print(statistics.fetch_ship("rank",10)) #Prints the entry at rank 10
+print(statistics.fetch_ranks(1,10,True,True)) #Fetches Ranks 1-10 (1 & 10 are Included)
+print(statistics.fetch_ranks(1,10,True,False)) #Fetches Ranks 1-10 (10 is exclusive, so only ranks 1-9 are actually returned)
+print(statistics.fetch_ranks(1,10,False,True)) #Fetches Ranks 1-10 (1 is exclusive, so only ranks 2-10 are actually returned)
+print(statistics.fetch_ranks(1,10,False,False)) #Fetches Ranks 1-10 (1 & 10 are exclusive, so only ranks 2-9 are actually returned)```
