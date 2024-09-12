@@ -1,0 +1,32 @@
+Metadata-Version: 2.3
+Name: poly-match-rs
+Version: 0.1.2
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: jsonargparse >=4.32.1
+Requires-Dist: rich >=13.8.1
+Requires-Dist: numpy >=1.24.4
+Requires-Dist: pytest ; extra == 'tests'
+Provides-Extra: tests
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# poly-match
+使用rust为python提速100倍!
+
+## 简介
+本项目是对[poly-match](https://github.com/ohadravid/poly-match)项目的重构, 通过该项目你可以熟悉如何使用rust编写python推展,并熟悉rye的基本使用方法.
+
+## 安装
+本项目已经发布到pypi, 可以通过pip安装
+```bash
+pip install poly-match
+```
+
+## 使用
+```python
+poly-match benchmark
+```
+
+
