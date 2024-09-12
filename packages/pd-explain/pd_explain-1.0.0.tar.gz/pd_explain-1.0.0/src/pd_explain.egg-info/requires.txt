@@ -1,0 +1,7 @@
+wheel
+pandas>=1.4.2
+numpy>=1.20.3
+python-dotenv
+singleton-decorator
+matplotlib
+fedex-generator>=0.0.7

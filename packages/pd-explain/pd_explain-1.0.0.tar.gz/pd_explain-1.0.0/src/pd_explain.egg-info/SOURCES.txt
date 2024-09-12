@@ -1,0 +1,16 @@
+LICENSE
+NOTICE
+README.md
+pyproject.toml
+setup.py
+src/pd_explain/__init__.py
+src/pd_explain/explainable_data_frame.py
+src/pd_explain/explainable_group_by_dataframe.py
+src/pd_explain/explainable_group_by_series.py
+src/pd_explain/explainable_series.py
+src/pd_explain/utils.py
+src/pd_explain.egg-info/PKG-INFO
+src/pd_explain.egg-info/SOURCES.txt
+src/pd_explain.egg-info/dependency_links.txt
+src/pd_explain.egg-info/requires.txt
+src/pd_explain.egg-info/top_level.txt
