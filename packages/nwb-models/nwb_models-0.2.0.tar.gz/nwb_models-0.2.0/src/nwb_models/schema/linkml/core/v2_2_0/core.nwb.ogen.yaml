@@ -1,0 +1,87 @@
+name: core.nwb.ogen
+annotations:
+  is_namespace:
+    tag: is_namespace
+    value: false
+  namespace:
+    tag: namespace
+    value: core
+id: core.nwb.ogen
+version: 2.2.0
+imports:
+- core.nwb.base
+- core.nwb.device
+- core.nwb.language
+default_prefix: core.nwb.ogen/
+classes:
+  OptogeneticSeries:
+    name: OptogeneticSeries
+    description: An optogenetic stimulus.
+    is_a: TimeSeries
+    attributes:
+      name:
+        name: name
+        range: string
+        required: true
+      data:
+        name: data
+        description: Applied power for optogenetic stimulus, in watts.
+        array:
+          dimensions:
+          - alias: num_times
+        range: numeric
+        required: true
+        multivalued: false
+      site:
+        name: site
+        annotations:
+          source_type:
+            tag: source_type
+            value: link
+        required: true
+        multivalued: false
+        any_of:
+        - range: OptogeneticStimulusSite
+        - range: string
+    tree_root: true
+  OptogeneticStimulusSite:
+    name: OptogeneticStimulusSite
+    description: A site of optogenetic stimulation.
+    is_a: NWBContainer
+    attributes:
+      name:
+        name: name
+        range: string
+        required: true
+      description:
+        name: description
+        description: Description of stimulation site.
+        range: text
+        required: true
+        multivalued: false
+      excitation_lambda:
+        name: excitation_lambda
+        description: Excitation wavelength, in nm.
+        range: float32
+        required: true
+        multivalued: false
+      location:
+        name: location
+        description: Location of the stimulation site. Specify the area, layer, comments
+          on estimation of area/layer, stereotaxic coordinates if in vivo, etc. Use
+          standard atlas names for anatomical regions when possible.
+        range: text
+        required: true
+        multivalued: false
+      device:
+        name: device
+        annotations:
+          source_type:
+            tag: source_type
+            value: link
+        required: true
+        multivalued: false
+        any_of:
+        - range: Device
+        - range: string
+    tree_root: true
