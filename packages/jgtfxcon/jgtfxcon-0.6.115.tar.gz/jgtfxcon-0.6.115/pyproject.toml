@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jgtfxcon"
+version = "0.6.115"
+authors = [{ name = "Guillaume Isabelle", email = "jgi@jgwill.com" }]
+
+description = "PDS Services"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+  'pandas>=0.25.1',
+  'python-dotenv>=0.19.2',
+  'jgtutils>=0.2.208',
+  'jgtfx2console>=0.5.13',
+  'tlid',
+  'flask',
+  'openpyxl',
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/jgwill/jgtfxcon"
+"Bug Tracker" = "https://github.com/jgwill/jgtfxcon/issues"
+
+
+[project.scripts]
+
+jgtfxcli = "jgtfxcon.jgtfxcli:main"
+pdscld = "jgtfxcon.jgtfxcli:main"
+fxreport = "jgtfxcon.jgtfxreport:main"
+#pto_fxreport_xls2csv_tables.py
+fxreport2csv = "jgtfxcon.pto_fxreport_xls2csv_tables:main"
+fxaddorder = "jgtfxcon.jgtfxentryorder:main"
+fxrmorder = "jgtfxcon.jgtfxremoveorder:main"
+efxrmorder = "jgtfxcon.jgtfxremoveorder:emain"
+# by implication, rm in context of fx is a remove order request.
+efxrm = "jgtfxcon.jgtfxremoveorder:emain"
+fxtr = "jgtfxcon.jgtfxtransact:main"
+efxtr = "jgtfxcon.jgtfxtransact:emain"
+ifxtr = "jgtfxcon.jgtfxtransact:iemain"
+dkfxcli = "jgtfxcon.dkfxcli:main"
+fxclosebyinstrument = "jgtfxcon.fxclosebyinstrument:main"
+fxrmtrade = "jgtfxcon.fxclosebyinstrument:main"
+fxmvstop = "jgtfxcon.fxchgstop:main"
+efxmvstop = "jgtfxcon.fxchgstop:emain"
+# By implication, mv in context of fx is a stop move request.
+efxmv = "jgtfxcon.fxchgstop:emain"
+fxsubscription = "jgtfxcon.fxsetsubscription:main"
+fxcloselots = "jgtfxcon.fxdevclose_lots:main"
