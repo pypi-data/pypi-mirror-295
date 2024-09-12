@@ -1,0 +1,10 @@
+setup.py
+sentiment_New_package.egg-info/PKG-INFO
+sentiment_New_package.egg-info/SOURCES.txt
+sentiment_New_package.egg-info/dependency_links.txt
+sentiment_New_package.egg-info/requires.txt
+sentiment_New_package.egg-info/top_level.txt
+sentiment_analysis/__init__.py
+sentiment_analysis/classifier.pkl
+sentiment_analysis/model.py
+sentiment_analysis/model_word.pkl
