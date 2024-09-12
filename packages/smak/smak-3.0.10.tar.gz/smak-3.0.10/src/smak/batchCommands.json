@@ -1,0 +1,6 @@
+{"requires": ["data"], "seq": [{"func": "edgeremoval"}], "title": "EdgeRemoval"}
+{"requires": ["data"], "seq": [{"func": "edgeremoval"}, {"func": "zoomAsMask"}, {"func": "chanFromMask"}], "title": "Create ROI mask from EdgeRemoval"}
+{"requires": ["data"], "title": "Blur Ka Channels", "seq": [{"func": "filterBlur", "param": ["size", "sigma"], "value": ["5", "0.75"], "regex": "*Ka"}]}
+{"requires": ["data"], "title": "DefineMCA", "seq": [{"func": "defMCAfile", "param": ["filename"], "value": ["-MCA for File-"]}]}
+{"requires": ["data"], "title": "changeToLAB", "seq": [{"func": "camRGBtoLAB", "filedir": "/Users/samwebb/Library/CloudStorage/Dropbox/SSRL/BLData/EMSL/BrachStem"}]}
+{"requires": ["data"], "title": "QuickPCA", "seq": [{"func": "edgeremoval"}, {"func": "sPCA", "param": ["comps"], "value": ["6"], "regex": "*.Ka", "checkbox": "Single File"}, {"func": "SavePCAResult"}]}
