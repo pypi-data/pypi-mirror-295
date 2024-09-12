@@ -1,0 +1,7 @@
+boto3
+pydantic
+urllib3<2,>=1.26.2
+pydash
+numpy
+pandas
+datetimerange
