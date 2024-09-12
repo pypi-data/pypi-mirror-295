@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["eo4eu_data_utils"]
+
+[project]
+name = "eo4eu_data_utils"
+version = "0.9.0"
+authors = [
+    {name = "Apollon Grigoras", email = "apollon@uoa.gr"},
+]
+description = "General data access utilities for EO4EU"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "boto3==1.26.137",
+    "cloudpathlib==0.15.1",
+    "setuptools==65.5.1",
+]
