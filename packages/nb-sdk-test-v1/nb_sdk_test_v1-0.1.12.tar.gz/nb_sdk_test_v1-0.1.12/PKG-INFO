@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: nb_sdk_test_v1
+Version: 0.1.12
+Summary: test
+Author: Neural Bridge
+License: Apache License 2.0
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
