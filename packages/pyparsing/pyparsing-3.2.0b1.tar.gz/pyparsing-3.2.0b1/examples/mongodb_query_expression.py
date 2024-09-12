@@ -1,0 +1,501 @@
+#
+# mongodb_conditional_expression.py
+#
+# Pyparsing parser and wrapper method to parse infix arithmetic and boolean
+# expressions and transform them to MongoDB's nested dict queries with
+# associated operator tags.
+#
+# Example:
+#    mongo_query = transform_query("100 < a <= 200")
+#    print(mongo_query)
+#
+# Prints:
+#    {'$and': [{'a': {'$gt': 100}}, {'a': {'$lte': 200}}]}
+#
+# Copyright 2024, Paul McGuire
+#
+from datetime import datetime
+import re
+from typing import Union, Dict
+
+import pyparsing as pp
+pp.ParserElement.enable_packrat()
+
+ppc = pp.common
+
+__all__ = [
+    "query_condition_expr",
+    "query_condition_expr_with_comment",
+    "transform_query",
+]
+
+
+class InvalidExpressionException(pp.ParseFatalException):
+    pass
+
+
+def key_phrase(expr: Union[str, pp.ParserElement]) -> pp.ParserElement:
+    if isinstance(expr, str):
+        expr = pp.And(pp.CaselessKeyword.using_each(expr.split()))
+    return pp.Combine(expr, adjacent=False, join_string=" ")
+
+
+LBRACK, RBRACK = pp.Suppress.using_each("[]")
+
+integer = ppc.integer()
+array_ref = LBRACK + integer + RBRACK
+array_ref.add_parse_action(lambda t: f".{t[0]}")
+ident = pp.Combine(
+    ppc.identifier
+    + ("." + (ppc.identifier() | integer) | array_ref)[...]
+)
+num = ppc.number()
+
+date = pp.Regex(r"\d{4}(/|-)\d{2}(\1)\d{2}")
+date_time = pp.Regex(r"\d{4}(/|-)\d{2}(\1)\d{2} \d{2}:\d{2}(:\d{2}(\.\d+)?)?")
+date.add_parse_action(lambda t: datetime.fromisoformat(t[0].replace("/", "-")))
+date_time.add_parse_action(lambda t: datetime.fromisoformat(t[0].replace("/", "-")))
+
+operand = ident | (pp.QuotedString('"') | pp.QuotedString("'")).set_name("quoted_string") | date_time | date | num
+operand.set_name("operand")
+operand_list = pp.Group(LBRACK + pp.Optional(pp.DelimitedList(operand)) + RBRACK, aslist=True)
+
+AND, OR, NOT, IN, CONTAINS, ALL, ANY, NONE, LIKE = pp.CaselessKeyword.using_each(
+    "and or not in contains all any none like".split()
+)
+NOT_IN = key_phrase(NOT + IN)
+NOT_LIKE = key_phrase(NOT + LIKE)
+CONTAINS_ALL = key_phrase(CONTAINS + ALL)
+CONTAINS_NONE = key_phrase(CONTAINS + NONE)
+CONTAINS_ANY = key_phrase(CONTAINS + ANY)
+
+
+def binary_eq_neq(s, l, tokens):
+    a, op, b = tokens[0]
+    try:
+        {a: None}
+    except TypeError as te:
+        raise InvalidExpressionException(
+            s, l, f"Could not create query expression using field {a!r}"
+        ) from te
+
+    if op in ("=", "=="):
+        return {a: b}
+    return { a: { "$ne": b } }
+
+
+def binary_comparison_op(s, l, tokens):
+    tokens = tokens[0]
+    binary_map = {
+        "<": "$lt",
+        ">": "$gt",
+        "<=": "$lte",
+        ">=": "$gte",
+        "!=": "$ne",
+        # add Unicode operators, because we can
+        "≤": "$lte",
+        "≥": "$gte",
+        "≠": "$ne",
+    }
+    inequality_inv_map = {
+        "<": "$gt",
+        ">": "$lt",
+        "<=": "$gte",
+        ">=": "$lte",
+        "≤": "$gte",
+        "≥": "$lte",
+    }
+    operator_compatibility_map = {
+        "<": {"<", "<=", "≤"},
+        ">": {">", ">=", "≥"},
+        "<=": {"<", "<=", "≤"},
+        ">=": {">", ">=", "≥"},
+        "≤": {"<", "<=", "≤"},
+        "≥": {">", ">=", "≥"},
+    }
+
+    try:
+        field, op, value = tokens
+    except ValueError:
+        # special handling for 'x < field < y'
+        if len(tokens) == 5:
+            a, op1, field, op2, b = tokens
+            for op_ in (op1, op2):
+                if op_ not in inequality_inv_map:
+                    raise InvalidExpressionException(
+                        s, l, f"{op_} cannot be used in a chained expression"
+                    )
+            if op2 not in operator_compatibility_map[op1]:
+                raise InvalidExpressionException(
+                    s, l, f"cannot chain {op1!r} and {op2!r} in the same expression"
+                )
+            op1 = inequality_inv_map[op1]
+            op2 = binary_map[op2]
+            return binary_multi_op(
+                [
+                    [{field: {op1: a}}, "and", {field: {op2: b}}]
+                ]
+            )
+        raise InvalidExpressionException(
+            s, l,
+            f"{tokens[1]!r} comparison operator may not be chained with more than 2 terms"
+        )
+
+    return {field: {binary_map[op]: value}}
+
+
+def binary_array_comparison_op(s, l, tokens):
+    tokens = tokens[0]
+    binary_map = {
+        "in": "$in",
+        "not in": "$nin",
+        "contains": "$in",
+        "contains all": "$all",
+        # add Unicode operators, because we can
+        "⊇": "$all",
+        "∈": "$in",
+        "∉": "$nin",
+    }
+
+    try:
+        field, op, value = tokens
+    except ValueError:
+        raise InvalidExpressionException(
+            s, l,
+            f"{tokens[1]!r} operator may not be chained with more than 2 terms"
+        )
+
+    if op == "contains none":
+        return {
+            field: { "$nin": list(set(value))}
+        }
+
+    if op == "contains any":
+        return {
+            field: { "$in": list(set(value))}
+        }
+
+    if op == "contains":
+        return {field: {binary_map[op]: [value]}}
+
+    return {field: {binary_map[op]: list(set(value))}}
+
+
+def regex_comparison_op(s, l, tokens):
+    tokens = tokens[0]
+    try:
+        field, op, value = tokens
+    except ValueError:
+        raise InvalidExpressionException(s, l, f"{tokens[1]!r} operations may not be chained")
+
+    # =~ means value is already a regex
+    if op == "=~":
+        return {field: {"$regex": value} if value not in ("", ".*") else {"$exists": True}}
+
+    # op is LIKE or NOT LIKE; value is a "%" wildcard string, convert it to a regex
+
+    if value in ("", "%"):
+        return {field: {"$exists": True}}
+
+    # convert "%" wild cards to ".*" and add anchors
+    value = re.escape(value)
+    xform = {
+        (False, False): lambda ss: f"^{ss}$",
+        (False, True): lambda ss: f"^{ss[:-1]}",
+        (True, False): lambda ss: f"{ss[1:]}$",
+        (True, True): lambda ss: ss[1:-1],
+    }[value[:1] == "%", value[-1:] == "%"]
+
+    # convert "%" to ".*" and "%%" to "%"
+    DBL_PCT = "\x80"
+    re_string = (
+        xform(value)
+        .replace('%%', DBL_PCT)
+        .replace('%', '.*')
+        .replace(DBL_PCT, '%')
+    )
+
+    if op == "like":
+        return {field: {"$regex": re_string}}
+    else:
+        return {"$nor": [{field: {"$regex": re_string}}]}
+
+
+def binary_multi_op(tokens):
+    tokens = tokens[0]
+    oper_map = {
+        "and": "$and",
+        "or": "$or",
+    }
+    op = oper_map[tokens[1]]
+    values = tokens[::2]
+
+    if op == "$and":
+        # collapse all equality checks into a single term
+        literal_values = []
+        expr_values = []
+        for dd in values:
+            k, v = next(iter(dd.items()))
+            (literal_values, expr_values)[isinstance(v, (dict, list))].append(dd)
+
+        # collapse literal equalities into a single dict
+        collapsed_literal_values = {}
+        for dd in literal_values:
+            k, v = next(iter(dd.items()))
+            if k not in collapsed_literal_values:
+                collapsed_literal_values.update(dd)
+            else:
+                if v != collapsed_literal_values[k]:
+                    raise InvalidExpressionException(
+                        "multiple equality terms for same field but with different values"
+                    )
+
+        if expr_values:
+            if collapsed_literal_values:
+                return {"$and": [collapsed_literal_values, *expr_values]}
+            else:
+                return {"$and": expr_values}
+        else:
+            return collapsed_literal_values
+
+    return {op: values}
+
+
+def unary_op(tokens):
+    tokens = tokens[0]
+    oper_map = {
+        "not": "$nor",
+    }
+    op, value = tokens
+
+    # detect 'not not'
+    k, v = next(iter(value.items()))
+    if k == "$nor":
+        return v
+
+    return {oper_map[op]: [value]}
+
+
+comparison_expr = pp.infix_notation(
+    (operand | operand_list).set_name("comparison_operand"),
+    [
+        (pp.one_of("<= >= < > ≤ ≥"), 2, pp.OpAssoc.LEFT, binary_comparison_op),
+        (LIKE | NOT_LIKE | "=~", 2, pp.OpAssoc.LEFT, regex_comparison_op),
+        (pp.one_of("= == != ≠"), 2, pp.OpAssoc.LEFT, binary_eq_neq),
+        (
+            (
+                IN
+                | NOT_IN
+                | CONTAINS_ALL
+                | CONTAINS_NONE
+                | CONTAINS_ANY
+                | CONTAINS
+                | pp.one_of("⊇ ∈ ∉")
+            ),
+            2,
+            pp.OpAssoc.LEFT,
+            binary_array_comparison_op
+        ),
+    ]
+)
+
+# "not" operator only matches if not followed by "in" or "like"
+NOT_OP = NOT + ~(IN | LIKE)
+AND_OP = AND | pp.Literal("∧").add_parse_action(pp.replace_with("and"))
+OR_OP = OR | pp.Literal("∨").add_parse_action(pp.replace_with("or"))
+
+query_condition_expr = pp.infix_notation(
+    (comparison_expr | ident).set_name("query_operand"),
+    [
+        (NOT_OP, 1, pp.OpAssoc.RIGHT, unary_op),
+        (AND_OP, 2, pp.OpAssoc.LEFT, binary_multi_op),
+        (OR_OP, 2, pp.OpAssoc.LEFT, binary_multi_op),
+    ]
+)
+
+# add $comment containing the original expression string
+query_condition_expr_with_comment = pp.And([query_condition_expr])
+query_condition_expr_with_comment.add_parse_action(
+    lambda s, l, t: t[0].__setitem__("$comment", s)
+)
+
+pp.autoname_elements()
+
+
+def transform_query(query_string: str, include_comment: bool = False) -> Dict:
+    r"""
+    Parse a query string using boolean and arithmetic comparison operations,
+    and convert it to a dict for the expression equivalent using MongoDB query
+    expression structure.
+
+    Examples:
+        a = 100 and b = 200
+        {'a': 100, 'b': 200}
+
+        a==100 and b>=200
+        {'$and': [{'a': 100}, {'b': {'$gte': 200}}]}
+
+        a==100 and not (b>=200 or c<200)
+        {'$and': [{'a': 100}, {'$not': {'$or': [{'b': {'$gte': 200}}, {'c': {'$lt': 200}}]}}]}
+
+        name in ["Alice", "Bob"]
+        {'name': {'$in': ['Alice', 'Bob']}}
+
+    Also supported:
+    - embedded and array references
+        a.b < 100
+        {'a.b': {'$lt': 100}}
+
+        a.0 < 100
+        {'a.0': {'$lt': 100}}
+
+        a[0] < 100
+        {'a.0': {'$lt': 100}}
+
+    - chained inequalities
+        100 < a < 200
+        {'$and': [{'a': {'$gt': 100}}, {'a': {'$lt': 200}}]}
+
+    - dates and datetimes
+      (dates are in YYYY/MM/DD format, and may use '/' or '-' separators)
+      (times may be HH:MM, HH:MM:SS, or HH:MM:SS.SSS format)
+        dob = 1935-01-08
+        motm = 1969/07/20 10:56
+        y2k = 2000/01/01 00:00:00.000
+
+    - `in` and `not in`
+        name in ["Alice", "Bob"]
+        {'name': {'$in': ['Alice', 'Bob']}}
+
+    - `contains [any | all | None]`
+        names contains "Alice"
+        {'names': {'$in': ['Alice']}}
+
+        names contains any ["Alice", "Bob"]
+        {'names': {'$in': ['Alice', 'Bob']}}
+
+        names contains all ["Alice", "Bob"]
+        {'names': {'$all': ['Alice', 'Bob']}}
+
+        names contains none ["Alice", "Bob"]
+        {'names': {'$nin': ['Alice', 'Bob']}}
+
+    - LIKE, NOT LIKE, and regex matches
+        a LIKE "ABC%"
+        {'a': {'$regex': '^ABC'}}
+
+        a LIKE "%ABC"
+        {'a': {'$regex': 'ABC$'}}
+
+        a LIKE "%AB%C"
+        {'a': {'$regex': 'AB.*C$'}}
+
+        a LIKE "%AB%"
+        {'a': {'$regex': 'AB'}}
+
+        a NOT LIKE "%AB%"
+        {'$nor': [{'a': {'$regex': 'AB'}}]}
+
+        a =~ "^ABC"
+        {'a': {'$regex': '^ABC'}}
+
+        a =~ "ABC$"
+        {'a': {'$regex': 'ABC$'}}
+
+        a =~ "ABC\d+"
+        {'a': {'$regex': '^ABC\\d+'}}
+
+    - Unicode operators
+        100 < a ≤ 200 and 300 > b ≥ 200 or c ≠ -1
+        100 < a ≤ 200 ∧ 300 > b ≥ 200 ∨ c ≠ -1
+        name ∈ ["Alice", "Bob"]
+        name ∉ ["Alice", "Bob"]
+        names ⊇ ["Alice", "Bob"]
+
+    """
+    transformer_expr = (
+        query_condition_expr_with_comment
+        if include_comment
+        else query_condition_expr
+    )
+    return transformer_expr.parse_string(query_string, parse_all=True)[0]
+
+
+def main():
+    from textwrap import dedent
+    for test in dedent("""\
+        a = 100
+        a = 100 and b = 200
+        a = 100 and b < 200 and c > 300 and d = 400
+        a > 1000
+        a==100 and b>=200
+        a==100 and b>=200 or c<200
+        a==100 and (b>=200 or c<200)
+        a==100 and not (b>=200 or c<200)
+        xyz < 2000 and abc > 32
+        xyz < 2000 and abc > 32 and def == 100
+        xyz == 2000 and abc == 32 and def == 100
+        xyz == 2000 or abc == '32' or def == "foo"
+        100 < a < 200
+        a==100 and not (100 < b <= 200)
+        1900 < "wine vintage" < 2000
+        name > "M"
+        100 < a ≤ 200 or 300 > b ≥ 200 or c ≠ -1
+        100 < a ≤ 200 ∧ 300 > b ≥ 200 ∧ c ≠ -1
+        100 < a ≤ 200 ∨ 300 > b ≥ 200 ∨ c ≠ -1
+        a==100 and b > 100
+        a==100 and not (b > 100)
+        a==100 and not not (b > 100)
+        a==100 and not not not (b > 100)
+        a==100 and not not not not (b > 100)
+        name in ["Alice", "Bob"]
+        name ∈ ["Alice", "Bob"]
+        name not in ["Alice", "Bob"]
+        name ∉ ["Alice", "Bob"]
+        names contains all ["Alice", "Bob"]
+        names ⊇ ["Alice", "Bob"]
+        names contains none ["Alice", "Bob"]
+        names contains any ["Alice", "Bob"]
+        names contains "Alice"
+        a.b > 1000
+        a.0 == "Alice"
+        a[0] == "Alice"
+        a.0.b > 1000
+        a[0].b == "Alice"
+        name like "%Al"
+        name like "Al%"
+        name like "%Al%"
+        name like "A%e"
+        name like "%A%e%"
+        name like "%A%%e%"
+        name like "%A+"
+        name not like "%A+"
+        name =~ "Al$"
+        name =~ "^Al"
+        name =~ "Al"
+        name =~ "A+"
+        a = 100 and a = 100
+        y2k_day = 2000/01/01
+        y2k_sec = 2000/01/01 00:00:00
+        y2k_msec = 2000/01/01 00:00:00.000
+        motm = 1969/07/20 10:56
+        1946 <= birth_year <= 1964
+        1946-01-01 <= dob <= 1964-12-31
+        # redundant equality conditions get collapsed
+        a = 100 and a = 100
+        # cannot define conflicting equality conditions
+        # a = 100 and a = 200
+        """
+        r"name =~ 'Al\d+'"
+    ).splitlines():
+        print(test)
+        if test.startswith("#"):
+            print("(skipping...)\n")
+            continue
+        print(transform_query(test))
+        print()
+
+
+if __name__ == '__main__':
+    query_condition_expr.create_diagram("mongodb_query_expression.html")
+    main()
