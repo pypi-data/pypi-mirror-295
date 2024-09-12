@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: wandb_preempt
+Version: 0.1.0
+Summary: Code and tutorial on integrating wandb with slurm pre-emption
+Author: Felix Dangel, Scott Lowe
+License: MIT
+Project-URL: Repository, https://github.com/f-dangel/wandb_preempt
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: wandb
+Provides-Extra: doc
+Requires-Dist: mkdocs ==1.4.3 ; extra == 'doc'
+Requires-Dist: mkdocs-material ==9.1.17 ; extra == 'doc'
+Requires-Dist: mkdocstrings[python] ==0.22.0 ; extra == 'doc'
+Requires-Dist: griffe ==0.45.3 ; extra == 'doc'
+Provides-Extra: example
+Requires-Dist: torchvision ; extra == 'example'
+Provides-Extra: lint
+Requires-Dist: black ; extra == 'lint'
+Requires-Dist: flake8 ; extra == 'lint'
+Requires-Dist: mccabe ; extra == 'lint'
+Requires-Dist: pycodestyle ; extra == 'lint'
+Requires-Dist: pyflakes ; extra == 'lint'
+Requires-Dist: pep8-naming ; extra == 'lint'
+Requires-Dist: flake8-bugbear ; extra == 'lint'
+Requires-Dist: flake8-comprehensions ; extra == 'lint'
+Requires-Dist: flake8-tidy-imports ; extra == 'lint'
+Requires-Dist: darglint ; extra == 'lint'
+Requires-Dist: pydocstyle ; extra == 'lint'
+Requires-Dist: isort ; extra == 'lint'
+Provides-Extra: test
+Requires-Dist: coveralls ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-optional-tests ; extra == 'test'
+Requires-Dist: torchvision ; extra == 'test'
+
+# wandb_preempt
+
+[![Documentation Status](https://readthedocs.org/projects/wandb-preempt/badge/?version=latest)](https://wandb-preempt.readthedocs.io/en/latest/?badge=latest)
+
+This repository contains a tutorial on how to combine [wandb](https://wandb.ai/) sweeps
+with [Slurm](https://slurm.schedmd.com/)'s pre-emption, i.e. how to automatically
+re-queue and resume runs from a Weights & Biases sweep on a Slurm cluster.
+
+## Getting started
+
+### Installation
+
+```bash
+pip install git+https://github.com/f-dangel/wandb_preempt.git@main
+```
+
+### Basic Example
+
+Please see the [docs](https://wandb-preempt.readthedocs.io/en/latest/walkthrough/).
