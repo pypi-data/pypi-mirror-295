@@ -1,0 +1,40 @@
+Metadata-Version: 2.3
+Name: ansi-esc
+Version: 0.0.0.0
+Summary: ansi-esc is a python library for ANSI escape characters.
+Project-URL: Repository, https://github.com/solidtony/ansi_esc.git
+Author-email: Anthony Garcia <anthonygarcia918@hotmail.com>
+Keywords: ansi,color,escape,terminal
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# ansi-esc
+`ansi-esc` is a python library for ANSI escape characters.
+
+# Install
+```bash
+python3 -m pip install ansi-esc --upgrade
+```
+
+# Usage
+
+## Colors
+```python
+from ansi_esc.font.colors import background as bg
+from ansi_esc.font.colors import foreground as fg
+
+print(fg.red+bg.blue + "Hello" + bg.off + " World!")
+```
+
+## Effects
+```python
+from ansi_esc.font import effects as eff
+
+print(eff.underline + "Hello" + eff.underline_off + eff.blink + " World!")
+```
+
+# License
+MIT

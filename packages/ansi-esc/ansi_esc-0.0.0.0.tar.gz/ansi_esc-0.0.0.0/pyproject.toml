@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ansi-esc"
+version = "0.0.0.0"
+dependencies = []
+description = "ansi-esc is a python library for ANSI escape characters."
+authors = [
+    {name = "Anthony Garcia", email = "anthonygarcia918@hotmail.com"}
+]
+readme = "README.md"
+keywords = ["ansi", "escape", "color", "terminal"]
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Repository = "https://github.com/solidtony/ansi_esc.git"
