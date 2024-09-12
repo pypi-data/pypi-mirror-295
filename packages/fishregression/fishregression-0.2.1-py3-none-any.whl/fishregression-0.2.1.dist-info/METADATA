@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: fishregression
+Version: 0.2.1
+Summary: Guessing fish type based on length, Bream/Smelt edition
+Author-email: NishNovae <raecrowned@gmail.com>
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: scikit-learn>=1.3.2
+Requires-Dist: matplotlib>=3.7.5
+Requires-Dist: uvicorn[standard]>=0.30.6
+Requires-Dist: fastapi>=0.114.0
+Requires-Dist: requests>=2.32.3
+
+# fishregression
