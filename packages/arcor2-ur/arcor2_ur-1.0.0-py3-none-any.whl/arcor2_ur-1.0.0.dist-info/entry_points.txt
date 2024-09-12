@@ -1,0 +1,2 @@
+[console_scripts]
+arcor2_ur = arcor2_ur.scripts.ur:main
