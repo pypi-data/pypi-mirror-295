@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: mplsports
+Version: 0.1.0
+Summary: Add your description here
+Home-page: https://github.com/yourusername/mplsports
+Author: Your Name
+Author-email: your.email@example.com
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: build>=1.2.2
+Requires-Dist: matplotlib>=3.7.5
+Requires-Dist: pip>=24.2

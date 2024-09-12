@@ -1,0 +1,21 @@
+[project]
+name = "mplsports"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "build>=1.2.2",
+    "matplotlib>=3.7.5",
+    "pip>=24.2",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+dev-dependencies = [
+    "ipykernel>=6.29.5",
+    "jupyter>=1.1.1",
+]
