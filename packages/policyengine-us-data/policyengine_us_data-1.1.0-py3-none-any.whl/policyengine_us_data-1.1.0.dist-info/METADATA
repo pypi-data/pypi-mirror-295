@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: policyengine_us_data
+Version: 1.1.0
+Summary: A package to create representative microdata for the US.
+Author-email: PolicyEngine <hello@policyengine.org>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: policyengine-core
+Requires-Dist: tables
+Requires-Dist: survey-enhance
+Requires-Dist: torch
+Requires-Dist: requests
+Requires-Dist: tqdm
+Requires-Dist: tabulate
+Requires-Dist: build
+Requires-Dist: tomli
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: policyengine-us==1.71.1; extra == "dev"
+Requires-Dist: streamlit; extra == "dev"
+
+# PolicyEngine US Data
