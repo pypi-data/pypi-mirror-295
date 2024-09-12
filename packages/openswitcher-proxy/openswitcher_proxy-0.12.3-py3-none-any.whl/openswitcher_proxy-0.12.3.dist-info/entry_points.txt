@@ -1,0 +1,2 @@
+[console_scripts]
+openswitcher-proxy = openswitcher_proxy.__main__:main
