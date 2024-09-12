@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: boursocrawling
+Version: 1.0.0
+Summary: A module for getting Boursorama Data
+Home-page: https://github.com/AlexandreDela/boursocrawling
+Author: Alexandre Delaisement
+Author-email: 
+License: UNKNOWN
+Project-URL: Source, https://github.com/AlexandreDela/boursocrawling
+Keywords: finance
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: bs4
+Requires-Dist: matplotlib (>=3.3.0)
+Requires-Dist: numpy (>=1.21.0)
+Requires-Dist: pytest (>=8.1.1)
+Requires-Dist: requests
+
+A module to get Boursorama stock data, recommendation, and search engine.
+
