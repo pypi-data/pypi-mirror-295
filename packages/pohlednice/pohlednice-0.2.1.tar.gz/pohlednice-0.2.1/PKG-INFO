@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: pohlednice
+Version: 0.2.1
+Summary: Pythonic implementation of the 'postcard' wire format
+Author: Charles Bajeux
+Author-email: charles.bajeux@gmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# Pohlednice
+
+Pohlednice is a pythonic implementation of the [postcard](https://postcard.jamesmunns.com/) wire format.
+
+## Usage
+
+Variable integer:
+```python
+from pohlednice import I16, I32
+
+I16.to_bytes(400) // a byte iterator
+bytes(I16.to_bytes(400)) // transform into bytes
+
+// or chain multiple
+chain(I16.to_bytes(3600), I32.to_bytes(55))
+
+// read from a byte iterable
+number I16.from_bytes([1])
+```
+
+De/Serialize Structure:
+```python
+from pohlednice import Struct, U16, String, Option, ByteArray
+
+class ABC(Struct):
+    a: U16
+    b: String
+    c: Option[ByteArray]
+
+
+payload = bytes(ABC.to_bytes(ABC(40, 'Trollě', None)))
+
+abc = ABC.from_bytes(payload)
+```
+
+De/Serialize Enum:
+```python
+class Color(Enum):
+    Red: None
+    Blue: None
+    Green: None
+    Custom: Tuple[U8, U8, U8]
+
+payload = Color.to_bytes(Color.Custom((0xff, 0xf0, 0x0f)))
+color = Color.from_bytes(payload)
+```
