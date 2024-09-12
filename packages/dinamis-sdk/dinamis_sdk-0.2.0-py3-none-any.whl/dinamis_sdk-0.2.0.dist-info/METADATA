@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dinamis-sdk
+Version: 0.2.0
+Summary: DINAMIS SDK
+Author: Remi Cresson
+Author-email: remi.cresson@inrae.fr
+License: MIT
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: qrcode
+Requires-Dist: appdirs
+Requires-Dist: pystac
+Requires-Dist: pystac-client
+Requires-Dist: pydantic >=1.7.3
+Requires-Dist: pydantic-settings
+Requires-Dist: packaging
+
