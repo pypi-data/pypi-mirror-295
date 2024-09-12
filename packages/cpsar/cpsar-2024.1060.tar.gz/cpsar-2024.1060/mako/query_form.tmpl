@@ -1,0 +1,35 @@
+<%! import cpsar.runtime as R %>
+<%inherit file='page.tmpl' />
+<%block name='head'>
+    <title>${q.label}</title>
+    ${q.form_resources}
+</%block>
+
+<h1>${q.label}</h1>
+% if q.summary:
+    <p>${q.summary}
+% endif
+<form method='post' action='${q.script_name}'>
+<table>
+% for label, ctrl in q.params:
+<tr>
+    <td><label for="${ctrl.name}">${label}</label></td>
+    <td>${ctrl}</td>
+</tr>
+% endfor
+<tr>
+% if q.csv_exportable:
+<tr>
+    <td><label for='xcsv'>Export as CSV</label></td>
+    <td><input type='checkbox' name='_q_csv' id='xcsv' /></td>
+</tr>
+% endif
+<tr>
+    <td></td>
+    <td>
+        <input type='submit' name='_q_submit' value="Run Query" />
+        
+        </td>
+</tr>
+</table>
+</form>

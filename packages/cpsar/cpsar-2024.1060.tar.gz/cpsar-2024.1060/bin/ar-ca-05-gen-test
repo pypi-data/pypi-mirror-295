@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# 00 Original files
+psql cpsar <<EOF
+    UPDATE state_report_entry 
+       set reportzone = 'CA', 
+       file_id=Null,
+       ack_code=Null,
+       pending_cancel=False,
+       cancel_file_id=Null,
+       cancel_ack_code=Null
+    where entry_id=4026;
+EOF
+
+python -m cpsar.sr.ca05 "$@"

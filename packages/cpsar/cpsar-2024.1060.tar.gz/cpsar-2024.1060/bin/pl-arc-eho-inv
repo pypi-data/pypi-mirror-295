@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+""" the EHO blue diamond invoicing program creates eho-invoice-data files
+that we currently do not use. For now we are archiving them until they
+may be needed.
+"""
+import glob
+import os
+
+from cpsar import fwimport
+
+def main():
+    patterns = [
+        'mj-eho-invoice-data.*',
+        'mj2-eho-invoice-data.*',
+        'sr-eho-invoice-data.*']
+    d = "/server/export/bd/ready"
+    for p in patterns:
+        for f in glob.glob(os.path.join(d, p)):
+            fwimport.archive(f)
+
+if __name__ == '__main__': main()

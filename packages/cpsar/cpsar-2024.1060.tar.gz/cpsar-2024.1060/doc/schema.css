@@ -1,0 +1,51 @@
+BODY {
+    font-family: sans-serif;
+    margin: 1em;
+    max-width: 720px;
+}
+H2 {
+    border-bottom: 1px solid black;
+    font-family: monospace;
+}
+A:visited {
+    color: blue;
+}
+BLOCKQUOTE {
+    font-style: italic;
+}
+PRE {
+    margin: 0px;
+}
+P.tdesc {
+    text-align: justify;
+}
+TABLE.fieldlist {
+    border-collapse: collapse;
+}
+TABLE.fieldlist TD {
+    border: 1px solid #AAA;
+}
+TABLE.fieldlist TH {
+    border: 1px solid #AAA;
+    text-align: left;
+    font-size: 1.1em;
+}
+TABLE.fieldlist TR.fdef TD {
+    font-weight: bold;
+    font-family: monospace;
+    background: #EEEEEE;
+}
+TD.fdesc {
+    padding: .25em .5em 1em .5em;
+}
+
+TD.fdesc P {
+    text-align: justify;
+}
+DIV.formula {
+    font-family: monospace;
+    border: 1px solid #AAAAFF;
+    padding: .5em;
+    margin-top: .5em;
+    font-size: 9pt;
+}

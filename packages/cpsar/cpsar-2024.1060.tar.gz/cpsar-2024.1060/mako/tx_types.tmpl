@@ -1,0 +1,181 @@
+<%!
+import cpsar.ajson as json
+import cpsar.controls as C
+%>
+<%inherit file="page.tmpl" />
+<%block name="header">
+    TX Types Based on NABP
+</%block>
+<%block name="head">
+    <title>Transaction Types</title>
+    <link type='text/css' rel='stylesheet'
+          href='/css/base.css'  />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+    <style type='text/css'>
+    </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script src='/js/jquery.numeric.js'></script>
+  <script type='text/javascript'>
+  $(document).ready(function() {
+      var prefixes = ${json.write(nabp_tt_prefixes)};
+      var nabp_tx_type_table = new NABPTxTypeTable(prefixes);
+  });
+
+  function NABPTxTypeTable(records) {
+      var self = this;
+      var $table = $("#nabp_tt_prefix_table");
+      var $tbody = $table.find("TBODY:last");
+
+      var insert_row = null;
+      var rows = []
+
+      self.addRow = function(record) {
+          var row = new NABPTxTypeRow(record);
+          row.attach($tbody);
+          rows.push(row);
+      }
+
+      function init() {
+          insert_row = new AddNABPTxTypeRow(self);
+          for(var i=0; i < records.length; i++) {
+              self.addRow(records[i]);
+          }
+      }
+      init();
+  }
+
+  function AddNABPTxTypeRow(supview) {
+      var $nabp = $("#add_nabp");
+      var $group_number = $("#add_group_number");
+      var $prefix = $("#add_prefix");
+
+      function init() {
+          $("INPUT.add_tt_prefix").click(onClick);
+      }
+
+      function getSendData() {
+          return {
+              nabp: $nabp.val(),
+              group_number: $group_number.val(),
+              client_name: $group_number.find("OPTION:selected").attr("title"),
+              prefix: $prefix.val()};
+      }
+      
+      function onClick() {
+          $.ajax({
+              url: '/tx_types/add',
+              type: 'POST',
+              data: getSendData(),
+              dataType: 'json',
+              success: onSuccess
+          });
+      }
+
+      function onSuccess(data) {
+          if(data.errors.length > 0) {
+              return showErrors(data.errors);
+          }
+          supview.addRow(getSendData());
+          $nabp.val("");
+          $group_number.val("");
+          $prefix.val("");
+      }
+
+      init();
+  }
+
+  function NABPTxTypeRow(record) {
+      var self = this;
+      var $node = $("\
+          <tr> \
+              <td class='entry-value prefix' align='center'></td> \
+              <td class='entry-value nabp' align='left'></td> \
+              <td class='entry-value group_number'></td> \
+              <td class='entry-value'> \
+                  <input type='button' value='Remove' class='button' /> \
+              </td></tr>");
+      var $nabp = $node.find("TD.nabp");
+      var $prefix = $node.find("TD.prefix");
+      var $group_number = $node.find("TD.group_number");
+      var $button = $node.find("INPUT.button");
+
+      self.attach = function($tbody) {
+          $nabp.text(record.nabp);
+          $prefix.text(record.prefix);
+          if(record.client_name) {
+              $group_number.text(record.group_number + " " + record.client_name);
+          } else {
+              $group_number.html("<em>ALL GROUPS</em>");
+          }
+          $tbody.append($node);
+          $button.click(onDelete);
+      }
+
+      self.detach = function() {
+          $node.remove();
+      }
+
+      function onDelete() {
+          $.ajax({
+              url: '/tx_types/delete',
+              type: 'POST',
+              data: record,
+              dataType: 'json',
+              success: onSuccess
+          });
+      }
+
+      function onSuccess() {
+          self.detach();
+      }
+  }
+  </script>
+</%def>
+
+<div class='help'>
+ <p>The following table controls the assingment of transaction types to new
+ transactions based on the NABP of the filling pharmacy. If the transaction has
+ the given <strong>NABP #</strong>, then the first letter of the transaction
+ type will be the <strong>Type Prefix</strong>. You may optionally specify a
+ limiting <strong>Group #</strong>. If a group number is given, the rule will
+ only apply to transactions for that group #. This will override rules that do
+ not have a group #. If a transaction does not match any of the rules, the
+ first letter of the transaction type will be 'R' for retail.
+ </p>
+ <p> In all cases, the second letter of the transaction type is a 'G' or 'B'
+ for brand and generic.
+ </p>
+</div>
+<table class='form' id='nabp_tt_prefix_table'>
+<thead>
+<tr>
+</tr>
+<tr>
+    <th>Type Prefix</th>
+    <th>NABP #</th>
+    <th>Group #</th>
+    <th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-value' align='center'>
+        <input type='text' id='add_prefix' maxlength='1' size='1' />
+    </td>
+    <td class='entry-value' align='center'>
+        <input type='text' id='add_nabp' maxlength='255' />
+    </td>
+    <td class='entry-value' align='center'>
+        ${C.GroupNumberListBox('add_group_number', blankOption=True)}
+    </td>
+    <td>
+        <input type='button' value='Add' class='button add_tt_prefix' />
+    </td>
+</tr>
+</tbody>
+</table>

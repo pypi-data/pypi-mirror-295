@@ -1,0 +1,91 @@
+#!/usr/bin/env python
+""" create commission distributions for agents who receive a percent of
+cost submitted - pharmacy cost
+
+This is being implemented for strange comissions coming out of PK software
+being transmitted through EHO and having commissions calculated in BD.
+"""
+from __future__ import print_function
+import itertools
+import cpsar.txlib as T
+import cpsar.pg
+import cpsar.runtime as R
+import cpsar.shell as shell
+import cpsar.util as U
+
+class Program(shell.Program):
+    def main(self):
+        for file_id, com in itertools.product(file_ids(), coms()):
+            create_distributions_for(file_id, com)
+        if not self.opts.dry_run:
+            R.db.commit()
+
+def test():
+    R.db.setup()
+    R.set_user_from_shell()
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    for c in coms():
+        print(c)
+        create_distributions_for(2242, c)
+    # trans id 2068399
+    R.db.commit()
+
+def file_ids():
+    cursor = R.db.cursor()
+    cursor.execute("""select batch_file_id
+        from batch_file
+        where active=True order by batch_file_id
+        """)
+    return [f for f, in cursor]
+
+def coms():
+    cursor = R.db.dict_cursor()
+    cursor.execute("""select * from distribution_on_markup
+        order by group_number, tx_type""")
+    return list(cursor)
+
+def create_distributions_for(batch_file_id, com):
+    """ batch_file_id: batch of the transactions to scan
+        com:  distribution_on_markup record with what group and tx type to scan
+    """
+    cursor = R.db.cursor()
+    cursor.execute("""
+        SELECT trans_id, cost_allowed, pk_trans_sup.pharmacy_cost
+        from trans
+        left join pk_trans_sup using(trans_id)
+        where batch_file_id=%s and group_number=%s and tx_type=%s
+          and balance = total
+          order by trans_id
+        """, (batch_file_id, com['group_number'], com['tx_type']))
+
+    for trans_id, cost_allowed, pharmacy_cost in list(cursor):
+        R.log.debug("TX: %08ds: Create distribution. cost allowed: %s pharmacy cost: %s",
+            trans_id, cost_allowed, pharmacy_cost)
+        if not pharmacy_cost:
+            R.log.warning("TX %08ds: Cannot make distribution on percent "
+                "because missing pharmacy_cost", trans_id)
+            continue
+        distribution = com['percent'] * (cost_allowed - pharmacy_cost)
+        cursor.execute(U.insert_sql("distribution", {
+                'trans_id': trans_id,
+                "distribution_account": com['account'],
+                'amount': distribution}))
+        cursor.execute("""
+            select distribution_id from distribution where trans_id=%s
+               and distribution_account = 'cps' and amount > %s
+            limit 1""", (trans_id, distribution))
+        if not cursor.rowcount:
+            R.log.warning("TX %08d: Could not find cps distribution large "
+              "enough to subtract markup distribution. Expect distribution imbalance.", trans_id)
+            continue
+        distribution_id, = cursor.fetchone()
+        cursor.execute("""
+            update distribution set amount = amount - %s
+            where distribution_id = %s
+            """, (distribution, distribution_id))
+        T.log(trans_id, "added markup-based comission of %s for %s" %
+            (distribution, com['account']))
+
+if __name__ == '__main__':
+    Program().run()

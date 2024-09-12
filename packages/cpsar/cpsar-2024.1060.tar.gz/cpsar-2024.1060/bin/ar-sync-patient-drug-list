@@ -1,0 +1,94 @@
+#!/usr/bin/env python
+""" Load the included drug list for patient records from a text file provided
+by the processor
+"""
+import cpsar.keys as K
+import cpsar.fwimport as FW
+import cpsar.runtime as R
+import cpsar.shell
+import cpsar.util as U
+import reclib.parse.fw as P
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        table = PatientDrugListTable()
+        for record in PatientDrugListFile():
+            table.save(record)
+        if not self.opts.dry_run:
+            R.db.commit()
+
+class PatientDrugListFile(P.Parser):
+    _fpath = FW.path_for_resource("bd-managed-drug-list")
+    fields = [
+        P.String('group_number', 8, required=True),
+        P.String('cardholder_nbr', 11, required=True),
+        P.String('dob', 8, required=True),
+        P.String('gpi_code', 10, required=True),
+        P.String('allow_brand', 1),
+        P.String('drug_name', 30)
+    ]
+
+    def __init__(self):
+        P.Parser.__init__(self)
+        self._patients = K.PatientLookup()
+
+    def __iter__(self):
+        file = open(self._fpath, 'rt')
+        for record in self.parse_iter(file):
+            if record.errors:
+                R.log.error(record.format_errors())
+                R.log.error(record.format())
+                continue
+
+            record = PatientDrugListRecord(record)
+            if not record.assign_foreign_keys(self._patients):
+                continue
+
+            record.make_gpi_regexp()
+            yield record
+
+class PatientDrugListRecord(dict):
+    def __init__(self, rec):
+        dict.__init__(self, rec)
+        self._null_empty_strings()
+
+    def _null_empty_strings(self):
+        for key in self:
+            if self[key] == '':
+                self[key] = None
+
+    def assign_foreign_keys(self, patient):
+        key = (self['group_number'], self['dob'], self['cardholder_nbr'])
+        self['patient_id'] = patient.get(key)
+        if not self['patient_id']:
+            R.log.error("% 8s:%s:%s - INVALID PATIENT KEY",
+                self['group_number'],
+                self['cardholder_nbr'],
+                self['dob'])
+            return
+        del self['group_number'], self['dob'], self['cardholder_nbr']
+        return True
+
+    def make_gpi_regexp(self):
+        self['gpi_regexp'] = "%s\d{4}" % self['gpi_code']
+        del self['gpi_code']
+
+class PatientDrugListTable(object):
+    """ Saves patient managed drug list records to the database. We 
+    truncate the table do only inserts as long as the patient_id,
+    gpi_pattern isn't duplicated.
+    """
+    def __init__(self):
+        self._cursor = R.db.cursor()
+        self._clear()
+
+    def save(self, record):
+        sql = U.insert_sql('patient_drug_list', record)
+        R.log.debug("INSERT: %s", sql)
+        self._cursor.execute(sql)
+
+    def _clear(self):
+        self._cursor.execute("TRUNCATE patient_drug_list")
+
+if __name__ == '__main__':
+    Program().run()

@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+""" pharmaware export program that can export from the pharmaware_out_log
+table, or take a batch date as arguments. Two batch dates can be given
+which will be used as a batch date range.
+"""
+from __future__ import print_function
+import collections
+import os
+import csv
+import cpsar.runtime as R
+
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        super(Program, self).main()
+        if not self._batch_date_from:
+            R.log.info("no batches to run")
+            return
+
+        f = RxFile(self.opts.output_dir,
+                self._batch_date_from, self._batch_date_to)
+        f.write()
+        self._mark_batch_sent()
+        if self.opts.dry_run:
+            print(fd.getvalue())
+        else:
+            R.db.commit()
+
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-o', '--output-dir', default=R.dpath('pharmaware/outgoing'),
+            help='directory to output csv file into')
+
+    @property
+    def _batch_date_from(self):
+        if len(self.args) > 0:
+            return self.args[0]
+        else:
+            return self._oldest_unprocessed_batch_date
+
+    @property
+    def _batch_date_to(self):
+        if len(self.args) == 2:
+            return self.args[1]
+        elif len(self.args) == 1:
+            return self.args[0]
+        else:
+            return self._oldest_unprocessed_batch_date
+
+    @property
+    def _oldest_unprocessed_batch_date(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+          SELECT to_char(MIN(batch_date), 'YYYYMMDD')
+          FROM pharmaware_out_log
+          WHERE send_time IS NULL""")
+        return cursor.fetchone()[0]
+
+    def _mark_batch_sent(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            UPDATE pharmaware_out_log SET send_time=NOW(), mtime=NOW()
+            WHERE batch_date=%s
+            """, (self._batch_date_from,))
+
+
+class RxFile(object):
+    def __init__(self, output_dir, batch_date_from, batch_date_to):
+        self._output_dir = output_dir
+        self._batch_date_from = batch_date_from
+        self._batch_date_to = batch_date_to
+
+    def write(self):
+        records = self._records()
+        if records:
+            fd = self._make_fd()
+            writer = csv.writer(fd)
+            list(map(writer.writerow, records))
+        else:
+            R.log.info("No records for %s", self._batch_date_from)
+
+    def _make_fd(self):
+        return open(self._fpath, 'w')
+
+    @property
+    def _fpath(self):
+        return os.path.join(self._output_dir, self._fname)
+
+    @property
+    def _fname(self):
+        if self._batch_date_from == self._batch_date_to:
+            return "rx-%s.csv" % self._batch_date_from
+        else:
+            return "rx-%s-%s.csv" % (self._batch_date_from, self._batch_date_to)
+
+    def _records(self):
+        cursor = R.db.cursor()
+        cursor.execute_file("ar/pharmaware_out.sql", {
+            'from_date': self._batch_date_from,
+            'to_date': self._batch_date_to})
+        return list(cursor)
+
+if __name__ == '__main__': Program().run()

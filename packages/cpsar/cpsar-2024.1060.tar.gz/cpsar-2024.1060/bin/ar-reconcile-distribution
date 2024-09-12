@@ -1,0 +1,209 @@
+#!/usr/bin/env python
+import datetime
+import logging; log=logging.getLogger('')
+
+import cpsar.runtime as R
+import cpsar.shell
+from cpsar import txlib
+from cpsar.workqueue import WorkQueue
+from cpsar.util import send_email, Mailer
+
+class Program(cpsar.shell.Program):
+    """
+    Provides a report that says what needs to be done to match up the
+    distribution table with the trans table.
+
+    = Mathematical Description =
+
+    Reconciliation works based on these values on a transaction:
+    
+     trans.balance
+     trans.paid_amount
+     trans.distributed_amount
+     trans.settled_amount
+     trans.transfered_amount
+     distribution.amount
+     distribution.distribution_date
+   
+    The core equation of reconcilation is to make:
+    trans.paid_amount - trans.settled_amount -trans.transfered_amount = trans.distributed_amount.
+     
+    Invariants (Assumptions)
+        trans.paid_amount = trans.total - trans.adjustments - trans.payments
+        trans.distributed_amount =
+            SUM(distribution.amount WHERE
+                distribution.distribution_date is not null)
+        trans.settled_amount = SUM(reversal_settlement.amount) +
+                               SUM(overpayment_settlement.amount)
+
+    Values in distribution.amount where distribution.distribution_date is null
+    move into trans.distributed_amount as part of the reconcilation,
+    attaining distribution.distribution_date during the move.
+
+    For reconcilation to occur the equation:
+        trans.paid_amount - trans.settled_amount - trans.distributed_amount - trans.transfered_amount = 
+            distribution.amount where distribution_date is null
+
+    must be satisfied. IOW, the difference between what has been paid in and
+    what has been paid out and what has been distributed must equal all of the
+    outstanding distribution records. This has the nice property of allowing a
+    transaction to be reconciled, then changed, and rereconciled.
+
+    A transaction is a candidate for reconcilation if
+
+      trans.balance = 0 AND
+      trans.paid_amount - trans.settled_amount - trans.distributed_amount - trans.transfered_amount != 0
+
+    = Comments =
+
+    For reconciliation to occur, all candidate transactions must be
+    reconcilable. That is, reconciliation is an all or nothing process.
+    
+    When a transaction is reconciled, the distribution records under the
+    transactions without a distribution date receive one. The sum of the
+    amounts of these transactions are then added to the distributed_amount.
+
+    THIS IS THE ONLY PROGARM THAT SHOULD SET THE DISTRIBUTION DATE ON THE
+    TRANSACTION TABLE.
+
+    = Auto Reconciliations =
+
+    """
+    not_reconciled_msg = ("TX %08d: pending distribution amount "
+                          "%s does not equal left to distribute %8s")
+    total_recon = 0
+    no_distrib = []
+
+    recipients = [
+        'lindsay@corporatepharmacy.com']
+
+    def main(self):
+        cursor = R.db.cursor()
+        self.today = datetime.date.today()
+        self.report = Report(self.today)
+
+        self.workqueue_keys = {}
+
+        # Collect all of the null distributed amounts
+        cursor.execute("""
+            SELECT trans_id, SUM(amount)
+            FROM distribution
+            WHERE distribution_date IS NULL
+            GROUP BY trans_id
+            """)
+        self.null_distribution_amounts = dict(cursor)
+
+        # Go through the candidates A candidate must have zero balance
+        # transaction must be balanced and have no unapplied cash
+        cursor.execute("""
+            SELECT trans.trans_id,
+                   paid_amount - settled_amount - distributed_amount - transfered_amount AS delta
+            FROM trans
+            LEFT JOIN (
+                SELECT trans_id, SUM(balance) AS balance
+                FROM overpayment
+                GROUP BY trans_id
+            ) AS uc ON trans.trans_id = uc.trans_id
+            WHERE trans.balance = 0 AND
+                  COALESCE(uc.balance, 0) = 0 AND
+                  (paid_amount - settled_amount - transfered_amount ) != distributed_amount
+            ORDER BY trans.trans_id DESC
+        """)
+
+        for trans_id, delta in list(cursor):
+            self.reconcile(trans_id, delta)
+        
+        WorkQueue.clear_except('reconcile_distribution', self.workqueue_keys)
+        self.report.write_email()
+
+        if self.opts.dry_run:
+            return
+
+        self.report.send()
+
+        log.debug('Committing changes')
+        R.db.commit()
+
+    def reconcile(self, trans_id, delta):
+        self.report.add_candidate(trans_id, delta)
+
+        pending_amount = self.null_distribution_amounts.get(trans_id, 0)
+        if delta == pending_amount:
+            cursor = R.db.cursor()
+            cursor.execute("""
+                UPDATE distribution SET distribution_date=%s
+                WHERE trans_id=%s AND distribution_date IS NULL
+                """, (self.today, trans_id))
+            cursor.execute("""
+                UPDATE trans SET distributed_amount = distributed_amount + %s
+                WHERE trans_id=%s
+                """, (pending_amount, trans_id))
+            self.report.add_distributed(trans_id, delta)
+            txlib.log(trans_id, 'Reconciled %s distribution amounts on %s' %
+                                (pending_amount, self.today))
+            return True
+        else:
+            cursor = R.db.cursor()
+            cursor.execute("""
+                SELECT group_number, group_auth
+                FROM trans WHERE trans_id=%s
+                """, (trans_id,))
+            gn, ga = cursor.fetchone()
+            log.info("Adding %s to work queue", trans_id)
+            msg = self.not_reconciled_msg % (trans_id, pending_amount, delta)
+            WorkQueue.add('reconcile_distribution', gn, ga, msg, 2)
+            self.workqueue_keys[(gn, ga)] = True
+            self.report.add_undistributed(trans_id, delta)
+            return False
+
+class Report(Mailer):
+    """ Report of what the batch program did. """
+    reconciled_msg = 'TX %08d: Reconciled %s'
+    def __init__(self, date):
+        Mailer.__init__(self, 
+            subject="cpsar: Transaction Distribution Reconciliation for %s" %
+            date.strftime("%m/%d/%Y"))
+
+        self.set_billing_recipients()
+        self.candidate_count = 0
+        self.candidate_amount = 0
+        self.distributed_count = 0
+        self.distributed_amount = 0
+        self.undistributed_count = 0
+        self.undistributed_amount = 0
+        self.undistributed = []
+
+    def add_candidate(self, trans_id, delta):
+        self.candidate_count += 1
+        self.candidate_amount += delta
+        log.debug("TX %08d: Candidate for reconcilation", trans_id)
+
+    def add_distributed(self, trans_id, delta):
+        self.distributed_count += 1
+        self.distributed_amount += delta
+        log.debug("TX %08d: distributed for reconcilation", trans_id)
+
+    def add_undistributed(self, trans_id, delta):
+        self.undistributed_count += 1
+        self.undistributed_amount += delta
+        self.undistributed.append((trans_id, delta))
+        log.debug("TX %08d: undistributed for reconcilation", trans_id)
+
+    def write_email(self):
+        self("""\
+There are %s transactions that need to be reconciled with their distributions
+for %s. %s of these transactions have been automatically reconciled today for
+%s. There are still %s transactions that need distribution records created or
+adjusted for %s.
+    
+Below is a list of all transactions that need to have their currently
+outstanding distribution records matched up. They have been added to the
+work queue.""" % (self.candidate_count, self.candidate_amount, 
+              self.distributed_count, self.distributed_amount,
+              self.undistributed_count, self.undistributed_amount))
+
+        for trans_id, amt in self.undistributed:
+            self(" TX #%08d: %s", trans_id, amt)
+
+if __name__ == '__main__':
+    Program().run()

@@ -1,0 +1,134 @@
+BODY {
+}
+.pager-header-import_date, .pager-header-invoice_check, .pager-header-total{
+	text-align:center;
+}
+.pager-header-note {
+	width: 600px;
+}
+.pager-import_date, .pager-invoice_check, .pager-total{
+	text-align: right;
+}
+TABLE.view_menu {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+TABLE.view_menu TD {
+    border: 1px solid #BBB;
+}
+TABLE.view_menu TD.entry-caption {
+	font-family: Helvetica, Arial, Sans serif;
+	font-size: .9em;
+    background-color: #E5E5E5;
+    padding-right: 8px;
+    text-align:right;
+    width: 120px;
+
+}
+TABLE.view_menu TD.entry-value {
+	font-family: Helvetica, Arial, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+    color: 000;
+    width: 24%;
+    padding-left:2px;
+    text-align:left;
+}
+TABLE.invoice_menu {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+TD.client_list {
+	padding: 2px;
+}
+DIV.invoice_menu, TD.invoice_menu {
+	text-align:right;
+	padding: 2px;
+}
+
+TABLE.report {
+	width: 90%;
+    margin: 0px auto 0px auto;
+	border-spacing: 1px;
+	border-collapse: collapse;
+}
+
+TABLE.report TH.report-import_date {
+	background-color: #D4D0C8;
+	color: #000;
+	border: 1px solid #666;
+	border-right: none;
+	font-family: Helvetica, Arial, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+	padding: 0px 3px 0px 3px;
+}
+TABLE.report TH.report-note {
+	background-color: #D4D0C8;
+	color: #000;
+	text-align:left;
+	border: 1px solid #666;
+	border-right: none;
+	border-left: none;
+	font-family: Helvetica, Arial, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+	padding: 0px 3px 0px 3px;
+}
+TABLE.report TH.report-total {
+	background-color: #D4D0C8;
+	color: #000;
+	border: 1px solid #666;
+	border-left: none;
+	font-family: Helvetica, Arial, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+	padding: 0px 3px 0px 3px;
+	text-align:right;
+}
+TD.report-import_date {
+	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #EEE;
+	font-family: Arial, Verdana, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+	color: #000;
+
+	text-align: center;
+}
+TD.report-note {
+	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #EEE;
+	font-family: Arial, Verdana, Sans serif;
+	font-size: .9em;
+	font-weight: normal;
+	color: #000;
+}
+TD.report-total {
+	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #EEE;
+	font-family: Arial, Verdana, Sans serif;
+	font-size: .8em;
+	font-weight: normal;
+	color: #000;
+
+	text-align: right;
+}
+TABLE.report TD.invoice_total {
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	font-weight: bold;
+	text-align:right;
+}
+.pager-amount, .pager-adjusted_amount,.pager-balance {
+    text-align: right;
+}
+.pager-rebill {
+    text-align: center;
+}

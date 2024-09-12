@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+""" We automatically apply rebate credits to transactions on a given batch
+before they are mailed out """
+import datetime
+import logging
+
+import cpsar.runtime as R
+import cpsar.shell as shell
+
+from cpsar.util import imemoize
+
+log = logging.getLogger('')
+
+class Program(shell.Program):
+    @property
+    @imemoize
+    def batch_dates(self):
+        if self.opts.batch_date:
+            return [self.opts.batch_date]
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT batch_date
+            FROM auto_apply_rebate_credit
+            WHERE run_time IS NULL
+            ORDER BY batch_date ASC
+            """)
+        return [c[0] for c in cursor]
+
+    def setup_options(self):
+        self.add_option('-b', '--batch-date', default=None, 
+                        help='Batch date to apply rebates to')
+        super(Program, self).setup_options()
+
+    def main(self):
+        if not self.batch_dates:
+            log.debug('Nothing to do')
+            return
+        
+        for batch_date in self.batch_dates:
+            self._apply_rebate_credits(batch_date)
+
+    def _apply_rebate_credits(self, batch_date):
+        c = R.db.mako_cursor('ar/rebate.sql')
+        # Gather up all the transactions by patient so we can apply rebates
+        # in turn to them
+        patients = {}
+        for trans_id, balance, patient_id in c.candidate_trans(batch_date):
+            patients.setdefault(patient_id, [])
+            patients[patient_id].append(Trans(trans_id, balance))
+        
+        credits = []
+        # Go through all of the rebates looking for transactions to apply
+        # them too
+        for rebate_id, rebate_balance, patient_id in c.available_rebate():
+            if patient_id not in patients:
+                continue
+            patient = patients[patient_id]
+            trans = patient.pop()
+            if rebate_balance > trans.balance:
+                amount = trans.balance
+            else:
+                amount = rebate_balance
+            credit = [trans.trans_id, rebate_id, amount, datetime.date.today(), 'SYSTEM']
+            credits.append(credit)
+            trans.balance -= amount
+            if trans.balance:
+                patient.append(trans)
+            if not patient:
+                del patients[patient_id]
+        
+        if credits:
+            c.apply_rebate_credits(credits)
+            if c.rowcount:
+                log.error(c.as_text_table())
+            c.cleanup()
+        else:
+            log.info('no rebates available for application')
+
+        self._set_run_time(batch_date)
+
+        if not self.opts.dry_run:
+            R.db.commit()
+
+    def _set_run_time(self, batch_date):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            UPDATE auto_apply_rebate_credit SET run_time=NOW()
+            WHERE batch_date=%s
+            """, (batch_date,))
+
+class Trans(object):
+    def __init__(self, trans_id, balance):
+        self.trans_id = trans_id
+        self.balance = balance
+
+if __name__ == '__main__':
+    Program().run()

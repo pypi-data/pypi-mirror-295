@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+from bd import load
+from cpsar import db
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        for profile in load.auto_loaders():
+            load.load(profile)
+            if not self.opts.dry_run:
+                load.email_report(profile['file_id'])
+                db.commit()
+
+#        cursor = db.dict_cursor()
+#        cursor.execute("""
+#            select name, retention_days, profile_id
+#            from load_profile
+#            where coalesce(retention_days, 0) != 0
+#            order by profile_id
+#            """)
+#
+#        for profile in cursor:
+#            load.delete_old_files(profile)
+#        db.commit()
+
+if __name__ == '__main__': Program().run()

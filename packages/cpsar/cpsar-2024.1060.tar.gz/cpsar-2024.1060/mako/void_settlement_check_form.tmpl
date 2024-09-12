@@ -1,0 +1,13 @@
+<%inherit file="page.tmpl" />
+<%block name="header">
+    Void Settlement Check
+</%block>
+<p>This application voides all settlement records for a particular CPS check
+number. This will effectively cancel the issuing check.</p>
+
+<form action='/void_settlement_check/review' method='post'>
+<p>CPS check number:
+    <input type='text' name='check_no' maxlength='30' />
+    <input type='submit' value='Lookup' />
+</p>
+</form>

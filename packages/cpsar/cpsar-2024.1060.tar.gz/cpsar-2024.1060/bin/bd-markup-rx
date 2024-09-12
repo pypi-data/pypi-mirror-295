@@ -1,0 +1,203 @@
+#!/usr/local/srv/bd3/bin/python
+""" Price a drug for EHO using a text file. Called from the Claim Processor.
+BE SURE TO COPY THIS PROGRAM MANUALLY TO /usr/local/bin to be used by processor!!!!
+"""
+from __future__ import print_function
+from __future__ import division
+from builtins import object
+from past.utils import old_div
+import argparse
+import datetime
+import os
+import shutil
+import sys
+import tempfile
+
+from six import StringIO
+from decimal import Decimal, InvalidOperation
+
+import cpsar.runtime as R
+from cpsar import pricing
+
+def main():
+    parser = argparse.ArgumentParser(description='Mark up blue diamond Rx')
+    parser.add_argument('files', action='append')
+    parser.add_argument('--verbose', '-v', action='store_true', default=False)
+    parser.add_argument('--debug', '-d', action='store_true', default=False)
+    args = parser.parse_args()
+    if not args.files:
+        test()
+        sys.exit(-1)
+    for fpath in args.files:
+        buf = StringIO()
+        #backup_path = backup_file_base()
+        #shutil.copy(fpath, '%s.in' % backup_path)
+        with open(fpath) as fd:
+            for line in fd:
+                irec = InputRecord(line)
+                irec.history().write_text_record(buf)
+                write_distributions(irec, buf)
+                if args.verbose:
+                    irec.debug()
+                if args.debug:
+                    from IPython.core.debugger import Pdb
+                    Pdb().set_trace()
+        with open(fpath, 'w') as fd:
+            fd.write(buf.getvalue())
+        #shutil.copy(fpath, '%s.out' % backup_path)
+
+def backup_file_base():
+    fd, fpath = tempfile.mkstemp(
+            dir= '/tmp/cblhttp',
+            prefix="bd-markup-rx.")
+    os.close(fd)
+    os.remove(fpath)
+    return fpath
+
+def write_distributions(irec, buf):
+    for line in irec.history().tx.distributions:
+        account = line[0]
+        amount = line[1]
+        buf.write(account.ljust(50))
+        if amount < 0:
+            buf.write("-")
+            buf.write("%08d" % (abs(amount)*100))
+        else:
+            buf.write(" %08d" % (amount*100))
+        buf.write("\n")
+
+def test():
+    from cpsar import runtime
+    runtime.db.setup()
+    pricing.use_db()
+    lines = """\
+0000231200000200   70036111111100000000000000001000000300000002500 1201703202017073000009005501"""
+
+    for line in lines.split("\n"):
+        irec = InputRecord(line)
+        history = irec.history()
+        tx = irec.tx()
+        assert tx.rx.tx_type == "RG"
+        assert irec.ndc == "00009005501", "Got %r" % irec.ndc
+        assert tx.rx.ndc == "00009005501", "Got %r" % tx.rx.ndc
+        assert tx.pbm.cost_allowed == Decimal("23.12")
+        assert tx.pbm.dispense_fee == Decimal("2.00")
+        assert tx.dispense_fee == Decimal("2.00")
+        assert irec.rx_date == datetime.date(2017, 3, 20)
+
+class InputRecord(object):
+    def __init__(self, line):
+        self._line = line
+
+    pbm_cost_allowed = property(lambda s: s._currency(0, 8),
+                       doc="The cost allowed paid by the PBM to EHO")
+    pbm_dispense_fee = property(lambda s: s._currency(8, 16),
+                       doc="The dispense fee paid by the PBM to EHO")
+    group_number     = property(lambda s: s._text(16, 24))
+    nabp             = property(lambda s: s._text(24, 31),
+                       doc="NABP # of the filling pharmacy")
+    sales_tax        = property(lambda s: s._currency(31, 39),
+                       doc="Sales tax of prescription")
+    copay            = property(lambda s: s._currency(39, 47),
+                       doc="The copay paid by the claimant at the pharmacy")
+    processing_fee   = property(lambda s: s._currency(47, 50),
+                       doc="The processing fee EHO will charge the PBM")
+    state_fee        = property(lambda s: s._currency(50, 58),
+                       doc="The calculated state fee of the prescription")
+    awp              = property(lambda s: s._currency(58, 66),
+                       doc="The calculated awp of the prescription")
+    is_brand         = property(lambda s: s._text(66, 67),
+                       doc="Y for brand, space for generic")
+    compound_code    = property(lambda s: s._text(67, 68),
+                       doc="2 for compound, 1 for not compound")
+    rx_date          = property(lambda s: s._date(68, 76),
+                       doc="Date of service")
+    date_processed   = property(lambda s: s._date(76, 84),
+                       doc="Date the prescription was processed")
+    ndc              = property(lambda s: s._text(84, 95),
+                       doc="NDC of drug")
+    chain_code       = property(lambda s: s._text(95, 98),
+                       doc="Pharmacy Chain Code")
+    dosage_form_code = property(lambda s: s._text(98, 102),
+                       doc="Dosage Form Code")
+    doctor_id        = property(lambda s: s._text(102, 112),
+                       doc="Doctor DEA or NPI #")
+    jurisdiction     = property(lambda s: s._text(112, 114),
+                       doc="State of Jurisdiction Code")
+
+    @property
+    def brand(self):
+        "Is the prescription a brand drug or generic?"
+        if self.is_brand == 'Y':
+            return 'B'
+        else:
+            return 'G'
+
+    _pm = None
+    @property
+    def pricing(self):
+        if self._pm is None:
+            self._pm = R.pricing_module(self.group_number, False)
+        return self._pm
+
+    def debug(self):
+        print('pbm_cost_allowed:', self.pbm_cost_allowed)
+        print('pbm_dispense_fee:', self.pbm_dispense_fee)
+        print('group_number:', self.group_number)
+        print('nabp:', self.nabp)
+        print('sales_tax:', self.sales_tax)
+        print('copay:', self.copay)
+        print('processing_fee:', self.processing_fee)
+        print('state_fee:', self.state_fee)
+        print('awp:', self.awp)
+        print('brand:', self.brand)
+        print('compound_code:', self.compound_code)
+        print('dosage_form_code:', self.dosage_form_code)
+        print('doctor_id:', self.doctor_id)
+        print('Jurisdiction:', self.Jurisdiction)
+
+    def tx(self):
+        pbm = self.pricing.PBMHistory()
+        pbm.cost_allowed = self.pbm_cost_allowed
+        pbm.dispense_fee = self.pbm_dispense_fee
+        pbm.processing_fee = self.processing_fee
+        pbm.sales_tax = self.sales_tax
+        pbm.copay = self.copay
+
+        client = self.pricing.Client.for_record(
+            {"group_number": self.group_number})
+
+        rx = self.pricing.Prescription(client)
+        rx.ndc = self.ndc
+        rx.brand = self.brand
+        rx.compound_code = self.compound_code
+        rx.awp = self.awp
+        rx.state_fee = self.state_fee
+        rx.nabp = self.nabp
+
+        return self.pricing.Transaction(rx, pbm, client)
+
+    def history(self):
+        return self.pricing.History(self.tx())
+
+    def _text(self, start, stop):
+        try:
+            return self._line[start:stop].strip()
+        except IndexError:
+            return ''
+
+    def _currency(self, start, stop):
+        try:
+            return old_div(Decimal(self._line[start:stop]),100)
+        except InvalidOperation:
+            return Decimal("0.00")
+
+    def _date(self, start, stop):
+        try:
+            return datetime.datetime.strptime(self._line[start:stop], "%Y%m%d").date()
+        ### super paranoid, Could just check ValueError
+        except:
+            return datetime.date.today()
+
+if __name__ == '__main__':
+    main()

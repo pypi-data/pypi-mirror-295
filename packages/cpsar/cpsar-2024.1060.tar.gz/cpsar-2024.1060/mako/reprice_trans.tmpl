@@ -1,0 +1,89 @@
+<div>
+<table class='form' width='100%'>
+  <thead>
+    <tr>
+      <th colspan='4'>Source Information</th>
+    </tr>
+  </thead>
+  <tr>
+    <td class='entry-caption'>PBM Cost Allowed</td>
+    <td>${source['pbm_cost_allowed']}</td>
+    <td class='entry-caption'>PBM Dispense Fee</td>
+    <td>${source['pbm_dispense_fee']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Group Number</td>
+    <td><a href="/view_client?group_number=${source['group_number']}">${source['group_number']}</a></td>
+    <td class='entry-caption'>NABP</td>
+    <td>${source['nabp']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Sales Tax</td>
+    <td>${source['sales_tax']}</td>
+    <td class='entry-caption'>Copay</td>
+    <td>${source['eho_network_copay']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Processing Fee</td>
+    <td>${source['processing_fee']}</td>
+    <td class='entry-caption'>State Fee</td>
+    <td>${source['state_fee']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>AWP</td>
+    <td>${source['awp']}</td>
+    <td class='entry-caption'>Brand</td>
+    <td>${source['brand']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Compound Code</td>
+    <td>${source['compound_code']}</td>
+    <td class='entry-caption'>Rx Date</td>
+    <td>${source['rx_date']}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Date Processed</td>
+    <td>${source['date_processed']}</td>
+    <td class='entry-caption'>NDC #</td>
+    <td>${source['ndc']}</td>
+  </tr>
+</table>
+
+<table class='form' width='100%'>
+  <thead>
+    <tr>
+      <th colspan='4'>EHO History Values</th>
+    </tr>
+  </thead>
+  <tr>
+    <td colspan='4'>
+    <div>These values do not include the processing fee.</div>
+  </td>
+  <tr>
+    <td class='entry-caption'>Cost</td>
+    <td>${history['cost_allowed']}</td>
+    <td class='entry-caption'>Dispense Fee</td>
+    <td>${history['dispense_fee']}</td>
+  </tr>
+</table>
+
+<table class='form' width='100%'>
+  <thead>
+    <tr>
+      <th colspan='2'>Distributions</th>
+    </tr>
+    <tr>
+      <th>Account</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+  % for account, amount in distributions:
+  <tr>
+    <td>${account}</td>
+    <td>${amount}</td>
+  </tr>
+  % endfor
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,161 @@
+#!/usr/bin/env python
+import datetime
+import decimal
+import itertools
+import json
+import os
+
+import cpsar.pricing
+import cpsar.runtime as R
+import cpsar.shell as S
+
+class Program(S.Program):
+    def main(self):
+        self._write_json_file()
+
+    def _write_json_file(self):
+        j = {
+            'force_state_fee': self._force_state_fee(),
+            'fixed_distribution_rule': self._fixed_distribution_rules(),
+            'percent_distribution_rule': self._percent_distribution_rules(),
+            'default_account_names': self._default_account_names(),
+            'pricing_module': self._pricing_modules(),
+            'distribution_rules': self._distribution_rules(),
+            'awp_cost_override': self._awp_cost_override(),
+            'dispense_fee_override': self._dispense_fee_override(),
+            'nabp_prefix': self._nabp_prefix()
+        }
+        with open(cpsar.pricing.PROCESSOR_FILE, 'wt') as fd:
+            json.dump(j, fd, indent=4, sort_keys=True, cls=Encoder)
+
+    def _pricing_modules(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select group_number, pricing_module
+            from client
+            order by group_number
+        """)
+        return dict(cursor)
+
+    def _nabp_prefix(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select group_number, nabp, prefix
+            from nabp_tt_prefix
+            order by group_number, nabp
+        """)
+        return dict(("%s:%s" % (c[0], c[1]), c[2]) for c in cursor)
+
+    def _default_account_names(self):
+        """ Data for new pricing module cpsar.pricing2 """
+        cursor = R.db.cursor()
+        cursor.execute("""
+           select
+               group_number || ':' || tx_type as c,
+               default_account
+           from client_default_account_name
+           order by c, default_account
+           """)
+        return dict([c for c in cursor])
+
+    def _force_state_fee(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select group_number, force_under_state_fee
+            from client""")
+        return dict(c for c in cursor)
+
+    def _fixed_distribution_rules(self):
+        """ Data for old pricing module cpsar.pricing """
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT group_number || ':' || tx_type as c, distribution_account, amount::text,
+                   coalesce(min_cost::text, '0'),
+                   coalesce(max_cost::text, '0')
+            FROM distribution_rule
+            WHERE amount is not null
+            ORDER BY c
+            """)
+        r = {}
+        for key, items in itertools.groupby(cursor, lambda s: s[0]):
+            values = [c[1:] for c in items]
+            r[key] = values
+        return r
+
+    def _percent_distribution_rules(self):
+        """ Data for old pricing module cpsar.pricing """
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT group_number || ':' || tx_type as c, distribution_account, percent::text,
+                   coalesce(min_cost::text, '0'),
+                   coalesce(max_cost::text, '0')
+            FROM distribution_rule
+            WHERE percent is not null
+            ORDER BY c
+            """)
+        r = {}
+        for key, items in itertools.groupby(cursor, lambda s: s[0]):
+            values = [c[1:] for c in items]
+            r[key] = values
+        return r
+
+
+    def _distribution_rules(self):
+        """ Data for new pricing module cpsar.pricing2 """
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select group_number || ':' || tx_type as c,
+                distribution_account as account,
+                coalesce(amount, 0) as amount,
+                coalesce(percent, 0) as percent,
+                min_cost,
+                max_cost,
+                add_to_running_total,
+                addon
+            from distribution_rule
+            order by c, priority
+            """)
+        r = {}
+        for key, items in itertools.groupby(cursor, lambda s: s[0]):
+            values = [c[1:] for c in items]
+            values = [{
+                'account': c[0],
+                'amount': c[1],
+                'percent': c[2],
+                'min_cost': c[3],
+                'max_cost': c[4],
+                'add_to_running_total': c[5],
+                'addon': c[6]} for c in values]
+            r[key] = values
+        return r
+
+    def _awp_cost_override(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+           SELECT group_number || ':' || tx_type, amount::text
+           FROM client_bill_rule
+           where amount is not null
+            """)
+        return dict(c for c in cursor)
+
+    def _dispense_fee_override(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT group_number || ':' || tx_type, amount::text
+            FROM client_dispense_fee_rule
+            where amount is not null
+            """)
+        return dict(c for c in cursor)
+
+class Encoder(json.JSONEncoder):
+     def default(self, obj):
+         if isinstance(obj, datetime.date):
+             return obj.strftime("%Y%m%d")
+         elif isinstance(obj, datetime.datetime):
+             return '"%s"' % obj.ctime()
+         elif isinstance(obj, decimal.Decimal):
+             return float(obj)
+         else:
+            return json.JSONEncoder.default(self, obj)
+
+if __name__ == '__main__': Program().run()

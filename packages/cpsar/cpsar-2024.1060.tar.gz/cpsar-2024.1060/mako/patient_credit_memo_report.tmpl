@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Memo - ${'%(first_name)s %(last_name)s' % patient}</title>
+  <style type='text/css'>
+  BODY { width: 7in; }
+  h1, h2 { margin: 0px; }
+  .top-left { float: left; margin-bottom: 2em; }
+  .top-right { float: right; margin-bottom: 2em; }
+  </style>
+</head>
+<body>
+<div class='top-left'>
+ <h2>Corporate Pharmacy Services</h2>
+ <div>P.O. Box 1950</div>
+ <div>Gadsden, AL 35902</div>
+ <div>o: 800-568-3784</div>
+ <div>f: 256-543-9079</div>
+</div>
+<div class='top-right'>
+ <h1>Credit Memo</h1>
+</div>
+<div style='clear: both'></div>
+
+<div class='top-left'>
+<table>
+<tr>
+  <td valign='top'><strong>Client:</strong></td>
+  <td>
+    <div>${client['billing_name']}</div>
+    <div>${client['billing_contact']}</div>
+    <div>${client['address_1']}</div>
+    <div>${client['address_2']}</div>
+    <div>${client['city']}, ${client['state']} ${client['zip_code']}</div>
+  </td>
+</tr>
+</table>
+</div>
+<div class='top-right'>
+  <table>
+  <tr>
+    <td><strong>Patient:</strong></td>
+    <td>${'%(first_name)s %(last_name)s' % patient}</td>
+
+  </tr>
+  % if patient['dob']:
+  <tr>
+    <td valign='top'><strong>DOB:</strong></td>
+    <td>${patient['dob'].strftime("%m/%d/%Y")}</td>
+  </tr>
+  % endif
+  <tr>
+    <td><strong>Claim Number:</strong></td>
+    <td>${claim_numbers}</td>
+  </tr>
+  </table>
+</div>
+
+<div style='clear: both'></div>
+
+<table border='1' cellspacing='0' cellpadding='2' class='memo-table'>
+<thead>
+<tr>
+ <th>Credit #</th>
+ <th>Entry Date</td>
+ <th>Invoice #</th>
+ <th>Rx Date</th>
+ <th>Drug Name</th>
+ <th>Credit Balance</th>
+</tr>
+</thead>
+<tbody>
+% for r in report:
+<tr>
+ <td>${r['credit_no']}</td>
+ <td>${r['entry_date'].strftime("%m/%d/%Y")}</td>
+ <td>${r['invoice_id']}-${r['line_no']}</td>
+ <td>${r['rx_date'].strftime("%m/%d/%Y")}</td>
+ <td>${r['drug_name']}</td>
+ <td align='right'>${'{0:0.2f}'.format(r['balance'])}</td>
+</tr> 
+% endfor
+</tbody>
+</table>

@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>${q.label}</title>
+<link rel='stylesheet' type='text/css' href='/css/sales_report.css' />
+<style type='text/css'>
+${q.query_css}
+</style>
+
+</head>
+<body>
+<h1>${q.label}</h1>
+% if q.debug:
+    <em>(${duration} seconds)
+    %if hasattr(cursor, 'rowcount'):
+        Rows Affected: ${cursor.rowcount}
+    % endif
+    </em>
+
+    <div><a href='javascript:void()' onclick='{
+        var elem=document.getElementById("sql");
+        if(elem.style.display == "none") {
+            elem.style.display = "block";
+        } else {
+            elem.style.display = "none";
+        }}'>Show SQL</a></div>
+    <div id='sql' style='display:none'><pre>${sql}</pre></div>
+% endif
+
+<div style='margin-bottom:5px'>${q.print_params()}</div>
+<table border='1' cellspacing='0' id='report_body'>
+<thead>
+<tr>
+  <th colspan='2'></th>
+  <th colspan='2'>Mail Order Brand</th>
+  <th colspan='2'>Mail Order Generic</th>
+  <th colspan='2'>Retail Brand</th>
+  <th colspan='2'>Retail Generic</th>
+  <th colspan='2'>Other</th>
+  <th colspan='4'></th>
+</tr>
+<tr>
+  <th>Number</th>
+  <th>Group</th>
+  <th>Count</th>
+  <th>Commission Amount</th>
+  <th>Count</th>
+  <th>Commission Amount</th>
+  <th>Count</th>
+  <th>Commission Amount</th>
+  <th>Count</th>
+  <th>Commission Amount</th>
+  <th>Count</th>
+  <th>Commission Amount</th>
+  <th>Count Total</th>
+  <th>Commission Subtotal</th>
+  <th>Reversals &amp; Write Offs</th>
+  <th>Commission Total</th>
+</tr>
+</thead>
+<%
+for rec in cursor:
+    context.write("<tr>")
+
+    for j, value in enumerate(rec):
+        if value is None:
+            context.write("<td class='data%s'></td>" % (j+1,))
+        else:
+            context.write("<td class='data%s'>%s</td>" % (j+1, value))
+    context.write("</tr>")
+%>
+</table>
+
+${q.legend()}
+</body>
+</html>

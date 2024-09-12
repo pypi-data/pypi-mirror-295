@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+""" Match up the invoice DEA and NPI """
+import logging; log=logging.getLogger('')
+import os
+import sys
+
+import cpsar.shell
+import cpsar.runtime as R
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        log.info('Beginning Invoice File Audit')
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            SELECT COUNT(*) as c FROM invoice""")
+        log.info("Total invoice records: %s", cursor.fetchone()['c'])
+
+        cursor.execute("""
+            SELECT COUNT(*) as c FROM invoice WHERE balance IS NULL""")
+        balances = cursor.fetchone()[0]
+        if balances:
+            log.warning("Invoices missing balances: %s", balances)
+        else:
+            log.info('No invoices missing balances')
+
+        cursor.execute("""
+            SELECT COUNT(*) as c FROM invoice WHERE total IS NULL""")
+        totals = cursor.fetchone()[0]
+        if totals:
+            log.error("Invoices missing totals: %s", totals)
+        else:
+            log.info("No invoices missing totals")
+        cursor.execute("""
+            SELECT COUNT(*) as c FROM invoice WHERE patient_id IS NULL""")
+        totals = cursor.fetchone()[0]
+        if totals:
+            log.error("Invoices missing patients: %s", totals)
+        else:
+            log.info("No invoices missing patients")
+
+        # Invoice Balance
+        cursor.execute("""
+            SELECT invoice.invoice_id,
+                   invoice.balance,
+                   SUM(trans.balance)
+            FROM invoice
+            JOIN trans ON invoice.invoice_id = trans.invoice_id
+            GROUP BY invoice.invoice_id, invoice.balance
+            HAVING SUM(trans.balance) <> invoice.balance
+                OR invoice.balance IS NULL""")
+        for c in list(cursor):
+            msg = "Invoice %08d: Invalid balance %s should be %s. Fixing." %\
+                    tuple(c)
+            cursor.execute("""
+                UPDATE invoice SET balance=%s
+                WHERE invoice_id=%s
+                """, (c[2], c[0]))
+            log.warn(msg)
+
+        # Invoice Total
+        cursor.execute("""
+            SELECT invoice.invoice_id,
+                   invoice.total,
+                   SUM(trans.total)
+            FROM invoice
+            JOIN trans ON invoice.invoice_id = trans.invoice_id
+            GROUP BY invoice.invoice_id, invoice.total
+            HAVING SUM(trans.total) <> invoice.total
+                OR invoice.total IS NULL""")
+        for c in list(cursor):
+            msg = "Invoice %08d: Invalid total %s should be %s. Fixing." %\
+                    tuple(c)
+            cursor.execute("""
+                UPDATE invoice SET total=%s
+                WHERE invoice_id=%s
+                """, (c[2], c[0]))
+            log.warn(msg)
+
+        # Invoice adjustments
+        cursor.execute("""
+            SELECT invoice.invoice_id,
+                   invoice.adjustments,
+                   SUM(trans.adjustments)
+            FROM invoice
+            JOIN trans ON invoice.invoice_id = trans.invoice_id
+            GROUP BY invoice.invoice_id, invoice.adjustments
+            HAVING SUM(trans.adjustments) <> invoice.adjustments
+                OR invoice.adjustments IS NULL""")
+        for c in list(cursor):
+            msg = "Invoice %08d: Fixing adjustments %s to %s" % tuple(c)
+            cursor.execute("""
+                UPDATE invoice SET adjustments=%s
+                WHERE invoice_id=%s
+                """, (c[2], c[0]))
+            log.warn(msg)
+        R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()

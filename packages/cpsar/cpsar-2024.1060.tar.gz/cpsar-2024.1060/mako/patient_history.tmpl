@@ -1,0 +1,29 @@
+<%inherit file="patient_page.tmpl" />
+<%block name="head">
+  <link rel='stylesheet' media='screen' type='text/css' href='/css/form.css' />
+  <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+</%block>
+<%def name="pcontents()">
+
+<h2>History Records</h2>
+% if not history:
+    <div>This patient has no history records.</div>
+% else:
+<table class='grid'>
+<thead>
+    <th>Group #</th>
+    <th>Claim Ref #</th>
+    <th>RX #</th>
+</thead>
+<tbody>
+% for h in history:
+<tr>
+    <td>${h['group_number']}</td>
+    <td>${h['group_auth']}</td>
+    <td>${h['rx_number']}</td>
+% endfor
+</tbody>
+</table>
+% endif
+</%def>

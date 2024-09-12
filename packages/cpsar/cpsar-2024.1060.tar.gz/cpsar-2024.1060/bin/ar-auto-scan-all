@@ -1,0 +1,5 @@
+#!/bin/sh
+ar-auto-scan
+PRIVATELABEL=msq ar-auto-scan
+PRIVATELABEL=sunrise ar-auto-scan
+PRIVATELABEL=mjoseph ar-auto-scan

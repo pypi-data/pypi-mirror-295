@@ -1,0 +1,170 @@
+#!/usr/bin/env python
+import cpsar.shell as CS
+import csv
+import datetime
+import re
+
+class Program(CS.Program):
+    """ Responsible for translating a CSV File of Data into a
+        FL EDI DWC-10 file
+        (Fixed width as specified in the FL MEIG)
+
+    """
+
+
+    def main(self):
+        """ Responsible for processing all files given on the 
+        command line.
+        """
+        self.fields = EDIFields()
+
+        self.submission_date = datetime.datetime.now()
+        self.out_file_path = "/server/ar/files/edi/%s" % self.make_file_name()
+
+        self.log.info('Creating %s' % self.out_file_path)
+        self.out_file = open(self.out_file_path, 'w')
+        self.parse_file("/server/ar/files/edi/fl-dwc-10-test-data.csv")
+        self.out_file.flush()
+        self.out_file.close()
+
+    def make_file_name(self):
+        """ Refer to
+        http://www.fldfs.com/WC/pdf/MedDataElecFilingManual2007.pdf
+
+        appendix J for more information.
+        """
+        date_fmt = self.submission_date.strftime("%Y%m%d_%H%M%S")
+        return "SMTP272DWC10_%sT.TXT" % date_fmt
+
+    def pull_header(self):
+        d = next(self.reader)
+        d = [x for x in d if x]
+        # read desc line
+        next(self.reader)
+        return d
+
+    def parse_file(self, file):
+        f = open(file)
+        self.reader = reader = csv.reader(f)
+
+        # We cut off the first column in these because we don't care about
+        # the scenario line
+        # Parse Headers
+        self.headers = self.pull_header()
+        self.patients = self.pull_header()
+        self.claims = self.pull_header()
+        self.trailers = self.pull_header()
+
+        for idx, line in enumerate(reader):
+            # dispatch on line type
+            self.line = line
+            self.line_no = idx + 7
+            if line[1] == 'HD1':
+                self.write_header(line[1:])
+            elif line[1] == 'TR1':
+                self.write_trailer(line[1:])
+            elif line[2] == '1':
+                self.write_patient(line[1:])
+            elif line[2] == '2':
+                self.write_claim(line[1:])
+            else:
+                raise ValueError('Unknown line data: %s' % line)
+
+    def write_header(self, line):
+        for field, value in zip(self.headers, line):
+            fdef = self.fields.lookup(field)
+            self.write_value(fdef, value)
+        self.out_file.write('\n')
+
+    def write_trailer(self, line):
+        for field, value in zip(self.trailers, line):
+            fdef = self.fields.lookup(field)
+            self.write_value(fdef, value)
+        self.out_file.write('\n')
+
+    def write_patient(self, line):
+        for field, value in zip(self.patients, line):
+            fdef = self.fields.lookup(field)
+            self.write_value(fdef, value)
+        self.out_file.write('\n')
+
+    def write_claim(self, line):
+        for field, value in zip(self.claims, line):
+            fdef = self.fields.lookup(field)
+            self.write_value(fdef, value)
+        self.out_file.write('\n')
+
+    def lerror(self, msg, *args):
+        if args:
+            msg %= args
+        self.log.error("Line %s: %s", self.line_no, msg)
+
+    def write_value(self, f, value):
+        has_value = len(value.strip()) > 0
+
+        def err(msg, *args):
+            if args: msg %= args
+            self.lerror('%s%s:%s %s', f['NO'], f['FIELD'],
+                        f['DESCRIPTION'], msg)
+        if f['REQUIRED'] == 'Y':
+            if not value:
+                err('Missing required value for %(NO)s%(FIELD)s' % f)
+                return
+
+        value = value.strip()
+        flen = int(f['LENGTH'])
+        if f['FILL'] == 'LZ':
+            value = value.zfill(flen)
+
+        if f['REGEXP'] and has_value:
+            try:
+                r = re.compile(f['REGEXP'])
+            except:
+                err("Bad REGEXP %r", f['REGEXP'])
+                return
+            if not r.match(value):
+                err('Value %r (length %s) does not match pattern %r',
+                    value, len(value), f['REGEXP'])
+                return
+
+        # RS everything
+        value = value.ljust(flen)
+
+        if len(value) > flen:
+            err('Maximum length %d, value %r has length %d',
+                flen, value, len(value))
+            return
+
+        assert len(value) == flen, '%s%s:%s len(%r) != %s' % (f['NO'], f['FIELD'], f['DESCRIPTION'], value, flen)
+        self.out_file.write(value)
+
+class EDIFields(object):
+    """ Responsible for providing the definitions of the EDI fields
+
+        The field definitions are stored in a CSV file and loaded
+        at runtime (We may want to turn that into a Python data structure in
+        the future.
+    """
+    def_file = "/server/ar/res/def-fl-dfs-5-dwc-10.csv"
+
+    def __init__(self):
+        f = open(self.def_file)
+        reader = csv.reader(f)
+        header = next(reader)
+        self.fields = []
+        self.keys = {}
+        for idx, line in enumerate(reader):
+            record = dict(zip(header, line))
+            self.fields.append(record)
+            self.keys["%(NO)s%(FIELD)s" % record] = record
+
+    def lookup(self, *key):
+        if len(key) == 1:
+            return self.keys[key[0]]
+        else:
+            return [self.keys[k] for k in keys]
+            
+
+
+if __name__ == '__main__':
+    Program().run()

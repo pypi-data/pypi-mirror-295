@@ -1,0 +1,29 @@
+<%! import cpsar.controls as C %>
+<%inherit file="patient_page.tmpl" />
+<%def name="pcontents()">
+<h2>Credit Memo Report</h2>
+<form action='/patient/credit_memo_submit' method='GET'>
+<table class='form'>
+<tr>
+  <td class='entry-caption'>Start Entry Date</td>
+  <td class='entry-value'>
+    ${C.DatePicker('start_entry_date', value=start_entry_date)}</td>
+</tr>
+<tr>
+  <td class='entry-caption'>End Entry Date</td>
+  <td class='entry-value'>
+    ${C.DatePicker('end_entry_date', value=end_entry_date)}</td>
+</tr>
+<tr>
+  <td class='entry-caption'>As Of</td>
+  <td class='entry-value'>
+    ${C.DatePicker('as_of', value=as_of)}</td>
+</tr>
+<tr>
+  <td></td>
+  <td><input type='submit' value='Generate Report' /></td>
+</tr>
+</table>
+<input type='hidden' name='patient_id' value='${patient['patient_id']}' />
+</form>
+</%def>

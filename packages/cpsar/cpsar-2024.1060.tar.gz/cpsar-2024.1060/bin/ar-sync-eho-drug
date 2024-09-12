@@ -1,0 +1,6 @@
+#!/bin/sh
+## This program is designed to run on the claim processor
+cd /server/spc
+/opt/rmcobol/runcobol sp-cr-blue-drug k
+cd /usr/local/srv/bd3/bin
+./ar-sync-drug

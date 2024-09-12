@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+""" Utility script for a programmer to use to remove history records from the
+workqueue. Feed a csv file into stdin with 2 columns group_number and
+group_auth. All the history records will NOT be visible on the workqueue after
+a workqueue refresh is ran.
+"""
+from cpsar.runtime import db
+import csv
+import sys
+
+db.setup()
+cursor = db.cursor()
+for group_number, group_auth in csv.reader(sys.stdin):
+    cursor.execute("""
+        UPDATE history SET workqueue_candidate=FALSE WHERE
+        group_number=%s AND group_auth=%s
+        """, (group_number, group_auth))
+db.commit()

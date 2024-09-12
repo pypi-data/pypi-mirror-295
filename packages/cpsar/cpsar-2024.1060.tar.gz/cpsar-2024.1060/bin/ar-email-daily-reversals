@@ -1,0 +1,132 @@
+#!/usr/bin/env python
+
+""" Send out an email to bridge point for all nightly reversals from
+transactions with invoices.
+"""
+import cpsar.runtime as R
+from cpsar import pg
+from cpsar import shell
+from cpsar import util
+
+def groups_for_report_code(rc):
+    cursor = R.db.cursor()
+    cursor.execute("""
+        select group_number
+        from client_report_code
+        where report_code = %s
+        order by group_number
+        """, (rc,))
+    return [c for c, in cursor]
+
+class Program(shell.Program):
+    def main(self):
+        self.send_mail(groups_for_report_code('HILL'), [
+            'tbagley@cobbsallen.com',
+            'bcallen@cobbsallen.com'
+        ])
+
+        self.send_mail(['70036', '70852'], [
+            'bp@mybridgepointe.com',
+            'cminnick@nqbp.com',
+            'lindsay@corporatepharmacy.com'
+            ])
+        self.send_mail(['56500'], ['lmyers@mpcga.org'], True)
+        # self.send_mail(groups_in('NW NAT'), ['patty.hunter@northwesternnic.com'])
+
+    def send_mail(self, group_numbers, recipients, include_rebilled_rx=False):
+        cursor = R.db.cursor()
+        gn_frag = "(%s)" % ", ".join(map(pg.qstr, group_numbers))
+
+        if include_rebilled_rx:
+            sql = rebill_rx_tmpl
+        else:
+            sql = not_rebill_rx_tmpl
+
+        sql = rebill_rx_tmpl
+        cursor.execute(sql % {'gn_frag': gn_frag})
+        if not cursor.rowcount:
+            return
+
+        m = util.Mailer()
+        m.recipients = recipients
+        m.subject = "cpsar: Reversals for %s" % gn_frag
+        m.bcc = [
+            'root',
+            'lindsay@corporatepharmacy.com'
+        ]
+
+        m("The following billed transactions were reversed.\n")
+        m(util.fmt_cursor_text(cursor))
+        self.log.debug("Email Send %s" % m.recipients)
+        m.send()
+        cursor.execute("""
+            update reversal set email_sent = now()
+            where group_number in %s
+            """ % gn_frag)
+        R.db.commit()
+
+def groups_in(rc):
+    cursor = R.db.cursor()
+    cursor.execute("""
+        select group_number
+        from client_report_code
+        where report_code = %s
+        """, (rc,))
+    return [c for c, in cursor]
+
+
+rebill_rx_tmpl = """
+    SELECT patient.first_name || ' ' || patient.last_name AS patient,
+           drug.name AS drug,
+           trans.claim_number,
+           trans.doi,
+           trans.rx_date,
+           trans.invoice_id,
+           trans.batch_date,
+           trans.line_no,
+           trans.paid,
+           reversal.total
+    FROM reversal
+    JOIN trans USING(trans_id)
+    JOIN patient USING(patient_id)
+    JOIN drug USING(drug_id)
+    WHERE
+          trans.group_number in %(gn_frag)s AND
+          reversal.email_sent is null
+    """
+
+not_rebill_rx_tmpl = """
+    SELECT patient.first_name || ' ' || patient.last_name AS patient,
+           drug.name AS drug,
+           trans.claim_number,
+           trans.doi,
+           trans.rx_date,
+           trans.invoice_id,
+           trans.batch_date,
+           trans.line_no,
+           trans.paid,
+           reversal.total
+    FROM reversal
+    JOIN trans USING(trans_id)
+    JOIN patient USING(patient_id)
+    JOIN drug USING(drug_id)
+    LEFT JOIN (
+        SELECT history_id, group_number, group_auth, rx_number, 
+               refill_number, pharmacy.nabp
+        FROM history
+        JOIN pharmacy USING(pharmacy_id)
+        WHERE group_number in %(gn_frag)s
+    ) AS rebill ON
+        rebill.nabp = trans.pharmacy_nabp AND
+        rebill.rx_number = trans.rx_number AND
+        rebill.group_number = trans.group_number AND
+        rebill.group_auth > trans.group_auth AND
+        rebill.refill_number %% 20 = trans.refill_number %% 20
+    WHERE
+          trans.group_number in %(gn_frag)s AND
+          reversal.email_sent is null AND
+          rebill.history_id IS NULL
+    """
+
+if __name__ == '__main__':
+    Program().run()
