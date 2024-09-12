@@ -1,0 +1,2 @@
+[console_scripts]
+postman-cli-transformer = postman_cli_transformer.cli:cli
