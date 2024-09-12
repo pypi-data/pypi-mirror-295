@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+megaprofiler/__init__.py
+megaprofiler/megaprofiler.py
+megaprofiler.egg-info/PKG-INFO
+megaprofiler.egg-info/SOURCES.txt
+megaprofiler.egg-info/dependency_links.txt
+megaprofiler.egg-info/entry_points.txt
+megaprofiler.egg-info/requires.txt
+megaprofiler.egg-info/top_level.txt
+tests/__init__.py
+tests/test_megaprofiler.py
