@@ -1,0 +1,30 @@
+[project]
+name = "auto-clash"
+version = "0.1.0"
+description = "Switch proxy nodes using the clash api"
+authors = [
+    { name = "funcdefmain", email = "741132517@qq.com" },
+]
+dependencies = [
+    "requests>=2.32.3",
+    "pyyaml>=6.0.2",
+    "loguru>=0.7.2",
+    "jsonpath>=0.82.2",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+auto-clash = "auto_clash.main:main"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
