@@ -1,0 +1,75 @@
+#########################################
+# Editor temporary/working/backup files #
+.#*
+[#]*#
+*~
+*$
+*.bak
+*.kdev4
+.project
+.pydevproject
+*.ipynb_*
+.idea
+
+# Compiled source #
+###################
+*.a
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.py[ocd]
+*.so
+
+# Python files #
+################
+# setup.py working directory
+build
+# setup.py dist directory
+dist
+# Egg metadata
+*.egg-info
+# tox testing tool
+.tox
+MANIFEST
+
+# OS generated files #
+######################
+.directory
+.gdb_history
+.DS_Store
+ehthumbs.db
+Icon
+Thumbs.db
+
+# Things specific to this project #
+###################################
+*.list
+*.tmp
+data/raw/*
+data/converted/*
+data/*
+images/*
+ctdcal.log
+
+# Documentation generated files #
+#################################
+# sphinx build directory
+doc/_build
+docs/_build
+docs/generated/
+
+# pytest
+.cache
+.coverage
+htmlcov/*
+
+# Ipython notebook #
+####################
+
+*.ipynb*
+!docs/notebooks/*.ipynb
+
+__pycache__/
+ctdcal/_version.py

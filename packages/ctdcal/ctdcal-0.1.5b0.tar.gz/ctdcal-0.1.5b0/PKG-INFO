@@ -1,0 +1,146 @@
+Metadata-Version: 2.1
+Name: ctdcal
+Version: 0.1.5b0
+Summary: CTD and bottle data processing package from UCSD ODF
+Home-page: https://github.com/cchdo/ctdcal
+Author: "Joseph Gum, Andrew Barna, Michael Kovatch"
+Author-email: mkovatch@ucsd.edu
+Keywords: oceanography,seawater,TEOS-10,ctd,calibration
+Platform: any
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: click==8.0.1
+Requires-Dist: gsw
+Requires-Dist: matplotlib
+Requires-Dist: munch
+Requires-Dist: numpy<2.0.0
+Requires-Dist: pandas
+Requires-Dist: PyYAML
+Requires-Dist: requests
+Requires-Dist: scipy
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: Sphinx==7.3.3; extra == "docs"
+Requires-Dist: jupyter==1.0.0; extra == "docs"
+Requires-Dist: furo==2024.1.29; extra == "docs"
+Requires-Dist: nbsphinx==0.9.4; extra == "docs"
+Requires-Dist: jupytext; extra == "docs"
+Provides-Extra: tests
+Requires-Dist: black; extra == "tests"
+Requires-Dist: flake8; extra == "tests"
+Requires-Dist: isort; extra == "tests"
+Requires-Dist: pre-commit; extra == "tests"
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: bokeh; extra == "tests"
+Requires-Dist: mypy; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Provides-Extra: complete
+Requires-Dist: black; extra == "complete"
+Requires-Dist: flake8; extra == "complete"
+Requires-Dist: isort; extra == "complete"
+Requires-Dist: pre-commit; extra == "complete"
+Requires-Dist: pytest; extra == "complete"
+Requires-Dist: bokeh; extra == "complete"
+Requires-Dist: mypy; extra == "complete"
+Requires-Dist: pytest-cov; extra == "complete"
+Requires-Dist: Sphinx==7.3.3; extra == "complete"
+Requires-Dist: jupyter==1.0.0; extra == "complete"
+Requires-Dist: furo==2024.1.29; extra == "complete"
+Requires-Dist: nbsphinx==0.9.4; extra == "complete"
+Requires-Dist: jupytext; extra == "complete"
+
+[![PyPI Latest Release](https://img.shields.io/pypi/v/ctdcal.svg)](https://pypi.org/project/ctdcal/)
+[![PyPI Python Versions](https://img.shields.io/pypi/pyversions/ctdcal.svg)](https://pypi.org/project/ctdcal/)
+[![Package Status](https://img.shields.io/pypi/status/ctdcal.svg)](https://pypi.org/project/ctdcal/)
+[![License](https://img.shields.io/pypi/l/ctdcal.svg)](https://github.com/cchdo/ctdcal/blob/master/LICENSE.md)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
+
+![GH Testing](https://github.com/cchdo/ctdcal/actions/workflows/run-tests.yml/badge.svg)
+[![Documentation Status](https://readthedocs.org/projects/ctdcal/badge/?version=latest)](https://ctdcal.readthedocs.io/en/latest/?badge=latest)
+
+# ctdcal project
+
+The ctdcal project is a library primarily designed to process data from CTD casts and calibrate
+them against Niskin bottle samples.
+
+In the future, parts of the ctdcal library will be split off into additional packages,
+such as an "ocean sensors" package with Python implementations of conversion routines
+for in-situ sensors used for ocean measurement.
+
+---
+
+## Installation
+ctdcal can be installed using pip:
+
+```
+$ pip install ctdcal
+```
+
+---
+
+## CLI usage
+### Initialize data folders
+Initialize default `/data/` folders by running:
+
+```
+$ ctdcal init
+```
+
+(Future versions of ctdcal are planned have more robust init options/flags/etc.)
+
+### Import and process data
+To process data, copy over raw `.hex` and `.xmlcon` files into `/data/raw/` and reference data to their appropriate folder (`oxygen`, `reft`, `salt`).
+
+Users can process their data with individual ctdcal functions or try:
+
+```
+$ ctdcal process [--group ODF]
+```
+
+to process using ODF procedures.
+
+---
+
+## Package usage
+### Explore user settings
+Most ctdcal functions get settings from `user_settings.yaml` and subsequently `config.py`. Call the configuration loader to explore default settings:
+
+```py
+from ctdcal import get_ctdcal_config
+cfg = get_ctdcal_config()
+
+# directories for I/O purposes
+print(cfg.dirs)
+print(cfg.fig_dirs)
+
+# experiment-specific settings (e.g., expocode, CTD serial number) from user_settings.yaml
+print(cfg.settings)
+
+# dictionary mapping of short/long column names
+print(cfg.columns)
+```
+
+As ctdcal continues to be developed, more robust [tutorials](https://ctdcal.readthedocs.io/en/latest/tutorials.html) will be added to [our documentation](https://ctdcal.readthedocs.io/en/latest/).
+
+---
+
+## LICENSING
+BSD 3-clause
