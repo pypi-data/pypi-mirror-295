@@ -1,0 +1,124 @@
+name: core.nwb.epoch
+annotations:
+  is_namespace:
+    tag: is_namespace
+    value: false
+  namespace:
+    tag: namespace
+    value: core
+id: core.nwb.epoch
+version: 2.2.0
+imports:
+- ../../hdmf_common/v1_1_0/namespace
+- core.nwb.base
+- core.nwb.language
+default_prefix: core.nwb.epoch/
+classes:
+  TimeIntervals:
+    name: TimeIntervals
+    description: A container for aggregating epoch data and the TimeSeries that each
+      epoch applies to.
+    is_a: DynamicTable
+    attributes:
+      name:
+        name: name
+        range: string
+        required: true
+      start_time:
+        name: start_time
+        description: Start time of epoch, in seconds.
+        array:
+          minimum_number_dimensions: 1
+          maximum_number_dimensions: false
+        range: float32
+        required: true
+        multivalued: false
+      stop_time:
+        name: stop_time
+        description: Stop time of epoch, in seconds.
+        array:
+          minimum_number_dimensions: 1
+          maximum_number_dimensions: false
+        range: float32
+        required: true
+        multivalued: false
+      tags:
+        name: tags
+        description: User-defined tags that identify or categorize events.
+        array:
+          minimum_number_dimensions: 1
+          maximum_number_dimensions: false
+        range: text
+        required: false
+        multivalued: false
+      tags_index:
+        name: tags_index
+        annotations:
+          named:
+            tag: named
+            value: true
+          source_type:
+            tag: source_type
+            value: neurodata_type_inc
+        description: Index for tags.
+        range: VectorIndex
+        required: false
+        multivalued: false
+      timeseries:
+        name: timeseries
+        description: An index into a TimeSeries object.
+        range: TimeIntervals__timeseries
+        required: false
+        multivalued: false
+      timeseries_index:
+        name: timeseries_index
+        annotations:
+          named:
+            tag: named
+            value: true
+          source_type:
+            tag: source_type
+            value: neurodata_type_inc
+        description: Index for timeseries.
+        range: VectorIndex
+        required: false
+        multivalued: false
+    tree_root: true
+  TimeIntervals__timeseries:
+    name: TimeIntervals__timeseries
+    description: An index into a TimeSeries object.
+    is_a: VectorData
+    attributes:
+      name:
+        name: name
+        ifabsent: string(timeseries)
+        range: string
+        required: true
+        equals_string: timeseries
+      idx_start:
+        name: idx_start
+        description: Start index into the TimeSeries 'data' and 'timestamp' datasets
+          of the referenced TimeSeries. The first dimension of those arrays is always
+          time.
+        array:
+          exact_number_dimensions: 1
+        range: int32
+        required: false
+        multivalued: false
+      count:
+        name: count
+        description: Number of data samples available in this time series, during
+          this epoch.
+        array:
+          exact_number_dimensions: 1
+        range: int32
+        required: false
+        multivalued: false
+      timeseries:
+        name: timeseries
+        description: the TimeSeries that this index applies to.
+        array:
+          exact_number_dimensions: 1
+        range: TimeSeries
+        required: false
+        multivalued: false
