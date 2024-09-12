@@ -1,0 +1,2 @@
+[console_scripts]
+cap2geojson = cap2geojson:cli.cli
