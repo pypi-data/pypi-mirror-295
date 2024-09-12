@@ -1,0 +1,27 @@
+[project]
+name = "lakehut"
+description = "Lakehouse SDK"
+authors = [
+    { name = "Jan Schäfer (DE)", email = "jan@schae.fr" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.11"
+dynamic = ["version"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lakehut"]
+
+[tool.hatch.version]
+path = "src/lakehut/__init__.py"
