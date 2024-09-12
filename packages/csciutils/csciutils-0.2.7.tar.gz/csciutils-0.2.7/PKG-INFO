@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: csciutils
+Version: 0.2.7
+Summary: 中信建投国际自动化工作
+Author: ZhuBowen
+Author-email: zhubowen@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+本包仅限于中信建投证券股份有限公司及其下属子公司使用，为中信建投国际自动化业务民间快捷包。
+
+# 0.2.7
+- 加入了DOCX模块
+    - 支持正文、表格、脚注的保留格式替换
+- 加入了Inputs模块
+    - 支持多字段和带换行字段的可视化输入
+- 加入了iFinD模块
+    - 支持了access_token的获取
+    - 支持了工商信息的获取
+        - 统一社会信用代码
+        - 经营范围
+        - 成立日期
+        - 注册地址
+        - 联系方式
+        - 法定代表人
+        - 注册资本
+        - 注册资本单位
+        - 省份
+        - 授信金额（亿）
+        - 未使用授信金额（亿）
+        - 已使用授信金额（亿）
+        - 最新授信日期
