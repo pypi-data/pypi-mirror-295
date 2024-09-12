@@ -1,0 +1,11 @@
+Metadata-Version: 2.3
+Name: mm-solana
+Version: 0.1.1
+Requires-Python: >=3.12
+Requires-Dist: base58~=2.1.1
+Requires-Dist: click-aliases~=1.0.1
+Requires-Dist: click~=8.1.7
+Requires-Dist: jinja2~=3.1.3
+Requires-Dist: mm-std~=0.1.2
+Requires-Dist: pyyaml~=6.0
+Requires-Dist: solana~=0.34.0
