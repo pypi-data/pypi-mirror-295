@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: PN_DTW_FE
+Version: 0.10.0
+Summary: A package for gene expression analysis
+Home-page: https://github.com/yourusername/PN_DTW_FE
+Author: Md Khairul Islam, Prof Hairong Wei
+Author-email: hairong@mtu.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10.3
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# PN_DTW_FE
+
+A package for gene expression analysis.
+
+## Installation
+
+```sh
+pip install PN_DTW_FE
