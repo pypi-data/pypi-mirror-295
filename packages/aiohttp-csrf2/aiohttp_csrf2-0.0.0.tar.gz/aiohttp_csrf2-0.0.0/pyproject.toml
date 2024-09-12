@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64.0", "setuptools_scm[toml]>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiohttp_csrf2"
+description = "Cross-site request forgery (CSRF) protection for aiohttp-server"
+keywords = ["asyncio", "aiohttp", "csrf", "webserver"]
+authors = [
+  { name="shuckc", email="chris@shucksmith.co.uk" },
+  { name="TensorTom"},
+]
+license = { file= "LICENSE"}
+dynamic = ["version", "readme"]
+requires-python = ">= 3.9"
+dependencies = [
+  "blake3>=0.4.1",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+  "License :: OSI Approved :: MIT License",
+  "Typing :: Typed",
+  "Framework :: AsyncIO",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/shuckc/aiohttp-csrf"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.setuptools]
+packages = ["aiohttp_csrf"]
+
+[tool.setuptools.dynamic]
+readme = {file = "README.md", content-type = "text/markdown"}
