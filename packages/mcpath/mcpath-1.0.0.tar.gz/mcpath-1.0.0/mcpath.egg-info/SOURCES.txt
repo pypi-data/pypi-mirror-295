@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+mcpath/__init__.py
+mcpath/_android.py
+mcpath/_darwin.py
+mcpath/_dummy.py
+mcpath/_ios.py
+mcpath/_linux.py
+mcpath/_windows.py
+mcpath.egg-info/PKG-INFO
+mcpath.egg-info/SOURCES.txt
+mcpath.egg-info/dependency_links.txt
+mcpath.egg-info/not-zip-safe
+mcpath.egg-info/top_level.txt
