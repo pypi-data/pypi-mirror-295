@@ -1,0 +1,43 @@
+Metadata-Version: 2.3
+Name: pjdev-pydantic
+Version: 3.5.0a7
+Project-URL: Documentation, https://gitlab.purplejay.net/keystone/python/-/tree/main/keystone-pydantic/README.md
+Project-URL: Issues, https://gitlab.purplejay.net/keystone/python/-/issues
+Project-URL: Source, https://gitlab.purplejay.net/keystone/python
+Author-email: Purple Jay LLC <it@purplejay.io>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.12
+Requires-Dist: keeper-secrets-manager-core>=16.6.5
+Requires-Dist: keepercommander>=16.11.10
+Requires-Dist: loguru
+Requires-Dist: pydantic-settings>=2.4.0
+Requires-Dist: pydantic>=2.8.2
+Description-Content-Type: text/markdown
+
+# pjdev-pydantic
+
+[![PyPI - Version](https://img.shields.io/pypi/v/pjdev-pydantic.svg)](https://pypi.org/project/pjdev-pydantic)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pjdev-pydantic.svg)](https://pypi.org/project/pjdev-pydantic)
+
+-----
+
+## Table of Contents
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install pjdev-pydantic
+```
+
+## License
+
+`pjdev-pydantic` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
