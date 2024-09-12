@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: declargs
+Version: 0.1.0
+Summary: Declarative argument parser.
+Author-email: Lucas Viana <lucas.nviana@gmail.com>
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: pyyaml >=2.6
+Requires-Dist: tox ; extra == "dev"
+Project-URL: Home, https://www.lucas-viana.com
+Provides-Extra: dev
