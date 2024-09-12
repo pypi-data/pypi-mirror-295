@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/seqpad/__init__.py
+src/seqpad/__main__.py
+src/seqpad.egg-info/PKG-INFO
+src/seqpad.egg-info/SOURCES.txt
+src/seqpad.egg-info/dependency_links.txt
+src/seqpad.egg-info/requires.txt
+src/seqpad.egg-info/top_level.txt
