@@ -1,0 +1,75 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quackamollie-core"
+version = "0.1rc3"
+description = "Core component of the Quackamollie Telegram chat bot"
+readme = "README.rst"
+authors = [
+    {name = "QuactorAI", email = "quacktorai@gmail.com"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = ["telegram", "bot", "aiogram", "llamaindex", "ollama", "llmsherpa"]
+requires-python = ">=3.10"
+dependencies = [
+    "aiogram",
+    "alembic",
+    "alembic-postgresql-enum",
+    "asyncpg",
+    "click",
+    'coloredlogs',
+    "pyfiglet",
+    'pyyaml',
+    "sqlalchemy[asyncio]",
+]
+
+[project.optional-dependencies]
+lint = [
+    'check-manifest',
+    'flake8',
+    'readme_renderer',
+    'safety',
+    'setuptools',
+    'twine',
+    'wheel',
+]
+test = [
+    'coverage',
+    'pytest',
+    'pytest-cov',
+    'pytest-xdist',
+    'tox',
+]
+doc = [
+    'sphinx',
+    'sphinx-click',
+]
+
+[project.urls]
+Homepage = "https://gitlab.com/forge_of_absurd_ducks/quackamollie/lib/quackamollie_core"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests"]
+namespaces = true
+
+[project.scripts]
+quackamollie = "quackamollie.core.quackamollie:quackamollie"
+
+[project.entry-points."quackamollie.command"]
+serve = "quackamollie.core.cli.command.serve_cli_command:serve"
+db = "quackamollie.core.cli.command.db_cli_command:db"
+
+[project.entry-points."quackamollie.command.db"]
+alembic = "quackamollie.core.cli.command.alembic_cli_command:alembic"
