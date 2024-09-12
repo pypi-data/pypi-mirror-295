@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: caplib
+Version: 0.0.9
+Home-page: 
+Author: caprisktech.com
+Requires-Python: >= 3.8.0
+Requires-Dist: pandas>=2.0.3
+Requires-Dist: caplibproto==0.0.7
