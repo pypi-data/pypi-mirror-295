@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "duple"
+version = "0.2.0"
+description = "Duple is a CLI that finds and removes duplicate files."
+authors = ["David Bruce"]
+readme = "README.md"
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+tqdm = "^4.66.5"
+humanize = "^4.10.0"
+send2trash = "^1.8.3"
+pip-licenses = "^5.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+duple = "duple:cli"

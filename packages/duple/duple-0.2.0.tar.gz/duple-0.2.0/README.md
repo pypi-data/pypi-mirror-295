@@ -1,0 +1,39 @@
+# Project Description
+
+Duple is a small package that will find and remove duplicate files.  I created duple only because there is no port of rmlint to Windows.  I suggest using rmlint on unix/linux systems instead - it is far superior to duple.
+
+Duple will iterate through all files and directories that is given and calculate a hash value, hash can be specified.  Then, it groups all of those results into a dictionary with the hashes as the key.  Dictionary entries with 2 or more values constitute a duplicate.  The duplicate that will be kept is specified with an optional flag.  To see the flags and their descriptions:
+
+    duple scan --help
+
+Once the scan is complete, you can review the output file (duple.delete) and modify at your discretion.  Once you have reviewed and modified, run the following command to send the duplicates to the trash:
+
+    duple rm
+
+# Installation
+
+    pip install duple
+
+You may need to add the Python Scripts folder on your computer to the PATH -> search stackoverflow.com for more information.
+
+# Usage
+
+duple has two sub-commands: scan and rm.  Scan scans your system based on the arguments given to scan and reports those results in output files reported by duple scan.
+
+An Example:
+
+The command below will scan the currenty directory and calculate
+    duple scan -d . 'sha256'
+
+-d      :   specifies the duplicate resolution behavior, in this case, duple will keep the duplicate with the lowest filesystem depth.
+.       :   specifies the current directory, to be scanned
+'sha256':   specifies the hash function to use when duple calculates hashes to determine if files are duplicates
+
+# Version History
+
+## 0.1.1 Misc. Fixes
+-Fixed typos in help strings
+-Added support for sending duplicates to trash ('duple rm')
+
+## 0.1.0 Initial Release
+This is the initial release of duple
