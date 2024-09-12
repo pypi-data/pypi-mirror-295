@@ -1,0 +1,32 @@
+name: Test Labelmods
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the latest version of rye
+        uses: eifinger/setup-rye@v2
+        with:
+          version: ${{ vars.RYE_VERSION }}
+          enable-cache: true
+          # working-directory: src/labelmods
+      - name: Rye Setup
+        run: |
+          rye config --set-bool behavior.use-uv=true
+      - name: Python setup
+        run: rye pin 3.8
+
+      - name: Prepare package and environment
+        run: |
+          rye sync -f --update-all
+      - name: Testing
+        run: |
+          rye add labelmods --path ./$(find ./dist/ -name *.tar.gz) --sync --absolute
+          cd src/labelmods
+          rye run pytest tests
