@@ -1,0 +1,322 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "moapy",
+    "description": "Schema for moapy",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://moa.rpm.kr-dv-midasit.com/backend/function-executor/python-execute/"
+    },
+    {
+      "url": "https://moa.rpm.kr-st-midasit.com/backend/function-executor/python-execute/"
+    }
+  ],
+  "paths": {
+    "/moapy/dgnengine/steel_bc/report_ec3_beam_column": {
+      "post": {
+        "summary": "Report Ec3 Beam Column",
+        "operationId": "report ec3 beam column",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/report_ec3_beam_column"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMD"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EffectiveLength": {
+        "properties": {
+          "kx": {
+            "type": "number",
+            "title": "Kx",
+            "description": "kx",
+            "default": 1.0
+          },
+          "ky": {
+            "type": "number",
+            "title": "Ky",
+            "description": "ky",
+            "default": 1.0
+          }
+        },
+        "type": "object",
+        "title": "Effective Length",
+        "description": "Effective Length",
+        "dataclassname": "moapy.data_pre.EffectiveLength"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "MemberForce": {
+        "properties": {
+          "Nz": {
+            "type": "number",
+            "title": "Nz",
+            "description": "Axial force",
+            "default": 0.0,
+            "unit": "force"
+          },
+          "Mx": {
+            "type": "number",
+            "title": "Mx",
+            "description": "Moment about x-axis",
+            "default": 0.0,
+            "unit": "moment"
+          },
+          "My": {
+            "type": "number",
+            "title": "My",
+            "description": "Moment about y-axis",
+            "default": 0.0,
+            "unit": "moment"
+          },
+          "Vx": {
+            "type": "number",
+            "title": "Vx",
+            "description": "Shear about x-axis",
+            "default": 0.0,
+            "unit": "force"
+          },
+          "Vy": {
+            "type": "number",
+            "title": "Vy",
+            "description": "Shear about y-axis",
+            "default": 0.0,
+            "unit": "force"
+          }
+        },
+        "type": "object",
+        "title": "Member Force",
+        "description": "Member Force",
+        "dataclassname": "moapy.data_pre.MemberForce"
+      },
+      "ResultMD": {
+        "properties": {
+          "md": {
+            "type": "string",
+            "title": "Md",
+            "description": "Markdown",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "Markdown",
+        "dataclassname": "moapy.data_post.ResultMD"
+      },
+      "SteelLength_EC": {
+        "properties": {
+          "l_x": {
+            "type": "number",
+            "title": "L X",
+            "description": "Lx",
+            "default": 3000.0,
+            "unit": "length"
+          },
+          "l_y": {
+            "type": "number",
+            "title": "L Y",
+            "description": "Ly",
+            "default": 3000.0,
+            "unit": "length"
+          },
+          "l_t": {
+            "type": "number",
+            "title": "L T",
+            "description": "Torsional Buckling Length",
+            "default": 3000.0,
+            "unit": "length"
+          },
+          "l_b": {
+            "type": "number",
+            "title": "L B",
+            "description": "Lateral-Torsional Buckling Length",
+            "default": 3000.0,
+            "unit": "length"
+          }
+        },
+        "type": "object",
+        "title": "Steel Member Length",
+        "description": "Steel Member Length",
+        "dataclassname": "moapy.steel_pre.SteelLength_EC"
+      },
+      "SteelMaterial": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Material Code",
+            "default": "KS18(S)"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Material Name",
+            "default": "SS275"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Material",
+        "description": "Steel DB Material",
+        "dataclassname": "moapy.steel_pre.SteelMaterial"
+      },
+      "SteelMomentModificationFactor_EC": {
+        "properties": {
+          "c1": {
+            "type": "number",
+            "title": "C1",
+            "description": "ratio between the critical bending moment and the critical constant bending moment for a member with hinged supports",
+            "default": 1.0
+          },
+          "c_mx": {
+            "type": "number",
+            "title": "C Mx",
+            "description": "c_mx Modification Factor",
+            "default": 1.0
+          },
+          "c_my": {
+            "type": "number",
+            "title": "C My",
+            "description": "c_my Modification Factor",
+            "default": 1.0
+          },
+          "c_mlt": {
+            "type": "number",
+            "title": "C Mlt",
+            "description": "equivalent uniform moment factor for LTB",
+            "default": 1.0
+          }
+        },
+        "type": "object",
+        "title": "Steel Moment Modification Factor",
+        "description": "Steel Moment Modification Factor",
+        "dataclassname": "moapy.steel_pre.SteelMomentModificationFactor_EC"
+      },
+      "SteelSection": {
+        "properties": {
+          "shape": {
+            "type": "string",
+            "title": "Shape",
+            "description": "Shape",
+            "default": "H"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Section Name",
+            "default": "H 400x200x8/13"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Section",
+        "description": "Steel DB Section",
+        "dataclassname": "moapy.steel_pre.SteelSection"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "report_ec3_beam_column": {
+        "properties": {
+          "matl": {
+            "$ref": "#/components/schemas/SteelMaterial"
+          },
+          "sect": {
+            "$ref": "#/components/schemas/SteelSection"
+          },
+          "load": {
+            "$ref": "#/components/schemas/MemberForce"
+          },
+          "length": {
+            "$ref": "#/components/schemas/SteelLength_EC"
+          },
+          "eff_len": {
+            "$ref": "#/components/schemas/EffectiveLength"
+          },
+          "factor": {
+            "$ref": "#/components/schemas/SteelMomentModificationFactor_EC"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matl",
+          "sect",
+          "load",
+          "length",
+          "eff_len",
+          "factor"
+        ],
+        "title": "report ec3 beam column"
+      }
+    }
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "moapy",
+    "description": "Schema for moapy",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://moa.rpm.kr-dv-midasit.com/backend/function-executor/python-execute/"
+    },
+    {
+      "url": "https://moa.rpm.kr-st-midasit.com/backend/function-executor/python-execute/"
+    }
+  ],
+  "paths": {
+    "/moapy/dgnengine/steel_composited_beam/report_ec3_composited_beam": {
+      "post": {
+        "summary": "Report Ec3 Composited Beam",
+        "operationId": "report ec3 composited beam",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/report_ec3_composited_beam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMD"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BoltMaterial": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Bolt Material Name",
+            "default": "F10T"
+          }
+        },
+        "type": "object",
+        "title": "Bolt Material",
+        "description": "Bolt Material",
+        "dataclassname": "moapy.steel_pre.BoltMaterial"
+      },
+      "GirderLength": {
+        "properties": {
+          "span": {
+            "type": "number",
+            "title": "Span",
+            "description": "Span Length",
+            "default": 10.0,
+            "unit": "length"
+          },
+          "spacing": {
+            "type": "number",
+            "title": "Spacing",
+            "description": "Spacing",
+            "default": 3.0,
+            "unit": "length"
+          }
+        },
+        "type": "object",
+        "title": "Girder Length",
+        "description": "Girder Length",
+        "dataclassname": "moapy.rc_pre.GirderLength"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ResultMD": {
+        "properties": {
+          "md": {
+            "type": "string",
+            "title": "Md",
+            "description": "Markdown",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "Markdown",
+        "dataclassname": "moapy.data_post.ResultMD"
+      },
+      "ShearConnector": {
+        "properties": {
+          "bolt": {
+            "description": "Bolt",
+            "default": {
+              "name": "M16",
+              "matl": {
+                "name": "F10T"
+              }
+            },
+            "$ref": "#/components/schemas/SteelBolt"
+          },
+          "num": {
+            "type": "integer",
+            "title": "Num",
+            "description": "Number of Bolts",
+            "default": 1,
+            "unit": "EA"
+          },
+          "space": {
+            "type": "number",
+            "title": "Space",
+            "description": "spacing",
+            "default": 300.0,
+            "unit": "mm"
+          },
+          "length": {
+            "type": "number",
+            "title": "Length",
+            "description": "length",
+            "default": 100.0,
+            "unit": "mm"
+          }
+        },
+        "type": "object",
+        "title": "Shear Connector",
+        "description": "Shear Connector",
+        "dataclassname": "moapy.steel_pre.ShearConnector"
+      },
+      "SlabSection": {
+        "properties": {
+          "thickness": {
+            "type": "number",
+            "title": "Thickness",
+            "description": "Thickness",
+            "default": 150.0,
+            "unit": "length"
+          }
+        },
+        "type": "object",
+        "title": "Slab",
+        "description": "Slab",
+        "dataclassname": "moapy.rc_pre.SlabSection"
+      },
+      "SteelBolt": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Bolt Size",
+            "default": "M16"
+          },
+          "matl": {
+            "description": "Material",
+            "default": {
+              "name": "F10T"
+            },
+            "$ref": "#/components/schemas/BoltMaterial"
+          }
+        },
+        "type": "object",
+        "title": "Steel Bolt",
+        "description": "Steel Bolt",
+        "dataclassname": "moapy.steel_pre.SteelBolt"
+      },
+      "SteelMaterial": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Material Code",
+            "default": "KS18(S)"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Material Name",
+            "default": "SS275"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Material",
+        "description": "Steel DB Material",
+        "dataclassname": "moapy.steel_pre.SteelMaterial"
+      },
+      "SteelMember": {
+        "properties": {
+          "sect": {
+            "description": "Section",
+            "default": {
+              "shape": "H",
+              "name": "H 400x200x8/13"
+            },
+            "$ref": "#/components/schemas/SteelSection"
+          },
+          "matl": {
+            "description": "Material",
+            "default": {
+              "code": "KS18(S)",
+              "name": "SS275"
+            },
+            "$ref": "#/components/schemas/SteelMaterial"
+          }
+        },
+        "type": "object",
+        "title": "Steel Member",
+        "description": "Steel Member",
+        "dataclassname": "moapy.steel_pre.SteelMember"
+      },
+      "SteelSection": {
+        "properties": {
+          "shape": {
+            "type": "string",
+            "title": "Shape",
+            "description": "Shape",
+            "default": "H"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Section Name",
+            "default": "H 400x200x8/13"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Section",
+        "description": "Steel DB Section",
+        "dataclassname": "moapy.steel_pre.SteelSection"
+      },
+      "UnitLoads": {
+        "properties": {
+          "construction": {
+            "type": "number",
+            "title": "Construction",
+            "description": "Construction Load",
+            "default": 0.0,
+            "unit": "unit force"
+          },
+          "live": {
+            "type": "number",
+            "title": "Live",
+            "description": "Live Load",
+            "default": 0.0,
+            "unit": "unit force"
+          },
+          "finish": {
+            "type": "number",
+            "title": "Finish",
+            "description": "Finishing Load",
+            "default": 0.0,
+            "unit": "unit force"
+          }
+        },
+        "type": "object",
+        "title": "Unit Loads",
+        "dataclassname": "moapy.data_pre.UnitLoads"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "report_ec3_composited_beam": {
+        "properties": {
+          "steel": {
+            "$ref": "#/components/schemas/SteelMember"
+          },
+          "shearconn": {
+            "$ref": "#/components/schemas/ShearConnector"
+          },
+          "slab": {
+            "$ref": "#/components/schemas/SlabSection"
+          },
+          "leng": {
+            "$ref": "#/components/schemas/GirderLength"
+          },
+          "load": {
+            "$ref": "#/components/schemas/UnitLoads"
+          }
+        },
+        "type": "object",
+        "required": [
+          "steel",
+          "shearconn",
+          "slab",
+          "leng",
+          "load"
+        ],
+        "title": "report ec3 composited beam"
+      }
+    }
+  }
+}
