@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: cronevents
+Version: 0.0.26a1
+Summary: A package to run cron jobs(events)
+Home-page: 
+Author: Daniel Olson
+Author-email: daniel@orphos.cloud
+Keywords: cron jobs
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: psycopg2-binary
+Requires-Dist: python-dotenv
+Requires-Dist: buelon ==1.0.58
+
+# Cron Events
+
+A package to run cron jobs(events)
+
+## Table of Contents
+<!--
+- [Features](#features)
+-->
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Learn by Example](#example) 
+- [License](#license)
+
+## Installation
+
+`pip install cronevents`
+
+
+## Quick Start
+1. Get example template: `bue example` (warning: this command will over-write `.env`)
+2. Start Bucket server, Hub and 3 workers: `bue demo`
+3. Upload script and wait for results: `python3 example.py`
+
+
+## Example
+
+## License
+* MIT License
