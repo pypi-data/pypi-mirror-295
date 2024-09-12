@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: record-convertor
+Version: 1.1.6
+Summary: Converts structure, keys and fields from a record according to predefined rules
+Home-page: https://github.com/OlivettaDataGarden/record-convertor
+Author: Maarten de Ruyter
+Author-email: "Maarten de Ruyter" <maarten@geodatagarden.com>
+License: GNU
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: jmespath
+Requires-Dist: phonenumbers
+Requires-Dist: unidecode
+Requires-Dist: pyyaml
+Requires-Dist: pydantic
+
+================
+Record Convertor
+================
+
+A toolbox for rule based conversion of input records to desired output formats using a YAML config file as input.
+Package was created to convert records of same data type from different sources (and thus different structures)
+to a singel validated stucture.
+
