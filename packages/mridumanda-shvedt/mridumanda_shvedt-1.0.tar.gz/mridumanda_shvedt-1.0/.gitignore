@@ -1,0 +1,63 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# VS Code
+#.vscode/
+
+# MyPy
+.mypy_cache/
+
+# Pyre type checker
+.pyre/
+
+# Cython debug symbols
+cython_debug/
+
+# dotenv
+.env
+
+# Hatch environment
+.hatch/
+.hatch-env/
+
+# Poetry
+.poetry/
+
+# Hatch configuration
+.hatch-venv/
+
+# Secrets
+*.env
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+nosetests.xml
+test_*.xml
+
+# Tests
+tests/
