@@ -1,0 +1,2 @@
+[console_scripts]
+start-django-app = start_django_app.cli:main
