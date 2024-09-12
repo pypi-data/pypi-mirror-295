@@ -1,0 +1,15 @@
+my_quiz_plugin/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+my_quiz_plugin/plugin.py,sha256=mlDkFKW_WJl0pXn-qNSgOv7MONT0R-GzlVJwakQKSHQ,14512
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/base_test_case.py,sha256=KS2NsSugtutjjfm5lB5JylY9M2D5INdcJoEfmwgiN5U,3272
+tests/mock_quiz_data.py,sha256=SnhCCvocvN1hixsjlBJB7-SuCVngjZ6ugTCDrdavPhw,5083
+tests/test_html_generation.py,sha256=HuSrao3RZan32t55NSa754RHHWUlV8PRmd8_Hwqt7Fs,13683
+tests/test_logic.py,sha256=tMFOM8mkykTXxvzpB7F2ToXfw-iWagg8Rg2EZOKQwjI,10161
+tests/test_mock.py,sha256=VPhciYwaG8RWhPdvW0dkAw2FGolPj-xyMBxTOpTm5Aw,1544
+tests/test_ui_components.py,sha256=E2HTpB3J3V8fWLQTQZe65VUL5vKqGTtQ_s5ZcrcemZQ,5026
+my_quiz_plugin-2.0.1.dist-info/LICENSE,sha256=tD4GlpPHUHHxnJz7duNKeLKTxfCKurIW18b8LZfMkQw,1073
+my_quiz_plugin-2.0.1.dist-info/METADATA,sha256=aq2R-0resJIhsqFbfo4cB82GZC6ypOhOkGAxQjQ_wS0,11703
+my_quiz_plugin-2.0.1.dist-info/WHEEL,sha256=oiQVh_5PnQM0E3gPdiz09WCNmwiHDMaGer_elqB3coM,92
+my_quiz_plugin-2.0.1.dist-info/entry_points.txt,sha256=4oFADrO91m9I2rMeqiH9QAjHaUBx9Xuz1lwncm43wDY,68
+my_quiz_plugin-2.0.1.dist-info/top_level.txt,sha256=Y3yeaTviq1HBNwAsD8awPiPiGoBX9r8vPPI6BN0kgJI,21
+my_quiz_plugin-2.0.1.dist-info/RECORD,,
