@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graf-format"
+version = "0.0.0.dev1"
+authors = [
+  { name="Grant Giesbrecht", email="grant.giesbrecht@colorado.edu" },
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+	'h5py >= 3.11.0',
+	'matplotlib >= 3.9.0'
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Grant-Giesbrecht/graf"
+Issues = "https://github.com/Grant-Giesbrecht/graf/issues"
+
+[project.scripts]
+graf-viewer = "graf.scripts.grafviewer:main"
+
+[tool.setuptools.package-data]
+portable_fonts = ["graf.assets.portable_fonts.json"]
+font_suse_reg = ["graf.assets.fonts.SUSE-Regular.ttf"]
+font_suse_bold = ["graf.assets.fonts.SUSE-Bold.ttf"]
+font_mfb_reg = ["graf.assets.fonts.MFBOldstyle-Regular.otf"]
+font_mfb_bold = ["graf.assets.fonts.MFBOldstyle-Bold.otf"]
+font_mfb_italic = ["graf.assets.fonts.MFBOldstyle-Italic.otf"]
