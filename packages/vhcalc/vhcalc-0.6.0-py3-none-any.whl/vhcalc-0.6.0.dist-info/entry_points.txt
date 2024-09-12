@@ -1,0 +1,4 @@
+[console_scripts]
+export_imghash_from_media=vhcalc.app:export_imghash_from_media
+vhcalc=vhcalc.app:cli
+
