@@ -1,0 +1,21 @@
+<div class="table-container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">IP Address</th>
+                <th scope="col">MAC Address</th>
+                <th scope="col">Manufacturer</th>
+                <th scope="col">Open Ports</th>
+                <th scope="col">Stage</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for device in data.devices %}
+            {% if device | is_substring_in_values(filter) %}
+                {% include 'scan/ip-table-row.html' %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
