@@ -1,0 +1,6 @@
+[console_scripts]
+rsclf-plot=rsclf.plot:main
+rsclf-test=rsclf.test:main
+rsclf-train=rsclf.train:main
+rsclf-wav2feat=rsclf.wav2feat:main
+
