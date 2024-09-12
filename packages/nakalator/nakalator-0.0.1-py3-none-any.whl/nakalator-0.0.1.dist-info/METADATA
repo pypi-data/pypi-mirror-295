@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: nakalator
+Version: 0.0.1
+Requires-Dist: backoff==2.2.1
+Requires-Dist: InquirerPy==0.3.4
+Requires-Dist: Jinja2==3.1.4
+Requires-Dist: matplotlib==3.9.2
+Requires-Dist: pandas==2.2.2
+Requires-Dist: Pillow==10.4.0
+Requires-Dist: pyfiglet==1.0.2
+Requires-Dist: PyYAML==6.0.2
+Requires-Dist: Requests==2.32.3
+Requires-Dist: setuptools==72.1.0
+Requires-Dist: termcolor==2.4.0
+Requires-Dist: tqdm==4.66.5
+Requires-Dist: typer==0.12.5
+Requires-Dist: urllib3==1.26.6
+Requires-Dist: wasabi==1.1.3
+
