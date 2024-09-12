@@ -1,0 +1,2 @@
+[console_scripts]
+graf-viewer = graf.scripts.grafviewer:main
