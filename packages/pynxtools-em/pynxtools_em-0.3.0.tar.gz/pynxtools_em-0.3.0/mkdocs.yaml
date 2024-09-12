@@ -1,0 +1,92 @@
+site_name: pynxtools-em
+site_description: |
+  The documentation for the pynxtools-em plugin
+site_author: The NOMAD authors
+repo_url: https://github.com/FAIRmat-NFDI/pynxtools-em
+edit_uri: ""
+
+nav:
+  - Home: index.md
+  - Tutorials:
+    - tutorial/standalone.md
+    # - tutorial/nexusio.md
+    # - tutorial/oasis.md
+  - How-tos:
+    # - how-tos/howto.md
+    - how-tos/kikuchi.md
+    - how-tos/mtex.md
+    - how-tos/pyxem.md
+  - Learn:
+    - explanation/learn.md
+    - explanation/implementation.md
+  - Reference:
+    - reference/contextualization.md
+    - reference/conventions.md
+    - reference/eln_and_cfg.md
+    - reference/zip_png_axon.md
+    - reference/hfive_apex.md
+    - reference/rsciio_gatan.md
+    - reference/tiff_hitachi.md
+    - reference/tiff_jeol.md
+    - reference/nxs_nion.md
+    - reference/tiff_point.md
+    - reference/tiff_tescan.md
+    - reference/tiff_tfs.md
+    - reference/rsciio_velox.md
+    - reference/tiff_zeiss.md
+
+plugins:
+  - search
+  - macros:
+      module_name: src/pynxtools_em/mkdocs
+
+theme:
+  name: material
+  palette:
+    primary: '#2A4CDF'
+    accent: '#008A67'
+  font:
+    text: 'Titillium Web'
+  logo: assets/nomad-logo.png
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - content.code.copy
+    - content.code.annotate
+  custom_dir: docs/theme
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: True
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji
+  - mkdocs-click
+  - pymdownx.extra
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  generator: false
+  homepage: https://nomad-lab.eu
+
+use_directory_urls: false
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascript.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
