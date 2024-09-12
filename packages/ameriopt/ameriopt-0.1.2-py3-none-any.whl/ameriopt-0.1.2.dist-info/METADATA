@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: ameriopt
+Version: 0.1.2
+Summary: This is a package for pricing American options using reinforcement learning
+Home-page: https://github.com/Peymankor/AmeriOpt
+License: MIT
+Keywords: pandas
+Author: Peyman Kor
+Author-email: kor.peyman@gmail.com
+Requires-Python: >=3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering
+Requires-Dist: pandas
+Requires-Dist: pytest (>=7.4.0)
+Project-URL: Repository, https://github.com/Peymankor/AmeriOpt
+Description-Content-Type: text/markdown
+
+# AmeriOpt
+A Python Package for Pricing American Option
+
+## Installation
+```bash
+pip install ameriopt
+```
+
+## Usage
+```python
+
+from ameriopt.rl_policy import RLPolicy
+
+```
