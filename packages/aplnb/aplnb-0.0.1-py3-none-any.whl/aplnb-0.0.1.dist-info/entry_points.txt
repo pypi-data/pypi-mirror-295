@@ -1,0 +1,8 @@
+[console_scripts]
+aplnb_install = aplnb:create_ipython_config
+
+[ipython]
+aplnb = aplnb.core:load_ipython_extension
+
+[nbdev]
+aplnb = aplnb._modidx:d
