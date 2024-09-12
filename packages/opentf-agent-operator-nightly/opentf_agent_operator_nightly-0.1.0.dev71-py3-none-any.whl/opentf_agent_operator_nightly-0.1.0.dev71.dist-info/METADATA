@@ -1,0 +1,128 @@
+Metadata-Version: 2.1
+Name: opentf-agent-operator-nightly
+Version: 0.1.0.dev71
+Summary: OpenTestFactory Orchestrator Agent Operator
+Home-page: https://opentestfactory.org/guides/agent-operator.html
+Author: Martin Lafaix
+Author-email: mlafaix@henix.com
+Maintainer: Henix
+Maintainer-email: opentestfactory@henix.com
+License: Apache Software License (https://www.apache.org/licenses/LICENSE-2.0)
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >= 3.10.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.25
+Requires-Dist: kopf>=1.37
+Requires-Dist: kubernetes>=29.0.0
+
+# agent-operator
+
+This package is part of the OpenTestFactory initiative.
+
+`agent-operator` is a Kubernetes operator. It allows for declaring pools of agents
+on a Kubernetes cluster and for dynamical execution environment provisioning.
+
+## Deployment
+
+`agent-operator` can be deployed on a Kubernetes cluster using a Docker image [TBC],
+or executed as a `kopf` script.
+
+When deploying with Docker image, you may use sample `Deployment` and RBAC
+definitions provided in the project `resources` directory. In the `Deployment` file,
+you should set `ORCHESTRATOR_URL` environment variable value to
+`{orchestrator_url}:{agentchannel_port}`.
+
+When running as a `kopf` script (`kopf run main.py`), you should set the `ORCHESTRATOR_URL`
+and `OPERATOR_CONTEXT` environment variables values respectively to
+`{orchestrator_url}:{agentchannel_port}` and `local`.
+
+## Overview
+
+`agent-operator` monitors `Pool` resources. `CustomResourceDefinition` file and
+sample `Pool` resource file are available in the project `resources`
+directory. The operator supports Kubernetes namespaces, i.e. a `Pool` resource
+can be applied in a specific namespace.
+
+The `Pool` resource definition is as follows:
+
+```yaml
+apiVersion: agent.opentestfactory.org/v1alpha1
+kind: Pool
+metadata:
+  name: {resource name} # mandatory
+spec:
+  poolSize: {agents pool size} # mandatory
+  tags: [list of agents tags] # mandatory
+  orchestratorSecret: {Kubernetes secret name}
+  namespaces: [list of orchestrator namespaces]
+  template: # mandatory
+    {execution pod definition}
+```
+
+`metadata.name` is the resource name.
+
+`spec.poolSize` must be a positive integer or zero. It specifies the number of agents that
+will be registered to the orchestrator when the resource is applied on a Kubernetes cluster.
+
+`spec.tags` is a list of agent tags. All agents linked to a pool share the same tags.
+
+`spec.orchestratorSecret` is a name of a Kubernetes secret holding the orchestrator token.
+
+`spec.namespaces` is a list of orchestrator namespaces (not yet supported).
+
+`spec.template` holds a pod template serving to provide dynamical execution environments.
+
+### Pool Resource Monitoring
+
+When a `Pool` resource definition file is applied to a cluster, the operator
+registers `poolSize` agents with specified `tags` on the orchestrator. Registered
+agents UUIDs are retrieved and stored as a list in the resource `status.create_agents.agents`
+property, which also holds `resource_id` property, identifying the created resource.
+
+This resource is then monitored for changes. The operator listens to the `spec.poolSize`
+and `spec.tags` field updates. On pool size or tags update, if there are running
+workflows and the update implies agents de-registration (namely changing tags or decreasing
+pool size), the operator waits for their completion before applying the requested changes.
+The resource `status.create_agents.agents` field is also updated.
+
+When the operator is relaunched, it retrieves registered agents list from the orchestrator,
+cleans up all busy agents and execution pods (as workflow won't be
+able to successfully complete if the connection with the operator is interrupted), then
+compares the resulting list to the `Pool` resource agents list and registers as many new agents
+as needed.
+
+When a `Pool` resource is deleted, the operator waits for all running workflows to be
+completed before de-registering agents and allowing for resource deletion.
+
+### Workflow Execution
+
+The operator constantly queries agents to know their status. When an agent receives a
+workflow to execute, the operator creates a pod using the `Pool` resource `spec.template`
+property and executes the workflow on created pod, then deletes it.
+
+When pod creation fails, the respective agent is de-registered and a new agent is created
+instead. The workflow remains in `RUNNING` state and fails on timeout.
+
+Created pod name is temporarily stored in the resource `status.create_agents.agents_pods`
+property.
+
+## License
+
+Copyright 2024 Henix, henix.fr
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
