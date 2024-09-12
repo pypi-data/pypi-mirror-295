@@ -1,0 +1,4 @@
+[console_scripts]
+maxray=maxray.__main__:main
+xpy=maxray.runner.__main__:main
+
