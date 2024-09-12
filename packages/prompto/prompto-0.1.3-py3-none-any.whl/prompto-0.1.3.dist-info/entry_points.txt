@@ -1,0 +1,9 @@
+[console_scripts]
+prompto_check_experiment=prompto.scripts.check_experiment:main
+prompto_convert_images=prompto.scripts.convert_images:main
+prompto_create_judge_file=prompto.scripts.create_judge_file:main
+prompto_obtain_missing_jsonl=prompto.scripts.obtain_missing_id_jsonl:main
+prompto_quart_server=prompto.apis.quart.quart_api:main
+prompto_run_experiment=prompto.scripts.run_experiment:cli
+prompto_run_pipeline=prompto.scripts.run_pipeline:main
+
