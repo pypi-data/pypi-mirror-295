@@ -1,0 +1,47 @@
+Metadata-Version: 2.3
+Name: PySoundSphere
+Version: 0.0.3
+Summary: Play Audio Using Python
+Project-URL: Source, https://github.com/Nmstr/PySoundSphere
+Project-URL: Documentation, https://nmstr.github.io/PySoundSphere/
+Project-URL: Issues, https://github.com/Nmstr/PySoundSphere/issues
+Author-email: "Namester (Nmstr)" <publicNamester@gmail.com>
+License-File: LICENSE.md
+Keywords: audio,playback,sound
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Multimedia :: Sound/Audio
+Classifier: Topic :: Multimedia :: Sound/Audio :: Players
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Provides-Extra: pygame-backend
+Requires-Dist: pygame; extra == 'pygame-backend'
+Provides-Extra: sounddevice-backend
+Requires-Dist: numpy; extra == 'sounddevice-backend'
+Requires-Dist: sounddevice; extra == 'sounddevice-backend'
+Requires-Dist: soundfile; extra == 'sounddevice-backend'
+Description-Content-Type: text/markdown
+
+# PySoundSphere
+
+PySoundSphere is a high level audio library written in python.
+
+What you might be looking for:
+- [Installing PySoundSphere](https://nmstr.github.io/PySoundSphere/)
+- [Usage / Documentation](https://nmstr.github.io/PySoundSphere/usage/)
+
+## Basic Installation
+
+The default way to install PySoundSphere is using the `sounddevice` backend. To do this run the following:
+```
+pip install PySoundSphere[sounddevice-backend]
+```
+More detailed instructions are available [here](https://nmstr.github.io/PySoundSphere/). More informations about backends can be found [here](https://nmstr.github.io/PySoundSphere/backends/general/#what-are-playback-backends).
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 (GPLv3)
+
+See LICENSE.md for more information
