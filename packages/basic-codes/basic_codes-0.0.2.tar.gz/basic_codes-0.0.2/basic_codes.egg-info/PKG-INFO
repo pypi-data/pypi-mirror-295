@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: basic_codes
+Version: 0.0.2
+Summary: A collection of basic Python topics with sample code for learning.
+Author: Fawaskp
+Author-email: <fawaskp1010@gmail.com>
+License: MIT
+Keywords: python,first package
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+License-File: LICENCE.TXT
+
+This package includes a variety of basic Python programming topics,
+                   complete with sample code and explanations to aid in learning Python.
+                   It is designed for beginners who want to get a solid understanding of fundamental Python concepts.
+                   The topics covered include basic syntax, data structures, control flow, functions, and more.
+                   This package aims to provide a hands-on approach to learning by offering practical examples and exercises.
