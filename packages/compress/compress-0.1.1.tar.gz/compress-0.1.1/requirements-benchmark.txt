@@ -1,0 +1,8 @@
+# dependencies to run bench mark
+tabulate
+requests
+diskcache
+pathlib_mate
+lz4
+python-snappy
+pyzstd
