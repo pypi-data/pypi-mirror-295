@@ -1,0 +1,19 @@
+boto3
+pycognito
+pydantic
+pytk
+
+[:python_version > "3.10"]
+importlib-metadata
+
+[develop]
+jupyter
+jupyterlab
+
+[testing]
+fastapi
+setuptools
+pytest
+pytest-cov
+flask
+python-tk
