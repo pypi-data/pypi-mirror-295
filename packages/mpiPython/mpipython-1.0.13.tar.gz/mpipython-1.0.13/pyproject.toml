@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mpiPython"
+version = "1.0.13"
+description = "An MPI wrapper for Python"
+readme = "README.md"
+authors = [
+    {name = "Judah Nava", email="judah.nava@go.mnstate.edu"},
+    {name = "Jaden Jinu Lee", email="jinu.lee@go.mnstate.edu"}
+    ]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["mpi"]
+dependencies = [
+    'setuptools'
+]
+requires-python = ">=3.10"
+

@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: mpiPython
+Version: 1.0.13
+Summary: An MPI wrapper for Python
+Author-email: Judah Nava <judah.nava@go.mnstate.edu>, Jaden Jinu Lee <jinu.lee@go.mnstate.edu>
+License: Copyright 2024 Judah Nava
+        
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+        
+            http://www.apache.org/licenses/LICENSE-2.0
+        
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+        
+Keywords: mpi
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setuptools
+
+## Installing and Using mpiPython on Debian-based Systems
+
+### Overview
+This guide outlines the steps to install and use mpiPython on Debian-based systems.
+
+### Prerequisites
+* **Debian-based system** (e.g., Ubuntu, Debian)
+* **`build-essential`** package installed (provides necessary compilers and tools)
+* **'mpich'** the program is made to work with this, you can either have it installed by package manager or custom compiled with '--enable-shared'
+* **Python >=3.10**
+
+### Installation Steps
+1. **Install required packages:**
+   ```bash
+   sudo apt install build-essential mpich
+   ```
+2. **Install mpiPython:**
+   ```bash
+   pip install mpiPython
+   ```
+3. **Compile Library**
+   ```bash
+   python -m mpiPython
+   ```
+The last step is not technically needed, but because mpiPython will self compile the library if it is not present, running a program with a lot of nodes will have every node compile the shared library.
+
+### Additional Notes
+* **Virtual Environments:** Consider using virtual environments to isolate Python environments and avoid conflicts.
+
+### Using mpiPython
+Once installed, you can import and use mpiPython in your Python scripts:
+
+```python
+from mpiPython import MPIpy
+
+MPI = MPIpy()
+rank = MPI.Rank()
+size = MPI.Size()
+
+print("Hello from process {} out of {}".format(rank, size))
+```
+
+To run program:
+```python
+$mpirun -n 2 python file.py
+```
