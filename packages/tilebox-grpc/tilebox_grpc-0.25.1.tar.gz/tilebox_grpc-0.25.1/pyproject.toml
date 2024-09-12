@@ -1,0 +1,43 @@
+[project]
+name = "tilebox-grpc"
+dynamic = ["version"]
+description = "GRPC / Protocol Buffers functions for Tilebox"
+authors = [{ name = "Tilebox, Inc.", email = "support@tilebox.com" }]
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">=3.10"
+dependencies = [
+    # our version of the protobuf compiler generates code that requires grpcio 1.63.0 or higher
+    # grpcio 1.65.1 contains a bug that produces lots of logging noise: https://github.com/grpc/grpc/issues/37178
+    "grpcio>=1.63.0,!=1.65.1",
+    "grpcio-status>=1.62",
+    # opentelemetry-proto requires protobuf < 5, https://github.com/open-telemetry/opentelemetry-python/issues/3958
+    "protobuf>=4,<5",
+    # for the libraries below we specify a minimum, tested to be working version
+    "lz4>=4",
+    "anyio>=4",
+    "nest-asyncio>=1.5.0",
+]
+
+[project.urls]
+Homepage = "https://tilebox.com"
+Documentation = "https://docs.tilebox.com/"
+
+[tool.hatch.build.targets.sdist]
+packages = ["_tilebox"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["_tilebox"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+addopts = "-Wall -Werror --import-mode importlib"
+asyncio_default_fixture_loop_scope = "function"
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"

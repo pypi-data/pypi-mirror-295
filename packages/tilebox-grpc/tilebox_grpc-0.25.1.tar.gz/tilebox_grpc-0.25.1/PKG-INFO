@@ -1,0 +1,46 @@
+Metadata-Version: 2.3
+Name: tilebox-grpc
+Version: 0.25.1
+Summary: GRPC / Protocol Buffers functions for Tilebox
+Project-URL: Homepage, https://tilebox.com
+Project-URL: Documentation, https://docs.tilebox.com/
+Author-email: "Tilebox, Inc." <support@tilebox.com>
+License: MIT License
+Requires-Python: >=3.10
+Requires-Dist: anyio>=4
+Requires-Dist: grpcio!=1.65.1,>=1.63.0
+Requires-Dist: grpcio-status>=1.62
+Requires-Dist: lz4>=4
+Requires-Dist: nest-asyncio>=1.5.0
+Requires-Dist: protobuf<5,>=4
+Description-Content-Type: text/markdown
+
+# Tilebox GRPC
+
+![PyPI - Version](https://img.shields.io/pypi/v/tilebox-grpc.svg?style=flat-square&label=version&color=f43f5e)
+![Python](https://img.shields.io/pypi/pyversions/tilebox-grpc.svg?style=flat-square&logo=python&color=f43f5e&logoColor=f43f5e)
+
+GRPC and Protobuf related functionality used by Tilebox python packages.
+
+## Quickstart
+
+Install using `pip`:
+
+```bash
+pip install tilebox-grpc
+```
+
+Open a gRPC channel:
+
+```python
+from _tilebox.grpc.channel import open_channel
+
+channel = open_channel(
+    "https://api.tilebox.com",
+    auth_token="YOUR_TILEBOX_API_KEY"
+)
+```
+
+## License
+
+Distributed under the MIT License (`The MIT License`).
