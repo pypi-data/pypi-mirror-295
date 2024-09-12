@@ -1,0 +1,14 @@
+click
+cantools
+python-can
+coloredlogs
+
+[dev]
+ruff
+mypy
+pre-commit
+pytest
+pytest-cov
+pytest-asyncio
+ipython
+invoke
