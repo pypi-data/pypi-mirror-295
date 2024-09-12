@@ -1,0 +1,3 @@
+[console_scripts]
+sdpcat = sdpchainpy:sdpcat
+sdpstep = sdpchainpy:sdpstep
