@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: wininfparser
+Version: 1.0.12
+Summary: INF file parser
+Home-page: https://github.com/arutar/wininfparser
+Author: Arsen Arutyunyan
+Author-email: arutar@bk.ru
+License: GPLv3
+Description: ### wininfparser!
+        
+        Powerful and handy module for working with INF files.
+        
+Keywords: inf parser,inf file parser,Windows INF parser
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
