@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkvioneta_agro_frontend=self.webpackChunkvioneta_agro_frontend||[]).push([[59699],{59699:function(e,n,t){Object.defineProperty(n,"__esModule",{value:!0});var o=t(17500);"undefined"==typeof Intl&&("undefined"!=typeof window?Object.defineProperty(window,"Intl",{value:{}}):"undefined"!=typeof global&&Object.defineProperty(global,"Intl",{value:{}})),Object.defineProperty(Intl,"getCanonicalLocales",{value:o.getCanonicalLocales,writable:!0,enumerable:!1,configurable:!0})}}]);
+//# sourceMappingURL=59699.Rqa8irGH_Os.js.map

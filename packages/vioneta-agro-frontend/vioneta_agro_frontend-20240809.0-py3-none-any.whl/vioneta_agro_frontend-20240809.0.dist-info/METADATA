@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: vioneta-agro-frontend
+Version: 20240809.0
+Summary: The Vioneta Agro frontend
+Author-email: The Vioneta Agro Authors <admin@vioneta.com>
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/Vioneta/frontend
+Platform: any
+Requires-Python: >=3.11.0
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# Vioneta Agro Frontend
+
+This is the repository for the official [Vioneta Agro](https://vwww.vioneta.com) frontend.
+
+## Development
+
+- Initial setup: `script/setup`
+- Development: [Instructions](https://dev.vioneta.com/docs/frontend/development/)
+- Production build: `script/build_frontend`

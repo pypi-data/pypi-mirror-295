@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkvioneta_agro_frontend=self.webpackChunkvioneta_agro_frontend||[]).push([[24745],{24745:function(n,r,e){e.r(r),e.d(r,{DIRECTION_LEFT:function(){return t.wc},DIRECTION_RIGHT:function(){return t.Hy},Manager:function(){return t.mS},Swipe:function(){return t.Hp}});var t=e(81625)}}]);
