@@ -1,0 +1,2 @@
+[console_scripts]
+file-combiner = file_combiner.cli:main
