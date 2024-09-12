@@ -1,0 +1,11 @@
+onpod/__init__.py,sha256=luBQmZbbdkoKEIukR542szim2WhaVKW1Pb45l3-7spA,352
+onpod/models/settings.py,sha256=Xnzb0Y6h9JE4YnqkfG7RD7Oj7eJkqiAHNwirojuTJZc,339
+onpod/proxies/tensorflow_proxy.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+onpod/proxies/torch_proxy/__init__.py,sha256=xO_aEx089s8u-J43povF8Q15QOF1Z2FRMJ1g6Uj3_z0,434
+onpod/proxies/torch_proxy/torch_proxy.py,sha256=EPXX-5LE72L2A5f5TR0jZXuAN6DM61GvwG6R-dstajg,805
+onpod/proxies/transformers_proxy.py,sha256=1MTA7YiY4ZVORnMqn3i4FHGYGSojlIznhluC_2WmOzE,1409
+onpod/proxy.py,sha256=f48znjx2_TQft4pxGcpP8f_IAzMaubtbFIfCw7Oj7Pk,188
+onpod-0.0.3.dist-info/LICENSE,sha256=A8BZxz4u52X-0n3h3F3gTXeJSEJjfbGi0Bg5EDrTI8U,1069
+onpod-0.0.3.dist-info/METADATA,sha256=FayVah0aTjppoKQonHwyInH-twt1eiK3YotTIMDurDo,5247
+onpod-0.0.3.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+onpod-0.0.3.dist-info/RECORD,,
