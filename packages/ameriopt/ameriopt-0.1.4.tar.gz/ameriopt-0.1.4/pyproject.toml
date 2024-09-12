@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ameriopt"
+version = "0.1.4"
+description = "This is a package for pricing American options using reinforcement learning"
+authors = ["Peyman Kor <kor.peyman@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Peymankor/AmeriOpt"
+keywords = ["pandas"]
+classifiers = [
+    "Topic :: Scientific/Engineering",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+pandas = "*"
+pytest = ">= 7.4.0"
+
+[build-system]
+requires = [
+    "poetry-core"
+]
+build-backend = "poetry.core.masonry.api"
