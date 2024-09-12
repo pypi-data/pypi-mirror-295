@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: chatsh
+Version: 0.1.1
+Summary: Syntax-highlighted Claude-controlled bash.
+License: MIT
+Author: Xida Ren
+Author-email: cedar.ren@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Dist: aiofiles (==24.1.0)
+Requires-Dist: anthropic (==0.34.1)
+Requires-Dist: protobuf (==5.28.0)
+Requires-Dist: rich (>=13.8.1,<14.0.0)
+Requires-Dist: tiktoken (==0.7.0)
+Project-URL: Homepage, https://github.com/renxida/chatsh
+Description-Content-Type: text/markdown
+
+# ChatSH: a Minimalist LLM Shell
+
+ChatSH is a command-line tool powered by Claude, designed for syntax-highlighted bash productivity.
+
+## Features
+- Interactive LLM-powered bash REPL
+- Syntax highlighting for improved readability
+
+## Installation
+
+Use [Poetry](https://python-poetry.org/) to install the dependencies:
+
+```bash
+poetry install
+```
+
+## Usage
+
+Run the tool using:
+
+```bash
+chatsh
+```
+
+## License
+This project is licensed under the MIT License.
+
+## Thanks
+Victor Tailin. This project is inspired by his [chatsh.mjs](https://web.archive.org/web/20240000000000*/https://github.com/VictorTaelin/AI-scripts/blob/main/chatsh.mjs). 
+
