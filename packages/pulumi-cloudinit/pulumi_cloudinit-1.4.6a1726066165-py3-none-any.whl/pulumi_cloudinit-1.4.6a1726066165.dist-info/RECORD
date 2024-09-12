@@ -1,0 +1,13 @@
+pulumi_cloudinit/__init__.py,sha256=ZUoQnlEisLLi4mXn2olbTSvLgktNDKJO5WAmhtnkF2o,742
+pulumi_cloudinit/_inputs.py,sha256=VPTZqOyZX1gpF-K1YO_92rG8BhGacN1wn715BIdCfWc,5664
+pulumi_cloudinit/_utilities.py,sha256=aNnnaO6zRha3FhNHonuabR4fJLWGXANtK5dlh1Mz95k,10506
+pulumi_cloudinit/config.py,sha256=c1jsU8p9MLCNo-P1SDR6JgD8WnySwMWh_OGjLcj81fM,16944
+pulumi_cloudinit/get_config.py,sha256=VzoAPF8NSbeow_JvKY-QEONUDeowNqzfEZ9boCOPZjw,8531
+pulumi_cloudinit/outputs.py,sha256=dJjV0MZt_2WQ9JzW2cK717aGR9tUtLXXJ04ZYH3MX9k,5164
+pulumi_cloudinit/provider.py,sha256=kxpTmaKzB_SnaSlNKTBEAeyoo_sKz4vipRY3G00Js_0,3429
+pulumi_cloudinit/pulumi-plugin.json,sha256=e9wVRnAiW0QB1hgdbxsVmCRRLs6hVzQJtknJhbhMZN4,85
+pulumi_cloudinit/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pulumi_cloudinit-1.4.6a1726066165.dist-info/METADATA,sha256=r8ishX10DsiXWPQyNG5Ms2qCXdxJh_a1myuTbolH-vQ,2303
+pulumi_cloudinit-1.4.6a1726066165.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+pulumi_cloudinit-1.4.6a1726066165.dist-info/top_level.txt,sha256=r4QYaTIAq7VhHfjPgOmRvtkrHwZffd3a78VTmuaWcg8,17
+pulumi_cloudinit-1.4.6a1726066165.dist-info/RECORD,,
