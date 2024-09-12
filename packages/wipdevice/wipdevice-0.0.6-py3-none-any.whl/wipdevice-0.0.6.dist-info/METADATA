@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: wipdevice
+Version: 0.0.6
+Summary: Wow IoT Platform API libraries
+Home-page: https://github.com/WOWSYSTEM/WIP-Python
+Author: wowsystem, nobu
+Author-email: contact@wowsystem.co.kr
+License: UNKNOWN
+Keywords: wowsystem,IoT,WIP,IoT Platform,IoT Server,wowsystem,WOW IoT Platform
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Requires-Dist: pycryptodome
+Requires-Dist: crypto
+
+UNKNOWN
+
