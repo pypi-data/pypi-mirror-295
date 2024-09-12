@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+django_green_migration.egg-info/PKG-INFO
+django_green_migration.egg-info/SOURCES.txt
+django_green_migration.egg-info/dependency_links.txt
+django_green_migration.egg-info/requires.txt
+django_green_migration.egg-info/top_level.txt
+green_migration/__init__.py
+green_migration/management/__init__.py
+green_migration/management/commands/__init__.py
+green_migration/management/commands/green_migrate.py
+green_migration/management/commands/pos_green_migrate.py
+green_migration/migrations/__init__.py
+green_migration/tests/__init__.py

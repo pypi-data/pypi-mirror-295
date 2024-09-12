@@ -1,0 +1,46 @@
+[build-system]
+requires      = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-green-migration"
+version = "1.1.2"
+description = "Generate a green migration files for Django"
+readme = "README.md"
+authors = [{ name = "Bang Dao", email = "bang@eoh.io" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["django", "green", "migration"]
+dependencies = [
+    "django >= 4.0.0",
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest", "bumpver"]
+
+[project.urls]
+Homepage = "https://github.com/eoh-jsc/django-green-migration"
+
+[tool.bumpver]
+current_version = "1.0.5"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'version = "{version}"',
+]
+"green_migration/__init__.py" = [
+    "version = '{version}'",
+]
+"README.md" = [
+    "{version}",
+]
