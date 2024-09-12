@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "magento-2"
+version = "0.0.1"
+authors = [
+  { name="Gunn1", email="tylerjgunn@proton.me" },
+]
+description = "A python module for interacting with the Magento 2 REST API. GUI"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "PySimpleGUI==4.60.5",
+    "python-dotenv",
+    "requests",
+    "pandas"
+]
+
+[project.urls]
+Homepage = "https://github.com/Gunn1/Magento-2-API/tree/main"
+Issues = "https://github.com/Gunn1/Magento-2-API/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/magento_api_2"]
