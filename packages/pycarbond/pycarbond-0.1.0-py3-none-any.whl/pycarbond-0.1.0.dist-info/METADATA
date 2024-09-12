@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: pycarbond
+Version: 0.1.0
+Summary: Type-safe interface to the managed information provided by the system daemon 'carbond' for python.
+Home-page: https://gitlab.com/sustainable-computing-systems/carbond
+License: MIT OR Apache-2.0
+Keywords: carbon,carbond,linux,emissions
+Author: Andreas Schmidt
+Author-email: andreas.schmidt@cs.uni-saarland.de
+Requires-Python: >=3.12,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Project-URL: Repository, https://gitlab.com/sustainable-computing-systems/carbond
+Description-Content-Type: text/markdown
+
+
