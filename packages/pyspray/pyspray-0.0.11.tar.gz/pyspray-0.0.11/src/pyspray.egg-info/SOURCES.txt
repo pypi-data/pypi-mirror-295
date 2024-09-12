@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+src/pyspray/__init__.py
+src/pyspray/__main__.py
+src/pyspray/benchmark.py
+src/pyspray/gif_display.py
+src/pyspray/image_fetching.py
+src/pyspray/vmt.py
+src/pyspray/vtf.py
+src/pyspray.egg-info/PKG-INFO
+src/pyspray.egg-info/SOURCES.txt
+src/pyspray.egg-info/dependency_links.txt
+src/pyspray.egg-info/requires.txt
+src/pyspray.egg-info/top_level.txt
