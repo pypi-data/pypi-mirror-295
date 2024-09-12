@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: reflex-ai
+Version: 0.1.0a24
+Summary: AI tools to build Reflex apps.
+Author: Nikhil Rao
+Author-email: nikhil@reflex.dev
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: anthropic (>=0.34.1,<0.35.0)
+Requires-Dist: astor (>=0.8.1,<0.9.0)
+Requires-Dist: black (>=24.8.0,<25.0.0)
+Requires-Dist: reflex (>=0.5.9)
+Requires-Dist: reflex-agent (>=0.1.0a8,<0.2.0)
+Description-Content-Type: text/markdown
+
+
