@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+GreekRomanUtils/GreekRoman.py
+GreekRomanUtils/__init__.py
+GreekRomanUtils.egg-info/PKG-INFO
+GreekRomanUtils.egg-info/SOURCES.txt
+GreekRomanUtils.egg-info/dependency_links.txt
+GreekRomanUtils.egg-info/top_level.txt
+GreekRomanUtils/DataStorage/Alphabet.py
+GreekRomanUtils/DataStorage/__init__.py
+GreekRomanUtils/DataType/GreekRomanType.py
+GreekRomanUtils/DataType/__init__.py
