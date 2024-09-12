@@ -1,0 +1,11 @@
+grpc_client/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+grpc_client/client.py,sha256=e3ksenSi_JBXKjqMgMDe-UeZwwFetw5gQlZhIO--kwY,2229
+proto_parsers/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+proto_parsers/sqltest_parser.py,sha256=BpHlw9YWD-g96T9gUxv-UHVEeK2cxIjs1V2sxm-9BlQ,1772
+synq_tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+synq_tests/create_sql_tests.py,sha256=t5BBsKoekyksUCD1WScWxPO0zgkfO4y6HiBbfA2FTRQ,19516
+synq_infra_management-0.2.0.dist-info/METADATA,sha256=cCQG6VjY44zuhdb0awVKIJIgSmWs_Fr08kY6znikEuE,544
+synq_infra_management-0.2.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+synq_infra_management-0.2.0.dist-info/dependency_links.txt,sha256=K1U0wMdLJCtCJ_fjHetX6FqcSl5cYWheZVb7LlrkNL0,29
+synq_infra_management-0.2.0.dist-info/top_level.txt,sha256=KEB_cylfQdDxj4txuBIWlQcnKGpFKBzAr0aysvv0sQc,37
+synq_infra_management-0.2.0.dist-info/RECORD,,
