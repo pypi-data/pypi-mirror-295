@@ -1,0 +1,15 @@
+Metadata-Version: 2.3
+Name: mm-base1
+Version: 0.1.3
+Requires-Python: >=3.12
+Requires-Dist: aiofiles~=24.1.0
+Requires-Dist: fastapi[all]~=0.114.0
+Requires-Dist: gunicorn~=23.0.0
+Requires-Dist: itsdangerous~=2.2.0
+Requires-Dist: jinja2~=3.1.4
+Requires-Dist: mm-mongo~=0.1.0
+Requires-Dist: mm-std~=0.1.2
+Requires-Dist: pytelegrambotapi~=4.22.1
+Requires-Dist: python-multipart~=0.0.9
+Requires-Dist: uvicorn[standard]~=0.30.0
+Requires-Dist: wtforms~=3.1.0
