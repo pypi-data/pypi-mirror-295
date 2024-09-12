@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: ltc-client
+Version: 0.2.5
+Summary: Client and Worker module for Tin Arm Engineering LTC service
+Home-page: https://github.com/TinArmEngineering/ltc_client/
+License: MIT
+Author: Martin West
+Author-email: martin@tinarmengineering.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Pint (>=0.24,<0.25)
+Requires-Dist: numpy (>=1.24,<2.0)
+Requires-Dist: pika (>=1.3.2,<2.0.0)
+Requires-Dist: python-logging-rabbitmq (>=2.3.0,<3.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Requires-Dist: tqdm (>=4.66.4,<5.0.0)
+Requires-Dist: webstompy (>=0.1.3,<0.2.0)
+Project-URL: Repository, https://github.com/TinArmEngineering/ltc_client/
+Description-Content-Type: text/markdown
+
+# ltc_client
+Node creation tool for TAE workers
+
