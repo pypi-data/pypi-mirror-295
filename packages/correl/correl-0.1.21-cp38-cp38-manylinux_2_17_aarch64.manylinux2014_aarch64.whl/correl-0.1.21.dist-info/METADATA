@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: correl
+Version: 0.1.21
+Summary: Library for w2dynamics (DMFT) postprocessing and for solving correlated electron problems.
+Author-Email: Matthias Reitner <matthias.reitner@tuwien.ac.at>, Emin Moghadas <emin.moghadas@tuwien.ac.at>
+Maintainer-Email: Matthias Reitner <matthias.reitner@tuwien.ac.at>, Emin Moghadas <emin.moghadas@tuwien.ac.at>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: h5py
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Provides-Extra: tests
+Description-Content-Type: text/markdown
+
+# correl
+Library for [w2dynamics](https://github.com/w2dynamics/) (DMFT) postprocessing and for solving correlated electron problems.
+
+### Developer Installation
+
+_Below are instructions for an editable install of the package. The c++ extension uses the [nanobind](https://nanobind.readthedocs.io/en/latest/index.html) package._
+
+1. Clone the repo
+   ```sh
+   git clone https://gitlab.tuwien.ac.at/e138/e138-02/software/correl.git
+   ```
+3. Install nanobing package in your conda/virtual env
+   ```sh
+   python -m pip install nanobind
+   ```
+   or
+   ```sh
+   conda install -c conda-forge nanobind
+   ```
+4. In root directory run editable install
+   ```sh
+   pip install --no-build-isolation --config-settings=editable.rebuild=true -Cbuild-dir=build -ve.
+   ``` 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
