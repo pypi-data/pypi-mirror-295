@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: toblerone
+Version: 0.10.1
+Summary: Surface-based analysis tools
+Home-page: https://bitbucket.org/quantified-imaging/toblerone
+Author: Tom Kirk
+Author-email: thomas.kirk@quantified-imaging.com
+License: Custom license (see LICENSE.md)
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: nibabel
+Requires-Dist: numpy
+Requires-Dist: scipy>=1.8
+Requires-Dist: regtricks
+Requires-Dist: pyvista
+Requires-Dist: h5py
+Requires-Dist: vtk
+Requires-Dist: trimesh
+Requires-Dist: rtree
+Requires-Dist: numba
+
+# Toblerone
+
+Surface-based analysis tools. 
+
+## Installation via pip and conda: 
+```bash
+python -m pip install toblerone
+```
+
+## Documentation: 
+https://toblerone.readthedocs.io/en/latest/
+
+## Citation: 
+T. F. Kirk, T. S. Coalson, M. S. Craig and M. A. Chappell, *Toblerone: Surface-Based Partial Volume Estimation*, in IEEE Transactions on Medical Imaging, vol. 39, no. 5, pp. 1501-1510, May 2020, doi: 10.1109/TMI.2019.2951080.
+
+## License: 
+BSD License. 

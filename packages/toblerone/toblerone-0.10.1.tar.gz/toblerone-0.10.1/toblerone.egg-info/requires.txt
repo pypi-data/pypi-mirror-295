@@ -1,0 +1,10 @@
+nibabel
+numpy
+scipy>=1.8
+regtricks
+pyvista
+h5py
+vtk
+trimesh
+rtree
+numba
