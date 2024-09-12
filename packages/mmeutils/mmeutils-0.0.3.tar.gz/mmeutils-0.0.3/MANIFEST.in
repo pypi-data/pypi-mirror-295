@@ -1,0 +1,1 @@
+exclude-recursively = __pycache__ .mypy_cache .pytest_cache *.py[cod]

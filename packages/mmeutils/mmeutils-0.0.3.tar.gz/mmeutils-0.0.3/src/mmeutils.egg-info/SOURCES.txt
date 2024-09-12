@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+src/mmeutils/__init__.py
+src/mmeutils.egg-info/PKG-INFO
+src/mmeutils.egg-info/SOURCES.txt
+src/mmeutils.egg-info/dependency_links.txt
+src/mmeutils.egg-info/top_level.txt
+src/mmeutils/fileio/__init__.py
+src/mmeutils/textio/__init__.py

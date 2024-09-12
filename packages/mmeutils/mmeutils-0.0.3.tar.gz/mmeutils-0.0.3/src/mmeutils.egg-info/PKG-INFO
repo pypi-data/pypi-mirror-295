@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: mmeutils
+Version: 0.0.3
+Summary: Some simple personal utility functions.
+Home-page: https://github.com/prof79/py-mmeutils
+Author: Markus M. Egger
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Text Processing :: General
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# mmeutils
+
+A simple collection of personal Python utility functions required in multiple hobbyist projects.
+
+## Installation
+
+```shell
+$ py -m pip install mmeutils
+```
+
+## Version History
+
+### 0.0.1-0.0.3
+
+Alpha in-progress
