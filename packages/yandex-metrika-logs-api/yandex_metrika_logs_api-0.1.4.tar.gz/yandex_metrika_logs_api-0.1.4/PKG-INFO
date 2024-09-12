@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: yandex-metrika-logs-api
+Version: 0.1.4
+Summary: 
+Author: Oleg Ionov
+Author-email: ionov.dpmn@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pydantic (>=2.6.4,<3.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# yandex-metrika-logs-api
+Выгружайте неагрегированные данные, собираемые Яндекс.Метрикой.
+
+## TODO
+1. Сделать передачу counter_id в методах как **kwargs
+2. Реализовать метод списка логов
+3. Реализовать в методе log_download() вариант экспорта данных в JSON. Сейчас отдаёт в только TSV.
+
