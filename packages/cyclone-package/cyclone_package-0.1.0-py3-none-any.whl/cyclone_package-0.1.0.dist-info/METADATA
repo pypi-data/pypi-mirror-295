@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: cyclone_package
+Version: 0.1.0
+Summary: A Python package for estimating cyclone hazard parameters and calculating wind speeds at structure sites.
+Home-page: https://github.com/rxm562/TCRA.git
+Author: Ram Krishna Mazumder
+Author-email: rkmazumder@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: folium
+
+# TCRA007
+
+Tropical Cyclone Risk Analysis [TCRA] is a Python package that allows for the development of scenario-based tropical cyclone risk analysis of buildings and Electrical Power Network (EPN). This tool performs scenario-hazard analysis based on historical or simulated cyclone tracks, fragility-based damage analysis, damage ratio analysis, loss estimation, recovery simulation of damaged structures, and social impact assessments on the community. It also enables decision-makers to make rehabilitation decisions and perform rehabilitation scenario analysis.
+
+# Libraries
+Pandas, Numpy, Matplotlib, Folium
+
+## Installation
+
+```bash
+pip install TCRA
+
