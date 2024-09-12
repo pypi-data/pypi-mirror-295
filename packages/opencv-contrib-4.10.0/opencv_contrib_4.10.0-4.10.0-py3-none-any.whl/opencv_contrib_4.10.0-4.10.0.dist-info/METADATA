@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: opencv_contrib-4.10.0
+Version: 4.10.0
+Summary: opencv_contrib-4.10.0
+Author: Malyoneeeeer
+Author-email: <malyoneeeeer@yahoo.com>
+Keywords: python
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: opencv-python
+
