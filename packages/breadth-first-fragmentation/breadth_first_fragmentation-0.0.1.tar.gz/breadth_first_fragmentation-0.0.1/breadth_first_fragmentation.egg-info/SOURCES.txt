@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+settings.ini
+setup.py
+breadth_first_fragmentation/__init__.py
+breadth_first_fragmentation/_modidx.py
+breadth_first_fragmentation/fragmentation.py
+breadth_first_fragmentation/utilities.py
+breadth_first_fragmentation.egg-info/PKG-INFO
+breadth_first_fragmentation.egg-info/SOURCES.txt
+breadth_first_fragmentation.egg-info/dependency_links.txt
+breadth_first_fragmentation.egg-info/entry_points.txt
+breadth_first_fragmentation.egg-info/not-zip-safe
+breadth_first_fragmentation.egg-info/requires.txt
+breadth_first_fragmentation.egg-info/top_level.txt
