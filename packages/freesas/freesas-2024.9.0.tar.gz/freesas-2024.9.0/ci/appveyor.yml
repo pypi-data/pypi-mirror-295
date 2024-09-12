@@ -1,0 +1,73 @@
+os:
+    - Visual Studio 2017
+    - Visual Studio 2019
+
+cache:
+    - '%LOCALAPPDATA%\pip\Cache'
+
+# fetch repository as zip archive
+shallow_clone: true
+
+environment:
+    global:
+        WIN_SDK_ROOT: "C:\\Program Files\\Microsoft SDKs\\Windows"
+
+    matrix:
+        # Python 3.9
+        - PYTHON_DIR: "C:\\Python39-x64"
+
+        # Python 3.10
+        - PYTHON_DIR: "C:\\Python310-x64"
+
+        # Python 3.11
+        - PYTHON_DIR: "C:\\Python311-x64"
+
+        # Python 3.12
+        - PYTHON_DIR: "C:\\Python312-x64"
+
+matrix:
+    exclude:
+        - os: Visual Studio 2017
+          PYTHON_DIR: "C:\\Python39-x64"
+        - os: Visual Studio 2017
+          PYTHON_DIR: "C:\\Python310-x64"
+
+install:
+    - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
+
+    # Install the build and runtime dependencies of the project
+    - "python -m pip install --upgrade pip"
+    - "pip install wheel"
+    - ps: if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2017") { pip install --trusted-host www.edna-site.org --upgrade -r .\\ci\\requirement_appveyor_2017.txt }
+    - ps: if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2019") { pip install --trusted-host www.edna-site.org --upgrade -r .\\ci\\requirement_appveyor_2019.txt }
+
+    # Print Python info
+    - "python ci\\info_platform.py"
+    - "pip freeze"
+
+    # Build
+    - "python setup.py build --no-openmp"
+    - "python setup.py bdist_wheel bdist_msi"
+    - ps: "ls dist"
+
+    # Install the generated wheel package to test it
+    - "pip install --pre --no-index --find-links dist/ freesas"
+    - "pip freeze"
+
+# Not a .NET project, build is done in the install step instead
+build: false
+
+test_script:
+    #Unit tests
+    - "python setup.py build test"
+    - "python run_tests.py"
+
+    #end to end tests
+    - "mkdir empty"
+    - "cd empty"
+    - "pip install -r ../e2etest/requirements_e2e.txt"
+    - "python ../e2etest/e2etest.py"
+
+artifacts:
+    # Archive the generated wheel package in the ci.appveyor.com build report.
+    - path: dist\*

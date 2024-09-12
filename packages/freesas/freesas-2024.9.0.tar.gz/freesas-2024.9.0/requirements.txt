@@ -1,0 +1,8 @@
+numpy
+scipy
+cython
+tomli; python_version < '3.12'  
+matplotlib
+silx
+pyFAI
+meson-python
