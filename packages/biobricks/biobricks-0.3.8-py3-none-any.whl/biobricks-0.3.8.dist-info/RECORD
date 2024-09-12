@@ -1,0 +1,15 @@
+biobricks/__init__.py,sha256=KEmfTYouyoPnvrfVY-G_NKwaKMevZAk56ri7YHBneBc,120
+biobricks/api.py,sha256=PIgqvOnYxX0o__8cmVGMBmAnbqRkbm910kM4fWPD478,798
+biobricks/brick.py,sha256=fjeyS1PXW3UpdenrGEJmi_xdStyiAupFOvLLMkoqGsk,7218
+biobricks/checks.py,sha256=u0AS7T3wmpageS6EGaNTcMnWJBd5boObvauI9ZiVMf8,1952
+biobricks/cli.py,sha256=bnTuJT_E1aTVV-2PzmtlvmDzpW2aoG6Pqqaas9pUqkk,5446
+biobricks/config.py,sha256=Kypx4YvbnHPcIHmFK_oPmalO4ELDg5OOjiy831Ovh78,1669
+biobricks/downloader.py,sha256=MI6A6oNBAlqEC4DABIQUV-jT0wWBiDjOfC7zVRq50k0,2889
+biobricks/dvc_fetcher.py,sha256=6seWnzAxzdyvlDNfrMWC6Y026iB8h0GeOPQaFJxpeaQ,8285
+biobricks/local_bb.py,sha256=cxyZm9d29DDTuKkzN9gt84W3suvAI5bdIr-VopLNPAI,2423
+biobricks/logger.py,sha256=X0aB7zPP_pLDB3DQwkiwwcQVWfiOj5NHyRP44sThAko,435
+biobricks-0.3.8.dist-info/METADATA,sha256=oVaLsamK9BuhmyAXkfhOBV7_waf-Z0c_MY0EAGJLuQg,1595
+biobricks-0.3.8.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+biobricks-0.3.8.dist-info/entry_points.txt,sha256=rpSlRgOltMGP37QT2njoC0myPkPWTgMxP8jXtWiBa7A,48
+biobricks-0.3.8.dist-info/licenses/LICENSE,sha256=2bm9uFabQZ3Ykb_SaSU_uUbAj2-htc6WJQmS_65qD00,1073
+biobricks-0.3.8.dist-info/RECORD,,
