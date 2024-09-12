@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: lead-perfection
+Version: 0.3
+Summary: A Python library takes the LeadPerfection API methods and packages them in an easy to use format
+Home-page: https://github.com/Tyler-Heist/lead-perfection
+Author: Tyler Heist
+Author-email: 
+Maintainer: Tyler Heist
+Project-URL: Homepage, https://github.com/Tyler-Heist/lead-perfection
+Keywords: lead perfection,lp
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+
+This Python library takes the <a href="https://app.swaggerhub.com/apis/LeadPerfection/Examples/1.0">LeadPerfection API</a> methods and packages them in an easy to use format
+
+Refer to example.py for examples of how to use the library.

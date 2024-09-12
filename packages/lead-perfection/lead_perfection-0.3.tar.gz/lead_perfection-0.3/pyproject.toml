@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools >= 74.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'lead-perfection'
+version = '0.3'
+description = 'A Python library takes the LeadPerfection API methods and packages them in an easy to use format'
+readme = 'README.md'
+keywords = ['lead perfection', 'lp']
+authors = [{name = 'Tyler Heist'}]
+maintainers = [{name = 'Tyler Heist'}]
+dependencies = ['requests']
+
+[project.urls]
+'Homepage' = 'https://github.com/Tyler-Heist/lead-perfection'
