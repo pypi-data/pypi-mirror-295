@@ -1,0 +1,64 @@
+Metadata-Version: 2.3
+Name: extractous
+Version: 0.1.3
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: pdoc ; extra == 'docs'
+Requires-Dist: pytest ; extra == 'test'
+Provides-Extra: docs
+Provides-Extra: test
+Summary: Extractous Python Binding
+Home-Page: https://extractous.yobix.ai/
+Author: Yobix AI <dev@yobix.ai>
+Author-email: Yobix AI <dev@yobix.ai>
+License: Apache-2.0
+Requires-Python: >=3.8, <3.13
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Documentation, https://extractous.yobix.ai/docs/python/index.html
+Project-URL: Homepage, https://extractous.yobix.ai/
+Project-URL: Repository, https://github.com/yobix-ai/extractous
+
+# Extractous Python Bindings
+
+This project provides Python bindings for the Extractous library, allowing you to use extractous functionality in 
+your Python applications.
+
+## Installation
+
+To install the extractous Python bindings, you can use pip:
+
+```bash
+pip install extractous
+```
+
+## Usage
+
+Extracting a file to string:
+
+```python
+from extractous import Extractor
+
+extractor = Extractor()
+extractor.set_extract_string_max_length(1000)
+result = extractor.extract_file_to_string("README.md")
+
+print(result)
+```
+
+Extracting a file to a buffered stream:
+
+```python
+from extractous import Extractor
+
+extractor = Extractor()
+reader = extractor.extract_file("tests/quarkus.pdf")
+
+result = ""
+buffer = reader.read(4096)
+while len(buffer) > 0:
+    result += buffer.decode("utf-8")
+    buffer = reader.read(4096)
+
+print(result)
+```
