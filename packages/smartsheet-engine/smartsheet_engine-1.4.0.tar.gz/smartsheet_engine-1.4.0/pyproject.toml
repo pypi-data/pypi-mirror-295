@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartsheet_engine"
+version = '1.4.0'
+description = "A Python library that simplifies Smartsheet API workflows"
+readme = "README.md"
+authors = [{ name = "Nick OMalley", email = "nickpeteromalley@gmail.com" }]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ['smartsheet', 'smartsheet library']
+dependencies = [
+	'pandas',
+	'smartsheet-python-sdk',
+]
+requires-python = ">=3.9"
+
+[project.urls]
+Homepage = "https://github.com/1npo/smartsheet-engine"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = [""]
+namespaces = true
+
+[project.scripts]
+smartsheet-engine = "smartsheet_engine.main:main"
