@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: sentiment_New_package
+Version: 0.1.5
+Summary: A package for sentiment analysis using pre-trained models
+Author: Drish
+Author-email: udayveer.deswal@drishinfo.com
+Requires-Dist: scikit-learn
+Requires-Dist: joblib
+Requires-Dist: numpy
+Requires-Dist: nltk
+
