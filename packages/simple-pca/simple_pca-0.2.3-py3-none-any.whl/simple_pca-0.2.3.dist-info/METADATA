@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: simple_pca
+Version: 0.2.3
+Summary: simple pca
+Author-email: Johannes <johannes-programming@mailfence.com>
+License: The MIT License (MIT)
+        
+        Copyright (c) 2023 Johannes
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Documentation, https://pypi.org/project/simple_pca
+Project-URL: Download, https://pypi.org/project/simple-pca/#files
+Project-URL: Source, https://github.com/johannes-programming/simple_pca
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.11
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+Requires-Dist: click >=8.1.7
+Requires-Dist: fileunity >=1.0.3
+Requires-Dist: getoptify >=1.0.1
+Requires-Dist: numpy >=1.26.1
+Requires-Dist: pandas >=1.5.3
+
+==========
+simple_pca
+==========
+
+Overview
+--------
+
+simple pca
+
+Installation
+------------
+
+To install ``simple_pca``, you can use ``pip``. Open your terminal and run:
+
+.. code-block:: bash
+
+    pip install simple_pca
+
+License
+-------
+
+This project is licensed under the MIT License.
+
+Links
+-----
+
+* `Documentation <https://pypi.org/project/simple_pca>`_
+* `Download <https://pypi.org/project/simple-pca/#files>`_
+* `Source <https://github.com/johannes-programming/simple_pca>`_
+
+Credits
+-------
+
+* Author: Johannes
+* Email: johannes-programming@mailfence.com
+
+Thank you for using ``simple_pca``!
