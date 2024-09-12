@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+lib/__init__.py
+lib/dumpers.py
+lib/geo.py
+lib/test_dumpers.py
+lib/test_geo.py
+lib/test_viterbi.py
+lib/viterbi.py
+libigc.egg-info/PKG-INFO
+libigc.egg-info/SOURCES.txt
+libigc.egg-info/dependency_links.txt
+libigc.egg-info/requires.txt
+libigc.egg-info/top_level.txt
