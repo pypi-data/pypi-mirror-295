@@ -1,0 +1,5 @@
+bs4
+matplotlib>=3.3.0
+numpy>=1.21.0
+pytest>=8.1.1
+requests

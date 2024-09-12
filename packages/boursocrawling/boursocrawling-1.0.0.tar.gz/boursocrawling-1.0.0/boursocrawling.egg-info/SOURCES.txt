@@ -1,0 +1,10 @@
+README.md
+setup.py
+boursocrawling.egg-info/PKG-INFO
+boursocrawling.egg-info/SOURCES.txt
+boursocrawling.egg-info/dependency_links.txt
+boursocrawling.egg-info/requires.txt
+boursocrawling.egg-info/top_level.txt
+src/boursocrawling/__init__.py
+src/boursocrawling/forecasts.py
+src/boursocrawling/stockdata.py
