@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: aw_service_grpc_protos
+Version: 0.2.8
+Summary: A small example package
+Author-email: "Juan M. Fermin" <jmdnbvsjm@gmail.com>
+Project-URL: Homepage, https://github.com/pypa/aw_service_protos_juanfermin29test
+Project-URL: Issues, https://github.com/pypa/aw_service_protos_juanfermin29test/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
