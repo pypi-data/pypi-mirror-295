@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: graphbook_huggingface
+Version: 0.0.2
+Summary: Graphbook Huggingface Plugin for no-code Huggingface workflows
+Home-page: https://graphbook.ai
+License: MIT
+Keywords: huggingface,ml,workflow,framework,pytorch,data science,machine learning,ai
+Author: Richard Franklin
+Author-email: rsamf@graphbook.ai
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: datasets (>=2.21.0,<3.0.0)
+Requires-Dist: transformers (>=4.44.2,<5.0.0)
+Project-URL: Documentation, https://docs.graphbook.ai
+Project-URL: Repository, https://github.com/graphbookai/graphbook
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <a href="https://graphbook.ai">
+    <img src="https://github.com/graphbookai/graphbook/blob/main/docs/_static/graphbook.png?raw=true" alt="Logo" width=256>
+  </a>
+
+  <h1 align="center">Graphbook Huggingface</h1>
+
+  <p align="center">
+    A Huggingface Plugin to drag-and-drop models and datasets onto Graphbook workflows
+  </p>
+</p>
+
+This plugin contains a web panel for searching and drag-and-dropping models and datasets from [Huggingface Hub](https://huggingface.co/) onto their graphbook workflows.
+It also contains the following nodes:
+
+* `HuggingfacePipeline` for model usage from transformers package
+* `HuggingfaceDataset` for dataset usage from the datasets package
+* `AssignModelOutputsToNotes` to assign HF model outputs to incoming Notes
+
+## Getting started
+1. `pip install graphbook_huggingface`
+1. `graphbook --config hf.config.yaml`
+
+
