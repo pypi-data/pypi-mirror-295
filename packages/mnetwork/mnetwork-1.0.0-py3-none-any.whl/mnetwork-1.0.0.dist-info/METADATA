@@ -1,0 +1,32 @@
+Metadata-Version: 2.3
+Name: mnetwork
+Version: 1.0.0
+Summary: View network and port information
+Project-URL: Documentation, https://github.com/mbodiai/mnetwork#readme
+Project-URL: Issues, https://github.com/mbodiai/mnetwork/issues
+Project-URL: Source, https://github.com/mbodiai/mnetwork
+Author: mbodiai
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.10
+Requires-Dist: click
+Requires-Dist: pathlib
+Requires-Dist: rich
+Description-Content-Type: text/markdown
+
+# mnetwork
+
+
+
+## Installation
+
+```bash
+pip install mnetwork
+```
