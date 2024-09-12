@@ -1,0 +1,6 @@
+[console_scripts]
+livekit_decode.py = livekit_tools.__main__:main_decode
+livekit_peek.py = livekit_tools.__main__:main_peek
+livekit_token.py = livekit_tools.__main__:main_token
+livekit_url.py = livekit_tools.__main__:main_url
+livekit_verify.py = livekit_tools.__main__:main_verify
