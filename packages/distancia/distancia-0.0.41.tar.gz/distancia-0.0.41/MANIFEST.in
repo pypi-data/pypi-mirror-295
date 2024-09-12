@@ -1,0 +1,10 @@
+
+include README.md
+include LICENSE
+include distancia/distance.pxd
+include distancia/similarity.pxd
+include distancia/timeSeriesDistance.pxd
+include distancia/lossFunction.pxd
+include distancia/mainClass.pxd
+include distancia/graphDistance.pxd
+include distancia/markovChain.pxd
