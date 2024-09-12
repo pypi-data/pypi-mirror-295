@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: msedgedriver_64
+Version: 0.0.7
+Summary: ms edge selenium driver downloader
+Author: k3foru (Kiran Kumar)
+Author-email: k3foru@gmail.com
+Keywords: python,selenium,edge driver,ms edge driver installer,automatically download ms edge driver for selenium,selenium edge driver,selenium ms edge driver
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+
+
+This module downloads the SELENIUM ms edge driver that matches the version of ms edge the user has. 
+
+just use install() command and the msedge driver will be there in that directory
+
+
+```
+pip install msedgedriver_64
+```
+now that the library is installed, lets use it.
+
+```
+import msedgedriver_64
+from selenium import webdriver  
+
+msedgedriver_64.install() #you will notice a file named msedgedriver.exe is downloaded in your directory
+
+Driver = webdriver.Edge('msedgedriver.exe')#msedgedriver was installed by above command
+
+```
+
+This only works for microsoft edge and will work for any microsoft edge browser version. As it first checks your browser version and installs driver version accourdingly.
