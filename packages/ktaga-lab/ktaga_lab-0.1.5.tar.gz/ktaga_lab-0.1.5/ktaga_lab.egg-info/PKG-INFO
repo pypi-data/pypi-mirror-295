@@ -1,0 +1,116 @@
+Metadata-Version: 2.1
+Name: ktaga-lab
+Version: 0.1.5
+Summary: Drivers for the experimental setup and tools for data acquisition and analysis.
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: dash>=2.18.0
+Requires-Dist: hvplot>=0.10.0
+Requires-Dist: ipywidgets>=8.1.5
+Requires-Dist: jupyterlab>=4.2.5
+Requires-Dist: kaleido==0.2
+Requires-Dist: lmfit>=1.3.2
+Requires-Dist: matplotlib>=3.9.2
+Requires-Dist: nbconvert>=7.16.4
+Requires-Dist: nidaqmx>=1.0.1
+Requires-Dist: numpy>=2.1.1
+Requires-Dist: pandas>=2.2.2
+Requires-Dist: pandoc>=2.4
+Requires-Dist: plotly>=5.24.0
+Requires-Dist: pyserial>=3.5
+Requires-Dist: pythonnet>=3.0.3
+Requires-Dist: pyvisa>=1.14.1
+Requires-Dist: qcodes>=0.48.0
+Requires-Dist: scikit-rf>=1.3.0
+Requires-Dist: scipy>=1.14.1
+Requires-Dist: sympy>=1.13.2
+Requires-Dist: xarray>=2024.9.0
+Requires-Dist: zhinst>=24.7.2
+Requires-Dist: zhinst-qcodes>=0.5.3
+Requires-Dist: tqdm>=4.66.5
+Requires-Dist: python-lsp-server[all]>=1.12.0
+Requires-Dist: holoviews[recommended]>=1.19.1
+Requires-Dist: ruff>=0.6.4
+Provides-Extra: kt
+Requires-Dist: jupyterlab-theme-solarized-dark>=3.0.1; extra == "kt"
+Requires-Dist: jupyterlab-vim>=4.1.3; extra == "kt"
+
+# ktaga-lab
+
+## Overview
+ktaga-lab contains programs for experiments in Onolab. This repository is designed to facilitate various experimental setups and data analysis tasks.
+
+## Features
+- Experiment setup scripts
+- Data analysis tools
+- Reproducible research environment
+
+## Prerequisites
+To run this project, you need to install either of the following dependencies:
+- pip
+- Poetry (recommended)
+- Docker (for analysis only)
+
+Docker can be used for only data analysis tasks. For experiment setup, you need to install the dependencies using pip or Poetry.
+
+## Setup
+
+### Installation using Poetry
+
+1. **Install Poetry:**
+    - **Linux/macOS:**
+      ```bash
+      curl -sSL https://install.python-poetry.org | python -
+      ```
+    - **Windows (PowerShell):**
+      ```powershell
+      (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+      ```
+
+2. **Setup environment**
+
+    Please make a pyproject.toml file in your directory for experiment or analysis. You can use a template file `pyproject-env.toml` provided in the repository.
+    After creating the file, run the following command to install the dependencies:
+    ```bash
+    poetry install
+    ```
+
+3. **Install ktaga-lab:**
+    ```bash
+    poetry add ktaga-lab
+    ```
+
+4. **Run the application:**
+    ```bash
+    poetry run jupyter lab
+    ```
+
+### Installation using pip
+
+You can also install the package using pip. Run the following command to install the package:
+```bash
+pip install ktaga-lab
+```
+
+### Installation using Docker
+
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/hoopdev/ktaga-lab.git
+    cd ktaga-lab
+    ```
+
+2. **Build the Docker image:**
+    Use the `Dockerfile` provided in the repository:
+    ```bash
+    docker build -t ktaga-lab .
+    ```
+
+3. **Run the Docker container:**
+    ```bash
+    docker run --rm -p 8888:8888 ktaga-lab
+    ```
+
+## Access the application
+
+Open your web browser and navigate to `http://localhost:8888` to access the JupyterLab interface.
