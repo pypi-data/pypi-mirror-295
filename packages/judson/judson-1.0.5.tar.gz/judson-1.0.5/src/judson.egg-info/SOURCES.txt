@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/judson/__init__.py
+src/judson.egg-info/PKG-INFO
+src/judson.egg-info/SOURCES.txt
+src/judson.egg-info/dependency_links.txt
+src/judson.egg-info/requires.txt
+src/judson.egg-info/top_level.txt
