@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: simple_file_splitters
+Version: 0.0.2
+Summary: A small package to quickly read, process and recursively split multiple different, text-based filetypes (like .txt, .pdf, .docx) into overlapping chunks of predefined sizes.
+Author: Jonas Fuchß
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12.0
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: langchain-text-splitters
+Requires-Dist: langchain-community
+Requires-Dist: docx2python
+Requires-Dist: PyMuPDF
+
+# simple_file_splitters
+
+## Overview: 
+This library provides a simple and efficient way to split documents into overlapping chunks based on specified separators. It currently supports splitting of .docx, .pdf, and .txt files. The resulting chunks may be used to create embeddings or similar things.
+
+## Installation: 
+This library needs the following extentions installed:
+- pandas
+- langchain_text_splitters
+- langchain_community
+- docx2python
+- PyMuPDF
+
+You can quickinstall this library and its extentions with:
+```
+pip install simple_file_splitters
+```
