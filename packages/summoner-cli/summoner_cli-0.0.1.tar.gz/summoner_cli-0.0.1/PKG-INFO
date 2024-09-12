@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: summoner-cli
+Version: 0.0.1
+Summary: a macro command runner
+Home-page: https://github.com/adammillerio/smn
+Download-URL: https://github.com/adammillerio/smn/archive/v0.0.1.tar.gz
+Author: Adam Miller
+Author-email: miller@adammiller.io
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+License-File: LICENSE
+Requires-Dist: click
+Requires-Dist: click_tree
+Requires-Dist: fabric2
+Provides-Extra: dev
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pyre-check; extra == "dev"
