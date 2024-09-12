@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/charloratools/FilterAI.py
+src/charloratools/Scrapers.py
+src/charloratools/SysFileManager.py
+src/charloratools/__init__.py
+src/charloratools/errors.py
+src/charloratools/utils.py
+src/charloratools.egg-info/PKG-INFO
+src/charloratools.egg-info/SOURCES.txt
+src/charloratools.egg-info/dependency_links.txt
+src/charloratools.egg-info/requires.txt
+src/charloratools.egg-info/top_level.txt
