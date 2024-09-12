@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: json-grep
+Version: 1.4.6
+Summary: Filtering JSON dict keys from STDOUT
+Home-page: https://gitlab.com/alda78/json-grep
+Author: Ales Adamek
+Author-email: alda78@seznam.cz
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: al78tools
+Requires-Dist: argcomplete
+
+# json-grep
+
+## Description
+Simple tool for filtering JSON dict keys from STDOUT
+
+## Usage
+```
+json-grep --help
+usage: json-grep [-h] [-e EXCLUDE_KEYS] [-m] [-v] [-l HIGHLIGHT] [-i IHIGHLIGHT] [-s] [-f INPUT_FILE] filter_keys [filter_keys ...]
+
+JSON GREP v1.4.6 is utility for filtering selected keys from json string piped from STDOUT
+
+positional arguments:
+  filter_keys           List of keys which you want to filter from json dict. If key is in deeper level of tree structure use '.' separator to specify how deep is key in dict tree structure. You can also use '*' at the end of key name to filter keys as 'beginning with'. You can also specify value of item which you want to pass only by operator '=' or
+                        '~'. '~' means that value is somewhere in string.
+
+options:
+  -h, --help            show this help message and exit
+  -e EXCLUDE_KEYS, --exclude EXCLUDE_KEYS
+                        Exclude lines contains key or key=value combination
+  -m, --multiline-output
+                        Use multiline output for filtered result
+  -v, --values_only     Show only values without keys description
+  -l HIGHLIGHT, --hl HIGHLIGHT
+                        Highlight case sensitively words in filtered results
+  -i IHIGHLIGHT, --ihl IHIGHLIGHT
+                        Highlight case insensitively words in filtered results
+  -s, --show-errors     Show errors caused by json decode
+  -p, --pass-non-json   Pass non json lines into stdout
+  -f INPUT_FILE, --file INPUT_FILE
+                        Input file instead of PIPE
+```
+
+## Installation
+```bash
+wget https://gitlab.com/alda78/json-grep/-/archive/master/json-grep-master.tar && \
+tar -xf json-grep-master.tar && \
+cd json-grep-master/ && \
+sudo python3 setup.py install && \
+cd ../ &&  \
+sudo rm -rf json-grep-master
+```
+
+or simply
+```bash
+pip3 install json-grep
+```
