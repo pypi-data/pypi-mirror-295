@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: jquant
+Version: 0.1.1b3
+Summary: jquant grpc client for python
+Keywords: jquant,grpc
+Author-Email: enoch <lanxenet@gmail.com>
+License: MIT
+Requires-Python: >=3.11
+Requires-Dist: grpcio>=1.64.1
+Requires-Dist: google-api>=0.1.12
+Requires-Dist: protobuf==5.27.4
+Description-Content-Type: text/markdown
+
+# jQuant client library for python
+
+
+[![pdm-managed](https://img.shields.io/endpoint?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fpdm-project%2F.github%2Fbadge.json
+)](https://pdm-project.org)
+
+
+
