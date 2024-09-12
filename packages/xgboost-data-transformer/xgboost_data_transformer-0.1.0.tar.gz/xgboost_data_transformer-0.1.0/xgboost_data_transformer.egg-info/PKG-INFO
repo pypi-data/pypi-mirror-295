@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: xgboost_data_transformer
+Version: 0.1.0
+Summary: A package for transforming raw data for XGBoost.
+Home-page: https://github.com/noorains/xgboost_data_transformer
+Author: Noorain Kazmi
+Author-email: noosykaz@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=1.0.0
+
+# XGBoost Data Transformer
+
+A package for transforming raw data for XGBoost:
+- Converts categorical variables to the appropriate format.
+- Removes missing values.
+
+## Installation
+
+```bash
+pip install xgboost_data_transformer
