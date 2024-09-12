@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "modgeosys-cuda-graph-algorithms"
+version = "0.1.0"
+description = ""
+authors = ["Kevin Weller <klweller@icloud.com>"]
+readme = "README.md"
+packages = [
+    { include = "modgeosys", from = "src" },
+    { include = "tests", from = "." },
+]
+
+[[tool.poetry.source]]
+name = "nvidia-pypi"
+url = "https://pypi.nvidia.com"
+priority = "supplemental"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4,<2.0a0"
+pandas = "^2.2.2"
+cupy-cuda12x = "^13.3.0"
+cudf-cu12 = "^24.8.2"
+dask-cudf-cu12 = "^24.8.2"
+cugraph-cu12 = "^24.8.0"
+networkx = "^3.3"
+scipy = "^1.14.1"
+cualgo = "^0.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.3.3"
+ruff = "^0.6.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

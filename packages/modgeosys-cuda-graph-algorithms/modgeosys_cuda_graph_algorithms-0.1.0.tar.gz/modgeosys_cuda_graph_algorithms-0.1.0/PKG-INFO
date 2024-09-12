@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: modgeosys-cuda-graph-algorithms
+Version: 0.1.0
+Summary: 
+Author: Kevin Weller
+Author-email: klweller@icloud.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: cualgo (>=0.2.0,<0.3.0)
+Requires-Dist: cudf-cu12 (>=24.8.2,<25.0.0)
+Requires-Dist: cugraph-cu12 (>=24.8.0,<25.0.0)
+Requires-Dist: cupy-cuda12x (>=13.3.0,<14.0.0)
+Requires-Dist: dask-cudf-cu12 (>=24.8.2,<25.0.0)
+Requires-Dist: networkx (>=3.3,<4.0)
+Requires-Dist: numpy (>=1.26.4,<2.0.0)
+Requires-Dist: pandas (>=2.2.2,<3.0.0)
+Requires-Dist: scipy (>=1.14.1,<2.0.0)
+Description-Content-Type: text/markdown
+
+# modgeosys-cuda-graph-algorithms: CUDA GPU-accelerated Spatial Graph Algorithms
