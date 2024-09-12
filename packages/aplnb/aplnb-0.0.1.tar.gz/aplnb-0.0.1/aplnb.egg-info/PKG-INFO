@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: aplnb
+Version: 0.0.1
+Summary: AI magic
+Home-page: https://github.com/answerdotai/aplnb
+Author: Jeremy Howard
+Author-email: info@answer.ai
+License: Apache Software License 2.0
+Keywords: nbdev jupyter notebook python apl dyalog
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pip
+Requires-Dist: packaging
+Requires-Dist: fastcore
+Requires-Dist: pynapl-dyalog
+Provides-Extra: dev
+
+# aplnb
+An IPython magic for Dyalog APL
