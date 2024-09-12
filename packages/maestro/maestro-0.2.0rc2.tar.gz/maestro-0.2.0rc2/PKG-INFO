@@ -1,0 +1,110 @@
+Metadata-Version: 2.1
+Name: maestro
+Version: 0.2.0rc2
+Summary: Visual Prompting for Large Multimodal Models (LMMs)
+Home-page: https://github.com/roboflow/multimodal-maestro
+Author: Roboflow
+Author-email: help@roboflow.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Typing :: Typed
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Requires-Python: >=3.9,<3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: supervision~=0.24.0rc1
+Requires-Dist: requests<=2.32.3,>=2.31.0
+Requires-Dist: transformers~=4.44.2
+Requires-Dist: torch~=2.4.0
+Requires-Dist: accelerate~=0.33.0
+Requires-Dist: sentencepiece~=0.2.0
+Requires-Dist: peft~=0.12.0
+Requires-Dist: flash-attn~=2.6.3
+Requires-Dist: einops~=0.8.0
+Requires-Dist: timm~=1.0.9
+Requires-Dist: typer~=0.12.5
+Provides-Extra: dev
+Requires-Dist: pytest~=8.3.2; extra == "dev"
+Requires-Dist: black~=24.8.0; extra == "dev"
+Requires-Dist: pre-commit~=3.8.0; extra == "dev"
+Requires-Dist: mypy~=1.11.2; extra == "dev"
+Requires-Dist: flake8~=7.1.1; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: mkdocs-material~=9.5.33; extra == "docs"
+Requires-Dist: mkdocstrings[python]<0.25.2,>=0.20.0; extra == "docs"
+
+<div align="center">
+
+  <h1>maestro</h1>
+
+  <p>coming: when it's ready...</p>
+
+</div>
+
+## 👋 hello
+
+**maestro** is a tool designed to streamline and accelerate the fine-tuning process for 
+multimodal models. It provides ready-to-use recipes for fine-tuning popular 
+vision-language models (VLMs) such as **Florence-2**, **PaliGemma**, and 
+**Phi-3.5 Vision** on downstream vision-language tasks.
+
+## 💻 install
+
+Pip install the supervision package in a
+[**Python>=3.8**](https://www.python.org/) environment.
+
+```bash
+pip install maestro
+```
+
+## 🔥 quickstart
+
+### CLI
+
+VLMs can be fine-tuned on downstream tasks directly from the command line with 
+`maestro` command:
+
+```bash
+maestro florence2 train --dataset='<DATASET_PATH>' --epochs=10 --batch-size=8
+```
+
+### SDK
+
+Alternatively, you can fine-tune VLMs using the Python SDK, which accepts the same 
+arguments as the CLI example above:
+
+```python
+from maestro.trainer.common import MeanAveragePrecisionMetric
+from maestro.trainer.models.florence_2 import train, TrainingConfiguration
+
+config = TrainingConfiguration(
+    dataset='<DATASET_PATH>',
+    epochs=10,
+    batch_size=8,
+    metrics=[MeanAveragePrecisionMetric()]
+)
+
+train(config)
+```
+
+## 🦸 contribution
+
+We would love your help in making this repository even better! We are especially 
+looking for contributors with experience in fine-tuning vision-language models (VLMs). 
+If you notice any bugs or have suggestions for improvement, feel free to open an 
+[issue](https://github.com/roboflow/multimodal-maestro/issues) or submit a 
+[pull request](https://github.com/roboflow/multimodal-maestro/pulls).
