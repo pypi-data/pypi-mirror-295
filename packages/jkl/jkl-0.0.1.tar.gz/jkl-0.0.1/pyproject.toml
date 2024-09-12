@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "jkl"
+version = "0.0.1"
+description = "a small session manager for tmux"
+authors = ["Egor Georgiev"]
+license = "MIT"
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.scripts]
+jkl = "jkl.cli:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
