@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: qleaf
+Version: 0.0.17
+Summary: Productive GUI Framework for Python
+Home-page: https://github.com/jaehakl/qleaf
+Author: Jaehak Lee
+Author-email: leejaehak87@gmail.com
+Keywords: data,database,array,matrix
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: requests
+Requires-Dist: opencv-python
+Requires-Dist: Pillow
+Requires-Dist: PySide6
+Requires-Dist: matform
+
+# QLeaf
+
+### Installation
+
+```
+pip install qleaf
+```
