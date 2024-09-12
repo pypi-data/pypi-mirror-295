@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "vbll"
+version = "0.2.6"
+description = ""
+authors = ["John Willes <johnwilles@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = ">= 1.6.0"
+numpy = ">= 1.21.0"
+fannypack = ">= 0.0.25"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
