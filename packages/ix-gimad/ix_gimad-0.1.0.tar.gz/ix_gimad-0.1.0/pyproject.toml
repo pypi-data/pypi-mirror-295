@@ -1,0 +1,31 @@
+[project]
+name = "ix-gimad"
+version = "0.1.0"
+description = "Non-schema database migration tool for PostgreSQL"
+authors = [
+    { name = "injuryex", email = "injuryex@ptnglobalcorp.com" },
+]
+dependencies = [
+    "psycopg[binary]",
+    "typer",
+    "pydantic-settings",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[project.scripts]
+gimad = "gimad:main"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff",
+    "pyright",
+    "ward",
+]
