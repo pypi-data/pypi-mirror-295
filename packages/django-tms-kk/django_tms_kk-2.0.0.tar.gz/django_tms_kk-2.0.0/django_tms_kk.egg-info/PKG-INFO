@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: django_tms_kk
+Version: 2.0.0
+Summary: A Django app to manage suppliers and consumers in an on-demand marketplace.
+Home-page: https://github.com/piraidev/django-on-demand
+Author: Pirai Dev
+Author-email: kk.ism07@gmail.com
+License: BSD-3-Clause
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: djangorestframework
+Requires-Dist: django-filter
+
+dsfsdfsf
