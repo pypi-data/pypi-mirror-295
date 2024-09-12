@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+src/MBA_by_RFM.egg-info/PKG-INFO
+src/MBA_by_RFM.egg-info/SOURCES.txt
+src/MBA_by_RFM.egg-info/dependency_links.txt
+src/MBA_by_RFM.egg-info/top_level.txt
+src/rfm_market_basket_analysis/__init__.py
+src/rfm_market_basket_analysis/association_rules.py
+src/rfm_market_basket_analysis/main.py
+src/rfm_market_basket_analysis/rfm_analysis.py
+src/rfm_market_basket_analysis/visualization.py
