@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "pycarbond"
+version = "0.1.0"
+description = "Type-safe interface to the managed information provided by the system daemon 'carbond' for python."
+authors = [
+    "Andreas Schmidt <andreas.schmidt@cs.uni-saarland.de>",
+    "Robin Ohs <ohs@cs.uni-saarland.de>",
+]
+repository = "https://gitlab.com/sustainable-computing-systems/carbond"
+keywords = ["carbon", "carbond", "linux", "emissions"]
+license = "MIT OR Apache-2.0"
+
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
