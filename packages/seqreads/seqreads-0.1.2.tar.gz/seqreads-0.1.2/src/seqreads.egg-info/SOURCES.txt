@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/seqreads/__init__.py
+src/seqreads.egg-info/PKG-INFO
+src/seqreads.egg-info/SOURCES.txt
+src/seqreads.egg-info/dependency_links.txt
+src/seqreads.egg-info/requires.txt
+src/seqreads.egg-info/top_level.txt
