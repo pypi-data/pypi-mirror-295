@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "note.py-gui"
+description = "Yet another note taking app."
+version = "1.3.1"
+requires-python = ">= 3.8"
+dependencies = [
+    "cmarkgfm>=2022.10.27",
+    "Pillow>=10.1.0",
+    "tk>=0.1.0",
+    "tkinter-tooltip>=2.1.0",
+    "tkinterweb>=3.23.1",
+    "ttkthemes>=3.2.2",
+    "PyYAML>=6.0.1",
+    "urllib3>=2.0.7"
+]
+authors = [
+  {name = "Falk Werner"},
+  {name = "Henrik Lampe"}
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+Homepage = "https://github.com/falk-werner/note.py"
+Documentation = "https://falk-werner.github.io/note.py/index.html"
+Repository = "https://github.com/falk-werner/note.py"
+Issues = "https://github.com/falk-werner/note.py/issues"
+Changelog = "https://github.com/falk-werner/note.py/blob/main/changelog.md"
+
+
+[tool.setuptools]
+include-package-data = true
+py-modules = ["note"]   
+
+[project.gui-scripts]
+note = "note:main"
