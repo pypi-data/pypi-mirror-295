@@ -1,0 +1,6 @@
+Metadata-Version: 2.3
+Name: mm-starknet
+Version: 0.1.1
+Requires-Python: >=3.12
+Requires-Dist: mm-std~=0.1.2
+Requires-Dist: starknet-py~=0.24.1
