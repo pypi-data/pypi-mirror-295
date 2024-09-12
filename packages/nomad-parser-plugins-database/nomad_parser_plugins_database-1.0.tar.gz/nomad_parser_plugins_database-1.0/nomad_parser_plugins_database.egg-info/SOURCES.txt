@@ -1,0 +1,17 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+databaseparsers/__init__.py
+databaseparsers/openkim/__init__.py
+databaseparsers/openkim/__main__.py
+databaseparsers/openkim/parser.py
+databaseparsers/openkim/metainfo/__init__.py
+databaseparsers/openkim/metainfo/openkim.py
+nomad_parser_plugins_database.egg-info/PKG-INFO
+nomad_parser_plugins_database.egg-info/SOURCES.txt
+nomad_parser_plugins_database.egg-info/dependency_links.txt
+nomad_parser_plugins_database.egg-info/entry_points.txt
+nomad_parser_plugins_database.egg-info/requires.txt
+nomad_parser_plugins_database.egg-info/top_level.txt
+tests/test_openkimparser.py
