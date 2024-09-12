@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: bot-managers
+Version: 0.0.1052
+Summary: Micro framework for creating constructors for multi-user telegram bots
+Home-page: https://github.com/Nezhinskiy/bot-managers/
+Author: Nezhinskiy
+Author-email: mikhail.nezhinsky@gmail.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Description-Content-Type: text/markdown
+Requires-Dist: logger-tg>=0.1.5
+Requires-Dist: aio-rabbitmq>=0.0.94
+Requires-Dist: Telethon<2,>=1.30.0
+Requires-Dist: cryptg>=0.4.0
+Requires-Dist: pysocks<2,>=1.7.1
+Requires-Dist: python-socks[asyncio]<3,>=2
+Requires-Dist: hachoir<4,>=3.2.0
+Requires-Dist: aiohttp>=3.0.0
+Requires-Dist: Pillow>=10.0.0
+Requires-Dist: pydub>=0.25.0
+Requires-Dist: openai<2,>=1.1.2
+
+
+# bot-managers
