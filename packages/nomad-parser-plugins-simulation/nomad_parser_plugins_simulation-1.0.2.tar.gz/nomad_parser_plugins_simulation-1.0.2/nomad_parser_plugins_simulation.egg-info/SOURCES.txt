@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+nomad_parser_plugins_simulation.egg-info/PKG-INFO
+nomad_parser_plugins_simulation.egg-info/SOURCES.txt
+nomad_parser_plugins_simulation.egg-info/dependency_links.txt
+nomad_parser_plugins_simulation.egg-info/requires.txt
+nomad_parser_plugins_simulation.egg-info/top_level.txt
+simulationparsers/__init__.py
+simulationparsers/utils/__init__.py
+simulationparsers/utils/basic_parser.py
+simulationparsers/utils/re_patterns.py
+tests/test_utils.py
