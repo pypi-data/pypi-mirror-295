@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: psdm2pp
+Version: 0.1.0
+Summary: 
+Author: Thomas
+Author-email: thomas.oberliessen@googlemail.com
+Requires-Python: >3.11,<3.12
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: pandapower (>=2.14.11,<3.0.0)
+Requires-Dist: pypsdm (>=0.0.3,<0.0.4)
+Requires-Dist: simbench (>=1.5.3,<2.0.0)
+Description-Content-Type: text/markdown
+
+# psdm2pp 
+
+
+This is a work-in-progress tool for converting [PSDM](https://github.com/ie3-institute/PowerSystemDataModel) to [pandapower](https://github.com/e2nIEE/pandapower) grid models.
+
+
+## Limitations 
+
+- Currently only basic grid model conversion supported
+- No switch conversion implemented yet
+
+
+## Usage
+
+```py
+from pypsdm import RawGridContainer
+from psdm2pp.grid import convert_grid
+
+psdm_path = "/my/psdm_grid/path"
+psdm_grid = RawGridContainer.from_csv(psdm_path)
+pp_grid, uuid_idx_maps = convert_grid(psdm_grid)
+```
+
