@@ -1,0 +1,16 @@
+# Make sure we don't accidentally track FITS or ASDF files
+*.fits
+*.asdf
+
+# Ignore this standard Mac directory
+.DS_Store
+
+# Possible development detritus
+.vscode
+*.pyc
+build/
+dist/
+.cache
+.tmp
+
+

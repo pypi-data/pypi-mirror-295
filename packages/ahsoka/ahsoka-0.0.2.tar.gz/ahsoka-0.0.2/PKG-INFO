@@ -1,0 +1,45 @@
+Metadata-Version: 2.3
+Name: ahsoka
+Version: 0.0.2
+Summary: A pipeline for JWST near-IR transiting exoplanet data
+Project-URL: Homepage, https://github.com/Witchblade101/ahsoka
+Project-URL: Bug Tracker, https://github.com/Witchblade101/ahsoka/issues
+Author-email: Douglas Long <dlong@stsci.edu>
+License-File: LICENSE.txt
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: bottleneck
+Requires-Dist: cython
+Requires-Dist: jupyter
+Requires-Dist: jwst
+Requires-Dist: tqdm
+Description-Content-Type: text/markdown
+
+<img src="ahsoka_logo.png">
+
+# Ahsoka
+
+Developing a pipeline for JWST near-IR transiting exoplanet data
+
+
+## Installation
+
+The latest version of Ahsoka can be installed directly with pip:
+
+`pip install ahsoka`
+
+To install a development version:
+
+    Clone the repository:  
+    `git clone https://github.com/Witchblade101/ahsoka`
+        or
+    `git@github.com:Witchblade101/ahsoka.git`
+
+    Install ahsoka:  
+    `cd ahsoka`  
+    `pip install .`
+
+    Install in Develop Mode
+    `pip install -e .`
