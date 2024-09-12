@@ -1,0 +1,2 @@
+[console_scripts]
+localgit = src.localgit:main
