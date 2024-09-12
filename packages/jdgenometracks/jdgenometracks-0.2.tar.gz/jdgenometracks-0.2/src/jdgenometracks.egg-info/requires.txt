@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+plotly>=5.3.0
+scipy
+
+[dev]
+black
+isort
