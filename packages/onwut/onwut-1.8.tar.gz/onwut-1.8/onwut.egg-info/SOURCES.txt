@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+onwut/__init__.py
+onwut/main.py
+onwut/migrate.py
+onwut/onwut_data.db
+onwut/scraper.py
+onwut.egg-info/PKG-INFO
+onwut.egg-info/SOURCES.txt
+onwut.egg-info/dependency_links.txt
+onwut.egg-info/requires.txt
+onwut.egg-info/top_level.txt
