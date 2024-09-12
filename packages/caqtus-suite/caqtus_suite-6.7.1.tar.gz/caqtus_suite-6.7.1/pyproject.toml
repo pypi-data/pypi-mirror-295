@@ -1,0 +1,154 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caqtus-suite"
+dynamic = ["version"]
+description = "Package to control a cold atom experiment"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "license.md" }
+keywords = []
+authors = [
+    { name = "light-scattering-io", email = "lecaqtus66@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=1.26.4",
+    "scipy>=1.12.0",
+    "sympy>=1.12",
+    "polars>=1.3",
+    "tblib>=3.0.0",
+    "anyio[trio]>=4.3.0",
+    "python-benedict>=0.33.2",
+    "pint>=0.23",
+    "token-utils>=0.1.8",
+    "attrs>=23.2.0",
+    "cattrs>=23.2.3",
+    "pyyaml>=6.0.1",
+    "typing-extensions>=4.10.0",
+    "eliot>=1.15.0",
+    "multipledispatch>=1.0.0",
+    "graphviz>=0.20.3",
+    # SQL dependencies
+    "sqlalchemy>=2.0.28",
+    "sqlalchemy-utils>=0.41.1",
+    "aiosqlite>=0.20.0",
+    "psycopg[binary]>=3.1.18",
+    "alembic>=1.13",
+    # GUI dependencies
+    "pyside6>=6.6",
+    "qtawesome>=1.3.0",
+    "pyqtgraph>=0.13.4",
+    "matplotlib>=3.8.3",
+    "setuptools"  # required for NodeGraphQt
+]
+
+[project.urls]
+Documentation = "https://caqtus.readthedocs.io/en/stable/"
+Issues = "https://github.com/light-scattering-io/caqtus/issues"
+Source = "https://github.com/light-scattering-io/caqtus"
+
+[tool.hatch.version]
+path = "caqtus/__about__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.sdist]
+exclude = ["*.ui", "/tests", "/doc", "/manual", "/.github"]
+
+[tool.hatch.build.targets.wheel]
+include = ["caqtus/"]
+exclude = ["*.ui"]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.12"]
+
+[tool.hatch.envs.default]
+dependencies = [
+    "black>=24.3.0",
+    "ruff>=0.6.4",
+    "licensecheck>=2024.1.4",
+    "pre-commit>=3.7.0",
+    "twine",
+    "pyright>=1.1.355",
+    "pytest>=8.1.1",
+    "pytest-qt>=4.4.0",
+    "hypothesis[numpy]>=6.103.1",
+    "pytest-postgresql>=6.0"
+]
+
+[tool.hatch.envs.default.scripts]
+lint = ["ruff check {args:.}", "pyright {args:.}"]
+
+
+[tool.hatch.envs.test]
+matrix-name-format = "{variable}={value}"
+extra-dependencies = [
+    "coverage[toml]>=6.5",
+]
+
+[[tool.hatch.envs.test.matrix]]
+numpy = ["2", "1.26"]
+
+[tool.hatch.envs.test.overrides]
+matrix.numpy.dependencies = [
+    { value = "numpy>=2", if = ["2"] },
+    { value = "numpy<2", if = ["1.26"] },
+]
+
+[tool.hatch.envs.test.scripts]
+pytest = "python -m pytest {args:tests}"
+
+
+[tool.hatch.envs.docs]
+dependencies = [
+    "sphinx",
+    "sphinx-autodoc-typehints",
+    "sphinx-rtd-theme>=2",
+    "jupyter>=1.0.0",
+    "matplotlib"
+]
+
+[tool.hatch.envs.types]
+dependencies = [
+    "mypy>=1.11.0",
+]
+
+[tool.hatch.envs.types.scripts]
+check = "pyright {args:caqtus tests}"
+
+[tool.coverage.run]
+source_pkgs = ["caqtus", "tests"]
+branch = true
+parallel = true
+omit = [
+    "caqtus/__about__.py",
+]
+
+[tool.coverage.paths]
+caqtus = ["caqtus"]
+tests = ["tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "no cov",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.mypy]
+enable_incomplete_feature = "NewGenericSyntax"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "N", "B", "NPY", "ASYNC", "LOG"]
