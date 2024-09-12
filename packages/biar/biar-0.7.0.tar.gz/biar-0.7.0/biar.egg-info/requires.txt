@@ -1,0 +1,8 @@
+pydantic>v2.5
+aiohttp
+aiodns
+tenacity
+pyrate-limiter
+yarl
+certifi
+loguru
