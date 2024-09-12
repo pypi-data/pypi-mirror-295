@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: note.py-gui
+Version: 1.3.2
+Summary: Yet another note taking app.
+Author: Falk Werner, Henrik Lampe
+Project-URL: Homepage, https://github.com/falk-werner/note.py
+Project-URL: Documentation, https://falk-werner.github.io/note.py/index.html
+Project-URL: Repository, https://github.com/falk-werner/note.py
+Project-URL: Issues, https://github.com/falk-werner/note.py/issues
+Project-URL: Changelog, https://github.com/falk-werner/note.py/blob/main/changelog.md
+Keywords: note,note-taking,markdown
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: 3.14
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Desktop Environment
+Classifier: Topic :: Text Editors
+Classifier: Topic :: Text Processing :: Markup :: Markdown
+Requires-Python: >=3.8
+License-File: LICENSE
+License-File: AUTHORS
+Requires-Dist: cmarkgfm>=2022.10.27
+Requires-Dist: Pillow>=10.1.0
+Requires-Dist: tk>=0.1.0
+Requires-Dist: tkinter-tooltip>=2.1.0
+Requires-Dist: tkinterweb>=3.23.1
+Requires-Dist: ttkthemes>=3.2.2
+Requires-Dist: PyYAML>=6.0.1
+Requires-Dist: urllib3>=2.0.7
