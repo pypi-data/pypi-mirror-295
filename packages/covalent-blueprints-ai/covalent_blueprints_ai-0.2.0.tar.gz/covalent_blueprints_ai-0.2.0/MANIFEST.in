@@ -1,0 +1,4 @@
+include VERSION
+include requirements.txt
+recursive-include **/_src *
+recursive-include **/*.ipynb *
