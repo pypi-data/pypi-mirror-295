@@ -1,0 +1,19 @@
+project: example-preemptable-sweep
+name: SGD
+program: train.py
+command:
+    - ${env}
+    - python
+    - ${program}
+    - ${args}
+metric:
+    goal: minimize
+    name: loss
+method: random
+parameters:
+    lr_max:
+        distribution: log_uniform_values
+        min: 1e-3
+        max: 1e-1
+    epochs:
+        value: 20
