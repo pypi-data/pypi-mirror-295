@@ -1,0 +1,36 @@
+name: main
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - uses: actions/cache@v4
+      with:
+        path: .venv
+        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
+    - name: Install dependencies
+      run: pip3 install .
+
+    - name: Install dev dependencies
+      run: pip3 install pylint pytest
+
+    - name: Check code
+      run: pylint --rcfile pyproject.toml shaperglot
+
+    - name: Test code
+      run: pytest
