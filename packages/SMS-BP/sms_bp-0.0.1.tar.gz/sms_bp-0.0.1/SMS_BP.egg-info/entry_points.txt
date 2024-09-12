@@ -1,0 +1,3 @@
+[console_scripts]
+SMS_BP_config = SMS_BP.run_cell_simulation:create_config
+run_SMS_BP = SMS_BP.run_cell_simulation:main_CLI
