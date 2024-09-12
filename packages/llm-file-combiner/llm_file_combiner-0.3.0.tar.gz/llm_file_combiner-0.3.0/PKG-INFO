@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: llm_file_combiner
+Version: 0.3.0
+Summary: A tool to combine files in a folder for LLM processing
+Author-email: Maximilian Winter <maximilian.winter.91@gmail.com>
+Project-URL: Homepage, https://github.com/Maximilian-Winter/file_combiner
+Project-URL: Bug Tracker, https://github.com/Maximilian-Winter/file_combiner/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# File Combiner
+
+File Combiner is a Python package that processes files in a folder and combines them into a single output file, suitable for use with Large Language Models (LLMs).
+
+## Installation
+
+You can install File Combiner using pip:
+
+```
+pip install llm_file_combiner
+```
+
+## Usage
+
+After installation, you can use the `file-combiner` command from anywhere in your terminal:
+
+```
+file-combiner /path/to/folder --output combined_output.txt --extensions .py .txt --ignore venv .git
+```
+
+### Arguments:
+
+- `folder_path`: Path to the folder to process (required)
+- `--output`: Name of the output file (default: output.txt)
+- `--extensions`: File extensions to include (e.g., .py .txt)
+- `--ignore`: Folders to ignore (e.g., git node_modules)(default: ['.git', 'node_modules', '__pycache__'])
+
+## License
+
+This project is licensed under the MIT License.
