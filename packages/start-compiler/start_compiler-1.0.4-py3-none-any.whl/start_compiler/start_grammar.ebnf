@@ -1,0 +1,98 @@
+start: (instruction | comment | WSE)*
+
+instruction         : variable_declaration
+                    | type_declaration
+                    | function_declaration
+                    | statement
+
+
+variable_declaration: ("var" name "is" type (comment | WSE))
+                    | "const" name "is" type (comment | WSE) -> constant_declaration
+
+type_declaration    : "type" type "contains" (("start" (comment | WSE) variable_declaration+ function_declaration* "end") | short_hand ) (comment | WSE)
+
+short_hand			: type "[" length "]"
+
+function_declaration: "function" name "is" type "contains" "start" (comment | WSE)+ argument_declaration? function_member* return  (comment | WSE)? "end" (comment | WSE)
+argument_declaration: "arguments" "start" (comment | WSE) variable_declaration* "end" (comment | WSE)
+
+function_member		: variable_declaration
+                    | statement
+                    | comment
+
+return              : ("return" expression (comment | WSE))
+                    | ("return" (comment | WSE))
+
+statement           : operation (comment | WSE)*
+                    | if_block (comment | WSE)*
+                    | while_block (comment | WSE)*
+                    | return
+
+operation			: assignment | function_call
+
+assignment			: variable assign_operator expression
+
+variable			: ("this[" expression "]") -> class_variable
+                    | (variable "[" expression "]")
+                    | name
+
+expression			: constant | variable | function_call
+terms               : number | variable | function_call
+string_terms        : string | variable | function_call
+
+if_block        	: "if" expression "start" (comment | WSE) block "end" ((comment | WSE) else_block)?
+else_block          : "else" "start" (comment | WSE) block "end"
+while_block     	: "while" expression "start" (comment | WSE)+ block "end"
+block				: statement+
+
+parentheses         : "(" function_call ")"
+function_call		: parentheses
+                    | (variable ".")* function  "(" arguments ")"
+					| (variable ".")* function  "(" ")"
+					| string_operator "(" string_terms "," string_terms ")"
+					| math_operator "(" terms "," terms ")"
+					| "(" string_terms string_operator string_terms ")"
+					| "(" terms math_operator terms ")"
+					| "(" expression operator2 expression ")"
+arguments			: expression ("," expression)*
+
+constant			: number | string | char
+
+number				: SIGNED_NUMBER
+string				: ESCAPED_STRING
+char				: charvalue | (charvalue "c")
+charvalue			: CHAR | INT
+
+assign_operator		: ASSIGN_OP
+ASSIGN_OP			: "->" | ":=" | "="
+function			: BUILT_IN | CNAME | OPERATOR2
+math_operator       : MATH_OPERATOR | OPERATOR2
+operator2           : OPERATOR2
+string_operator     : STRING_OPERATOR
+
+BUILT_IN			: "char" | "number" | "string" | "print" | "print_raw" | "input_number" | "input_char" | "input_string" | "len" | "!"
+STRING_OPERATOR     : "++"
+MATH_OPERATOR       : "+" | "-" | "*" | "/" | "%" | "^"
+OPERATOR2           : "==" | ">" | "<" | ">=" | "<=" | "&" | "|" | "==="
+name 				: CNAME
+length 				: DIGITS | WILDCARD
+type 				: CNAME
+
+DIGITS				: DIGIT+
+WILDCARD 			: "*"
+
+comment : SH_COMMENT WSE
+WSE: /[ \t\f\r\n]/+
+WS: /[ \t\f]/+
+CHAR: "'" /./ "'"
+
+%import common.NEWLINE
+%import common.LETTER
+%import common.DIGIT
+%import common.SH_COMMENT
+%import common.ESCAPED_STRING
+%import common.SIGNED_NUMBER
+%import common.CNAME
+%import common.INT
+
+%ignore WS
