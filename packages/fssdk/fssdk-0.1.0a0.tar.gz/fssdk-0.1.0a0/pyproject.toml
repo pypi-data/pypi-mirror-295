@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fssdk"
+version = "0.1.0-alpha"
+authors = [
+    { name = "Oliver Fabel" },
+]
+description = "Script SDK for Flipper Zero"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = [
+    "flipperzero",
+    "Flipper Zero",
+    "MicroPython",
+    "Python",
+    "JavaScript",
+    "Java Script",
+    "Ducky",
+    "f0",
+    "GPIO",
+    "PWM",
+    "ADC",
+    "Infrared",
+    "SDK",
+    "fssdk",
+]
+
+[project.urls]
+"Documentation" = "https://ofabel.github.io/mp-flipper/"
+"Source code" = "https://github.com/ofabel/flipperzero-script-sdk"
+"Issue Tracker" = "https://github.com/ofabel/flipperzero-script-sdk/issues"
+"Changelog" = "https://github.com/ofabel/flipperzero-script-sdk/blob/master/CHANGELOG.md"
+
+[tool.hatch.build]
+directory = "dist"
+packages = [
+    "fssdk"
+]
+only-packages = true
+
+[tool.hatch.version]
+path = "fssdk/__init__.py"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
