@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+setup.py
+lucit_ubdcc_shared_modules/AppClass.c
+lucit_ubdcc_shared_modules/__init__.c
+lucit_ubdcc_shared_modules.egg-info/PKG-INFO
+lucit_ubdcc_shared_modules.egg-info/SOURCES.txt
+lucit_ubdcc_shared_modules.egg-info/dependency_links.txt
+lucit_ubdcc_shared_modules.egg-info/requires.txt
+lucit_ubdcc_shared_modules.egg-info/top_level.txt
