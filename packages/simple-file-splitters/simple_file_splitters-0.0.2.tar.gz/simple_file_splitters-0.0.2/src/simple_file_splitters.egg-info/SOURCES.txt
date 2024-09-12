@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/simple_file_splitters/__init__.py
+src/simple_file_splitters/splitters.py
+src/simple_file_splitters.egg-info/PKG-INFO
+src/simple_file_splitters.egg-info/SOURCES.txt
+src/simple_file_splitters.egg-info/dependency_links.txt
+src/simple_file_splitters.egg-info/requires.txt
+src/simple_file_splitters.egg-info/top_level.txt
