@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+fastapi_app_ext/__init__.py
+fastapi_app_ext/app_ext.py
+fastapi_app_ext.egg-info/PKG-INFO
+fastapi_app_ext.egg-info/SOURCES.txt
+fastapi_app_ext.egg-info/dependency_links.txt
+fastapi_app_ext.egg-info/requires.txt
+fastapi_app_ext.egg-info/top_level.txt
+tests/__init__.py
+tests/main.py
