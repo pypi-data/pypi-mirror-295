@@ -1,0 +1,216 @@
+Metadata-Version: 2.1
+Name: callstack
+Version: 0.2.0
+Summary: A call stack which includes the Class, and a simpler Frame structure.
+Author-email: Jonathan Woodburn <atriace@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Project-URL: Homepage, https://gitlab.com/Atriace/callstack
+Project-URL: Issues, https://gitlab.com/Atriace/callstack/-/issues
+
+<div style="text-align: center;">
+
+![callstack logo](https://gitlab.com/Atriace/callstack/-/raw/main/assets/logo_text.png)
+
+‎
+
+[![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/atriace)
+
+</div>
+
+# callstack
+
+
+A Python module designed to address shortcomings in the standard Python stack inspection tools like `sys`, `inspect`, and `traceback`. Despite their utility, they do not provide the **name of the class** where a function originates, nor do they offer an easily digestable list of variables.
+
+For comparison, here is a `frame` object from `sys` versus `callstack`...
+
+### sys
+
+```python
+frame = {
+    "f_back_": (frame),
+    "f_builtins_": {dict: 153 entries}
+    "f_code_": {
+        "co_argcount" = (int),
+        "co_cellvars" = (tuple),
+        "co_code" = (bytes),
+        "co_consts" = (tuple),
+        "co_filename" =  'tests\callstack_test.py' (string),
+        "co_firstlineno" = (int),
+        "co_flags" = (int),
+        "co_freevars" = (tuple: 0),
+        "co_kwonlyargcount" = (int),
+        "co_lnotab" = (bytes: 34),
+        "co_name" = (string) 'hello',
+        "co_names" = (tuple: 17)
+        "co_nlocals" = (int)
+        "co_posonlyargcount" = (int)
+        "co_stacksize" = (int)
+    },
+    "f_globals_": {
+        "__name__": (str) 'hello',
+        "__doc__": (NoneType),
+        "__package__": (str) 'tests',
+        "__loader__": (SourceFileLoader),
+        "__spec__": (NoneType),
+        "__file__": (str),
+        "_builtins_": (module),
+        "_pydev_stop_at_break": (function),
+        "callstack": (module),
+        "__len__": (int)
+    },
+    "f_lasti": (int),
+    "f_lineno": 47 (int),
+    "f_locals_": {dict: 15 entries},
+    "f_trace_": (NoneType),
+    "f_trace_lines": (bool),
+    "f_trace_opcodes": (bool),
+    "__len__": (int)
+}
+```
+
+Where do we find the properties we're looking for?
+
+- path = `frame.f_code_["co_filename"]`
+- package = `frame.f_globals_["__package__"]`
+- module = *sometimes valid, sometimes `__main__`*
+- line = `frame.f_lineno`
+- class = *completely missing*
+- function = `frame.f_code_["co_name"]`
+
+Obviously, there's a lot more data here that you could tap into (168 entries are hidden), but the variable locations are all over the place, and have fairly obtuse names.
+
+### callstack
+
+```python
+frame = { 
+    "path": 'tests\test.py' (string),         # The file path of the code in the frame.
+    "package": 'tests' (string),              # The package that contains the module.
+    "module": 'test' (string),                # The module name.
+    "line": 47 (int),                         # The line number in the source code.
+    "cls": 'Alpha' (string),                  # The class name, if available.
+    "clsRef": <class '__main__.Alpha'>        # An object reference to the class
+    "function": 'hello' (string)              # The name of the function
+    "location": 'test:47 > Alpha.hello()'     # Origin of code as a string for debugging
+    "fqn": 'tests.test.Alpha'                 # The fully-qualified-name of the code location
+    "internal": False                         # Invoked from the same package
+    "protected": False                        # Invoked from the same class or subclass
+}
+```
+
+> **Note:**
+> 
+> Unlike other languages, Python's interpreter can't differentiate between `class` as a keyword versus a property. This deficiency necessitates using `cls` instead of `class`.
+
+How is this done? `callstack` uses `sys` to pull in the 4 aforementioned available properties. We then parse the module name from the filename, but the real issue is the *class name*.
+1. Every path in the `sys` callstack is parsed as text files.
+2. Line numbers are attributed to the class they belong to, and saved for future reference.
+3. On any given frame, we can query our dictionary by filepath & line number to return the matching class name.
+
+If you have a large codebase and are concerned about the overhead, this currently happens **on demand at runtime** and will only scan files that are in the callstack (so the impact should be negligible).
+However, **if you want to pre-scan your code** you may call `callstack.parseFile(filepath)` which will generate & cache the necessary lookup table per file.
+
+# Methods
+
+## get()
+Accepts no arguments, and returns the callstack as a `list` of `Frames`.
+You can easily access individual frames by index (bypassing the need to use a `while` loop, or traversing via `frame.f_back`).
+
+*Example:*
+
+```python
+import callstack
+
+class Alpha:
+    def test():
+        stack = callstack.get()
+        print(f"Call stack has {len(stack)} entries...")
+
+        for frame in stack:
+            print(f"   {frame.location}")
+
+        print(f"\nStarted with {stack[0].cls} and ended with {stack[-1].cls or stack[-1].module}")
+
+
+def beta():
+    Alpha.test()
+
+
+beta()
+
+# Call stack has 3 entries...
+#    __main__:5 > Alpha.test()
+#    __main__:15 > beta()
+#    __main__:18
+#
+# Started with Alpha and ended with __main__
+```
+
+
+## getOrigin()
+Accepts no arguments, and returns a Frame object representing the origin of the call, one level up the stack from where `getOrigin()` is called.  It provides a lightweight, lower-overhead way of retrieving this particular frame compared to `get()`.
+
+*Example:*
+
+```python
+import callstack
+
+class Gamma:
+    def test():
+        frame = callstack.getOrigin()
+        print(f"{frame.function} called Gamma.test()")
+
+    def sibling():
+        Gamma.test()
+
+
+Gamma.test()     # <module> called Gamma.test()
+Gamma.sibling()  # sibling called Gamma.test()
+```
+
+## getContext()
+Analyzes the Python call stack to determine the context of the calling frame relative to its caller. It is designed to identify whether the call is internal to the package and if the access level is protected (i.e., within the same class or a subclass).
+
+```python
+class Alpha:
+    def directTest(self):
+        context = getContext()
+        print(f"FQN:{context.fqn}, Protected: {context.protected}")
+
+class Beta(Alpha):
+    def inheritedTest(self):
+        self.directTest()
+
+a = Alpha()
+a.directTest()     # "tests.test, Protected: False"
+        
+b = Beta()
+b.inheritedTest()  # "tests.test.Beta, Protected: True"
+```
+
+
+## parseFile(*path*)
+Accepts a string *path* (relative or absolute), and parses Python modules as text files.  It stores the matchup of line-ranges to class names in our internal cache, returning nothing.
+
+*Example:*
+
+```python
+import callstack
+callstack.parseFile("directory/path/to/module.py")
+```
+
+## getClassName(*path*, *linenumber*)
+Accepts a *path* & matching *linenumber*, and returns a string name of the relavent class name.  This function is useful if you still use `sys` (or some other stack inspection tools that provide more data not provided here), but still need the name of the *class*.
+
+Be aware that **if** the file hasn't already been parsed, it will be parsed when using this function.
+
+*Example:*
+
+```python
+import callstack
+cls = callstack.getClassName("directory/path/to/module.py", 76)
+```
