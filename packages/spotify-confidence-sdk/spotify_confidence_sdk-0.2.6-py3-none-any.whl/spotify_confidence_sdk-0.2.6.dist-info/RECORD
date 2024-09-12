@@ -1,0 +1,16 @@
+confidence/__init__.py,sha256=RPtdBVGHMfiF3av4luOhSPTp7pq463XSwiAxrg8Bfgc,199
+confidence/_version.py,sha256=ea_eUoeOtyzu66mqXKQmkHZOdifhlCDVPsMy9xvsneQ,411
+confidence/confidence.py,sha256=H_FmJbjxpEq-vQKLfT5HfwJZaFHh2snLVXoUwRvD1cI,10091
+confidence/errors.py,sha256=TTEU-SWANSdcBL8lnHWKoefHDl8WVlwIvrR51pPmNvI,4358
+confidence/flag_types.py,sha256=2pIv8EAdqXWGPKP4bFDSfHeSzhXRkPVOm9WeppXiUNE,1625
+confidence/names.py,sha256=wYfSf8s6lG2R8ey5HM_0W3tvv9Xh_kZmImNw0D80fa0,748
+confidence/openfeature_provider.py,sha256=CTRtLsI3OcPA3NE4BAZiSpqr05zqNFUwA7t4xcEY7-A,7139
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_names.py,sha256=Urmxf32MFgn27vknR_IIsPnBEmFKXYk_FnQtMurjV2k,1054
+tests/test_provider.py,sha256=YkGO4PGPU_lP3Qy9QsEBLWqVdmCJHVrKofj06-QkS9c,11433
+tests/test_provider_parametrized.py,sha256=ZRLOrK6NI_KZ6VFdq9W_FbOAI6LUas5tBbUSTi5VSFU,1040
+spotify_confidence_sdk-0.2.6.dist-info/LICENSE,sha256=WNHhf_5RCaeuKWyq_K39vmp9F28LxKsB4SpomwSZ2L0,11357
+spotify_confidence_sdk-0.2.6.dist-info/METADATA,sha256=ExzlFN-xEFQ7i6dlE3pFk1LJpP4be9jVnfl0yd7p2WY,14958
+spotify_confidence_sdk-0.2.6.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+spotify_confidence_sdk-0.2.6.dist-info/top_level.txt,sha256=snL2qiGnkIvAUj7WRUvow2CmxoZeqvuxav9wopllrSs,22
+spotify_confidence_sdk-0.2.6.dist-info/RECORD,,
