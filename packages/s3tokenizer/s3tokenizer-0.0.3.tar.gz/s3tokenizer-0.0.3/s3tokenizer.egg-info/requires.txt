@@ -1,0 +1,11 @@
+numpy
+torch
+onnx
+tqdm
+
+[dev]
+pytest
+scipy
+black
+flake8
+isort
