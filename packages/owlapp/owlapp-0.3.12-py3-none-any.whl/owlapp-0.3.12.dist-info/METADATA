@@ -1,0 +1,114 @@
+Metadata-Version: 2.1
+Name: owlapp
+Version: 0.3.12
+Summary: 
+Author: Ceyhun Kerti
+Author-email: ceyhun.kerti@gmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: alembic (>=1.13.1)
+Requires-Dist: apiflask (>=2.2.1,<3.0.0)
+Requires-Dist: authlib (>=1.3.1)
+Requires-Dist: click (>=8.1.7)
+Requires-Dist: duckdb (>=1.0.0)
+Requires-Dist: flask (>=3.0.3)
+Requires-Dist: flask-compress (>=1.15)
+Requires-Dist: flask-cors (>=4.0.1)
+Requires-Dist: flask-jwt-extended[asymmetric-crypto] (>=4.6.0)
+Requires-Dist: flask-migrate (>=4.0.7)
+Requires-Dist: flask-sqlalchemy (>=3.1.1)
+Requires-Dist: gunicorn (>=22.0.0)
+Requires-Dist: jinja2 (>=3.1.4,<4.0.0)
+Requires-Dist: marshmallow-dataclass (>=8.7.0,<9.0.0)
+Requires-Dist: polars (>=1.2.1)
+Requires-Dist: psycopg2-binary (>=2.9.9)
+Requires-Dist: ptpython (>=3.0.27)
+Requires-Dist: pyarrow (>=17.0.0,<18.0.0)
+Requires-Dist: pydantic-settings (>=2.3.1)
+Requires-Dist: pydantic[email] (>=2.8.2)
+Requires-Dist: pydash (>=8.0.1)
+Requires-Dist: pynacl (>=1.5.0)
+Requires-Dist: pyopenssl (>=24.1.0)
+Requires-Dist: pytest (>=8.2.2)
+Requires-Dist: requests (>=2.32.3)
+Requires-Dist: rich (>=13.7.1)
+Requires-Dist: ruff (>=0.5.5)
+Requires-Dist: sqlparse (>=0.5.1)
+Description-Content-Type: text/markdown
+
+# OwlApp
+
+Web based SQL query editor for your files, databases and cloud storage data.
+
+Currently you can use it to query:
+- Local files
+- Cloud Storage Files (gcs, s3)
+- Postgresql Database
+- Duckdb Database
+
+- You can create multiple users and each user can manage their user space (databases, connections, etc..)
+- Has builtin user authentication and google oauth support.
+
+- You can also upload files and query them.
+
+## Installation
+
+```sh
+# Requires python >=3.12
+pip install owlapp
+```
+
+## Quick Start
+
+Start with basic options.
+
+```sh
+# create a directory in your favorite place like ~/projects/owlapp
+mkdir ~/projects/owlapp && cd ~/projects/owlapp
+
+# Create a virtual environment
+python -m venv .venv && source .venv/bin/activate
+
+# Install owlapp
+pip install owlapp
+
+# Initialize it with basic settings
+owl init all
+
+# Run it
+owl run
+```
+
+- Run the following command see command line usage.
+
+```sh
+owl --help
+```
+
+![Example 2](./doc/static/img/exmaples/example.png)
+
+
+See `.env` file for configuration options.
+
+## Usage
+
+### Databases
+
+You can create as many databases as you want. If you didn't create any database then
+an `in memory database` will be used for your queries. In memory database will only execute
+`SELECT` queries. Other statement types are not supported.
+
+### Querying uploaded files
+
+You can query the files using the following pattern:
+```sql
+-- example
+-- if you have uploaded a file named `addresses.csv`
+-- you can query it using the following query;
+select * from '{{files}}/addresses.csv'
+```
+`{{files}}` are the base path of the uploaded files.
+
+
+
