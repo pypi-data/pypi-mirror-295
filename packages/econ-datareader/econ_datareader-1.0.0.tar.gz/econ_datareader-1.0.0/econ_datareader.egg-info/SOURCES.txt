@@ -1,0 +1,13 @@
+LICENSE
+setup.py
+econ-datareader/__init__.py
+econ-datareader/bok.py
+econ-datareader/finance.py
+econ-datareader/fred.py
+econ-datareader/version.py
+econ_datareader.egg-info/PKG-INFO
+econ_datareader.egg-info/SOURCES.txt
+econ_datareader.egg-info/dependency_links.txt
+econ_datareader.egg-info/not-zip-safe
+econ_datareader.egg-info/requires.txt
+econ_datareader.egg-info/top_level.txt
