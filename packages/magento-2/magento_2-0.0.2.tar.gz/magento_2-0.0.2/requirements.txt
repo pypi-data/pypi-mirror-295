@@ -1,0 +1,6 @@
+PySimpleGUI==4.60.5
+python-dotenv
+requests
+pandas
+pytest
+openpyxl
