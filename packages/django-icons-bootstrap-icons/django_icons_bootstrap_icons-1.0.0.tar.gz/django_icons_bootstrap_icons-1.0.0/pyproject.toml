@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-icons-bootstrap-icons"
+version = "1.0.0"
+authors = [{ name = "Pyrox/dish", email = "pyrox@pyrox.dev" }]
+maintainers = [{ name = "Pyrox/dish", email = "pyrox@pyrox.dev" }]
+description = "Bootstrap Icons renderer for django-icons"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["django-icons>=24.3"]
+keywords = ["django", "icons", "django-icons", "bootstrap", "bootstrap-icons"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Django",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Repository = "https://github.com/pyrox0/django-icons-bootstrap-icons"
+Issues = "https://github.com/pyrox0/django-icons-bootstrap-icons/issues"
+Changelog = "https://github.com/pyrox0/django-icons-bootstrap-icons/releases"
+
+[tool.uv]
+dev-dependencies = ["django>=5.1.1", "pytest-django>=4.9.0", "pytest>=8"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
