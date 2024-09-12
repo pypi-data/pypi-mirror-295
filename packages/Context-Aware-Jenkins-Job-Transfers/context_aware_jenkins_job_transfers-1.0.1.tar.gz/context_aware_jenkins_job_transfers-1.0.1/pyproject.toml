@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Context-Aware-Jenkins-Job-Transfers"
+version = "1.0.1"
+description = "Transfers Jobs b/w Jenkins Servers with relevant Views & Plugins"
+readme = "README.md"
+license = {text = "MIT License"}
+authors = [
+    {name = "Joel Thomas Chacko", email = "joeltc071@gmail.com"}
+]
+maintainers = [
+    {name = "Joel Thomas Chacko", email = "joeltc071@gmail.com"}
+]
+
+dependencies = [
+    "python-jenkins==1.8.2",
+    "lxml==5.1.0",
+    "rich==13.7.1"
+]
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+keywords = ["Jenkins", "CICD", "Jenkins-Transfer", "Servers", "TransferJobs", "Plugins", "TransferViews", "Connect"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[project.urls]
+Repository = "https://github.com/joelkariyalil/Jenkins-Transfers"
+Homepage = "https://context-aware-jenkins-transfers-documentation.readthedocs.io/en/latest/index.html"
+Issues = "https://github.com/joelkariyalil/Jenkins-Transfers/issues"
