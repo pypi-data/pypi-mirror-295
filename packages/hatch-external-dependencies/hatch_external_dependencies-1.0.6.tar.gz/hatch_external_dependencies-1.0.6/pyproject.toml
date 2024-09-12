@@ -1,0 +1,52 @@
+[project]
+name = "hatch-external-dependencies"
+version = "1.0.6"
+description = 'Hatch plugin for adding `Requires-External` metadata in built packages'
+authors = [
+  {name="Jimmy Huguet", email="jimmy.huguet@skillcorner.com"},
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["hatchling"]
+classifiers = [
+  "Framework :: Hatch",
+]
+
+[project.entry-points.hatch]
+external-dependencies = "hatch_external_dependencies.hooks"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hatch_external_dependencies"]
+
+[tool.uv]
+dev-dependencies = [
+  "pytest>=8.2.0",
+  "coverage>=7.5.1",
+  "ruff>=0.4.4",
+]
+package = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["typer.Argument", "typer.Option"]
+
+[tool.ruff]
+fix = true
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I001", "Q", "SIM", "UP", "W"]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
