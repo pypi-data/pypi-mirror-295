@@ -1,0 +1,17 @@
+ndelement-0.1.0.dev3.dist-info/METADATA,sha256=nwjCdhtoqXPNdw04p36VWMJRwIyha1gMISPu5QUR6P0,1761
+ndelement-0.1.0.dev3.dist-info/WHEEL,sha256=bXLanFBku1kW5NeDor5R2135toFyVgtArjzxclPx1G0,105
+ndelement-0.1.0.dev3.dist-info/licenses/LICENSE,sha256=YWLoVF872yVPfehE12oAnAPQOEZZmKKAIIIuLVf6ptk,1529
+ndelement.libs/libgfortran-df5d6f8d.so.5,sha256=vPZvXyjrQHbDAZTT-aAGfjIp8AYINzgO4Fb4vcNerys,3082705
+ndelement.libs/liblapack-426b4bf5.so.3,sha256=otwAS5yk5Rf7JbLn4vLYcmqWI01ZWsG9wIcf8HxjJa0,7177857
+ndelement.libs/libquadmath-1c3f8ec4.so.0,sha256=brXjK9ybFuuXclzfzqORFHQ0tI3oT6JFiPzjfjPUA5A,292977
+ndelement.libs/libblas-babdd0d2.so.3,sha256=Y1nsUtKDnczs7xbDPf2BC-Js_tY6GGJ0paZ-kwvhm6g,459897
+ndelement.libs/libopenblas-1dedc9fe.so.0,sha256=qzp1VoTLarcXSB16B0VGJZHIdb2dWNvGNukBu1oLtXA,38740745
+ndelement/reference_cell.py,sha256=aFYZk24aGhx00cQbLY4qSeYR6NuoDzPPpZXzctqs0I8,4640
+ndelement/polynomials.py,sha256=_opqzc266BtN96qts2S6M8rZRW4YOwDlegblDoE_nC4,1344
+ndelement/ciarlet.py,sha256=rHrPnF3GxCZts1Jyy_ZwPQlkXoeQD7N2LdrcoBUO5Cw,7259
+ndelement/quadrature.py,sha256=mduhNHUsr_8eQlO5BgWZ6gzKjAU5xjh-VVbImhhbJSg,1187
+ndelement/__init__.py,sha256=GXLsMQ67P9WRRdg0Cd8dokz-0tpvH0depm52RpFzxTQ,89
+ndelement/_ndelementrs/__init__.py,sha256=GlSU-CFv9XA4j86fN8jl7wm3-BH9QuRlJEvm24hvp84,142
+ndelement/_ndelementrs/ffi.py,sha256=qraYS4hEwEnyD2WWSWJOB4b3Llv-xj_A6Kek61Elyw8,4907
+ndelement/_ndelementrs/_ndelementrs.so,sha256=6BFJgxqzYi0_yvfwanuOxOG_W5jwNxUx7F4rftZS-To,11745873
+ndelement-0.1.0.dev3.dist-info/RECORD,,
