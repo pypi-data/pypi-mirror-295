@@ -1,0 +1,16 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/alphonse/__init__.py
+src/alphonse/crud.py
+src/alphonse/db_manager.py
+src/alphonse/sql_constructor.py
+src/alphonse/utilities.py
+src/alphonse.egg-info/PKG-INFO
+src/alphonse.egg-info/SOURCES.txt
+src/alphonse.egg-info/dependency_links.txt
+src/alphonse.egg-info/requires.txt
+src/alphonse.egg-info/top_level.txt
+tests/test_crud.py
+tests/test_db_manager.py
+tests/test_utilities.py
