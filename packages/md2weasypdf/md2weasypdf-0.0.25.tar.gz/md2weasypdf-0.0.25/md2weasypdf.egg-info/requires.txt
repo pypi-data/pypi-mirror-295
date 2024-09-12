@@ -1,0 +1,9 @@
+typer
+rich
+weasyprint>=62.3
+markdown
+jinja2
+watchdog
+markdown-grid-tables
+python-frontmatter
+pyyaml
