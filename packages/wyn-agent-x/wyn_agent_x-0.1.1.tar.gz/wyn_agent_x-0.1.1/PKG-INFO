@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: wyn-agent-x
+Version: 0.1.1
+Summary: TODO
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: openai (>=1.44.1,<2.0.0)
+Requires-Dist: twilio (>=9.3.0,<10.0.0)
+Description-Content-Type: text/markdown
+
+
