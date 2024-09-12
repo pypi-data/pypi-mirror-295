@@ -1,0 +1,60 @@
+<div>
+    <div>
+        <b>Time Series:</b> {{ timeseries._coverage.name }}
+    </div>
+
+
+    <br/>
+
+
+    <!-- Print the timeline -->
+    <div>
+        <b>timeline</b>
+    </div>
+    <div>
+        <select id="timeline" size="10">
+        {% for d in timeseries.timeline -%}
+            <option value="{d}">{{ d }}</option>
+        {%- endfor %}
+        </select>
+    </div>
+
+
+    <br/>
+
+
+    <div>
+        <b>Time Series:</b>
+    </div>
+    <!-- Print the table for each attribute -->
+    {% for attr_name in timeseries.attributes -%}
+    <div>
+        <div>
+            <b>{{ attr_name }}</b>
+        </div>
+        <table>
+            <!-- Set the columns names -->
+            <tr>
+                <th>pixel id</th>
+                <th>timeseries</th>
+            </tr>
+            
+            <!-- The table data will contain a maximum of 5 items -->
+            {% for location_id in range(timeseries.total_locations) -%}
+                {% if loop.index0 < 5 %}    
+                    <tr>
+                        <td>{{ location_id }}</td>
+                        <td>{{ timeseries.values(attr_name)[loop.index0] }}</td>
+                    </tr>
+                {% elif loop.index0 == 5 %}
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                {% endif %}
+            {%- endfor %}
+        </table>
+    </div>
+    <br/>
+    {%- endfor %}
+</div>
