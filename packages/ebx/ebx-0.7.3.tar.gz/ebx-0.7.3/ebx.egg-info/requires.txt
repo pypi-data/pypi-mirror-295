@@ -1,0 +1,6 @@
+pydantic==2.8.2
+geojson-pydantic==1.1.1
+pandas>=2.0.0
+httpx>=0.24.1
+leafmap>=0.23.3
+plotly>=5.16.1
