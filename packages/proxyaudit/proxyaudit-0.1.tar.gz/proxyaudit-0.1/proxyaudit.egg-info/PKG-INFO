@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: proxyaudit
+Version: 0.1
+Summary: A package to fetch and check the working HTTP proxies from a list of proxies
+Home-page: https://github.com/aryanyk/proxyaudit
+Author: Aryan Khandhadiya
+Author-email: aryanyk562@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: asyncio
+Requires-Dist: aiohttp
+Requires-Dist: urllib3
+Requires-Dist: socket
+
+Open Source Library for scraping public proxies available to be used within the project for various purposes.
