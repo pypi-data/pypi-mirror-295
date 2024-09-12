@@ -1,0 +1,2 @@
+[console_scripts]
+readability_cn = readability_cn.readability:main

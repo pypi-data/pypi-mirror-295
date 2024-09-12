@@ -1,0 +1,16 @@
+readability_cn/__init__.py,sha256=WA4UdaR5ZWdoO2HtmXuEXF7cUopcMx1MA6q5WyFqt2I,67
+readability_cn/readability.py,sha256=BYdOcyGT3nFpjxEficgw5QotFrOHY7QEyj_GMxmEJic,32604
+readability_cn/data/CorpusWordlist.csv,sha256=EucoXo9Je53bB78jP4IE6o2d3WvjpEPeIkHw0pNhITM,464561
+readability_cn/data/character_frequency.csv,sha256=kyUeMDBcBKeSZ9uJdAfRmq9S4qNUZiti4lC2YzB2sRs,365764
+readability_cn/data/ci_jia.txt,sha256=pptzvcfNLhxgUMNCKhwnaMXkzayL8SjTl2q236uqypI,15154
+readability_cn/data/common-zi.txt,sha256=h_oLZYrbdBDokMroCDZGF31jReG8DtXdi_EXlQyAeLE,7501
+readability_cn/data/filtered_computer.vocab,sha256=AAxrPQFNYxh8LasHSS16mZsd-ZEccfAu7EU3pM9CNSI,105982
+readability_cn/data/hanzi_jia.txt,sha256=fU8akQOoHOoZAn6J_jQ8hRMH_p5ksmH6_6Hq55Pom_s,2401
+readability_cn/data/hsk3_vocabulary.txt,sha256=hsFFbxgkmMePcdpZHwFj5UjU-IB8b9GYX7wNMXPGuYc,3506
+readability_cn/data/zi-dataset.tsv,sha256=KdvMINBAQPhQ61SJN2yNRbKZoaJ0bDjMcW86DqHT6Eo,2247585
+readability_cn-0.1.4.dist-info/LICENSE,sha256=T4FQ5FA5qmn4a3JznRYmm2Z9lQfrf1pZ1lq8EAZsKLk,1066
+readability_cn-0.1.4.dist-info/METADATA,sha256=GdLqDAlYN2BH2RjJ2W0hDaXAMhhN7GzeERe1ZdNp8Ig,4693
+readability_cn-0.1.4.dist-info/WHEEL,sha256=GJ7t_kWBFywbagK5eo9IoUwLW6oyOeTKmQ-9iHFVNxQ,92
+readability_cn-0.1.4.dist-info/entry_points.txt,sha256=m_w4m8NsrmSqzmWE1yRLIXIO5uWML04-2zp26FZlkJs,67
+readability_cn-0.1.4.dist-info/top_level.txt,sha256=6S7fcL0SGEddHzm9L8Y7BM0Zs0jXD8Qw06qmdAYJmoA,15
+readability_cn-0.1.4.dist-info/RECORD,,
