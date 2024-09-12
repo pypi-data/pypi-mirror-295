@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: DGTL_db_connector
+Version: 0.0.8
+Summary: AWS DynamoDB python wrapper with backward compatibility
+Author: Olivier Witteman
+License: MIT
+Description-Content-Type: text/markdown
+Requires-Dist: boto3
+Requires-Dist: pandas
+Requires-Dist: uuid
+
+# DGTL Health AWS DynamoDB Database Wrapper
+
+Previously QLDB wrapper.
