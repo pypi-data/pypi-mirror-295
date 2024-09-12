@@ -1,0 +1,17 @@
+cupy-cuda116
+cppyy==2.3
+torch
+torchvision
+torchaudio
+torchmetrics
+jitfields
+torch-interpol
+torch-distmap
+nibabel
+pytorch-lightning
+scikit-learn
+matplotlib
+tensorboard
+pandas
+cyclopts
+cornucopia
