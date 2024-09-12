@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "lytils"
+version = "0.4.2"
+description = "Python utilities. Pytils was taken."
+authors = ["GGLionCross"]
+license = "Apache 2.0"
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = {version = "^2.32.3", optional = true}
+
+
+[tool.poetry.group.google-sheets.dependencies]
+gspread = "^6.1.2"
+gspread-formatting = "^1.2.0"
+pandas = "^2.2.2"
+
+
+[tool.poetry.group.log-html.dependencies]
+airium = "^0.2.6"
+
+
+[tool.poetry.group.bs4.dependencies]
+beautifulsoup4 = "^4.12.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
