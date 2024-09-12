@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: ecom_data_helpers_lib
+Version: 0.0.8
+Summary: A library of reusable utilities for AWS Lambda functions in ECOM Data Projects
+Author: Augusto Lorencatto
+Author-email: augusto.lorencatto@ecomenergia.com.br
+Requires-Dist: boto3
