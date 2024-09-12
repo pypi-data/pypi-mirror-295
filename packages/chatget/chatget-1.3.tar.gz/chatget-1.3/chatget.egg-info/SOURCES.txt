@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+setup.cfg
+setup.py
+chatget/__init__.py
+chatget/server.py
+chatget.egg-info/PKG-INFO
+chatget.egg-info/SOURCES.txt
+chatget.egg-info/dependency_links.txt
+chatget.egg-info/requires.txt
+chatget.egg-info/top_level.txt
