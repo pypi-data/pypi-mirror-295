@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: geoservercloud
+Version: 0.2.2
+Summary: Lightweight Python client to interact with GeoServer Cloud REST API, GeoServer ACL and OGC services
+License: BSD-2-Clause
+Author: Camptocamp
+Author-email: info@camptocamp.com
+Requires-Python: >=3.9
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: OWSLib
+Requires-Dist: requests
+Requires-Dist: types-requests
+Requires-Dist: types-xmltodict
+Requires-Dist: xmltodict
+Description-Content-Type: text/markdown
+
+# python-geoservercloud
+
+## Installation
+
+From PyPI:
+
+```shell
+pip install geoservercloud
+```
+
+From git repository:
+
+```shell
+poetry install
+```
+
+## Quick start
+
+```python
+from geoservercloud import GeoServerCloud
+geoserver = GeoServerCloud(
+    url="http://localhost:9090/geoserver/cloud/",
+    user="admin",
+    password="geoserver",
+)
+geoserver.create_workspace("newworkspace")
+```
+
