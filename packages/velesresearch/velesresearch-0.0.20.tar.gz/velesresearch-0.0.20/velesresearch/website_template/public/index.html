@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    .lds-dual-ring {
+      /* change color here */
+      color: #19B394
+    }
+
+    .lds-dual-ring,
+    .lds-dual-ring:after {
+      box-sizing: border-box;
+    }
+
+    .lds-dual-ring {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+    }
+
+    .lds-dual-ring:after {
+      content: " ";
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6.4px solid currentColor;
+      border-color: currentColor transparent currentColor transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes lds-dual-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body style="background-color: #f3f3f3">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div style="text-align: center; padding-bottom: 2em">
+      <div class="lds-dual-ring"></div>
+    </div>
+  </div>
+</body>
+<footer style='font-family: "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;'>
+  <div style="text-align: center; opacity: 0.25;">
+    <p>
+      Made with
+      <img src="images/Veles-logo-black.svg" style="display: inline; height: 1.5em; vertical-align: baseline;">
+    </p>
+    <p style="font-size: 0.75em">Veles © by Jakub Jędrusiak. Veles uses <u><a
+          href="https://surveyjs.io/">SurveyJS</a></u> by Devsoft Baltic. Jakub Jędrusiak is not responsible for any
+      misuses done using Veles. All the surveys belong to their authors.</p>
+  </div>
+</footer>
+
+</html>
