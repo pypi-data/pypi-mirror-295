@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: empower_functions
+Version: 0.1.6
+Summary: The empower_functions package provides a set of utility functions to run the empower-functions model
+Author-email: "empower.dev" <yulong@empower.dev>
+Project-URL: Homepage, https://empower.dev
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: jinja2
+Requires-Dist: llama-cpp-python[server]
+Requires-Dist: pydantic
+
+## Project Description
+
+This is the pip package for the empower-functions LLMs which offer GPT-4 level capatiblities for real-world "tool-using" use cases.
+
+For more information, please visit the [Empower Functions](https://github.com/empower-ai/empower-functions) Github repo.
