@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: ecscrape
+Version: 0.0.2
+Summary: Scrape the ECMWF IFS forecast.
+License: MIT
+Author: Lukas Kluft
+Author-email: lukas.kluft@mpimet.mpg.de
+Requires-Python: >=3.10
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aiohttp
+Requires-Dist: aiohttp_retry
+Requires-Dist: dask
+Requires-Dist: easygems
+Requires-Dist: fsspec
+Requires-Dist: gribscan (>=0.0.11)
+Requires-Dist: healpix
+Requires-Dist: numcodecs
+Requires-Dist: numpy
+Requires-Dist: requests
+Requires-Dist: requests-toolbelt
+Requires-Dist: scipy
+Requires-Dist: swiftspec
+Requires-Dist: xarray
+Requires-Dist: zarr
+Description-Content-Type: text/markdown
+
+# ecScrape
+
+This repository provides a Python script to scrape forecast data from the ECMWF.
+
+The script downloads all GRIB files of the latest forecast, creates GRIB indices,
+remaps onto the HEALPix grid, and stores the resulting dataset in a rechunked Zarr store.
+
