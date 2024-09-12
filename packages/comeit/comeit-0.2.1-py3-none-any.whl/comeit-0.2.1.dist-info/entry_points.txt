@@ -1,0 +1,3 @@
+[console_scripts]
+comeit=comeit.__main__:main
+
