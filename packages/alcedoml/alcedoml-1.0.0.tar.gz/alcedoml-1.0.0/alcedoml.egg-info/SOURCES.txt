@@ -1,0 +1,9 @@
+LICENSE
+README.rst
+setup.py
+alcedoml.egg-info/PKG-INFO
+alcedoml.egg-info/SOURCES.txt
+alcedoml.egg-info/dependency_links.txt
+alcedoml.egg-info/top_level.txt
+financial/__init__.py
+financial/main.py
