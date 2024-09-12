@@ -1,0 +1,129 @@
+Metadata-Version: 2.1
+Name: aws_sdk_polars
+Version: 0.1.1
+Summary: An open-source Python initiative that harnesses the lightning-fast capabilities of the Polars library within the AWS ecosystem. 
+Home-page: https://github.com/MacHu-GWU/aws_sdk_polars-project
+Download-URL: https://pypi.python.org/pypi/aws_sdk_polars/0.1.1#downloads
+Author: Sanhe Hu
+Author-email: husanhe@gmail.com
+Maintainer: Sanhe Hu
+Maintainer-email: husanhe@email.com
+License: MIT
+Platform: Windows
+Platform: MacOS
+Platform: Unix
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.8
+License-File: LICENSE.txt
+License-File: AUTHORS.rst
+Requires-Dist: boto_session_manager<2.0.0,>=1.7.2
+Requires-Dist: s3pathlib<3.0.0,>=2.3.1
+Requires-Dist: polars<2.0.0,>=1.5.0
+Requires-Dist: polars_writer<1.0.0,>=0.3.2
+Requires-Dist: aws_glue_catalog<1.0.0,>=0.1.1
+Requires-Dist: more_itertools<11.0.0,>=10.5.0
+Requires-Dist: typing_extensions<5.0.0,>=4.4.0
+Requires-Dist: tabulate<1.0.0,>=0.9.0
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Requires-Dist: moto<6.0.0,>=5.0.0; extra == "tests"
+Provides-Extra: docs
+Requires-Dist: Sphinx==5.3.0; extra == "docs"
+Requires-Dist: sphinx-jinja==2.0.2; extra == "docs"
+Requires-Dist: sphinx-copybutton==0.5.1; extra == "docs"
+Requires-Dist: sphinx-design==0.5.0; extra == "docs"
+Requires-Dist: furo==2023.03.27; extra == "docs"
+Requires-Dist: nbsphinx==0.8.12; extra == "docs"
+Requires-Dist: rstobj==1.2.1; extra == "docs"
+Requires-Dist: pygments==2.15.1; extra == "docs"
+Requires-Dist: ipython==8.10.0; extra == "docs"
+Requires-Dist: docfly==2.0.3; extra == "docs"
+
+
+.. image:: https://readthedocs.org/projects/aws-sdk-polars/badge/?version=latest
+    :target: https://aws-sdk-polars.readthedocs.io/en/latest/
+    :alt: Documentation Status
+
+.. image:: https://github.com/MacHu-GWU/aws_sdk_polars-project/actions/workflows/main.yml/badge.svg
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project/actions?query=workflow:CI
+
+.. image:: https://codecov.io/gh/MacHu-GWU/aws_sdk_polars-project/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/MacHu-GWU/aws_sdk_polars-project
+
+.. image:: https://img.shields.io/pypi/v/aws-sdk-polars.svg
+    :target: https://pypi.python.org/pypi/aws-sdk-polars
+
+.. image:: https://img.shields.io/pypi/l/aws-sdk-polars.svg
+    :target: https://pypi.python.org/pypi/aws-sdk-polars
+
+.. image:: https://img.shields.io/pypi/pyversions/aws-sdk-polars.svg
+    :target: https://pypi.python.org/pypi/aws-sdk-polars
+
+.. image:: https://img.shields.io/badge/Release_History!--None.svg?style=social
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project/blob/main/release-history.rst
+
+.. image:: https://img.shields.io/badge/STAR_Me_on_GitHub!--None.svg?style=social
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project
+
+------
+
+.. image:: https://img.shields.io/badge/Link-Document-blue.svg
+    :target: https://aws-sdk-polars.readthedocs.io/en/latest/
+
+.. image:: https://img.shields.io/badge/Link-API-blue.svg
+    :target: https://aws-sdk-polars.readthedocs.io/en/latest/py-modindex.html
+
+.. image:: https://img.shields.io/badge/Link-Install-blue.svg
+    :target: `install`_
+
+.. image:: https://img.shields.io/badge/Link-GitHub-blue.svg
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project
+
+.. image:: https://img.shields.io/badge/Link-Submit_Issue-blue.svg
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project/issues
+
+.. image:: https://img.shields.io/badge/Link-Request_Feature-blue.svg
+    :target: https://github.com/MacHu-GWU/aws_sdk_polars-project/issues
+
+.. image:: https://img.shields.io/badge/Link-Download-blue.svg
+    :target: https://pypi.org/pypi/aws-sdk-polars#files
+
+
+Welcome to ``aws_sdk_polars`` Documentation
+==============================================================================
+.. image:: https://aws-sdk-polars.readthedocs.io/en/latest/_static/aws_sdk_polars-logo.png
+    :target: https://aws-sdk-polars.readthedocs.io/en/latest/
+
+``aws_sdk_polars`` is an open-source Python initiative that harnesses the lightning-fast capabilities of the Polars library within the AWS ecosystem.
+
+
+.. _install:
+
+Install
+------------------------------------------------------------------------------
+
+``aws_sdk_polars`` is released on PyPI, so all you need is to:
+
+.. code-block:: console
+
+    $ pip install aws-sdk-polars
+
+To upgrade to latest version:
+
+.. code-block:: console
+
+    $ pip install --upgrade aws-sdk-polars
