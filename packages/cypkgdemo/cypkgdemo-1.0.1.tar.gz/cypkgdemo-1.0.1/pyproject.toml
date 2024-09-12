@@ -1,0 +1,44 @@
+[build-system]
+requires = [
+    "setuptools>=64",
+    "setuptools_scm>=8",
+    "Cython",
+    "numpy"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cypkgdemo"
+authors = [
+    {name = "psrit", email = "xiaojx13@outlook.com"}
+]
+description = "A demo of organizing, building and distributing a Cython package."
+readme = "README.md"
+dependencies = [
+    "numpy"
+]
+requires-python = ">= 3.7"
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://gitee.com/psrit/cython_package_demo"
+Repository = "https://gitee.com/psrit/cython_package_demo.git"
+Issues = "https://gitee.com/psrit/cython_package_demo/issues"
+
+[project.optional-dependencies]
+dev = ["Cython"]
+
+[tool.setuptools]
+include-package-data = true  # actually true is default
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.pxd"]
+
+# [tool.setuptools.exclude-package-data]
+# cypkgdemo = ["sa.pxd"]
+
+[tool.setuptools_scm]
+# can be empty if no extra settings are needed, presence enables setuptools-scm
