@@ -1,0 +1,7 @@
+[console_scripts]
+lcc-clipfiles=llm_context.context_generator:files_from_clip
+lcc-dirtree=llm_context.folder_structure_diagram:main
+lcc-files=llm_context.context_generator:files_from_scratch
+lcc-gencontext=llm_context.context_generator:context
+lcc-select=llm_context.file_selector:main
+

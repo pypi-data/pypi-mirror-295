@@ -1,0 +1,12 @@
+llm_context/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+llm_context/config_manager.py,sha256=SyrXcPHS8K0VczDzyqCRNtSlOevbT8_Er_h92rKJ-po,3548
+llm_context/context_generator.py,sha256=soyVaZB0zW5jd0R1KK7xdRchGQ9pMf0d95FM9KHj9n8,4352
+llm_context/file_selector.py,sha256=Ahn5MWJzuA9drcBIAPnTDeVHg6tLGbKEvcDa0d9_tZU,3653
+llm_context/folder_structure_diagram.py,sha256=pZd-EwgsfQVyqsz6Tvkpjtd4yCwhQx8nKdsb5oPkAf4,1700
+llm_context/templates/full-context.j2,sha256=FH4yyj5FlPbi41DKSlMviDGIKNiE83J10oENhi-ByNs,179
+llm_context/templates/sel-file-contents.j2,sha256=EJuMqfNFaqKsBdUNYmWR8FJ_m9kSEWNxvyXYIHhTLd4,93
+llm_context-0.0.10.dist-info/LICENSE,sha256=QwcOLU5TJoTeUhuIXzhdCEEDDvorGiC6-3YTOl4TecE,11356
+llm_context-0.0.10.dist-info/METADATA,sha256=gFPDZ5vniQHHYqqNHwYDcJ639Y-7bs2RI0aryepxYFE,6994
+llm_context-0.0.10.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+llm_context-0.0.10.dist-info/entry_points.txt,sha256=0g80Ej7KTE6hqdjSwyu9mp4hF_mM9PPJd6859wg4z5I,287
+llm_context-0.0.10.dist-info/RECORD,,
