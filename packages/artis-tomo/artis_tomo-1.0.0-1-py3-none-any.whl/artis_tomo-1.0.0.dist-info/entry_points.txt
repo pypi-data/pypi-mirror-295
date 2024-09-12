@@ -1,0 +1,4 @@
+[console_scripts]
+ars_corr_fluo_2d = artis_tomo.programs.clfluoxr2d:clfluoxr2dProgram
+ars_corr_fluo_3d = artis_tomo.programs.clfluoxr3d:clfluoxr3dProgram
+ars_tomo_import_imod = artis_tomo.programs.tomo_import_imod:importImodProgram
