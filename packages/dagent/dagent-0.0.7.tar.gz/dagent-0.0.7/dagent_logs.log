@@ -1,0 +1,14 @@
+2024-09-11 18:18:49,485 - dagent.DecisionNode - INFO - Compiling tool description for function: add_two_nums
+2024-09-11 18:18:49,487 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4-0125-preview; provider = openai
+2024-09-11 18:18:53,245 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-11 18:18:53,261 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2024-09-11 18:18:53,263 - dagent.DecisionNode - INFO - Compiling tool description for function: multiply_two_nums
+2024-09-11 18:18:53,264 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4-0125-preview; provider = openai
+2024-09-11 18:18:56,824 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-11 18:18:56,828 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2024-09-11 18:18:56,831 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4-0125-preview; provider = openai
+2024-09-11 18:18:57,769 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-11 18:18:57,774 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
