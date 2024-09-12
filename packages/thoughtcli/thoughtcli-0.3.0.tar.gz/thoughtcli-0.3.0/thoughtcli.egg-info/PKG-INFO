@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: thoughtcli
+Version: 0.3.0
+Summary: CLI for Thoughtspot
+Author-email: Marcin Szymanski <marcin.szymanski@crugroup.com>
+Requires-Python: >=3.10
+Requires-Dist: thoughtspot_rest_api_v1>=1.7.2
+Requires-Dist: click>=8.1.7
+Requires-Dist: prompt_toolkit>=3.0.43
