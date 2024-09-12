@@ -1,0 +1,29 @@
+Metadata-Version: 2.3
+Name: fssdk
+Version: 0.1.0a0
+Summary: Script SDK for Flipper Zero
+Project-URL: Documentation, https://ofabel.github.io/mp-flipper/
+Project-URL: Source code, https://github.com/ofabel/flipperzero-script-sdk
+Project-URL: Issue Tracker, https://github.com/ofabel/flipperzero-script-sdk/issues
+Project-URL: Changelog, https://github.com/ofabel/flipperzero-script-sdk/blob/master/CHANGELOG.md
+Author: Oliver Fabel
+License-Expression: MIT
+Keywords: ADC,Ducky,Flipper Zero,GPIO,Infrared,Java Script,JavaScript,MicroPython,PWM,Python,SDK,f0,flipperzero,fssdk
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# Flipperzero Script SDK
+
+## Requirements
+
+* [protoc](https://github.com/protocolbuffers/protobuf/releases)
+
+## Setup
+
+```bash
+git clone --recurse-submodules git@github.com:ofabel/flipperzero-script-sdk.git
+```
