@@ -1,0 +1,37 @@
+[project]
+name = "postgres-migration"
+version = "0.1.0"
+description = "Non-schema database migration tool for PostgreSQL"
+authors = [
+    { name = "PTNGlobal", email = "support@ptnglobalcorp.com" },
+]
+dependencies = [
+    "psycopg[binary]",
+    "typer",
+    "pydantic-settings",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[project.license]
+file = "LICENSE"
+
+[project.scripts]
+gimad = "gimad:main"
+
+[project.urls]
+Source = "https://github.com/ptnglobalcorp/postgres-migrate"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff",
+    "pyright",
+    "ward",
+]
