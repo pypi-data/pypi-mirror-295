@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: CSolver.py
+Version: 0.0.7
+Summary: Official API wrapper for https://csolver.xyz
+Author-email: AG597 <cypherservicess@proton.me>
+Project-URL: Homepage, https://github.com/AG-597/CSolver
+Project-URL: Issues, https://github.com/AG-597/CSolver/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# CSolver
+
+Simple Captcha Solving Service
+
+# What CAPTCHAs are supported?
+
+Hcaptcha & Recaptcha are solvable using CSolver 
+
+# Docs? 
+
+https://csolver.xyz for more information
