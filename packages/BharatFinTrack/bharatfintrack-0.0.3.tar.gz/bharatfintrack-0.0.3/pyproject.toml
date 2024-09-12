@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "BharatFinTrack"
+description = "Downloading and analyzing financial data, including indices, stocks, and mutual funds, from India, that is Bharat."
+authors = [
+  { name="Debasish Pal", email="bestdebasish@gmail.com" },
+]
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+	"Development Status :: 1 - Planning",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"License :: OSI Approved :: MIT License",
+	"Operating System :: OS Independent",
+	"Intended Audience :: Education",
+	"Topic :: Office/Business :: Financial",
+	"Topic :: Scientific/Engineering :: Information Analysis"
+]
+dynamic = ["version"]
+keywords = [
+	"nse index",
+	"total return index(TRI)",
+	"data download",
+	"data analysis"
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/debpal/BharatFinTrack"
+"Documentation" = "https://bharatfintrack.readthedocs.io/en/latest/"
+
+
+[tool.setuptools.dynamic]
+version = {attr = "BharatFinTrack.__version__"}
+
+
+[tool.pytest.ini_options]
+addopts = "-rA -Werror --cov=BharatFinTrack"
+testpaths = [
+    "tests"
+]
+
+
+[tool.mypy]
+files = [
+    "BharatFinTrack",
+    "docs"
+]
+ignore_missing_imports = true
+strict = true
