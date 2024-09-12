@@ -1,0 +1,14 @@
+anysql/__init__.py,sha256=wGke_AKdzUrcb-noZnR1KKXAyltTXPcy3fKpp_f7m20,175
+anysql/core.py,sha256=2FeOK0YzuN3dbMgbx9Ht0loBycv8PqOqX-y7jy-jeHk,12630
+anysql/escape.py,sha256=orv_SulmcSTqFoqxOarmy9_yDv4j9IMwPyumHYgHfR4,6714
+anysql/interface.py,sha256=Ht1Sv2ocE-C744dchCdiNCKWR3LAHOD1jpOTXiSjI3A,3576
+anysql/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+anysql/uri.py,sha256=_92-rAhPYyg2LcEcY3Qh9ygIpXsKh6_IhiCxkIkZnTs,3387
+anysql/backends/__init__.py,sha256=aVlbTIk2XSsBA-F4kMayGWf-HF7pI2oOGtLntlaDCms,533
+anysql/backends/postgres.py,sha256=OEcDmn8ijjXFRRKXg5MXej-buToCDgJPaGOgmqePLsc,6156
+anysql/backends/pymysql.py,sha256=jTzHhG2_7dWZcKszLOIHgtcMBWfG1sLMsvXvKA-p-GI,6105
+anysql/backends/sqlite.py,sha256=hHJVb5bfmp15SnLvnvl3OFo8O6WklHQYaXARTfzkzxo,8737
+anysql-0.0.4.dist-info/METADATA,sha256=GSeAjMdRxvSslGosFVZ-sbJrt35OByYb3vSQQnF3seM,4350
+anysql-0.0.4.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+anysql-0.0.4.dist-info/licenses/LICENSE,sha256=Qz-hrychFRWI4gNEDg2CU2qTEUh9iMb_9OahtH8B0qg,1075
+anysql-0.0.4.dist-info/RECORD,,
