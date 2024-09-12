@@ -1,0 +1,12 @@
+labelmods/converters/README.md,sha256=CXw8QAtR4DxxcVm1n-cUP_pHoSPjyPRJ1bwk4PNZ0Zk,79
+labelmods/converters/__init__.py,sha256=8NCgkO5CIusTywgX7CtLYJVW4st1sn7vn5juR2qAPMs,140
+labelmods/converters/coco.py,sha256=UIDpfJnXU5a9vPdSdiBJHSAWc91OGtAhgBSGGAztILg,31113
+labelmods/converters/labelbox_converter.py,sha256=sWm29gLUJwYxDDfLmVpu7ApBnTAZNZilPR8Dc-os6ww,7267
+labelmods/converters/pascal_voc.py,sha256=jHuix-ZxLMwXp8nwBoh9cA0ereBJAPWYRoUVj0MYLAo,4614
+labelmods/converters/yolo.py,sha256=tjIFvAL7WFWAV3wR8s_RTapPUkdpa0GAv_aJV1a_kbA,4051
+labelmods/tests/unit/test_test.py,sha256=0BLm1PJ4wh1bMlQNKhNagdOl7e6L6ie_wAFqN6OOY_8,47
+labelmods-0.0.9.dist-info/METADATA,sha256=XeJpc2lIvTq_ZLhrBiaE4OUKwiVMO3vII2A4MiMnuRc,636
+labelmods-0.0.9.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+labelmods-0.0.9.dist-info/entry_points.txt,sha256=owKsrVw1pEp7oVkBLXpPEYFwTLjolWgWrQH6SYH2y2I,64
+labelmods-0.0.9.dist-info/licenses/LICENSE,sha256=QwcOLU5TJoTeUhuIXzhdCEEDDvorGiC6-3YTOl4TecE,11356
+labelmods-0.0.9.dist-info/RECORD,,
