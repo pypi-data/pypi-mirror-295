@@ -1,0 +1,1 @@
+__author__ = "Christian Gruhl <cgruhl@uni-kassel.de>"
