@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+hope_agent.egg-info/PKG-INFO
+hope_agent.egg-info/SOURCES.txt
+hope_agent.egg-info/dependency_links.txt
+hope_agent.egg-info/entry_points.txt
+hope_agent.egg-info/requires.txt
+hope_agent.egg-info/top_level.txt
+tests/test_agent.py
+tests/test_orchestrator.py
+tests/test_task.py
