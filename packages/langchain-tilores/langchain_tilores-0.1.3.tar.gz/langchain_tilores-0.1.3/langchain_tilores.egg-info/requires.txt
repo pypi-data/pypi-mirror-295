@@ -1,0 +1,11 @@
+tilores-sdk>=0.1.0
+
+[all]
+langchain-tilores[langchain]
+
+[langchain]
+langchain
+openai
+
+[test]
+pytest==8.3.2
