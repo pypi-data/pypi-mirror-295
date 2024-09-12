@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: freesas
+Version: 2024.9.0
+Summary: Small angle scattering tools ... but unlike most others, free and written in Python
+Home-page: http://silx.org
+Author: Guillaume Bonamis, Martha Brennich
+Author-Email: =?utf-8?q?J=C3=A9r=C3=B4me_Kieffer?= <jerome.kieffer@esrf.fr>
+License: Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+        Upstream-Name: freesas
+        Source: https://github.com/kif/freesas
+        
+        Files: *
+        Copyright: 2004-2018 European Synchrotron Radiation Facility
+                   Data analysis unit (silx@esrf.fr) 
+        License: MIT
+        
+        License: MIT
+         Permission is hereby granted, free of charge, to any person obtaining a
+         copy of this software and associated documentation files (the "Software"),
+         to deal in the Software without restriction, including without limitation
+         the rights to use, copy, modify, merge, publish, distribute, sublicense,
+         and/or sell copies of the Software, and to permit persons to whom the
+         Software is furnished to do so, subject to the following conditions:
+         The above copyright notice and this permission notice shall be included in
+         all copies or substantial portions of the Software.
+         .
+         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+         THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+         FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+         DEALINGS IN THE SOFTWARE.
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Cython
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Project-URL: Homepage, http://silx.org
+Project-URL: Documentation, http://www.silx.org/doc/freesas/latest/
+Project-URL: Source, https://github.com/silx-kit/freeas
+Project-URL: Download, https://github.com/silx-kit/freesas/releases
+Project-URL: Tracker, https://github.com/silx-kit/freesas/issues
+Requires-Python: >=3.7
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: matplotlib
+Requires-Dist: silx
+Description-Content-Type: text/markdown
+
+[![Build Status](https://travis-ci.org/kif/freesas.svg)](https://travis-ci.org/kif/freesas)
+[![Build status](https://ci.appveyor.com/api/projects/status/uq4xtv5tvx4k6kox?svg=true)](https://ci.appveyor.com/project/kif/freesas)
+[![Documentation Status](https://readthedocs.org/projects/freesas/badge/?version=latest)](https://freesas.readthedocs.io/en/latest/?badge=latest)
+
+FreeSAS
+=======
+
+Small angle scattering tools ... but unlike most others, free and written in Python (3.9+)
+The FreeSAS tool suite is licensed under the MIT license.
+
+Most features are described in [J. Synchrotron Rad. (2022). 29, 1318-1328](https://scripts.iucr.org/cgi-bin/paper?ju5045)
+
+Available tools
+----------------
+
+*   supycomb: a re-implementation of supcomb as described in [J. Appl. Cryst. (2001). 34, 33-41](http://dx.doi.org/10.1107/S0021889800014126)
+*   autorg: automatic guess of the Guinier region in a SAXS curve, based on [BioXTAS-RAW](https://doi.org/10.1107/S1600576717011438)
+*   auto_guinier automatic guess of the Guinier region in a SAXS curve, based on [J. Appl. Cryst. (2007). 40, s223-s228](http://scripts.iucr.org/cgi-bin/paper?S0021889807002853)
+*   auto_gpa: automatic Guinier peak analysis, based on [J Appl Cryst. (2016). 49, 1412–1419.](https://dx.doi.org/10.1107%2FS1600576716010906)
+*   bift: an Bayesian inverse Fourier transform, based on [J. Appl. Cryst. (2006). 39, 797-804 & BioXtas-RAW](https://scripts.iucr.org/cgi-bin/paper?wf5022)
+*   cormap: a tool to assess the similarity of saxs curves, based on [Nature Methods volume 12, pages 419–422 (2015)](https://www.nature.com/articles/nmeth.3358)
