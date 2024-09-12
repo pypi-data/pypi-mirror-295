@@ -1,0 +1,122 @@
+Metadata-Version: 2.3
+Name: pyopenagi
+Version: 0.0.11
+Summary: OpenAGI: Package for AI Agent Creation
+Project-URL: Homepage, https://github.com/agiresearch/OpenAGI
+Project-URL: Repository, https://github.com/agiresearch/OpenAGI.git
+Project-URL: Tools Docs, https://github.com/agiresearch/OpenAGI/tools.md
+License: MIT License
+        
+        Copyright (c) 2024 AGI Research
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+License-File: LICENSE
+Keywords: agi,llm
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.9
+Requires-Dist: beautifulsoup4
+Requires-Dist: click==8.1.7
+Requires-Dist: playwright
+Requires-Dist: pympler==1.0.1
+Requires-Dist: python-dotenv
+Requires-Dist: python-dotenv==1.0.0
+Requires-Dist: requests
+Description-Content-Type: text/markdown
+
+# OpenAGI: Package for AI Agent Creation
+<a href='https://arxiv.org/abs/2304.04370'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
+[![Code License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](https://github.com/agiresearch/OpenAGI/blob/main/LICENSE)
+<a href='https://discord.gg/B2HFxEgTJX'><img src='https://img.shields.io/badge/Community-Discord-8A2BE2'></a>
+
+
+## ✈️ Getting Started
+OpenAGI is used as the agent creation package to build agents for [AIOS](https://github.com/agiresearch/AIOS).
+### Installation
+From PyPI
+```
+pip install pyopenagi
+```
+Locally
+```
+git clone https://agiresearch/OpenAGI
+cd OpenAGI
+pip install -e .
+```
+
+### Usage
+
+#### Add a new agent
+To add a new agent, first you need to create a folder under the pyopenagi/agents folder.
+The folder needs to be the following structure:
+```
+- pyopenagi/agents
+  - author
+    - agent_name
+      - agent.py # main code for the agent execution logic
+      - config.json # set up configurations for agent
+      - meta_requirements.txt # dependencies that the agent needs
+```
+If you want to use external tools provided by openagi in your agents, you can follow instructions of setting up tools in [How to setup external tools](./tools.md).
+If you want to add new tools for your developing agent,
+you need to add a new tool file in the [folder](./pyopenagi/tools/).
+
+#### Upload agent
+If you have developed and tested your agent, and you would like to share your agents, you can use the following to upload your agents
+```
+python pyopenagi/agents/interact.py --mode upload --agent <author_name/agent_name>
+```
+💡Note that the `agent` param must exactly match the folder you put your agent locally.
+
+#### Download agent
+If you want to look at implementations of other agents that others have developed, you can use the following command:
+```
+python pyopenagi/agents/interact.py --mode download --agent <author_name/agent_name>
+```
+
+## 🚀 Contributions
+
+For detailed information on how to contribute, see [CONTRIBUTE](./CONTRIBUTE.md). If you would like to contribute to the codebase, [issues](https://github.com/agiresearch/OpenAGI/issues) or [pull requests](https://github.com/agiresearch/OpenAGI/pulls) are always welcome!
+
+## 🖋️ Research
+Please check out our [implementation](https://github.com/agiresearch/OpenAGI/tree/research) for our research paper [OpenAGI: When LLM Meets Domain Experts](https://arxiv.org/abs/2304.04370).
+
+```
+@article{openagi,
+  title={OpenAGI: When LLM Meets Domain Experts},
+  author={Ge, Yingqiang and Hua, Wenyue and Mei, Kai and Ji, Jianchao and Tan, Juntao and Xu, Shuyuan and Li, Zelong and Zhang, Yongfeng},
+  journal={In Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2023}
+}
+```
+
+## 🌍 OpenAGI Contributors
+[![OpenAGI contributors](https://contrib.rocks/image?repo=agiresearch/OpenAGI&max=300)](https://github.com/agiresearch/OpenAGI/graphs/contributors)
+
+
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=agiresearch/OpenAGI&type=Date)](https://star-history.com/#agiresearch/OpenAGI&Date)
