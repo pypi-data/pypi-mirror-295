@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: llm-parse-json
+Version: 0.1.4
+Summary: A simple JSON parsing tool that preprocesses and parses JSON strings.
+Home-page: https://github.com/li-xiu-qi/llm-parse-json
+Author: li-xiu-qi
+Author-email: lixiuqixiaoke@qq.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# llm-parse-json
+
+A simple JSON parsing tool that preprocesses and parses JSON strings.
+
+## Installation
+
+You can install the package via pip:
+
+```bash
+pip install llm-parse-json
+````
+
+```python
+from llm_parse_json import parse_json
+
+json_str = '{"name": "John", "age": 30}'
+result = parse_json(json_str)
+print(result)
+```
