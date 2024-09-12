@@ -1,0 +1,430 @@
+Metadata-Version: 2.1
+Name: eark-validator
+Version: 1.1.3
+Summary: E-ARK Python Information Package Validation
+Author-email: E-ARK Foundation <admin@e-ark-foundation.eu>
+Maintainer-email: E-ARK Foundation <admin@e-ark-foundation.eu>, Carl Wilson <carl@openpreservation.org>
+License: 
+                                         Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [2023] [Open Preservation Foundation]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+        
+Project-URL: Homepage, https://www.e-ark-foundation.eu/e-ark-software-py-e-ark-ip-validator/
+Project-URL: Issues, https://github.com/E-ARK-Software/eark-validator/issues
+Project-URL: Repository, https://github.com/E-ARK-Software/eark-validator.git
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: lxml ==5.1.0
+Requires-Dist: importlib-resources ==5.12.0
+Requires-Dist: pydantic <3.0.0,>=2.5.3
+Provides-Extra: testing
+Requires-Dist: pre-commit ; extra == 'testing'
+Requires-Dist: pytest ; extra == 'testing'
+Requires-Dist: pylint ; extra == 'testing'
+Requires-Dist: pytest-cov ; extra == 'testing'
+Requires-Dist: pytest-runner ; extra == 'testing'
+
+# E-ARK Python Information Package Validator
+
+Core package and command line utility for E-ARK Information Package validation.
+
+The validation core component implements validation rules defined by E-ARK specifications which can be found on the
+website of the Digital Information LifeCycle Interoperability Standards Board (DILCIS Board):
+
+<https://dilcis.eu/specifications/>
+
+## Quick Start
+
+### Pre-requisites
+
+Python 3.10 or later is required to run the E-ARK Python Information Package Validator.
+
+You must be running either a Debian/Ubuntu Linux distribution or Windows Subsystem for Linux on Windows to follow these commands.
+If you are running a different Linux distribution you must change the apt commands to your package manager.
+For getting Windows Subsystem for Linux up and running, please follow the guide further down and then come back to this step.
+
+### Getting up and running with the E-ARK Python Information Package Validator
+
+#### Setting up the environment
+
+It is recommended that you create a directory for your EARK work. Write the following:
+
+```shell
+mkdir EARK
+```
+
+To enter the directory use the following command
+
+```shell
+cd EARK/
+```
+
+To retrieve the source code from Github use the following command:
+
+```shell
+git clone https://github.com/E-ARK-Software/eark-validator.git
+```
+
+To enter the new directory containing the source code do:
+
+```shell
+cd eark-validator/
+```
+
+It is recommended that you create a virtual environment for Python. By doing that you avoid "polluting" the host operating system with dynamically fetched dependencies and at the same time it creates a reproducible environment for your validator.
+
+To create a virtual environment we need to install virtualenv (not to be confused with the venv package). But we also need python3-pip to handle our Python packages. Install this by issuing the following command:
+
+```shell
+sudo apt install python3-pip
+```
+
+It will list a number of dependencies. Confirm that you wish to install python3-pip by pressing Y followed by ENTER
+
+Now we can install the virtual environment with the following command:
+
+```shell
+sudo apt install python3-virtualenv
+```
+
+It will list a number of dependencies. Confirm that you wish to install python3-pip by pressing Y followed by ENTER
+
+Finally we will need unzip. Install that by doing:
+
+```shell
+sudo apt install unzip
+```
+
+It will list a number of dependencies. Confirm that you wish to install python3-pip by pressing Y followed by ENTER
+
+
+#### Installing the application
+
+Set up a local virtual environment by issuing the following commands (one line at the time):
+
+```shell
+virtualenv -p python3 venv
+source venv/bin/activate
+```
+
+Update pip to ensure you have the latest and install all the packages required:
+
+```shell
+pip install -U pip
+pip install .
+```
+
+You are now able to run the application "eark-validator". It will validate an Information Package for you.
+
+
+#### Testing a valid package.
+
+You can test a valid package by first retrieving it from the test corpus:
+
+```shell
+wget https://github.com/DILCISBoard/eark-ip-test-corpus/raw/integration/corpora/csip/metadata/metshdr/CSIP12/valid/mets-xml_metsHdr_agent_TYPE_exist.zip
+```
+
+Unzip the package:
+
+```shell
+unzip mets-xml_metsHdr_agent_TYPE_exist.zip
+```
+
+Delete the .zip-file you just downloaded:
+
+```shell
+rm mets-xml_metsHdr_agent_TYPE_exist.zip
+```
+
+Run the eark-validator:
+
+```shell
+eark-validator mets-xml_metsHdr_agent_TYPE_exist/
+```
+
+Result:
+
+```shell
+('Path mets-xml_metsHdr_agent_TYPE_exist/ is dir, struct result is: '
+ 'StructureStatus.WellFormed')
+```
+
+#### A note on testing a directory
+
+If the path passed is a directory, it must contain a single folder which contains the information package (and no other files or folders):
+
+```shell
+user@machine:~$ tree input
+<path to directory>
+  ├── documentation
+  ├── metadata
+  ├── METS.ipxml
+  ├── representations
+  │   └── rep1
+  │       ├── data
+  │       ├── metadata
+  │       └── METS.ipxml
+  └── schemas
+```
+
+### Installing Windows Subsystem for Linux (WSL)
+
+If you do not have Linux and have not previously used WSL please perform the following steps. You must either be logged in as Administrator on the machine or as a user with Administrator rights on the machine.
+
+Start a command prompt (cmd.exe) and then enter the following command:
+
+```shell
+wsl --install
+```
+
+Confirm that the app is allowed to make changes to your device. Installation begins.
+
+Confirm once more that an app is allowed to make changes to your device.
+
+Retrieving and installing the necessary components take a while. Please do not reboot or shutdown your computer during this process. Even if it seems stalled, it is working.
+
+Installation concludes with the message: "The requested operation is successful. Changes will not be effective until the system is rebooted."
+
+Please reboot your computer.
+
+#### After reboot
+
+You will be prompted to create a new "UNIX username". By convention this is often a less than nine character long all-lowercase username. It does not need to match your Windows username.
+
+You will be prompted to set a password.
+
+You are now logged into Ubuntu (the default Linux distribution used by Windows Subsystem for Linux).
+
+##### Update the system
+
+No matter how fresh the install, there will almost always be updates available. To fetch them write the following:
+
+```shell
+sudo apt update
+```
+
+And to install them:
+
+```shell
+sudo apt upgrade
+```
+
+Confirm that you wish to upgrade your packages by pressing Y followed by ENTER
+
+Please resume the guide above.
+
+## For Developers
+
+Developers should install the testing dependencies as well, e.g. [`pytest`](https://docs.pytest.org/en/7.2.x/) and using the [`--editable`](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-e) flag:
+
+```shell
+pip install -U pip
+pip install --editable ".[testing]"
+```
+
+### Running tests
+
+You can run unit tests from the project root: `pytest ./tests/`, or generate test coverage figures by: `pytest --cov=eark_validator ./tests/`. If you want to see which parts of your code aren't tested then: `pytest --cov=eark_validator --cov-report=html ./tests/`. After this you can open the file [`<projectRoot>/htmlcov/index.html`](./htmlcov/index.html) in your browser and survey the gory details.

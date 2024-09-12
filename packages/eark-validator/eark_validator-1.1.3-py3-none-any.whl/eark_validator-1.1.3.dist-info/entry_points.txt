@@ -1,0 +1,2 @@
+[console_scripts]
+eark-validator = eark_validator.cli.app:main
