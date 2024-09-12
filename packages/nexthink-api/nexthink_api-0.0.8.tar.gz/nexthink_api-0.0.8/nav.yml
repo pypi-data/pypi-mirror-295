@@ -1,0 +1,16 @@
+nav:
+  - index.md
+  - Examples: examples.md
+  - Code Reference:
+      - Clients:
+        - Request: nxt_api_request.md
+        - Response: nxt_response.md
+      - Enrichment classes: Enrichment.md
+      - Nql classes: Nql.md
+      - Models:
+          - Endpoints: nxt_endpoint.md
+          - Region Name: nxt_region_name.md
+          - Settings: nxt_settings.md
+          - Token Request: nxt_token_request.md
+          - Token Response: nxt_token_response.md
+          - Invalid Token Request: nxt_invalid_token_request.md

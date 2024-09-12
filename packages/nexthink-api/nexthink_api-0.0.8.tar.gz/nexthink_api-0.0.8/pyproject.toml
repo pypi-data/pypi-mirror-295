@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexthink_api"
+authors = [{name = "Laurent Taupiac", email = "ltaupiac@lfdj.com"}]
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version"]
+description = "Python package for Nexthink API"
+requires-python = ">=3.10"
+keywords=["nexthink", "nql", "enrichment"]
+dependencies=[
+    "requests==2.31.0",
+    "urllib3",
+    "pydantic",
+    "pyyaml",
+]
+readme = "README.md"
+
+[tool.uv]
+dev-dependencies = [
+  "pytest>=8.1.1,<9",
+  "ruff>=0.6.2",
+  "bump-my-version>=0.26.0",
+  "pip>=24.2",
+  "pipdeptree>=2.23.1",
+  "pip-autoremove>=0.10.0",
+  "twine>=5.1.1",
+  "pylint>=3.2.6",
+  "pytest-env>=1.1.4",
+  "pytest-mock>=3.14.0",
+  "mkdocs>=1.6.1",
+  "mkdocs-autorefs>=1.2.0",
+  "mkdocs-material>=9.5.34",
+  "mkdocstrings>=0.26.1",
+  "mkdocstrings-python>=1.11.1",
+]
+
+[tool.setuptools_scm]
+version_file = "src/nexthink_api/_version.py"
+git_describe_command="git describe --tags"
+
+[project.urls]
+Documentation = "https://developer.nexthink.com/docs/api/"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests/unit", "tests/integration"]
+env = [
+    "NEXTHINK_API_YAML=src/nexthink_api/yaml",
+    "NEXTHINK_API_TESTS_DATA=tests"
+]
+markers = [
+    "yaml: test with YAML file",
+]
+addopts = ["--assert=plain", "-ra", "--showlocals", "--strict-markers", "--strict-config"]
+xfail_strict = true 
+filterwarnings = ["error"]
+log_cli_level = "info"
+
+[pytest]
+mock_use_standalone_module = true
+
+[tool.ruff.lint]
+select = [
+    "D",     # pydocstyle
+    "PL",    # Pylint
+    "E",     # pycodestyle
+    "F",     # pyflakes
+    "W",     # pycodestyle
+    "C90",   # mccabe
+    "ANN",   # flake8-annotations
+    "N",     # pep8-naming
+]
+ignore = [
+    "D417",     # Missing argument descriptions in the docstring
+    "D203",     # 1 blank line required before class docstring
+    "D213",     # Multi-line docstring summary should start at the first line
+    "ANN101",   # Missing type annotation for self in method
+    "ANN102",   # Missing type annotation for cls in classmethod
+    "ANN204",   # Missing return type annotation for special method `__init__`
+]
+
+[tool.ruff]
+line-length  = 120
+exclude = [
+    "tests",
+    "venv",
+    ".venv",
+]
+
