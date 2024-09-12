@@ -1,0 +1,136 @@
+$text: #cad3f5;
+$highlighted: #7dc4e4;
+$background: #24273a;
+$border: #7dc4e4;
+$scrollbar-background: #363a4f;
+$scrollbar-background-active: #363a4f;
+$scrollbar-color-active: #6e738d;
+$scrollbar-color-hover: #b7bdf8;
+$scrollbar-color: #6e738d;
+$button-cancel: #ed8796;
+$button-accept: #a6da95;
+$toast-text: #cad3f5;
+$toast-background: #24273a;
+$toast-information: #a6da95;
+$toast-error: #ed8796;
+$toast-warning: #f5a97f;
+
+Screen {
+  background: $background;
+  layout: horizontal;
+}
+
+Tabloid,
+Markdown {
+  scrollbar-background-active: $scrollbar-background-active;
+  scrollbar-background: $scrollbar-background;
+  scrollbar-color-active: $scrollbar-color-active;
+  scrollbar-color-hover: $scrollbar-color-hover;
+  scrollbar-color: $scrollbar-color;
+  scrollbar-size: 1 1;
+  scrollbar-size-horizontal: 1;
+}
+
+Tabloid {
+  border-title-align: left;
+  border: round $border;
+  height: 100%;
+  margin: 1;
+  overflow-x: hidden;
+  width: 1fr;
+
+  .datatable--hover {
+    color: $text;
+    background: $highlighted 30%;
+  }
+
+  .datatable--cursor {
+    background: $highlighted;
+  }
+}
+
+LoadingIndicator {
+  color: $highlighted;
+  background: $background;
+}
+
+HelpModal,
+ConfirmModal {
+  align: center middle;
+  background: $background 70%;
+}
+
+.modal {
+  border: round $border;
+  height: 1fr;
+  max-height: 12;
+  max-width: 60;
+  width: 1fr;
+}
+
+.modal--help {
+  grid-columns: 1fr;
+  grid-rows: 1fr auto;
+  layout: grid;
+
+  & > Static {
+    content-align: center middle;
+    height: 100%;
+    margin: 1;
+  }
+
+  & Button {
+    background: transparent;
+    color: $text;
+    width: 1fr;
+
+    &#no {
+      border: round $button-cancel;
+
+      &:focus {
+        color: $button-cancel;
+      }
+    }
+
+    &#yes {
+      border: round $button-accept;
+
+      &:focus {
+        color: $button-accept;
+      }
+    }
+  }
+}
+
+Markdown > * {
+  color: $text;
+}
+
+Toast {
+  color: $toast-text;
+  background: $toast-background;
+
+  &.-information {
+    border-left: outer $toast-information;
+  }
+
+  &.-information .toast--title {
+    color: $toast-information;
+  }
+
+  &.-warning {
+    border-left: outer $toast-warning;
+  }
+
+  &.-warning .toast--title {
+    color: $toast-warning;
+  }
+
+  &.-error {
+    border-left: outer $toast-error;
+  }
+
+  &.-error .toast--title {
+    color: $toast-error;
+  }
+}
