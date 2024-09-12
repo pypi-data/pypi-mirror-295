@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/finite_dist/__init__.py
+src/finite_dist/__init__.pyi
+src/finite_dist/basics.py
+src/finite_dist.egg-info/PKG-INFO
+src/finite_dist.egg-info/SOURCES.txt
+src/finite_dist.egg-info/dependency_links.txt
+src/finite_dist.egg-info/top_level.txt
