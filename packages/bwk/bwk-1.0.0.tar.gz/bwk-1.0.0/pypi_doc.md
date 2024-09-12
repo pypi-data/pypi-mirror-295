@@ -1,0 +1,404 @@
+#  Blessed Window Kit (bwk)
+
+
+ A simple Python windowing kit module for use with _**Blessed**_ terminal formatting.
+
+* Documentation:   [https:blessed.readthedocs.io/en/1.20.0/https:blessed.readthedocs.io/en/1.20.0/](https:blessed.readthedocs.io/en/1.20.0/)
+* Source Code:     [https:github.com/jquast/blessedhttps:github.com/jquast/blessed](https:github.com/jquast/blessed)
+* Installation: ``` pip3 install blessed==1.20.0 ```
+
+
+- Use in your project by importing the module:
+  - ```from bwk import Border, Window, echo, flush```
+
+
+## ``` bwk.characters.UnicodeChars```
+
+
+
+ A struct-like class which contains Unicode characters commonly used in Text-Based User Interfaces (TUI's).
+
+## ``` bwk```
+
+
+**Constants:**
+
+* ```DEFAULT_WINDOW_BORDER```: a ```borderchar```string (see ```Border```object) which uses the solid line Unicode characters
+
+
+#### ``` def echo(str, end='', flush=False):```
+
+**Parameters:**
+
+* ```str```: the string to output
+* ```end```: a suffix to append to the string
+* ```flush```: whether or not to flush the buffer of the output stream
+
+
+
+ A convenience method for working with _**Blessed**_ . This method will use the built-in Python ```print()```method but with the above parameters defaulted differently. It is intended to be used as a way to buffer output for the current outstream without flushing it.
+
+#### ``` def flush():```
+
+
+ A convenience method which flushes the current output stream. Equivalent to ``` print('', end='', flush=True) ``` .
+
+#### ``` def window_shopper(termstuff, *args, **kwargs):```
+
+**Parameters:**
+
+* ```termstuff```: a function to execute within a _**Blessed**_ terminal context
+* ```args```: arguments to be passed to ```termstuff```
+* ```kwargs```: keyword arguments to be passed to ```termstuff```
+
+
+
+ This method provides a default terminal context to preview window layouts. The terminal context provided is A fullscreen ```blessed.Terminal```with a hidden cursor. Pressing any key ends the terminal context.
+
+
+ The ```termstuff```function must receive the ```Terminal```object as its first argument, it must include ```*args```and ```**kwargs```, and has no return value.
+
+```
+def mywindowfunc(term, *args, **kwargs):
+   # do window layout here
+
+```
+
+
+**NOTE:**  The terminal context will automaticaly flush the stream, so you do not need to use the ```flush()```method, only ```echo()```.
+
+
+## ``` class Border:```
+
+
+
+ A class for defining the borders of a ```Window```object.
+
+**Attributes:**
+
+* ```upper_left_corner```: ( **default:** ```''```)
+* ```top_border```: ( **default:** ```''```)
+* ```upper_right_corner```: ( **default:** ```''```)
+* ```right_border```: ( **default:** ```''```)
+* ```lower_right_corner```: ( **default:** ```''```)
+* ```bottom_border```: ( **default:** ```''```)
+* ```lower_left_corner```: ( **default:** ```''```)
+* ```left_border```: ( **default:** ```''```)
+
+
+#### ``` def __init__(self, borderchars=''):```
+
+**Parameters:**
+
+* ```borderchars```: a string of characters to use for the border
+
+
+
+ Creates a new ```Border```object. The ```borderchars```string must be exactly 8 characters long. If it is not, then no border is used. The characters form the corners and sides starting with the upper left corner and going clockwise.
+
+
+ **Example:** ```borderchars='1=2:3+4|```'
+
+```
+1=====2
+|     :
+|     :
+4+++++3
+
+```
+
+
+
+ You can also directly alter any of the border characters via the object's attributes (see **Attributes** above)
+
+## ``` class Window:```
+
+
+
+ A rectangular container for displaying content.
+
+**Constants:**
+
+* ```TITLE_ALIGNS```: A set of strings to identify the alignment of the window ```title```
+
+
+**Attributes:**
+
+* ```term```: the ```blessed.Terminal```object used for display
+* ```x```: the column of the terminal that the upper left corner is placed
+* ```y```: the row of the terminal that the upper left corner is placed
+* ```height```: the total height of the window (including the borders)
+* ```width```: the total width of the window (including borders)
+* ```border```: a ```Border```object which defines the border display of the window
+* ```title```: the title displayed at the top of the window
+* ```title_align```: the alignment of the ```title```
+* ```content```: a string of characters to display in the window
+
+
+**NOTE:**  When a ```Window```is defined, there must be content added to it, either by setting the ```content```attribute directly, or by overriding the ```render_content()```method. The window is not buffered to the output stream unless the ```render()```method is called.
+
+
+#### ``` def __init__(self, term, x, y, height=None, width=None, fore_color=None, bg_color=None, border=DEFAULT_WINDOW_BORDER, title='', title_align='center'):```
+
+**Parameters:**
+
+* ```term```: the ```blessed.Terminal```object used for display
+* ```x```: the column of the terminal that the upper left corner is placed
+* ```y```: the row of the terminal that the upper left corner is placed
+* ```height```: the total height of the window (including the borders)
+* ```width```: the total width of the window (including borders)
+* ```fore_color```: _not yet implemented_
+* ```bg_color```: _not yet implemented_
+* ```border```: a ```borderchar```string or a ```Border```object
+* ```title```: the title displayed at the top of the window
+* ```title_align```: the alignment of the ```title```
+
+
+
+ If ```height```or ```width```is not provided, then that dimension will stretch all the way to the edge of the terminal. If ```border```is set to ```None```, then no border will be drawn. The ```title```will not be displayed unless there is a ```border```with at least the ```top_border```attribute set. The ```title_align```string must be one of the following values: ```left```, ```center```, or ```right```.
+
+#### ``` def render(self):```
+
+
+ Echoes the window to the output stream buffer (via the ```echo()```function). The content of the window is limited by the ```height```and ```width```of the window (minus the height and width of the border). Any characters which are beyond the dimensions of the window will not be displayed.
+
+#### ``` def render_content(self, max_width, max_height):```
+
+**Parameters:**
+
+* ```max_width```: the total width of the window (minus the width of the borders)
+* ```max_height```: the total height of the window (minus the height of the borders)
+
+
+**Returns:**  A string or list of strings which will fit in the dimensions of the window.
+
+
+
+ This method is provided to be overriden, either by overwriting the instance attrbute ```render_content```with a different function, or by overriding this function in a subclass. By default, this method simply returns the window's ```content```string.
+
+
+ This method is called by the ```render()```method. If the return value is a string, ```render()```will iterate over the each line (delimited by a ```n```). If the return value is a list of strings, ```render()```will iterate over the list.
+
+#  Blessed Window Kit Screen Tools (bwk.screen)
+
+
+ An extension of the Blessed Window Kit (BWK) for quickly building Text-Based User Interface (TUI) applications.
+
+- Use in your project by importing the module:
+  - ```import bwk.screen```
+
+
+## ``` class Screen:```
+
+
+
+ A barebones implementation for rendering output to a terminal and processing input. This can be used with or without the BWK itself (see the ```ScreenManager```classes below).
+
+**Attributes:**
+
+* ```man```: a ```ScreenManager```which the sceen is associated to.
+* ```name```: the name of the screen
+* ```commands```: a dictionary of commands. Each value is a function which will execute when input matching its key is received by the screen.
+
+
+#### ``` def __init__(self, manager, name, commands={}):```
+
+**Parameters:**
+
+* ```man```: a ```ScreenManager```which the sceen is associated to.
+* ```name```: the name of the screen
+* ```commands```: a dictionary of commands. Each value is a function which will execute when input matching its key is received by the screen.
+
+
+#### ``` def set_commands(self):```
+
+
+ Use this method to append commands to the screen. When the ```process_input()```method is called, it checks if the input matches any keys in ```self.commands```. If there is a matching key, the screen will execute the function stored by that key. Typically this method is used to add methods of the class itself ( ```self.method_name()```), as they cannot be accessed easily from outside the class. Therefore, the typical structure of this method looks like the example below.
+
+
+ **Example:**
+
+```
+def set_commands(self):
+  self.commands['d'] = self.method_one
+  self.commands['x'] = self.method_two
+  self.commands['3'] = self.method_three
+
+```
+
+
+#### ``` def pre_process_input(self, userin):```
+
+**Parameters:**
+
+* ```userin```: the input received to the screen
+
+
+
+ This method executes after a screen receives input, but before a matching command is executed.
+
+#### ``` def post_process_input(self, userin):```
+
+**Parameters:**
+
+* ```userin```: the input received to the screen
+
+
+
+ This method executes after the input has been processed by the screen (which may be a command, or an error).
+
+#### ``` def process_input(self, userin):```
+
+**Parameters:**
+
+* ```userin```: the input received to the screen
+
+
+
+ This is the main method which handles input to the screen. It executes the following steps in order:
+
+* ```self.pre_process_input(userin)```
+* if ```userin```matches a key in ```self.commands,```executes the corresponding function
+* if ```userin```does not match a key in ```self.commands,```executes ```self.process_input_error(userin)```
+* ```self.post_process_input(userin)```
+
+
+#### ``` def process_input_error(self, userin):```
+
+**Parameters:**
+
+* ```userin```: the input received to the screen
+
+
+
+ This method executes when an input does not match any key in ```self.commands```.
+
+#### ``` def render(self):```
+
+
+ This method will render the screen content to the terminal.
+
+## ``` class GenericScreenManager:```
+
+
+
+ A barebones implementation for running an application loop with ```Screen```objects.
+
+**Attributes:**
+
+* ```running```: a boolean indicating if the run loop should continue
+* ```curr_screen```: the current ```Screen```object being used to render output and process input
+
+
+#### ``` def __init__(self):```
+
+
+ Initializes the manager.
+
+#### ``` def pre_run(self):```
+
+
+ This method executes before the run loop begins. Any necessary preparation before the application starts should be done here.
+
+#### ``` def post_run(self):```
+
+
+ This method executes after the run loop ends. Any necessary cleanup after the application has ended should be done here.
+
+#### ``` def run(self):```
+
+
+ This is the main entrypoint for the ```ScreenManager```. Execute this method to begin the application loop, including the ```pre_run()```and ```post_run()```methods.
+
+#### ``` def run_loop(self):```
+
+
+ The actual implementation of the application loop. It executes the follwoing setps in order:
+
+* ```self.render()```
+* ```self.get_user_input()```
+* ```self.process_input(userin)```
+
+
+
+ The above steps will continue to execute until ```self.running```is False or there is no ```self.curr_screen```set (meaning that there is no way to display output or process input).
+
+#### ``` def render(self):```
+
+
+ Renders output to the terminal. This is typically done via ```self.curr_screen.render()```.
+
+#### ``` def get_user_input(self):```
+
+
+ Gets input from the user. This can be overriden for specific input types. By default, it uses Python's ```input()```method.
+
+#### ``` def process_input(self, userin):```
+
+**Parameters:**
+
+* ```userin```: the input received from the user
+
+
+
+ Processes the input received from the user. This is typically done via ```self.curr_screen.process_input(userin)```.
+
+#### ``` def quit(self):```
+
+
+ A convenience method for ending the application loop. By default, this simply sets ```self.running```to False.
+
+**Parameters:**
+
+* ```exc```: the ```Exception```raised during the application loop
+
+
+
+ In the event that an exception is not caught during the application loop, the manager will gracefully catch the exception and handle it here. After this method executes, the ```post_run()```method executes, to ensure that all necessary cleanup is still performed despite the program crashing.
+
+## ``` class BwkScreenManager(GenericScreenManager):```
+
+
+
+ A screen manager for running specifically for handling screens which utilize the Blessed Window Kit for rendering.
+
+**Attributes:**
+
+* ```running```: a boolean indicating if the run loop should continue
+* ```curr_screen```: the current ```Screen```object being used to render output and process input
+* ```term```: the ```blessed.Terminal```object used to render screens
+
+
+#### ``` def __init__(self, term=None):```
+
+**Parameters:**
+
+* ```term```: the ```blessed.Terminal```object used to render screens
+
+
+
+ Initializes the screen manager. If no ```term```is provided, a default ```Terminal()```is used.
+
+#### ``` def run(self):```
+
+
+ Overrides the original ```run()```with special context managers for BWK:
+
+* ```term.fullscreen```
+* ```term.cbreak```
+* ```term.hidden_cursor```
+
+
+
+ This ensures that the application behaves similarly to the ```window_shopper()```method provided by the BWK to simplify building and managing screens.
+
+#### ``` def get_user_input(self):```
+
+
+ Overrides this method to use the ```self.term.inkey()```method to get user input, rather than the default Python ```input()```method.
+
+#### ``` def process_input(self, userin):```
+
+
+ Overrides this method to ensure that proper key name is sent to the screen's ```process_input()```method.
+

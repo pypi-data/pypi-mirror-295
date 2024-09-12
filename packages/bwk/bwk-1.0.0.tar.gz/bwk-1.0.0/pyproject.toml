@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "bwk"
+version = "1.0.0"
+description = "A simple Python windowing kit module for use with Blessed terminal formatting."
+authors = ["Charlie Koch <charles@cerrax.com>"]
+license = "BSD-2-Clause"
+readme = "pypi_doc.md"
+packages = [{ include = "bwk", from = "src" }]
+
+[tool.poetry.urls]
+Homepage = "http://cerrax.com"
+#Documentation = "https://readthedocs.org"
+Repository = "https://gitlab.com/charles.w.koch/blessed-window-kit"
+#Issues = "https://github.com/me/spam/issues"
+Changelog = "https://gitlab.com/charles.w.koch/blessed-window-kit/-/blob/main/CHANGELOG.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+blessed = "1.20.0"
+cerrax-py = "1.0.0"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+candk = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
