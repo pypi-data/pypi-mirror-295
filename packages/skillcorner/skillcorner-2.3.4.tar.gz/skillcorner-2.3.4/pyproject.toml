@@ -1,0 +1,62 @@
+[project]
+name = "skillcorner"
+version = "2.3.4"
+description = "Python client for interact with SkillCorner API"
+homepage = "https://skillcorner.com/"
+repository = "https://gitlab.com/public-corner/skillcorner"
+documentation = "https://skillcorner.readthedocs.io/en/latest/"
+readme = "README.md"
+requires-python = ">=3.8,<3.13"
+dependencies = [
+    "fitrequest>=0.8.2",
+    "orjson>=3.9.10",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[tool.poe.tasks.lock]
+help = "Lock file"
+shell = "uv lock"
+
+[tool.poe.tasks.lock_upgrade]
+help = "Lock file"
+shell = "uv lock --upgrade"
+
+[tool.poe.tasks.test]
+sequence = [
+  {cmd = "coverage run -m pytest --junitxml=junit_test.xml"},
+  {cmd = "coverage xml"},
+  {cmd = "coverage html"},
+  {cmd = "coverage report --omit 'tests/*'"}
+]
+
+[tool.ruff]
+fix = true
+line-length = 120
+lint.select = ["B", "E", "F", "I001", "Q", "SIM", "UP", "W"]
+target-version = "py38"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+
+[tool.uv]
+dev-dependencies = [
+    "coverage>=7.6.1",
+    "defusedxml>=0.7.1",
+    "poethepoet>=0.28.0",
+    "pre-commit>=3.5.0",
+    "pytest>=8.3.3",
+    "requests-mock>=1.12.1",
+    "ruff>=0.6.4",
+]
