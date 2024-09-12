@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/apispirit/__init__.py
+src/apispirit/__main__.py
+src/apispirit.egg-info/PKG-INFO
+src/apispirit.egg-info/SOURCES.txt
+src/apispirit.egg-info/dependency_links.txt
+src/apispirit.egg-info/entry_points.txt
+src/apispirit.egg-info/top_level.txt
+tests/test_dummy.py
