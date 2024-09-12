@@ -1,0 +1,134 @@
+[project]
+name = "pelican-pdf"
+version = "1.0.5"
+description = "PDF Generator is a Pelican plugin that exports articles and pages as PDF files during site generation"
+authors = [
+    { name = "Justin Mayer", email = "entroP@gmail.com" },
+    { name = "Dominik Wombacher", email = "dominik@wombacher.cc" },
+]
+readme = "README.md"
+keywords = [
+    "pelican",
+    "plugin",
+    "pdf",
+    "generator",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Framework :: Pelican",
+    "Framework :: Pelican :: Plugins",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8.1,<4.0"
+dependencies = [
+    "pelican>=4.5",
+    "rst2pdf>=0.99",
+    "xhtml2pdf>=0.2.5",
+]
+
+[project.license]
+text = "AGPL-3.0"
+
+[project.urls]
+Homepage = "https://github.com/pelican-plugins/pdf"
+"Issue Tracker" = "https://github.com/pelican-plugins/pdf/issues"
+Funding = "https://donate.getpelican.com/"
+
+[project.optional-dependencies]
+markdown = [
+    "markdown>=3.4",
+]
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "invoke>=2.2.0",
+    "ruff>=0.6.4,<0.7.0",
+]
+test = [
+    "markdown>=3.4",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-sugar>=1.0",
+]
+
+[tool.pdm.build]
+source-includes = [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+]
+includes = [
+    "pelican/",
+]
+excludes = [
+    "**/.DS_Store",
+    "**/test_data/**",
+    "tasks.py",
+]
+
+[tool.autopub]
+project-name = "PDF Generator"
+git-username = "botpub"
+git-email = "52496925+botpub@users.noreply.github.com"
+append-github-contributor = true
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "BLE",
+    "C4",
+    "D",
+    "E",
+    "F",
+    "I",
+    "ICN",
+    "ISC",
+    "PGH",
+    "PL",
+    "RET",
+    "RUF",
+    "SIM",
+    "T10",
+    "T20",
+    "TID",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+]
+ignore = [
+    "D100",
+    "D102",
+    "D103",
+    "D104",
+    "D107",
+    "D203",
+    "D213",
+    "ISC001",
+    "PGH004",
+    "RUF012",
+    "RUF100",
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = [
+    "pelican",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
