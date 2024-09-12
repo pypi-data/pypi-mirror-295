@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: statelydb
+Version: 0.1.2
+Summary: Python client for StatelyDB API
+Home-page: https://stately.cloud
+License: Apache-2.0
+Keywords: stately,statelydb,statelycloud
+Author: Stately Cloud
+Author-email: support@stately.cloud
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aiohttp (>=3.9.5,<4.0.0)
+Requires-Dist: asyncio (>=3.4.3,<4.0.0)
+Requires-Dist: googleapis-common-protos (>=1.65.0,<2.0.0)
+Requires-Dist: grpclib (>=0.4.7,<0.5.0)
+Requires-Dist: protobuf (>=5.27.1,<6.0.0)
+Project-URL: Documentation, https://docs.stately.cloud
+Project-URL: Repository, https://github.com/StatelyCloud/python-sdk
+Description-Content-Type: text/markdown
+
+# StatelyDB SDK for Python
+
+This is the Python client for the Stately Cloud API. We're still in an invite-only
+preview mode - if you're interested, please reach out to preview@stately.cloud.
+
+This client is not meant for direct usage. You should instead setup a schema and
+use our [CLI](https://stately.cloud/downloads) to generate your own personalized
+Python package which will wrap this client.
+
+
+The client library can be installed as such:
+
+```
+pip install statelydb
+```
+
+When you join the preview program, we'll set you up with a few bits of information:
+
+1. `STATELY_CLIENT_ID` - a client identifier so we know what client you are.
+2. `STATELY_CLIENT_SECRET` - a sensitive secret that lets your applications authenticate with the API.
+3. A store ID that identifies which store in your organization you're using.
+4. A link to more in-depth documentation than this README.
+
+
