@@ -1,0 +1,48 @@
+[project]
+name = "tilebox-workflows"
+dynamic = ["version"]
+description = "Workflow client and task runner for Tilebox"
+authors = [{ name = "Tilebox, Inc.", email = "support@tilebox.com" }]
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">=3.10"
+dependencies = [
+    "tilebox-datasets",
+    "tilebox-grpc",
+    "google-cloud-storage>=2.10",
+    "opentelemetry-api>=1.25",
+    "opentelemetry-exporter-otlp-proto-http>=1.25",
+    "opentelemetry-sdk>=1.25",
+    "tenacity>=8",
+    "boto3>=1.33",
+    "betterproto>=2.0.0b6",
+]
+
+[project.urls]
+Homepage = "https://tilebox.com"
+Documentation = "https://docs.tilebox.com/workflows/introduction"
+
+[tool.uv]
+dev-dependencies = ["moto>=5"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["tilebox"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["tilebox"]
+
+[tool.coverage.run]
+omit = ["tilebox/workflows/workflowsv1/*"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+addopts = "-Wall -Werror --import-mode importlib"
+asyncio_default_fixture_loop_scope = "function"
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
