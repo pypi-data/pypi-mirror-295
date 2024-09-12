@@ -1,0 +1,2 @@
+[console_scripts]
+biomodels-cli = searchBioModels:main
