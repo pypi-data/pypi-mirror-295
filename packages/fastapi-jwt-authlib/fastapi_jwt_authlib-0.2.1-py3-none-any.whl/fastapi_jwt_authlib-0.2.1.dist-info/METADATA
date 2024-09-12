@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: fastapi-jwt-authlib
+Version: 0.2.1
+Summary: A FastAPI JWT authentication library
+Home-page: https://github.com/kovalewvladimir/fastapi-jwt-authlib
+License: MIT
+Author: kovalew.vladimir
+Author-email: kovalew.vladimir@gmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: fastapi (>=0.114.1,<0.115.0)
+Requires-Dist: pyjwt (>=2.9.0,<3.0.0)
+Project-URL: Repository, https://github.com/kovalewvladimir/fastapi-jwt-authlib
+Description-Content-Type: text/markdown
+
+# fastapi-jwt-authlib
+
+[![PyPI version](https://badge.fury.io/py/fastapi-jwt-authlib.svg)](https://badge.fury.io/py/fastapi-jwt-authlib)
+
+---
+
+**Source Code**: <a href="https://github.com/kovalewvladimir/fastapi-jwt-authlib" target="_blank">https://github.com/kovalewvladimir/fastapi-jwt-authlib</a>
+
+---
+
+## Описание проекта
+
+Библиотека для аутентификации JWT в FastAPI. Она предоставляет удобные инструменты для работы с JWT токенами, обеспечивая безопасность и простоту интеграции в ваши FastAPI приложения.
