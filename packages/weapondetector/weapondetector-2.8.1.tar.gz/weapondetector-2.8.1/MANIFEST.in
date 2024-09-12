@@ -1,0 +1,3 @@
+include weapondetector/model/*
+include weapondetector/assets/*
+include weapondetector/openh264-1.8.0-win64.dll

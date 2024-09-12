@@ -1,0 +1,3 @@
+[console_scripts]
+weapondetector = weapondetector.main:main
+
