@@ -1,0 +1,28 @@
+[build-system]
+requires = ["flit_core>=3.4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "wukongbaobao"
+version = "1.0.5"
+authors = [
+  { name="qiqilelebaobao", email="qiqilelebaobao@163.com" },
+]
+description = "Wukongbaobao is a program that helps parents flexibly generate test questions for their children. The tool is written in Python."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "python-docx",
+]
+
+keywords = ["education", "math", "learn", "kids-learn", "kids-education"]
+
+[project.urls]
+Homepage = "https://github.com/qiqilelebaobao/wukongbaobao"
+Issues = "https://github.com/qiqilelebaobao/wukongbaobao/issues"
+Repository = "https://github.com/qiqilelebaobao/wukongbaobao"
