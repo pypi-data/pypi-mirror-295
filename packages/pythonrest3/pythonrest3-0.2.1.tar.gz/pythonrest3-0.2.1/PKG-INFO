@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pythonrest3
+Version: 0.2.1
+Summary: A CLI tool that generates a complete API using a connection string for supported databases: mysql, mssql, mariadb and postgres
+Author: Seven Technologies Cloud
+Author-email: admin@seventechnologies.cloud
+Maintainer: Seven Technologies Cloud
+Keywords: api,rest api,database,python,mysql,mssql,postgres,aurora,mariadb
+License-File: LICENSE
+Requires-Dist: typer==0.9.0
+Requires-Dist: PyYAML==6.0.1
+Requires-Dist: parse==1.20.0
+Requires-Dist: mergedeep==1.3.4
+Requires-Dist: pymysql==1.1.0
+Requires-Dist: rsa==4.9
+Requires-Dist: cryptography==42.0.7
+Requires-Dist: cffi==1.16.0
+Requires-Dist: pycparser==2.22
+Requires-Dist: pyasn1==0.6.0
+Requires-Dist: psycopg2-binary==2.9.9
+Requires-Dist: pymssql==2.2.11
