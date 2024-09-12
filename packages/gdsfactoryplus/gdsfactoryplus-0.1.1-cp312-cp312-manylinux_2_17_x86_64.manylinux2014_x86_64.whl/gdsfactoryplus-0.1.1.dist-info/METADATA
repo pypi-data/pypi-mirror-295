@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: gdsfactoryplus
+Version: 0.1.1
+Summary: GDSFactory+
+Author: GDSFactory+
+Author-email: contact@gdsfactory.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: altair
+Requires-Dist: basedpyright
+Requires-Dist: bokeh
+Requires-Dist: gdsfactory[full]==8.8.7
+Requires-Dist: kweb>=2.0.4
+Requires-Dist: numpy<2
+Requires-Dist: orjson
+Requires-Dist: pydantic<2.9
+Requires-Dist: sax>=0.13.3
+Requires-Dist: scipy<1.13
+Requires-Dist: toml
+Requires-Dist: trimesh[easy]
+Requires-Dist: websocket-client
+Requires-Dist: typer
+
+# GDSFactory+
+
+Python library and CLI with gdsfactory extensions
