@@ -1,0 +1,22 @@
+[build-system]
+requires = ["flit_core>=3.4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "callstack"
+version = "0.2.0"
+authors = [
+  { name="Jonathan Woodburn", email="atriace@gmail.com" },
+]
+description = "A call stack which includes the Class, and a simpler Frame structure."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://gitlab.com/Atriace/callstack"
+Issues = "https://gitlab.com/Atriace/callstack/-/issues"
