@@ -1,0 +1,11 @@
+ecmwfspec-0.0.1.dist-info/METADATA,sha256=sY61mwmY1rT28DN5pR5gnEytN_xm0FiHKg_644Jp9JY,2432
+ecmwfspec-0.0.1.dist-info/WHEEL,sha256=CuZGaXTwoRLAOVv0AcE3bCTxO5ejVuBEJkUBe9C-kvk,94
+ecmwfspec-0.0.1.dist-info/entry_points.txt,sha256=mTqkgHdEdp9_rh9zNljDpQpFe13CQicUBxipZiOilj8,44
+ecmwfspec/__init__.py,sha256=KFdeYeIxaTU5qUcYs6awghdCuHjccmJ1VZ1yDKYpos8,183
+ecmwfspec/core.py,sha256=YFFeKcW6l0h2XMybmajco94c9a4OdtJGi3NvJ9m5dME,11719
+ecmwfspec/ecfs_wrapper.py,sha256=wI3jCVoKYUC1sqvNvpeqHeaHr2eSywaCvWXmOzkcTQU,1849
+ecmwfspec/tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+ecmwfspec/tests/conftest.py,sha256=9WcKFgyn0WycrwRkuZuTvjlRQPr7dh2C-GtGgkI1qY4,6077
+ecmwfspec/tests/test_open_dataset.py,sha256=hvMShS1HJW0i_a0EK9z3BxHCT9fBHVowagA06z6iJJw,4866
+ecmwfspec/xr_accessor.py,sha256=NfwT_PewyhHSc3UPEcRNe3kyCHN_PlqlBbVUI-HuXuc,4672
+ecmwfspec-0.0.1.dist-info/RECORD,,
