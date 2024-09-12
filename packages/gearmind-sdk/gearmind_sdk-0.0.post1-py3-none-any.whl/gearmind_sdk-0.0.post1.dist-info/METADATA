@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: gearmind-sdk
+Version: 0.0.post1
+Summary: A Python SDK for interacting with the GearMind API
+Author-email: Patcharaphon Srida <muc5674@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/mengsokool/gearmind-sdk-python
+Project-URL: Bug Tracker, https://github.com/mengsokool/gearmind-sdk-python/issues
+Keywords: gearmind,api,sdk
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.25.0
+
+# GearMind SDK
+
+A Python SDK for interacting with the GearMind API.
+
+## Installation
+
+```bash
+pip install gearmind-sdk
+```
+
+## Usage
+
+```python
+from gearmind_sdk import GearMindSDK, Message
+
+sdk = GearMindSDK(api_key="your_api_key_here")
+messages = [
+    Message(role="user", content="Hello, how are you?")
+]
+
+try:
+    response = sdk.chat(messages)
+    print(f"Assistant: {response.content}")
+except GearMindError as e:
+    print(f"Error: {e}")
+    if e.status_code:
+        print(f"Status code: {e.status_code}")
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
