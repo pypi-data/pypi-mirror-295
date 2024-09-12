@@ -1,0 +1,13 @@
+numpy
+scikit-learn
+nltk
+python-dateutil
+openai
+spacy
+
+[dev]
+pytest
+black
+isort
+mypy
+flake8
