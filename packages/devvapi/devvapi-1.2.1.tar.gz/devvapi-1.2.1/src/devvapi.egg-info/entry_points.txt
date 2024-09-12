@@ -1,0 +1,2 @@
+[console_scripts]
+devvapi-admin = devvapi.setup.devvapi:main
