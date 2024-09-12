@@ -1,0 +1,15 @@
+LICENCE
+README.md
+setup.py
+StealerDiscord/__init__.py
+StealerDiscord/discord_injection.py
+StealerDiscord/exctract_pc_info.py
+StealerDiscord/extract_browser.py
+StealerDiscord/extract_token.py
+StealerDiscord/roblox_info.py
+StealerDiscord/token_info.py
+StealerDiscord.egg-info/PKG-INFO
+StealerDiscord.egg-info/SOURCES.txt
+StealerDiscord.egg-info/dependency_links.txt
+StealerDiscord.egg-info/requires.txt
+StealerDiscord.egg-info/top_level.txt
