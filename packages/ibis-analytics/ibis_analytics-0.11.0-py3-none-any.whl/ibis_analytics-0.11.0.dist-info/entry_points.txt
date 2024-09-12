@@ -1,0 +1,2 @@
+[console_scripts]
+ia = ibis_analytics.cli:app
