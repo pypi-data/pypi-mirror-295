@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: DdnAtlas
+Version: 0.1.6
+Summary: 
+Author: Kenneth Stott
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: PyYAML (>=6.0.2,<7.0.0)
+Requires-Dist: anthropic (>=0.34.2,<0.35.0)
+Requires-Dist: click (>=8.0.3,<9.0.0)
+Requires-Dist: pyfiglet (>=0.8.post1,<0.9)
+Requires-Dist: python-dotenv (>=0.19.1,<0.20.0)
+Requires-Dist: requests (>=2.26.0,<3.0.0)
