@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: xgbGAMView
+Version: 0.1
+Summary: Generalized Additive Models (GAMs) trained using xgboost with visualization and smoothing
+Home-page: https://github.com/TAU-MLwell/xgbGAMView
+Author: MLWell lab, Tel-Aviv University
+Author-email: rgb@tauex.tau.ac.il
+License: MIT
+Download-URL: https://github.com/TAU-MLwell/xgbGAMView/archive/refs/tags/0.1.tar.gz
+Description: UNKNOWN
+Keywords: Generalized Additive Model,GAM,explainable AI,xAI
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
