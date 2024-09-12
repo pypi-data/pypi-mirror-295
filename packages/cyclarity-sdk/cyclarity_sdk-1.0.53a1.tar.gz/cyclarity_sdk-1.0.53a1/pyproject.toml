@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "cyclarity-sdk"
+version = "1.0.53a1"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+license = "LICENSE"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+awsiotsdk = "*"
+cwe2 = "*"
+pydantic="2.4.*"
+requests= "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
