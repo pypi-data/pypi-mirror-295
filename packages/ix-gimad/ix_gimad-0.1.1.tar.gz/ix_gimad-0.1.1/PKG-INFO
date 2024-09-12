@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: ix-gimad
+Version: 0.1.1
+Summary: Non-schema database migration tool for PostgreSQL
+Author-Email: injuryex <injuryex@ptnglobalcorp.com>
+Project-URL: Source, https://github.com/ptnglobalcorp/gimad
+Requires-Python: >=3.12
+Requires-Dist: psycopg[binary]
+Requires-Dist: typer
+Requires-Dist: pydantic-settings
+Description-Content-Type: text/markdown
+
+# gimad
+
+Data migration tool for PostgreSQL
+
+## Config
+
+Configurations are stored in `gimad.json`. They can be overridden using environment variables. For
+example, the option `db_url` in `gimad.json` can be overridden by defining the environment variables
+`GIMAD_DB_URL`.
