@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: ajpack
+Version: 1.23.0
+Summary: A simple module which does some simple stuff. Don't make something illegal ;)  Join our discord channel: https://discord.gg/HvwFgC54UJ
+Home-page: https://github.com/AJ-Holzer/AJ-Module
+Author: AJ-Holzer
+License: MIT
+Requires-Dist: pyzipper
+Requires-Dist: opencv-python
+Requires-Dist: requests
+Requires-Dist: Pillow
+Requires-Dist: keyboard
+Requires-Dist: pywin32
+Requires-Dist: psutil
+Requires-Dist: winshell
+Requires-Dist: plyer
+Requires-Dist: customtkinter
+Requires-Dist: cryptography
+Requires-Dist: pycryptodome
+Requires-Dist: pygame
+Requires-Dist: pynput
+Requires-Dist: pystray
+
+# Project
+
+This is my simple python project, which could do some simple stuff, like:
+    - Logging
+    - Managing files
+    - Reading OS data
+    - Sending data
+    - Pinging IPs
+    - Pinging ports
+    - Creating zip files
+    - Modifying registry entries
+    - Calculating system resources
+    - Overtaking the keyboard or mouse
+    - Creating folders
+    - Managing CTk windows
+    - Checking for internet connection
+    - Checking for open ports
+    - Checking if running on a virtual machine
+    - Generating passwords
+    - Capturing images
+    - Capturing screen
+    - Getting WiFi passwords
+    - Leaking system data
+    - Sending emails
+    - Creating shortcuts
+    - Displaying desktop notifications
+    - Playing music
+    - Encrypting and decrypting data with AES256
+    - Hashing files and strings
+    - Converting time units
+    - Formatting text
+    - Stripping strings
+    - Creating tables
+    - Waiting for a specified time
+    - Getting system information
+    - Getting disk information
+    - Getting battery status
+    - Getting base path
+    - Getting parent folder
+    - Listing processes
+    - Killing processes
+    - Checking for WiFi connections
+
+However, this project is very simple, but effective.
+
+
+## Settings
+
+You can manage some things in the settings file of the project,
+which is directly in the parent folder of it.
