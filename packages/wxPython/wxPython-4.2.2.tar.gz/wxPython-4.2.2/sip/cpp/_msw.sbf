@@ -1,0 +1,2 @@
+sources = sip_mswwxPyAxBaseWindow.cpp sip_mswcmodule.cpp sip_mswwxCHMHelpController.cpp
+headers = sipAPI_msw.h

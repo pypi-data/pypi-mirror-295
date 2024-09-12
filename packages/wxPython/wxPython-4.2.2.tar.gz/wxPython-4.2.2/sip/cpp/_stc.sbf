@@ -1,0 +1,2 @@
+sources = sip_stcwxStyledTextCtrl.cpp sip_stcwxStyledTextEvent.cpp sip_stccmodule.cpp
+headers = sipAPI_stc.h
