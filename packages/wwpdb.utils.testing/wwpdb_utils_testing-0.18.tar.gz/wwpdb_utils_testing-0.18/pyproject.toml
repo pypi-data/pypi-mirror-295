@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools >= 69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wwpdb.utils.testing"
+authors = [
+    {name = "Ezra Peisach", email="ezra.peisach@rcsb.org"}
+]
+description = "wwPDB Python DB Schema Utilities"
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "Apache 2.0"}
+classifiers = [
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github,com/wwpdb/py-wwpdb_utils_testing"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["wwpdb.utils.tests-*"]
+namespaces = true
+
+[tool.setuptools.dynamic]
+version = {attr = "wwpdb.utils.testing.__version__"}
+
+[tool.setuptools]
+# We turn off the default to not include
+# MANIFEST.in files in wheel - but keep in sdist
+include-package-data = false
+
+[tool.distutils.bdist_wheel]
+universal = true

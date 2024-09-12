@@ -1,0 +1,10 @@
+# These are included in sdist - not wheel
+include tox.ini
+include requirements.txt
+include wwpdb/mock-data/README.md
+recursive-include wwpdb/mock-data/site-config *
+recursive-include wwpdb/mock-data/da_top/data/archive *.V3
+recursive-include wwpdb/mock-data/da_top/resources_ro actionData.xml depui/site_access_info.json emd/emdb_fsc.xsd content_ws/*
+recursive-include wwpdb/mock-data/da_top/webapps/htdocs/msgmodule *
+include wwpdb/mock-data/da_top/webapps/version.json
+recursive-include wwpdb/utils/tests-testing *.py
