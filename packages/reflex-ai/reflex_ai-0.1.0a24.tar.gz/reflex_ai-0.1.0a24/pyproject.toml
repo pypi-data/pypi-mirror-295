@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "reflex-ai"
+version = "0.1.0a24"
+description = "AI tools to build Reflex apps."
+authors = ["Nikhil Rao <nikhil@reflex.dev>"]
+readme = "README.md"
+packages = [
+    { include = "reflex_ai" },
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+reflex-agent = "^0.1.0a8"
+reflex = ">=0.5.9"
+black = "^24.8.0"
+anthropic = "^0.34.1"
+astor = "^0.8.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
