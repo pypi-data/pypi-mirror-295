@@ -1,0 +1,16 @@
+COMMUNITY.md
+CONTRIBUTING.md
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+src/pytest_boilerplate.egg-info/PKG-INFO
+src/pytest_boilerplate.egg-info/SOURCES.txt
+src/pytest_boilerplate.egg-info/dependency_links.txt
+src/pytest_boilerplate.egg-info/entry_points.txt
+src/pytest_boilerplate.egg-info/not-zip-safe
+src/pytest_boilerplate.egg-info/requires.txt
+src/pytest_boilerplate.egg-info/top_level.txt
+src/pytest_cookies/__init__.py
+src/pytest_cookies/plugin.py
