@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: sopel-flipper
+Version: 1.1.0
+Summary: A Sopel plugin that flips text in response to CTCP ACTIONs.
+Author-email: dgw <dgw@technobabbl.es>
+License: EFL-2.0
+Project-URL: Homepage, https://github.com/dgw/sopel-flipper
+Project-URL: Bug Tracker, https://github.com/dgw/sopel-flipper/issues
+Keywords: sopel,plugin,bot,irc
+Platform: Linux x86, x86-64
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: Eiffel Forum License (EFL)
+Classifier: License :: OSI Approved :: Eiffel Forum License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Communications :: Chat :: Internet Relay Chat
+Requires-Python: <4,>=3.8
+Description-Content-Type: text/markdown
+License-File: COPYING
+Requires-Dist: sopel>=7.1
+Requires-Dist: upsidedown==0.4
+
+# sopel-flipper
+
+A Sopel plugin that flips text in response to CTCP ACTIONs.
+
+## Installing
+
+Releases are hosted on PyPI, so after installing Sopel, all you need is `pip`:
+
+```shell
+$ pip install sopel-flipper
+```
+
+## Using
+
+Flip or roll text with a CTCP ACTION (`/me` command) and Sopel will output the
+transformed text along with an appropriate _kaomoji_.
+
+Try `/me flips a table` or `/me rolls xnaas down a hill` for Easter eggs.
+
+## Changelog
+
+### 1.1.0
+
+Added:
+* Horizontal `.mirror` command feature (#10)
+
+
+### 1.0.0
+
+Reworked for the Python-3-only world.
+
+Added:
+* Regular prefix-based commands for `.flip` and `.roll` (#9)
+
+Changed:
+* Rolling always uses the "down a hill" format that was previously an Easter
+  egg, to differentiate it more from flipping (#8)
+
+Meta:
+* Package metadata modernized using `pyproject.toml` (#8)
+* Refactored a big chunk of the plugin code (#8)
+* Python older than 3.8 is no longer officially supported (#8)
+  * Sopel 7.1 bots are still supported, if running on Python >=3.8
+* Releases are now automated (#8)
+
+
+### 0.1.0
+
+Initial release.
+
+Changed:
+* Converted from single file to entry-point package
+* Properly specified dependencies
+* Upgraded to Sopel 7.1+ coding standards

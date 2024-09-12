@@ -1,0 +1,15 @@
+COPYING
+MANIFEST.in
+NEWS
+README.md
+pyproject.toml
+sopel_flipper/__init__.py
+sopel_flipper/plugin.py
+sopel_flipper.egg-info/PKG-INFO
+sopel_flipper.egg-info/SOURCES.txt
+sopel_flipper.egg-info/dependency_links.txt
+sopel_flipper.egg-info/entry_points.txt
+sopel_flipper.egg-info/requires.txt
+sopel_flipper.egg-info/top_level.txt
+sopel_flipper/mirror/__init__.py
+sopel_flipper/mirror/data.py
