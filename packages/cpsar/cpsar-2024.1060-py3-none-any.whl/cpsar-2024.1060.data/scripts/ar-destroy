@@ -1,0 +1,257 @@
+#!python
+"""
+Transaction Destruction Program: the master UNDO program.
+
+If you can't tell that this program destroys data, then you should be working
+at the zoo.
+
+This was written for when a batch goes terribly wrong, usually with wrong data.
+This program will back out the batch. if any payments or transactions have been
+made on the batch, it will not work.
+
+It is recommended that the first run be given -vvd to do a verbose dry-run so
+you can see what the program is doing. There are multiple ways to invoke the 
+program to destroy different batches
+"""
+import datetime
+import cmd
+import decimal
+import glob
+import logging; log=logging.getLogger('')
+import os
+import pprint
+import re
+import sys
+import traceback
+
+import cpsar.runtime as R
+import cpsar.shell
+
+from cpsar.destroyable import Destroyable
+from cpsar.txlib import Transaction
+from cpsar.util import qstr
+
+class DestroyableTransaction(Destroyable, Transaction):
+    pass
+
+class Program(cpsar.shell.Command):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-s', '--skip-approve', action='store_true', 
+                        default=False,
+                        help='skip checking the trans files for other '
+                             'invoice files.')
+
+    def do_trans(self, trans_id):
+        trans_id = int(trans_id.strip())
+        trans = DestroyableTransaction(trans_id)
+        problems = trans.approve_destruction()
+        if problems:
+            self.errors.extend(problems)
+            return
+        trans.destroy()
+
+        if self.errors:
+            log.error('Not commiting changes. Errors detected')
+            return
+        if self.opts.dry_run:
+            return
+        log.debug('Committing database changes')
+        R.db.commit()
+
+    def do_set(self, fpath):
+        """ Give a file path which contains a list of transaction ids,
+        one on each line. Each transaction will be destroyed.
+        """
+        if not fpath:
+            return
+        self.errors = []
+        for line in open(fpath):
+            trans_id = int(line.strip())
+            trans = DestroyableTransaction(trans_id)
+            problems = trans.approve_destruction()
+            if problems:
+                self.errors.extend(problems)
+                break
+            has_other = trans.invoice_has_other_batches()
+            trans.destroy()
+            if not has_other:
+                trans.destroy_invoice()
+
+        if self.errors:
+            log.error('Not commiting changes. Errors detected')
+            return
+        if self.opts.dry_run:
+            return
+        log.debug('Committing database changes')
+        R.db.commit()
+
+    def do_ga_set(self, fpath):
+        """ Give a file path which contains a list of group numbers and group
+        authorization numbers. one on each line.  The format will read the
+        first 8 bytes of the line as the group number and the next 7 bytes as
+        the claim reference number.
+        """
+        self.errors = []
+        trans_set = []
+        for line in open(fpath):
+            line = line.strip()
+            gn, ga = line[:7].strip(), int(line[7:15])
+            trans = DestroyableTransaction.from_group_auth(gn, ga)
+            trans_set.append(trans)
+            log.info("tx #%d: verifying can be deleted", trans.trans_id)
+            problems = trans.approve_destruction()
+            if problems:
+                self.errors.extend(problems)
+        
+        if self.errors:
+            log.error("Cannot remove. Problems found.")
+            for error in self.errors:
+                log.error(error)
+            return
+
+        for trans in trans_set:
+            log.info("tx #%d (GN:%s, GA:%s): destroying",
+               trans.trans_id, trans.group_number, trans.group_auth)
+            trans.destroy()
+            if not trans.invoice_has_other_batches():
+                trans.destroy_invoice()
+
+        if self.errors:
+            log.error('Not commiting changes. Errors detected')
+            return
+        if self.opts.dry_run:
+            return
+        R.db.commit()
+
+    def do_erase(self, batch_file_id):
+        """ Erase all information in the system for transactions with
+        the given batch file id. This destroys EVERYTHING. Payments,
+        reversal settlements, state report entries, EVERYTHING. This is
+        a developer only option.
+        """
+        cursor = R.db.cursor()
+        cursor.execute("""
+        CREATE TEMP TABLE t AS
+          SELECT trans_id FROM trans WHERE batch_file_id=%s;
+
+          DELETE FROM rebate_credit USING t
+          WHERE t.trans_id = rebate_credit.trans_id;
+
+          DELETE FROM pk_trans_sup USING t
+          WHERE t.trans_id = pk_trans_sup.trans_id;
+
+          DELETE FROM trans_payment USING t
+          WHERE t.trans_id = trans_payment.trans_id;
+
+          DELETE FROM trans_adjudication USING t
+          WHERE t.trans_id = trans_adjudication.trans_id;
+
+          DELETE FROM trans_writeoff USING t
+          WHERE t.trans_id = trans_writeoff.trans_id;
+
+          DELETE FROM distribution USING t
+          WHERE t.trans_id = distribution.trans_id;
+
+          DELETE FROM reversal_settlement USING t, reversal
+          WHERE t.trans_id = reversal.trans_id AND
+            reversal.reversal_id = reversal_settlement.reversal_id;
+
+          UPDATE reversal SET trans_id=NULL
+          FROM t WHERE t.trans_id = reversal.trans_id;
+
+          DELETE FROM state_report_entry USING t
+          WHERE t.trans_id = state_report_entry.trans_id;
+            """, (batch_file_id,))
+        self.do_batch(batch_file_id)
+
+    def do_batch(self, batch_file_id):
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            SELECT *
+            FROM trans
+            WHERE batch_file_id=%s
+            ORDER BY trans_id
+            """, (batch_file_id,))
+        records = list(cursor)
+
+        log.info('Destroying %s transaction records', len(records))
+        self.errors = []
+        for rec in records:
+            trans = DestroyableTransaction.from_record(rec)
+
+            if not self.opts.skip_approve:
+                problems = trans.approve_destruction()
+                if problems:
+                    self.errors.extend(problems)
+                    for prob in problems:
+                        log.error(prob)
+                    break
+                else:
+                    trans.destroy()
+            else:
+                trans.destroy()
+
+            if not trans.invoice_has_other_batches():
+                trans.destroy_invoice()
+
+        cursor.execute("""
+            DELETE FROM scsaf_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s SCSAF edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM ecm_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s ECM edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM nciga_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s NCIGA edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM liga_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s LIGA edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM mjoseph_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s MJoseph edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM ccmsi_edi_file
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s CCMSI edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM meadowbrook_edi_file 
+            WHERE batch_file_id=%s
+        """, (batch_file_id,))
+        log.info("Deleted %s meadowbrook edi file records", cursor.rowcount)
+
+        cursor.execute("""
+            DELETE FROM batch_file 
+            WHERE batch_file_id=%s
+            """, (batch_file_id,))
+        log.info("Deleted %s file import history records", cursor.rowcount)
+
+        if self.errors:
+            log.error('Not commiting changes. Errors detected')
+            return
+        if self.opts.dry_run:
+            return
+
+        log.debug('Committing database changes')
+        R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()
+

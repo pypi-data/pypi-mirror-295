@@ -1,0 +1,19 @@
+#!/bin/bash
+# enable job control
+set -m
+
+d=$(dirname $0)
+
+killed() {
+    # Kill the first jobspec which is the tail | python pipline
+    kill %1
+    exit
+}
+trap killed EXIT SIGTERM 
+
+# Run the job which becomes %1
+tail -F -n+0 "$2" | $d/python -m "cpsar.feed.${1}" - &
+
+# Wait for the job to finish, which will be never. If we don't background it
+# our signal handler never runs on TERM and the process is hung
+wait %1

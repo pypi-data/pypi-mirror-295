@@ -1,0 +1,71 @@
+#!python
+import datetime
+
+import cpsar.runtime as R
+from cpsar import config
+from cpsar import mail
+from cpsar import shell
+from cpsar import util
+
+class Program(shell.PrivateLabelProgram):
+    """ It is a lot of work to manually enter in adjudications for reversals on
+    transactions where everything matches up. This program was written to
+    help alieviate the manual entry.
+    
+    This program goes through all of the reversal balances that match up
+    with the balances of the transations they are for and applies them.
+    """
+    def main(self):
+        m = mail.Mailer()
+        m.recipients = config.billing_recipients()
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT reversal.trans_id, reversal_id, reversal.reversal_date, trans.balance
+            FROM reversal
+            JOIN trans ON reversal.trans_id = trans.trans_id
+            WHERE reversal.balance = trans.balance AND
+                  reversal.balance != 0
+            ORDER BY reversal.trans_id
+        """)
+
+        if not cursor.rowcount:
+            R.log.info('No candidate reversals to apply')
+            return
+
+        m.subject = 'cpsar: Applied %s reversal adjudications to transactions' 
+        m.subject %= cursor.rowcount
+        R.log.debug(m.subject)
+
+        now = datetime.datetime.now()
+        note = "Automatic reversal applied by system"
+        for trans_id, reversal_id, reversal_date, amount in cursor:
+            self._insert_payment(trans_id, reversal_id, reversal_date, amount)
+            m("TX #%08d: Applied reversal for full balance of %s from reversal %s",
+              trans_id, amount, reversal_id)
+
+        if not self.opts.dry_run:
+            R.log.debug("Commited changes")
+            m.send()
+            R.db.commit()
+        else:
+            R.log.debug("Not committing. Dry run option given.")
+
+    def _insert_payment(self, trans_id, reversal_id, reversal_date, apply_amount):
+        R.log.info("Insert payment - tx: %s, amount %s, reversal %s",
+            trans_id, apply_amount, reversal_id)
+        cursor = R.db.cursor()
+        cursor.execute(util.insert_sql("trans_payment",
+          {'entry_date': reversal_date,
+           'trans_id': trans_id,
+           'amount': apply_amount,
+           'username': 'SYSTEM',
+           'reversal_id': reversal_id}))
+
+        cursor.execute("update trans set balance = balance - %s where trans_id=%s",
+            (apply_amount, trans_id))
+
+        cursor.execute("update reversal set balance = balance - %s where reversal_id=%s",
+            (apply_amount, reversal_id))
+
+if __name__ == '__main__':
+    Program().run()

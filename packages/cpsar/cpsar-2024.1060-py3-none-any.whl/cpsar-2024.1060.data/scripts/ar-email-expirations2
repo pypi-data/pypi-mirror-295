@@ -1,0 +1,66 @@
+#!python
+import csv
+import datetime
+import time
+
+from cpsar import config
+from cpsar import db
+from cpsar import mail
+from cpsar import shell
+import cpsar.runtime as R
+
+class Program(shell.Program):
+    def main(self):
+        if self.opts.dry_run:
+            mailer = MockMailer()
+        else:
+            mailer = mail.HTMLMailer()
+
+        cursor = db.mako_dict_cursor("ar/expiring-patients.sql")
+        cursor.execute_template(expiration_date=self.expiration_date)
+
+        with open(csv_fpath(), 'w') as fd:
+            wr = csv.writer(fd)
+            wr.writerow([c[0] for c in cursor.description])
+            for rec in cursor:
+                wr.writerow(rec)
+
+    @property
+    def expiration_date(self):
+        return datetime.date.today() + datetime.timedelta(3)
+
+def csv_fpath():
+    if config.private_label():
+        prefix = "%s-" % config.private_label()
+    else:
+        prefix = ""
+    return R.dpath("log/%sexpirations-%s.csv" % (prefix, time.strftime("%Y%m%d")))
+
+def _mime_plain_text(patients):
+    buf = StringIO()
+    buf.write("""\
+The following patients have claims set to expire in 72 hours.  Please log in to
+%s to update the expiration date
+on the claim. If you allow the claim to expire, this patient could experience
+an interruption in prescription service.\n\n""" % config.production_url())
+    for i, patient in enumerate(patients):
+        buf.write("%d. " % (i+1))
+        buf.write(patient.as_email_text())
+        buf.write("\n")
+    return MIMEText(buf.getvalue(), _subtype='plain')
+
+def _mime_html_text(patients):
+    buf = StringIO()
+    buf.write("""<html><body><p>
+        The following patients have claims set to expire in 72 hours.  Please
+        log in to <a href='%s'>%s</a>
+        to update the expiration date on the claim. If you allow the claim to
+        expire, this patient could experience an interruption in prescription
+        service.</p>\n<ol>""" % (config.production_url(), config.production_url()))
+    for patient in patients:
+        buf.write(patient.as_email_html())
+    buf.write("</ol></body></html>")
+    return MIMEText(buf.getvalue(), _subtype='html')
+
+if __name__ == '__main__':
+    Program().run()

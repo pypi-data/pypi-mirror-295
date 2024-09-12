@@ -1,0 +1,9 @@
+#!python
+# return a config variable
+from __future__ import print_function
+import sys
+
+from cpsar import config
+
+for arg in sys.argv[1:]:
+    print(getattr(config, arg)())

@@ -1,0 +1,91 @@
+#!python
+from __future__ import print_function
+import csv
+import decimal
+import pprint
+import re
+import sys
+
+from cpsar import db
+from cpsar import pricing
+
+ZERO = decimal.Decimal("0.00")
+
+def main():
+    if '--db' in sys.argv:
+        db.setup()
+        pricing.use_db()
+    else:
+        pricing.dont_use_db()
+
+    with open('doc/price_test.csv') as fd:
+        test_file(fd)
+
+def test_file(fd):
+    r = csv.reader(fd)
+    header = next(r)
+    header = [s.strip().lower() for s in header]
+    for line in r:
+        values = [s.strip() for s in line]
+        rec = dict(list(zip(header, values)))
+        cleanup_test_record(rec)
+        test_rec(rec)
+
+def cleanup_test_record(rec):
+    decimal_fields = [
+        'awp',
+        'history_cost_allowed',
+        'history_dispense_fee',
+        'pbm_cost_allowed',
+        'pbm_dispense_fee',
+        'processing_fee',
+        'sale_tax',
+        'state_fee',
+        'tx_total'
+    ]
+    try:
+        del rec['']
+    except KeyError:
+        pass
+    for f in decimal_fields:
+        v = re.sub('[\$,]', '', rec[f])
+        if v == '-':
+            v = '0'
+        rec[f] = decimal.Decimal(v)
+
+def test_rec(rec):
+    pbm = pricing.PBMHistory()
+    pbm.cost_allowed = rec['pbm_cost_allowed']
+    pbm.dispense_fee = rec['pbm_dispense_fee']
+    pbm.processing_fee = rec['processing_fee']
+    pbm.sales_tax = rec['sale_tax']
+    pbm.copay = ZERO
+
+    client = pricing.Client()
+    client.group_number = rec['group_number']
+
+    rx = pricing.Prescription(client)
+    rx.brand = rec['brand']
+    rx.compound_code = rec['compound_code']
+    rx.awp = rec['awp']
+    rx.state_fee = rec['state_fee']
+    #rx.ndc = rec['ndc']
+    rx.nabp = rec['nabp']
+    tx = pricing.Transaction(rx, pbm, client)
+
+    if tx.total != rec['tx_total']:
+        print('Tx Type: %s' % rx.tx_type)
+        print('Total: %s != %s' % (tx.total, rec['tx_total']))
+        pprint.pprint(rec)
+        sys.exit(1)
+
+    hy = pricing.History(tx)
+
+    if hy.cost_allowed != rec['history_cost_allowed']:
+        print('History Cost Allowed: %s != %s' % (hy.cost_allowed, rec['history_cost_allowed']))
+        pprint.pprint(rec)
+        sys.exit(1)
+    assert hy.dispense_fee == rec['history_dispense_fee']
+    assert tx.total == rec['tx_total']
+
+if __name__ == '__main__': main()

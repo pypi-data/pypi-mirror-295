@@ -1,0 +1,83 @@
+#!python
+""" Clear and recreate the group_formulary table with the text file
+from the processor.
+"""
+import re
+
+import cpsar.fwimport
+import cpsar.runtime as R
+import cpsar.keys
+
+from cpsar.fwimport import ClearInsertProgram, FWParser
+
+MAX_GPI_LENGTH = 14
+VALID_GPI_CODE = re.compile("^\d+ *$")
+
+class Program(ClearInsertProgram):
+    resource = "bd-formulary"
+
+    parser = FWParser([
+        ('name', 8),
+        ('gpi_pattern', 14),
+        ('drug_name', 50),
+        ('source_ndc_nbr', 11)
+    ])
+
+    table_name = 'group_formulary'
+
+    def _scan_record(self, record):
+        """ file contains duplicates. weed them out. """
+        if not self._is_valid(record):
+            return False
+        if self._is_duplicate(record):
+            return False
+        self._mark_seen(record)
+
+        self._set_drug_id(record)
+        if not record.get('source_drug_id'):
+            return False
+        self._set_gpi_regexp(record)
+        return True
+
+    def _is_valid(self, record):
+        if not VALID_GPI_CODE.match(record['gpi_pattern']):
+            return False
+        return True
+
+    _dup_lookup = None
+    def _is_duplicate(self, record):
+        if self._dup_lookup is None:
+            self._dup_lookup = {}
+        key = (record['name'], record['gpi_pattern'])
+        if key in self._dup_lookup:
+            return True
+        return False
+
+    def _mark_seen(self, record):
+        key = (record['name'], record['gpi_pattern'])
+        self._dup_lookup[key] = True
+
+    def _set_gpi_regexp(self, record):
+        prefix = record['gpi_pattern'].strip()
+        free_digits = MAX_GPI_LENGTH - len(prefix)
+        regexp = r"%s\\d{%s}" % (prefix, free_digits)
+        record['gpi_regexp'] = regexp
+        del record['gpi_pattern']
+
+    _drug_lookup = None
+    def _set_drug_id(self, record):
+        if self._drug_lookup is None:
+            self._drug_lookup = cpsar.keys.DrugLookup()
+        drug_id = self._drug_lookup.get(record['source_ndc_nbr'])
+        if not drug_id:
+            R.error("%s: %s - INVALID SOURCE NDC # %s",
+                record['name'],
+                record['gpi_pattern'],
+                record['source_ndc_nbr'])
+            return
+        record['source_drug_id'] = drug_id
+        del record['source_ndc_nbr']
+
+if __name__ == '__main__':
+    Program().run()
+

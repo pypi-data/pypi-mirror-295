@@ -1,0 +1,40 @@
+#!python
+""" Syncronize the card print file with SPC's data. We totally
+erase and reload the table every night.
+"""
+import cpsar.runtime as R
+import reclib.parse.fw as P
+
+from cpsar.fwimport import ClearInsertProgram
+from cpsar import keys
+
+class Program(ClearInsertProgram):
+    resource = 'bd-card-print-log'
+    parser = P.Parser(
+        P.String('group_number',  8),
+        P.String('ssn',          11),
+        P.String('dob',           8),
+        P.String('print_time',   15),
+        P.String('username',     25)
+    )
+
+    table_name = 'card_print_log'
+
+    def main(self):
+        self.plook = keys.PatientLookup()
+        super(Program, self).main()
+
+    def _scan_record(self, record):
+        """ Set the patient_id for the record before insert. If we
+        don't have a valid patient, we do not load the record.
+        """
+        key = (record['group_number'], record['dob'], record['ssn'])
+        try:
+            record['patient_id'] = self.plook[key]
+        except KeyError:
+            R.log.info("Invalid patient key %s" % ":".join(key))
+            return False
+        return True
+
+if __name__ == '__main__':
+    Program().run()

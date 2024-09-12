@@ -1,0 +1,52 @@
+<%!
+import cpsar.controls as C
+%>
+<%inherit file="page.tmpl" />
+<%block name="header">
+   State Reporting File Data for 
+    <a href='/view_trans?trans_id=${trans_id}'>
+        Trans #${trans_id}</a>
+</%block>
+<%block name="head">
+    <title>File data for state reports</title>
+    <link type='text/css' rel='stylesheet'
+          href='/css/base.css'  />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+    <link type='text/css' rel='stylesheet' href='/css/view_sr_data_files.css' />
+</%block>
+<%def name='scripts()'>
+  <script src='/js/jquery.js'</script>
+  <script src='/js/jquery.jgrowl.js'></script>
+  <script src='/js/jquery.numeric.js'></script>
+  <script src='/js/common.js'></script>
+  <script type='text/javascript' src='/js/view_sr_data_files.js'></script> 
+</%def>
+% if data_837: 
+    <div class='sr_data_files'>
+        <div class='collapse'>
+            <h4>Outgoing File Data ${data_837_fname}</h4>
+        </div>
+        <div class='sr_data_file'>
+            <pre>${data_837}</pre>
+        </div>
+        % if data_824: 
+            <div class='collapse'>
+                <h4>Response File Data ${data_824_fname}</h4>
+            </div>
+            <div class='sr_data_file'>
+                <pre>${data_824}</pre>
+            </div>
+        % endif
+        % if data_997: 
+            <div class='collapse'>
+                <h4>Structural Error File Data ${data_997_fname}</h4>
+            </div>
+            <div class='sr_data_file'>
+                <pre>${data_997}</pre>
+            </div>
+        % endif
+    </div>
+% endif

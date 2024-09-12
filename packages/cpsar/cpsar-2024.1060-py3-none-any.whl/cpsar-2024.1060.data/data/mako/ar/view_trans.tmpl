@@ -1,0 +1,1796 @@
+<%!
+import cpsar.ajson as json
+import cpsar.runtime as R
+from cpsar.pg import format_date, format_currency
+import cpsar.controls as C
+import kcontrol
+%>
+<%inherit file="page.tmpl" />
+<%namespace file="functions.tmpl" import="*" />
+<%def name="lattr(o, attr, alt='NOT LINKED')">
+    % if o:
+        % if o[attr] is not None:
+            ${o[attr]}
+        % endif
+    % else:
+        <div class='error'>${alt}</div>
+    % endif
+</%def>
+<%block name="head">
+    <title>Transaction ${trans_id}</title>
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+    <link type='text/css' rel='stylesheet'
+          href='/repo/css/kcontrol/calendar.css' />
+    <link type='text/css' rel='stylesheet' href='/css/view_trans.css' />
+    <link type='text/css' rel='stylesheet'
+          href='/css/redmond/jquery-ui-1.8.14.custom.css' />
+    <script type='text/javascript' src='/js/shared.js'></script>
+    <script type='text/javascript'
+            src='/repo/js/kcontrol/calendar.js'></script>
+    <script type='text/javascript' 
+            src='/repo/js/kcontrol/lang/calendar-en.js'></script>
+    <script type='text/javascript' 
+            src='/repo/js/kcontrol/calendar-setup.js'></script>
+    <script src='/repo/js/kcontrol/currency_control.js'></script>
+</%block>
+<%def name='scripts()'>
+  <script type='text/javascript' src='/js/jquery-1.5.1.min.js'></script>
+  <script type='text/javascript' src='/js/jquery.jgrowl.js'></script>
+  <script type='text/javascript' src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+  <script type='text/javascript'>
+  function trans_data() {
+      return {
+          adj_candidates: ${json.write(trans.adj_candidates)}
+      };
+  }
+  </script>
+  <script type='text/javascript' src='/js/view_trans.js'></script>
+</%def>
+<%def name="fmt_currency(s)">
+    % if s:
+        % if s < 0:
+            <font color='red'>${s}</font>
+        %else:
+            ${s}
+        % endif
+    % endif
+</%def>
+<%def name="fmt_currency2(s)">
+    % if s:
+        % if s < 0:
+            <font color='red'>${s}</font>
+        %else:
+            ${s}
+        % endif
+    % else:
+        0.00
+    % endif
+</%def>
+<%block name="header">
+    <a href='/view_trans?trans_id=${trans_id}'>
+        Trans #${trans_id}</a>
+    % if trans.patient:
+    ${trans.patient['first_name']}
+    ${trans.patient['last_name']}
+    % endif
+    % if trans.drug:
+    for
+    ${trans.drug['name']}
+    % endif
+    on
+    ${rx_date_fmt}
+</%block>
+<%block name='cmenu'>
+  <a href='/trans_check?trans_id=${trans_id}' class='top_menu_link b'>
+    Reapply Formulas</a>
+
+  <button class='recalc top_menu_link b'>Recalculate Pricing</button>
+
+</%block>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Trans #</td>
+    <td class='entry-value teal'>${trans_id}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Batch</td>
+    <td class='entry-value'>${batch_date_fmt}
+    % if q.batch_file:
+      ${q.batch_file.file_name}
+      - ${q.batch_file.batch_file_id}
+    % endif
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Group Number</td>
+    <td class='entry-value teal'>
+      <a href='/view_client?group_number=${group_number}'>
+        ${group_number}</a>
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Claim Reference #</td>
+    <td class='entry-value teal'>${group_auth}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Invoice #</td>
+    <td class='entry-value teal'>
+        <a href='/view_invoice?invoice_id=${invoice_id}'>${invoice_id}</a>
+        <button class="edit-invoice">Edit</button>
+
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Line #</td>
+    <td class='entry-value teal'>${line_no}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Due Date</td>
+    <td class='entry-value'>${lattr(trans.invoice, 'due_date_fmt')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Age</td>
+    <td class='entry-value'>
+        ${trans.age}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Rebill</td>
+    <td class='entry-value'>
+      ${rebill_number} - 
+        ${rebill_fmt}
+        % if balance:
+                <a href="/flip_rebill?trans_id=${trans_id}">
+            % if rebill == True:
+                Unmark
+            % else:
+                Mark
+            % endif
+                </a>
+        % endif
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Paid Date</td>
+    <td class='entry-value'>
+        ${paid_date_fmt}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>TX Type</td>
+    <td class='entry-value'>
+    <span class='tx_type'>${tx_type}</span>
+    % if compound_code == '2' and pharmacy_nabp == R.CPS_NABP_NBR:
+      <form action='/change_tx_type' id='change_tx_type'>
+        <select name='tx_type'>
+          <option value=''></option>
+          <option value='PC'>PC</option>
+          <option value='MC'>MC</option>
+        </select>
+        <input type='hidden' name='trans_id' id='trans_id' value='${trans_id}' />
+        <input type='submit' value='Change' />
+      </form>
+    % endif
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Create Date</td>
+    <td class='entry-value'>
+        ${create_date_fmt}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'></td>
+    <td class='entry-value'>
+      </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Payer Code</td>
+    <td class='entry-value'>${trans.history['payer_code']}</td>
+</tr>
+
+</table>
+
+<table class='grid activity'>
+<thead>
+<tr>
+    <th class='left'>Date</th>
+    <th class='left'>User</th>
+    <th class='left'>Desc</th>
+    <th class=''>Source</th>
+    <th class=''>Dest</th>
+    <th class=''>Balance</th>
+    <th class=''>Reversal</th>
+    <th class=''>Overpaid</th>
+    <th class=''>Rebill</th>
+    <th class=''>Paid</th>
+    <th class=''>Settled</th>
+    <th class=''>Transfered</th>
+    <th class=''>Distributed</th>
+    <th class=''>Ref</th>
+    <th class=''></th>
+</tr>
+</thead>
+<tbody>
+% for t in activity:
+<tr>
+    <td>
+       % if t.entry_date:
+        ${t.entry_date.strftime("%m/%d/%y")}
+       % endif
+    </td>
+    <td class=''>${t.username}</td>
+    <td class=''>${t.desc}</td>
+    <td class=''>${t.source}</td>
+    <td class=''>${t.dest}</td>
+    <td class='internal right'>${fmt_currency(t.balance)}</td>
+    <td class='internal right'>${fmt_currency(t.reversal)}</td>
+    <td class='internal right'>${fmt_currency(t.overpaid)}</td>
+    <td class='internal right'>${fmt_currency(t.rebill)}</td>
+    <td class='external right'>${fmt_currency(t.paid)}</td>
+    <td class='external right'>${fmt_currency(t.settled)}</td>
+    <td class='external right'>${fmt_currency(t.transfered)}</td>
+    <td class='external right'>${fmt_currency(t.distributed)}</td>
+    <td class=''>${t.ref}</td>
+    <td class=''>${t.buttons()}</td>
+</tr>
+% if t.note:
+<tr>
+    <td class='note'></td>
+    <td class='note' colspan='12'>${t.note}</td>
+</tr>
+% endif
+% endfor
+<tr>
+    <td class='total right' colspan='5'>Total</td>
+    <td class='total internal right'>${fmt_currency2(activity.balance)}</td>
+    <td class='total internal right'>${fmt_currency2(activity.reversal)}</td>
+    <td class='total internal right'>${fmt_currency2(activity.overpaid)}</td>
+    <td class='total internal right'>${fmt_currency2(activity.rebill)}</td>
+    <td class='total external right'>${fmt_currency2(activity.paid)}</td>
+    <td class='total external right'>${fmt_currency2(activity.settled)}</td>
+    <td class='total external right'>${fmt_currency2(activity.transfered)}</td>
+    <td class='total external right'>${fmt_currency2(activity.distributed)}</td>
+    <td class='total' colspan='2'></td>
+</tr>
+</tbody>
+</table>
+
+<div class="action_button_row">
+    <input type='button' id="add_payment_button" value="Add Payment" />
+   % if trans.group_number in('GROUPH', 'GROUPMJO', 'GROUPSPL', 'GROUPSUN') and not trans.reversal :
+    <input type='button' id="reverse_trans" value="Reverse This Transaction" />
+   % endif
+   % if trans.reversal and trans.reversal['balance'] != 0:
+    <input type='button' id='adj_other_tx_button'
+           value='Adjudicate Other Transaction' />
+   % else:
+    <input type='button' disabled="disabled"
+           value='Adjudicate Other Transaction' />
+   % endif
+   % if trans.balance:
+    <input type='button' id="add_adjudication_button"
+           value="Adjudicate This Transaction" />
+   % else:
+    <input type='button' disabled="disabled"
+           value="Adjudicate This Transaction" />
+   % endif
+
+   % if trans.balance:
+    <input type='button' id="add_write_off_button" value='Add Write-off' />
+   % else:
+    <input type='button' disabled="disabled" value='Add Write-off' />
+   % endif
+    <input type='button' id="add_debit_button" href="add_debit_form"
+           value='Add Debit' />
+    <input type='button' id="add_rebate_credit" href="add_rebate_credit_form"
+           % if not trans.balance or not has_rebate_funds_available:
+            disabled='disabled'
+           % endif
+           value='Add Rebate Credit' />
+</div>
+
+% if trans.reversal:
+<div id='adj_tx'>
+    <form action='/add_adjudication'>
+    <input type='hidden' name='referer'
+           value='${"/view_trans?trans_id=%s" % trans_id | h}' />
+    <input type='hidden' name='reversal_id'
+           value='${trans.reversal['reversal_id']}' />
+    <script type='text/javascript'>
+        var adj_txs = new Array();
+        adj_txs[0] = {
+            'balance' : 0
+        }
+        % for c in trans.adj_txs:
+        adj_txs[${c['trans_id']}] = {
+            'balance' : ${c['balance']}
+        }
+        % endfor
+
+        function show_adj_tx(sel) {
+            var trans_id = sel.options[sel.selectedIndex].value;
+            if(!trans_id) { trans_id = 0; }
+            var adj = adj_txs[trans_id];
+            var elem = document.getElementById('adj_tx_balance');
+            elem.value = adj.balance.toFixed(2);
+
+            var elem = document.getElementById('adj_tx_trans_link');
+            if(trans_id) {
+                elem.innerHTML = "<a href='/view_trans?trans_id=" +
+                             trans_id + 
+                             "' target='_blank'>View</a>";
+            } else {
+                elem.innerHTML = '';
+            }
+        }
+    </script>
+    <table class='form record_view'>
+    <tr>
+        <td class='entry-caption'>Transaction</td>
+        <td><select name='trans_id' onchange='show_adj_tx(this)'>
+            <option value=''></option>
+            % for c in trans.adj_txs:
+                <option value="${c['trans_id']}">
+                    ${c['trans_id']} ${c['batch_date']} ${c['drug_name']}
+                    ${c['total']}
+                </option>
+            % endfor
+            </select>
+            <span id='adj_tx_trans_link'></span>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Balance</td>
+        <td class='entry-value'>
+            <input type='textbox' readonly='readonly' name='adj_tx_balance'
+               id='adj_tx_balance' />
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Amount</td>
+        <td class='entry-value'>
+            ${kcontrol.Currency('amount', id='adj_tx_amount')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Entry Date</td>
+        <td class='entry-value'>
+            ${kcontrol.DatePicker('entry_date', id='adj_other_entry_date',
+                    defaultToday=True)}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Note</td>
+        <td class='entry-value'>
+            ${kcontrol.TextArea('note')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' value='Adjudicate Other Transaction' />
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>
+% endif
+
+<div id='reverse_trans_form'>
+  <form action='/reverse_trans' method='POST'>
+      <input type='hidden' name='trans_id' value='${trans_id}' />
+      <table class='form record_view'>
+      <tr><th colspan='11'>Reverse Trans</th></tr>
+      <tr>
+        <td class='entry-caption'>Reversal Date</td>
+        <td class='entry-value'>
+            ${kcontrol.DatePicker('reversal_date', defaultToday=True)}
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type='submit' value='Submit' /></td>
+      </tr>
+      </table>
+  </form>
+</div>
+
+<div id='add_rebate_credit_form'>
+  <form action='/rebate/add_rebate_credit' method='POST'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <th colspan='11'>Add Rebate Credit</th>
+    </tr>
+    <tr>
+        <td class='entry-caption'>
+          <select name='rebate_id' id='add_rebate_credit_select'>
+            <option value=''>Rebated Trans</option>
+            % for reb in rebates_with_balances:
+              <option value='${reb.rebate_id}'
+                      data-amount='${reb.client_balance}'>
+                      ${reb.trans_id} ${format_date(reb.entry_date)}
+              </option>
+            % endfor
+        </td>
+        <td class='entry-value'>
+          <input type='text' class='numeric' id='add_rebate_credit_amount'
+                 name='amount' />
+        </td>
+     </tr>
+     <tr>
+        <td class='entry-caption'>&nbsp;</td>
+        <td class='entry-value'><input type='submit' value='Add Credit' /></td>
+     </tr>
+   </table>
+  </form>
+</div>
+
+<div id='add_payment'>
+    <form action='/add_payment' method='POST'>
+        <input type='hidden' name='trans_id' value='${trans_id}' />
+        <table class='form record_view'>
+        <tr>
+            <th colspan='11'>Add Payment</th>
+        </tr>
+        <tr>
+            <td class='entry-caption'>
+              <select name='ptype_id' id="add_payment_ptype_id"
+                      class='payment_type'>
+               % for ptype in q.payment_types():
+                    <option value='${ptype['ptype_id']}'
+                            title='${ptype['default_ref_no']}'>
+                         ${ptype['caption']}
+                    </option>
+               % endfor
+             </select>
+            </td>
+            <td class='entry-value'>
+                <input type='text' id='add_payment_ref_no' name='ref_no' />
+            </td>
+        </tr>
+        <tr>
+            <td class='entry-caption'>Amount</td>
+            <td class='entry-value'>
+                ${kcontrol.Currency('amount', id='payment_amount')}
+            </td>
+        </tr>
+        <tr>
+            <td class='entry-caption'>Entry Date</td>
+            <td class='entry-value'>
+                ${kcontrol.DatePicker('entry_date', defaultToday=True)}
+            </td>
+        <tr>
+            <td class='entry-caption'>Note</td>
+            <td><input type='text' name='note' /></td>
+        </tr>
+        <tr>
+            <td class='entry-caption'></td>
+            <td class='entry-value'>
+                <input type='submit' value='Add' />
+            </td>
+        </tr>
+        </table>
+    </form>
+</div>
+
+% if balance != 0:
+<div id='add_adjudication'>
+    <form action='/add_adjudication'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <th colspan='11'>Add Adjudication</th>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Reversed Transaction</td>
+        <td><select name='reversal_id' id='adjudication_reversal_id'>
+            <option value=''></option>
+            </select>
+            <span id='adjudication_trans_link'></span>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Trans ID</td>
+        <td class='entry-value'><input type='text' readonly='1'
+            id='adjudication_trans_id' />
+    </tr>
+    <tr>
+        <td class='entry-caption'>Reversal Date</td>
+        <td class='entry-value'>
+            <input name='adjudication_reversal_date'
+                   id='adjudication_reversal_date' readonly='1' />
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Reversal Balance</td>
+        <td class='entry-value'>
+            <input name='adjudication_balance' id='adjudication_balance'
+                    readonly='1' />
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Amount</td>
+        <td class='entry-value'>
+            ${kcontrol.Currency('amount', id='adjudication_amount')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Entry Date</td>
+        <td class='entry-value'>
+            ${kcontrol.DatePicker('entry_date', id='adjudication_entry_date',
+                defaultToday=True)}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Note</td>
+        <td class='entry-value'>
+            ${kcontrol.TextArea('note')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' value='Add' />
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>
+<div id='add_writeoff'>
+    <form action='/add_writeoff'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <th colspan='11'>Add Writeoff</th>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Amount</td>
+        <td class='entry-value'>${kcontrol.Currency('amount')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Entry Date</td>
+        <td class='entry-value'>
+            ${kcontrol.DatePicker('entry_date', id='writeoff_entry_date',
+                defaultToday=True)}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Note</td>
+        <td class='entry-value'><input type='text' name='note' /></td>
+    </tr>
+        <tr>
+            <td class='entry-caption'></td>
+            <td class='entry-value'>
+                <input type='submit' value='Add' />
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
+% endif
+
+<div id='add_debit_form'>
+    <form action='/add_trans_debit'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <th colspan='11'>Add Debit</th>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Amount</td>
+        <td>${kcontrol.Currency('amount', id='add_debit_amount')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Entry Date</td>
+        <td class='entry-value'>
+          ${kcontrol.DatePicker('entry_date', defaultToday=True)}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Note</td>
+        <td class='entry-value'>
+           <textarea name='note' rows='5' cols='50'></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' value='Add' />
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>
+
+
+
+<table class='form record_view'>
+<tr>
+    <th colspan='20'>Price Breakdown</th>
+</tr>
+<tr>
+    <td class='entry-caption center' title='Cost Allowed'>Allowed</td>
+    <td class='entry-caption center' title='Dispensing Fee'>Dispense</td>
+    <td class='entry-caption center' title='Sales Tax'>Co-Pay</td>
+    <td class='entry-caption center' title='Sales Tax'>Tax</td>
+    <td class='entry-caption center' title='Processing Fee'>P/F</td>
+    <td class='entry-caption'>Total</td>
+    <td class='no_entry-caption'>Submit</td>
+    <td class='no_entry-caption' title='Usual and Customary'>UC</td>
+    <td class='no_entry-caption' title='State Fee Schedule'>S/F</td>
+    <td class='no_entry-caption' title='AWP'>AWP</td>
+    <td class='no_entry-caption' title='Savings'>Save</td>
+</tr>
+<tr>
+    <td class='entry-value right'>
+        % if trans.cost_allowed_editable:
+            <a href='#' id='edit_cost_allowed'>${cost_allowed_fmt}</a>
+            <div id='cost_allowed_form'>
+                <form action='/update_cost_allowed' method='POST'>
+                    ${kcontrol.Hidden('trans_id', value=trans_id)}
+                    ${kcontrol.Currency('cost_allowed', value=cost_allowed)}
+                    <input type='submit' value='Update' />
+                </form>
+            </div>
+        % else:
+            ${cost_allowed_fmt}
+        % endif
+    </td>
+    <td class='entry-value right'>${dispense_fee_fmt}</td>
+    <td class='entry-value right'>${eho_network_copay_fmt}</td>
+    <td class='entry-value right'>${sales_tax_fmt}</td>
+    <td class='entry-value right'>${processing_fee_fmt}</td>
+    <td class='entry-value right'>
+        % if trans.cost_allowed_editable:
+            <div id='total_update_form'>
+                <form action='/update_trans_total' method='POST'>
+                  <table class='form'>
+                  <tr>
+                    <td class='entry-caption'>Cost Allowed</td>
+                    <td class='entry-value'>${kcontrol.Currency('cost_allowed', value=trans.cost_allowed)}</td>
+                  </tr>
+                  <tr>
+                    <td class='entry-caption'>Dispense Fee</td>
+                    <td class='entry-value'>${kcontrol.Currency('dispense_fee', value=trans.dispense_fee)}</td>
+                  </tr>
+                  <tr>
+                    <td class='entry-caption'>Processing Fee</td>
+                    <td class='entry-value'>${kcontrol.Currency('processing_fee', value=trans.processing_fee)}</td>
+                  </tr>
+                  <tr>
+                    <td class='entry-caption'>Total</td>
+                    <td class='entry-value'>${kcontrol.Currency('total', value=trans.total)}</td>
+                  </tr>
+                  <tr>
+                    <td class='entry-caption'></td>
+                    <td class='entry-value'><input type='submit' value='Update' />
+                  </tr>
+                  </table>
+                  ${kcontrol.Hidden('trans_id', value=trans_id)}
+                  ${kcontrol.Hidden('linkback', value='/view_trans?trans_id=%s' % trans_id)}
+                </form>
+            </div>
+            <a href='#' class='update_total'>${total_fmt}</a>
+        % else:
+          ${total_fmt}
+        % endif
+    </td>
+    <td class='entry-value grey right'>${cost_submitted_fmt}</td>
+    <td class='entry-value grey right'>${usual_customary_fmt}</td>
+    <td class='entry-value grey right'>
+        <a href='#' id='state_fee_link'>${state_fee_fmt}</a>
+        <div id='state_fee_form'>
+            <form action='/update_state_fee' method='post'>
+                ${kcontrol.Currency('state_fee', value=state_fee)}
+                <input type='submit' value='Update' />
+                ${kcontrol.Hidden('trans_id', value=trans_id)}
+            </form>
+        </div>
+    </td>
+    <td class='entry-value grey right'>${awp_fmt}</td>
+    <td class='entry-value grey right'>${savings_fmt}</td>
+</tr>
+</table>
+
+<table class='form record_view'>
+<tr>
+    <th colspan='20'>Totals and Balances</th>
+</tr>
+<tr>
+    <td class='entry-caption'>Write Offs</td>
+    <td class='entry-caption'>Adjudications</td>
+    <td class='entry-caption'>Rebate Credits</td>
+    <td class='entry-caption'>Adjustments</td> <td class='entry-caption'>Balance</td> <td class='entry-caption'>Paid</td>
+    <td class='entry-caption'>Settled</td>
+    <td class='entry-caption'>Transfered</td>
+    <td class='entry-caption'>Distributed</td>
+    <td class='entry-caption'>Left to Distribute</td>
+</tr>
+<tr>
+    <td class='entry-value right'>${writeoff_total_fmt}</td>
+    <td class='entry-value right'>${adjudication_total_fmt}</td>
+    <td class='entry-value right'>${rebate_credit_total_fmt}</td>
+    <td class='entry-value right'>${adjustments_fmt}</td>
+    <td class='entry-value right ${balance_css(balance)}'>
+        ${balance_fmt}
+    </td>
+    <td class='entry-value right'>${paid_amount_fmt}</td>
+    <td class='entry-value right'>${settled_amount_fmt}</td>
+    <td class='entry-value right'>${transfered_amount_fmt}</td>
+    <td class='entry-value right'>${distributed_amount_fmt}</td>
+    <td class='entry-value right'>${left_to_distribute_fmt}</td>
+</tr>
+</table>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6'>
+        <span class=''>Pending Distributions</span>
+        <input type='button' value='Add Distribution' 
+               onclick="$('#add_distribution').toggle()" />
+        % if trans.has_reversal_settlement():
+        <a href="/reverse_distributions?trans_id=${trans_id}">
+        <input type='button' class='reverse_distributions'
+               value='Reverse Distributions' /></a>
+        % endif
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption center'></td>
+    <td class='entry-caption center'>Account</td>
+    <td class='entry-caption center'>Amount</td>
+    <td class='entry-caption center'>Entry Date</td>
+    <td class='entry-caption center'></td>
+</tr>
+
+<% pending =  [x for x in trans.distributions if not x['distribution_date']] %>
+% for p in pending:
+<tr>
+    <td class='entry-value right'>${p['distribution_date_fmt']}</td>
+    <td class='entry-value right'>${p['distribution_account']}</td>
+    <td class='entry-value right'>${p['amount_fmt']}</td>
+    <td class='entry-value center'>${p['entry_date_fmt']}</td>
+    <td class='entry-value right'>
+        % if not p['distribution_date']:
+          <% qx = 'distribution_id=%s' % p['distribution_id'] %>
+         <a href=/revoke_trans_distribution?${qx}>Remove</a>    
+        % endif
+    </td>
+</tr>
+</tbody>
+% endfor
+</table>
+
+<div id='add_distribution' style='display: none'>
+    <table class='form record_view'>
+    <tr>
+        <td colspan='3' class='entry-value'>
+            ${group_number} Distribution Rules for ${tx_type}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption left'>Account</td>
+        <td class='entry-caption left'>Amount</td>
+        <td class='entry-caption'></td>
+    </tr>
+    % for r in trans.distribution_rules:
+    <tr>
+        <td class='entry-value'>${r['distribution_account']}</td>
+        <td class='entry-value'>${r['amount_fmt']}</td>
+        <td class='entry-value'>
+          <a href='/add_trans_distribution?trans_id=${trans_id}&distribution_account=${r['distribution_account']}&amount=${r['amount']}'>Apply</a>
+        </td>
+    </tr>
+    % endfor
+    </table>
+
+    <form action='/add_trans_distribution'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <td class='entry-caption'>Account</td>
+        <td class='entry-value'>
+            ${C.DistributionAccountListBox('distribution_account')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Amount</td>
+        <td class='entry-value'>
+            ${kcontrol.Currency('amount')}
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type='submit' value='Add' /></td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='4'>
+        <span class='collapse'>
+        Event Log
+        </span>
+        <input type='button' onclick="{$('#add_log').toggle()}"
+               value='Add Log Entry' />
+    </th>
+</tr>
+</thead>
+<tbody>
+% for act in trans.logs:
+    <tr>
+        <td class='entry-value yellow'>
+            ${act['entry_date_fmt']}
+        </td>
+        <td class='entry-value yellow'>${act['username']}</td>
+        <td class='entry-value yellow'>${act['facility']}</td>
+        <td class='entry-value' align='right'>
+         <a href="/toggle_trans_log_flag?trans_log_id=${act['trans_log_id']}&trans_id=${trans_id}">
+            % if act['flagged']:
+                Unflag
+            % else:
+                Flag
+            % endif
+          </a>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-value' colspan='4'>
+            <pre>${act['message']}</pre></td>
+    </tr>
+% endfor
+</tbody>
+</table>
+
+<div id='add_log' style='display: none'>
+    <form action='/add_trans_note'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <td class='entry-value'>
+            ${kcontrol.TextArea('note', rows=5, cols=80, wrap='hard')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-value'>
+            <input type='submit' value='Submit' />
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='7' class='collapse'>Adjusters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-header'>E-mail</td>
+    <td class='entry-header'>Initials</td>
+    <td class='entry-header'>First</td>
+    <td class='entry-header'>Last</td>
+</tr>
+<tr>
+    <td class='entry-value'>
+       <a href='mailto:${adjuster1_email}'>
+        ${lattr(trans.adjuster1, 'email', adjuster1_email)}
+       </a>
+    </td>
+    <td class='entry-value'>${lattr(trans.adjuster1, 'initials')}</td>
+    <td class='entry-value'>${lattr(trans.adjuster1, 'first_name')}</td>
+    <td class='entry-value'>${lattr(trans.adjuster1, 'last_name')}</td>
+</tr>
+% if adjuster2_email:
+<tr>
+    <td class='entry-value center'>A</td>
+    <td class='entry-value'>
+       <a href='mailto:${adjuster2_email}'>
+        ${lattr(adjuster2, 'email', adjuster2_email)}
+       </a>
+    </td>
+    <td class='entry-value'>${lattr(adjuster2, 'initials')}</td>
+    <td class='entry-value'>${lattr(adjuster2, 'first_name')}</td>
+    <td class='entry-value'>${lattr(adjuster2, 'last_name')}</td>
+</tr>
+% endif
+</tbody>
+</table>
+
+% if rebate:
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6' class='collapse'>Rebate ${rebate.rebate_id}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'>Entry Date</td>
+    <td class='entry-caption'>Total</td>
+    <td class='entry-caption'>Client Amount</td>
+    <td class='entry-caption'>Client Balance</td>
+</tr>
+<tr>
+    <td class='entry-value right'>${format_date(rebate.entry_date)}</td>
+    <td class='entry-value right'>${format_currency(rebate.total_amount)}</td>
+    <td class='entry-value right'>${format_currency(rebate.client_amount)}</td>
+    <td class='entry-value right'>${format_currency(rebate.client_balance)}</td>
+</tr>
+</tbody>
+</table>
+% endif
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6' class='collapse'>Patient ${lattr(trans.patient, 'name')}
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'>Name</td>
+    <td class='entry-value'>
+        % if trans.patient:
+            <% qs = "patient_id=%s" % patient_id %>
+            <a href='/patient?${qs}'>
+                ${trans.patient['name']}</a>
+        % else:
+            <div class='error'>NOT LINKED</div>
+        % endif
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Division Code</td>
+    <td class='entry-value' nowrap="nowrap">
+        ${lattr(trans.patient, 'division_code')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>SSN</td>
+    <!--changed patient_ssn to patient_cardholder_nbr-->
+    <td class='entry-value'>${lattr(trans.patient, 'ssn', patient_cardholder_nbr)}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Date of Birth</td>
+    <td class='entry-value'>${lattr(trans.patient, 'dob', patient_dob)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Address</td>
+    <td class='entry-value'>
+        ${lattr(trans.patient, 'address_1')}<br />
+        ${lattr(trans.patient, 'address_2')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>City, State Zip</td>
+    <td class='entry-value'>
+        ${lattr(trans.patient, 'city')},
+        ${lattr(trans.patient, 'state')}
+        ${lattr(trans.patient, 'zip_code')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Jurisdiction</td>
+    <td class='entry-value'>
+        ${lattr(trans.patient, 'jurisdiction')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6' class='collapse'>Prescription
+        ${lattr(trans.drug, 'name')}
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'>Drug Name</td>
+    <td class='entry-value'>
+        ${lattr(trans.drug, 'name')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>NDC Number</td>
+    <td class='entry-value'>
+        ${lattr(trans.drug, 'ndc_number', drug_ndc_number)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Date Written</td>
+    <td class='entry-value'>${date_written_fmt}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>RX Number</td>
+    <td class='entry-value'>${rx_number}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>RX Date</td>
+    <td class='entry-value'>${rx_date_fmt}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Refill Number</td>
+    <td class='entry-value'>${refill_number}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Quantity</td>
+    <td class='entry-value'>${quantity}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>GPI Code</td>
+    <td class='entry-value'>${trans.drug['gpi_code']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Days Supply</td>
+    <td class='entry-value'>${days_supply}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Compound</td>
+    <td class='entry-value'>${compound_code}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Brand/Generic</td>
+    <td class='entry-value'>
+        ${lattr(trans.drug, 'brand')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>DAW</td>
+    <td class='entry-value'>${daw}</td>
+</tr>
+
+<tr>
+    <td class='entry-caption'>S/R HCPCS Code</td>
+    <td class='entry-value'>
+      % if trans.drug:
+        <form action='/update_sr_hcpcs' method='post'>
+          <input type='hidden' name='ndc_number' value='${trans.drug["ndc_number"]|h}' />
+          <input type='text' name='sr_hcpcs_code' value='${trans.drug["sr_hcpcs_code"]|h}' />
+          <input type='submit' value='Update' />
+        </form>
+      % endif
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+</tr>
+
+</tbody>
+</table>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='5' class='collapse'>Pharmacy
+        ${lattr(trans.pharmacy, 'name')}
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'
+        % if trans.edited_pharmacy:
+            style='color: #AAAAAA'
+        % endif
+        >
+        Name</td>
+    <td class='entry-value'>
+        ${lattr(trans.pharmacy, 'name')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>NABP</td>
+    <td class='entry-value'>
+        ${lattr(trans.pharmacy, 'nabp', pharmacy_nabp)}
+     </td>
+</tr>
+<tr>
+    <td class='entry-caption' rowspan='2'>Address</td>
+    <td class='entry-value' rowspan='2' nowrap>
+        % if trans.pharmacy:
+            <div>${trans.pharmacy['address_1']}</div>
+            <div>${trans.pharmacy['address_2']}</div>
+            <div>${trans.pharmacy['city']},
+                 ${trans.pharmacy['state']}
+                 ${trans.pharmacy['zip_code']}</div>               
+        % else:
+            <div class='error'>NOT LINKED</div>
+        % endif
+    </td>
+    <td class='entry-gutter' rowspan='2'>&nbsp;</td>
+    <td class='entry-caption'>Tax #</td>
+    <td class='entry-value'>
+        ${lattr(trans.pharmacy, 'tax_id')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Telephone</td>
+    <td class='entry-value'>${lattr(trans.pharmacy, 'phone')}</td>
+</tr>
+% if trans.edited_pharmacy:
+<tr>
+    <th colspan='5'>Used Pharmacy (Edited in Billing System)</th>
+</tr>
+<tr>
+    <td class='entry-caption'>Pharmacy</td>
+    <td class='entry-value'>
+        ${trans.edited_pharmacy['name']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>NABP</td>
+    <td class='entry-value'>
+        ${trans.edited_pharmacy['nabp']}
+     </td>
+</tr>
+<tr>
+    <td class='entry-caption' rowspan='2'>Address</td>
+    <td class='entry-value' rowspan='2' nowrap>
+        <div>${trans.edited_pharmacy['address_1']}</div>
+        <div>${trans.edited_pharmacy['address_2']}</div>
+        <div>${trans.edited_pharmacy['city']},
+             ${trans.edited_pharmacy['state']}
+             ${trans.edited_pharmacy['zip_code']}</div>               
+    </td>
+    <td class='entry-gutter' rowspan='2'>&nbsp;</td>
+    <td class='entry-caption'>Tax #</td>
+    <td class='entry-value'>
+        ${trans.edited_pharmacy['tax_id']}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Telephone</td>
+    <td class='entry-value'>${lattr(trans.edited_pharmacy, 'phone')}</td>
+</tr>
+% endif
+</tbody>
+</table>
+
+<div id='override_pharmacist_form'>
+    <form action='/override_pharmacist'>
+    <input type='hidden' name='trans_id' value='${trans_id}' />
+    <table class='form record_view'>
+    <tr>
+        <th colspan='11'>Reassign Pharmacist</th>
+    </tr>
+    <tr>
+        <td class='entry-caption'>License State</td>
+        <td>${kcontrol.StateListBox('lic_state', value='FL')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>License #</td>
+        <td class='entry-value'>
+          ${kcontrol.TextBox('lic_number', maxlength='20')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Name</td>
+        <td class='entry-value'>
+           <span id='cps_pharmacist_first_name'></span>
+           <span id='cps_pharmacist_middle_init'></span>
+           <span id='cps_pharmacist_last_name'></span>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' value='Override' />
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>
+
+ <table class='form record_view'>
+ <thead>
+ <tr>
+    <th colspan='5' class='collapse'>Filling Pharmacist License
+     % if trans.pharmacist:
+      ${trans.pharmacist['lic_state']}-
+      ${trans.pharmacist['lic_number']}:
+      ${trans.pharmacist['first_name']}
+      ${trans.pharmacist['last_name']}
+     % else:
+      ${trans.history['lic_number']}
+     % endif
+      <input type='button' id='override_pharmacist_button' value='Override' />
+    </th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+    <td class='entry-caption'>License State</td>
+    <td class='entry-value'>${lattr(trans.pharmacist, 'lic_state')}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>License #</td>
+    <td class='entry-value'>${lattr(trans.pharmacist, 'lic_number')}</td>
+ <tr>
+    <td class='entry-caption'>Name</td>
+    <td class='entry-value'>
+      ${lattr(trans.pharmacist, 'first_name')}
+      ${lattr(trans.pharmacist, 'middle_init')}
+      ${lattr(trans.pharmacist, 'last_name')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Address</td>
+    <td class='entry-value'>${lattr(trans.pharmacist, 'address_1')}</td>
+ </tr>
+ <tr>
+    <td class='entry-caption'>City</td>
+    <td class='entry-value'>
+      ${lattr(trans.pharmacist, 'city')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>State</td>
+    <td class='entry-value'>${lattr(trans.pharmacist, 'state')}</td>
+ </tr>
+ </tbody>
+ </table>
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='5' class='collapse'>Doctor
+      ${lattr(trans.doctor, 'name')}
+      <a href="/relink_trans_doctor?trans_id=${trans_id}"><button class="doctor_relink">Relink</button></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'>Name</td>
+    <td class='entry-value'>${lattr(trans.doctor, 'name')}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Speciality</td>
+    <td class='entry-value'>${lattr(trans.doctor, 'specialty')}</td>
+</tr>
+% if trans.doctor:
+<tr>
+    <td class='entry-caption'>First Name</td>
+    <td class='entry-value'>${trans.doctor['first_name']}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Last Name</td>
+    <td class='entry-value'>${trans.doctor['last_name']}</td>
+</tr>
+% endif
+<tr>
+    <td class='entry-caption' rowspan='2'>Address</td>
+    <td class='entry-value' rowspan='2' nowrap>
+       % if trans.doctor:
+        % if trans.doctor['address_1']:
+            <div>${trans.doctor['address_1']}</div>
+        % endif
+        % if trans.doctor['address_2']:
+            <div>${trans.doctor['address_2']}</div>
+        % endif
+        % if trans.doctor['address_3']:
+            <div>${trans.doctor['address_3']}</div>
+        % endif
+        <div>${trans.doctor['city']},
+             ${trans.doctor['state']}
+             ${trans.doctor['zip_code']}</div>
+       % else:
+        <div class='error'>NOT LINKED</div>
+       % endif
+    </td>
+    <td class='entry-gutter' rowspan='2'>&nbsp;</td>
+    <td class='entry-caption'>DEA #</td>
+    <td class='entry-value'>
+       ${lattr(trans.doctor, 'dea_number', doctor_dea_number)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>NPI #</td>
+    <td class='entry-value'>
+        ${lattr(trans.doctor, 'npi_number', doctor_npi_number)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Telephone</td>
+    <td class='entry-value'>${lattr(trans.doctor, 'phone')}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Doctor ID</td>
+    <td class='entry-value'>${doctor_id}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>State License Number</td>
+    <td class='entry-value'>
+      <input type="text" id="doctor_state_lic_number" name="doctor_state_lic_number"
+        value="${trans.doctor_state_lic_number|h}" /></td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Doctor ID</td>
+    <td class='entry-value'>${doctor_id}</td>
+</tr>
+</tbody>
+</table>
+
+% if trans.history:
+<%
+history_fields = [
+    ('History ID', 'history_id'),
+    ('Hit ID', 'hit_id'),
+    ('AWP', 'awp_fmt'),
+    ('Compound Code', 'compound_code_fmt'),
+    ('Co-pay', 'eho_network_copay_fmt'),
+    ('Cost Allowed', 'cost_allowed_fmt'),
+    ('Cost Submitted', 'cost_submitted_fmt'),
+    ('Sales Tax', 'sales_tax_fmt'),
+    ('State Fee', 'state_fee_fmt'),
+    ('Jurisdiction Processed Under', 'soj'),
+    ('Record Create Date', 'create_date_fmt'),
+    ('Date Processed', 'date_processed_fmt'),
+    ('Date Written', 'date_written_fmt'),
+    ('DAW', 'daw'),
+    ("Day's Supply", 'days_supply'),
+    ('Dispense Fee', 'dispense_fee_fmt'),
+    ('Doctor ID', 'doctor_id'),
+    ('Doctor DEA #', 'doctor_dea_number'),
+    ('Doctor NPI #', 'doctor_npi_number'),
+    ('Claim ID', 'claim_id'),
+    ('Date of Injury', 'doi_fmt'),
+    ('Drug ID', 'drug_id'),
+    ('Group #', 'group_number'),
+    ('Claim Reference #', 'group_auth'),
+    ('Patient ID', 'patient_id'),
+    ('Pharmacy ID', 'pharmacy_id'),
+    ('Processing Fee', 'processing_fee_fmt'),
+    ('Quantity', 'quantity'),
+    ('Refill #', 'refill_number'),
+    ('RX Date', 'rx_date_fmt'),
+    ('RX #', 'rx_number'),
+    ('Usual & Customary', 'usual_customary_fmt'),
+    ('Pharmacist License State', 'lic_state'),
+    ('Pharmacist License #', 'lic_number'),
+    ('Sponsor Cost Allowed', 'sponsor_cost_allowed'),
+    ('Sponsor Dispense Fee', 'sponsor_dispense_fee'),
+    ('Pharmacy Payment Date', 'pharmacy_payment_date_fmt')
+]
+%>
+
+% if pk_sup:
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6' class='collapse'>PK Supplemental Data</th>
+</tr>
+</thead>
+<tbody>
+ <tr>
+  <td class='entry-caption'>Rx Fill ID</td>
+  <td class='entry-value'>${pk_sup.rxfill_id}</td>
+  <td class='entry-gutter'>&nbsp;</td>
+  <td class='entry-caption'>Labor Cost</td>
+  <td class='entry-value'>${pk_sup.labor_cost}</td>
+</tr>
+ <tr>
+  <td class='entry-caption'>Shipping Cost</td>
+  <td class='entry-value'>${pk_sup.shipping_cost}</td>
+  <td class='entry-gutter'>&nbsp;</td>
+  <td class='entry-caption'>Drug Cost</td>
+  <td class='entry-value'>${pk_sup.drug_cost}</td>
+</tr>
+ <tr>
+  <td class='entry-caption'>Referring Pharmacy</td>
+  <td class='entry-value'>${pk_sup.referring_nabp}</td>
+  <td class='entry-gutter'>&nbsp;</td>
+  <td class='entry-caption'>Pharmacy Cost</td>
+  <td class='entry-value'>${pk_sup.pharmacy_cost}</td>
+</tbody>
+</table>
+% endif
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='6' class='collapse'>History #${trans.history['history_id']}</th>
+</tr>
+</thead>
+<tbody>
+% for i, (caption, field) in enumerate(history_fields):
+  % if i % 2 == 0:
+   <tr>
+  % endif
+    <td class='entry-caption'>${caption}</td>
+    <td class='entry-value'>
+      % if field == 'patient_id':
+        <a href='/patient?patient_id=${trans.history[field]}'>${trans.history[field]}</a>
+      % else:
+        ${trans.history[field] or ''}
+      % endif
+    </td>
+  % if i % 2 == 0:
+    <td class='entry-gutter'>&nbsp;</td>
+  % else:
+    </tr>
+  % endif
+% endfor
+% if trans.history_distributions:
+<tr>
+  <th colspan='6'>Distributions
+  </th>
+</tr>
+<tr>
+  <td colspan='6'>
+    <table class='form'>
+    <thead>
+      <tr>
+        <th>Line</th>
+        <th>Account</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    % for d in trans.history_distributions:
+    <tr>
+      <td>${d['line_no']}</td>
+      <td>${d['account']}</td>
+      <td class='right'>${d['amount_fmt']}</td>
+    </tr>
+    % endfor
+    <tr>
+      <td colspan='2'><strong>Total</strong></td>
+      <td class='right'>$${trans.history_distribution_total}</td>
+    </tr>
+    </tbody>
+    </table>
+  </td>
+</tr>
+% endif
+</tbody>
+</table>
+
+ % if trans.history_addons:
+  <table class='form record_view'>
+  <thead>
+  <tr>
+   <th colspan='5' class='collapse'>History Add On Breakdown</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+     <td class='entry-caption'>Account</td>
+     <td class='entry-caption'>Amount</td>
+  </tr>
+  % for addon in trans.history_addons:
+  <tr>
+     <td class='entry-caption'>${addon['account']}</td>
+     <td class='entry-caption'>${addon['amount']}</td>
+  </tr>
+  % endfor
+  <tr>
+    <td class='entry-caption'>Summed Total</td>
+    <td class='entry-caption'>${trans.history_addon_summed}</td>
+  </tbody>
+  </table>
+ % endif
+% endif
+
+% if trans.ingredients:
+  <table class='form record_view'>
+  <thead>
+  <tr>
+   <th colspan='6' class='collapse'>Ingredients</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+   <th>#</th>
+   <th>Drug</th>
+   <th>NDC</th>
+   <th>Qty</th>
+   <th>Cost</th>
+   <th></th>
+  </tr>
+  % for ingredient in trans.ingredients:
+  <tr>
+    <td>${ingredient['ingredient_nbr']}</td>
+    <td>${ingredient['drug_name']}</td>
+    <td>${ingredient['ndc_number']}</td>
+    <td class='right'>${ingredient['qty']}</td>
+    <td><input type='text' class='decimal cost' 
+               value='${ingredient["cost"]}' />
+        <input type='hidden' class='ingredient_id' 
+               value='${ingredient["ingredient_id"]}' /> 
+    </td>
+    <td><button class='ingredient'>Update</button></td>
+  </tr>
+  % endfor
+  </tbody>
+  </table>
+% endif
+
+% if trans.claim:
+    <%
+    claim_fields = [
+        ('Adjuster 1 Email', 'email1'),
+        ('Adjuster 2 Email', 'email2'),
+        ('Adjuster 3 Email', 'email3'),
+        ('Claim #', 'claim_number'),
+        ('Date of Injury', 'doi_fmt'),
+        ('Employer Tax ID #', 'employer_tin'),
+        ('Effective Date', 'effective_date'),
+        ('Expiration Date', 'expiration_date'),
+        ('Policy #', 'policy_number'),
+        ('Status', 'status')
+    ]
+    %>
+    <table class='form record_view'>
+    <thead>
+    <tr>
+        <th colspan='6' class='collapse'>Claim ${trans.claim['claim_number']}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    % for i, (caption, field) in enumerate(claim_fields):
+    % if i % 2 == 0:
+    <tr>
+    % endif
+        <td class='entry-caption'>${caption}</td>
+        <td class='entry-value'>${trans.claim[field]}</td>
+    % if i % 2 == 0:
+        <td class='entry-gutter'>&nbsp;</td>
+    % else:
+    </tr>
+    % endif
+    % endfor
+    </tbody>
+    </table>
+% endif
+
+% if trans.employer:
+    <%
+    employer_fields = [
+        ('Address 1', 'address_1_fmt'),
+        ('Address 2', 'address_2_fmt'),
+        ('City', 'city_fmt'),
+        ('E-mail', 'email_fmt'),
+        ('Employer ID', 'employer_id_fmt'),
+        ('Fax', 'fax_fmt'),
+        ('Group #', 'group_number'),
+        ('ID #', 'id_number_fmt'),
+        ('Name', 'name_fmt'),
+        ('Phone', 'phone_fmt'),
+        ('Policy #', 'policy_number_fmt'),
+        ('State', 'state_fmt'),
+        ('TIN', 'tin_fmt'),
+        ('Zip Code', 'zip_code_fmt'),
+        ('Insurer Code', 'insurer_code')
+    ]
+    %>
+    <table class='form record_view'>
+    <thead>
+    <tr>
+        <th colspan='6' class='collapse'>Employer
+        ${lattr(trans.employer, 'name_fmt')} 
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    % for i, (caption, field) in enumerate(employer_fields):
+    % if i % 2 == 0:
+    <tr>
+    % endif
+        <td class='entry-caption'>${caption}</td>
+        <td class='entry-value'>${trans.employer[field]}</td>
+    % if i % 2 == 0:
+        <td class='entry-gutter'>&nbsp;</td>
+    % else:
+    </tr>
+    % endif
+    % endfor
+    </tbody>
+    </table>
+% endif
+
+<table class='form record_view'>
+<thead>
+<tr>
+    <th colspan='5' class='collapse'>Place of Service
+        ${lattr(trans.place_of_service, 'name')}
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='entry-caption'>Name</td>
+    <td class='entry-value'>
+        ${lattr(trans.place_of_service, 'name')}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>NPI</td>
+    <td class='entry-value'>
+      <form action='/update_place_of_service' method='POST'>
+        <input type='hidden' name='trans_id' value='${trans_id}' />
+        <input type='text' name='place_of_service' class='place_of_service'
+               maxlength='10'
+               value='${trans.history["place_of_service"]|h}' />
+        <input type='submit' value="Update" />
+      </form>
+     </td>
+</tr>
+<tr>
+    <td class='entry-caption' rowspan='2'>Address</td>
+    <td class='entry-value' rowspan='2' nowrap>
+        % if trans.place_of_service:
+            <div>${trans.place_of_service['address_1']}</div>
+            <div>${trans.place_of_service['address_2']}</div>
+            <div>${trans.place_of_service['city']},
+                 ${trans.place_of_service['state']}
+                 ${trans.place_of_service['zip_code']}</div>               
+        % else:
+            <div class='error'>NOT LINKED</div>
+        % endif
+    </td>
+    <td class='entry-gutter' rowspan='2'>&nbsp;</td>
+    <td class='entry-caption'>Tax #</td>
+    <td class='entry-value'>
+        ${lattr(trans.place_of_service, 'tax_id')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Telephone</td>
+    <td class='entry-value'>${lattr(trans.place_of_service, 'phone')}</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<form action="/state_reporting/update_trans?trans_id=${trans_id}" method="POST">
+<table class='form record_view'>
+  <thead>
+  <tr>
+      <th colspan='6' class='collapse'>State Reporting</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td class='entry-caption'>Mark Transaction</td>
+      <td class='entry-value'>
+        ${C.ListBox('sr_mark', value=sr_mark, values=[
+          ('', ''),
+          ('Y', 'Y - Pending to send'),
+          ('H', 'H - On hold')])}
+        </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Claim Frequency Type Code</td>
+      <td class='entry-value'>
+        ${C.ListBox('sr_claim_freq_type_code', value=sr_claim_freq_type_code, values=[
+          ('', ''),
+          ('1', '1 - Original claim'),
+          ('6', '6 - Corrected'),
+          ('7', '7 - Replacement'),
+          ('8', '8 - Void/Cancel')])}
+        </td>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Mark Reversal</td>
+      <td class='entry-value'>
+
+       % if trans.reversal:
+        ${C.ListBox('sr_reversal_mark', value=trans.reversal['sr_mark'], values=[
+          ('', ''),
+          ('Y', 'Y - Pending to send'),
+          ('H', 'H - On hold')])}
+      % endif
+        </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Control Number</td>
+      <td class='entry-value'>
+        ${C.TextBox('sr_control_number', value=sr_control_number, maxlength='15')}
+      </td>
+  </tr>
+  <tr>
+      <td class='entry-caption'></td>
+      <td class='entry-value'></td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-value' colspan='2'>
+          <input type='submit' value='Update State Reporting Values' />
+      </td>
+  </tr>
+  </tbody>
+</table>
+</form>
+
+% if trans.report_entries:
+    <table class='form record_view'>
+    <thead>
+    <form action = '/resend_state_reporting'>
+    <tr>
+        <th colspan='7'>
+            <span class='collapse'>
+            State Reporting File Entries
+            </span>
+        </th>
+    </tr>
+    </form>
+    </thead>
+    <tbody>
+    % if trans.has_sr_ndc_override:
+    <tr>
+        <td colspan='3' class='entry-caption left'>Temp NDC Override</td>
+        <td class='entry-value'>
+            <a href='#' id='temp_sr_ndc_override_link'>${trans.ndc_override or 'Not Given'}</a>
+
+            <div id='temp_sr_ndc_override_form'>
+                <form action='/update_temp_sr_ndc_override' method='post'>
+                    ${kcontrol.TextBox('temp_sr_ndc_override', value=trans.ndc_override)}
+                    <input type='submit' value='Update' />
+                    ${kcontrol.Hidden('trans_id', value=trans_id)}
+                </form>
+            </div>
+
+        </td>
+        <td colspan='2' class='entry-caption'>&nbsp;</td>
+    </tr>
+    % endif
+    <tr>
+        <td class='entry-caption left'>ID</td>
+        <td class='entry-caption left'>Reversal</td>
+        <td class='entry-caption right'>Control Number</td>
+        <td class='entry-caption right'>Frequency Code</td>
+        <td class='entry-caption right' title='Acknowledgement Code'>AC</td>
+        <td class='entry-caption left'>Create Date</td>
+        <td class='entry-caption left'>File</td>
+    </tr>
+    % for entry in trans.report_entries:
+    </tr>
+        <td class='entry-value left'>${entry['srid']}</td>
+        <td class='entry-value left'>${entry['reversal_id']}</td>
+        <td class='entry-value left'>${entry['claim_freq_type_code']}</td>
+        <td class='entry-value left'>${entry['control_number']}</td>
+        <td class='entry-value left'>${''}</td>
+        <td class='entry-value left'>${entry['create_date_fmt']}</td>
+        <td class='entry-value left'>
+          <a href='/state_reporting/file?fname=${entry["file_name"]}'>
+            ${entry['file_name']}
+            </a>
+        </td>
+    </tr>
+    % endfor
+    </tbody>
+    </table>
+% endif
+
+<div id='edit_invoice_form'>
+  <form action="/change_trans_invoice_id" method="POST">
+  <input type='hidden' name='trans_id' value="${trans_id}"  />
+  <input type='text' name='invoice_id' class='numeric' pattern="[0-9]+" value="${invoice_id}" />
+  <div><input type='submit' value='Update' /></div>
+  </form>
+</div>
+
+<div id='void_adjudication_form'>
+  <form action="/void_adjudication" method="POST">
+  <input type='hidden' name='adjudication_id' class='adjudication_id' />
+  Void Date:
+  <input type='text' name='void_adj_date' class='datepicker' />
+  <div><input type='submit' value='Void' /></div>
+  </form>
+</div>
+
+<div id='void_writeoff_form'>
+  <form action="/void_writeoff" method="POST">
+  <input type='hidden' name='writeoff_id' class='writeoff_id' />
+  Void Date:
+  <input type='text' name='void_date' class='datepicker' />
+  <div><input type='submit' value='Void' /></div>
+  </form>
+</div>
+
+% if trans.reversal:
+  <div id='reversal_batch_form'>
+      <form action='/update_reversal_batch' method='POST'>
+        <table class='form'>
+        <tr>
+          <td class='entry-caption'>Batch</td>
+          <td class='entry-value'>
+            ${trans.reversal['batch_file_id']}
+            ${C.RecentBatchesListbox('batch_file_id', blankOption=True,
+              value=trans.reversal['batch_file_id'])}
+          </td>
+        </tr>
+        <tr>
+          <td class='entry-caption'></td>
+          <td class='entry-value'><input type='submit' value='Update' />
+        </tr>
+        </table>
+        ${kcontrol.Hidden('trans_id', value=trans_id)}
+        ${kcontrol.Hidden('linkback', value='/view_trans?trans_id=%s' % trans_id)}
+      </form>
+  </div>
+% endif

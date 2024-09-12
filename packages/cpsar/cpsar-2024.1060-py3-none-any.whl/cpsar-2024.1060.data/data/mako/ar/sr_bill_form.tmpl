@@ -1,0 +1,336 @@
+<%!
+import itertools
+import cpsar.controls as C
+%>
+${C.Hidden('bill_id')}
+<div class='help'>Fields marked with an asterisk are required.</div>
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Bill</th>
+</tr>
+<tr>
+    <td class='entry-caption required'><label for='bill_number' title='
+        Bill Number. The Billing Providers unique
+        invoice number also commonly referred to as the
+        Patient Account Number.  This number is Biller defined.
+        '
+    >* Bill Number</label></td>
+    <td class='entry-value'>
+      ${C.TextBox('bill_number', maxlength=20)}
+    </td>
+    <td class='entry-caption'><label for='bill_date' title='
+        Bill Date. This is the invoice date; the date the biller is creating
+        the bill. This is not the Date of Service, Date of Injury or Date of
+        Statements.
+    '>Bill Date</label></td>
+    <td class='entry-value'>${C.DatePicker('bill_date')}</td>
+</tr>
+
+<tr>
+    <td class='entry-caption'>
+      <label for='intermediary_id'>Intermediary Id Number</label>
+    </td>
+    <td class='entry-value'>
+        ${bill['intermediary_id']} ${C.Hidden('intermediary_id')}</td>
+    <td class='entry-caption'><label for='claim_number'>Claim Number</label></td>
+    <td class='entry-value'>${C.TextBox('claim_number')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='bill_total'>Bill Total</label></td>
+    <td class='entry-value'>
+        ${C.store.get("bill_total", "")}
+    </td>
+    <td class='entry-caption required'><label for='juris'>* Jurisdiction State</label></td>
+    <td class='entry-value'>${C.StateListBox('juris')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insurer_paid_amount'>B057 Insurer Paid</label></td>
+    <td class='entry-value'>${C.store.get('insurer_paid_amount', '')}</td>
+    <td class='entry-caption'><label for=''></label></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption required'><label for='claim_freq'>* Claim Frequency Type Code</label></td>
+    <td class='entry-value'>${C.ListBox('claim_freq', values=[
+                              ('1', '1 - original claim'),
+                              ('6', '6 - correction'),
+                              ('7', '7 - replacement'),
+                              ('8', '8 - voided/canceled')])}</td>
+    <td class='entry-caption'><label for='control_number'>Control Number</label></td>
+    <td class='entry-value'>${C.TextBox('control_number')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='bill_type'>Bill Type</label></td>
+    <td class='entry-value'>${C.ListBox('bill_type', values=[
+                              ('R', 'R - Pharmacy (Rx)'),
+                              ('P', 'P - Professional'),
+                              ('I', 'I - Institutional (UB)')])}</td>
+    <td class='entry-caption'><label for='icd_code'>ICD Code</label></td>
+    <td class='entry-value'>${C.ListBox('icd_code', values=[
+            ('0', 'ICD-10'),
+            ('9', 'ICD-9')])}
+    </td>
+</tr>
+<tr>
+    <th colspan='4'>Insurer</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insurer_code_number'>B187 Other Payer ID</label></td>
+    <td class='entry-value'>${C.TextBox('insurer_code_number')}</td>
+    <td class='entry-caption'><label for='insurer_fein'>Insurer FEIN</label></td>
+    <td class='entry-value'>${C.TextBox('insurer_fein')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insured_name'>Insured Organization Name</label></td>
+    <td class='entry-value'>${C.TextBox('insured_name')}<!--employer_name --></td>
+    <td class='entry-caption'><label for='subscriber_member_number'>B343 Subscriber Member Number</label></td>
+    <td class='entry-value'>${C.TextBox('subscriber_member_number')}</td>
+</tr>
+<tr>
+    <th colspan='4'>Payor</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_name'>Name</label></td>
+    <td class='entry-value'>${C.TextBox('payor_name')}</td>
+    <td class='entry-caption'><label for='payor_id'>Payor ID</label></td>
+    <td class='entry-value'>${C.TextBox('payor_id')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_name'>B197 FEIN</label></td>
+    <td class='entry-value'>${C.TextBox('payor_fein')}</td>
+    <td class='entry-caption'><label for='payment_date'>Payment Date</label></td>
+    <td class='entry-value'>${C.DatePicker('payment_date')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_address_1'>Address 1</label></td>
+    <td class='entry-value'>${C.TextBox('payor_address_1')}<!-- client_address_1 --></td>
+    <td class='entry-caption'><label for='payor_address_2'>Address 2</label></td>
+    <td class='entry-value'>${C.TextBox('payor_address_2')}<!-- client_address_2 --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_city'>City</label></td>
+    <td class='entry-value'>${C.TextBox('payor_city')}<!-- client_city --></td>
+    <td class='entry-caption'><label for='payor_state'>State</label></td>
+    <td class='entry-value'>${C.StateListBox('payor_state')}<!-- client_state --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${C.TextBox('payor_zip_code')}<!-- client_zip_code --></td>
+    <td class='entry-caption'><label for='payor_receive_date'>Receive Date</label></td>
+    <td class='entry-value'>${C.DatePicker('payor_receive_date')}</td>
+</tr>
+<tr>
+    <th colspan='4'>Patient</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_last_name'>Last Name</label></td>
+    <td class='entry-value'>${C.TextBox('patient_last_name')}</td>
+    <td class='entry-caption'><label for='patient_first_name'>First Name</label></td>
+    <td class='entry-value'>${C.TextBox('patient_first_name')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_ssn'>SSN</label></td>
+    <td class='entry-value'>${C.TextBox('patient_ssn')}</td>
+    <td class='entry-caption'><label for='patient_dob'>D.O.B.</label></td>
+    <td class='entry-value'>${C.DatePicker('patient_dob')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_sex'>Gender</label></td>
+    <td class='entry-value'>${C.ListBox('patient_sex', values=[
+        ('U', 'U - Unknown'),
+        ('F', 'F - Female'),
+        ('M', 'M - Male')])}</td>
+    <td class='entry-caption'><label for='principal_diagnosis_code'>Principal Diagnosis Code</label></td>
+    <td class='entry-value'>${C.TextBox('principal_diagnosis_code', maxlength=20)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='diagnosis_code_2'>Diagnsosis Code 2</label></td>
+    <td class='entry-value'>${C.TextBox('diagnosis_code_2', maxlength=20)}</td>
+    <td class='entry-caption'><label for='diagnosis_code_3'>Diagnosis Code 3</label></td>
+    <td class='entry-value'>${C.TextBox('diagnosis_code_3', maxlength=20)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='diagnosis_code_4'>Diagnsosis Code 4</label></td>
+    <td class='entry-value'>${C.TextBox('diagnosis_code_4', maxlength=20)}</td>
+    <td class='entry-caption'><label for='diagnosis_code_5'>Diagnosis Code 5</label></td>
+    <td class='entry-value'>${C.TextBox('diagnosis_code_5', maxlength=20)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_address_1'>Address 1</label></td>
+    <td class='entry-value'>${C.TextBox('patient_address_1')}</td>
+    <td class='entry-caption'><label for='patient_address_2'>Address 2</label></td>
+    <td class='entry-value'>${C.TextBox('patient_address_2')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_city'>City</label></td>
+    <td class='entry-value'>${C.TextBox('patient_city')}<!-- client_city --></td>
+    <td class='entry-caption'><label for='patient_state'>State</label></td>
+    <td class='entry-value'>${C.StateListBox('patient_state')}<!-- client_state --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${C.TextBox('patient_zip_code')}<!-- client_zip_code --></td>
+    <td class='entry-caption'><label for='doi'>Date of Injury</label></td>
+    <td class='entry-value'>${C.DatePicker('doi')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='date_of_admission' title='B545'>Date of Admission</label></td>
+    <td class='entry-value'>${C.DatePicker('date_of_admission')}</td>
+    <td class='entry-caption'><label for='date_of_discharge' title='B555'>Date of Discharge</label></td>
+    <td class='entry-value'>${C.DatePicker('date_of_discharge')}</td>
+</tr>
+<tr>
+    <th colspan='4'>Referring Provider (Doctor)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='doctor_last_name'>Last Name</label></td>
+    <td class='entry-value'>${C.TextBox('doctor_last_name')}</td>
+    <td class='entry-caption'><label for='doctor_first_name'>First Name</label></td>
+    <td class='entry-value'>${C.TextBox('doctor_first_name')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='doctor_npi'>NPI</label></td>
+    <td class='entry-value'>${C.TextBox('doctor_npi')}</td>
+    <td class='entry-caption'><label for='doctor_state_lic_number'>State License #</label></td>
+    <td class='entry-value'>${C.TextBox('doctor_state_lic_number')}</td>
+</tr>
+<tr>
+    <th colspan='4'>Rendering Provider (Pharmacist)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacist_last_name'>Last Name</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacist_last_name')}</td>
+    <td class='entry-caption'><label for='pharmacist_first_name'>First Name</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacist_first_name')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacist_lic_number'>State License #</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacist_lic_number')}</td>
+    <td class='entry-caption'><label for='pharmacist_taxonomy_code'>Taxonomy Code</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacist_taxonomy_code')}</td>
+</tr>
+<tr>
+    <th colspan='4'>Service Facility (Pharmacy)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_name'>Name</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_name')}</td>
+    <td class='entry-caption'><label for='pharmacy_npi'>NPI</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_npi')}<!-- service_facility_npi --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_nabp'>NABP</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_nabp')}</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_address_1'>Address 1</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_address_1')}</td>
+    <td class='entry-caption'><label for='pharmacy_address_2'>Address 2</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_address_2')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_city'>City</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_city')}</td>
+    <td class='entry-caption'><label for='pharmacy_state'>State</label></td>
+    <td class='entry-value'>${C.StateListBox('pharmacy_state')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_zip_code')}</td>
+    <td class='entry-caption'><label title='B440' for='pharmacy_state_license_number'>State License #</label></td>
+    <td class='entry-value'>${C.TextBox('pharmacy_state_license_number', maxlength=50)}</td>
+</tr>
+</table>
+
+<div class='entry-container'>
+% for i, line in enumerate(bill['lines']):
+  <%
+  line_no = i + 1
+  for key in line:
+    if key in line:
+      C.update_store({"%s-%s" % (line_no, key): line[key]})
+  %>
+  <table class='form entry-table'>
+  <tr>
+    <td class='entry-caption'><label for="${line_no}-srid" class="line-no">${line_no}.</label>
+      ${C.Hidden('%s-srid' % line_no)}</td>
+    <td class='entry-caption'><label for="${line_no}-date_of_service">Date of Service</label></td>
+    <td class='entry-value'>${C.DatePicker('%s-date_of_service' % line_no)}</td>
+    <td class='entry-caption'><label for="${line_no}-hcpcs">CPT Proc/HCPCS</label></td>
+    <td class='entry-value'>${C.TextBox('%s-hcpcs' % line_no)}</td>
+    <td class='entry-caption'><label for="${line_no}-hcpcs_paid">CPT Proc/HCPCS Paid</label></td>
+    <td class='entry-value'>${C.TextBox('%s-hcpcs_paid' % line_no)}</td>
+    <td class='entry-caption' title='5-4-2'><label for="${line_no}-ndc">NDC</label></td>
+    <td class='entry-value'>${C.TextBox('%s-ndc' % line_no)}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'><label for="${line_no}-drug_name">Drug name</label></td>
+    <td class='entry-value'>${C.TextBox('%s-drug_name' % line_no)}</td>
+    <td class='entry-caption'><label for="${line_no}-repackaged_ndc">Repackaged NDC</label></td>
+    <td class='entry-value'>${C.TextBox('%s-repackaged_ndc' % line_no, maxlength=11)}</td>
+    <td class='entry-caption'><label for="${line_no}-days_supply">Day's Supply</label></td>
+    <td class='entry-value'>${C.TextBox('%s-days_supply' % line_no)}</td>
+    <td class='entry-caption'><label for="${line_no}-daw">DAW</label></td>
+    <td class='entry-value'>${C.TextBox('%s-daw' % line_no)}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'></td>
+    <td class='entry-caption'><label for='${line_no}-total'>Line Charge</label></td>
+    <td class='entry-value'>${C.Currency('%s-total' % line_no)}</td>
+    <td class='entry-caption'>Sales Tax</td>
+    <td class='entry-value'>${C.Currency('%s-sales_tax' % line_no)}</td>
+    <td class='entry-caption'>State Fee</td>
+    <td class='entry-value'>${C.Currency('%s-state_fee' % line_no)}</td>
+    <td class='entry-caption'>Insurer Paid</td>
+    <td class='entry-value'>${C.Currency('%s-insurer_paid' % line_no)}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Rx #</td>
+    <td class='entry-value'>${C.TextBox('%s-rx_number' % line_no)}</td>
+    <td class='entry-caption'>Refill #</td>
+    <td class='entry-value'>${C.TextBox('%s-refill_number' % line_no)}</td>
+    <td class='entry-caption'>Quantity</td>
+    <td class='entry-value'>${C.TextBox('%s-quantity' % line_no)}</td>
+    <td class='entry-caption'>EOB Review Code</td>
+    <td class='entry-value'>${C.TextBox('%s-eob_review_code' % line_no)}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'><label title='L140' for='${line_no}-entry_doctor_last_name'>Doc. Last Name</label></td>
+    <td class='entry-value'>${C.TextBox('%s-entry_doctor_last_name' % line_no)}</td>
+    <td class='entry-caption'><label title='L150' for='${line_no}-entry_doctor_first_name'>First Name</label></td>
+    <td class='entry-value'>${C.TextBox('%s-entry_doctor_first_name' % line_no)}</td>
+    <td class='entry-caption'><label title='L150' for='${line_no}-entry_doctor_state_lic_number'>State License #</label></td>
+    <td class='entry-value'>${C.TextBox('%s-entry_doctor_state_lic_number' % line_no)}</td>
+    <td class='entry-caption'><label title='L155' for='${line_no}-entry_doctor_npi'>NPI</label></td>
+    <td class='entry-value'>${C.TextBox('%s-entry_doctor_npi' % line_no)}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Trans ID</td>
+    <td class='entry-value'>
+      % if line.get('trans_id'):
+        <a href='/view_trans?trans_id=${line["trans_id"]}'>${line['trans_id']}</a>
+      % endif
+    </td>
+    <td class='entry-caption'>Reversal ID</td>
+    <td class='entry-value'> ${line.get('reversal_id')} </td>
+    <td class='entry-caption'><label>SRID</label></td>
+    <td class='entry-value'>${line.get('srid', '')}</td>
+  </tr>
+  </table>
+  % if line.get('srid'):
+    <div style='margin-bottom: 1rem; border-bottom: 1px solid #CCC'>
+      <input type='button' class='copy-from-trans' srid='${line["srid"]}' value='Copy From Trans' />
+      <input type='button' class='copy-from-srid' srid='${line["srid"]}' value='Copy From SRID' />
+      <input type='button' class='delete-state-report-entry' srid='${line["srid"]}' value='Delete Line Item' />
+    </div>
+  % endif
+
+% endfor
+</div>

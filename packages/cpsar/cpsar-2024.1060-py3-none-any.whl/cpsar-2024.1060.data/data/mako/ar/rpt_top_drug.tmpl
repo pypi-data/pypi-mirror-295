@@ -1,0 +1,73 @@
+<%import math%>
+<html>
+<head>
+<title>${q.label}</title>
+
+<style type='text/css'>
+BODY {
+    font-family: sans-serif;
+    font-size: 9pt;
+}
+TD {
+    font-size: 9pt;
+}
+H1 {
+    text-align: right;
+    font: bold 1.4em Arial;
+    color: #444;
+    margin: 0px;
+}
+#subheader {
+    font: normal .8em Arial;
+    text-align: right;
+}
+#top {
+    font: bold 1.0em Arial;
+    color: #444;
+    border-bottom: medium solid #bdcdef;
+    margin-bottom: 20px;
+}
+.b1 {
+    background-color: #a7d7fb;
+}
+.b2 {
+    background-color: #63b7f8;
+}
+.b3 {
+    background-color: #2097f3;
+}
+${q.query_css}
+</style>
+
+</head>
+<body>
+<h1>Top 50 Drugs by Rx Amount</h1>
+<div id='subheader'>Paid Transactions Reporting Period:
+    <strong>${q.start_date}</strong> To <strong>${q.end_date}</strong>
+% if q.state:
+    <br>State: ${q.state}
+% endif
+</div>
+
+<div id='top'>${q.group_header()}</div>
+
+<table border='1' cellspacing='0' width='100%' style='margin-bottom: 10px'>
+<thead>
+<tr>
+    <th class='b1'>Medication</th>
+    <th class='b2'># Rx's</th>
+    <th class='b3'>Avg Cost</th>
+    <th class='b3'>Total Cost</th>
+</tr>
+</thead>
+<%
+for rec in cursor:
+    context.write("<tr>")
+    for j, value in enumerate(rec):
+        context.write("<td class='data%s'>%s</td>" % (j+1, value))
+    context.write("</tr>")
+%>
+</table>
+${q.legend()}
+</body>
+</html>

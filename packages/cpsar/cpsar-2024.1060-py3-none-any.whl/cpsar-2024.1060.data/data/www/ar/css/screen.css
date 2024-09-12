@@ -1,0 +1,26 @@
+TABLE.grid {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+TABLE.grid TD {
+    font-size: 10pt;
+	border: 1px solid #CCCCCC;
+}
+TABLE.grid TH {
+    background: #EAEAEA;
+	border: 1px solid #CCCCCC;
+    color: #444;
+	background: #F6F6F6;
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	padding-right: 3px;
+	padding-left: 3px;
+	text-align: right;
+}
+TABLE.grid TD.header {
+    background: #888888;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+}

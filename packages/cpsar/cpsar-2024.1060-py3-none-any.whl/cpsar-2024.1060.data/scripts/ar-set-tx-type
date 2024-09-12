@@ -1,0 +1,27 @@
+#!python
+""" Set the transaction type for all of the transactions that do not have
+transaction types.
+"""
+import cpsar.runtime as R
+import cpsar.shell as S
+import cpsar.txtype as TT
+
+class Program(S.Program):
+    def main(self):
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            SELECT *
+            FROM trans
+            WHERE tx_type IS NULL
+            """)
+        for record in list(cursor):
+            tx_type = TT.get_tx_type(record)
+            R.log.debug("Setting transaction type for #%s to %s",
+                        record['trans_id'], tx_type)
+            cursor.execute("""
+                UPDATE trans SET tx_type=%s
+                WHERE trans_id=%s
+                """, (tx_type, record['trans_id']))
+        R.db.commit()
+
+Program().run()

@@ -1,0 +1,215 @@
+BODY {
+    margin: 0px;
+}
+FORM {
+    margin: 0px;
+    padding:0px;
+}
+/* Page Layout */
+/*
+#left_menu {
+    position: fixed;
+    left: 0;
+    top: 9.1em;
+    width: 22%;
+    background: #FFFFFF;
+}
+*/
+#left_menu_table {
+    width: 100%;
+}
+DIV.content_header {
+/*
+    position: fixed;
+    left: 0;
+    top: 5.1em;
+    width: 100%;
+    z-index: 10;
+*/
+    background-color: #FFFEEE;
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #C6C2BA;
+    padding: 4px;
+}
+DIV.review {
+    max-height: 400px;
+    overflow: auto;
+}
+TABLE.review {
+    border: thin solid #CCCCCC;
+    border-collapse: collapse;
+    width: 800px;
+}
+TABLE.review TD {
+    border: thin solid #CCCCCC;
+    padding: 2px 5px 2px 5px;
+}
+TABLE.content_header {
+    width: 90%;
+}
+TABLE.content_header SELECT#payment_select{
+    width: 8em;
+}
+#transaction_container {
+    width: 78%; 
+    /* b/c this is absolute. It's relative to it's container, not the page like
+     * fixed */
+    /*
+    top: 4em;
+    left: 22%;
+    position: absolute;
+    */
+}
+SPAN.top_button {
+    padding-left: 15px;
+    padding-right; 15px;
+}
+TABLE.payment {
+    margin: 0px;
+	border: 1px solid #CCCCCC;
+    border-top: none;
+	border-collapse: collapse;
+    width: 100%;
+}
+TABLE.payment TD.trans {
+    border-bottom: 1px solid #CCCCCC;
+    font-size: .9em;
+}
+TABLE.payment TD.claim_head LABEL {
+	font-weight: normal;
+}
+TABLE.payment TD.overlib_cell {
+	padding-left: 12px;
+	text-align:right;
+}
+TABLE.payment TH {
+	background-color: #EEEEEE;
+	color: #000000;
+	border: 1px solid #CCCCCC;
+	font-size: .9em;
+	font-weight: bold;
+	text-align: center;
+	border: 0px;
+	border-bottom: 1px solid #CCCCCC;
+}
+TABLE.payment TH.applied_header {
+	text-align: right;
+}
+TABLE.payment TD.claim_invoice {
+	text-align:right;
+}
+TABLE.payment TD.claim_batch_no {
+    text-align:right;
+	border-right: 1px solid #CCCCCC;
+	padding-right: 4px;
+}
+
+
+Table.TR.payment_line {
+
+}
+TD.payment_line {
+    background-color: #FFFEEE;
+    text-align: right;
+    border: 1px solid #CCCCCC;
+    padding: 3px .6em 2px 3px;
+    font-size: .8em;
+}
+
+/*////////////////////////////////////////////////////////////////////////////
+ * Generic Layout
+ */
+TD.right {
+    text-align: right;
+}
+TD.left {
+    text-align: left;
+}
+
+/*////////////////////////////////////////////////////////////////////////////
+ * Control Display 
+ */
+Label.entry_date {
+    display: block;
+    float: right;
+    line-height: 30px;
+    padding-right: 5px;
+}
+DIV.entry_date {
+    float: right;
+    line-height: 30px;
+}
+#entry_date{
+    width: 8em;
+}
+
+DIV.round_button {
+    margin: 0px;
+    padding: 0px;
+}
+DIV.round_button:HOVER {
+    cursor: pointer;
+}
+#group_number {
+    width: 250px;
+}
+#invoice_line_no { 
+    width: 50px;
+}
+#payment_amount {
+    width: 95px;
+}
+#reset_button {
+    background-color: #FFAAAA; 
+    color: #FFFFFF;
+}
+#current_amount, #current_left_to_apply, #current_total_applied {
+    background-color: #DDDDDD;
+    width: 100px;
+}
+
+INPUT.amount {
+    width: 6em;
+    text-align: right;
+}
+INPUT.applied {
+    background-color: #DDDDDD;
+    width: 65px;
+    padding: 3px .5em 2px 3px;
+    text-align: right;
+}
+SPAN.top_label {
+    font-weight: 100;
+    font-size: .9em;
+}
+INPUT.currency_display {
+    width: 65px;
+    padding: 3px .5em 2px 3px;
+    margin-right: 20px;
+    margin-left: 5px;
+    text-align: right;
+}
+
+#ptype_id { width: 80px; }
+#ptype_id { font-family: monospace; }
+SPAN.drug_name:HOVER,
+SPAN.patient_last_name:HOVER, 
+SPAN.patient_first_name:HOVER {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
+
+#trans_row_tmpl {
+    display: none; 
+}
+TD.previous_trans{
+    font-size: .9em;
+    text-align: right;
+}
+SPAN.ck_display{
+    padding-left: 10px;
+}
+SPAN.rx_date {
+    padding-right: 1em;
+}

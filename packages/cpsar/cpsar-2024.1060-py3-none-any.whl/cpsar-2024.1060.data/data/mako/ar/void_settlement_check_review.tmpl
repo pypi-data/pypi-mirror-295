@@ -1,0 +1,50 @@
+<%inherit file="page.tmpl" />
+<%block name="header">
+    Void Settlement Check
+</%block>
+% if voided:
+    <p>The following settlement records have been voided.</p>
+    <p><a href="/void_settlement_check">Void another Check</a></p>
+% else:
+    <p> The settlement records are listed below. Records with an existing void
+    date will not be voided again.
+    </p>
+% endif
+<table class='grid'>
+<thead>
+<tr>
+    <th>Entry Date</th>
+    <th>Trans</th>
+    <th>ID</th>
+    <th>Reference</th>
+    <th>Amount</th>
+    <th>Void Date</th>
+</tr>
+</thead>
+<tbody>
+% for set in settlements:
+<tr>
+    <td>${set['entry_date_fmt']}</td>
+    <td><a href="/view_trans?trans_id=${set['trans_id']}">${set['trans_id']}</a></td>
+    <td>${set['key']}</td>
+    <td>${set['ref']}</td>
+    <td class='right'>${set['amount_fmt']}</td>
+    <td>${set['void_date_fmt'] or ''}</td>
+</tr>
+% endfor
+</tbody>
+<tfoot>
+<tr>
+    <td colspan='4'></td>
+    <td class='total right'>${total_fmt}</td>
+    <td></td>
+</tr>
+</tfoot>
+</table>
+
+% if not voided:
+    <form action='/void_settlement_check/commit'>
+    <input type='hidden' name='check_no' value='${check_no}' />
+    <input type='submit' value='Void Check' />
+    </form>
+% endif

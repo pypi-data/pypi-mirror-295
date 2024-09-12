@@ -1,0 +1,42 @@
+<%! import kcontrol %>
+<html>
+<body>
+
+% if len(q.recent_log):
+  <table class='form' width='100%'>
+  <thead>
+  <tr>
+      <th>Time</th>
+      <th>Trans</th>
+      <th># Messages</th>
+      <th>
+          <form action='/'>
+              <%
+              vals = [(c['username'], "%(username)s - %(cnt)s" % c) for
+                       c in q.log_users]
+              vals = [('', 'User')] + vals
+              %>
+              ${kcontrol.ListBox('user', values=vals,
+                  onchange='this.form.submit()',
+                  value=q.filter_user)}
+          </form>
+      </th>
+  </tr>
+  </thead>
+  % for log in q.recent_log:
+  <tr>
+      <td>${log['entry_date'].strftime('%I:%M')}</td>
+      <td><a href='/view_trans?trans_id=${log['trans_id']}'>
+              ${log['trans_id']}
+          </a>
+      </td>
+      <td width='200'>${log['msg_cnt']}</td>
+      <td>${log['username']}</td>
+  </tr>
+  % endfor
+  </table>
+% else:
+  No recent activity
+% endif
+</body>
+</html>

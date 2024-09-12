@@ -1,0 +1,974 @@
+<%!
+import kcontrol as K
+
+from cpsar.pg import format_date
+
+import cpsar.controls as C
+import cpsar.invoice
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+  <title>Client ${client['group_number']}</title>
+  <link rel='stylesheet' type='text/css'
+        href='/css/redmond/jquery-ui-1.8.14.custom.css' />
+  <link type='text/css' rel='stylesheet'
+        href='/css/form.css'  />
+  <link type='text/css' rel='stylesheet'
+        href='/css/view_client.css' />
+</%block>
+<%def name="scripts()">
+    <script src='/js/jquery-1.5.1.min.js'></script>
+    <script src='/js/jquery.jgrowl.js'></script>
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/jquery.numeric.js'></script>
+    <script src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+    <script src='/repo/js/kcontrol/currency_control.js'></script>
+    <script src='/js/common.js'></script>
+    <script src='/js/view_client.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            setup_view_client_page();
+            % if form.has_key('refresh'):
+                parent.list.location.refresh();
+            % endif
+
+            $("TABLE.processing_rules_table").delegate(
+                "INPUT.show_on_invoice_check",
+                "change",
+                showOnInvoiceChange);
+            
+            $("SELECT.update_priority").change(onUpdatePriority);
+        });
+
+        function showOnInvoiceChange() {
+            var $this = $(this);
+            var data = {
+                dr_id: $this.attr("title"),
+                show_on_invoice: $this.attr("checked") ? "true" : ""
+            };
+            function onSuccess() {
+                $.jGrowl("Update successful");
+            }
+
+            $.ajax({
+                url: '/update_distribution_show_on_invoice',
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: onSuccess
+            });
+        }
+
+        function onUpdatePriority() {
+          var $this = $(this);
+          var data = {
+                dr_id:$this.attr("data-drid"),
+                priority: $this.val()
+          };
+          function onSuccess() {
+              $.jGrowl("Distribution priority set");
+          }
+          $.ajax({
+                url: '/update_distribution',
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: onSuccess
+          });
+        }
+    </script>
+</%def>
+<%block name="header">
+   ${client['client_name']} (${client['group_number']})
+</%block>
+<%block name='cmenu'>
+  <a href='/add_client?clone=${client["group_number"]}' class='cmenu'>Clone</a>
+  <a href='/add_client' class='cmenu'>Add Client</a>
+</%block>
+<%def name='lbl(id, cap)'>
+    <label for='${id}'>${cap}</label>
+</%def>
+
+<div class="container">
+
+<%
+if client['ccmsi_savings_percent'] is not None:
+    client['ccmsi_savings_percent'] = str(client['ccmsi_savings_percent'])
+endif
+K.store.update(client)
+%>
+
+<form action='/update_client' method='post'>
+<input type='hidden' name='group_number' value='${client['group_number']}' />
+<table class='form'>
+<tr>
+    <th colspan='4'>Company</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='group_number'>Group Number</label>
+    </td>
+    <td class='entry-value'>${client['group_number']}</td>
+    <td class='entry-caption'><label for='client_name'>Client Name</label></td>
+    <td class='entry-value'>${K.TextBox('client_name')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Employer Tax ID #</td>
+    <td class='entry-value'>${K.TextBox('tin', maxlength=9)} </td>
+    <td class='entry-caption'>Group Code</td>
+    <td class='entry-value'>${C.GroupCodeListBox('group_code')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='address_1'>Address 1</label></td>
+    <td class='entry-value'>${K.TextBox('address_1')}</td>
+    <td class='entry-caption'><label for='address_2'>Address 2</label></td>
+    <td class='entry-value'>${K.TextBox('address_2')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='city'>City</label></td>
+    <td class='entry-value'>${K.TextBox('city')}</td>
+    <td class='entry-caption'><label for='state'>State</label></td>
+    <td class='entry-value'>${K.TextBox('state', maxlength=2)} </td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${K.TextBox('zip_code')}</td>
+    <td class='entry-caption'><label for='inactive'>Inactive</label></td>
+    <td class='entry-value'>${K.CheckBox('inactive')} </td>
+</tr>
+</table>
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Administrative Contact</th>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('contact_name', 'Name')}</td>
+    <td class='entry-value'>${K.TextBox('contact_name')}</td>
+    <td class='entry-caption'>${lbl('contact_phone', 'Phone')}</td>
+    <td class='entry-value'>${K.TextBox('contact_phone', maxlength=16)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('contact_email', 'E-mail')}</td>
+    <td class='entry-value'>${K.TextBox('contact_email', maxlength=100)}
+    </td>
+    <td class='entry-caption'>${lbl('contact_fax', 'Fax')}</td>
+    <td class='entry-value'>${K.TextBox('contact_fax', maxlength=16)}
+    </td>
+</tr>
+</table>
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Billing</th>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='billing_name'>Billing Name</label></td>
+    <td class='entry-value'>${K.TextBox('billing_name')}</td>
+    <td class='entry-caption'>
+        <label for='invoice_processor_code'>Invoice Code</label></td>
+    <td class='entry-value'>
+        ${K.ListBox('invoice_processor_code',
+                           values=[('INTERNET', 'INTERNET'),
+                                   ('PRINT', 'PRINT')])}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='force_under_state_fee'>
+          Force All Invoices Under State Fee</label></td>
+    <td class='entry-value'>
+      ${K.CheckBox('force_under_state_fee')}</td>
+    <td class='entry-caption'>Savings Formula</td>
+    <td class='entry-value'>
+            ${C.SavingsFormulaListBox()}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='due_date_days'>Number of Days Until Invoice Due</label></td>
+    <td class='entry-value'>${K.TextBox('due_date_days')}</td>
+    <td class='entry-caption'>
+      <label for='pricing_module'>Pricing Module</label></td>
+    <td class='entry-value'>
+      ${K.ListBox('pricing_module', values=[('pricing', 'pricing'), ('pricing2', 'pricing2')])}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='liberty_insurance_codes'>Liberty Insurance Codes (Comma Separated)</label></td>
+    <td colspan='3' class='entry-value'>
+        ${K.TextArea('liberty_insurance_codes', size=3, value=liberty_insurance_codes)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_awp_on_invoice'>Print AWP on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_awp_on_invoice')}</td>
+    <td class='entry-caption'>
+        <label for='show_sfs_on_invoice'>Print SFS on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_sfs_on_invoice')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_uc_on_invoice'>Print U/C on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_uc_on_invoice')}</td>
+    <td class='entry-caption'>
+        <label for='show_cmpd_cost_on_invoice'>Print Ingredient Cost &amp; AWP
+          on invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_cmpd_cost_on_invoice')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_due_date_on_invoice'>Show Due Date on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_due_date_on_invoice')}</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_savings_on_invoice'>Print Savings on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_savings_on_invoice')}</td>
+    <td class='entry-caption'>
+        <label for='show_copay_on_invoice'>Print Copay on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_copay_on_invoice')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_pharmacy_tax_id_on_invoice'>Print Pharmacy Tax ID on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_pharmacy_tax_id_on_invoice')}</td>
+    <td class='entry-caption'>
+        <label for='show_pharmacy_cost_on_invoice'>Print Pharmacy Cost on Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('show_pharmacy_cost_on_invoice')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='print_nonmultiplier_invoice'>
+            Print Non-multiplier Invoice</label></td>
+    <td class='entry-value'>${K.CheckBox('print_nonmultiplier_invoice')}</td>
+    <td class='entry-caption'>
+        <label for='print_hcfa_1500'>Print HCFA 1500</label></td>
+    <td class='entry-value'>${K.CheckBox('print_hcfa_1500')}</td>
+
+</tr>
+<tr>
+    <td class='entry-caption'>Invoice Amount Multiplier</td>
+    <td class='entry-value'>${K.TextBox('invoice_multiplier')}</td>
+    <td class='entry-caption'>
+        <label for='print_multiplier_invoice'>Print Multiplier Invoice
+            </label></td>
+    <td class='entry-value'>${K.CheckBox('print_multiplier_invoice')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='print_nonmultiplier_invoice'>
+            Mail Order Shipping Fee</label></td>
+    <td class='entry-value'>
+        ${K.Currency('mo_ship_fee')}<br />
+        Informational Purposes Only
+    </td>
+    <td class='entry-caption'>
+      <label for='show_all_ingredients_on_invoice'>
+        Show all compounds ingredients on invoice
+      </label>
+    </td>
+    <td class='entry-value'>
+      ${K.CheckBox('show_all_ingredients_on_invoice')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='memo'>Invoice Memo</label></td>
+    <td colspan='3' class='entry-value'>
+        ${K.TextArea('memo', size=3)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='trans_rebate_amount'>
+            Rebate Amount to Pay Client Per Trans</label></td>
+    <td class='entry-value'>
+        ${K.Currency('trans_rebate_amount')}
+    </td>
+
+    <td class='entry-caption'>
+        <label for='trans_rebate_percent'>
+            Rebate Percent to Pay Client Per Trans</label></td>
+    <td class='entry-value'>
+        ${K.Currency('trans_rebate_percent')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='auto_apply_trans_rebate'>
+        Auto-apply rebate credits to transactions?
+      </label>
+    </td>
+    <td class='entry-value'>
+      ${K.CheckBox('auto_apply_trans_rebate')}
+    </td>
+</tr>
+
+<tr>
+    <td class='entry-caption'>
+        <label for='print_nonmultiplier_invoice'>
+            CCMSI Savings Fee Percent
+            <br />Enter as Decimal (i.e. .35 for 35%)
+        </label></td>
+    <td class='entry-value'>
+        ${K.TextBox('ccmsi_savings_percent')}
+    </td>
+    <td class='entry-caption'>
+        <label for='ccmsi_client_code'>CCMSI Client Number</label>
+    </td>
+    <td class='entry-value'>
+        ${K.TextBox('ccmsi_client_number', maxlength=12)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='print_ncpdp'>Print NCPDP</label></td>
+    <td class='entry-value'>${K.CheckBox('print_ncpdp')}</td>
+</tr>
+</table>
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Collections Contact</th>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('collections_contact', 'Name')}</td>
+    <td class='entry-value'>${K.TextBox('collections_contact')}</td>
+    <td class='entry-caption'>${lbl('collections_phone', 'Phone')}</td>
+    <td class='entry-value'>${K.TextBox('collections_phone', maxlength=16)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('collections_email', 'E-mail')}</td>
+    <td class='entry-value'>${K.TextBox('collections_email', maxlength=100)}
+    </td>
+    <td class='entry-caption'>${lbl('collections_fax', 'Fax')}</td>
+    <td class='entry-value'>${K.TextBox('collections_fax', maxlength=16)}
+    </td>
+</tr>
+</table>
+
+
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Billing Contact</th>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('billing_contact', 'Name')}</td>
+    <td class='entry-value'>${K.TextBox('billing_contact')}</td>
+    <td class='entry-caption'>${lbl('billing_phone', 'Phone')}</td>
+    <td class='entry-value'>${K.TextBox('billing_phone', maxlength=16)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('billing_email', 'E-mail(s)')}</td>
+    <td class='entry-value'>${K.TextBox('billing_email', maxlength=100)}
+    </td>
+    <td class='entry-caption'>${lbl('billing_fax', 'Fax')}</td>
+    <td class='entry-value'>${K.TextBox('billing_fax', maxlength=16)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>${lbl('email_adjusters_inv_notification', 
+    'Email Adjusters when new invoices are available on Blue Diamond')}</td>
+    <td class='entry-value'>${K.CheckBox('email_adjusters_inv_notification')}
+    </td>
+    <td class='entry-caption'>${lbl('email_billing_inv_notification',
+    'Email Billing Contact when new invoices are available on Blue Diamond')}</td>
+    <td class='entry-value'>${K.CheckBox('email_billing_inv_notification')}
+
+</tr>
+</table>
+
+<table class='form'>
+<tr>
+    <th colspan='4'>Work Queue Checks</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='wq_claim_number_required'>Claim Number Required</label></td>
+    <td class='check entry-value'>${K.CheckBox('wq_claim_number_required')}</td>
+    <td class='entry-caption'><label for='wq_policy_number_required'>Policy Number Required</label></td>
+    <td class='check entry-value'>${K.CheckBox('wq_policy_number_required')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='wq_adjuster_required'>Adjuster Required</label></td>
+    <td class='check entry-value'>${K.CheckBox('wq_adjuster_required')}</td>
+    <td class='entry-caption'><label for='wq_adjuster_inital_required'>Adjuster Initials Required</label></td>
+    <td class='check entry-value'>${K.CheckBox('wq_adjuster_inital_required')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='wq_phcy_tax_id_required'>Pharmacy Tax ID Required</label></td>
+    <td class='check entry-value'>${K.CheckBox('wq_phcy_tax_id_required')}</td>
+    <td class='entry-caption'></td>
+    <td class='check entry-value'></td>
+</tr>
+</table>
+
+<tr>
+<table class='form state_reporting'>
+  <thead>
+  <tr>
+    <th colspan='6'>State Reporting</th>
+  </tr>
+  <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Fein</th>
+      <th>Payor ID</th>
+      <th>Zip</th>
+  </tr>
+  </thead>
+  <tr>
+    <td class='entry-caption'>Claim Admin</td>
+    <td class='entry-value'>${K.TextBox('claim_admin_name', maxlength=34)}</td>
+    <td class='entry-value'>${K.TextBox('claim_admin_fein', maxlength=9)} </td>
+    <td class='entry-value'></td>
+    <td class='entry-value'>${K.TextBox('claim_admin_zip', maxlength=9)}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Default Carrier</td>
+    <td class='entry-value'>${K.TextBox('insurer', maxlength=34)} </td>
+    <td class='entry-value'>${K.TextBox('insurer_tin', maxlength=9)} </td>
+    <td class='entry-value'></td>
+    <td class='entry-value'>${K.TextBox('insurer_zip', maxlength=9)} </td>
+  </tr>
+  % for state in ['ca', 'fl', 'nc', 'or', 'tx']:
+  <tr>
+    <td class='entry-caption'>${state.upper()}</td>
+    <td class='entry-value'>${K.TextBox('%s_carrier_name' % state, maxlength=34)}</td>
+    <td class='entry-value'>${K.TextBox('%s_carrier_fein' % state, maxlength=9)}</td>
+    <td class='entry-value'>${K.TextBox('%s_payor_id' % state, maxlength=20)}
+    <td class='entry-value'>${K.TextBox('%s_carrier_zip' % state, maxlength=9)}</td>
+  <tr>
+  % endfor
+<!--
+<tr>
+    <td colspan='2' class='entry-caption'><label for='send_ca_state_reporting'>
+        Report paid transactions in jurisdiction 07 to California
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_ca_state_reporting')}
+    </td>
+    <td colspan='3'></td>
+</tr>
+-->
+<tr>
+    <td class='entry-caption'><label for='send_fl_state_reporting'>
+        Report paid transactions in jurisdiction 09 to Florida
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_fl_state_reporting')}
+    </td>
+    <td colspan='3'></td>
+</tr>
+<!--
+<tr>
+    <td colspan='2'class='entry-caption'><label for='send_or_state_reporting'>
+        Report paid transactions in jurisdiction 36 to Oregon
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_or_state_reporting')}
+    </td>
+    <td colspan='3'></td>
+</tr>
+-->
+<tr>
+    <td class='entry-caption'><label for='send_mg_state_reporting'>
+        Report all paid transactions to MIG in NCCI format
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_mg_state_reporting')}
+    </td>
+    <td colspan='2'></td>
+    <td class='entry-value'>
+        <input type='submit' value='Update Client Record' class='Button' />
+    </td>
+</tr>
+<!--
+<tr>
+    <td colspan='2'class='entry-caption'><label for='send_tx_state_reporting'>
+        Report paid transactions in jurisdiction 42 to Texas
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_tx_state_reporting')}
+    </td>
+    <td colspan='3'></td>
+
+</tr>
+<tr>
+    <td colspan='2'class='entry-caption'><label for='send_nc_state_reporting'>
+        Report paid transactions in jurisdiction 32 to North Carolina
+        </label></td>
+    <td class='check entry-value'>
+        ${K.CheckBox('send_nc_state_reporting')}
+    </td>
+    <td colspan='3'></td>
+</tr>
+<tr>
+    <td colspan='4'></td>
+    <td class='entry-value'>
+        <input type='submit' value='Update Client Record' class='Button' />
+    </td>
+</tr>
+-->
+</table>
+</form>
+<br />
+
+<table class='form processing_rules_table'>
+<thead>
+<tr>
+    <th colspan='11'>Distribution Processing Rules</th>
+</tr>
+<tr>
+    <th>TX Type</th>
+    <th>Account</th>
+    <th>Amount</th>
+    <th>Percent</th>
+    <th>Min Cost</th>
+    <th>Max Cost</th>
+    <th title="Is the amount of the distribution to be added to the transaction total?">Addon</th>
+    <th title="Add the fee to running total calculation for further range/multiplier calculations">R/T</th>
+    <th>Priority</th>
+    <th>Show on Invoice</th>
+    <th>&nbsp;</th>
+</tr>
+</thead>
+<tr>
+    <form method='post' action='/add_distribution_rule'>
+    <td class='dist-add entry-value tx_type' align='center'>
+        ${C.TxTypeSelectListBox(client['group_number'])}
+        ${K.Hidden('group_number')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        <select name='distribution_account' id='distribution_account'>
+          % for account in distribution_accounts:
+            <option value='${account}'>${account}</option>
+          % endfor
+        </select>
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.Currency('amount')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.TextBox('percent')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.Currency('min_cost')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.Currency('max_cost')}
+    </td>
+    <td class='entry-value dist-add' align='center'>
+        <input type='checkbox' checked='checked' name='addon' />
+    </td>
+    <td class='entry-value dist-add' align='center'>
+        <input type='checkbox' checked='checked' name='add_to_running_total' />
+    </td>
+    <td class='entry-value dist-add' align='center'>
+      ${K.ListBox('priority', values=[(i, i) for i in range(1, 10)])}
+    </td>
+    <td class='entry-value dist-add' align='center'>
+        <input type='checkbox' name='show_on_invoice' />
+    </td>
+    <td class='entry-value dist-add' align='right'>
+        <input type='submit' value='Add Rule' class='button' /></td>
+    </form>
+</tr>
+
+<% last_tx_type = None %>
+% for record in distribution_rules:
+    % if last_tx_type != record['tx_type'] and last_tx_type is not None:
+    <tr>
+        <td colspan='2' class='dist-total entry-value' align='right'>Total:
+        </td>
+        <td class='entry-value dist-total' align='center'>
+            ${processing_fees[last_tx_type]['processing_fee_fmt']}
+        </td>
+        <td colspan='5' class='entry-value dist-total'></td>
+    </tr>
+    % endif
+    <%
+    last_tx_type = record['tx_type']
+    qs = "group_number=%s&dr_id=%s" % (client['group_number'], record['dr_id'])
+    %>
+  <tr>
+    <td class='entry-value' align='center'>
+        ${record['tx_type']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${record['distribution_account']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${record['amount_fmt']}
+    </td>
+    <td class='entry-value' align='center'>
+        % if record['percent']:
+            ${record['percent']}%
+        % endif
+    </td>
+    <td class='entry-value' align='center'>
+        ${record['min_cost']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${record['max_cost']}
+    </td>
+    <td class='entry-value' align='center'>
+      % if record['addon']:
+        Y
+      %endif endif
+    </td>
+    <td class='entry-value' align='center'>
+      % if record['add_to_running_total']:
+        Y
+      % endif
+    </td>
+    <td class='entry-value dist-add' align='center'>
+      <select class="update_priority" data-drid="${record['dr_id']}">
+      % for i in range(1, 10):
+        <option value="${i}"
+          % if str(i) == str(record['priority']):
+            selected
+          % endif
+          >${i}</option>
+      % endfor
+      </select>
+    </td>
+
+    <td class='entry-value' align='center'>
+        <input type='checkbox' class='show_on_invoice_check' title="${record['dr_id']}"
+            % if record['show_on_invoice']:
+                checked="checked"
+            % endif
+        /></td>
+    </form>
+    <td class='entry-value' align='right'>
+      <form action='/remove_distribution_rule' method='POST'>
+        <input type='hidden' name='dr_id' value='${record["dr_id"]}' />
+        <button type="submit">Remove</button>
+      </form>
+    </td>
+  </tr>
+% endfor
+
+% if last_tx_type is not None:
+<tr>
+    <td colspan='2' class='dist-total entry-value' align='right'>Total:
+    </td>
+    <td class='entry-value dist-total' align='center'>
+        ${processing_fees[last_tx_type]['processing_fee_fmt']}
+    </td>
+    <td colspan='5' class='entry-value dist-total'>
+    </td>
+</tr>
+% endif
+
+</table>
+
+<!-- BEGIN MARKUP COMMISSION TABLE -->
+<br />
+<table class='form'>
+<thead>
+  <tr>
+    <th colspan='4'>Markup Percentage Distributions</th>
+  </tr>
+  <tr>
+    <th>TX Type</th>
+    <th>Account</th>
+    <th>Percentage</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+
+<tr>
+    <form method='post' action='/markup_distributions/add'>
+    <td class='dist-add entry-value tx_type' align='center'>
+        ${C.TxTypeSelectListBox(client['group_number'])}
+        ${K.Hidden('group_number')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        <select name='account'>
+          % for account in distribution_accounts:
+            <option value='${account}'>${account}</option>
+          % endfor
+        </select>
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        <input type='textbox' class='numeric' name='percent' maxlength='7'>
+    </td>
+    <td class='entry-value dist-add' align='right'>
+        <input type='submit' value='Add Rule' class='button' /></td>
+    </form>
+</tr>
+% for rule in markup_commission_rules:
+<tr>
+  <tr>
+    <td class='entry-value' align='center'>
+        ${rule['tx_type']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${rule['account']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${rule['percent']}%
+    </td>
+    <td class='entry-value' align='right'>
+        <input type='button' value='Delete' title='${rule['comu_id']}'
+               class='button del-markup-distribution-rule' />
+    </td>
+  </tr>
+  </form>
+% endfor
+</tbody>
+</table>
+<!-- ENDMARKUP COMMISSION TABLE -->
+
+<br />
+<table class='form' id='payment_type_table'>
+<thead>
+<tr>
+    <th colspan='5'>
+      Payment Types
+    </th>
+</tr>
+<tr>
+    <th class='l'>Ptype ID</th>
+    <th class='l'>Name</th>
+    <th class='l'>Default Ref #</th>
+    <th class='l'>Expiration</th>
+    <th class='l'></th>
+</tr>
+</thead>
+<tbody>
+<form action='/add_payment_type' method='POST' class='add_payment_type'>
+<tr>
+    <td></td>
+    <td>
+        <input type='hidden' name='group_number' 
+               value='${client["group_number"]}' />
+        <input type='text' name='type_name' maxlength='10' />
+    </td>
+    <td>
+        <input type='text' name='default_ref_no' maxlength='30' />
+    </td>
+    <td>
+        ${K.DatePicker('expiration_date')}
+    </td>
+    <td><input type='submit' value='Add' /></td>
+</form>
+</tr>
+% for ptype in payment_types:
+<tr class='ptype_row' ptype_id="${ptype['ptype_id']}">
+    <td>${ptype['ptype_id']}</td>
+    <td>${ptype['type_name']}</td>
+    <td>${ptype['default_ref_no']}</td>
+    <td>${format_date(ptype['expiration_date'])}</td>
+    <td>
+    % if not ptype['has_payments']:
+      <input type='button' value='Delete' class='delete_ptype' />
+    % endif
+    </td>
+</tr>
+% endfor
+<tr id='payment_type_row_template'>
+    <td><span class='ptype_id'></span></td>
+    <td><span class='type_name'></span></td>
+    <td><span class='default_ref_no'></span></td>
+    <td><span class='expiration_date'></span></td>
+    <td><input type='button' value='Delete' class='delete_ptype' /></td>
+</tr>
+</tbody>
+</table>
+
+<br />
+<table class='form' id='dispense_fee_override'>
+<thead>
+<tr>
+    <th colspan='3'>
+        Dispense Fee Override Rules
+    </th>
+</tr>
+<tr>
+    <th>Type</th>
+    <th>Amount</th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+<form method='post' action='/add_dispense_fee_rule'>
+<tr>
+    <td class='dist-add entry-value tx_type' align='center'>
+        ${C.TxTypeSelectListBox(client['group_number'])}
+        ${K.Hidden('group_number')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.Currency('amount')}
+    </td>
+    <td class='dist-add'><input type='submit' value='Add' /></td>
+</tr>
+</form>
+% for rule in dispense_fee_rules:
+<tr>
+    <td class='entry-value' align='center'>
+        ${rule['tx_type']}
+    </td>
+    <td class='entry-value' align='center'>
+        ${rule['amount']}
+    </td>
+    <td class='entry-value' align='center'>
+        <form action='/remove_dispense_fee_rule'>
+        <input type='hidden' name='cdfm_id' value='${rule['cdfm_id']}' />
+        <input type='submit' value='Remove' />
+        </form>
+    </td>
+</tr>
+% endfor
+</table>
+
+<br />
+<table class='form' id='bill_rule'>
+<thead>
+<tr>
+    <th colspan='4'>
+        Recalculate Cost Allowed for Transaction Type Rule Table
+    </th>
+</tr>
+<tr>
+    <th class='l'>Type</th>
+    <th class='l'>Rule</th>
+    <th class='l'>Amount</th>
+    <th class='l'></th>
+</tr>
+</thead>
+<tbody>
+<form method='post' action='/add_client_bill_rule'>
+<tr>
+    <td class='dist-add entry-value tx_type' align='center'>
+        ${C.TxTypeSelectListBox(client['group_number'])}
+    </td>
+    <td class='dist-add entry-value'>
+        ${C.ClientBillRuleTypeListBox()}
+        ${K.Hidden('group_number')}
+    </td>
+    <td class='dist-add entry-value' align='center'>
+        ${K.TextBox('amount')}
+    </td>
+    <td class='dist-add'><input type='submit' value='Add' /></td>
+</tr>
+</form>
+% for rule in bill_rules:
+<tr>
+    <td class='entry-value' align='center'>
+        ${rule['tx_type']}
+    </td>
+    <td class='entry-value'>
+        ${C.client_bill_rule_label(rule['rule_type'])}
+    </td>
+    <td class='entry-value' align='center'>
+        ${rule['amount']}
+    </td>
+    <td class='entry-value'>
+        <form action='/remove_client_bill_rule'>
+        <input type='hidden' name='cbram_id' value='${rule['cbram_id']}' />
+        <input type='submit' value='Remove' />
+        </form>
+    </td>
+</tr>
+% endfor
+</table>
+
+<table class='form' id='client_default_account_names'>
+<thead>
+<tr>
+  <th colspan='3'>Default Distribution Accounts</th>
+</tr>
+<tr>
+ <th>Tx Type</th>
+ <th>Account</th>
+ <th></th>
+</tr>
+<form action='/add_default_account_name' method='POST'>
+<tr>
+  <td class='entry-value'>
+      ${C.TxTypeSelectListBox(client['group_number'])}
+  </td>
+  <td class='entry-value'>
+      <select name='default_account'>
+        % for account in distribution_accounts:
+          <option value='${account}'>${account}</option>
+        % endfor
+      </select>
+  </td>
+  <td class='entry-value'>
+    <input type='submit' value='Add Account' />
+    ${K.Hidden('group_number')}
+  </td>
+</tr>
+</form>
+</thead>
+<tbody>
+% for rc in default_account_names:
+<tr>
+  <td class='entry-value'>${rc['tx_type'] |h}</td>
+  <td class='entry-value'>${rc['default_account']}</td>
+  <td class='entry-value'>
+   <form action='/remove_default_account_name' method='POST'>
+    ${K.Hidden('group_number')}
+    <input type='hidden' name='tx_type' value='${rc['tx_type'] |h}' />
+    <input type='submit' value='Remove' />
+    </form>
+  </td>
+</tr>
+% endfor
+</tbody>
+</table>
+
+
+<table class='form' id='additional_report_codes'>
+<thead>
+<tr>
+  <th colspan='3'>Additional Report Codes</th>
+</tr>
+<tr>
+ <th>Name</th>
+ <th>Internal</th>
+ <th></th>
+</tr>
+<form action='/add_report_code' method='POST'>
+<tr>
+  <td class='entry-value'>${K.TextBox('rc')}</td>
+  <td class='entry-value'>${K.CheckBox('internal')}</td>
+  <td class='entry-value'>
+    <input type='submit' value='Add Code' />
+    ${K.Hidden('group_number')}
+  </td>
+</tr>
+</form>
+</thead>
+<tbody>
+% for rc in report_codes:
+<tr>
+  <td class='entry-value'>${rc['report_code'] |h}</td>
+  <td class='entry-value'>${rc['internal']}</td>
+  <td class='entry-value'>
+   <form action='/remove_report_code' method='POST'>
+    ${K.Hidden('group_number')}
+    <input type='hidden' name='rc' value='${rc['report_code'] |h}' />
+    <input type='submit' value='Remove' />
+    </form>
+  </td>
+</tr>
+% endfor
+</tbody>
+</table>
+
+<br />
+<input type='button' id='recalc_savings' value='Recalculate Savings for All Group Transactions' />
+
+</div>

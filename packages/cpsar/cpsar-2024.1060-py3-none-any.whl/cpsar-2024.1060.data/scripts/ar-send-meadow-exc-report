@@ -1,0 +1,85 @@
+#!python
+""" ar-send-meadow-exc-report
+We audit meadowbrook's claim numbers nightly en ensure they are of the format
+0086-09-0020-00-98639 or WC6208000717. We email the exceptions report to the
+meadowbrook's contacts.
+
+"""
+from __future__ import print_function
+import re
+import textwrap
+
+from cpsar.runtime import db, log
+from cpsar.shell import Command
+from cpsar.util import Mailer
+
+class ExceptionProgram(Command):
+    _claim_number_pat = re.compile('(^\d{4}-\d{2}-\d{4}-\d{2}-\d{5}$)|(WC)')
+
+    def do_print(self, args):
+        for claim in self._invalid_claim_records():
+            print(claim['first_name'], claim['last_name'], \
+            claim['claim_id'], claim['claim_number'], claim['status'])
+
+    def do_batch(self, args):
+        claims = list(self._invalid_claim_records())
+        if claims:
+            mailer = ExceptionMailer(claims)
+            mailer.send()
+
+    def main(self):
+        self.do_batch('')
+
+    def _invalid_claim_records(self):
+        cursor = db.dict_cursor()
+        cursor.execute("""
+        SELECT patient.group_number, patient.ssn, patient.dob,
+               patient.first_name, patient.last_name, claim.doi,
+               claim.claim_number, claim.claim_id, claim.status
+        FROM claim
+        JOIN patient USING(patient_id)
+        WHERE patient.group_number IN ('70020', '70017', '70014')
+              AND claim.claim_number IS NOT NULL
+              AND COALESCE(claim.status, '') != 'C' AND
+              patient.status = 'A'
+        """)
+        log.debug("Checking %s claim records", cursor.rowcount)
+        for rec in cursor:
+            if not self._claim_number_pat.match(rec['claim_number']):
+                yield rec
+
+class ExceptionMailer(Mailer):
+    recipients = [
+        'Jack.Conaway@Meadowbrook.com',
+        'Janice.Clark@Meadowbrook.com',
+        'David.McCabe@Meadowbrook.com'
+    ]
+    def __init__(self, claims):
+        super(ExceptionMailer, self).__init__()
+        self._claims = claims
+
+    @property
+    def subject(self):
+        return '%s Claims with Invalid Claim Numbers' % len(self._claims)
+
+    def send(self):
+        self.write(textwrap.dedent("""\
+            The following claimant records in Corporate Pharmacy's system
+            have invalid claim numbers. Claim numbers are expected to be 
+            in the format of NNNN-NN-NNNN-NN-NNNNN or WCXXXXXXXXXX.
+            
+            Please log in to blue diamond and fix these claim numbers or
+            provide updated records in the next claimant update feed.
+            """))
+        
+        for claim in self._claims:
+            self._write_claim(claim)
+        super(ExceptionMailer, self).send()
+
+    def _write_claim(self, claim):
+        self.write("ID: %(ssn)s DOB: %(dob)s DOI: %(doi)s" % claim)
+        self.write("\tName: %(first_name)s %(last_name)s" % claim)
+        self.write("\tClaim Number: %s" % claim['claim_number'])
+
+if __name__ == '__main__':
+    ExceptionProgram().run()

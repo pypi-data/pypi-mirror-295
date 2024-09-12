@@ -1,0 +1,87 @@
+#!python
+""" Service Module which provides access routines for the history edit
+facility. The system maintains an ehistory table which is a combination of the
+history table and the history_edits table. Columns in the history_edits table
+override columns in the history table.
+
+If you need to allow "editing" of a history field, add the field to the
+history_edits table and update the reload_ehistory procedure in this module.
+You should also define a public routine which will do the update in an
+abtracted way in the same way the update_pharmacy table functions.
+"""
+import cpsar.runtime as R
+
+def update_pharmacy(history_id, pharmacy_id):
+    """ Change the pharmacy for the given history record to the given
+    one in the history edit table
+    """
+    cursor = R.db.cursor()
+
+    cursor.execute("""
+        UPDATE history_edits SET pharmacy_id=%s
+        WHERE history_id=%s
+        """, (pharmacy_id, history_id))
+
+    if not cursor.rowcount:
+        cursor.execute("""
+            INSERT INTO history_edits (history_id, pharmacy_id)
+            VALUES (%s, %s)
+            """, (history_id, pharmacy_id))
+
+
+def reload_ehistory():
+    """ Create the material view of ehistory which is the history file
+    with the local edits.
+    """
+    cursor = R.db.cursor()
+    cursor.execute("TRUNCATE ehistory")
+    cursor.execute("""
+        INSERT INTO ehistory
+            SELECT
+                history.history_id,
+                history.group_number,
+                history.group_auth,
+                history.patient_id,
+                COALESCE(history_edits.pharmacy_id, history.pharmacy_id) AS
+                    pharmacy_id,
+                history.doctor_id,
+                history.drug_id,
+                history.doi,
+                history.rx_date,
+                history.rx_number,
+                history.date_written,
+                history.daw,
+                history.quantity,
+                history.days_supply,
+                history.compound_code,
+                history.refill_number,
+                history.cost_submitted,
+                history.cost_allowed,
+                history.dispense_fee,
+                history.sales_tax,
+                history.eho_network_copay,
+                history.processing_fee,
+                history.usual_customary,
+                history.state_fee,
+                history.awp,
+                history.date_processed,
+                history.create_date,
+                history.reverse_date,
+                history.claim_id,
+                history.doctor_dea_number,
+                history.doctor_npi_number,
+                COALESCE(history.workqueue_candidate, TRUE)
+            FROM history
+            LEFT JOIN history_edits ON
+                history.history_id = history_edits.history_id
+            """)
+
+def main():
+    """ Command Line Entry Point """
+    R.db.setup()
+    reload_ehistory()
+    R.db.commit()
+
+if __name__ == '__main__':
+    main()
+

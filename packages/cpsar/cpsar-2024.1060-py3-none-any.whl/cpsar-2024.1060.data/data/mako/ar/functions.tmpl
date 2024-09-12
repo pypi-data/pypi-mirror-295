@@ -1,0 +1,20 @@
+<%def name="balance_css(balance)">
+    % if balance == 0:
+        paid
+    % else:
+        due
+    % endif
+</%def>
+<%def name="age_css(balance, age)">
+    % if balance == 0:
+        paid
+    % elif balance < 0:
+        overpaid
+    % elif age <= 15:
+        current
+    % elif age > 15 and age < 30:
+        due
+    % else:
+        collect
+    % endif
+</%def>

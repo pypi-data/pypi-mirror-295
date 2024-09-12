@@ -1,0 +1,44 @@
+#!python
+import humanize
+
+from cpsar import db
+from cpsar import mail
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        cursor = db.dict_cursor()
+        cursor.execute("""
+            select *
+            from load_profile_status
+            where inactive = true and emails != '{}'
+            order by name
+        """)
+        emails = {}
+        for profile in cursor:
+            for email in profile['emails']:
+                emails.setdefault(email, []).append(profile)
+        for email, profiles in emails.items():
+            send_mail(email, profiles)
+
+def send_mail(email, profiles):
+    m = mail.Mailer()
+    if len(profiles) == 1:
+        m.subject = "1 Load Profile Is Currently Inactive"
+    else:
+        m.subject = "%d Load Profiles Are Currently Inactive" % len(profiles)
+    m.recipients = [email]
+    m.write("the following file load profiles are currently inactive and have not ")
+    m.write("successfully loaded a file in a given number of days. Please review:\n\n")
+
+    for p in profiles:
+        m.write("* %s configured to alert after %d days on inactivity.\n" % (p['name'], p['inactive_alert_days']))
+        if p['last_load_time']:
+            m.write("    Last file loaded %s\n" % humanize.naturaltime(p['last_load_time']))
+        else:
+            m.write("   No file has ever successfully loaded for this profile.\n")
+        m.write("\n")
+    m.send()
+
+
+if __name__ == '__main__': Program().run()

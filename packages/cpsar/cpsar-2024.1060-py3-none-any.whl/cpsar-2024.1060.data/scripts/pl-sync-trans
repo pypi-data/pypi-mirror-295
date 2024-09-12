@@ -1,0 +1,578 @@
+#!python
+""" The program is the kick off process to creating transaction records for
+private labels. The source of these transactions are plain text files which are
+provided by EHO. Normally, this program runs with the batch command, where it
+will scan a ready directory for new transaction files to process them.
+
+Responsibilities:
+ - Create trans table entries for each record in new transaction files
+ - Email administrators when a transaction cannot be inserted
+ - Link foreign key references on new trans files to existing records in
+   the system. (drug, patient, group, adjuster, pharmacy, history)
+ - Calculate the invoice number and line number of the transactions
+"""
+import datetime
+from six import StringIO
+import glob
+import os
+import pprint
+import re
+import sys
+
+from decimal import Decimal, InvalidOperation
+
+import cpsar.fwimport as FW
+import cpsar.keys as K
+import cpsar.runtime as R
+import cpsar.txlib
+import cpsar.util as U
+
+from cpsar import config
+from cpsar.config import import_dir
+from cpsar.shell import PrivateLabelCommand
+
+class Program(PrivateLabelCommand):
+
+    def do_batch(self, file_globs):
+        """ Load any transaction files that have been put out in the data load
+        directory that haven't been processed
+        """
+        self.do_clear_active('')
+        # Don't make shell do globing
+        for fglob in file_globs.split():
+            for fpath in glob.glob(fglob):
+                R.log.debug("Loading %s" % fpath)
+                self.do_load(fpath)
+                error.reset()
+
+    def do_clear_active(self, _):
+        cursor = R.db.cursor()
+        cursor.execute('update trans_file set active=false where active=true')
+        R.log.debug('cleared %s active trans_files', cursor.rowcount)
+        R.db.commit()
+
+    def do_load(self, fpath):
+        """ Load the given transaction file into the trans table """
+        if "/" not in fpath:
+            fpath = os.path.join(import_dir(), "ready", fpath)
+        
+        R.log.debug("PARSE %s", fpath)
+        trans_file = TransFile.for_path(fpath)
+        if not trans_file.invoice_date:
+            R.log.warn("Skipping file with invalid file name %r", fpath)
+            return
+        if trans_file.has_been_imported():
+            R.log.warn("Skipping already loaded file %r", fpath)
+            return
+
+        trans_file.insert_db_record()
+        loader = TransProcessor()
+        loader(trans_file)
+        trans_file.insert_edi_files()
+
+        if error.errors:
+            R.log.error("Not commiting. Errors detected")
+            return
+        if not self.opts.dry_run:
+            R.log.debug('Committing database changes')
+            trans_file.send_notification()
+
+            FW.archive(fpath)
+            R.db.commit()
+
+    def do_mail(self, args):
+        fpath, _, recipients = args.partition(':')
+
+        if "/" not in fpath:
+            fpath = os.path.join(import_dir(), "ready", fpath)
+        trans_file = TransFile.for_path(fpath)
+        if not trans_file.invoice_date:
+            R.log.warn("Skipping file with invalid file name %r", fpath)
+            return
+        trans_file.send_notification()
+    
+class TransFile(object):
+    invoice_date_regex = re.compile(r"(\d{8})$")
+    id = None
+
+    @classmethod
+    def for_path(cls, fpath):
+        fname = os.path.basename(fpath)
+        if TransFile.invoice_date_regex.search(fname):
+            return TransFile(fpath)
+        else:
+            raise ValueError('Cannot find class for file name %r' % fname)
+
+    def __init__(self, fpath):
+        self.fpath = fpath
+        self.fname = os.path.basename(fpath)
+        mat = self.invoice_date_regex.search(self.fname)
+        if not mat:
+            self.invoice_date = None
+        else:
+            self.invoice_date = mat.groups()[0]
+
+    def send_notification(self):
+        """ Let the accounting users know that there are new invoices """
+        m = U.Mailer()
+        m.set_billing_recipients()
+        m.subject = 'Invoices Ready for %s' % self.invoice_date
+        m("%s invoices for a total of %s are ready to bill for %s clients",
+            self._invoice_count(), self._invoice_total(), self._client_count())
+        m.send()
+        
+    def has_been_imported(self):
+        if not self.invoice_date:
+            return False
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT * FROM trans_file WHERE file_name=%s
+            """, (self.fname,))
+        if cursor.rowcount:
+            return True
+        else:
+            return False
+
+    def insert_db_record(self):
+        cursor = R.db.cursor()
+        args = dict(
+            invoice_date=self.invoice_date,
+            active=True,
+            file_name=self.fname)
+        cursor.execute(U.insert_sql("trans_file", args, ['trans_file_id']))
+        self.id = cursor.fetchone()[0]
+        R.log.info("INSERT trans_file %s: %s", self.fname, self.id)
+
+    def insert_edi_files(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select trans.group_number
+            from trans
+            join group_info using(group_number)
+            where trans_file_id=%s
+              and group_info.pl_client_invoice_edi = true
+            group by trans.group_number
+            having count(*) > 0
+              """, (self.id,))
+        for group_number, in list(cursor):
+            R.log.debug("INSERT edi_file %s, %s" % (group_number, self.id))
+            cursor.execute(U.insert_sql('edi_file', 
+                {'trans_file_id': self.id,
+                 'group_number': group_number}))
+        if config.private_label() == 'msq':
+            cursor.execute(U.insert_sql('edi_file', 
+                {'trans_file_id': self.id,
+                 'group_number': 'MSQUO'}))
+        if config.private_label() == 'mjoseph':
+            cursor.execute(U.insert_sql('edi_file', 
+                {'trans_file_id': self.id,
+                 'group_number': '81045ncc'}))
+            cursor.execute(U.insert_sql('edi_file', 
+                {'trans_file_id': self.id,
+                 'group_number': '81045tro'}))
+
+    def populate_trans_values(self, record):
+        record['invoice_date'] = self.invoice_date
+        record['trans_file_id'] = self.id
+
+    def _invoice_count(self):
+        return self._colquery("""
+            SELECT COUNT(*) FROM (
+              SELECT DISTINCT invoice_id FROM trans
+              WHERE trans_file_id=%s
+            ) x""", self.id)
+
+    def _client_count(self):
+        return self._colquery("""
+            SELECT COUNT(*) FROM (
+              SELECT DISTINCT group_number FROM trans
+              WHERE trans_file_id=%s
+            ) x""", self.id)
+
+    def _invoice_total(self):
+        return self._colquery("""
+            SELECT SUM(total) FROM trans WHERE trans_file_id=%s
+            """, self.id)
+
+    def _colquery(self, sql, *args):
+        cursor = R.db.cursor()
+        cursor.execute(sql, args)
+        return cursor.fetchone()[0]
+
+class TransProcessor(object):
+    def __init__(self):
+        self.insert = TransInserter()
+
+    def __call__(self, trans_file):
+        error.file_name = trans_file.fpath
+        R.log.debug('Processing %s', trans_file.fpath)
+
+        for record in TransParser(trans_file.fpath):
+            trans_file.populate_trans_values(record)
+            self._insert_trans(record)
+
+
+    def _insert_trans(self, record):
+        try:
+            self.insert(record)
+        except:
+            pprint.pprint(record, stream=sys.stderr)
+            raise
+
+class TransParser(object):
+    """ Provides EHO transaction records as dictionaries by an iterator
+    interface
+    """
+    fw_fields = [
+        ('group_number',   8),
+        ('group_auth',     7),
+        ('patient_cardholder_nbr',   11),
+        ('patient_dob',    8),
+        ('doi', 6),
+        ('claim_number',  30),
+        ('policy_number', 10),
+        ('rx_date',        6),
+        ('pharmacy_nabp', 10),
+        ('rx_number',      7),
+        ('refill_number',  2),
+        ('doctor_dea_number', 9),
+        ('doctor_npi_number', 10),
+        ('date_written',   6),
+        ('daw',            1),
+        ('drug_ndc_number', 11),
+        ('quantity',       9),
+        ('days_supply',    3),
+        ('compound_code',  1),
+        ('total',          9),
+        ('mjoseph_total',  9),
+        ('cps_total',      9),
+        ('cost_submitted', 9),
+        ('state_fee',      9),
+        ('state_fee_soj',  2),
+        ('awp',            9),
+        ('usual_customary',9),
+        ('sales_tax',      9),
+        ('savings',       10),
+        ('adjuster1_email', 50),
+        ('adjuster2_email', 50)
+    ]
+
+    decimal_fields = [
+        'total',
+        'mjoseph_total',
+        'cps_total',
+        'cost_submitted',
+        'state_fee',
+        'sales_tax',
+        'awp',
+        'usual_customary',
+        'quantity',
+        'savings'
+    ]
+
+    int_fields = [
+        'group_auth'
+    ]
+
+    def __init__(self, fpath):
+        self.fpath = fpath
+        self.fd = open(self.fpath)
+
+    def __del__(self):
+        try:
+            self.fd.close()
+        except (IOError, OSError):
+            pass
+
+    def parse_header(self):
+        """ Parse the header off the trans file to determine the layout. """
+        version_line = self.fd.readline().rstrip()
+        if not re.search('Version # 001$', version_line):
+            error('Expected 001 got %r for first line', version_line)
+            return
+        return True
+
+    def __iter__(self):
+        """ Provide a generator to iterate through all of the records in the
+        file.
+        """
+        if not self.parse_header():
+            return
+        for line in self.fd:
+            rec = self.read_fw(line)
+            if rec is None:
+                return
+            yield rec
+            
+    def read_fw(self, data):
+        stream = StringIO(data)
+        stream.seek(0)
+        out = {}
+        for field, width in self.fw_fields:
+            s = stream.read(width)
+            s = s.rstrip()
+            out[field] = s
+
+        for d in self.decimal_fields:
+            # negative savings come in as -     3.24. Need to get rid of spaces
+            v = out[d].replace(' ', '')
+            if not v:
+                out[d] = Decimal("0")
+                continue
+            try:
+                out[d] = Decimal(v)
+            except InvalidOperation:
+                return error('Invalid decimal value %r for %s' % (out[d], d))
+        for d in self.int_fields:
+            try:
+                out[d] = int(out[d].strip())
+            except ValueError:
+                return error('Invalid int value %r for %s' % (out[d], d))
+        return out
+
+class TransInserter(object):
+    """ Handlers inserting the dictionary transaction records from the
+    trans parser into the actual trans table. Also calculates all of the
+    necessary computed fields for the transaction record. Also
+    creates the distribution records for the transactions. Breaking the
+    SRP a bit.
+    """
+    def __init__(self):
+        self.hist = K.HistoryLookup()
+        self.trans = K.TransLookup()
+        self.pat = K.PatientLookup()
+        self.drug = K.DrugLookup()
+        self.pharm = K.PharmacyLookup()
+        self.doc = K.DoctorLookup()
+        self.invoice_maker = InvoiceKeyMaker.for_private_label()
+
+    def __call__(self, record):
+        """ Insert the transaction into the database, populating all of the
+        required fields along the way.
+        """
+        error.trans = record
+        if record['doi'] == '' or re.match('^0+$', record['doi']):
+            record['doi'] = None
+
+        cursor = R.db.cursor()
+        trans_key = (record['group_number'], int(record['group_auth']))
+
+        # Ensure this transaction hasn't already been billed
+        if self.trans.get(trans_key):
+            R.log.warn("TX %s:%s has already been billed" % trans_key)
+            return
+
+        # Verify valid group number
+        if not valid_group_number(record['group_number']):
+            return error("Invalid Group # %s", record['group_number'])
+
+        # Lookup Foreign Keys
+        history_id = self.hist.get(trans_key)
+        if not history_id:
+            return error("No history record on file for %s" % [trans_key])
+
+        patient_id = self.pat.get((
+                        record['group_number'], 
+                        record['patient_dob'], 
+                        record['patient_cardholder_nbr']))
+        if not patient_id:
+            return error("% 8s:%s - INVALID PATIENT KEY %s:%s:%s",
+                record['group_number'], record['group_auth'],
+                record['group_number'], record['patient_dob'],
+                record['patient_cardholder_nbr'])
+
+        drug_id = self.drug.get(record['drug_ndc_number'])
+        if not drug_id:
+            return error("% 8s:%s - INVALID DRUG KEY %s",
+                record['group_number'], record['group_auth'],
+                record['drug_ndc_number'])
+
+        pharmacy_id = self.pharm.get(record['pharmacy_nabp'])
+        if not pharmacy_id:
+            return error("% 8s:%s - INVALID PHARMACY KEY %s",
+                record['group_number'], record['group_auth'],
+                record['pharmacy_nabp'])
+
+        # A valid doctor isn't required. NULL's allowed.
+        doctor_id = self.doc.get(record['doctor_dea_number'])
+        if not doctor_id:
+            doctor_id = self.doc.get(record['doctor_npi_number'])
+
+        if not record['state_fee_soj']:
+            record['state_fee_soj'] = None
+        record.update({
+            'patient_id': patient_id,
+            'drug_id': drug_id,
+            'pharmacy_id': pharmacy_id,
+            'doctor_id': doctor_id,
+            'history_id': history_id
+        })
+
+        # Populate the computed fields of the trans
+        record['balance'] = record['total']
+        record['savings'] = record['state_fee'] - record['total']
+        self.invoice_maker.assign(record)
+        try:
+            cursor.execute(U.insert_sql('trans', record, ['trans_id']))
+        except:
+            R.log.error("Error Running %s", U.insert_sql('trans', record, ['trans_id']))
+            raise
+        trans_id, = cursor.fetchone()
+
+        R.log.info('INSERT trans %s: %s:%s, %s:%s',  
+                    trans_id,
+                    record['group_number'],
+                    record['group_auth'],
+                    record['invoice_id'],
+                    record['line_no'])
+
+        error.trans = None
+
+def valid_group_number(gn):
+    """ Is the given group number in the database? """
+    return gn in group_number_list()
+
+@U.memoize
+def group_number_list():
+    cursor = R.db.cursor()
+    cursor.execute("select group_number from group_info")
+    return [c[0] for c in cursor]
+
+###############################################################################
+
+class InvoiceKeyMaker(object):
+    """ Creates new invoice id's and line numbers for transaction records.
+    This object does not persist newly selected invoice id's to the database.
+    It only selects the largest invoice id on first assignment and then
+    increments by one for each new invoice id as transactions are assigned.
+    """
+    @classmethod
+    def for_private_label(cls):
+        if config.private_label() == 'sunrise':
+            return IncrementalKeyMaker()
+        else:
+            return InvoiceKeyMaker()
+
+    def __init__(self):
+        self._table = {}
+        self._cur_invoice_id = None
+
+    def assign(self, trans):
+        """ Assign the invoice_id and line_no of the given trans record.
+        """
+        key = self._invoice_key(trans)
+        tracker = self._existing_line_tracker(key)
+        if not tracker:
+            self._add_tracker_for(trans)
+            tracker = self._existing_line_tracker(key)
+        tracker.assign(trans)
+
+    def _invoice_key(self, rec):
+        return (rec['patient_id'], rec['doi'], rec['invoice_date'], rec['pharmacy_nabp'])
+
+    def _existing_line_tracker(self, key):
+        """ Provide the existing line tracker for the given trans. Returns
+        None if one isn't found or the existing one is full
+        """
+        if key not in self._table:
+            return None
+        tracker = self._table[key]
+        if tracker.is_full():
+            return None
+        return tracker
+
+    def _add_tracker_for(self, trans):
+        """ Add a new invoice to the tracked table since the given trans key
+        does not already have one. """
+        if self._cur_invoice_id is None:
+            self._cur_invoice_id = self._largest_unused_invoice_id(trans)
+        else:
+            self._cur_invoice_id += 1
+
+        maxi = _max_line_items_for(trans['group_number'])
+        invoice = _InvoiceLineTracker(self._cur_invoice_id,  maxi)
+        self._table[self._invoice_key(trans)] = invoice
+
+    def _largest_unused_invoice_id(self, trans):
+        """ The largest non-rebill invoice id not used in the database """
+        min_num = int(trans['invoice_date'][2:6] + "000000")
+        max_num = min_num + 1000000
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT max(invoice_id)
+            FROM trans
+            where invoice_id between %s AND %s
+            """, (min_num, max_num))
+        invoice_id, = cursor.fetchone()
+        if not invoice_id:
+            return min_num + 1
+        else:
+            return invoice_id + 1
+
+class IncrementalKeyMaker(InvoiceKeyMaker):
+    def _largest_unused_invoice_id(self, trans):
+        """ The largest non-rebill invoice id not used in the database. """
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT max(invoice_id)
+            FROM trans
+            """)
+        invoice_id, = cursor.fetchone()
+        if not invoice_id:
+            # random starting invoice number
+            return 45934
+        else:
+            return invoice_id + 1
+
+def _max_line_items_for(group_number):
+    return 6
+
+class _InvoiceLineTracker(object):
+    """ A single invoice id  in the `InvoiceKeyMaker`'s table which tracks a
+    particular invoice_id and manages the line numbers.
+    """
+    def __init__(self, invoice_id, max_num_invoice_items=6):
+        self._invoice_id = invoice_id
+        self._line_no = 1
+        self._max_num_invoice_item = max_num_invoice_items
+
+    def is_full(self):
+        """ Is this invoice maxed out on the number of items that can go on it?
+        """
+        return self._line_no > self._max_num_invoice_item
+
+    def assign(self, trans):
+        """ Assign the current invoice_id and line_number to the transaction
+        """
+        trans['invoice_id'] = self._invoice_id
+        trans['line_no'] = self._line_no
+        self._line_no += 1
+
+###############################################################################
+
+class ErrorReporter(object):
+    def __init__(self):
+        self.reset()
+
+    def __call__(self, msg, *a):
+        if a:
+            msg %= a
+        if self.file_name and self.trans:
+            args = (self.file_name,
+                    self.trans['group_number'],
+                    self.trans['group_auth'],
+                    msg)
+            msg = "%s %s:%s %s" % args
+        self.errors.append(msg)
+        R.log.error(msg)
+
+    def reset(self):
+        self.errors = []
+        self.file_name = None
+        self.trans = None
+
+
+error = ErrorReporter()
+
+if __name__ == '__main__':
+    Program().run()

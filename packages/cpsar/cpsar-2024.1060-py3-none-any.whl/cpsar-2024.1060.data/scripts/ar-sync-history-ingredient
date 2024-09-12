@@ -1,0 +1,42 @@
+#!python
+""" Load the ingredients for compound history records from a text file
+provided by the processor
+"""
+import logging; log=logging.getLogger('')
+
+from cpsar.fwimport import create_fw_table, path_for_resource
+import cpsar.runtime as R
+import cpsar.shell
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        with open(path_for_resource("bd-compound-history"), "rb") as fd:
+            create_fw_table('ingredient_load', file_layout(), fd)
+        cursor = R.db.cursor()
+        cursor.execute_file('ar/process_ingredient_load.sql')
+        cursor.execute("""
+            SELECT group_number, group_auth, ingredient_nbr, error_msg
+            FROM ingredient_load
+            WHERE error_msg IS NOT NULL
+            """)
+        for rec  in cursor:
+            log.error("Could not import ingredient %s:%s:%s: %s" % tuple(rec))
+
+        cursor.execute("DROP TABLE ingredient_load")
+        if not self.opts.dry_run:
+            R.db.commit()
+
+def file_layout():
+    return [
+        ('group_number', 8),
+        ('group_auth', 7),
+        ('ingredient_nbr', 2),
+        ('ndc', 11),
+        ('qty', 9),
+        ('cost_submitted', 9),
+        ('cost_allowed', 9),
+        ('awp', 9)
+    ]
+
+if __name__ == '__main__':
+    Program().run()
