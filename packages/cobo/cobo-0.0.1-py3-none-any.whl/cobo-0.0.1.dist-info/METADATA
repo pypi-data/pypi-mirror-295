@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: cobo
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: GitPython ==3.1.43
+Requires-Dist: click <8.2,>=8.1
+Requires-Dist: ed25519 ==1.5
+Requires-Dist: python-dotenv <1.1,>=1.0.1
+Requires-Dist: requests ==2.32.3
+Requires-Dist: setuptools ==68.0.0
+Requires-Dist: dataclasses-json ==0.6.7
+Requires-Dist: pyyaml ==6.0.1
+
+UNKNOWN
+
