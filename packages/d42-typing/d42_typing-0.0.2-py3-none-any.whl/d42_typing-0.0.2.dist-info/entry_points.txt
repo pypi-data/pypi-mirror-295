@@ -1,0 +1,2 @@
+[console_scripts]
+d42-typing = app.main:main
