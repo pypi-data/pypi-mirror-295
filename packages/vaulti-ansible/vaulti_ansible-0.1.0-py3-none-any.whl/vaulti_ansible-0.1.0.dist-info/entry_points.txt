@@ -1,0 +1,2 @@
+[console_scripts]
+vaulti = vaulti_ansible.vaulti:main
