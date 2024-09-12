@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+lazy_github/__main__.py
+lazy_github/cli.py
+lazy_github.egg-info/PKG-INFO
+lazy_github.egg-info/SOURCES.txt
+lazy_github.egg-info/dependency_links.txt
+lazy_github.egg-info/entry_points.txt
+lazy_github.egg-info/requires.txt
+lazy_github.egg-info/top_level.txt
