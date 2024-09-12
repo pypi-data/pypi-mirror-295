@@ -1,0 +1,101 @@
+Metadata-Version: 2.1
+Name: anfesibena
+Version: 1.0.2
+Summary: numbers with additative and multiplicative inverses
+Author-email: Johannes <johannes-programming@mailfence.com>
+License: The MIT License (MIT)
+        
+        Copyright (c) 2024 Johannes
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Documentation, https://pypi.org/project/anfesibena
+Project-URL: Download, https://pypi.org/project/anfesibena/#files
+Project-URL: Source, https://github.com/johannes-programming/anfesibena
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+
+==========
+anfesibena
+==========
+
+Overview
+--------
+
+numbers with additative and multiplicative inverses
+
+Installation
+------------
+
+To install ``anfesibena``, you can use ``pip``. Open your terminal and run:
+
+.. code-block:: bash
+
+    pip install anfesibena
+
+Implementation
+--------------
+
+.. code-block:: python
+
+    class Anfesibena:
+        def __div__(self, other):
+            return self * (other**-1)
+
+        def __neg__(self):
+            return self * -1
+
+        def __rdiv__(self, other):
+            return other * (self**-1)
+
+        def __rsub__(self, other):
+            return other + (self * -1)
+
+        def __rtruediv__(self, other):
+            return other * (self**-1)
+
+        def __sub__(self, other):
+            return self + (other * -1)
+
+        def __truediv__(self, other):
+            return self * (other**-1)
+
+License
+-------
+
+This project is licensed under the MIT License.
+
+Links
+-----
+
+* `Documentation <https://pypi.org/project/anfesibena>`_
+* `Download <https://pypi.org/project/anfesibena/#files>`_
+* `Source <https://github.com/johannes-programming/anfesibena>`_
+
+Credits
+-------
+
+* Author: Johannes
+* Email: johannes-programming@mailfence.com
+
+Thank you for using ``anfesibena``!
