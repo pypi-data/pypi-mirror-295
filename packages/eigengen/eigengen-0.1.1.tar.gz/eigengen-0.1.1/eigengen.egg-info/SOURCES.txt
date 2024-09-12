@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+eigengen/__init__.py
+eigengen/eigengen.py
+eigengen/prompts.py
+eigengen/providers.py
+eigengen.egg-info/PKG-INFO
+eigengen.egg-info/SOURCES.txt
+eigengen.egg-info/dependency_links.txt
+eigengen.egg-info/entry_points.txt
+eigengen.egg-info/requires.txt
+eigengen.egg-info/top_level.txt
+tests/__init__.py
