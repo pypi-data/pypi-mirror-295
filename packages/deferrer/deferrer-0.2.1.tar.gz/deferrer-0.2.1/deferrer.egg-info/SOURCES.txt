@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+deferrer/__init__.py
+deferrer/__public__.py
+deferrer/_code_location.py
+deferrer/_defer.py
+deferrer/_defer_scope.py
+deferrer/_deferred_actions.py
+deferrer/_frame.py
+deferrer/_opcode.py
+deferrer/_sequence_matching.py
+deferrer/py.typed
+deferrer.egg-info/PKG-INFO
+deferrer.egg-info/SOURCES.txt
+deferrer.egg-info/dependency_links.txt
+deferrer.egg-info/top_level.txt
