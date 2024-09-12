@@ -1,0 +1,41 @@
+[tool.pyright]
+# extraPaths = ["/media/storage/Files/Dayne/WebDev/Websites/proj_ceonstock/assets/python"]
+
+# typeCheckingMode = "strict"
+
+# Enable extra warning for "basic" (default) type
+# checking mode
+reportUnusedVariable = "warning"
+reportUnusedImport = "warning"
+reportDuplicateImport = "warning"
+
+# Helpers
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnnecessaryCast = "warning"
+# reportUnnecessaryIsInstance = "warning"
+
+[tool.poetry]
+name = "ceonstock"
+version = "0.2.4"
+description = "Defines key data structures to be used throughout the CeonStock pipeline"
+authors = ["Dayne Kolk <daynekolk@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "ceonstock"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# TODO use pypi install in prod
+# marshmallow-dataclass = "^8.7.0"
+# dataclass-wizard = "^0.22.3"
+ceon-render = "^0.1.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
+[tool.poetry.group.dev.dependencies]
+# ceon-render = {path = "/mnt/FileStorage/Dayne/Web/proj_ceonstock/assets/python/ceon_render", develop = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

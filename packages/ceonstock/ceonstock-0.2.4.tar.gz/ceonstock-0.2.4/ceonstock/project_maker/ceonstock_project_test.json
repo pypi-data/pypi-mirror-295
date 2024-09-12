@@ -1,0 +1,27 @@
+{
+    "project_info": null,
+    "project_inputs": [
+        {
+            "description": "bbbaaaaaaa",
+            "job_input_type": "string",
+            "name": "aaaa",
+            "required": true,
+            "type_settings": {},
+            "web_input_type": "text"
+        },
+        {
+            "description": "asdfsdf",
+            "job_input_type": "string",
+            "name": "bbbbb",
+            "required": true,
+            "type_settings": {},
+            "web_input_type": "text"
+        }
+    ],
+    "project_uuid": "c1594967-41e4-4e58-b232-eb3b42210f2c",
+    "render_pipeline": {
+        "extra_outputs": [],
+        "primary_output": "",
+        "render_tasks": []
+    }
+}
