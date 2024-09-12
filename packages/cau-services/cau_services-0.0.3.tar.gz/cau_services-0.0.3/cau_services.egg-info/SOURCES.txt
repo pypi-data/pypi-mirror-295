@@ -1,0 +1,15 @@
+.gitignore
+LICENSE
+README.md
+centralasian_logo.png
+pyproject.toml
+requirements.txt
+timetable.ipynb
+cau/Timetable.py
+cau/__init__.py
+cau/timetable-cli.py
+cau_services.egg-info/PKG-INFO
+cau_services.egg-info/SOURCES.txt
+cau_services.egg-info/dependency_links.txt
+cau_services.egg-info/requires.txt
+cau_services.egg-info/top_level.txt
