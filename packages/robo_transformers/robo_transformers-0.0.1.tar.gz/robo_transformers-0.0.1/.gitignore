@@ -1,0 +1,11 @@
+test_imgs/
+**/*__pycache__*
+**/*venv*
+.DS_Store
+dist/
+demo_img*
+
+checkpoints/*
+logs
+runs/
+episodes/
