@@ -1,0 +1,10 @@
+README.md
+setup.py
+adeopencv.egg-info/PKG-INFO
+adeopencv.egg-info/SOURCES.txt
+adeopencv.egg-info/dependency_links.txt
+adeopencv.egg-info/requires.txt
+adeopencv.egg-info/top_level.txt
+libname/__init__.py
+libname/hello.py
+libname/models/opencv-4.10.0.zip
