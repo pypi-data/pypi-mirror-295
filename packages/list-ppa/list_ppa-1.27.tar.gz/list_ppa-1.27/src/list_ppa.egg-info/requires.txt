@@ -1,0 +1,4 @@
+bs4
+requests
+prompt_toolkit>=3.0.20
+argcomplete
