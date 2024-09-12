@@ -1,0 +1,28 @@
+[project]
+name = "youtube-auto-publish"
+authors = [{name = "Lucas Gasque", email = "lucasfdg@hotmail.com"}]
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.12"
+dependencies = [
+    "selenium>=4.22.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.3.2",
+    "pytest-cov>=5.0.0",
+    "pytest-asyncio>=0.23.8",
+    "ruff>=0.5.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/top-5-twitch/youtube-auto-publish"
+Issues = "https://github.com/top-5-twitch/youtube-auto-publish/issues"
+
+
+[tool.setuptools]
+packages = ["youtube_auto_publish"]
+
+[tool.setuptools.dynamic]
+version = {attr = "youtube_auto_publish.__version__"}
