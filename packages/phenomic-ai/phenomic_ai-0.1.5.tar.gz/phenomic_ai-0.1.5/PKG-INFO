@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: phenomic-ai
+Version: 0.1.5
+Summary: A CLI package which facilitates computational biologists with a single cell RNA embedding tool
+Author-email: Phenomic AI <sctx@phenomic.ai>
+License: Copyright 2024 Phenomic AI
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+
+# phenomic-ai
+
+A CLI package which facilitates computational biologists with a single cell RNA embedding tool
+
+## Installation
+
+`$ pip install phenomic-ai`
+
+## Usage
+
+```bash
+pai embed --tmp-dir [tmp_dir_path] --h5ad-path [path to h5ad file] --tissue-organ [tissue organ]
+
+python3 -m pai embed --tmp-dir [tmp_dir_path] --h5ad-path [path to h5ad file] --tissue-organ [tissue organ]
+```
+
+Commands:
+
+- `pai` main command
+- `embed` sub-command invoking the embedding tool
+
+Parameters:
+
+- `--tmp-dir` (temporary direcetory) parameter is the root output directory where the downloaded zip files (zips/) and unzipped directories (results/) will be output
+- `--h5ad-path` (h5ad path) parameter is the path to the single cell RNA .h5ad file intended to be uploaded and embeded
+- `--tissue-organ` (tissue/organ) parameter specifies the tissue/organ associated wrt. the single cells
+
+## Examples
+
+```bash
+pai embed --tmp-dir /tmp/pai/embed --h5ad-path ./anndata.h5ad --tissue-organ adipose
+
+python3 -m pai embed --tmp-dir /tmp/pai/embed --h5ad-path ./anndata.h5ad --tissue-organ adipose
+```
+
+## Help
+
+```bash
+pai embed --help
+
+python3 -m pai embed --help
+```
+
+## Support
+
+Email: <sctx@phenomic.ai>

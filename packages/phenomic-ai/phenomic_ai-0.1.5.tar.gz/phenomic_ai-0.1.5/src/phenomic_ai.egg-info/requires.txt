@@ -1,0 +1,6 @@
+requests
+
+[dev]
+black
+pytest
+pytest-cov
