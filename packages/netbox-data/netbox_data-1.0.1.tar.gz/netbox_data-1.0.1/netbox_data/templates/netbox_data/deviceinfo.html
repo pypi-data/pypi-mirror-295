@@ -1,0 +1,37 @@
+{% extends 'generic/object.html' %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-12">
+      <div class="card">
+        <h5 class="card-header">Device</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Site</th>
+              <td>{{ object.site }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Device</th>
+              <td>{{ object.device }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Device Setup Type</th>
+              <td>{{ object.device_setup_type }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Remote Config</th>
+              <td>{{ object.remote_config }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Results</th>
+              <td>{{ object.results }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+  </div>
+{% endblock content %}
