@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: dduk-utility
+Version: 0.0.30
+Summary: ddukbaek2 utility library
+Home-page: https://ddukbaek2.com
+Author: ddukbaek2
+Author-email: ddukbaek2@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: dduk-core
+
+# dduk-utility
+
+
+## 개요
+- 파이썬 dduk 유틸리티 라이브러리.   
+
+
+## 개발환경
+- OS: Windows 10 Pro / Windows 11 Pro   
+- Python: 3.12.4 (64-Bit)   
+- IDE: Visual Studio Code 1.92.1 (System Setup)   
+    - Korean Language Pack for Visual Studio Code   
+    - Python   
+    - Python Debugger   
+    - Pylance   
+
+
+## 주요 기능
+
+### 
