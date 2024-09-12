@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: domika_ha_framework
+Version: 0.0.2
+Summary: Domika integration module framework.
+Home-page: https://github.com/DevPocket/domika-ha-framework
+Author: DevPocket
+Author-email: 
+Project-URL: Source, https://github.com/DevPocket/domika-ha-framework
+Project-URL: Tracker, https://github.com/DevPocket/domika-ha-framework/issues
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet
+Classifier: Topic :: Home Automation
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: alembic==1.13.1
+Requires-Dist: aiosqlite==0.20.0
+Requires-Dist: aiohttp>=3.9.5
+Requires-Dist: mashumaro>=3.13.1
+Requires-Dist: SQLAlchemy>=2.0.29
+
+![GitHub License](https://img.shields.io/github/license/DevPocket/domika-ha-framework)
+![PyPI - Version](https://img.shields.io/pypi/v/domika-ha-framework)
+
+# Domika haomeassistant framework
+
+Domika integration framework library.
+
+## Development
+
+### Create new database revision
+
+```bash
+cd src
+DOMIKA_DB_URL="Put database url here" alembic -c domika_ha_framework/alembic.ini revision -m "Put revision message here"
+```
+
+### Upgrade head
+
+```bash
+cd src
+DOMIKA_DB_URL="Put database url here" alembic -c domika_ha_framework/alembic.ini upgrade head
+```
