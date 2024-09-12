@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: csciutils
+Version: 0.2.1
+Summary: 中信建投国际自动化工作
+Author: ZhuBowen
+Author-email: zhubowen@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+本包仅限于中信建投证券股份有限公司及其下属子公司使用，为中信建投国际自动化业务民间快捷包。
