@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: RainCloud
+Version: 0.1.0.post1
+Summary: A package for creating raincloud plots
+Home-page: https://github.com/Yosri-Ben-Halima/RaincloudPlot
+Author: Yosri Ben Halima
+Author-email: yosri.benhalima@ept.ucar.tn
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# RainCloud
+
+RainCloud is a Python package that provides a convenient function to create raincloud plots; a combination of density plots, box plots, and strip plots that provide a detailed visualization of data distributions.
+
+## Features
+
+- **Raincloud Plots**: Visualize the distribution of your data in a detailed and intuitive way.
+- **Customization Options**: Easily customize the plot with options for titles, labels, colors, orientation, and more.
+- **Thunder Mode**: Connect the means of each group with a point plot to emphasize differences between groups.
+
+## Installation
+
+You can install the RainCloud package directly from PyPI:
+
+```sh
+pip install RainCloud
+```
+
+## Usage
+
+Here's how you can use the `create_raincloud_plot` function:
+
+```python
+import pandas as pd
+from RainCloud.raincloud import create_raincloud_plot
+
+# Generate example data
+np.random.seed(42)
+num_entries = 1000 
+
+cities = ['Tunis', 'Sousse', 'Sfax', 'Gabes', 'Djerba']
+temperatures = np.random.normal(loc=20, scale=10, size=num_entries)
+
+city_offsets = {
+    'Tunis': 10,
+    'Sousse': 5,
+    'Sfax': 0,
+    'Gabes': -5,
+    'Djerba': -1
+}
+
+temperatures = np.random.normal(loc=70, scale=15, size=num_entries)
+city_choices = np.random.choice(cities, num_entries)
+
+offsets = np.array([city_offsets[city] for city in city_choices])
+adjusted_temperatures = temperatures + offsets
+
+df = pd.DataFrame({
+    'city': city_choices,
+    'temp': adjusted_temperatures
+})
+
+# Create a raincloud plot
+create_raincloud_plot(
+    df=df, 
+    x='city', 
+    y='temp', 
+    title='Raincloud Plot of Temperatures by City', 
+    xlabel='City', 
+    ylabel='Temperature (Â°F)', 
+    thunder=True
+)
+```
+
+## Parameters
+
+- **df**: `DataFrame` containing the data to be plotted.
+- **x**: Column name for the x-axis data.
+- **y**: Column name for the y-axis data.
+- **title**: Title of the plot.
+- **xlabel**: Label for the x-axis (defaults to the `x` column name).
+- **ylabel**: Label for the y-axis (defaults to the `y` column name).
+- **palette**: Color palette for the plot (default: `'Set2'`).
+- **alpha**: Transparency level for the plot elements (default: `0.6`).
+- **orient**: Orientation of the plot, `'h'` for horizontal or `'v'` for vertical (default: `'h'`).
+- **figsize**: Size of the figure (default: `(10, 10)`).
+- **thunder**: Whether to connect the means of each group with a point plot (default: `False`).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+
+## Contact
+
+[![GitHub](https://img.shields.io/badge/GitHub-Yosri--Ben--Halima-black)](https://github.com/Yosri-Ben-Halima)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yosri%20Ben%20Halima-blue)](https://www.linkedin.com/in/yosri-ben-halima-3553a9221/)
+[![Twitter](https://img.shields.io/badge/Facebook-@Yosry%20Ben%20Hlima-navy)](https://www.facebook.com/NottherealYxsry)
+[![Instagram](https://img.shields.io/badge/Instagram-@yosrybh-orange)](https://www.instagram.com/yosrybh/)
+[![Email](https://img.shields.io/badge/Email-yosri.benhalima@ept.ucar.tn-white)](yosri.benhalima@ept.ucar.tn)
+[![Personal Web Page](https://img.shields.io/badge/Personal%20Web%20Page-Visit%20Now-green)](https://personal-web-page-yosribenhlima.streamlit.app/)
