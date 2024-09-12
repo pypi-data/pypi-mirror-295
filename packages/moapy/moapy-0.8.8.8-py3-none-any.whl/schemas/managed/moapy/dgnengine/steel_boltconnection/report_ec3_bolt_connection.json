@@ -1,0 +1,354 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "moapy",
+    "description": "Schema for moapy",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://moa.rpm.kr-dv-midasit.com/backend/function-executor/python-execute/"
+    },
+    {
+      "url": "https://moa.rpm.kr-st-midasit.com/backend/function-executor/python-execute/"
+    }
+  ],
+  "paths": {
+    "/moapy/dgnengine/steel_boltconnection/report_ec3_bolt_connection": {
+      "post": {
+        "summary": "Report Ec3 Bolt Connection",
+        "operationId": "report ec3 bolt connection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/report_ec3_bolt_connection"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMD"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BoltMaterial": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Bolt Material Name",
+            "default": "F10T"
+          }
+        },
+        "type": "object",
+        "title": "Bolt Material",
+        "description": "Bolt Material",
+        "dataclassname": "moapy.steel_pre.BoltMaterial"
+      },
+      "ConnectType": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Fin Plate - Beam to Beam",
+              "Fin Plate - Beam to Column",
+              "End Plate - Beam to Beam",
+              "End Plate - Beam to Column"
+            ],
+            "title": "Type",
+            "description": "Connect type",
+            "default": "Fin Plate - Beam to Beam"
+          }
+        },
+        "type": "object",
+        "title": "Connection Type",
+        "dataclassname": "moapy.steel_pre.ConnectType"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ResultMD": {
+        "properties": {
+          "md": {
+            "type": "string",
+            "title": "Md",
+            "description": "Markdown",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "Markdown",
+        "dataclassname": "moapy.data_post.ResultMD"
+      },
+      "SteelBolt": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Bolt Size",
+            "default": "M16"
+          },
+          "matl": {
+            "description": "Material",
+            "default": {
+              "name": "F10T"
+            },
+            "$ref": "#/components/schemas/BoltMaterial"
+          }
+        },
+        "type": "object",
+        "title": "Steel Bolt",
+        "description": "Steel Bolt",
+        "dataclassname": "moapy.steel_pre.SteelBolt"
+      },
+      "SteelConnectMember": {
+        "properties": {
+          "supporting": {
+            "description": "Supporting Member",
+            "default": {
+              "sect": {
+                "name": "H 400x200x8/13",
+                "shape": "H"
+              },
+              "matl": {
+                "code": "KS18(S)",
+                "name": "SS275"
+              }
+            },
+            "$ref": "#/components/schemas/SteelMember"
+          },
+          "supported": {
+            "description": "Supported Member",
+            "default": {
+              "sect": {
+                "name": "H 400x200x8/13",
+                "shape": "H"
+              },
+              "matl": {
+                "code": "KS18(S)",
+                "name": "SS275"
+              }
+            },
+            "$ref": "#/components/schemas/SteelMember"
+          }
+        },
+        "type": "object",
+        "title": "Steel Connect Member",
+        "description": "Steel Connect Member",
+        "dataclassname": "moapy.steel_pre.SteelConnectMember"
+      },
+      "SteelMaterial": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Material Code",
+            "default": "KS18(S)"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Material Name",
+            "default": "SS275"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Material",
+        "description": "Steel DB Material",
+        "dataclassname": "moapy.steel_pre.SteelMaterial"
+      },
+      "SteelMember": {
+        "properties": {
+          "sect": {
+            "description": "Section",
+            "default": {
+              "shape": "H",
+              "name": "H 400x200x8/13"
+            },
+            "$ref": "#/components/schemas/SteelSection"
+          },
+          "matl": {
+            "description": "Material",
+            "default": {
+              "code": "KS18(S)",
+              "name": "SS275"
+            },
+            "$ref": "#/components/schemas/SteelMaterial"
+          }
+        },
+        "type": "object",
+        "title": "Steel Member",
+        "description": "Steel Member",
+        "dataclassname": "moapy.steel_pre.SteelMember"
+      },
+      "SteelPlateMember": {
+        "properties": {
+          "matl": {
+            "description": "Material",
+            "default": {
+              "code": "KS18(S)",
+              "name": "SS275"
+            },
+            "$ref": "#/components/schemas/SteelMaterial"
+          },
+          "bolt_num": {
+            "type": "integer",
+            "title": "Bolt Num",
+            "description": "Number of Bolts",
+            "default": 4,
+            "unit": "EA"
+          },
+          "thk": {
+            "type": "number",
+            "title": "Thk",
+            "description": "Thickness",
+            "default": 6.0,
+            "unit": "mm"
+          }
+        },
+        "type": "object",
+        "title": "Steel Plate Member",
+        "description": "Steel Plate Member",
+        "dataclassname": "moapy.steel_pre.SteelPlateMember"
+      },
+      "SteelSection": {
+        "properties": {
+          "shape": {
+            "type": "string",
+            "title": "Shape",
+            "description": "Shape",
+            "default": "H"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Section Name",
+            "default": "H 400x200x8/13"
+          }
+        },
+        "type": "object",
+        "title": "Steel DB Section",
+        "description": "Steel DB Section",
+        "dataclassname": "moapy.steel_pre.SteelSection"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Welding": {
+        "properties": {
+          "matl": {
+            "description": "Material",
+            "default": {
+              "code": "KS18(S)",
+              "name": "SS275"
+            },
+            "$ref": "#/components/schemas/SteelMaterial"
+          },
+          "length": {
+            "type": "number",
+            "title": "Length",
+            "description": "Leg of Length",
+            "default": 6.0,
+            "unit": "mm"
+          }
+        },
+        "type": "object",
+        "title": "Welding",
+        "description": "Welding",
+        "dataclassname": "moapy.steel_pre.Welding"
+      },
+      "report_ec3_bolt_connection": {
+        "properties": {
+          "conn": {
+            "$ref": "#/components/schemas/SteelConnectMember"
+          },
+          "plate": {
+            "$ref": "#/components/schemas/SteelPlateMember"
+          },
+          "conType": {
+            "$ref": "#/components/schemas/ConnectType"
+          },
+          "Bolt": {
+            "$ref": "#/components/schemas/SteelBolt"
+          },
+          "weld": {
+            "$ref": "#/components/schemas/Welding"
+          }
+        },
+        "type": "object",
+        "required": [
+          "conn",
+          "plate",
+          "conType",
+          "Bolt",
+          "weld"
+        ],
+        "title": "report ec3 bolt connection"
+      }
+    }
+  }
+}
