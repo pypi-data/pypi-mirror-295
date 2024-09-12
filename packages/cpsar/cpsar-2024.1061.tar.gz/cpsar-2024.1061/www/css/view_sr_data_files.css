@@ -1,0 +1,20 @@
+DIV.sr_data_files H4 {
+    text-align: left;
+	background: #EAEAEA;
+	border: 1px solid black;
+    margin: .12em;
+}
+
+DIV.sr_data_file {
+	font-size: .9em;
+    padding: .9em;
+}
+
+DIV.collapse:HOVER {
+    color: blue;
+    cursor: pointer;
+}
+    
+DIV.sr_data_files PRE {
+    margin: 0em;
+}

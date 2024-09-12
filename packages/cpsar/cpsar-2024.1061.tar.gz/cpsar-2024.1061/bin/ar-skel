@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+""" Program Description Goes Here
+"""
+from __future__ import print_function
+import csv
+import cpsar.runtime as R
+from cpsar import shell
+
+class Program(shell.Command):
+    def main(self):
+        print('Hello World')
+        self.log.error("Hello world from skeleton")
+        self.log.debug("DEBUG WORLD")
+
+    def do_execute(self, args):
+        cursor = R.db.cursor()
+        for line in open(args).read(-1).split(";"):
+            if line.strip():
+                cursor.execute(line)
+                print(cursor.rowcount)
+
+    def do_batch_date(self, args):
+        cursor = R.db.cursor()
+        cursor.execute("SELECT MAX(batch_date) FROM trans")
+        print(cursor.fetchone()[0])
+
+    def do_load_pharmacy_provider(self, args):
+        f = open(args)
+
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT group_number, group_auth, pharmacy_provider_type,
+                   pharmacy_provider_id
+            FROM history
+            """)
+        lookup = dict((c[:2], c[2:]) for c in cursor)
+        for rec in csv.reader(f):
+            rec = [r.strip() for r in rec if r.strip()]
+            if len(rec) == 5:
+                group_nbr, group_auth, ptype = rec[:3]
+                pid = rec[4]
+            else:
+                group_nbr, group_auth, ptype, pid = rec
+
+            key = (group_nbr, int(group_auth))
+            if key not in lookup:
+                continue
+
+            if lookup[key] != (ptype, pid):
+                cursor.execute("""
+                    UPDATE history
+                    SET pharmacy_provider_type=%s,
+                        pharmacy_provider_id=%s
+                    WHERE group_number=%s AND group_auth=%s
+                    """, (ptype, pid, group_nbr, group_auth))
+
+        R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()

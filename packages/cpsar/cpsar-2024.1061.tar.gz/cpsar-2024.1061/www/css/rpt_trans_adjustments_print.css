@@ -1,0 +1,30 @@
+BODY { font-size: 10pt; font-family: sans-serif;  margin: 0px; }
+H1 { margin-top: 0px; }
+#group_number { width: 200px; }
+DIV.fts { float: left; width: 130px; }
+TABLE.report {
+    border-collapse: collapse;
+}
+TABLE.report TH {
+    border: 1px solid #000;
+    margin: .1em .5em;
+}
+TABLE.report TD {
+    border: 1px solid #000;
+    padding: .1em .5em;
+
+}
+TABLE.report TD.line_no, TD.invoice_id, TD.amount, TD.trans_id,
+  TD.rx_number, adj_invoice_id, adj_trans_id {
+    text-align: right;
+}
+#fields_to_show { display: none; margin: 0; }
+#adjustments_to_show { display: none; margin: 0; }
+FIELDSET { border: 0; }
+LEGEND { font-weight: bold; }
+LABEL { font-size: 9pt; }
+INPUT { border: 0; border-bottom: 1px solid #000; }
+INPUT[type=submit], INPUT[type=checkbox] { display: none; }
+SELECT, OPTION { border: 0; }
+#trigfrom_entry_date, #trigto_entry_date { display: none; }
+#export_as_csv_label { display: none; }

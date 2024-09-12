@@ -1,0 +1,155 @@
+<%!
+from cpsar.pg import format_currency
+import cpsar.controls as C
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+  <title>Settle Rebates</title>
+  <link type='text/css' href='/css/form.css' rel='stylesheet' />
+  <style type='text/css'>
+    .rrs TABLE { float: left; } /* stupid date picker */
+    TABLE.form { margin-bottom: 10px; }
+    INPUT.apply_amount, INPUT.apply_total { text-align: right; font-family: monospace;  width: 100px; }
+  </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script src='/js/jquery.currency.js'></script>
+  <script>
+    $(document).ready(function() {
+      $("INPUT.apply_amount").currency();
+      $("INPUT.apply_amount").change(onApplyAmountChange);
+      $("INPUT.apply_total").currency();
+      $("INPUT.clear").click(onClearClick);
+      $("A.client_balance").click(onClientBalanceClick);
+      $("INPUT.post").click(onPostClick);
+    });
+
+    function onClientBalanceClick(e) {
+      e.preventDefault();
+      var $row = $(this).parents("TR:first");
+      var $amt = $("INPUT.apply_amount", $row);
+      $amt.amount(parseInt($amt.attr("data-max-amount")));
+      recalculateApplyTotal();
+    }
+
+    function onClearClick() {
+      $("INPUT.apply_amount").amount(0);
+      recalculateApplyTotal();
+    }
+
+    function onApplyAmountChange() {
+      var amt = $(this).amount();
+      var max = parseInt($(this).attr("data-max-amount"));
+      if(amt > max) {
+        $(this).amount(max);
+      }
+      recalculateApplyTotal();
+    }
+
+    function recalculateApplyTotal() {
+      var sum = 0;
+      $("INPUT.apply_amount").each(function() {
+        sum += $(this).amount();
+      });
+      $(".apply_total").amount(sum);
+    }
+
+    function onPostClick(e) {
+      var rebate_ids = [];
+      var apply_amounts = [];
+      $("TR.rebate-row").each(function() {
+          var $a = $("INPUT.apply_amount", this);
+          var $id = $("TD.rebate_id", this);
+          if($a.amount()) {
+            rebate_ids.push($id.text());
+            apply_amounts.push($a.amount());
+          }
+      });
+
+      var args = {
+        post: "post",
+        check_number: $("#check_number").val(),
+        settle_date: $("#settle_date").val(),
+        rebate_id: rebate_ids,
+        apply_amount: apply_amounts};
+      $.post("/settle_rebates", args, onSubmitSuccess, "json");
+    }
+
+    function onSubmitSuccess(d) {
+      if(d.errors.length) {
+        showErrors(d.errors);
+        return;
+      }
+      location.reload();
+    }
+
+  </script>
+</%def>
+<%block name="header">
+    Settle Rebates
+</%block>
+
+<form class='settle_form' action='/settle_rebates' method='POST'>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Group</td>
+    <td class='entry-field'>
+      ${C.GroupNumberListBox('group_number', value=group_number)}</td>
+    <td class='entry-caption'>Quarter-End Date</td>
+    <td class='entry-field'>
+      ${C.DatePicker('quarter_date', value=quarter_date)}</td>
+    <td><input type='submit' value='Lookup' />
+</tr>
+</table>
+
+% if success:
+    <div class='notice'>Settlements successfully created</div>
+% endif
+
+% if rebates:
+<table class='form'>
+<tr>
+  <td class='entry-caption'>Check Number</td>
+  <td class='entry-field'>${C.TextBox('check_number')}</td>
+  <td class='entry-caption'>Settlement Date</td>
+  <td class='entry-field'>${C.DatePicker('settle_date', defaultToday=True)}</td>
+  <td class='entry-caption'>Amount</td>
+  <td class='entry-field'><input type='text' readonly class='apply_total' value='${format_currency(rebate_total)}' /></td>
+  <td class='entry-caption'><input type='button' class='post' value='Post' /></td>
+</table>
+% endif
+</form>
+
+% if rebates:
+<table class='grid'>
+<thead>
+<tr>
+    <th>Rebate</th>
+    <th>Trans</th>
+    <th>Drug</th>
+    <th>Patient</th>
+    <th>Client Amount</th>
+    <th>Client Balance</th>
+    <th><input type='button' class='clear' value='Clear' /></th>
+</tr>
+</thead>
+<tbody>
+% for rebate in rebates:
+<tr class='rebate-row'>
+    <td class='rebate_id'>${rebate['rebate_id']}</td>
+    <td><a href='/view_trans?trans_id=${rebate['trans_id']}' tabindex='-1'>
+          ${rebate['trans_id']}</a></td>
+    <td>${rebate['drug_name']}</td>
+    <td>${rebate['first_name']} ${rebate['last_name']}</td>
+    <td align='right'>${format_currency(rebate['client_amount'])}</td>
+    <td align='right'><a href='#' class='client_balance' tabindex='-1'>${format_currency(rebate['client_balance'])}</a></td>
+    <td align='right'>
+      <input class='apply_amount'
+             data-max-amount="${int(rebate["client_balance"]*100)}"
+             value='${format_currency(rebate['client_balance'])}' /></td>
+</tr>
+% endfor
+</tbody>
+</table>
+% endif

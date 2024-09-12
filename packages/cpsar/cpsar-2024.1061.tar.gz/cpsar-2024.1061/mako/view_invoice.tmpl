@@ -1,0 +1,140 @@
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+    <link type='text/css' href='/css/pager.css' rel='stylesheet' />
+    <link type='text/css' href='/css/invoice.css' rel='stylesheet' />
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $("FORM.memo_update").submit(memoUpdateSubmit);
+    });
+
+    function memoUpdateSubmit() {
+      var $form = $(this);
+      $.post($form.attr("action"), {
+        memo: $("TEXTAREA.memo").val(),
+        invoice_id: $("INPUT.invoice_id").val()
+        },function() {
+            $.jGrowl("Memo Updated");  
+        });
+      return false;
+    }
+  </script>
+</%def>
+<%block name="header">
+   Invoice #<span class='invoice_no'>${invoice['invoice_id']}</span>
+</%block>
+<%block name="cmenu">
+  <a href='print_invoice?invoice_id=${invoice['invoice_id']}' 
+     class='top_menu_link'>
+    <img src='/images/acroread.png' border='0' /> Invoice</a>
+  <a href='/print_hcfa?invoice_id=${invoice['invoice_id']}' class='top_menu_link'>
+    <img src='/images/acroread.png' border='0' /> HCFA</a>
+% if client['print_ncpdp'] == True:
+      <a href='/print_ncpdp?invoice_id=${invoice['invoice_id']}' class='top_menu_link'>
+        <img src='/images/acroread.png' border='0' /> NCPDP</a>
+% endif
+
+</%block>
+<table class='view_menu'>
+<tr>
+    <td class='entry-caption'>Client</td>
+    <td class='entry-value'>
+        <a href='/view_client?group_number=${invoice['group_number']}'>
+            ${client['client_name']} ${invoice['group_number']}</a></td>
+    <td class='entry-caption'>Batch Date</td>
+    <td class='entry-value'>${invoice['batch_date_fmt']}</td>
+    <td class='entry-caption'>Patient</td>
+    <td class='entry-value'>
+    % if patient:
+        ${patient['first_name']}
+        ${patient['last_name']}
+    % endif   
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Total</td>
+    <td class='entry-value'>${invoice['total_fmt']}</td>
+    <td class='entry-caption'>Balance</td>
+    <td class='entry-value'>${invoice['balance_fmt']}</td>
+    <td class='entry-caption'> </td>
+    <td class='entry-value'>
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Invoice (Create) Date</td>
+    <td class='entry-value'>${invoice['create_date_fmt']}</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+    <td class='entry-caption'>
+    </td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        Memo
+    </td>
+    <td colspan='10' class='entry-value'>
+      <form action='/update_invoice_memo' method='POST' class='memo_update'>
+        <textarea rows='3' cols='40' name='memo' class='memo'
+          >${invoice['memo'] |h}</textarea>
+        <br />
+        <input type='hidden' name='invoice_id' class='invoice_id' 
+               value='${invoice["invoice_id"]}' />
+        <input type='submit' value='Update' />
+      </form>
+      </td>
+</tr>
+</table>
+
+<table class='pager' style='border-top: none'>
+<thead>
+<tr class='pager-header'>
+    <td class='pager-header'>&nbsp;</td>
+    <td class='pager-header' style='text-align:left'>
+        Group Auth #</td>
+    <td class='pager-header' style='text-align:left'>
+        Patient</td>
+    <td class='pager-header'>RX #</td>
+    <td class='pager-header'>Refill #</td>
+    <td class='pager-header'>RX Date</td>
+    <td class='pager-header'>Drug</td>
+    <td class='pager-header'>Claim #</td>
+    <td class='pager-header'>Amount</td>
+    <td class='pager-header'>Adjustments</td>
+    <td class='pager-header'>Balance</td>
+</tr>
+<tbody>
+% for trans in transactions:
+<tr class='pager <% if trans['balance'] != 0: context.write("due") %>'>
+    <td class='pager' align='right'>${trans['line_no']}</td>
+    <td class='pager'>${trans['group_auth']}</td>
+    <td class='pager'>
+        <a href='/view_trans?trans_id=${trans['trans_id']}'>
+            ${trans['first_name']}
+            ${trans['last_name']}
+        </a></td>
+    <td class='pager' align='center'>${trans['rx_number']}</td>
+    <td class='pager' align='center'>${trans['refill_number']}</td>
+    <td class='pager' align='center'>${trans['rx_date_fmt']}</td>
+    <td class='pager' align='center'>${trans['drug_name']}</td>
+    <td class='pager' align='center'>${trans['claim_number']}</td>
+    <td class='pager' align='right'>${trans['total_fmt']}</td>
+    <td class='pager' align='right'>${trans['adjustments_fmt']}</td>
+    <td class='pager' align='right'>${trans['balance_fmt']}</td>
+</tr>
+% endfor
+</tbody>
+</table>
+% if process_schedule:
+<table class='pager' style='border-top: none'>
+<thead>
+<tr class='pager-header'>
+    <td class='pager-header' style='text-align:left'>Process Log</td>
+    <td class='pager-header'>Date</td>
+</tr>
+</table>
+% endif
+

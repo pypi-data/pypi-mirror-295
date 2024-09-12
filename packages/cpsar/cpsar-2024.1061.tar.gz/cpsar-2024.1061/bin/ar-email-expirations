@@ -1,0 +1,346 @@
+#!/usr/bin/env python
+""" Batch program which emails adjusters for CPS clients when a patient or
+claim on that patient is set to expire 72 hours (3 days) from today. In normal
+operation this job will run nightly.
+"""
+import datetime
+import itertools
+import logging
+import optparse
+import os
+import smtplib
+import sys
+
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from functools import total_ordering
+from six import StringIO
+
+from cpsar import config
+from cpsar import shell
+from cpsar.runtime import db, dpath, username
+from cpsar.util import memoize
+
+log = logging.getLogger('email-expiration')
+
+###############################################################################
+class Program(shell.Program):
+    def main(self):
+        self._configure_file_logging()
+        if self.opts.dry_run:
+            mailer = MockMailer()
+        else:
+            mailer = Mailer()
+        for email, patients in expiring_patients_by_adjuster():
+            log.info("Notifications for adjuster %s" % email)
+            for patient in patients:
+                patient.log_notification()
+
+            for msg in expiring_patient_emails(email, patients):
+                mailer.send(emails_to_notify(email), msg)
+
+    def _configure_file_logging(self):
+        handler = logging.FileHandler(self._log_file())
+        formatter = logging.Formatter(self._log_file_format())
+        handler.setFormatter(formatter)
+        handler.setLevel(logging.DEBUG)
+        log.addHandler(handler)
+
+    def _log_file(self):
+        return dpath('log/adjemail.log')
+
+    def _log_file_format(self):
+        return '%(asctime)s %(filename)-15s[%(process)d]:' + \
+               username().ljust(9) + '%(levelname)-7s: %(message)s'
+
+def emails_to_notify(adjuster_email):
+    if adjuster_email.endswith("employersclaim.com"):
+        return [adjuster_email, 'paige@corporatepharmacy.com'] + config.expiration_notify_email()
+    else:
+        return [adjuster_email] + config.expiration_notify_email()
+
+def expiration_date():
+    return datetime.date.today() + datetime.timedelta(3)
+
+###############################################################################
+## Email Creation
+
+def expiring_patient_emails(email, patients):
+    msgs = []
+    gpatients = []
+    for patient in patients:
+        if patient.email_alone:
+            msgs.append(expiring_patient_email(email, [patient]))
+        else:
+            gpatients.append(patient)
+    if gpatients:
+        msgs.append(expiring_patient_email(email, gpatients))
+    return msgs
+
+def expiring_patient_email(email, patients):
+    outer = MIMEMultipart()
+    outer["From"] = config.site_sender_email()
+    outer["To"] = ','.join(emails_to_notify(email))
+    try:
+        outer["Reply-To"] = config.reply_to_email()
+    except:
+        pass
+    if len(patients) == 1:
+        outer["Subject"] = "Claim Expiration Notice for %s" % (
+            patients[0].name)
+    else:
+        outer["Subject"] = "Claim Expiration Notices"
+    alt = MIMEMultipart('alternative')
+    alt.attach(_mime_plain_text(patients))
+    alt.attach(_mime_html_text(patients))
+    outer.attach(alt)
+    log.debug("Built email: subject=%s, recipients=%s",
+              outer["Subject"], outer["To"])
+    return outer.as_string()
+
+class MockMailer(object):
+    def send(self, email_addresses, msg):
+        pass
+
+class Mailer(object):
+    def __init__(self):
+        self._smtp = smtplib.SMTP(config.smtp_host(), 25)
+
+    def send(self, email_addresses, msg):
+        try:
+            self._smtp.sendmail(config.site_sender_email(), email_addresses, msg)
+        except Exception as e:
+            sys.stderr.write("Could not send email to %s:\n\n%s\n" % (email, e))
+            log.exception("Could not send email to %s",  email)
+
+def _mime_plain_text(patients):
+    buf = StringIO()
+    buf.write("""\
+The following patients have claims set to expire in 72 hours.  Please log in to
+%s to update the expiration date
+on the claim. If you allow the claim to expire, this patient could experience
+an interruption in prescription service.\n\n""" % config.production_url())
+    for i, patient in enumerate(patients):
+        buf.write("%d. " % (i+1))
+        buf.write(patient.as_email_text())
+        buf.write("\n")
+    return MIMEText(buf.getvalue(), _subtype='plain')
+
+def _mime_html_text(patients):
+    buf = StringIO()
+    buf.write("""<html><body><p>
+        The following patients have claims set to expire in 72 hours.  Please
+        log in to <a href='%s'>%s</a>
+        to update the expiration date on the claim. If you allow the claim to
+        expire, this patient could experience an interruption in prescription
+        service.</p>\n<ol>""" % (config.production_url(), config.production_url()))
+    for patient in patients:
+        buf.write(patient.as_email_html())
+    buf.write("</ol></body></html>")
+    return MIMEText(buf.getvalue(), _subtype='html')
+
+###############################################################################
+## Logging Configuration
+
+
+###############################################################################
+## Patients that are expiring 
+def expiring_patients_by_adjuster():
+    patients = itertools.chain(
+        ExpiringPatient.expiring(),
+        PatientWithExpiringClaims.expiring())
+    adjusters = {}
+    for patient in set(patients):
+        if not patient.notifies_adjuster:
+            continue
+        for email in patient.adjuster_emails:
+            pat_list = adjusters.setdefault(email, [])
+            pat_list.append(patient)
+    adjuster_emails = sorted(adjusters.keys())
+    for email in adjuster_emails:
+        if not ignore_adjuster(email):
+            yield email, adjusters[email]
+
+def ignore_adjuster(email):
+    return email.lower().endswith('amfed.com')
+
+@total_ordering
+class Patient(object):
+    _pat_rec = None
+
+    def __lt__(self, other):
+        return self.id < other.id
+
+    def __eq__(self, other):
+        return self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
+
+    def __init__(self, pat_rec, claim_recs):
+        self._pat_rec = pat_rec
+        self._claim_recs = claim_recs
+
+    @property
+    def id(self):
+        return self._pat_rec['patient_id']
+
+    @property
+    def name(self):
+        return "%(first_name)s %(last_name)s" % self._pat_rec
+
+    @property
+    def notifies_adjuster(self):
+        # We don't notify seaboard adjusters
+        return self._pat_rec['group_number'] != '80012'
+
+    @property
+    @memoize
+    def comp_groups(self):
+        cursor = db.cursor()
+        cursor.execute("""
+            SELECT
+                group_number
+            FROM client_report_code
+            WHERE report_code = 'COMP TPA'
+        """)
+        return cursor.fetchall()
+
+    @property
+    def adjuster_emails(self):
+        emails = []
+        for claim in self._claim_recs:
+            emails.append(claim['email1'])
+        if self._pat_rec['group_number'] == '58400':
+            emails.append('dcwhite@atlanta.k12.ga.us')
+        elif self._pat_rec['group_number'] in self.comp_groups:
+            emails.append('ctpamail@companiontpa.com')
+        return sorted(set([_f for _f in emails if _f]))
+
+    @property
+    def email_alone(self):
+        return self._pat_rec['patexp_notification_grouping'] == 'alone'
+
+class ExpiringPatient(Patient):
+    @classmethod
+    def expiring(cls):
+        cursor = db.dict_cursor()
+        cursor.execute("""
+            SELECT claim.*
+            FROM claim
+            JOIN patient USING(patient_id)
+            JOIN group_info using(group_number)
+            WHERE patient.status = 'A' AND patient.expiration_date = %s
+              AND patient.delete_date IS NULL
+              AND group_info.deactivate_group = FALSE
+        """, (expiration_date(),))
+        claim_lookup = {}
+        for claim_rec in cursor:
+            claims = claim_lookup.setdefault(claim_rec['patient_id'], [])
+            claims.append(claim_rec)
+
+        cursor.execute("""
+            SELECT patient.*, group_info.patexp_notification_grouping
+            FROM patient
+            JOIN group_info USING(group_number)
+            WHERE patient.status = 'A' AND patient.expiration_date = %s
+              AND patient.delete_date IS NULL
+              AND group_info.deactivate_group = FALSE
+        """, (expiration_date(),))
+
+        for pat_rec in cursor:
+            patient_id = pat_rec['patient_id']
+            if patient_id in claim_lookup:
+                claims = claim_lookup[patient_id]
+            else:
+                claims = []
+            yield cls(pat_rec, claims)
+
+    def log_notification(self):
+        log.info(" GN: %s %s %s: Patient Expiring",
+            self._pat_rec['group_number'],
+            self._pat_rec['first_name'],
+            self._pat_rec['last_name'])
+
+    def as_email_text(self):
+        prec = self._pat_rec
+        buf = StringIO()
+        buf.write("%(first_name)s %(last_name)s\n" % prec)
+        buf.write("   Group: %s\n" % prec['group_number'])
+        buf.write("   DOB: %s\n" % prec['dob'].strftime("%m/%d/%Y"))
+        buf.write("   Exp Date: %s\n" % 
+            prec['expiration_date'].strftime("%m/%d/%Y"))
+        return buf.getvalue()
+
+    def as_email_html(self):
+        prec = self._pat_rec
+        buf = StringIO()
+        buf.write("<li>%(first_name)s %(last_name)s<br>" % prec)
+        buf.write("   Group: %s<br>\n" % prec['group_number'])
+        buf.write("DOB: %s<br>" % prec['dob'].strftime("%m/%d/%Y"))
+        buf.write("Exp Date: %s</li>" % 
+            prec['expiration_date'].strftime("%m/%d/%Y"))
+        return buf.getvalue()
+
+class PatientWithExpiringClaims(Patient):
+    @classmethod
+    def expiring(cls):
+        cursor = db.dict_cursor()
+        cursor.execute("""
+            SELECT *
+            FROM claim
+            WHERE status IS NULL AND expiration_date = %s
+            """, (expiration_date(),))
+        claim_lookup = {}
+        for claim_rec in cursor:
+            claims = claim_lookup.setdefault(claim_rec['patient_id'], [])
+            claims.append(claim_rec)
+        cursor.execute("""
+            SELECT patient.*, group_info.patexp_notification_grouping
+            FROM patient
+            JOIN group_info USING(group_number)
+            WHERE patient_id IN (
+                SELECT patient_id
+                FROM claim
+                WHERE status IS NULL AND expiration_date = %s
+            )
+            AND patient.delete_date IS NULL
+            AND group_info.deactivate_group = FALSE
+            """, (expiration_date(),))
+        for pat_rec in cursor:
+            yield cls(pat_rec, claim_lookup[pat_rec['patient_id']])
+
+    def log_notification(self):
+        log.info(" GN: %s %s %s: Claims Expiring %s",
+            self._pat_rec['group_number'],
+            self._pat_rec['first_name'],
+            self._pat_rec['last_name'],
+            self._formatted_claim_dates)
+
+    def as_email_text(self):
+        prec = self._pat_rec
+        buf = StringIO()
+        buf.write("%(first_name)s %(last_name)s\n" % prec)
+        buf.write("   Group: %s\n" % prec['group_number'])
+        if prec['dob']:
+            buf.write("   DOB: %s\n" % prec['dob'].strftime("%m/%d/%Y"))
+        buf.write("   DOI: %s\n" % self._formatted_claim_dates)
+        return buf.getvalue()
+
+    def as_email_html(self):
+        prec = self._pat_rec
+        buf = StringIO()
+        buf.write("<li>%(first_name)s %(last_name)s<br>" % prec)
+        buf.write("   Group: %s<br>\n" % prec['group_number'])
+        buf.write("DOB: %s<br>" % prec['dob'].strftime("%m/%d/%Y"))
+        buf.write("DOI: %s</li>" %  self._formatted_claim_dates)
+        return buf.getvalue()
+        
+    @property
+    def _formatted_claim_dates(self):
+        claims = [c['doi'].strftime("%D") for c in self._claim_recs]
+        return ", ".join(claims)
+
+###############################################################################
+if __name__ == '__main__':
+    Program().run()

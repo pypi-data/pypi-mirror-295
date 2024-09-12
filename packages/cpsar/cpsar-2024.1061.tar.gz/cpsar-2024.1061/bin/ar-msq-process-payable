@@ -1,0 +1,106 @@
+#!/usr/local/srv/bd3/bin/python
+""" add the invoice number, line number and transaction # to
+the payable file Tom makes for Sarena. Puts the file out on
+atlas under /data/msquotes/pickup/outgoing and archives the
+local file to /server/corporate/archives/msq-payable
+
+Creates files named msq_payable_YYYYMMDD.csv
+"""
+import csv
+import ftplib
+import glob
+import io
+import logging; log=logging.getLogger('')
+import os
+import sys
+import shutil
+import tempfile
+
+import paramiko
+
+from cpsar import db
+from cpsar import shell
+
+class Program(shell.PrivateLabelProgram):
+    work_dir = "/tmp/non-exist"
+    def main(self):
+        self.processed = 0
+        self.work_dir = tempfile.mkdtemp()
+        try:
+            for fglob in sys.argv[1:]:
+                for fpath in glob.glob(fglob):
+                    self.process(fpath)
+                    self.processed += 1
+        finally:
+            shutil.rmtree(self.work_dir)
+
+        if self.processed == 0:
+            sys.exit(10)
+        else:
+            sys.exit(0)
+
+
+    def process(self, fpath):
+        cursor = db.cursor()
+        with open(fpath) as fd:
+            header = fd.readline().strip().split(",")
+            fields = ['"%s" varchar' % h for h in header]
+            cursor.execute("create temp table p (%s)" % (", ".join(fields),))
+            cursor.copy_from(fd, "p", sep=",")
+        cursor.execute("""
+            select  p.*,
+                    'M' || trans.invoice_id::text,
+                    trans.line_no::text,
+                    trans.trans_id::text,
+                    case when trans.compound_code = '2' then 'C'
+                         when pharmacy.nabp = '0123682' then 'HD'
+                         else 'R'
+                    end as "Bill Type Indicator"
+            from p
+            left join trans on
+                trans.group_number = trim(p."Group #") and
+                trans.group_auth = trim(p."Claim Ref #")::int
+            left join pharmacy on trans.pharmacy_id = pharmacy.pharmacy_id
+            order by trans.trans_id
+            """)
+        buf = io.StringIO()
+        wr = csv.writer(buf)
+        wr.writerow(header + ["Invoice #", "Line #", "Trans #", "Type"])
+        list(map(wr.writerow, cursor))
+        cursor.execute("drop table p")
+
+        if not self.opts.dry_run:
+            buf.seek(0)
+            bbuff = io.BytesIO()
+            bbuff.write(buf.read().encode())
+            bbuff.seek(0)
+            self._upload_sftp(os.path.basename(fpath), bbuff)
+            os.system("zip -mjq /server/corporate/archives/msqs_payable.zip '%s'" % fpath)
+        else:
+            dry_fpath = "/tmp/%s" % os.path.basename(fpath)
+            with open(dry_fpath, "wt") as fd:
+                buf.seek(0)
+                fd.write(buf.getvalue())
+            print("Wrote %s" % dry_fpath)
+
+    def _upload_sftp(self, filename, buf):
+        # specify the hostname, username, and password for the SFTP server
+        hostname = 'admin.medicalservicequotes.com'
+        username = 'ftpEHO'
+        password = 'EHOMSQ!!!'
+
+        t = paramiko.Transport((hostname, 22))
+        t.connect(username=username, password=password)
+        sftp = paramiko.SFTPClient.from_transport(t)
+        sftp.putfo(buf, filename)
+        sftp.close()
+        t.close()
+
+    def _upload_ftps(self, filename, bbuf):
+        """ Old implementation using FTPS """
+        ftp = ftplib.FTP_TLS('admin.medicalservicequotes.com', 'ftpEHO', 'EHOMSQ!!!')
+        ftp.prot_c()
+        ftp.storbinary('STOR %s' % filename, bbuff)
+        ftp.quit()
+
+if __name__ == '__main__': Program().run()

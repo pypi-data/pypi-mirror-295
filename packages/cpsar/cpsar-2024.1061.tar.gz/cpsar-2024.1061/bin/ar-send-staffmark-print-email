@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import sys
+from cpsar.runtime import db
+
+db.setup()
+
+cursor = db.dict_cursor()
+cursor.execute("""
+SELECT DISTINCT trans.invoice_id
+FROM trans
+JOIN history USING(history_id)
+JOIN claim USING(claim_id)
+WHERE trans.batch_date = 'yesterday'::date AND
+    trans.group_number = '80003' AND
+    claim.doi < '2012-10-01'
+ORDER BY trans.invoice_id
+""")
+if not cursor.rowcount:
+    sys.exit(0)
+print("Here are the Staffmark Invoices that need to be paper billed to the ")
+print("old provider.")
+
+for rec in cursor:
+    print(rec['invoice_id'])

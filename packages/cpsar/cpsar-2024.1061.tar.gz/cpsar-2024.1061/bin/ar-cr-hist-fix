@@ -1,0 +1,88 @@
+#!/usr/bin/env python
+""" create file that can be fed to rc sp-fx-blue-history
+when the hist-cost-allowed and hist-fee is wrong
+"""
+import csv
+import datetime
+
+from cpsar import db
+from cpsar import pricing
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        cursor = db.dict_cursor()
+        cursor.execute("""
+            select
+            history.history_id,
+            history.group_number,
+            history.group_auth,
+            pharmacy.nabp as pharmacy_nabp,
+            history.state_fee,
+            history.compound_code,
+            history.awp,
+
+            history.history_id,
+            history.cost_allowed as hist_cost_allowed,
+            history.dispense_fee as hist_dispense_fee,
+            history.processing_fee as hist_processing_fee,
+            history.sales_tax as hist_sales_tax,
+            history.eho_network_copay as hist_copay,
+
+            drug.brand, drug.ndc_number,
+            pharmacy.name as pharmacy_name
+
+        from history
+        join drug using(drug_id)
+        join pharmacy using(pharmacy_id)
+        join client using(group_number)     -- limit to bd
+        where history.date_processed > '20200125'
+          and coalesce(pharmacy.chain_code, '') != '039'
+        """)
+
+        fd = open('/server/spc/files-in/cps_20200130-cost-fix.csv', 'w')
+        writer = csv.writer(fd)
+        fields = ['history_id', 'group_number', 'group_auth', 'cost_allowed', 'dispense_fee']
+        writer.writerow(fields)
+        client_list = {}
+        for trans in cursor:
+
+            history_id = trans['history_id']
+            result = {'group_number': trans['group_number'],
+                      'group_auth': trans['group_auth']}
+
+            pbm = pricing.PBMHistory()
+            pbm.cost_allowed = trans['hist_cost_allowed']
+            pbm.dispense_fee = trans['hist_dispense_fee']
+            pbm.processing_fee = trans['hist_processing_fee']
+            pbm.sales_tax = trans['hist_sales_tax']
+            pbm.copay = trans['hist_copay']
+
+            if trans['group_number'] in client_list:
+                client = client_list[trans['group_number']]
+            else:
+                client = pricing.DBClient()
+                client.group_number = trans['group_number']
+                client_list[trans['group_number']] = client
+
+            rx = pricing.Prescription(client)
+            rx.brand = trans['brand']
+            rx.compound_code = trans['compound_code']
+            rx.awp = trans['awp']
+            rx.state_fee = trans['state_fee']
+            rx.ndc = trans['ndc_number']
+            rx.nabp = trans['pharmacy_nabp']
+            tx = pricing.Transaction(rx, pbm, client)
+
+            hy = pricing.History(tx)
+
+            result['history_id'] = trans['history_id']
+            #result['processing_fee'] = tx.processing_fee
+            result['cost_allowed'] = hy.cost_allowed
+            result['dispense_fee'] = hy.dispense_fee
+            result['pharmacy_name'] = trans['pharmacy_name']
+
+            writer.writerow([result[f] for f in fields])
+
+if __name__ == '__main__':
+    Program().run()

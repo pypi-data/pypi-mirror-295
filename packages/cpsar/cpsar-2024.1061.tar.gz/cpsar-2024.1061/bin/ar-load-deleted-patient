@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import os
+
+import cpsar.runtime as R
+import cpsar.shell
+
+from stypes import NamedTuple, Integer, Date
+FPATH = "/server/corporate/deleted-patient.txt"
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        try:
+            fd = open(FPATH)
+        except (IOError, OSError):
+            return
+
+        tlayout = NamedTuple([
+            ('group_number', 8),
+            ('cardholder_nbr', 11),
+            ('dob', Date('%Y%m%d')),
+            ('date', Date('%Y%m%d')),
+            ('username', 25)
+        ])
+
+        cursor = R.db.cursor()
+        for line in fd:
+            rec = tlayout.unpack(line)
+            if rec.has_unconverted():
+                print(rec.unconverted_report())
+                continue
+            cursor.execute("""
+                UPDATE patient SET delete_date=%s, delete_user=%s
+                WHERE group_number=%s and ssn=%s and dob=%s
+                """, (rec.date, rec.username, rec.group_number, rec.cardholder_nbr, rec.dob))
+        if not self.opts.dry_run:
+            R.db.commit()
+            os.remove(FPATH)
+            open(FPATH, "w").close()
+            os.chmod(FPATH, 0o664)
+
+if __name__ == '__main__': Program().run()

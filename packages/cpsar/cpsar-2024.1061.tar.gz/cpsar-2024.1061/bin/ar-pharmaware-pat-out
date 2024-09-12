@@ -1,0 +1,85 @@
+#!/usr/bin/env python
+""" Generate a file containing the number of patients who had prescriptions
+billed in the previous month.
+"""
+import calendar
+import datetime
+import os
+import shutil
+import time
+
+import cpsar.runtime as R
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        super(Program, self).main()
+        f = PatientCountFile(self._pat_file_date)
+        f.write()
+        f.copy_to_user_directory()
+
+    @property
+    def _pat_file_date(self):
+        if self._user_given_firsy_day_of_month:
+            return self._user_given_firsy_day_of_month
+        else:
+            return self._first_day_of_last_month
+
+    @property
+    def _user_given_firsy_day_of_month(self):
+        if not self.args:
+            return None
+        tp = time.strptime(self.args[0] + "01", "%Y%m%d")
+        return datetime.date(*(tp[:3]))
+
+    @property
+    def _first_day_of_last_month(self):
+        today = datetime.date.today()
+        ldolm = today - datetime.timedelta(today.day+1)
+        return datetime.date(ldolm.year, ldolm.month, 1)
+
+class PatientCountFile(object):
+    def __init__(self, first_day_of_month):
+        self._first_day_of_month = first_day_of_month
+
+    @property
+    def _last_day_of_month(self):
+        fdom = self._first_day_of_month
+        wday, days = calendar.monthrange(fdom.year, fdom.month)
+        return fdom + datetime.timedelta(days-1)
+
+    @property
+    def _fpath(self):
+        return os.path.join(self._output_dir, self._fname)
+
+    @property
+    def _fname(self):
+        return self._first_day_of_month.strftime("patients-%Y%m.txt")
+
+    @property
+    def _output_dir(self):
+        return R.dpath('pharmaware/archive')
+
+    def copy_to_user_directory(self):
+        shutil.copy(self._fpath, "/data/pharmaware/pickup/outgoing/%s" % self._fname)
+
+    def write(self):
+        fd = open(self._fpath, 'w')
+        fd.write("%s\n" % self._unique_patient_count())
+        fd.close()
+        
+    def _unique_patient_count(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT COUNT(DISTINCT trans.patient_id)
+            FROM trans
+            JOIN drug USING(drug_id)
+            JOIN history USING(history_id)
+            LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+            WHERE batch_date BETWEEN %s AND %s
+                AND history.reverse_date IS NULL
+                AND trans.compound_code = '1'
+        """, (self._first_day_of_month, self._last_day_of_month))
+        return cursor.fetchone()[0]
+
+if __name__ == '__main__': Program().run()

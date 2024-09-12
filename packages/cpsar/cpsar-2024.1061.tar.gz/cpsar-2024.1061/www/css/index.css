@@ -1,0 +1,40 @@
+DIV.header {
+    font-weight: bold;
+    margin-top: 20px;
+}
+TABLE.form TD {
+    border: 1px solid #CCCCCC;
+    font-size: 10pt;
+}
+TD.grid {
+    font-size: .9em;
+}
+TD.menu {
+    padding: 0px 20px;
+}
+#group_number {
+    width: 200px;
+}
+DIV.pane {
+    float: left;
+    width 50%;
+}
+H3 {
+    border-bottom: 1px solid #aaa;
+    padding-top: 1em;
+    font-size: 1.2em;
+    color: #666;
+}
+
+
+UL.iconlist LI {
+
+}
+UL.iconlist LI {
+
+}
+#recent_activity {
+  border: none;
+  margin: 0;
+  max-height: 300px;
+}

@@ -1,0 +1,15 @@
+<p>New invoices from Corporate Pharmacy are ready for
+    <strong>${batch_date.strftime('%m/%d/%Y')}</strong>
+</p>
+
+% for rec in records:
+<div><i>Group: ${rec['group_number']}</i></div>
+% endfor
+
+<p>
+Viewing invoices requires Adobe's Acrobat Reader which can be downloaded here:
+<a href='http://www.adobe.com/products/acrobat/readstep2.html'>
+http://www.adobe.com/products/acrobat/readstep2.html
+</a>
+</p>
+

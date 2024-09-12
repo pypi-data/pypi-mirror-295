@@ -1,0 +1,38 @@
+TABLE.ccr_report {
+    border: 1px solid #666;
+}
+TH {
+    padding: 4px;
+    font-size: 12pt;
+    color: #333;
+    background-color: #EEE;
+    font-family: arial, verdana;
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+}
+TABLE.ccr_report TD {
+    padding: 2px 4px 2px 4px;
+    border-right: 1px solid #CCC;
+    vertical-align: top;
+}
+TABLE.ccr_report TD.scsaf_paid {
+    text-align: right;
+}
+TABLE.ccr_report TD.eho_fee {
+    text-align: right;
+}
+TABLE.ccr_report TD.cps_fee {
+    text-align: right;
+}
+TABLE.ccr_report TD.companion_fee {
+    text-align: right;
+}
+TABLE.ccr_report TD.net {
+    text-align: right;
+}
+TABLE.ccr_report TD.number_of_scripts {
+    text-align: right;
+}
+TABLE.ccr_report TD.undistributed_scripts {
+    text-align: right;
+}

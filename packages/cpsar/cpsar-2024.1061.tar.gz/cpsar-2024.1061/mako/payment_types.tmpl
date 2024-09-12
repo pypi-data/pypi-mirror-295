@@ -1,0 +1,122 @@
+<%!
+import cpsar.controls as C
+%>
+<%inherit file="page.tmpl" />
+<%block name="header">
+  Payment Types
+</%block>
+<%block name="head">
+    <title>Payment Types</title>
+    <link type='text/css' rel='stylesheet'
+          href='/css/base.css'  />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+    <style type='text/css'>
+    </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      ptypes: []
+    },
+    created: function() {
+      var vm = this;
+      $.ajax({
+        url: "/payment_types/list",
+        type: 'GET',
+        dataType: 'json',
+        success: function(d) {
+          if(d.errors.length > 0) {
+            d.errors.map($.jGrowl);
+            return;
+          }
+          vm.ptypes = d.ptypes;
+        }
+      });
+   },
+   methods: {
+    del: function(i) {
+      var vm = this;
+      var record = this.ptypes[i];
+      $.ajax({
+        url: "/payment_types/delete",
+        type: "POST",
+        data: {"ptype_id": record.ptype_id},
+        dataType: "json",
+        success: function(e) {
+          if(e.errors.length > 0) {
+            e.errors.map($.jGrowl);
+            return;
+          }
+          $.jGrowl("Record deleted");
+          vm.ptypes.splice(i, 1);
+        }
+      });
+    },
+    update: function(i) {
+      var record = this.ptypes[i];
+      $.ajax({
+        url: "/payment_types/update",
+        type: "POST",
+        data: record,
+        dataType: "json",
+        success: function(d) {
+          if(d.errors.length > 0) {
+            d.errors.map($.jGrowl);
+            return;
+          }
+          $.jGrowl("Record updated");
+        }
+
+      });
+    }
+
+   }
+
+  });
+  </script>
+</%def>
+
+<div id="app">
+  <table class='form' id='payment_type_table'>
+  <thead>
+  <tr>
+  </tr>
+  <tr>
+      <th>ID</th>
+      <th>Group Number</th>
+      <th>Type Name</th>
+      <th>Default Ref #</th>
+      <th>Expiration Date</th>
+      <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr v-for="(ptype, i) in ptypes">
+      <td>{{ ptype.ptype_id }}</td>
+      <td class='entry-value'>
+          <input v-model="ptype.group_number" maxlength="8" />
+      </td>
+      <td class='entry-value'>
+          <input v-model="ptype.type_name" />
+      </td>
+      <td class='entry-value'>
+          <input v-model="ptype.default_ref_no" />
+      </td>
+      <td class='entry-value'>
+          <input v-model="ptype.expiration_date" />
+      </td>
+      <td>
+          <input type='button' value='Update' @click.prevent="update(i)" />
+          <input type='button' value='Delete' @click.prevent="del(i)" />
+      </td>
+  </tr>
+  </tbody>
+  </table>
+</div>

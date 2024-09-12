@@ -1,0 +1,187 @@
+<%!
+import humanize
+
+import cpsar.controls as C
+layout = "layout-1"
+%>
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+  <title>Manual Entry</title>
+  <link rel='stylesheet' type='text/css'
+        href='/css/redmond/jquery-ui-1.8.14.custom.css' />
+  <link type='text/css' rel='stylesheet'
+        href='/css/form.css'  />
+  <link rel='stylesheet' type='text/css' href='/css/state_reporting.css' />
+</%block>
+<%def name="scripts()">
+    <script src='/js/jquery-1.5.1.min.js'></script>
+    <script src='/js/jquery.jgrowl.js'></script>
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/jquery.numeric.js'></script>
+    <script src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+    <script src='/repo/js/kcontrol/currency_control.js'></script>
+    <script src='/js/common.js'></script>
+    <script src='/js/state_reporting.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          $("#save_button").click(onSaveClick);
+          $("#delete_button").click(onDeleteClick);
+          $("#delete_bill_button").click(onDeleteBillClick);
+          $("#srfile_note").change(onBillNoteChange);
+          setupBillForm();
+        });
+
+        function onBillNoteChange(e) {
+          var sr_file_id = $("#sr_file_id").text();
+          $.post("/sr_manual/update_srfile_note?sr_file_id=" + sr_file_id,
+            {"note": $("#srfile_note").val()},
+            function(t) {
+              if(t.msg !== undefined && t.msg.length > 0) {
+                $.jGrowl(t.msg);
+              }
+            }
+          );
+        }
+
+        function onDeleteBillClick(e) {
+          if(!confirm("Are you sure you wish to delete this bill?")) {
+            e.preventDefault();
+          }
+        }
+
+        function onSaveClick() {
+          $("#update").submit();
+        }
+
+        function onDeleteClick() {
+          $("#delete_dialog").dialog({
+            modal: true,
+            title: "Delete State Reporting File"
+          });
+        }
+    </script>
+</%def>
+<%block name="header">
+   <a href="/sr_manual/files">State Reporting</a> &rarr;
+   ${sr_file['file_name']}
+</%block>
+<%block name="content_header">
+  <table cellspacing='0' cellpadding='0' border='0' class='content_header'>
+  <tr>
+    <td>
+        <a href='/sr_manual/report_file?sr_file_id=${prev_sr_file_id}'>&#9664;</a>
+        File ID: <span id="sr_file_id">${sr_file['sr_file_id']}</span>
+        <a href='/sr_manual/report_file?sr_file_id=${next_sr_file_id}'>&#9654;</a>
+    </td>
+    <td>
+        % if sr_file['status_flag'] == 'T':
+          T - Test File
+        % elif sr_file['status_flag'] == 'P':
+          P - Production File
+        % else:
+          Unknown status ${sr_file['status_flag']}
+        % endif
+    </td>
+    <td>
+      <label for='file_name'>File Name:</label>
+      ${sr_file['file_name']}
+    </td>
+
+    <td align='right'>
+      % if not sr_file['send_time']:
+        <input type='button' value='Save' id='save_button' />
+        <input type='button' value='Delete File' id='delete_button' />
+        <form action="/sr_manual/mark_file_sent" method="POST" style="display: inline;margin: 0">
+          <input type='submit' value='Mark as Sent' />
+          ${C.Hidden('sr_file_id', value=sr_file['sr_file_id'])}
+        </form>
+      % elif bill:
+        <a href='/sr_manual/add?resub=${bill["bill_id"]}'>
+         <input type='button' value='Resubmit Bill' /></a>
+      % endif
+      <a href='/sr_manual/download_file?sr_file_id=${sr_file["sr_file_id"]}'>
+        <input type='button' value='Download' /></a>
+      <a href='/sr_manual/send_file?sr_file_id=${sr_file["sr_file_id"]}'>
+        <input type='button' value='Send' /></a>
+    </td>
+  </tr>
+  </table>
+  % if bill:
+  <table cellspacing='0' cellpadding='0' border='0' class='content_header subheadermenu'>
+  <tr>
+    <td width='33%'>
+        <a href='/sr_manual/report_file?sr_file_id=${sr_file["sr_file_id"]}&bill_id=${prev_bill_id}'>&#9664;</a>
+            Bill ID: ${bill["bill_id"]}
+        <a href='/sr_manual/report_file?sr_file_id=${sr_file["sr_file_id"]}&bill_id=${next_bill_id}'>&#9654;</a>
+    </td>
+    <td width='33%'>${bill_index+1} of ${bill_count} Bills</td>
+    <td width='33%' align='right'>
+      <input type='text' class='note' id='srfile_note' size='30' value='${sr_file["note"]}' style='height: 24px; font-size: 14px;' 
+          placeholder='Note' />
+    &nbsp;
+      % if not sr_file['send_time']:
+      <a href='/sr_manual/add_bill_entry?bill_id=${bill["bill_id"]}'>
+        <input type='button' value='Add Entry' id='add_entry_button' />
+      </a>
+      <a href='/sr_manual/delete_bill?bill_id=${bill["bill_id"]}'>
+        <input type='button' value='Delete Bill' id='delete_bill_button' />
+      </a>
+      % endif
+    </td>
+  </tr>
+  </table>
+  % endif
+</%block>
+
+<% C.update_store(args) %>
+% if bill:
+  % if sr_file['send_time']:
+    <div class='warning'>This file has already been sent
+      ${humanize.naturaltime(sr_file['send_time'])}. You must create a
+      resubmission to edit fields.
+    </div>
+    <%include file="sr_bill_view.tmpl" />
+    <br />
+  % else:
+    <form action="/sr_manual/update_bill" method="POST" id="update">
+      <%
+      C.update_store(bill)
+      C.update_store(bill_totals)
+      %>
+      <%include file="sr_bill_form.tmpl" />
+      ${C.Hidden('sr_file_id')}
+      <input type='submit' value='Save' />
+    </form>
+  % endif
+% endif
+
+<div id='delete_dialog'>
+  <form action='/sr_manual/delete?sr_file_id=${sr_file["sr_file_id"]}' method='POST'>
+    <label for="remark_trans">Remark all transactions in this file as needing
+    to be reported? <input type="checkbox" name="remark" id="remark_trans" />
+    </label>
+    <br>
+    <br>
+    <br>
+    <div><center><input type="submit" value="Confirm Delete" /></center></div>
+  </form>
+</div>
+
+<div id="copy-from-trans-dialog" style="display: none">
+  <form action="/sr_manual/copy_from_trans_id" method="post">
+    <label>Trans #
+      <input type="text" name="trans_id" class="numeric" maxlength="20" />
+    </label>
+    <input type="submit" value="Copy" />
+    <input type="hidden" name="srid" class="srid" />
+  </form>
+</div>
+<div id="copy-from-srid-dialog" style="display: none">
+  <form action="/sr_manual/copy_from_srid" method="POST">
+    <label>SRID
+      <input type="text" name="from_srid" class="numeric" maxlength="20" />
+    </label>
+    <input type="submit" value="Copy" />
+    <input type="hidden" name="srid" class="srid" />
+  </form>
+</div>

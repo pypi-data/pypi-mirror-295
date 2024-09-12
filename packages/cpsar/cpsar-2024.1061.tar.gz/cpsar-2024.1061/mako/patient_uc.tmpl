@@ -1,0 +1,57 @@
+<%! import kcontrol as K %>
+<%inherit file="patient_page.tmpl" />
+<%namespace file="lib.tmpl" import="*" />
+<%def name="pcontents()">
+<% K.store.update(patient) %>
+<h2>Unapplied Cash</h2>
+% if not unapplied_cash:
+    <div>This patient has no unapplied cash records.</div>
+% else:
+<table class='grid'>
+<thead>
+<tr>
+    <th>Rev/PUC</th>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Ref #</th>
+    <th>Total</th>
+    <th>Balance</th>
+    <th>User</th>
+    <th>TX#</th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+% for uc in unapplied_cash:
+<tr>
+    <td class='puc_id'>${uc['puc_id']}</td>
+    <td>${uc['entry_date'].strftime('%m/%d/%Y')}</td>
+    <td>${uc['type_name']}</td>
+    <td>${uc['ref_no']}</td>
+    <td class='right'>${uc['amount']}</td>
+    <td class='right'>${uc['balance']}</td>
+    <td>${uc['username']}</td>
+    <td class='txcell'>
+        <a href='/view_trans?trans_id=${uc['trans_id']}'>
+            ${uc['trans_id']}
+        </a>
+    </td>
+    <td>
+        % if uc['type_name'] != 'REV' and uc['amount'] == uc['balance']:
+            <input type='button' value='Revoke' class='revoke_uc' />
+        % endif
+    </td>
+</tr>
+% endfor
+</tbody>
+</table>
+% endif
+
+</%def>
+<%def name='scripts()'>
+    ${parent.scripts()}
+    ${script('jquery.numeric.js')}
+    <script type='text/javascript'>
+        $(document).ready(patient_uc_load);
+    </script>
+</%def>

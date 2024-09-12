@@ -1,0 +1,42 @@
+<%! import kcontrol as K %>
+<%inherit file="patient_page.tmpl" />
+<%def name="pcontents()">
+<h2>Patient Sale of Account Report</h2>
+<% K.store.update(patient) %>
+<form action='/patient/gen_sale_of_account' method='POST'>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Start Date</td>
+    <td class='entry-value'>${K.DatePicker('start_date')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>End Date</td>
+    <td class='entry-value'>${K.DatePicker('end_date')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='show_paid_reversal'>Show Paid Reversal</label></td>
+    <td class='entry-value'>${K.CheckBox('show_paid_reversal')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='use_multiplier'>Use Multiplier</label></td>
+    <td class='entry-value'>${K.CheckBox('use_multiplier')}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+        <label for='format_xlsx'>Excel Format?</label></td>
+    <td class='entry-value'><input type="checkbox" id="format_xlsx" name="format" value="xlsx" /></td>
+</tr>
+<tr>
+    <td class='entry-caption'></td>
+    <td class='entry-value'><input type='submit' value='Generate' /></td>
+</tr>
+</table>
+${K.Hidden('patient_id')}
+</form>
+
+</%def>
+<%def name='scripts()'>
+    ${parent.scripts()}
+</%def>

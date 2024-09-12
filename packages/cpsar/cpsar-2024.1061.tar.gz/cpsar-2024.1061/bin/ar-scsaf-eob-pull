@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+from future import standard_library
+standard_library.install_aliases()
+import os
+import zipfile
+
+from subprocess import getstatusoutput
+
+import cpsar.runtime as R
+import cpsar.shell
+
+class Program(cpsar.shell.Program):
+    archive_path = R.dpath('scsaf/eob/archive.zip')
+    working_dir = R.dpath("scsaf/eob/")
+
+    def main(self):
+        cmd = "sshlogin companion eb29saf scsaf ls saf.*.eob*.csv"
+        self.log.debug("Running %s", cmd)
+        s, o = getstatusoutput(cmd)
+        if s:
+            self.log.error("Could not connect to SCSAF to download EOB")
+            self.log.error("Command %s returned %s:\n%s", cmd, s, o)
+            return
+        self.log.debug("Found the follow files on the remote system: %s", o)
+        o = o.split("\n")
+        o = o[2:]            # Skip the . and .. entries
+        for fpath in o:
+            fpath = fpath.rstrip()
+            if fpath in self._archive_list:
+                continue
+            self.download_file(fpath)
+
+    def download_file(self, fpath):
+        # Check to see if we've already put the file in
+        target_path = os.path.join(self.working_dir, fpath)
+        self.log.info("Pulling %s from remote server", fpath)
+        cmd = "scplogin eb29saf companion@scsaf:%s %s " % (fpath, target_path)
+        self.log.debug("Running %s", cmd)
+        s, o = getstatusoutput(cmd)
+        if s:
+            self.log.error('Could not pull %s. code %s. Command output:%s',
+                      fpath, s, o)
+
+    _ar = None
+    @property
+    def _archive_list(self):
+        if self._ar is None:
+            f = zipfile.ZipFile(self.archive_path)
+            self._ar = dict((f, True) for f in f.namelist())
+        return self._ar
+
+if __name__ == '__main__':
+    Program().run()

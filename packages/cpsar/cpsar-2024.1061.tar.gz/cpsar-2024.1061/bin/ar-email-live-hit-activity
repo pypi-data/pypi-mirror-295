@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+from collections import namedtuple
+import datetime
+import io
+import itertools
+import pytz
+
+from cpsar import config
+from cpsar import db
+from cpsar import mail
+from cpsar import shell
+
+class Program(shell.Program):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        tz = pytz.timezone('US/Central')
+        self.add_option("--as-of", type="string",
+            default=datetime.datetime.now(tz).strftime('%a %b %d %H:%M:%S %Z %Y'))
+
+    def main(self):
+        as_of = datetime.datetime.strptime(' '.join(self.opts.as_of.split()), '%a %b %d %H:%M:%S %Z %Y')
+
+        cutoff = as_of - datetime.timedelta(minutes=20)
+        cursor = db.dict_cursor()
+        cursor.execute("""
+            with current as (
+                select hit.*
+                from hit
+                join group_info on hit.group_nbr = group_info.group_number
+                where hit.process_timestamp between %s and %s
+                  and hit.record_type = 'R'
+                  and hit.group_nbr is not null
+            ), matching as (
+                select process_timestamp,
+                       group_nbr,
+                       pat_cardholder_nbr,
+                       pat_dob,
+                       response_code,
+                       reject_code_2,
+                       phcy_npi,
+                       msg1,
+                       msg2,
+                       count(*) over (partition by group_nbr, pat_cardholder_nbr, pat_dob, response_code) as reject_count
+                from current
+           )
+           select matching.*,
+            patient.first_name,
+            patient.last_name,
+            pharmacy.name as pharmacy_name,
+            pharmacy.phone as pharmacy_phone,
+            pharmacy.city as pharmacy_city,
+            pharmacy.state as pharmacy_state
+            from matching
+            left join patient on
+                patient.group_number = matching.group_nbr and
+                patient.dob = to_date_safe(matching.pat_dob, 'YYYYMMDD') and
+                patient.ssn = matching.pat_cardholder_nbr
+            left join pharmacy on
+                pharmacy.npi = matching.phcy_npi
+            where matching.reject_count > 2
+            order by matching.group_nbr, matching.pat_cardholder_nbr, matching.pat_dob, process_timestamp
+        """, (cutoff, as_of))
+
+        if not cursor.rowcount:
+            return
+
+        records = list(cursor)
+        for pl in ['bd', 'mjoseph']:
+            send_email(records, pl, cutoff, as_of)
+
+def send_email(records, pl, cutoff, as_of):
+    cursor = db.cursor()
+    cursor.execute(f"""
+        select group_number
+        from {pl}.group_info
+        """)
+    groups = set(c for c, in cursor)
+    records = [dict(r) for r in records if r['group_nbr'] in groups]
+    if not records:
+        return
+
+    mailer = mail.Mailer(recipients=[customer_service_email(pl)])
+    mailer.subject = f"{len(records)} Repeated Rejections at Pharmacy over the Last 10 Minutes"
+    mailer.write(f"The following rejects occured between {cutoff} and {as_of} with more than 2 per patient.")
+
+    for pat, rejects in itertools.groupby(records, group_key):
+        group_number, pat_cardholder_nbr, pat_dob, first_name, last_name = pat
+        mailer.write(f"Patient Name: {first_name} {last_name} Group: {group_number} ID: {pat_cardholder_nbr} DOB: {pat_dob}")
+
+        for r in rejects:
+            r = namedtuple('reject', r.keys())(*r.values())
+            mailer.write(f"\tTime: {r.process_timestamp.strftime('%a %b %d %H:%M:%S')} Code: {r.response_code} {r.msg1 or ''} {r.msg2 or ''}")
+            mailer.write(f"\t\tPharmacy NPI: {r.phcy_npi} Name: {r.pharmacy_name} Location: {r.pharmacy_city}, {r.pharmacy_state} Phone #: {r.pharmacy_phone}")
+    mailer.send()
+
+def customer_service_email(pl):
+    if pl == 'bd':
+        return config.customer_service_email()
+    try:
+        return config._config.get(pl, 'customer_service_email')
+    except config.configparser.Error as e:
+        return config.customer_service_email()
+
+def group_key(x):
+    return (
+        x['group_nbr'],
+        x['pat_cardholder_nbr'],
+        x['pat_dob'],
+        x['first_name'],
+        x['last_name']
+    )
+
+if __name__ == "__main__": Program().run()

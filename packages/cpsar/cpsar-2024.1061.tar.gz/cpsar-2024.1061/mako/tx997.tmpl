@@ -1,0 +1,14 @@
+997 Response from Texas DWC
+
+File: ${filename}
+Set : ${set_control_number}
+
+% for msg in messages:
+${msg}
+%endfor
+
+X12 
+-------------------------------------------------------------------------------
+% for line in segments:
+${"*".join(line)}~
+% endfor

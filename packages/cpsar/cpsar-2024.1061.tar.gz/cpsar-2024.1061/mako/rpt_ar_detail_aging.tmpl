@@ -1,0 +1,210 @@
+<%inherit file='page.tmpl' />
+<%block name='head'>
+  <title>
+      A/R Detail Aging as of ${q.as_of} for ${q.client_name()}
+  </title>
+  <link rel='stylesheet' type='text/css' href='/css/sales_report.css' />
+  <link rel='stylesheet' type='text/css' href='/css/rpt_ar_detail_aging.css' />
+
+  <style type='text/css' media='print'>
+  A { color: #000000; text-decoration: none; }
+  </style>
+</%block>
+<div><strong>A/R Detail Aging</strong></div>
+<table id='header'>
+<tr>
+    <td style='width:15em'><strong>Group:</strong></td>
+    <td>${q.client_name()}</td>
+</tr>
+<% n = q.adjuster_name() %>
+% if n:
+<tr>
+    <td><strong>Adjuster</strong></td>
+    <td>${n}</td>
+</tr>
+% endif
+<tr>
+    <td><strong>Age Transactions As Of:</strong></td>
+    <td>${q.as_of}</td>
+</tr>
+<tr>
+    <td><strong>Showing Retail?</strong></td>
+    <td>
+        % if q.showing_retail:
+            Yes
+        % else:
+            No
+        % endif
+    </td>
+</tr>
+<tr>
+    <td><strong>Showing Mail-order?</strong></td>
+    <td>
+        % if q.showing_mailorder:
+            Yes
+        % else:
+            No
+        % endif
+    </td>
+</tr>
+</table>
+
+<table border='0' cellspacing='0' id='report_body'>
+<thead>
+<tr>
+ <th>Patient ID/Name</th>
+ <th>Payer Code</th>
+ <th>RX Date</th>
+ <th>Doc Date</th>
+ <th>Due Date</th>
+ <th></th>
+ % if q.show_age:
+ <th></th>
+ % endif
+ % for i in q.amount_headers:
+    % if len(i) == 2:
+     <th class='days'>${i[0]} to ${i[1]}</th>
+    % else:
+     <th class='days'>Over ${i[0]}</th>
+    % endif
+ % endfor
+ <th></th>
+</tr>
+<tr>
+ <th class='bb'>Document Type/Number</th>
+ <th class='bb'>Payer Code </th>
+ <th class='bb'>RX Date</th>
+ <th class='bb'>Appl. Date</th>
+ <th class='bb'>Applied Type/Applied No.</th>
+ % if q.show_age:
+ <th class='bb'>Age</th>
+ % endif
+ <th class='bb' style='text-align: right'>Current</th>
+ % for i in q.amount_headers:
+     <th class='bb days'>Days</th>
+ % endfor
+ <th class='bb days'>Total</th>
+</tr>
+</thead>
+<tbody>
+% for group in q.groups:
+<tr>
+ <td colspan='20' class='group_header'>GROUP: ${group['group_number']}</td>
+</tr>
+ % for patient in group['patients']:
+  <tr>
+   <td colspan='5'>${patient['last_name']}, ${patient['first_name']}</td>
+  </tr>
+   % for tx in patient['tx']:
+  <tr>
+     <td><span class='doc_type'>${tx['doc_type']}</span>
+         <a href='/view_trans?trans_id=${tx['trans_id']}'>
+         <span class='doc_no'>${tx['doc_no']}</span>
+         </a>
+     </td>
+     <td class='payer_code'>${tx['payer_code']}</td>
+     <td class='rx_date'>${tx['rx_date'].strftime('%m/%d/%Y')}</td>
+     <td class='doc_date'>${tx['doc_date'].strftime('%m/%d/%Y')}</td>
+     <td>
+         % if tx['applied_type']:
+             <span class='apptype'>${tx['applied_type']}</span>
+         % endif
+         <span class='appno'>${tx['applied_no']}</span>
+     </td>
+     % if q.show_age:
+     <td>
+         ${tx['age']}
+     </td>
+     % endif
+     % for amt in tx['amounts']:
+         <td class='amount' nowrap='nowrap'>
+             ${amt}
+         </td>
+     % endfor
+     <td class='amount' nowrap='nowrap'>
+         ${tx['total_past_due']}
+     </td>
+  </tr>
+   % endfor
+  <tr>
+     <td></td>
+  % if q.show_age:
+     <td></td>
+  % endif
+     <td colspan='2'></td>
+     <td class='customer_total' colspan='2'>
+         Customer Total:
+     </td>
+     % for tot in patient['totals']:
+     <td class='pat_total'>
+         ${"%.02f" % tot}
+     </td>
+     % endfor
+     <td class='pat_total'>
+         ${"%.02f" % patient['total_past_due']}
+     </td>
+   </tr>
+ % endfor
+
+ <tr>
+    <td></td>
+ % if q.show_age:
+    <td></td>
+ % endif
+    <td colspan='2'></td>
+    <td class='customer_total' colspan='2'>
+        Group Total:
+    </td>
+    % for tot, per in zip(group['totals'], group['percent_totals']):
+    <td class='pat_total'>
+        (${"%0.002f%%" % per})
+        ${"%.02f" % tot}
+    </td>
+    % endfor
+    <td class='pat_total'>
+        ${"%.02f" % group['total']}
+    </td>
+ </tr>
+
+% endfor
+ <tr>
+    <td></td>
+ % if q.show_age:
+    <td></td>
+ % endif
+    <td colspan='2'></td>
+    <td class='customer_total' colspan='2'>
+        Report Total:
+    </td>
+    % for tot, per in zip(q.grand_totals, q.grand_percent_totals):
+    <td class='pat_total'>
+        (${"%0.002f%%" % per})
+        ${"%.02f" % tot}
+    </td>
+    % endfor
+    <td class='pat_total'>
+        ${"%.02f" % q.grand_total}
+    </td>
+ </tr>
+
+</tbody>
+</table>
+
+<br />
+<table border="1" align="center">
+<tr>
+    <th colspan="11">Legend</th>
+</tr>
+<tr>
+    <td>CL - Claim Invoice</td>
+    <td>PY - Payment</td>
+    <td>AD - Adjudication</td>
+    <td>RC - Rebill Credit</td>
+    <td>WO - Write Off</td>
+    <td>RV - Reversal</td>
+    <td>OV - Overpayment</td>
+    <td>DB - Debit</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<%!
+import cpsar.runtime as R
+from cpsar.workqueue import WorkQueue
+from cpsar.controls import GroupNumberListBox
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <title>Accounting Launch Pad</title>
+    <link rel='stylesheet' type='text/css' href='/css/form.css' />
+    <link rel='stylesheet' type='text/css' href='/css/index.css' />
+</%block>
+<%block name='header'>
+  Menu
+</%block>
+<%def name='scripts()'>
+    ${parent.scripts()}
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          $("#recent_activity").load("/recent_activity");
+        });
+    </script>
+</%def>
+<table width='100%'>
+<tr>
+  <td valign='top' class='menu'>
+    <div class='header'>General</div>
+    <ul>
+        <li><a href='/ppayment/'>Post Payment</a></li>
+        <li><a href='/add_client'>Add Client</a></li>
+        <li>
+          <form action="/view_client">
+            Manage Client
+            ${GroupNumberListBox("group_number", value=R.session.get('current_group') )}
+            <input type="submit" value="Manage" />
+          </form></li>
+        <li><a href='/payment_types'>Manage Payment Types</a></li>
+        <li><a href='/tx_types'>Manage TX Types</a></li>
+        <li><a href='/patient_lookup'>Patient Lookup</a></li>
+        <li><a href='/settle_reversals'>Settle Reversals</a></li>
+        <li><a href='/settle_rebates'>Settle Rebates</a></li>
+        <li><a href='/view_workqueue'>Work Queue</a></li>
+        <li><a href='/sr_manual/files'>State Reporting</a></li>
+        <li><a href='/void_settlement_check'>Void Settlement Check</a></li>
+        <li><a href='/import_liberty'>Import Liberty Prescriptions</a></li>
+        <li><a href='/import_pk'>Import PK Prescriptions</a></li>
+    </ul>
+
+    <div class='header'>Rebilling</div>
+    <ul>
+        <li><a href='/create_rebill_trans'>Rebill Marked Transactions</a></li>
+        <li><a href='/edi_scsaf_rebill'>SCSAF Rebill</a></li>
+    </ul>
+
+    <div class='header'>Check Payments</div>
+
+    <form action='/search_payments'>
+    <table class='form'>
+    <tr>
+        <td class='entry-caption'>Ref #:</td>
+        <td class='entry-value'>
+            <input type='text' name='ref_no' /></td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Client</td>
+        <td class='entry-value'>
+            ${GroupNumberListBox("group_number", value=R.session.get('current_group') )}
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+        <input type='submit' value='Search' />
+        </td>
+    </tr>
+    </table>
+    </form>
+
+    <div class='header'>Batch Information</div>
+    <form action='/rpt_batch_stat'>
+    <table class='form'>
+    <tr>
+        <td class='entry-caption'>Batch Date</td>
+        <td class='entry-value'>
+            <select name='batch_file_id' id='batch_file_id_info'>
+            % for batch in q.recent_batches():
+              <option value="${batch['batch_file_id']}">
+                ${"%06d - %s" % (batch['batch_file_id'], batch['file_name'])}
+              </option>
+            % endfor
+            </select>
+            <input type='submit' value='View' /> 
+        </td>
+    </tr>
+    </table>
+    </form>
+
+    <div class='header'>Flagged Transactions</div>
+    <% ftx = q.flagged_tx() %>
+    % if ftx:
+        <table cellspacing='0' class='form'>
+        % for tx in ftx:
+        <tr>
+            <td class='grid'>
+                <a href='/view_trans?trans_id=${tx['trans_id']}'>
+                    ${tx['trans_id']}</a>
+            </td>
+            <td class='grid'>${tx['message']}</td>
+            <td class='grid'>${tx['username']}</td>
+            <td class='grid' align='right'>${tx['entry_date_fmt']}</td>
+        </tr>
+        % endfor
+        </table>
+    % else:
+        <div>No flagged transactions</div>
+    % endif
+
+    <div class='header'>Recent Activity</div>
+    <div id='recent_activity'></div>
+
+    </td>
+
+    <td valign='top'>
+
+    <div class='header'>A/R Reports</div>
+    <ul>
+        <li><a href='/rpt_collections'>Collections</a></li>
+        <li><a href='/rpt_ar_detail_aging'>Detail Aging</a></li>
+        <li><a href='/rpt_ar_summary_aging'>Summary Aging</a>
+        </li>
+    </ul>
+
+    <div class='header'>Commission Reports</div>
+    <ul>
+        <li><a href='/rpt_agent_commission'>Agent Commission</a></li>
+        <li><a href='/rpt_agent_commission_detail'>Agent Detail</a></li>
+
+        <li><a href='/rpt_homelink_summary'>
+                Homelink Summary</a></li>
+
+        <li><a href='/rpt_companion_commission'>
+                Companion Summary</a></li>
+        <li><a href='/rpt_companion_by_month'>
+                Companion Summary By Month</a></li>
+        <li><a href='/rpt_commission_comparison'>
+                Commission Comparison</a></li>
+        <li><a href='/rpt_referring_pharmacy_commission'>
+                Referring Pharmacy Commission</a></li>
+    </ul>
+
+    <div class='header'>Cash Reports</div>
+     <ul>
+        <li><a href='/rpt_cash_receipts'>
+            Cash Receipts Detail</a></li>
+        <li><a href='/rpt_summary_cash_receipt'>
+            Cash Receipts Summary</a></li>
+        <li><a href='/rpt_invoice_cash_receipts'>
+            Cash Receipts by Invoice</a></li>
+        <li><a href='/rpt_gh_cash_receipt'>
+            Group Health Cash Receipts</a></li>
+     </ul>
+
+    <div class='header'>Reports</div>
+      <ul>
+        <li><a href='/rpt_claim_formulary'>
+             Claim Formulary</a></li>
+        <li><a href='/rpt_client_dist_rules'>
+             Client Distribution Rules</a></li>
+
+        <li><a href='/rpt_cps_prescriptions'>CPS Prescriptions</a></li>
+        <li><a href='/rpt_daily_processor_totals'>
+        Daily Processor Totals at EHO for Pharmacy
+             </a></li>
+
+       <li><a href='/rpt_hcfa'>HCFA Export</a></li>
+       <li><a href='/rpt_monthly_sales_totals'>Monthly Sales Totals</a></li>
+
+        <li><a href='/rpt_negative_distribution'>
+             Negative CPS Distributions</a></li>
+
+       <li><a href='/rpt_partial_balance'>Partial Balances</a></li>
+       <li><a href='/rpt_pat_refund_settlement'>
+                Patient Refund Settlement Report</a></li>
+       <li><a href='/rpt_patient_unapplied_cash'>
+                Patient Unapplied Cash</a></li>
+       <li><a href='/rpt_pending_distributions'>
+             Pending Distributions</a></li>
+       <li><a href='/rpt_phcy_paid_trans'>Pharmacy Paid Transactions</a></li>
+       <li><a href='/rpt_rebates'>Rebates</a></li>
+       <li><a href='/rpt_refund_settlement'>
+                Refund Settlement Report</a></li>
+       <li><a href='/rpt_monthly_sales_totals2'>Sales Totals</a></li>
+       <li><a href='/rpt_settlement'>
+                Settlement Report </a></li>
+       <li><a href='/rpt_trans_price_check'>Trans Price Check</a></li>
+        <li><a href='/rpt_heldback'>
+             TX's Held Back b/c of Errors</a></li>
+
+       <li><a href='/rpt_sr_errors'>
+                State Reporting Submission Status </a></li>
+        <li><a href='/rpt_trans_adjustments'>
+            Transaction Adjustments</a></li>
+
+       <li><a href='/rpt_unapplied_cash_detail_by_group'>
+                Unapplied Cash - Detail by Group</a></li>
+
+       <li><a href='/rpt_unapplied_cash_by_group'>
+                Unapplied Cash By Group Summary</a></li>
+
+       <li><a href='/rpt_unrebated'>Unrebated Brands</a></li>
+     </ul>
+    </td>
+</tr>
+</table>

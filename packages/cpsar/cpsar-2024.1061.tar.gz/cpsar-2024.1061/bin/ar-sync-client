@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+""" Set extra attributes on the client record that are defined by the
+processor
+"""
+import cpsar.keys as K
+import cpsar.fwimport as FW
+import cpsar.runtime as R
+import cpsar.shell
+import cpsar.util as U
+import reclib.parse.fw as P
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        table = ClientTable()
+        for record in GroupFormularyFile():
+            table.save(record)
+        if not self.opts.dry_run:
+            R.db.commit()
+
+class GroupFormularyFile(P.Parser):
+    _fpath = FW.path_for_resource("bd-group-formulary")
+    fields = [
+        P.String('group_number', 8, required=True),
+        P.String('uses_formulary', 1),
+        P.String('formulary', 5)
+    ]
+
+    def __init__(self):
+        P.Parser.__init__(self)
+
+    def __iter__(self):
+        file = open(self._fpath)
+        for record in self.parse_iter(file):
+            if record.errors:
+                R.log.error(record.format_errors())
+                R.log.error(record.format())
+                continue
+
+            self._null_empty_strings(record)
+            yield record
+
+    def _null_empty_strings(self, record):
+        for key in record:
+            if record[key] == '':
+                record[key] = None
+
+class ClientTable(object):
+    """ Saves ingredient records to the database. Performs an upsert
+    based on a key match
+    """
+    def __init__(self):
+        self._cursor = R.db.cursor()
+        self._populate_client_lookup()
+
+    def save(self, record):
+        if not self._lookup.get(record['group_number']):
+            R.log.info("No group %s on file to update.", 
+                       record['group_number'])
+            return
+        self._update(record)
+
+    def _populate_client_lookup(self):
+        self._cursor.execute("SELECT group_number FROM client")
+        self._lookup = dict((c, True) for c, in self._cursor)
+
+    def _update(self, record):
+        sql = U.update_sql2('client', record, ['group_number'])
+        self._cursor.execute(sql)
+
+if __name__ == '__main__':
+    Program().run()
