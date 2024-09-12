@@ -1,0 +1,37 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools>=61.0.0",
+]
+
+[project]
+authors = [
+    { email = "johannes-programming@mailfence.com", name = "Johannes" },
+    { email = "johannes-programming@posteo.org", name = "Johannes" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "Bio>=1.6",
+    "gravy>=1.0",
+    "seqpad>=1.0",
+    "wonderparse>=1.0",
+]
+description = "simple utils for seqs"
+keywords = []
+name = "utils_seq"
+readme = "README.rst"
+requires-python = ">=3.11"
+version = "0.1.2"
+
+[project.license]
+file = "LICENSE.txt"
+
+[project.urls]
+Documentation = "https://pypi.org/project/utils_seq"
+Download = "https://pypi.org/project/utils-seq/#files"
+Source = "https://github.com/johannes-programming/utils_seq"
