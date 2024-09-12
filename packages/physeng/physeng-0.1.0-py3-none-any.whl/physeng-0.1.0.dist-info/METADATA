@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: physeng
+Version: 0.1.0
+Summary: Physics and engineering tools
+Author-email: Andreas Mussgiller <andreas.mussgiller@desy.de>
+Project-URL: Homepage, https://gitlab.desy.de/andreas.mussgiller/PhysEng
+Project-URL: Issues, https://gitlab.desy.de/andreas.mussgiller/PhysEng
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: workalendar
+Requires-Dist: xml
+
+PhysEng
+-------
