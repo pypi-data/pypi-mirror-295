@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ebx"
+version = "0.7.0"
+authors = [
+    { name="EarthBlox Dev Team", email="support@earthblox.io" },
+]
+description = "Earth Blox Client Library"
+requires-python = ">=3.8"
+dependencies=["pydantic==2.8.2","geojson-pydantic==1.1.1","pandas>=2.0.0","httpx>=0.24.1","leafmap>=0.23.3","plotly>=5.16.1"]
+classifiers = [
+   "Programming Language :: Python :: 3",
+   "Operating System :: OS Independent",
+   "Topic :: Scientific/Engineering",
+   "Topic :: Scientific/Engineering :: GIS",
+   "Development Status :: 3 - Alpha",
+   "License :: OSI Approved :: Apache Software License",
+   "Programming Language :: Python :: 3.8",
+   "Programming Language :: Python :: 3.9",
+   "Programming Language :: Python :: 3.10",
+   "Programming Language :: Python :: 3.11",
+   "Programming Language :: Python :: 3.12"
+]
+readme = "README.md"
+
+[tool.setuptools.packages]
+find = {}
