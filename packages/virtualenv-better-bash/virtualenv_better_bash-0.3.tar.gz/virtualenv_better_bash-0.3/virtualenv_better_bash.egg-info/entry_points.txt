@@ -1,0 +1,2 @@
+[virtualenv.activate]
+better_bash = virtualenv_bb:BashActivator
