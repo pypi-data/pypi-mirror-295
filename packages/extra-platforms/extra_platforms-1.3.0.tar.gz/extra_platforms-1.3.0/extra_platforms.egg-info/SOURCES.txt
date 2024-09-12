@@ -1,0 +1,17 @@
+pyproject.toml
+readme.md
+extra_platforms/__init__.py
+extra_platforms/detection.py
+extra_platforms/docs_update.py
+extra_platforms/groups.py
+extra_platforms/platforms.py
+extra_platforms/py.typed
+extra_platforms/pytest.py
+extra_platforms.egg-info/PKG-INFO
+extra_platforms.egg-info/SOURCES.txt
+extra_platforms.egg-info/dependency_links.txt
+extra_platforms.egg-info/entry_points.txt
+extra_platforms.egg-info/requires.txt
+extra_platforms.egg-info/top_level.txt
+tests/test_platforms.py
+tests/test_pytest.py
