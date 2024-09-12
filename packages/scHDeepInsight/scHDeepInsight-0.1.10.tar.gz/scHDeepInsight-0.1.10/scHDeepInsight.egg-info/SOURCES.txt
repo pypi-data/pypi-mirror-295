@@ -1,0 +1,14 @@
+README.md
+setup.py
+scHDeepInsight/__init__.py
+scHDeepInsight/immune.py
+scHDeepInsight.egg-info/PKG-INFO
+scHDeepInsight.egg-info/SOURCES.txt
+scHDeepInsight.egg-info/dependency_links.txt
+scHDeepInsight.egg-info/requires.txt
+scHDeepInsight.egg-info/top_level.txt
+scHDeepInsight/pretrained_files_immune/checkpoint_model_immune.pth
+scHDeepInsight/pretrained_files_immune/img_transformer_immune.obj
+scHDeepInsight/pretrained_files_immune/label_encoder_immune_base.obj
+scHDeepInsight/pretrained_files_immune/label_encoder_immune_detailed.obj
+scHDeepInsight/pretrained_files_immune/pretrained_genes_immune.csv
