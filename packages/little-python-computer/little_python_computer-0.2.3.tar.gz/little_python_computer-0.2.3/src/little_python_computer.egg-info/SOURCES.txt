@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+src/little_python_computer.egg-info/PKG-INFO
+src/little_python_computer.egg-info/SOURCES.txt
+src/little_python_computer.egg-info/dependency_links.txt
+src/little_python_computer.egg-info/entry_points.txt
+src/little_python_computer.egg-info/requires.txt
+src/little_python_computer.egg-info/top_level.txt
+src/lpc/__init__.py
+src/lpc/cmd.py
+src/lpc/main.py
+src/lpc/parts.py
