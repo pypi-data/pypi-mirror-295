@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: transformer-checker
+Version: 0.1.8
+Summary: tool to visualize and check neural activations and attention patterns in transformer models that classify context-free languages
+Home-page: https://github.com/matiasmolinolo/transformer-checker
+Author: Matias Molinolo
+Author-email: mm231323@fi365.ort.edu.uy
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: matplotlib (>=3.8.4,<4.0.0)
+Requires-Dist: torch (>=2.3.0,<3.0.0)
+Requires-Dist: tqdm (>=4.66.4,<5.0.0)
+Requires-Dist: wandb (>=0.17.1,<0.18.0)
+Project-URL: Repository, https://github.com/matiasmolinolo/transformer-checker
+Description-Content-Type: text/markdown
+
+# Transformer Checker
+
+This project is a tool to visualize and check neural activations and attention patterns in transformer models that classify context-free languages.
+
