@@ -1,0 +1,14 @@
+jsongrep/VERSION,sha256=ROhz_l0j1bLgt-Mz5Q1BE6-HqF-DwOKDkGuG1yzmVhw,5
+jsongrep/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+jsongrep/main.py,sha256=blOWkNFFMAcfQznUAceJ1wVhntYt4ZtqV_sdOyJBYYk,4154
+jsongrep/postinstall.sh,sha256=2E8vu7EWRDHqKYx3sGclWqGqR4idsi1-nzyIN0OXdjs,272
+jsongrep/libs/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+jsongrep/libs/cli_colors.py,sha256=-5UlLS_zi7og450b7_WrdqhauyLfhzHRd162un4D64Q,766
+jsongrep/libs/first_run.py,sha256=i-Qo8zApBq1tnLMPPG7-IcGYQclaspGoijWxDctaqs0,632
+jsongrep/libs/json_filter.py,sha256=cxqwFPVQZoSofm2M_zAk3djxQcedOW5dvkkyn0Gs2AM,5684
+jsongrep/libs/setuptools.py,sha256=CgY0hcf5wNQnB1V7VJ3OktbIHObqTICfufVwxacpCUc,333
+json_grep-1.4.7.dist-info/METADATA,sha256=lCoAI_zRtCQrt3NS9XMqHBSJ0R1Qq9EBz2emqSNVFuU,2319
+json_grep-1.4.7.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+json_grep-1.4.7.dist-info/entry_points.txt,sha256=8oRIndZdHHi_rCbyLrLnrBZEcs2UO1laF3cCBEJ2O44,106
+json_grep-1.4.7.dist-info/top_level.txt,sha256=MLWdVlSe3ZbeSHaqtO4Ox1cwe_LZU3fFxxq7N_4UtGw,9
+json_grep-1.4.7.dist-info/RECORD,,
