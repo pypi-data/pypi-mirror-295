@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: lazy-github
+Version: 0.1.5
+Summary: A terminal UI for interacting with Github
+Author-email: Chris Chapline <gizmo385@users.noreply.github.com>
+Maintainer-email: Chris Chapline <gizmo385@users.noreply.github.com>
+License: MIT License
+        
+        Copyright (c) 2024 Christopher Chapline
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: httpx
+Requires-Dist: hishel
+Requires-Dist: pydantic
+Requires-Dist: textual
+Requires-Dist: textual-dev
+Requires-Dist: click >=8.1.7
+
+# LazyGithub
+
+This is a **WIP** terminal UI client for interacting with [GitHub](https://github.com). It draws heavy
+inspiration from the [lazygit](https://github.com/jesseduffield/lazygit) project and uses
+[Textual](https://textual.textualize.io/) to drive the terminal UI interactions.
+
+
+![Example screenshot](./images/lazy-github-conversation-ui.svg)
+
+
+Currently, it supports the following:
+
+
+- Listing the repositories associated with your account 
+- Listing the issues and pull requests on those repositories
+- Listing the details, diff, and reviews on any of those pull requests
+- Detailed issue views, including conversation participation
+
+Planned features:
+- Local caching, improving reload times and making it easier to use within a terminal or editor
+  environment.
+- A more wholeistic summary view for the currently selected repository
+- The ability to list, view, and trigger actions on a repository
+- More fleshed out PR interactions, including commenting and eventually submitting full PR reviews
+  from within your terminal.
+
+
+## Running Locally
+
+If you have [uv](https://github.com/astral-sh/uv) installed, then you can try LazyGithub by running
+`uvx lazy-github`. Alternatively, you can pull the repo and run it locally by running the
+`./start.sh` script in the root of the repo.
