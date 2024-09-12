@@ -1,0 +1,38 @@
+DIV.error {
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color: #AA0000;
+    color: #FFFFFF;
+    padding: 2px;
+}   
+TABLE.report {
+    border: 1px solid #888888;
+    border-collapse: collapse;
+    width: 80%;
+    margin-bottom: 10px;
+}
+TABLE.report TD {
+    border: 1px solid #888888;
+    padding: 0px 10px 0px 10px;
+}
+TD.balance {
+    text-align: right;
+}
+TD.total {
+    text-align: right;
+}
+TD.due_date {
+    text-align: right;
+}
+TD.batch_date {
+    text-align: right;
+}
+TD.group_number {
+    text-align: center;
+}
+TD.age {
+    text-align: center;
+}
+TD.invoice_id {
+    text-align: center;
+}

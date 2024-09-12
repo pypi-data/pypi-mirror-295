@@ -1,0 +1,252 @@
+<%!
+import cpsar.controls as C
+import cpsar.runtime as R
+import cpsar.txtype as TT
+
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+  <title>Add Liberty Transaction</title>
+  <link rel='stylesheet' type='text/css'
+        href='/css/redmond/jquery-ui-1.8.14.custom.css' />
+  <link rel='stylesheet' type='text/css' 
+        href='/css/form.css' />
+  <style type='text/css'>
+    DIV.rx_lookup {
+      display: none;
+    }
+    TABLE.form {
+      width: 100%;
+    }
+  </style>
+</%block>
+<%def name='scripts()'>
+  <script src='/js/jquery-1.5.1.min.js'></script> 
+  <script type='text/javascript' src='/js/common.js'></script>
+  <script src='/js/jquery.blockUI.js'></script>
+  <script src='/js/jquery.numeric.js'></script>
+  <script src='/js/jquery.vdate.js'></script>
+  <script src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+  <script src='/repo/js/kcontrol/currency_control.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src='/js/import_liberty.js'></script>
+</%def>
+<%block name="header">
+  <input type='button' class='rx_lookup' value='Lookup' />
+  <a href='/import_liberty/download_cache'><input type='button' class='download_cache' value='Download Cache' /></a>
+  <a href='/import_liberty/cache_summary'><input type='button' class='download_cache' value='Cache Summary' /></a>
+</%block>
+<div class='errors'></div>
+<form action='/import_liberty/add' method='POST' class='add'>
+<table class='form'>
+<tr>
+    <td class='entry-caption'><label for='batch_date'>Batch Date</td>
+    <td class='entry-value'>${C.TextBox('batch_date', class_='datepicker', defaultToday=True)}</td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'><label for='create_date'>Create Date</td>
+    <td class='entry-value'>${C.DatePicker('create_date', defaultToday=True)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='group_number'>Group Number</label>
+    </td>
+    <td class='entry-value'>${C.GroupNumberListBox()}</td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'><label for=''></label></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_dob'>Patient DOB</label></td>
+    <td class='entry-value'>${C.DatePicker('patient_dob')}</td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'>
+      <label for='patient_cardholder_nbr'>Patient Cardholder Number</label></td>
+    <td class='entry-value'>${C.TextBox('patient_cardholder_nbr', maxlength=11)}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='patient_id'>Patient ID (Internal Id)</label>
+    </td>
+    <td class='entry-value'>${C.TextBox('patient_id', class_='numeric')}</td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'><label for=''>Tx Type</label></td>
+    <td class='entry-value'><div class='tx_type'></div></td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='pharmacy_nabp'>Pharmacy NABP</label></td>
+    <td class='entry-value'>
+      ${C.ListBox('pharmacy_nabp', values=[(pharmacy_nabp, pharmacy_nabp)])}
+    </td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'><label for='pharmacy_id'>
+      Pharmacy ID (Internal Id)</label>
+    </td>
+    <td class='entry-value'>
+      ${C.ListBox('pharmacy_id', values=[(pharmacy_id, pharmacy_id)])}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='doctor_dea_number'>Doctor DEA Number</label>
+    </td>
+    <td class='entry-value'>
+      ${C.TextBox('doctor_dea_number')}
+    </td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'>
+      <label for='doctor_npi_number'>Doctor NPI Number</label>
+    </td>
+    <td class='entry-value'>
+      ${C.TextBox('doctor_npi_number')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='doctor_dea_number'>Doctor Name</label>
+    </td>
+    <td class='entry-value'>
+      ${C.TextBox('doctor_name')}
+    </td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'>
+      <label for='drug_name'>Drug Name</label>
+    </td>
+    <td class='entry-value'>
+      ${C.TextBox('drug_name')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='drug_ndc_number'>Drug NDC #</label>
+    </td>
+    <td class='entry-value'>
+      ${C.TextBox('drug_ndc_number')}
+    </td>
+    <td class='gutter'>&nbsp;</td>
+    <td class='entry-caption'><label for='drug_id'>
+      Drug ID (Internal Id)</label>
+    </td>
+    <td class='entry-value'>
+      ${C.ListBox('drug_id', values=[])}
+    </td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='rx_date'>RX Date</label></td>
+  <td class='entry-value'>${C.DatePicker('rx_date')}</td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='date_written'>Date Written</label></td>
+  <td class='entry-value'>${C.DatePicker('date_written')}</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='rx_number'>RX Number</label></td>
+  <td class='entry-value'>${C.TextBox('rx_number', class_='numeric')}</td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='refill_number'>Refill Number</label></td>
+  <td class='entry-value'>${C.TextBox('refill_number', class_='numeric')}</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='compound_code'>Compound Code</label></td>
+  <td class='entry-value'>
+      ${C.ListBox('compound_code', values=[('1', '1'), ('2', '2')])}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='daw'>DAW</label></td>
+  <td class='entry-value'>
+    <% daw = [(i, i) for i in range(1, 10)] %>
+    ${C.ListBox('daw', values=daw, blankOption=True)}</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='quantity'>Quantity</label></td>
+  <td class='entry-value'>${C.TextBox('quantity', class_='numeric')}</td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='days_supply'>Days Supply</label></td>
+  <td class='entry-value'>${C.TextBox('days_supply', class_='numeric', maxlength='3')}</td>
+</tr>
+<tr>
+  <td class='entry-header' colspan='5'>Bill Information</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='cost_allowed'>Cost Allowed</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('cost_allowed', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='dispense_fee'>Dispense Fee</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('dispense_fee', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='processing_fee'>Processing Fee</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('processing_fee', class_='numeric')}
+  </td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='sales_tax'>Sales Tax</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('sales_tax', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='eho_network_copay'>Copay</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('copay', class_='numeric')}
+  </td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='state_fee'>State Fee</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('state_fee', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='awp'>AWP</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('awp', class_='numeric')}
+  </td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='cost_submitted'>Cost Submitted</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('cost_submitted', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='usual_customary'>Usual &amp; Customary</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('usual_customary', class_='numeric')}
+  </td>
+</tr>
+<tr>
+  <td class='entry-header' colspan='5'>Client Transaction Information</td>
+</tr>
+<tr>
+  <td class='entry-caption'><label for='client_price'>Client Price</label></td>
+  <td class='entry-value'>
+      ${C.TextBox('client_price', class_='numeric')}
+  </td>
+  <td class='gutter'>&nbsp;</td>
+  <td class='entry-caption'><label for='client_price'></label></td>
+  <td class='entry-value'><input type='submit' value='Add' /></td>
+</tr>
+</table>
+
+</form>
+
+<div class='rx_lookup'>
+<form class='rx_lookup'>
+<table class='form'>
+<tr>
+  <td class='entry-caption'><label for='lookup_start_date'>Start Date</label></td>
+  <td class='entry-value'>
+    <input type='date' value="${load_date|h}" name='lookup_start_date' id='lookup_start_date' />
+  </td>
+  <td class='entry-caption'><label for='lookup_end_date'>End Date</label></td>
+  <td class='entry-value'>
+    <input type='date' value="${lookup_end_date|h}" name='lookup_end_date' id='lookup_end_date' />
+    <input type='submit' value='Lookup' /></td>
+</tr>
+</table>
+</form>
+<div class='pk_results'></div>
+</div>
+

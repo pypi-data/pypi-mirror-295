@@ -1,0 +1,17 @@
+# Upstart autossh script
+#
+
+description "Constant SSH tunnels"
+
+start on (local-filesystems and network-device-up)
+stop on runlevel [!12345]
+
+# expect fork
+respawn
+respawn limit 10 5
+
+
+# Run the autossh tunnel to atlas from CPS's network. The MSSQL server is
+# 192.168.1.252 APPSERV1
+# This script is to run from the gadsden server
+exec su tech -c "autossh -f -M 0 -i/home/tech/.ssh/id_rda -N -R 1433:192.168.1.252:1433 bd-ftp"

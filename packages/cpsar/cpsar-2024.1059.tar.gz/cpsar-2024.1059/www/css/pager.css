@@ -1,0 +1,60 @@
+TABLE.pager-header {
+	width: 100%;
+}
+TD.page-count {
+	text-align: left;
+}
+TD.page-count SELECT {
+	width: 100px;
+}
+TD.page-count OPTION {
+	width: 100px;
+}
+TD.page-size-picker {
+	text-align: right;
+}
+TD.page-size-picker SELECT {
+	width: 50px;
+}
+TD.page-size-picker OPTION {
+	width: 40px;
+}
+
+TABLE.pager-nav {
+	margin: auto;
+}
+TABLE.pager {
+    width: 100%;
+	border: 1px solid #CCCCCC;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	background: #FFFFFF;
+}
+TD.pager-header {
+	background-color: #EEEEEE;
+	color: #000;
+	font-family: sans-serif;
+	font-size: .9em;
+	padding: 0px 3px 0px 3px;
+	text-align: center;
+}
+A.pager-header {
+	color: #000;
+	text-decoration: none;
+}
+TD.pager {
+	border: 1px solid #CCCCCC;
+	font-size: .9em;
+	padding: 0px 3px 0px 3px;
+}
+TD.pager A {
+	color: #000;
+	text-decoration: none;
+}
+TR.pager:HOVER {
+	background-color: #ECECFF; 
+	cursor: pointer;
+}
+DIV.pager-option {
+	text-align: center;
+}

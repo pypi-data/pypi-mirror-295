@@ -1,0 +1,26 @@
+attrs
+beaker==1.10.0
+fpdf==1.7.2
+humanize
+kcontrol
+markdown
+openpyxl>=2.0.5
+paramiko
+paste
+pexpect
+pytz
+reclib
+reportlab
+requests
+six
+stypes==0.23.2
+twilio
+xlsxwriter
+webob
+werkzeug==2.0.3
+
+[:python_version < "3.7"]
+mako==1.0.7
+
+[:python_version >= "3.7"]
+mako==1.2.0

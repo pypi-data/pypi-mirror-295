@@ -1,0 +1,71 @@
+INPUT[type='text'] { width: 200px; }
+
+DIV.cont { position: relative; }
+
+/* Left Menu */
+#lmenu { 
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+}
+TABLE.lmenu {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    border: 1px solid #CCCCCC;
+}
+TABLE.lmenu TD.client_name {
+  width:100%; 
+  padding-left: 10px;
+  font-size: 10pt;
+}
+TABLE.lmenu TD.group_number {
+  text-align: center; 
+  font-size: 10pt;
+}
+TABLE.lmenu TH {
+    background: #EAEAEA;
+    color: #444;
+    font: bold .95em Arial, sans-serif;
+    text-align: center;
+    padding: 1px 5px 1px 5px;
+}
+TABLE.lmenu TD {
+    border: 1px solid #CCCCCC;
+}
+
+/* Data Form */
+#dform { position: absolute; left: 300; top: 0; }
+
+#invoice_processor_code { width: 200px; }
+#memo { width: 100%; }
+#liberty_insurance_codes { width: 100%; }
+#tx_type { width: 50px; }
+#processing_fee { width: 100px; }
+#amount { width: 100px; }
+#max_cost { width: 100px; }
+#min_cost { width: 100px; }
+#group_code { width: 200px; }
+TD.processing_fee { padding-top: 30px}
+#payment_type_row_template { display: none; } 
+#percent { width: 50px; }
+.entry-caption { width: 25%; }
+.entry-value { width: 25%; }
+TABLE.form TD.dist-total { 
+    border-bottom: 1px solid #000000;
+    background: #EEEEFF;
+    font-weight: bold; }
+TABLE.form TD.dist-add {
+    background: #CCDDEE;
+}
+TABLE.form { width: 100%; min-width: 700px; margin-top: 2em; }
+TABLE.form TH.l { text-align: left; }
+#dispense_fee_override {
+}
+.state_reporting TD.check {
+    width: 10%;
+}
+.state_reporting TD.entry-caption {
+    white-space: nowrap;
+    width: 50%;
+}

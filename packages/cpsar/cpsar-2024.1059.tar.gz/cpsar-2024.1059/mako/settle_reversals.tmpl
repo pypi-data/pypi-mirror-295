@@ -1,0 +1,105 @@
+<%! import kcontrol as K %>
+<%inherit file="page.tmpl" />
+<%block name="head">
+  <title>Settle Reversals</title>
+  <link type='text/css' href='/css/form.css' rel='stylesheet' />
+  <style type='text/css'>
+  .rrs TABLE { float: left; } /* stupid date picker */
+  </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script type='text/javascript'>
+  $(document).ready(function() {
+      $("FORM.rrs").submit(postSettleReversal);
+  });
+
+  function postSettleReversal() {
+      var $form = $(this);
+      var $row = $form.parents("TR:first");
+      $.post("/record_reversal_settlement",
+             $form.serialize(), 
+             function(data) {
+                  if(data.errors.length > 0) {
+                      alert(data.errors);
+                      return;
+              } else {
+                  $row.remove();
+
+              }
+          }, "json");
+      return false;
+  }
+  </script>
+</%def>
+
+<%block name="header">
+    Settle Reversals
+</%block>
+<form action='settle_reversals'>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Group</td>
+    <td>${K.ListBox('group_number', values=[('', '')] + [
+            (v['group_number'], "%s: %s - %s " % (
+                                    v['group_number'],
+                                    v['client_name'],
+                                    v['total']))
+            for v in q.group_reversals],
+            value=q.group_number)}
+    </td>
+    <td><input type='submit' value='Change' />
+</tr>
+</table>
+</form>
+
+% if not q.group_reversals:
+    <p><em>No reversals have been marked for settlement.
+        Please click "Mark Reversal Balance for Credit" on
+        transactions you wish to refund.
+       </em>
+    </p>
+% endif
+
+% if q.reversals:
+<table class='form'>
+<thead>
+<tr>
+    <th>Trans</th>
+    <th>Patient</th>
+    <th>Drug</th>
+    <th>Amount</th>
+    <th>Check #</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class='yellow'>
+        <strong>${q.group['group_number']}:
+                ${q.group['client_name']}</strong>
+    </td>
+    <td class='yellow' colspan='5'></td>
+</tr>
+% for rec in q.reversals:
+<tr>
+    <td>
+        <a target='_blank' href='/view_trans?trans_id=${rec['trans_id']}'>
+            ${rec['trans_id']}
+        </a>
+    </td>
+    <td>${rec['name']}</td>
+    <td>${rec['drug']}</td>
+    <td align='right'>${rec['amount_fmt']}</td>
+    <td>
+      <form action='/record_reversal_settlement' method='POST' class='rrs'>
+        ${K.DatePicker('entry_date', value=rec['entry_date'])}
+        <input size='8' type='text' name='check_no'>
+        <input type='submit' value='Settle' />
+        <input type='hidden' name='prs_id' value='${rec['prs_id']}' />
+     </form>
+    </td>
+</tr>
+% endfor
+</tbody>
+</table>
+% endif

@@ -1,0 +1,96 @@
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <title>Rebill Transactions Report</title>
+    <link type='text/css' rel='stylesheet'
+          href='/css/create_rebill_trans_report.css' />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <script src='/js/jquery-1.5.1.min.js'></script>
+    <script src='/js/jquery.jgrowl.js'></script>
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/jquery.numeric.js'></script>
+    <script src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+    <script src='/js/common.js'></script>
+    <script type='text/javascript' src='/js/ppayment.js'></script>
+    </script>
+</%block>
+<%def name="erd()">
+    <tr>
+        <td colspan='10' class='error_msg'>
+            <div class='error' id='rebill_report'>${caller.body()}</div>
+        </td>
+    </tr>
+</%def>
+<table class='grid'>
+<thead>
+    <tr>
+        <th>TX#</th>
+        <th>Total</th>
+        <th>Balance</th>
+        <th>Rebill ID </th>
+        <th>Balance</th>
+        <th>Rebill Credit ID</th>
+        <th>Amount</th>
+        <th>New TX#</th>
+        <th>Total</th>
+        <th>Balance</th>
+    </tr>
+</thead>
+<tbody>
+    <% old_trans_ids = sorted(old_trans.keys()) %>
+    %for trans_id in old_trans_ids:
+        <% old_tran = old_trans[trans_id] %>
+        
+        <% new_tran_recs = new_trans %>
+        <% new_tran = new_trans.get(trans_id) %>
+
+        <% rebill_record = rebill_records %>
+        <% rebill = rebill_record.get(trans_id) %> 
+
+        <% rebill_credit_records = rebill_credits %>
+        <% rebill_credit = rebill_credit_records.get(trans_id) %>
+        <tr>
+            <td>
+                <a target='_blank' href='/view_trans?trans_id=${trans_id}'>${trans_id}</a>
+            <td>${old_tran['total']}</td>
+            <td>${old_tran['balance']}</td>
+            %if rebill:
+                <td>${rebill['rebill_id']}</td>
+                <td>${rebill['balance']}</td>
+                %if rebill_credit is not None:
+                    <td>${rebill_credit['rebill_credit_id'] |h}</td>
+                    <td>${rebill_credit['amount']}</td>
+                %else:
+                    <td colspan='2'></td>
+                %endif
+                <td>
+                    <a target='_blank' href='/view_trans?trans_id=${new_tran['trans_id']}'>${new_tran['trans_id']}</a>
+                </td>
+                <td>${new_tran['total']}</td>
+                <td>${new_tran['balance']}</td>
+            %else:
+                <td colspan='7'></td>
+            %endif
+        </tr>
+        <!-- Error Display -->
+        %if not rebill:
+            % if old_tran['balance'] == 0:
+                <%self:erd> The rebilled transaction has already been paid
+                and the rebill could not be applied.</%self:erd>
+            % else:
+                <%self:erd>A credit was not applied to the original
+                transaction due to a partial payment</%self:erd>
+            % endif
+        % elif not rebill_credit:
+            % if old_tran['balance'] != old_tran['total']:
+                <%self:erd>A credit was not applied to the original
+                transaction due to a partial payment</%self:erd>
+            % else:
+                <%self:erd>The rebill credit could not be applied for an
+                unknown reason. Please contact the system administrator.
+                </%self:erd>
+            % endif
+        % endif
+    %endfor
+</tbody>
+</table>

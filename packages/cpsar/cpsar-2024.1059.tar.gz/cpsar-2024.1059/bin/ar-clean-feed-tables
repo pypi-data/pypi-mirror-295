@@ -1,0 +1,111 @@
+#!/usr/bin/env python
+""" The feed tables collect errors all day. We can't let these stack
+up indefinitely, so we're going to wipe out the tables every night.
+
+We'll email a copy of everything we're deleting to the dev team in
+case of future inquiry.
+"""
+from six import StringIO
+import csv
+
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar.util import Mailer
+
+class MyMailer(Mailer):
+    def add_feed_stat(self, msg, count):
+        if count == 0:
+            return
+        self(msg, count)
+
+class Program(shell.Program):
+    def main(self):
+        cursor = R.db.cursor()
+        report = ReportAttachment()
+        mail = MyMailer()
+        mail.subject = "Feed Table Error Report"
+        w = mail.add_feed_stat
+
+        report.add_query("""
+            SELECT *
+            FROM stage.history_feed_error
+            """, "History Feed")
+        cursor.execute("DELETE FROM stage.history_feed_error")
+        w("history_feed: %s error records deleted", cursor.rowcount)
+        cursor.execute("SELECT COUNT(*) FROM stage.history_feed_error")
+        w("history_feed: %s records remain", cursor.fetchone()[0])
+
+        report.add_query("""
+            SELECT *
+            FROM stage.blue_history_feed
+            WHERE error_msg IS NOT NULL
+            """, "Blue History Feed")
+        cursor.execute("""
+            DELETE FROM stage.blue_history_feed
+            WHERE error_msg IS NOT NULL""")
+        w("blue_history_feed: %s error records deleted", cursor.rowcount)
+        cursor.execute("SELECT COUNT(*) FROM stage.blue_history_feed")
+        w("blue_history_feed: %s records remain", cursor.fetchone()[0])
+
+        report.add_query("""
+            SELECT *
+            FROM stage.claim_feed
+            WHERE error_msg IS NOT NULL
+            """, "Claim Feed")
+        cursor.execute("""
+            DELETE FROM stage.claim_feed
+            WHERE error_msg IS NOT NULL""")
+        w("claim_feed: %s error records deleted", cursor.rowcount)
+        cursor.execute("SELECT COUNT(*) FROM stage.claim_feed")
+        w("claim_feed: %s records remain", cursor.fetchone()[0])
+
+        report.add_query("""
+            SELECT *
+            FROM stage.address_feed
+            WHERE error_msg IS NOT NULL
+            """, "Address Feed")
+        cursor.execute("""
+            DELETE FROM stage.address_feed
+            WHERE error_msg IS NOT NULL""")
+        w("address_feed: %s error records deleted", cursor.rowcount)
+        cursor.execute("SELECT COUNT(*) FROM stage.address_feed")
+        w("address_feed: %s records remain", cursor.fetchone()[0])
+
+        report.add_query("""
+            SELECT *
+            FROm stage.telephone_feed
+            WHERE error_msg IS NOT NULL
+            """, "Telephone Feed")
+        cursor.execute("""
+            DELETE FROM stage.telephone_feed
+            WHERE error_msg IS NOT NULL
+            """)
+        w("telephone_feed: %s error records deleted", cursor.rowcount)
+        cursor.execute("SELECT COUNT(*) FROM stage.telephone_feed")
+        w("telephone_feed: %s records remain", cursor.fetchone()[0])
+
+        if not report.payload():
+            return
+
+        mail.add_attachment('error_report.csv', report.payload())
+        mail.send()
+        R.db.commit()
+
+class ReportAttachment(object):
+    def __init__(self):
+        self._buf = StringIO()
+        self._writer = csv.writer(self._buf)
+        self._cursor = R.db.cursor()
+
+    def payload(self):
+        return self._buf.getvalue()
+
+    def add_query(self, query, type_name):
+        self._cursor.execute(query)
+        if self._cursor.rowcount:
+            self._writer.writerow([type_name] + [c[0] for c in self._cursor.description])
+            for rec in self._cursor:
+                self._writer.writerow(('',) + rec)
+            self._writer.writerow([])
+
+if __name__ == '__main__': Program().run()

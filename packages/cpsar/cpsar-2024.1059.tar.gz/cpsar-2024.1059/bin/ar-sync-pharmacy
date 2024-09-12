@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+""" Syncronize the pharmacy file with SPC's pharmacy file export. """
+import cpsar.runtime as R
+
+from cpsar import shell
+from cpsar.fwimport import path_for_resource, create_fw_table
+
+class Program(shell.Program):
+    def main(self):
+        fd = open(path_for_resource('bd-pharmacy'), 'rb')
+        create_fw_table('pharmacy_load', [
+            ('name',          40),
+            ('nabp',           9),
+            ('address_1',     40),
+            ('address_2',     40),
+            ('city',          28),
+            ('state',          2),
+            ('zip_code',      10),
+            ('phone',         10),
+            ('fax',           10),
+            ('tax_id',         9),
+            ('npi',           10),
+            ('chain_code',     3),
+            ('longitude',     11),
+            ('latitude',      11),
+            ('contracted',     1),
+            ('form_w9',        1),
+            ('status',         1),
+            ('taxonomy_code', 10),
+        ], fd)
+        fd.close()
+        cursor = R.db.cursor()
+        cursor.execute("""
+            DELETE FROM pharmacy_load
+            WHERE nabp IS NULL
+            """)
+        if cursor.rowcount:
+            R.log.warn("Could not use %s of EHO's pharmacy records",
+                       cursor.rowcount)
+        # Calculate geocoded field
+        cursor.execute("""
+          ALTER TABLE pharmacy_load ADD COLUMN long float;
+          ALTER TABLE pharmacy_load ADD COLUMN lat float;
+          ALTER TABLE pharmacy_load ADD COLUMN geog geography(Point, 4326);
+          UPDATE pharmacy_load SET long = longitude::float, lat = latitude::float;
+          UPDATE pharmacy_load SET long=NULL, lat=NULL
+            WHERE long NOT BETWEEN -180 AND 180 OR lat NOT BETWEEN -90 and 90;
+          UPDATE pharmacy_load SET geog=ST_SetSRID(ST_Point(long, lat), 4326)
+            WHERE long is not null and lat is not null;
+          UPDATE pharmacy_load set status = ' ' where status is null;
+        """)
+
+        cursor.execute("""
+            INSERT INTO pharmacy (
+             name, nabp, address_1, address_2, city, state, zip_code,
+             phone, tax_id, npi, chain_code, latitude, longitude, geog,
+             contracted, form_w9, status, taxonomy_code)
+            SELECT name, nabp, address_1, address_2, city, state, zip_code,
+                   phone, tax_id, npi, chain_code, lat, long, geog, contracted,
+                   form_w9, status, taxonomy_code
+            FROM pharmacy_load AS L
+            ON CONFLICT (nabp) DO UPDATE SET
+                name=EXCLUDED.name,
+                address_1=EXCLUDED.address_1,
+                address_2=EXCLUDED.address_2,
+                city=EXCLUDED.city,
+                state=EXCLUDED.state,
+                zip_code=EXCLUDED.zip_code,
+                phone=EXCLUDED.phone,
+                fax=EXCLUDED.fax,
+                tax_id=EXCLUDED.tax_id,
+                npi=EXCLUDED.npi,
+                chain_code=EXCLUDED.chain_code,
+                latitude=EXCLUDED.latitude,
+                longitude=EXCLUDED.longitude,
+                geog=EXCLUDED.geog,
+                contracted=EXCLUDED.contracted,
+                form_w9=EXCLUDED.form_w9,
+                status=EXCLUDED.status,
+                taxonomy_code=EXCLUDED.taxonomy_code
+        """)
+        R.log.debug('Upsert %s pharmacy records', cursor.rowcount)
+        if not self.opts.dry_run:
+            R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()

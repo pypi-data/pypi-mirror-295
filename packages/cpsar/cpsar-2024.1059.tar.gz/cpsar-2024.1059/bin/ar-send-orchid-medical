@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+""" Send off Urinary Drug Testing File to Orchid Medical periodically. The
+files are created by a web program bd.apps.send_udt by a user """
+import logging
+import os
+import shutil
+
+from cpsar import config
+from cpsar import shell
+
+log = logging.getLogger('')
+
+class Program(shell.Program):
+    def main(self):
+        dir_name = os.path.join(config.data_dir(), 'udt')
+        for name in os.listdir(dir_name):
+            fpath = os.path.join(dir_name, name)
+            if not os.path.isfile(fpath):
+                continue
+            if self._send(fpath):
+                self._archive(fpath)
+
+    def _send(self, fpath):
+        # authenticate using xhandler's public/private key on atlas
+        log.info("Sending %r to orchid medical", fpath)
+        batch_file = open("/tmp/bfile-cmd.txt", "w")
+        fdir = os.path.dirname(fpath)
+        fname = os.path.basename(fpath)
+        batch_file.write("lcd %s\n" % fdir)
+        batch_file.write("put %s\n" % fname)
+        batch_file.close()
+        cmd = "sftp -b /tmp/bfile-cmd.txt orchid-medical"
+        log.debug("SHELL: %s", cmd)
+        s = os.system(cmd)
+        if s:
+            log.error("Send failed")
+        os.remove("/tmp/bfile-cmd.txt")
+        return not s
+
+    def _archive(self, fpath):
+        arc_dir = os.path.join(config.data_dir(), 'udt', 'archive')
+        shutil.move(fpath, arc_dir)
+
+if __name__ == '__main__': Program().run()

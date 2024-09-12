@@ -1,0 +1,44 @@
+#MDomain ar-bd-test.ehorx.com
+
+<VirtualHost :80>
+    ServerName {{ ar.fqdn }}
+    ServerSignature Off
+    LogLevel error
+
+    # Force to HTTPS
+    RewriteEngine On
+    RewriteRule ^/(.*) "https://%{HTTP_HOST}/$1" [R,L]
+</VirtualHost>
+<VirtualHost *:443>
+    ServerName ar-bd-test.ehorx.com
+    ServerSignature Off
+    CustomLog /var/log/apache2/ar-bd-test.ehorx.com-access.log combined
+    ErrorLog /var/log/apache2/error.log
+
+    Include /etc/apache2/ssl.conf
+    RewriteEngine On
+    RewriteRule ^/ppayment$ /ppayment/ [R,L]
+    RewriteRule ^/apps/(.*)$ /$1 [R,L]
+
+    <Location />
+        Require all granted
+    </Location>
+    # Authentication
+
+    # Resources
+    Alias /css /usr/local/srv/bd/www/ar/css
+    Alias /doc /usr/local/srv/bd/doc/ar
+    Alias /html /usr/local/srv/bd/www/ar/html
+    Alias /images /usr/local/srv/bd/www/ar/images
+    Alias /js /usr/local/srv/bd/www/ar/js
+    Alias /repo /usr/local/srv/bd/www/repo
+
+    ProxyPass /js !
+    ProxyPass /images !
+    ProxyPass /css !
+    ProxyPass /repo !
+    ProxyPass /favicon.ico !
+    ProxyPass "/" "uwsgi://{{ ar.uwsgi_address }}"
+</VirtualHost>
+
+# vim: filetype=apache

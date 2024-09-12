@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+import cpsar.runtime as R
+import cpsar.shell
+import cpsar.txlib
+
+class Program(cpsar.shell.Program):
+    """ Pharmacy Table Auditor
+    """
+
+    def main(self):
+        cursor = R.db.cursor()
+
+        # Fix duplicate NABP records
+        cursor.execute("""
+            SELECT nabp, COUNT(pharmacy_id), array_accum(pharmacy_id)
+            FROM pharmacy
+            GROUP BY nabp
+            HAVING COUNT(pharmacy_id) <> 1
+            ORDER BY nabp""")
+        for nabp, cnt, pids in list(cursor):
+            pids.sort()
+            use_pid = pids[0]
+            self.log.warning(
+                'NABP #%s occurs %s times in the database. Setting all to '
+                'pharmacy_id %s.',
+                nabp, cnt, use_pid)
+            
+            pid_frag = ", ".join([str(s) for s in pids[1:]])
+            
+            cursor.execute("""
+                SELECT trans_id, pharmacy_id
+                FROM trans
+                WHERE pharmacy_id IN (%s)""" % pid_frag)
+            for trans_id, pid in list(cursor):
+                msg = ("Changing trans %08d pharmacy link from %s to %s "
+                       "because of NABP duplication. ") % (
+                        trans_id, pid, use_pid)
+                self.log.warning(msg)
+                cpsar.txlib.log(trans_id, msg)
+            cursor.execute("""
+                UPDATE trans SET pharmacy_id=%s
+                WHERE pharmacy_id IN (%s)""" % (use_pid, pid_frag))
+            cursor.execute("""
+                DELETE FROM pharmacy WHERE pharmacy_id IN (%s)
+                """ % pid_frag)
+
+        if not self.opts.dry_run:
+            self.log.debug('Commiting changes')
+            R.db.commit()
+
+    def remove_unused_pharmacies(self):
+        """ This was written to take care of a situation where we had
+        accidently imported all of the pharmacies 2 times. We don't usually
+        do this because our pharmacy data file has pharmacies that we don't
+        have transactions for.
+        """
+        cursor = R.db.cursor()
+
+        # Remove unused records
+        cursor.execute("""
+            SELECT pharmacy.pharmacy_id, pharmacy.nabp
+            FROM pharmacy
+            LEFT JOIN trans ON pharmacy.pharmacy_id = trans.pharmacy_id
+            GROUP BY pharmacy.pharmacy_id, pharmacy.nabp
+            HAVING COUNT(trans.trans_id) = 0
+            ORDER BY pharmacy.pharmacy_id
+            """)
+        for pharmacy_id, nabp in list(cursor):
+            self.log.warning('Removing unused pharmacy_id %s. NABP: %s',
+                             pharmacy_id, nabp)
+            cursor.execute("""
+                DELETE FROM pharmacy WHERE pharmacy_id=%s
+                """, (pharmacy_id,))
+
+if __name__ == '__main__':
+    Program().run()

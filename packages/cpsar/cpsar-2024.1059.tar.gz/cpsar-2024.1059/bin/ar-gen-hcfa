@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+""" Do the nightly batch job which creates HCFA files for any outstanding
+batches
+"""
+import cpsar.hcfa as H
+import cpsar.runtime as R
+import cpsar.shell as S
+
+class Program(S.Command):
+    def setup_options(self):
+        S.Command.setup_options(self)
+        self.add_option("-b", "--background", action="store_true",
+            default=False, help="Write the background to the pdf")
+
+    def do_write(self, args):
+        """ Usage: write group_number batch_date fpath
+
+        Creates a HCFA file for the given group number and batch date, 
+        outputing the data to the given file path.
+        """
+        try:
+            group_number, batch_date, fpath = args.split(" ")
+        except:
+            sys.stderr.write(dedent(self.do_write.__doc__))
+            return
+        H.gen_group_pdf(group_number, batch_date, fpath, self.opts.background)
+
+    def do_batch(self, args):
+        """ Automatched batch mode operation of HCFA form generation.
+        Scans the transactions for the batches that have not had HCFA forms
+        generated and creates them, one file for each batch date. HCFA files 
+        are stored in invoice/hcfa by batch date.
+        """
+        group_numbers = H.groups_with_hcfa_set()
+        batches = H.batches_to_process(group_numbers)
+        for batch_date in batches:
+            H.gen_batch_pdf(batch_date, group_numbers)
+            H.record_batch_gen_history(batch_date)
+            R.db.commit()
+
+    def do_clear(self, args):
+        """ Usage: clear batch_date
+
+        Clears out the entry that the HCFA has been generated for the given batch date
+        so that the HCFA will be generated again.
+        """
+        H.unrecord_batch_gen_history(args)
+        R.db.commit()
+
+if __name__ == '__main__': Program().run()

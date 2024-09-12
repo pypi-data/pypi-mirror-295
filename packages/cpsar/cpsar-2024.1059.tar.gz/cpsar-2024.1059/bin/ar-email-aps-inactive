@@ -1,0 +1,96 @@
+#!/usr/bin/env python
+""" Email Atlanta Public School Adjusters patients who have not a prescription
+filled recently.
+"""
+from __future__ import print_function
+import csv
+import datetime
+from six import StringIO
+
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar.util import Mailer
+
+class Program(shell.Command):
+    def main(self):
+        cursor = R.db.dict_cursor()
+        cursor.execute_file("ar/inactive_atlanta_patients.sql")
+
+        adjusters = all_adjusters()
+        dc_white = Adjuster('dcwhite@atlanta.k12.ga.us')
+
+        for pat in cursor:
+            adjusters.add_patient(pat)
+            dc_white.add_patient(pat)
+
+        adjusters.send_email()
+        dc_white.send_email()
+
+def all_adjusters():
+    cursor = R.db.cursor()
+    cursor.execute("""
+      SELECT DISTINCT email
+      FROM user_info
+      WHERE group_number='58400' AND email != 'dcwhite@atlanta.k12.ga.us'
+      ORDER BY email""")
+    return AdjusterSet([Adjuster(c[0]) for c in cursor])
+
+class AdjusterSet(object):
+    def __init__(self, adj_list):
+        self._adj_list = adj_list
+
+    def add_patient(self, pat):
+        for adj in self._adj_list:
+            if adj.email == pat['adjuster_email']:
+                adj.add_patient(pat)
+
+    def send_email(self):
+        for adj in self._adj_list:
+            adj.send_email()
+
+class Adjuster(object):
+    def __init__(self, email):
+        self.email = email
+        self._patients = []
+
+    def add_patient(self, pat):
+        self._patients.append(pat)
+
+    def debug_send_email(self):
+        print('To: %s' % self.email)
+        for pat in self._patients:
+            print('\t%(first_name)s %(last_name)s' % pat)
+
+    def send_email(self):
+        m = Mailer()
+        m.recipients = [self.email]
+        m.bcc = ['root']
+
+        if not self._patients:
+            m.subject = 'cpsar: All active patients have had a Rx in the last 6 months'
+        else:
+            m.subject = 'cpsar: %d patients have not had a prescription filled recently' % len(self._patients)
+            m.write("Please see the attached file for a list of all patients with no prescriptions")
+            self._add_attachment(m)
+        m.send()
+
+    _csv_fields = [
+        'first_name',
+        'last_name',
+        'dob',
+        'id',
+        'last_rx_date'
+    ]
+
+    def _add_attachment(self, mailer):
+        buf = StringIO()
+        writer = csv.writer(buf)
+        writer.writerow(self._csv_fields)
+        for pat in self._patients:
+            row = [pat[f] for f in self._csv_fields]
+            writer.writerow(row)
+        body = buf.getvalue()
+        mailer.add_attachment('inactive_patients.csv', body, ('text', 'csv'))
+        
+if __name__ == '__main__':
+    Program().run()

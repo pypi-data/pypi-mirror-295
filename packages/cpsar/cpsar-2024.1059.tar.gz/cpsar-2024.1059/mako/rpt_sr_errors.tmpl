@@ -1,0 +1,70 @@
+<%! import cpsar.controls as C %>
+<%inherit file="page.tmpl" />
+<%block name="header">
+   State reporting submission status 
+</%block>
+<%block name="head">
+    <title>State Reporting Submission Status</title>
+    <link type='text/css' rel='stylesheet'
+          href='/css/base.css'  />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+    <style>
+        TR TH .right {
+            text-align: right
+        }
+    </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script src='/js/jquery.numeric.js'></script>
+</%def>
+
+% for file in q.file_data:
+    <table class='grid' align='center' >
+         <tr text-align=right>
+            <th colspan='6'> Outgoing File: ${file['file_name']}</th>
+            <th> Date Sent: ${file['send_date']}</th>
+            <th> Report Zone: ${file['reportzone']}</th>
+            <th> Transaction Count: ${file['trans_count']}</th>
+         </tr>
+          <tr style="text-align:right">
+            <td>Patient Name</td>
+            <td>Ack Code</td>
+            <td>Trans Id</td>
+            <td>Group #</td>
+            <td>Drug Name</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td>Response Desc</td>
+            <td>Response Date</td>
+         </tr>
+        </th> 
+        <tbody>
+           % for trans in file['files']:
+            <tr class='right'>
+                <td>${trans['patient_name']}</td>
+                <td>${trans['ack_code']}</td>
+                <td>
+                    <a href='/view_trans?trans_id=${trans['trans_id']}'>
+                        ${trans['trans_id']}</a>
+                </td>
+                <td>
+                    <a href='/view_client?group_number=${trans['group_number']}'>
+                        ${trans['group_number']}</a>
+                </td>
+                <td>${trans['drug']}</td>
+                <td>${trans['quantity']}</td>
+                <td>${trans['price']}</td>
+                <td>${trans['response_desc']}</td>
+                <td>${trans['response_date']}</td>
+            </tr>
+           % endfor
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+% endfor

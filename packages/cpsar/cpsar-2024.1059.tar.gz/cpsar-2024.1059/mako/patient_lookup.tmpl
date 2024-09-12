@@ -1,0 +1,80 @@
+<%!
+import kcontrol as K
+
+from cpsar import clientlib
+from cpsar import util
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+</%block>
+<%block name="header">
+    Patient Lookup
+</%block>
+<% K.store.update(request.params) %>
+<form action='/patient_lookup' method='POST'>
+<table class='form' align='center'>
+    <tr>
+        <td class='entry-caption'>First Name</td>
+        <td class='entry-value'>
+            ${K.TextBox('first_name')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Last Name</td>
+        <td class='entry-value'>
+            ${K.TextBox('last_name')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Group #</td>
+        <td class='entry-value'>
+            ${clientlib.GroupListBox('group_number', blankOption=True)}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Patient ID</td>
+        <td class='entry-value'>
+            ${K.TextBox('patient_id')}
+        </td>
+    </tr>
+    <tr>
+
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' value='Search' />
+        </td>
+    </tr>
+</table>
+</form>
+
+% if results:
+<table class='search_results'>
+<thead>
+    <tr>
+        <th></th>
+        <th>Group</th>
+        <th>Name</th>
+        <th>D.O.B.</th>
+        <th>SSN</th>
+    </tr>
+</thead>
+<tbody>
+% for i, p in enumerate(results):
+    <% qs = util.dict2url(p, keys=['patient_id']) %>
+    <tr>
+        <td class='search_results' style='text-align: right'>${i+1}.</td>
+        <td class='search_results'>${p['group_number']}</td>
+        <td class='search_results'>
+            <a href='patient?${qs}'>${p['first_name']}
+                    ${p['last_name']}</a></td>
+        <td class='search_results'>${p['dob_fmt']}</td>
+        <td class='search_results'>${p['ssn']}</td>
+    </tr>
+% endfor
+</tbody>
+</table>
+% endif
+
+% if sql:
+<h2>Query</h2>
+    <pre>${sql}</pre>
+% endif

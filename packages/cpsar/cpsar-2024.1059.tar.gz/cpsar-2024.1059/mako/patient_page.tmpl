@@ -1,0 +1,46 @@
+<%inherit file="page.tmpl" />
+<%namespace file="lib.tmpl" import="*" />
+<%block name="head">
+  <link rel='stylesheet' media='screen' type='text/css' href='/css/form.css' />
+  <title>Patient ${patient['first_name']} ${patient['last_name']}</title>
+</%block>
+<%def name='scripts()'>
+    ${parent.scripts()}
+    ${script('patient.js')}
+</%def>
+<%block name="header">
+  Patient ${patient['first_name']} ${patient['last_name']}
+</%block>
+<table>
+<tr>
+    <td width='20%' class='sidemenu' valign='top'>
+      <ul class='smenu'>
+
+        <li><a href='/patient?patient_id=${patient['patient_id']}'>
+            Patient
+        </a></li>
+
+        <li><a href='/patient/history?patient_id=${patient['patient_id']}'>
+            History
+        </a></li>
+        <li><a href='/patient/uc?patient_id=${patient['patient_id']}'>
+            Unapplied Cash</a>
+        </li>
+        <li><a href='/patient/credit_memo?patient_id=${patient['patient_id']}'>
+            Credit Memo Report</a>
+        </li>
+     <li><a href='/patient/sale_of_account?patient_id=${patient['patient_id']}'>
+            Sale of Account Report</a></li>
+     <li><a 
+     href='/patient/card_print_log?patient_id=${patient['patient_id']}'>
+            Card Print Log</a>
+        </li>
+     <li><a href='/search_sr?trans.patient_id=${patient['patient_id']}&action=Search'>
+            State Reporting Entries</a></li>
+     </ul>
+    </td>
+    <td width='80%' class='smain' valign='top'>
+        ${next.pcontents()}
+    </td>
+</tr>
+</table>

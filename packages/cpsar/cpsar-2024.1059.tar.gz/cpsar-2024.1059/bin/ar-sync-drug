@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+""" Syncronize the drug file with SPC's drug file export. """
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar.fwimport import path_for_resource, create_fw_table
+
+class Program(shell.Program):
+    def main(self):
+        fd = open(path_for_resource('bd-drug'), 'rb')
+        create_fw_table('drug_load', [
+            ('ndc_number',    11),
+            ('name',          30),
+            ('brand',          1),
+            ('gpi_code',      14),
+            ('brand_ndc',     11),
+            ('multisource',    1),
+            ('class',          1),
+            ('daily_dosage',   3),
+            ('duplicate_class',8),
+            ('n_drug_status',  1),
+            ('generic_ndc',   11),
+            ('mfg_name',      25),
+            ('y_drug_status',  1),
+            ],
+            fd)
+        fd.close()
+        cursor = R.db.cursor()
+        cursor.execute_file("ar/ar-sync-drug.sql")
+        R.log.debug('Upsert %s drug records', cursor.rowcount)
+
+        # We set controlled when it has not been explicitly set to FALSE
+        # and there is a drug class
+        cursor.execute("""
+            UPDATE drug SET controlled=TRUE
+            WHERE controlled IS NULL AND class IS NOT NULL
+            """)
+
+        if not self.opts.dry_run:
+            R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()
