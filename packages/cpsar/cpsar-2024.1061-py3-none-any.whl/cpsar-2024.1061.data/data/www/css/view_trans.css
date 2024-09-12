@@ -1,0 +1,66 @@
+FORM.reapply_formulas {
+  float: right;
+  display: inline-block;
+  margin-left: 4em;
+}
+FORM.reapply_formulas INPUT {
+  height: 20px;
+  font-size: .9em;
+}
+#total_update_form {
+    display: none;
+}
+#reversal_batch_form {
+    display: none;
+}
+
+INPUT.place_of_service {
+  width: 80px;
+}
+TABLE.record_view {
+    margin: 0px;
+    width: 700px;
+}
+TD.note {
+    background-color: #FFFFCC;
+}
+TABLE.form TH {
+    text-align: left;
+}
+TABLe.activity {
+}
+
+TABLE.activity TD.entry-caption {
+    font-size: 9pt;
+}
+TABLE.activity TD.entry-value {
+    font-size: 9pt;
+}
+TD.external {
+    background: #DAEAFF;
+}
+TD.internal {
+    background: #FFEADE;
+}
+#add_payment,
+#add_adjudication,
+#add_writeoff,
+#adj_tx,
+#state_fee_form,
+#add_debit_form,
+#reverse_trans_form,
+#cost_allowed_form,
+#add_rebate_credit_form {
+    display: none;
+}
+#state_fee, #cost_allowed {
+    width: 80px;
+}
+SPAN.collapse:HOVER, TH.collapse:HOVER {
+    color: blue;
+    cursor: pointer;
+}
+#override_pharmacist_form { display: none; }
+#temp_sr_ndc_override_form { display: none; }
+#void_adjudication_form { display: none; }
+#void_writeoff_form { display: none; }

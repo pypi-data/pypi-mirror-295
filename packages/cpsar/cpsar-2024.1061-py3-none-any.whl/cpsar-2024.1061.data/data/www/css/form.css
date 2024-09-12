@@ -1,0 +1,327 @@
+H1 {
+    text-align: center;
+}
+H4 {
+    text-align: center;
+    background: #CCB;
+    color: #222;
+}
+INPUT:focus, INPUT.sffocus,
+TEXTAREA:focus, TEXTAREA.sffocus,
+SELECT:focus, SELECT.sffocus {
+	background-color: #FFFFCC;
+}
+DIV.error {
+    background-color: #CC0000;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.due {
+    background-color: salmon;
+}
+.collect {
+    background-color: #ffa200;
+}
+.reversal {
+    background-color: Magenta;
+    color: #FFFFFF;
+}
+.overpaid {
+    background-color: #D8CEF6;
+}
+.paid {
+    background-color: PaleGreen;
+}
+INPUT.money {
+    text-align:right;
+    width: 64px;
+}
+.button {
+    background-color: #EEEEEE;
+    border: 1px solid #6666AA;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #DDDDFF;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+TABLE.form {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+TABLE.form TH {
+    background: #EAEAEA;
+    color: #444;
+    font: bold .95em Arial, sans-serif;
+    text-align: center;
+    padding: 1px 5px 1px 5px;
+}
+TABLE.form TH.links {
+	padding-left: 0px;
+    text-align: right;
+	font-weight: normal;
+	color: #FF0000;
+	padding-right: 6px;
+}
+.form_link {
+	font-weight: normal;
+	color: #FF0000;
+}
+TABLE.form TD {
+	border: 1px solid #CCCCCC;
+}
+LABEL {
+	text-align: left;
+	font-size:.9em;
+	font-family: arial, verdana, helvetica, sans-serif;
+}
+TABLE.form TD.entry-submit {
+	background: #F6F6F6;
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	width: 150px;
+	text-align: center;
+}
+TABLE.top {
+    border-top: none;
+}
+.shrink {
+    width: 10px;
+    padding: 0px;
+    margin: 0px;
+}
+TABLE.form TH.entry-caption {
+    background: #EAEAEA;
+    color: #444;
+	background: #F6F6F6;
+	font-size: .9em;
+	padding-right: 3px;
+	padding-left: 3px;
+	text-align: right;
+}
+TABLE.form TD.entry-caption {
+	background: #F6F6F6;
+	font-size: .9em;
+	padding-right: 3px;
+	padding-left: 3px;
+	text-align: right;
+}
+TABLE.form TD.entry-header {
+	background: #F6F6F6;
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	padding-right: 3px;
+	padding-left: 3px;
+	text-align: center;
+}
+TABLE.form TD.entry-caption-light {
+	background: #F6F6F6;
+	color: #060;
+
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+
+	padding-right: 3px;
+	padding-left: 3px;
+
+	text-align: right;
+}
+TABLE.form TD.no_entry-caption {
+    background: #DDDDDD;
+    color: #000000;
+
+    vertical-align: top;
+    font: normal 0.8em Arial, sans-serif;
+
+    padding-right:3px;
+
+    text-align: center;
+}
+TABLE.form TD.entry-value {
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	padding-right: 10px;
+}
+TABLE.form TD.entry-gutter, TD.entry-gutter {
+    border: 0px;
+    padding: 0px 10px 0px 10px;
+}
+TABLE.form TD.entry-caption-total {
+    text-align: right;
+    font: bold .8em Arial, sans-serif;
+}
+
+TABLE.form TD.entry-money {
+	font-family: Arial, sans-serif;
+	font-size: .9em;
+	width: 180px;
+	padding-left: 10px;
+    text-align:right;
+}
+TABLE.form TD.entry-value-total {
+    font: bold 11pt monospace;
+    padding: 0px 5px 0px 5px;
+    text-align: right;
+}
+
+TABLE.form TD.entry-total {
+    border-top: medium solid black;
+    font: bold .9em sans-serif;
+    padding: 0px 5px 0px 5px;
+    text-align: right;
+}
+
+TABLE.form TD.left {
+	text-align: left;
+}
+TABLE.form TD.center {
+	text-align: center;
+}
+TABLE.form TD.right {
+	text-align: right;
+}
+TABLE.form TD.yellow {
+    background: #FEFECA;
+}
+TABLE.form TD.teal {
+    background: #8cd5cd;
+}
+TABLE.form TD.grey {
+	background: #DDDDDD;
+}
+TABLE.form_header {
+	width: 100%;
+}
+TABLE.form_header TH.links {
+	width: 100px;
+}
+
+TABLE.grid {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+TABLE.grid TH {
+    background: #EAEAEA;
+    color: #444;
+    font-size: .8em;
+    font-weight: normal;
+	border: 1px solid #CCCCCC;
+}
+TABLE.grid TD {
+	border: 1px solid #CCCCCC;
+    font-size: .8em;
+    padding: 0px .3em 0px .3em;
+}
+TABLE.grid TD.total {
+    border-top: 2px solid #000000;
+    font-weight: bold;
+}
+TD.right { text-align: right; }
+TABLE.search_results {
+	margin: 0px auto 0px auto;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+TABLE.search_results TH {
+    background: #EAEAEA;
+    color: #444;
+    font: bold .95em Arial, sans-serif;
+    text-align: center;
+    padding: 1px 5px 1px 5px;
+}
+TABLE.search_results TH.links {
+	padding-left: 0px;
+    text-align: right;
+	font-weight: normal;
+	color: #FF0000;
+	padding-right: 6px;
+}
+TABLE.search_results TD {
+	border: 1px solid #CCCCCC;
+    font-size: 10pt;
+}
+TABLE.left_search_results {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+TABLE.left_search_results TH {
+    background: #EAEAEA;
+    color: #444;
+    font: bold .95em Arial, sans-serif;
+    text-align: center;
+    padding: 1px 5px 1px 5px;
+}
+TABLE.left_search_results TH.links {
+	padding-left: 0px;
+    text-align: right;
+	font-weight: normal;
+	color: #FF0000;
+	padding-right: 6px;
+}
+TABLE.left_search_results TD {
+	border: 1px solid #CCCCCC;
+    font-size: 10pt;
+}
+
+.box {
+    border: 1px solid #000000;
+    padding: 0px 10px 0px 10px;
+    }
+
+
+.city {
+	margin-right:10px;
+}
+.state {
+	width: 40px;
+	margin-right:6px;
+}
+.zip_code {
+	width: 100px;
+}
+.positive {
+	text-align: right;
+	color: #000000;
+}
+.negative {
+	text-align: right;
+	color: #FF0000;
+}
+UL.smenu {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+UL.smenu LI {
+    border: 1px solid #CCCCCC;
+    border-top: 0px;
+    margin: 0px;
+    padding: 2px 5px 2px 1px;
+}
+UL.smenu LI A {
+    color: #000000;
+    display: block;
+}
+UL.smenu LI A:HOVER {
+    color: blue;
+    text-decoration: underline;
+}
+A.button {
+    background: #EEE;
+    border: thin solid #000;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #000000;
+    text-decoration: none;
+    padding: 2px 5px 1px 5px;
+    margin: 2px;
+    display: block;
+    float: left;
+}

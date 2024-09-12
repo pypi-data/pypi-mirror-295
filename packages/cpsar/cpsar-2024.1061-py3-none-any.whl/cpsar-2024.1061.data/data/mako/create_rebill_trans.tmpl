@@ -1,0 +1,69 @@
+<%!
+import kcontrol as K
+
+import cpsar.controls as C
+import cpsar.invoice
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <title>Rebill Transactions</title>
+    <link type='text/css' rel='stylesheet'
+          href='/repo/css/kcontrol/calendar.css' />
+    <link type='text/css' rel='stylesheet'
+          href='/css/form.css'  />
+    <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+    <style type='text/css'>
+    </style>
+    <link rel='stylesheet' type='text/css'
+          href='/css/redmond/jquery-ui-1.8.14.custom.css' />
+    <script src='/js/jquery-1.5.1.min.js'></script>
+    <script src='/js/jquery.jgrowl.js'></script>
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/jquery.numeric.js'></script>
+    <script src='/js/jquery-ui-1.8.14.custom.min.js'></script>
+    <script src='/js/common.js'></script>
+    <script type='text/javascript' src='/js/ppayment.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+
+        });
+    </script>
+</%block>
+<%block name="header">
+    Rebill Transactions
+</%block>
+<%def name="show_transaction(t)">
+<tr>
+    <td><a href='/view_trans?trans_id=${t['trans_id']}'>${t['trans_id']}</a></td>
+    <td>${t['total']}</td>
+    <td>${t['balance']}</td>
+    <td><input checked='checked' type='checkbox' name='trans_id'
+               value="${t['trans_id']}" /></td>
+</tr>
+</%def>
+<p>This program creates new transactions from old transactions for the purpose
+of rebilling those transactions to clients. The original transactions have rebill
+records created and optionally apply credits to the original transactions to
+balance them out.</p>
+
+<form action='/create_rebill_trans' method='POST'>
+<table class='grid'>
+<thead>
+ <tr>
+    <th>TX#</th>
+    <th>Total</th>
+    <th>Balance</th>
+    <th></th>
+ </tr>
+</thead>
+<tbody>
+ %for t in transactions:
+    ${self.show_transaction(t)}
+ %endfor
+</tbody>
+</table>
+<br />
+<input type='submit' value='Rebill checked transactions by creating new transactions' />
+</form>
+

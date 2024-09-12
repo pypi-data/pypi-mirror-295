@@ -1,0 +1,19 @@
+#!/bin/sh
+# script to move all of the pending pharmaware files from the data directory
+# and archive them
+DDIR=/data/pharmaware/outgoing
+TDIR=/data/pharmaware/pickup/outgoing
+dt=$( date +%Y%m%d )
+TFNAME=pharmaware-${dt}.csv
+ARCDIR=/data/pharmaware/archive
+AFNAME=pharmaware-${dt}.zip
+
+cd "$DDIR"
+cat rx-*.csv >> "${TDIR}/${TFNAME}"
+if [ $? -ne 0 ]; then
+    echo "Could not cat to ${TDIR}/${TFNAME}"
+    exit
+fi
+chown pharmaware:staff "${TDIR}/${TFNAME}"
+zip -m "${ARCDIR}/${AFNAME}" rx-*.csv
+chown xhandler:staff "${ARCDIR}/${AFNAME}"

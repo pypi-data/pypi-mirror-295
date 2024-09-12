@@ -1,0 +1,295 @@
+#!python
+""" Create Invoice CSV files that are picked up over SFTP on the server and
+notify the group's contacts
+
+Each run of the program only processes one batch date, the oldest batch date
+that has not been processed.
+"""
+from future import standard_library
+standard_library.install_aliases()
+from builtins import map
+from builtins import object
+import subprocess
+import datetime
+import csv
+import os
+import shutil
+import tempfile
+import time
+
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar import util
+
+class Program(shell.Program):
+    def main(self):
+        if self.opts.rebill:
+            invoice_file = RebillInvoiceFile()
+        else:
+            invoice_file = InvoiceFile(self.batch_date)
+
+        if not invoice_file.has_transactions_to_send:
+            return
+
+        try:
+            invoice_file.write()
+        except (IOError, OSError) as e:
+            send_invoice_failure(invoice_file.path, e)
+            return
+        
+        invoice_file.archive()
+        if not self.opts.no_email:
+            invoice_file.send_success_email()
+
+        invoice_file.mark_transactions_sent()
+        R.db.commit()
+
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-b', '--batch-date', help='Batch date to process. '
+            'If not given, batch date is automatically calculated.',
+            default='')
+        self.add_option('-E', '--no-email', action='store_true', default=False,
+            help='Do not send email to client notifying that the file was '
+                 'created successfully.')
+        self.add_option('-r', '--rebill', help='send rebills',
+                        action='store_true')
+
+    @property
+    def batch_date(self):
+        try:
+            tz = time.strptime(self.opts.batch_date, "%Y%m%d")
+        except ValueError:
+            R.log.debug("Ignoring bad batch date %s", self.opts.batch_date)
+            return None
+        return datetime.date(tz.tm_year, tz.tm_mon, tz.tm_mday)
+
+class InvoiceFile(object):
+    def __init__(self, user_supplied_batch_date):
+        self._user_supplied_batch_date = user_supplied_batch_date
+
+    notify = ['edi@americanmining.com']
+
+    group_number = '56300'
+
+    @property
+    def _batch_date(self):
+        if self._user_supplied_batch_date:
+            return self._user_supplied_batch_date
+
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT MAX(batch_date)
+            FROM sftp_out_log
+            WHERE group_number=%s
+            """, (self.group_number,))
+        max, = cursor.fetchone()
+        if not max:
+            cursor.execute("""
+                SELECT MIN(batch_date) 
+                FROM trans 
+                WHERE group_number=%s
+                """, (self.group_number,))
+            return cursor.fetchone()[0]
+        else:
+            cursor.execute("""
+                SELECT MIN(batch_date) 
+                FROM trans 
+                WHERE batch_date > %s AND group_number=%s
+                """, (max, self.group_number))
+            return cursor.fetchone()[0]
+
+    @property
+    def has_transactions_to_send(self):
+        return bool(self._batch_date)
+
+    @property
+    def path(self):
+        p = 'american-mining/pickup/outgoing/invoice-56300-%s.csv'
+        return R.dpath(p % self._batch_date.strftime("%Y%m%d"))
+
+    @property
+    def _archive_path(self):
+        return R.dpath('american-mining/archive/%s.zip' % time.strftime("%Y"))
+
+    def write(self):
+        t = tempfile.NamedTemporaryFile("a+t")
+        cursor = self._transaction_cursor()
+        writer = csv.writer(t)
+        writer.writerow([f[0] for f in cursor.description])
+        list(map(writer.writerow, cursor))
+        t.flush()
+        os.chmod(t.name, 0o660)
+        shutil.copy(t.name, self.path)
+        os.system("chgrp customer %s" % self.path)
+
+    def archive(self):
+        """ Archive the given csv_fpath in the zip file given
+        """
+        cmd = "zip --junk-paths %s %s" % (self._archive_path,  self.path)
+        s, o = subprocess.getstatusoutput(cmd)
+        if s:
+            R.log.error("Could not archive %s: %s", self.path, o)
+
+    def send_success_email(self):
+        """ Send an email to the group contact that the given file for the 
+        given batch date was successfully created and is ready for pickup.
+        """
+        m = util.Mailer()
+        m.set_billing_bcc()
+        m.recipients = self.notify 
+
+        m.subject = self._success_subject
+        m("A new invoice file is ready for pickup on sftp.corporatepharmacy.com\n")
+        m(" - %s\n", os.path.basename(self.path))
+        m.send()
+
+    def mark_transactions_sent(self):
+        """ Make a record in the database that an invoice for the group and
+        batch date has been made available on the SFTP server. Keepking track
+        of this allows us to not process the same batch and group twice.
+        """
+        cursor = R.db.cursor()
+        cursor.execute("""
+            INSERT INTO sftp_out_log
+             (batch_date, group_number, file_name, username)
+            VALUES (%s, %s, %s, %s)
+            """, (self._batch_date, self.group_number, self.path, R.username()))
+
+    @property
+    def _success_subject(self):
+        s = "cpsar: New Invoice from Corporate Pharmacy for American Mining on %s" 
+        return s % self._batch_date
+
+    def _transaction_cursor(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+         SELECT to_char(batch_date, 'YYYYMMDD') AS "Batch Date",
+                patient.first_name AS "First Name",
+                patient.last_name AS "Last Name",
+                trans.invoice_id AS "Invoice #",
+                trans.line_no AS "Line no",
+                history.doctor_dea_number AS "DEA Number",
+                history.doctor_npi_number AS "NPI Number",
+                doctor.name AS "Doctor",
+                pharmacy.nabp AS "NABP",
+                drug.name AS "Drug",
+                drug.ndc_number AS "NDC Number",
+                to_char(history.rx_date, 'YYYYMMDD') AS "RX Date",
+                claim.claim_number AS "Claim number",
+                history.quantity AS "Quantity",
+                history.days_supply AS "Day's Supply",
+                user_info1.email AS "Adjuster 1",
+                user_info2.email AS "Adjuster 2",
+                trans.total AS "Amount",
+                trans.balance AS "Balance",
+                trans.state_fee AS "State Fee",
+                trans.savings AS "Savings",
+                to_char(trans.doi, 'YYYYMMDD') AS DOI
+         FROM trans
+         JOIN history ON trans.history_id = history.history_id
+         JOIN claim ON history.claim_id = claim.claim_id
+         JOIN patient ON history.patient_id = patient.patient_id
+         JOIN drug ON history.drug_id = drug.drug_id
+         JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+         LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+         LEFT JOIN user_info AS user_info1 ON
+            claim.email1 = user_info1.email
+         LEFT JOIN user_info AS user_info2 ON
+            claim.email2 = user_info2.email
+         WHERE trans.batch_date = %s AND
+               trans.group_number = '56300' AND
+               trans.balance != 0
+         ORDER BY trans.trans_id
+        """, (self._batch_date,))
+        return cursor
+
+class RebillInvoiceFile(InvoiceFile):
+    def __init__(self):
+        pass
+
+    @property
+    def path(self):
+        p = 'american-mining/pickup/outgoing/invoice-56300-%sR.csv'
+        return R.dpath(p % datetime.date.today().strftime("%Y%m%d"))
+
+    @property
+    def _success_subject(self):
+        return "cpsar: Rebill Invoice from Corporate Pharmacy for American Mining" 
+
+    @property
+    def has_transactions_to_send(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            select count(*)
+            from trans
+            where group_number = '56300' and rebill=true
+            """)
+        return cursor.fetchone()[0] > 0
+
+    def mark_transactions_sent(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            UPDATE trans SET rebill=false
+            where group_number = '56300'
+            """)
+
+    def _transaction_cursor(self):
+        """ Provide the cursor full of transactions to go in the current
+        invoice file. We do not include transactions that have 0 balances.
+        """
+        cursor = R.db.cursor()
+        cursor.execute("""
+         SELECT to_char(batch_date, 'YYYYMMDD') AS "Batch Date",
+                patient.first_name AS "First Name",
+                patient.last_name AS "Last Name",
+                trans.invoice_id AS "Invoice #",
+                trans.line_no AS "Line no",
+                history.doctor_dea_number AS "DEA Number",
+                history.doctor_npi_number AS "NPI Number",
+                doctor.name AS "Doctor",
+                pharmacy.nabp AS "NABP",
+                drug.name AS "Drug",
+                drug.ndc_number AS "NDC Number",
+                to_char(history.rx_date, 'YYYYMMDD') AS "RX Date",
+                claim.claim_number AS "Claim number",
+                history.quantity AS "Quantity",
+                history.days_supply AS "Day's Supply",
+                user_info1.email AS "Adjuster 1",
+                user_info2.email AS "Adjuster 2",
+                trans.total AS "Amount",
+                trans.balance AS "Balance",
+                trans.state_fee AS "State Fee",
+                trans.savings AS "Savings",
+                to_char(trans.doi, 'YYYYMMDD') AS DOI
+         FROM trans
+         JOIN history ON trans.history_id = history.history_id
+         JOIN claim ON history.claim_id = claim.claim_id
+         JOIN patient ON history.patient_id = patient.patient_id
+         JOIN drug ON history.drug_id = drug.drug_id
+         JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+         LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+         LEFT JOIN user_info AS user_info1 ON
+            claim.email = user_info1.email
+         LEFT JOIN user_info AS user_info2 ON
+            claim.email = user_info2.email
+         WHERE trans.rebill = TRUE AND
+               trans.group_number = '56300'
+         ORDER BY trans.trans_id
+        """)
+        return cursor
+
+def send_invoice_failure(csv_fpath, error):
+    """ Send an email to the CPS employees saying that the given file could not
+    be created because of the given error.
+    """
+
+    m = util.Mailer()
+    m.set_billing_recipients()
+    m.subject = "BD %s invoice send file failure" % csv_fpath
+    m("Response from server: %s", error)
+    m.send()
+    R.log.error('Could not send file to bd-ftp: %s', error)
+
+if __name__ == '__main__':
+    Program().run()

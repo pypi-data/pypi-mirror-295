@@ -1,0 +1,296 @@
+<table class='form'>
+<tr>
+    <th colspan='4'>Bill</th>
+</tr>
+<tr>
+    <td class='entry-caption'>
+      <label for='intermediary_id'>
+        Intermediary Transaction Identification Number
+      </label>
+    </td>
+    <td class='entry-value'>${bill['intermediary_id']}</td>
+    <td class='entry-caption'><label for='bill_date' title='
+        Bill Date. This is the invoice date; the date the biller is creating
+        the bill. This is not the Date of Service, Date of Injury or Date of
+        Statements.
+    '>Bill Date</label></td>
+    <td class='entry-value'>${bill['bill_date']}</td>
+</tr>
+
+<tr>
+    <td class='entry-caption'><label for='bill_number' title='
+        Bill Number. The Billing Providers unique
+        invoice number also commonly referred to as the
+        Patient Account Number.  This number is Biller defined.
+        '
+    >Bill Number</label></td>
+    <td class='entry-value'>
+      ${bill['bill_number']}
+    </td>
+    <td class='entry-caption'>
+      <label for='original_bill_number'>Original Bill Number</label></td>
+    <td class='entry-value'>
+      ${bill['original_bill_number']}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='claim_number'>Claim Number</label></td>
+    <td class='entry-value'>${bill['claim_number']}</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='total'>Total</label></td>
+    <td class='entry-value'>${bill_totals['bill_total']}</td>
+    <td class='entry-caption'><label for='juris'>Jurisdiction State</label></td>
+    <td class='entry-value'>${bill['juris']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='claim_freq'>Claim Frequency Type Code</label></td>
+    <td class='entry-value'>${bill['claim_freq_fmt']}</td>
+    <td class='entry-caption'><label for='control_number'>Control Number</label></td>
+    <td class='entry-value'>${bill['control_number']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='bill_type'>Bill Type</label></td>
+    <td class='entry-value'>${bill['bill_type']}</td>
+    <td class='entry-caption'><label for=''></label></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <th colspan='4'>Insurer</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insurer_code_number'>B187 Other Payer ID</label></td>
+    <td class='entry-value'>${bill['insurer_code_number']}</td>
+    <td class='entry-caption'><label for='insurer_fein'>Insurer FEIN</label></td>
+    <td class='entry-value'>${bill['insurer_fein']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insured_name'>Insured Organization Name</label></td>
+    <td class='entry-value'>${bill['insured_name']}<!--employer_name --></td>
+    <td class='entry-caption'><label for='subscriber_member_number'>B343 Subscriber Member Number</label></td>
+    <td class='entry-value'>${bill['subscriber_member_number']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='insurer_paid_amount'>B057 Insurer Paid</label></td>
+    <td class='entry-value'>${bill_totals['insurer_paid_amount']}</td>
+<tr>
+    <th colspan='4'>Payor</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_name'>Name</label></td>
+    <td class='entry-value'>${bill['payor_name']}</td>
+    <td class='entry-caption'><label for='payor_id'>Payor ID</label></td>
+    <td class='entry-value'>${bill['payor_id']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_name'>B197 FEIN</label></td>
+    <td class='entry-value'>${bill['payor_fein']}</td>
+    <td class='entry-caption'><label for='payment_date'>Payment Date</label></td>
+    <td class='entry-value'>${bill['payment_date']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_address_1'>Address 1</label></td>
+    <td class='entry-value'>${bill['payor_address_1']}<!-- client_address_1 --></td>
+    <td class='entry-caption'><label for='payor_address_2'>Address 2</label></td>
+    <td class='entry-value'>${bill['payor_address_2']}<!-- client_address_2 --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_city'>City</label></td>
+    <td class='entry-value'>${bill['payor_city']}<!-- client_city --></td>
+    <td class='entry-caption'><label for='payor_state'>State</label></td>
+    <td class='entry-value'>${bill['payor_state']}<!-- client_state --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='payor_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${bill['payor_zip_code']}<!-- client_zip_code --></td>
+    <td class='entry-caption'><label for='payor_receive_date'>Receive Date</label></td>
+    <td class='entry-value'>${bill['payor_receive_date']}</td>
+</tr>
+<tr>
+    <th colspan='4'>Patient</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_last_name'>Last Name</label></td>
+    <td class='entry-value'>${bill['patient_last_name']}</td>
+    <td class='entry-caption'><label for='patient_first_name'>First Name</label></td>
+    <td class='entry-value'>${bill['patient_first_name']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_ssn'>SSN</label></td>
+    <td class='entry-value'>${bill['patient_ssn']}</td>
+    <td class='entry-caption'><label for='patient_dob'>D.O.B.</label></td>
+    <td class='entry-value'>${bill['patient_dob']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_sex'>Gender</label></td>
+    <td class='entry-value'>${bill['patient_sex']}</td>
+    <td class='entry-caption'><label for='principal_diagnosis_code'>Principal Diagnosis Code</label></td>
+    <td class='entry-value'>${bill['principal_diagnosis_code']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='diagnosis_code_2'>Diagnsosis Code 2</label></td>
+    <td class='entry-value'>${bill['diagnosis_code_2']}</td>
+    <td class='entry-caption'><label for='diagnosis_code_3'>Diagnosis Code 3</label></td>
+    <td class='entry-value'>${bill['diagnosis_code_3']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='diagnosis_code_4'>Diagnsosis Code 4</label></td>
+    <td class='entry-value'>${bill['diagnosis_code_4']}</td>
+    <td class='entry-caption'><label for='diagnosis_code_5'>Diagnosis Code 5</label></td>
+    <td class='entry-value'>${bill['diagnosis_code_5']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_address_1'>Address 1</label></td>
+    <td class='entry-value'>${bill['patient_address_1']}</td>
+    <td class='entry-caption'><label for='patient_address_2'>Address 2</label></td>
+    <td class='entry-value'>${bill['patient_address_2']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_city'>City</label></td>
+    <td class='entry-value'>${bill['patient_city']}<!-- client_city --></td>
+    <td class='entry-caption'><label for='patient_state'>State</label></td>
+    <td class='entry-value'>${bill['patient_state']}<!-- client_state --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='patient_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${bill['patient_zip_code']}<!-- client_zip_code --></td>
+    <td class='entry-caption'><label for='doi'>Date of Injury</label></td>
+    <td class='entry-value'>${bill['doi']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='date_of_admission'>Date of Admission</label></td>
+    <td class='entry-value'>${bill['date_of_admission']}</td>
+    <td class='entry-caption'><label for='date_of_discharge'>Date of Discharge</label></td>
+    <td class='entry-value'>${bill['date_of_discharge']}</td>
+</tr>
+<tr>
+    <th colspan='4'>Referring Provider (Doctor)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='doctor_last_name'>Last Name</label></td>
+    <td class='entry-value'>${bill['doctor_last_name']}</td>
+    <td class='entry-caption'><label for='doctor_first_name'>First Name</label></td>
+    <td class='entry-value'>${bill['doctor_first_name']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='doctor_npi'>NPI</label></td>
+    <td class='entry-value'>${bill['doctor_npi']}</td>
+    <td class='entry-caption'><label for='doctor_state_lic_number'>State License #</label></td>
+    <td class='entry-value'>${bill['doctor_state_lic_number']}</td>
+</tr>
+<tr>
+    <th colspan='4'>Rendering Provider (Pharmacist)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacist_last_name'>Last Name</label></td>
+    <td class='entry-value'>${bill['pharmacist_last_name']}</td>
+    <td class='entry-caption'><label for='pharmacist_first_name'>First Name</label></td>
+    <td class='entry-value'>${bill['pharmacist_first_name']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacist_lic_number'>State License #</label></td>
+    <td class='entry-value'>${bill['pharmacist_lic_number']}</td>
+    <td class='entry-caption'><label for='pharmacist_taxonomy_code'>Taxonomy Code</label></td>
+    <td class='entry-value'>${bill['pharmacist_taxonomy_code']}</td>
+</tr>
+<tr>
+    <th colspan='4'>Service Facility (Pharmacy)</th>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_name'>Name</label></td>
+    <td class='entry-value'>${bill['pharmacy_name']}</td>
+    <td class='entry-caption'><label for='pharmacy_npi'>NPI</label></td>
+    <td class='entry-value'>${bill['pharmacy_npi']}<!-- service_facility_npi --></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_nabp'>NABP</label></td>
+    <td class='entry-value'>${bill['pharmacy_nabp']}</td>
+    <td class='entry-caption'></td>
+    <td class='entry-value'></td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_address_1'>Address 1</label></td>
+    <td class='entry-value'>${bill['pharmacy_address_1']}</td>
+    <td class='entry-caption'><label for='pharmacy_address_2'>Address 2</label></td>
+    <td class='entry-value'>${bill['pharmacy_address_2']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_city'>City</label></td>
+    <td class='entry-value'>${bill['pharmacy_city']}</td>
+    <td class='entry-caption'><label for='pharmacy_state'>State</label></td>
+    <td class='entry-value'>${bill['pharmacy_state']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'><label for='pharmacy_zip_code'>Zip Code</label></td>
+    <td class='entry-value'>${bill['pharmacy_zip_code']}</td>
+    <td class='entry-caption'>State License #</td>
+    <td class='entry-value'>${bill['pharmacy_state_license_number']}</td>
+</tr>
+</table>
+
+% for i, entry in enumerate(bill['lines']):
+  <% line_no = i + 1 %>
+  <table class='form'>
+  <tr>
+    <td class='entry-caption'>${line_no}.</td>
+    <td class='entry-caption'>Date of Service</td>
+    <td class='entry-value'>${entry['date_of_service']}</td>
+    <td class='entry-caption'>CPT Proc/HCPCS</td>
+    <td class='entry-value'>${entry['hcpcs']}</td>
+    <td class='entry-caption'>CPT Proc/HCPCS Paid</td>
+    <td class='entry-value'>${entry['hcpcs_paid']}</td>
+    <td class='entry-caption' title='5-4-2'>NDC</td>
+    <td class='entry-value'>${entry['ndc' ]}</td>
+    <td class='entry-caption'>Drug name</td>
+    <td class='entry-value'>${entry['drug_name' ]}</td>
+    <td class='entry-caption'>Day's Supply</td>
+    <td class='entry-value'>${entry['days_supply' ]}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Line Charge</td>
+    <td class='entry-value'>${entry['total' ]}</td>
+    <td class='entry-caption'>Sales Tax</td>
+    <td class='entry-value'>${entry['sales_tax' ]}</td>
+    <td class='entry-caption'>State Fee</td>
+    <td class='entry-value'>${entry['state_fee' ]}</td>
+    <td class='entry-caption'>Insurer Paid</td>
+    <td class='entry-value'>${entry['insurer_paid' ]}</td>
+    <td class='entry-caption'>Repackaged NDC</td>
+    <td class='entry-value'>${entry['repackaged_ndc']}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Rx #</td>
+    <td class='entry-value'>${entry['rx_number' ]}</td>
+    <td class='entry-caption'>Refill #</td>
+    <td class='entry-value'>${entry['refill_number' ]}</td>
+    <td class='entry-caption'>Quantity</td>
+    <td class='entry-value'>${entry['quantity' ]}</td>
+    <td class='entry-caption'>EOB Review Code</td>
+    <td class='entry-value'>${entry['eob_review_code' ]}</td>
+    <td class='entry-caption'>DAW</td>
+    <td class='entry-value'>${entry['daw' ]}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Doc. Last Name</td>
+    <td class='entry-value'>${entry['entry_doctor_last_name']}</td>
+    <td class='entry-caption'>First Name</td>
+    <td class='entry-value'>${entry['entry_doctor_first_name']}</td>
+    <td class='entry-caption'>State License #</td>
+    <td class='entry-value'>${entry['entry_doctor_state_lic_number']}</td>
+    <td class='entry-caption'>NPI</td>
+    <td class='entry-value'>${entry['entry_doctor_npi']}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='entry-caption'>Trans ID</td>
+    <td class='entry-value'>${entry['trans_id' ]}</td>
+    <td class='entry-caption'>SRID</td>
+    <td class='entry-value'>${entry['srid']}</td>
+  </tr>
+  </table>
+% endfor

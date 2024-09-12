@@ -1,0 +1,370 @@
+#!python
+"""
+Transaction Reload Program
+
+This program was created to update and recalculate existing transactions
+in the system. It was originally written to fix a set of transactions
+that had incorrect processing fees on their client record. The program will
+only update transactions that do not have any activity on them. If a payment
+has been made or a credit note has been applied, the program will skip that
+transaction.
+
+To use this program, make a file that has the same format as a bd-transaction
+file. Place a batch date column (8 character ISO) in the first position of the
+file. For the exact layout, see the read_fw procedure.
+
+It is recommended that the first run be given -vvd to do a verbose dry-run
+so you can see what the program is doing.
+"""
+from __future__ import print_function
+from builtins import object
+import datetime
+from six import StringIO
+import decimal
+import glob
+import logging; log=logging.getLogger('')
+import os
+import pprint
+import re
+import sys
+import traceback
+
+import cpsar.runtime as R
+import cpsar.shell
+import cpsar.txlib
+import cpsar.txtype as TT
+import cpsar.keys as K
+from cpsar.util import qstr
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        """ Initialize the program and process the transaction
+        files given as arguments. """
+        self.audit = ErrorReporter()
+
+        if not self.args:
+            log.info('No files given. Nothing to do')
+            return
+        # All of the lookups let us find foreign key records quickly
+        # without querying the database thousands of times. They cache
+        # the keys.
+        self.hist = K.HistoryLookup()
+        self.pat = K.PatientLookup()
+        self.drug = K.DrugLookup()
+        self.pharm = K.PharmacyLookup()
+        self.doc = K.DoctorLookup()
+        self.pf = cpsar.txlib.PFCalculator()
+
+        for file_path in self.args:
+            self.process_file(file_path)
+
+    def process_file(self, path):
+        log.debug('Processing update file %s', path)
+        self.audit.file_name = path
+
+        file_in = open(path)
+        for idx, line in enumerate(file_in):
+            record = self.read_fw(line)
+            try:
+                self.update_trans(record)
+            except:
+                pprint.pprint(record)
+                print('Line #', (idx+1))
+                raise
+     
+        if self.audit.errors:
+            log.error('Not commiting changes. Errors detected')
+            return
+        if self.opts.dry_run:
+            return
+
+        log.debug('Committing database changes')
+        R.db.commit()
+
+    #CST patient_ssn > patient_cardholder_nbr 20111025
+    def read_fw(self, data):
+        fw_fields = [
+            ('batch_date',   8),
+            ('group_number',   8),
+            ('group_auth',     7),
+            ('invoice_id',     7),
+            ('line_no',        4),
+            ('patient_cardholder_nbr',   11),
+            ('patient_dob',    8),
+            ('doi', 6),
+            ('claim_number',  30),
+            ('policy_number', 10),
+            ('rx_date',        6),
+            ('pharmacy_nabp', 10),
+            ('rx_number',      7),
+            ('refill_number',  2),
+            ('doctor_dea_number', 9),
+            ('doctor_npi_number', 10),
+            ('date_written',   6),
+            ('daw',            1),
+            ('drug_ndc_number', 11),
+            ('quantity',       6),
+            ('days_supply',    3),
+            ('compound_code',  1),
+            ('cost_allowed',   7),
+            ('dispense_fee',   7),
+            ('sales_tax',      7),
+            ('eho_network_copay',          7),
+            ('processing_fee', 5),
+            ('cost_submitted', 7),
+            ('usual_customary', 7),
+            ('state_fee',       9),
+            ('awp',             9),
+            ('adjuster1_email', 50),
+            ('adjuster2_email', 50)
+        ]
+        stream = StringIO(data)
+        stream.seek(0)
+        out = {}
+        for field, width in fw_fields:
+            s = stream.read(width)
+            s = s.rstrip()
+            out[field] = s
+
+        decimal_fields = ['cost_allowed',
+               'dispense_fee',
+               'sales_tax',
+               'processing_fee',
+               'eho_network_copay']
+        for d in decimal_fields:
+            try:
+                out[d] = decimal.Decimal(out[d].strip())
+            except decimal.InvalidOperation:
+                raise ValueError('Invalid decimal value %r' % out[d])
+        return out
+
+    def update_trans(self, record):
+        cursor = R.db.cursor()
+        error = self.audit.error
+
+        log.debug('Updating %(group_number)s:%(group_auth)s' % record)
+
+        # Get the trans_id because we're going to have to rewire the
+        # transaction.
+
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT trans_id
+            FROM trans
+            WHERE group_number=%s AND
+                  group_auth=%s
+            """, (record['group_number'], record['group_auth']))
+
+        if cursor.rowcount != 1:
+            error('%s:%s has no trans_id in the system',
+                  record['group_number'], record['group_auth'])
+            return
+        trans_id = record['trans_id'] = cursor.fetchone()[0]
+
+        log.debug('%(group_number)s:%(group_auth)s found trans #%(trans_id)s'
+                  % record)
+
+        self.ensure_no_payments(record)
+        self.ensure_no_distributions(record)
+
+        if self.audit.errors:
+            return
+
+        if record['doi'] == '':
+            record['doi'] = None
+
+        tx_type = TT.get_tx_type(record)
+
+        # Calculate Total
+        pharm_amount = cpsar.txlib.calc_pharmacy_amount(record)
+        pf = self.pf.total_processing_fee(record['group_number'], 
+                                          tx_type, 
+                                          pharm_amount)
+        total = pharm_amount + pf
+
+        # Lookup Foreign Keys
+        history_id = self.hist.get((record['group_number'], 
+                                    int(record['group_auth'])))
+        if not history_id:
+            error(record, "No history record on file")
+            return
+
+        patient_id = self.pat.get((
+            record['group_number'], 
+            record['patient_dob'], 
+            record['patient_ssn']))
+        if not patient_id:
+            error("% 8s:%s - INVALID PATIENT KEY %s:%s:%s",
+                record['group_number'], record['group_auth'],
+                record['group_number'], record['patient_dob'],
+                record['patient_ssn'])
+            return
+
+        drug_id = self.drug.get(record['drug_ndc_number'])
+        if not drug_id:
+            error("% 8s:%s - INVALID DRUG KEY %s",
+                record['group_number'], record['group_auth'],
+                record['drug_ndc_number'])
+            return
+
+        pharmacy_id = self.pharm.get(record['pharmacy_nabp'])
+        if not pharmacy_id:
+            error("% 8s:%s - INVALID PHARMACY KEY %s",
+                record['group_number'], record['group_auth'],
+                record['pharmacy_nabp'])
+            return
+
+        # A valid doctor isn't required. NULL's allowed.
+        doctor_id = self.doc.get(record['doctor_dea_number'])
+        if not doctor_id:
+            doctor_id = self.doc.get(record['doctor_npi_number'])
+
+        record.update({
+            'trans_id': trans_id,
+            'patient_id': patient_id,
+            'drug_id': drug_id,
+            'pharmacy_id': pharmacy_id,
+            'doctor_id': doctor_id,
+            'total': total,
+            'tx_type': tx_type,
+            'processing_fee': pf,
+            'history_id': history_id
+        })
+        
+        # Alright, now we have a record that would be suitable for
+        # insert. It's time to clean up the existing trans record
+        qrecord = dict((k, qstr(v)) for k, v in list(record.items()))
+        cursor.execute("""
+            UPDATE trans SET
+            batch_date=%(batch_date)s,
+            invoice_id=%(invoice_id)s,
+            line_no=%(line_no)s,
+            patient_dob=%(patient_dob)s,
+            patient_ssn=%(patient_ssn)s,
+            patient_id=%(patient_id)s,
+            pharmacy_nabp=%(pharmacy_nabp)s,
+            pharmacy_id=%(pharmacy_id)s,
+            doctor_dea_number=%(doctor_dea_number)s,
+            doctor_npi_number=%(doctor_npi_number)s,
+            doctor_id=%(doctor_id)s,
+            drug_ndc_number=%(drug_ndc_number)s,
+            drug_id=%(drug_id)s,
+            doi=%(doi)s,
+            claim_number=%(claim_number)s,
+            policy_number=%(policy_number)s,
+            rx_date=%(rx_date)s,
+            rx_number=%(rx_number)s,
+            date_written=%(date_written)s,
+            daw=%(daw)s,
+            quantity=%(quantity)s,
+            days_supply=%(days_supply)s,
+            compound_code=%(compound_code)s,
+            refill_number=%(refill_number)s,
+            adjuster1_email=%(adjuster1_email)s,
+            adjuster2_email=%(adjuster2_email)s,
+            cost_submitted=%(cost_submitted)s,
+            cost_allowed=%(cost_allowed)s,
+            dispense_fee=%(dispense_fee)s,
+            sales_tax=%(sales_tax)s,
+            eho_network_copay=%(eho_network_copay)s,
+            processing_fee=%(processing_fee)s,
+            usual_customary=%(usual_customary)s,
+            state_fee=%(state_fee)s,
+            total=%(total)s,
+            adjustments=0,
+            balance=%(total)s,
+            paid=FALSE,
+            paid_date=NULL,
+            rebill=FALSE,
+            distributed_amount=0,
+            paid_amount=0,
+            writeoff_total=0,
+            adjudication_total=0,
+            awp=%(awp)s,
+            tx_type=%(tx_type)s,
+            history_id=%(history_id)s,
+            report_status=NULL
+            WHERE trans_id=%(trans_id)s
+            """ % qrecord)
+
+        ### savings
+
+        # Get rid of old distribution records
+        cursor.execute("""
+            DELETE FROM distribution
+            WHERE trans_id=%(trans_id)s
+            """ % record)
+
+        log.debug("%(group_number)s:%(group_auth)s deleted %%s distribution "
+                  "records" % record, cursor.rowcount)
+        # Create new distribution records
+        fees = self.pf.processing_fees(record['group_number'], tx_type, 
+                                       pharm_amount)
+        for account, amount in fees:
+            cursor.execute("""
+                INSERT INTO distribution
+                    (trans_id, distribution_account, amount)
+                VALUES (%s, %s, %s)""",
+                        (trans_id, account, amount))
+            log.debug("%(group_number)s:%(group_auth)s added distribution "
+                      " %%s-%%s" % record, account, amount)
+
+        cursor.execute("""
+            INSERT INTO distribution
+                (trans_id, distribution_account, amount)
+            VALUES (%s, 'pharmacy', %s)""",
+            (trans_id, pharm_amount))
+
+        log.debug("%(group_number)s:%(group_auth)s added distribution "
+                  " pharmacy-%%s" % record, pharm_amount)
+
+    def ensure_no_payments(self, record):
+        cursor = R.db.cursor()
+        def count_table_rows(table, err_tmpl):
+            cursor.execute("""
+            SELECT COUNT(*)
+            FROM %s
+            WHERE trans_id = %%s
+            """ % table, (record['trans_id'],))
+            if cursor.fetchone()[0]:
+                self.audit.error(record, err_tmpl % (record['trans_id'], 
+                                 cursor.rowcount))
+        count_table_rows(
+            'trans_payment', 
+            'Transaction %s has %s payments. Cannot update')
+        count_table_rows(
+            'trans_adjudication',
+            'Transaction %s has %s adjudications. Cannot update')
+        count_table_rows(
+            'trans_writeoff',
+            'Transaction %s has %s writeoffs. Cannot update')
+
+    def ensure_no_distributions(self, record):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT *
+            FROM distribution
+            WHERE distribution_date IS NOT NULL AND trans_id=%s
+            """, (record['trans_id'],))
+        if cursor.rowcount:
+            self.audit.error(
+                record, 
+                "Transaction %s has distributed commissions" % (
+                record['trans_id'],))
+
+class ErrorReporter(object):
+    def __init__(self):
+        self.errors = []
+        self.file_name = ''
+
+    def error(self, trans, msg):
+        msg = "%s %s:%s %s" % (self.file_name,
+                               trans['group_number'],
+                               trans['group_auth'],
+                               msg)
+        self.errors.append(msg)
+        log.error(msg)
+
+if __name__ == '__main__':
+    Program().run()
+

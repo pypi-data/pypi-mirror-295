@@ -1,0 +1,89 @@
+<%!
+import cpsar.controls as C
+import humanize
+
+show_notifications = False
+%>
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+  <title>Manual Entry</title>
+  <link type='text/css' rel='stylesheet'
+        href='/css/form.css'  />
+  <link rel='stylesheet' type='text/css' href='/css/state_reporting.css' />
+</%block>
+<%def name="scripts()">
+    <script src='/js/jquery.jgrowl.js'></script>
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/jquery.numeric.js'></script>
+    <script src='/repo/js/kcontrol/currency_control.js'></script>
+    <script src='/js/common.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          $("INPUT.save").click(function() {
+            $("FORM.update").submit();
+          }
+        });
+    </script>
+</%def>
+<%block name="header">
+   <a href="/state_reporting">State Reporting</a> &rarr; Files
+</%block>
+
+<form action="/sr_manual/files" method="get">
+  <table class="form">
+  <tr>
+    <th>Filter</th>
+    <td class="entry-caption">Trans #</td>
+    <td class="entry-value">${C.TextBox('trans_id', value=trans_id)}</td>
+    <td class="entry-caption">Reversal #</td>
+    <td class="entry-value">${C.TextBox('reversal_id', value=reversal_id)}</td>
+    <td class="entry-caption"><input type="submit" value="Lookup" /></td>
+  </tr>
+  </table>
+</form>
+
+${self.notifications()}
+<table class='grid'>
+<thead>
+  <tr>
+    <th>File Name</th>
+    <th>File ID</th>
+    <th>Status</th>
+    <th>Send Time</th>
+    <th>Bill Count</th>
+    <th>Entry Count</th>
+    <th>Note</th>
+  </tr>
+</thead>
+<tbody>
+  % for f in files:
+  <tr>
+    <td><a href='/sr_manual/report_file?sr_file_id=${f["sr_file_id"]}'>${f['file_name']}</a></td>
+    <td>${f['sr_file_id']}</td>
+    <td>${f['status_flag']}</td>
+    <td>
+      % if f['send_time']:
+        ${f['send_time'].strftime("%a %m/%d/%Y %I:%M:%S %p")}
+      % endif
+    </td>
+    <td>${f['bill_count']}</td>
+    <td>${f['entry_count']}</td>
+    <td>${f['note']}</td>
+  </tr>
+  % endfor
+</table>
+<br />
+<div>
+  % if page != 1:
+  <a href='/sr_manual/files?trans_id=${trans_id}&reversal_id=${reversal_id}&page=${page-1}'>&larr; Previous
+  </a>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  % endif
+  <a href='/sr_manual/files?trans_id=${trans_id}&reversal_id=${reversal_id}&page=${page+1}'>Next &rarr;</a>
+
+</div>
+

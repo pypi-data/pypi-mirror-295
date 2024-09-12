@@ -1,0 +1,47 @@
+#!python
+from builtins import map
+import csv
+import re
+import sys
+
+import stypes as st
+
+import cpsar.runtime as R
+import cpsar.shell
+
+class Program(cpsar.shell.MJosephProgram):
+    def main(self):
+        for arg in self.args:
+            rebates = rebates_from_file(arg)
+            print_report(rebates)
+
+
+def rebates_from_file(fpath):
+    spec = rebate_file_layout()
+    rebate_date = rebate_date_from_fpath(fpath)
+    with open(fpath) as fd:
+        for rec in map(spec.unpack, fd):
+            yield rec + (rebate_date,)
+
+
+def print_report(rebates):
+    cursor = R.db.mako_cursor("ar/mj-rebate-report.sql")
+    cursor.execute_template(rebates=rebates)
+    writer = csv.writer(sys.stdout)
+    writer.writerow([c[0] for c in cursor.description])
+    list(map(writer.writerow, cursor))
+
+def rebate_file_layout():
+    return st.Tuple([
+        st.String(8),
+        st.Integer(7),
+        st.Numeric('99V99')])
+
+def rebate_date_from_fpath(fpath):
+    matches = re.findall('(\d{8})\.txt$', fpath)
+    if not matches:
+        raise ValueError('invalid file name %s' % fpath)
+    return matches[0]
+
+if __name__ == '__main__':
+    Program().run()

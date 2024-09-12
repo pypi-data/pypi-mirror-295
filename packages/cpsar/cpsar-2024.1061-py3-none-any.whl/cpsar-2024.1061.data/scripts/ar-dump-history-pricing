@@ -1,0 +1,149 @@
+#!python
+""" dump out a file of all the pricing information for EHO to load into
+the history file.
+"""
+from __future__ import print_function
+import cpsar.runtime as R
+from cpsar import pricing
+from cpsar import shell
+import stypes
+
+class MyProgram(shell.Command):
+    def do_history_sponsor_cost(self):
+        """ print out sponsor cost allowed and sponsor dispense fee for all
+        history records that do not have a tranasction. We cannot include those
+        without state fee schedules as that is used to do adjudications.
+        """
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            select history.dispense_fee, history.processing_fee, history.cost_allowed,
+                   history.group_number, history.group_auth,
+                   pharmacy.nabp, drug.brand, history.state_fee,
+                   history.sales_tax, history.eho_network_copay,
+                   history.compound_code, history.awp
+            from history
+            join drug using(drug_id)
+            join pharmacy using(pharmacy_id)
+            left join trans using(history_id)
+            where trans.trans_id is null and history.state_fee != 0
+            order by history.group_number, history.group_auth
+            """)
+        list(map(print_history, cursor))
+
+    def do_hy(self, args):
+        """ Break into a debugger with a price History object for the given
+        group number and claim reference number. """
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            select history.dispense_fee, history.processing_fee, history.cost_allowed,
+                   history.group_number, history.group_auth,
+                   pharmacy.nabp, drug.brand, history.state_fee,
+                   history.sales_tax, history.eho_network_copay,
+                   history.compound_code, history.awp
+            from history
+            join drug using(drug_id)
+            join pharmacy using(pharmacy_id)
+            where history.group_number = %s and history.group_auth = %s
+            """, tuple(args.split()))
+        if not cursor.rowcount:
+            sys.stderr.write("could not find %s\b" % args)
+            return
+        dbrec = cursor.fetchone()
+        hist = pricing.History.for_record(dbrec)
+        from IPython.core.debugger import Pdb
+        Pdb().set_trace()
+
+    def do_whistory(self, args):
+        """ Look at what we have in the history sponsor cost and dispense fee. 
+        Reprice the drug and see if they are stored accurately.
+
+        We also check the trans table to see if we have already billed this and
+        we ignore those. Maybe we shouldn't.
+        """
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            with e as (
+                select trans_id, amount from distribution
+                where distribution_account = 'eho'
+            ), t as (
+                select trans.group_number, 
+                       trans.group_auth,
+                       trans.trans_id,
+                       trans.history_id,
+                       trans.total - trans.dispense_fee - coalesce(e.amount, 0) as sponsor_cost_allowed,
+                       trans.dispense_fee as sponsor_dispense_fee
+                from trans
+                left join e using(trans_id)
+            )
+
+            SELECT
+                history.history_id,
+                history.group_number, 
+                history.group_auth,
+                history.cost_allowed, 
+                history.dispense_fee,
+                history.processing_fee,
+                history.sales_tax, 
+                history.eho_network_copay,
+                drug.brand,
+                history.compound_code, 
+                history.awp, 
+                history.state_fee, 
+                pharmacy.nabp,
+                history.sponsor_cost_allowed,
+                history.sponsor_dispense_fee
+            from history
+            JOIN drug using(drug_id)
+            JOIN client USING(group_number)
+            JOIN pharmacy using(pharmacy_id)
+            left join t using(history_id)
+            WHERE history.sponsor_cost_allowed is not null
+              and history.date_processed > '20150801'
+              and history.date_processed < '20150923'
+              and (
+                t.history_id is null or
+                history.sponsor_cost_allowed != t.sponsor_cost_allowed or
+                history.sponsor_dispense_fee != t.sponsor_dispense_fee
+                )
+            order by history.date_processed DESC
+        """)
+        fmt = stypes.List([8, stypes.Integer(7), stypes.Numeric('9(6)V99'), stypes.Numeric('9(6)V99')])
+        for rec in cursor:
+            tx = pricing.Transaction.for_record(rec)
+            hy = pricing.History(tx)
+            orec = [rec['group_number'], rec['group_auth'], hy.cost_allowed, hy.dispense_fee]
+            if hy.cost_allowed != rec['sponsor_cost_allowed']:
+                print(fmt.pack(orec)) # + ['Cost allowed != %(sponsor_cost_allowed)s' % rec])
+            elif hy.dispense_fee != rec['sponsor_dispense_fee']:
+                print(fmt.pack(orec)) # + ['Dispense Fee != %(sponsor_dispense_fee)s' % rec])
+
+def print_history(rec):
+    hist = pricing.History.for_record(rec)
+    print("{: <8s}{:07d}{:0>8.2f}{:0>8.2f}".format(
+        rec['group_number'],
+        rec['group_auth'],
+        hist.cost_allowed,
+        hist.dispense_fee))
+
+def print_trans_records():
+    cursor = R.db.cursor()
+    cursor.execute("""
+        with e as (
+            select trans_id, amount from distribution
+            where distribution_account = 'eho'
+        )
+        select trans.group_number, 
+               trans.group_auth,
+               trans.total - trans.dispense_fee - coalesce(e.amount, 0),
+               trans.dispense_fee
+        from trans
+        join history using(history_id)
+        left join e using(trans_id)
+        where history.sponsor_dispense_fee != trans.dispense_fee
+           or history.sponsor_cost_allowed != trans.total - trans.dispense_fee - coalesce(e.amount, 0)
+        order by group_number, group_auth
+        """)
+    for r in cursor:
+        print("{: <8s}{:07d}{:0>8.2f}{:0>8.2f}".format(*r))
+
+if __name__ == '__main__': MyProgram().run()

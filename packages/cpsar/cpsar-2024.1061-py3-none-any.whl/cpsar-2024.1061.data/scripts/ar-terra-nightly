@@ -1,0 +1,183 @@
+#!/bin/bash
+if [ $0 != "-bash" ]; then
+    SCRIPT=$( basename $0 )
+fi
+main() {
+    cd /usr/local/srv/bd3
+    . bin/activate
+    umask 0002
+
+    # Log what runs and when it runs
+    if [[ -z "${DEBUG}" ]]; then
+        PS4="\d \t $SCRIPT  "
+        set -x
+    fi
+
+    # Turn off the feeders while we load
+    supervisorctl stop feed-bd:* >/dev/null
+
+    # Load EHO text files into PostgreSQL
+    load-eho-files
+
+    # Dump HBS patients from MSSQL and load into PostgreSQL
+    load-hbs-records
+
+    # Create daily trans file
+    ar-batch-daily-trans
+
+    # Create trans and invoice records for BD
+    create-invoice-records
+
+    # Create M. Joseph trans records
+    PRIVATELABEL=mjoseph pl-sync-trans batch \
+        /server/export/bd/ready/mj-transactions.* \
+        /server/export/bd/ready/mj2-transactions.*
+
+    # sunrise transactions
+    PRIVATELABEL=sunrise pl-sync-trans batch \
+        /server/export/bd/ready/sr-transactions.*
+
+    # msq transactions
+    PRIVATELABEL=msq pl-sync-trans batch \
+        /server/export/bd/ready/ms-transactions.*
+    if [ $? -eq "0" ]; then
+        # special MSQ invoice email
+        ar-msq-inv-email
+
+        # Send off any MSQ payable files to them
+        PRIVATELABEL=msq ar-msq-process-payable \
+            /server/export/bd/ready/msqs_payable_*.csv
+
+        # Send off nightly MSQ trans file
+        PRIVATELABEL=msq ar-msq-trans
+    fi
+
+    # Archive older msq trans files
+    zip -mqj /server/msq/msq-trans.zip /server/msq/msq-trans-*.csv
+
+    # Archive remittance files that we are currently not doing anything with
+    python -m cpsar.fwimport /server/export/bd/ready/*remittance*.csv
+
+    # Archive Private Label transaction data
+    pl-arc-eho-inv
+
+    # Apply reversals, distribute settlements, etc.
+    create-accounting-records
+
+    # Create Material Views used for Accounting reports in A/R
+    create-reporting-data
+
+    supervisorctl start feed-bd:* >/dev/null
+}
+
+load-eho-files() {
+    ar-sync-client
+    ar-sync-drug
+    ar-sync-patient
+    ar-sync-patient-plus
+    ar-sync-patient-drug-list
+    ar-sync-pharmacy
+    ar-sync-pharmacist
+    ar-sync-employer
+    ar-sync-claim
+    ar-sync-formulary
+    ar-sync-doi-formulary
+    ar-sync-history
+    ar-sync-history-ingredient
+    ar-sync-bill
+    ar-sync-card-print-log
+    ar-sync-eho-invoice-data
+    ar-copy-eho-invoice-data
+    ar-sync-doctor-claim load /server/export/bd/files/doctor-claim.txt
+    ar-sync-reversal
+    PRIVATELABEL=mjoseph ar-sync-reversal
+    PRIVATELABEL=sunrise ar-sync-reversal
+    ar-sync-heldback
+
+    # Load in the interaction checking files
+    #ar-sync-ddi /import/bd/files/CC2DDI 
+    #ar-sync-dndc /import/bd/files/CC2DNDC 
+    #ar-sync-dpc /import/bd/files/CC2DPC 
+    #ar-sync-history-addon
+
+    run-sql bd/update_history_tx_type.sql
+    run-sql ar/populate_history_doctor_npi.sql
+
+    # Update the chain pharmacies
+    run-sql ar/update_nabp_tt_prefix.sql
+
+    # Update the history distributions
+    run-sql ar/ar-sync-history-distribution.sql
+
+    ar-load-deleted-patient
+}
+
+load-hbs-records() {
+    hbs-dump-patient > /server/corporate/files/gh-patient.txt 2> /dev/null
+    ar-sync-patient -f /server/corporate/files/gh-patient.txt
+}
+
+create-invoice-records() {
+    # Create transactions from EHO
+    ar-sync-trans batch
+
+    # create markup distribution records
+    ar-apply-markup-commission
+
+    # Create transactions from Daily Billing
+    run-sql ar/populate_trans_ids_fks.sql
+    # Create the actual invoice records
+    run-sql ar/create_invoice_records.sql
+}
+
+create-accounting-records() {
+    # Automatically applying reversal balances to unpaid transactions balances
+    ar-auto-apply-reversals
+    ar-auto-apply-rebate-credits
+
+    PRIVATELABEL=mjoseph pl-auto-apply-reversals
+    PRIVATELABEL=sunrise pl-auto-apply-reversals
+
+    # Do settlements and reconciliation
+    ar-distribute-settlements
+    ar-reconcile-distribution
+}
+
+create-reporting-data() {
+    # Generate Profit Tables
+    run-sql bd/profit/create_processing_fee_item.sql
+    run-sql bd/profit/create_partner_revenue_detail.sql
+
+    # Generate RX Intel Report Tables
+    run-sql bd/create_high_dosage_rx.sql
+    run-sql bd/create_first_rejection_of_month.sql
+}
+
+perform-db-maintenace() {
+    # turn off streaming while the nightly jobs process
+    # ssh postgres@pg1 "touch /var/lib/postgresql/9.1/main/halt_streaming"
+    # Archive old group health history and transaction files
+    ar-arc-group-health
+    ar-clean-feed-tables
+    # Ensure consistency of data
+    ar-audit-drug 
+    ar-audit-pharmacy 
+    ar-audit-trans 
+    ar-audit-invoice 
+}
+
+run-sql() {
+    (
+    sql_dir=$(ar-config-get sql_dir)
+    dbname=$(ar-config-get dbname)
+    dbhost=$(ar-config-get dbhost)
+    cd "$sql_dir"
+    psql -h "$dbhost" "$dbname" -f "$1" > /dev/null
+    )
+}
+
+# If sh is passed in, only evaluate all of these functions so they can be
+# used interactively
+if [ "$1" != "sh" ]; then
+    main
+fi

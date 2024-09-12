@@ -1,0 +1,72 @@
+#!python
+""" Loads the EHO bd-patient.txt file into the blue diamond patient table.
+"""
+import logging; log=logging.getLogger('')
+import cpsar.runtime as R
+
+from cpsar.fwimport import path_for_resource, create_fw_table
+from cpsar.shell import Program
+
+class MyProgram(Program):
+    def setup_options(self):
+        self.add_option('-f', '--file', default=None, help='File to Load')
+        super(MyProgram, self).setup_options()
+
+    def main(self):
+        fd = open(self._input_file_path, 'rb')
+        cursor = R.db.cursor()
+        cursor.execute("set temp_buffers = '400MB'")
+        create_fw_table('patient_load', file_layout(), fd)
+        cursor.execute("""
+            ALTER TABLE patient_load ADD COLUMN error_msg TEXT;
+            ALTER TABLE patient_load ADD COLUMN patient_id bigint;
+            """)
+
+        cursor.execute_file("ar/process_patient_load.sql")
+        cursor.execute("""
+            SELECT group_number, ssn, dob, first_name, last_name, error_msg
+            FROM patient_load
+            WHERE error_msg IS NOT NULL
+            """)
+        for r in cursor:
+            m = "Could not load patient record: " + repr(r)
+            log.warning(m)
+        cursor.execute("DROP TABLE patient_load")
+        R.db.commit()
+
+    @property
+    def _input_file_path(self):
+        if self.opts.file:
+            return self.opts.file
+        else:
+            return path_for_resource('bd-patient')
+
+def file_layout():
+    return [
+        ('first_name',    12),
+        ('last_name',     15),
+        ('ssn',           11),
+        ('dob',            8),
+        ('group_number',   8),
+        ('division_code', 15),
+        ('status',         1),
+        ('tin',           15),
+        ('address_1',     30),
+        ('address_2',     30),
+        ('city',          15),
+        ('state',          2),
+        ('zip_code',      10),
+        ('phone',         12),
+        ('sex',            1),
+        ('jurisdiction',   2),
+        ('effective_date', 6),
+        ('expiration_date', 6),
+        ('uses_group_formulary', 1),
+        ('phcy_message_sw', 1),
+        ('print_card', 1),
+        ('add_date', 6),
+        ('source', 1),
+        ('allow_n_drug', 1)
+    ]
+
+if __name__ == '__main__': MyProgram().run()

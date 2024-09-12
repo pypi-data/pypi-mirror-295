@@ -1,0 +1,713 @@
+#!python
+""" The program is the kick off process to creating transaction records in the
+blue diamond system. The source of these transactions are plain text files
+which are provided by EHO. Normally, this program runs with the batch command,
+where it will scan a ready directory for new transaction files to process them.
+
+Responsibilities:
+ - Create trans table entries for each record in new bd-transactions files
+ - Email administrators when a transaction cannot be inserted
+ - Link foreign key references on new trans files to existing records in
+   the system. (drug, patient, group, pharmacy, history)
+ - Calculate the transaction's transaction type
+ - Calculate the transaction's processing fee
+ - Calculate the transaction's dispensing fee (based on spread model)
+ - Calculate the invoice number and line number of the transactions
+ - Calculate the transaction's cost allowed (based on spread model)
+ - Create distribution records for the transaction
+"""
+from __future__ import division
+from __future__ import print_function
+from past.utils import old_div
+import datetime
+from six import StringIO
+import os
+import pprint
+import re
+import sys
+
+from decimal import Decimal, InvalidOperation
+
+import cpsar.fwimport as FW
+import cpsar.keys as K
+import cpsar.runtime as R
+import cpsar.shell
+import cpsar.txlib
+import cpsar.txtype as TT
+import cpsar.util as U
+
+from cpsar.config import import_dir
+from cpsar import edi
+
+class Program(cpsar.shell.Command):
+
+    def do_batch(self, args):
+        """ Load any transaction files that have been put out in the data load
+        directory that haven't been processed
+        """
+        self.do_clear_active_batches('')
+        for fpath in eho_batch_list():
+            self.do_load(fpath)
+            error.reset()
+
+    def do_clear_active_batches(self, _):
+        cursor = R.db.cursor()
+        cursor.execute("update batch_file set active=false where active=true")
+        R.db.commit()
+
+    def do_load(self, fpath):
+        """ Load the given transaction file into blue diamond """
+        if "/" not in fpath:
+            fpath = os.path.join(import_dir(), "ready", fpath)
+        
+        R.log.info("PARSE %s", fpath)
+        batch_file = BatchFile.for_path(fpath)
+        if not batch_file.batch_date:
+            R.log.warn("Skipping file with invalid file name %r", fpath)
+            return
+        if batch_file.has_been_imported():
+            R.log.warn("Skipping already loaded file %r", fpath)
+            return
+
+        batch_file.insert()
+        loader = TransProcessor()
+        loader(batch_file)
+
+        if error.errors:
+            R.log.error("Not commiting. Errors detected")
+            return
+        if not self.opts.dry_run:
+            R.log.debug('Committing database changes')
+            R.db.commit()
+            batch_file.archive()
+
+    def do_recalc(self, fpath):
+        """ Recalculate the sponsor cost allowed and sponsor dispense fee for
+        the given transaction file, comparing the results to the values in 
+        the trans file.
+
+        This is a debug testing tool
+        """
+        cursor = R.db.cursor()
+        for record in TransParser(fpath):
+            cursor.execute("""
+                select drug.brand from
+                drug
+                where ndc_number=%s
+                """, (record['drug_ndc_number'],))
+            if not cursor.rowcount:
+                print('%(group_number)s:%(group_auth)s NDC %(drug_ndc_number)s not on file' % record)
+                continue
+
+            brand = cursor.fetchone()[0]
+
+            pricing = R.pricing_module(record['group_number'])
+            tx = pricing.Transaction.for_record({
+                'group_number': record['group_number'],
+                'cost_allowed': record['cost_allowed'],
+                'dispense_fee': record['dispense_fee'],
+                'sales_tax': record['sales_tax'],
+                'eho_network_copay': record['eho_network_copay'],
+                'awp': record['awp'],
+                'state_fee': record['state_fee'],
+                'processing_fee': record['processing_fee'],
+                'nabp':  record['pharmacy_nabp'],
+                'compound_code': record['compound_code'],
+                'brand': brand,
+                'ndc': record['drug_ndc_number']
+            })
+
+            hist = pricing.History(tx)
+            print('%s%07d' % (record['group_number'].ljust(8), int(record['group_auth'])), end=' ')
+            print('SFS: %s' % record['state_fee'], end=' ')
+            print(hist.cost_allowed == record['sponsor_cost_allowed'] and hist.dispense_fee == record['sponsor_dispense_fee'], end=' ')
+            print(hist.cost_allowed, record['sponsor_cost_allowed'], end=' ') 
+            print(hist.dispense_fee, record['sponsor_dispense_fee'])
+
+
+def eho_batch_list():
+    """ Returns the set of transaction files available to be loaded. """
+    g = FW.paths_for_glob
+    return sorted(g("ready/bd-transactions.*", "ready/bd-daily-trans.*"))
+
+class BatchFile(object):
+    batch_date_regex = re.compile("bd-transactions.(\d{8})")
+    id = None
+    is_daily = False
+
+    @classmethod
+    def for_path(cls, fpath):
+        fname = os.path.basename(fpath)
+        if BatchFile.batch_date_regex.match(fname):
+            return BatchFile(fpath)
+        elif DailyBatchFile.batch_date_regex.match(fname):
+            return DailyBatchFile(fpath)
+        else:
+            raise ValueError('Cannot find class for file name %r' % fname)
+
+    def __init__(self, fpath):
+        self.fpath = fpath
+        self.fname = os.path.basename(fpath)
+        mat = self.batch_date_regex.match(self.fname)
+        if not mat:
+            self.batch_date = None
+        else:
+            self.batch_date = mat.groups()[0]
+
+    def has_been_imported(self):
+        if not self.batch_date:
+            return False
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT * FROM batch_file WHERE file_name=%s
+            """, (self.fname,))
+        if cursor.rowcount:
+            return True
+        else:
+            return False
+
+    def insert(self):
+        cursor = R.db.cursor()
+        args = dict(
+            batch_date=self.batch_date,
+            file_name=self.fname,
+            active=True,
+            username=R.username())
+        cursor.execute(U.insert_sql("batch_file", args, ['batch_file_id']))
+        self.id = cursor.fetchone()[0]
+        R.log.info("INSERT batch_file %s: %s", self.fname, self.id)
+
+    def populate_trans_values(self, record):
+        record['batch_date'] = self.batch_date
+        record['create_date'] = self.batch_date
+        record['batch_file_id'] = self.id
+
+    def archive(self):
+        try:
+            FW.archive(self.fpath)
+        except ValueError as e:
+            R.log.warn(e)
+            return
+
+
+class DailyBatchFile(BatchFile):
+    batch_date_regex = re.compile("bd-daily-trans.(\d{8})")
+    is_daily = True 
+
+class TransProcessor(object):
+    def __init__(self):
+        self.insert = TransInserter()
+
+    def __call__(self, batch_file):
+        error.file_name = batch_file.fpath
+        R.log.debug('Processing %s', batch_file.fpath)
+
+        for record in TransParser(batch_file.fpath):
+            if not batch_file.is_daily and daily_only(record['group_number']):
+                R.log.info('SKIP %(group_number)s:%(group_auth)s' % record)
+                continue
+            batch_file.populate_trans_values(record)
+            self._insert_trans(record)
+
+        self._record_adjuster_notification_log(batch_file)
+        edi.insert_all(batch_file.id)
+        self._record_auto_apply_rebate_credits(batch_file.batch_date)
+
+    def _insert_trans(self, record):
+        try:
+            self.insert(record)
+        except:
+            pprint.pprint(record, stream=sys.stderr)
+            raise
+
+    def _record_adjuster_notification_log(self, batch_file):
+        cursor = R.db.cursor()
+        args = {'batch_file_id': batch_file.id}
+        cursor.execute(U.insert_sql("adjuster_inv_email_log", args))
+
+    def _record_auto_apply_rebate_credits(self, batch_date):
+        cursor = R.db.cursor()
+        cursor.execute(U.insert_sql("auto_apply_rebate_credit", {'batch_date': batch_date}))
+
+def daily_only(group_number):
+    return group_number in ('70020', '70017')
+
+class TransParser(object):
+    """ Provides EHO transaction records as dictionaries by an iterator
+    interface
+    """
+    fw_fields = [
+        ('group_number',   8),
+        ('group_auth',     7),
+        ('patient_cardholder_nbr',   11),
+        ('patient_dob',    8),
+        ('doi', 6),
+        ('claim_number',  30),
+        ('policy_number', 10),
+        ('rx_date',        6),
+        ('pharmacy_nabp', 10),
+        ('rx_number',      7),
+        ('refill_number',  2),
+        ('doctor_dea_number', 9),
+        ('doctor_npi_number', 10),
+        ('date_written',   6),
+        ('daw',            1),
+        ('drug_ndc_number', 11),
+        ('quantity',       9),
+        ('days_supply',    3),
+        ('compound_code',  1),
+        ('cost_allowed',   9),
+        ('dispense_fee',   7),
+        ('sales_tax',      7),
+        ('eho_network_copay', 9),
+        ('processing_fee', 5),
+        ('cost_submitted', 9),
+        ('usual_customary', 9),
+        ('state_fee',       9),
+        ('awp',             9),
+        ('adjuster1_email', 50),
+        ('adjuster2_email', 50),
+        ('sponsor_cost_allowed', 9),
+        ('sponsor_dispense_fee', 7),
+        ('sponsor_processing_fee', 7),
+    ]
+
+    decimal_fields = [
+        'cost_allowed',
+        'dispense_fee',
+        'sales_tax',
+        'processing_fee',
+        'eho_network_copay',
+        'awp',
+        'usual_customary',
+        'state_fee',
+        'quantity',
+        'sponsor_cost_allowed',
+        'sponsor_dispense_fee',
+        'sponsor_processing_fee'
+    ]
+
+    int_fields = [
+        'group_auth'
+    ]
+
+    def __init__(self, fpath):
+        self.fpath = fpath
+        self.fd = open(self.fpath)
+
+    def __del__(self):
+        try:
+            self.fd.close()
+        except (IOError, OSError):
+            pass
+
+    def parse_header(self):
+        """ Parse the header off the trans file to determine the layout. """
+        version_line = self.fd.readline().rstrip()
+        expected = 'Blue Diamond Transactions - Version # 010' 
+        if version_line != expected:
+            error('Expected %r got %r for first line', expected, version_line)
+            return
+        return True
+
+    def __iter__(self):
+        """ Provide a generator to iterate through all of the records in the
+        file.
+        """
+        if not self.parse_header():
+            return
+        for line in self.fd:
+            rec = self.read_fw(line)
+            if rec is None:
+                return
+            yield rec
+
+    def read_fw(self, data):
+        stream = StringIO(data)
+        stream.seek(0)
+        out = {}
+        for field, width in self.fw_fields:
+            s = stream.read(width)
+            s = s.rstrip()
+            out[field] = s
+
+        for d in self.decimal_fields:
+            if not out[d].strip():
+                out[d] = None
+            else:
+                try:
+                    out[d] = Decimal(out[d].strip())
+                except InvalidOperation:
+                    return error('Invalid decimal value %r for %s' % (out[d], d))
+        for d in self.int_fields:
+            try:
+                out[d] = int(out[d].strip())
+            except ValueError:
+                return error('Invalid int value %r for %s' % (out[d], d))
+        # sp-process-blue used to give us all zeros for the ndc number on
+        # compounds but that changed when we started using sponsor cost
+        if not out['drug_ndc_number']:
+            out['drug_ndc_number'] = '0'*11
+        return out
+
+class TransInserter(object):
+    """ Handlers inserting the dictionary transaction records from the
+    trans parser into the actual trans table. Also calculates all of the
+    necessary computed fields for the transaction record. Also
+    creates the distribution records for the transactions. Breaking the
+    SRP a bit.
+    """
+    def __init__(self):
+        self.hist = K.HistoryLookup()
+        self.trans = K.TransLookup()
+        self.pat = K.PatientLookup()
+        self.drug = K.DrugLookup()
+        self.pharm = K.PharmacyLookup()
+        self.doc = K.DoctorLookup()
+        self.pf = cpsar.txlib.PFCalculator()
+
+    def __call__(self, record):
+        """ Insert the transaction into the database, populating all of the
+        required fields along the way.
+        """
+        error.trans = record
+        if record['doi'] == '' or re.match('^0+$', record['doi']):
+            record['doi'] = None
+
+        trans_key = (record['group_number'], int(record['group_auth']))
+
+        # Ensure this transaction hasn't already been billed
+        if self.trans.get(trans_key):
+            R.log.warn("TX %s:%s has already been billed" % trans_key)
+            return
+
+        # Verify valid group number
+        if not valid_group_number(record['group_number']):
+            return error("Invalid Group # %s", record['group_number'])
+
+        # Lookup Foreign Keys
+        history_id = self.hist.get(trans_key)
+        if not history_id:
+            return error("No history record on file for %s" % [trans_key])
+
+        patient_id = self.pat.get((
+                        record['group_number'], 
+                        record['patient_dob'], 
+                        record['patient_cardholder_nbr']))
+        if not patient_id:
+            return error("INVALID PATIENT KEY %s:%s:%s",
+                record['group_number'], record['patient_dob'],
+                record['patient_cardholder_nbr'])
+
+        drug_id = self.drug.get(record['drug_ndc_number'])
+        if not drug_id:
+            return error("INVALID DRUG KEY %r", record['drug_ndc_number'])
+
+        pharmacy_id = self.pharm.get(record['pharmacy_nabp'])
+        if not pharmacy_id:
+            return error("INVALID PHARMACY KEY %r", record['pharmacy_nabp'])
+
+        # A valid doctor isn't required. NULL's allowed.
+        doctor_id = self.doc.get(record['doctor_dea_number'])
+        if not doctor_id:
+            doctor_id = self.doc.get(record['doctor_npi_number'])
+
+        record.update({
+            'patient_id': patient_id,
+            'drug_id': drug_id,
+            'pharmacy_id': pharmacy_id,
+            'doctor_id': doctor_id,
+            'history_id': history_id
+        })
+
+        cursor = R.db.cursor()
+        cursor.execute("select brand from drug where drug_id=%s", (drug_id,))
+        assert cursor.rowcount
+        brand = cursor.fetchone()[0]
+
+        # Set Transaction Type
+        record['tx_type'] = TT.get_tx_type(record)
+
+        # EHO must give the sponsor costs. We now trust them completely.
+        if record['sponsor_cost_allowed'] is None:
+            return error("MISSING SPONSOR COST ALLOWED")
+        if record['sponsor_dispense_fee'] is None:
+            return error("MISSING SPONSOR DISPENSE FEE")
+
+        # Recalculate Cost using the pricing module to see if their are any
+        # discrepencies
+        pbm_record = {
+            'group_number': record['group_number'],
+            'cost_allowed': record['cost_allowed'],
+            'dispense_fee': record['dispense_fee'],
+            'sales_tax': record['sales_tax'],
+            'eho_network_copay': record['eho_network_copay'],
+            'awp': record['awp'],
+            'state_fee': record['state_fee'],
+            'processing_fee': record['processing_fee'],
+            'nabp':  record['pharmacy_nabp'],
+            'compound_code': record['compound_code'],
+            'brand': brand,
+            'ndc': record['drug_ndc_number']
+        }
+        pricing = R.pricing_module(record['group_number'])
+        tx = pricing.Transaction.for_record(pbm_record)
+
+        eho_sponsor_total = (
+              record['sponsor_cost_allowed']
+            + record['sponsor_dispense_fee']
+            + record['sponsor_processing_fee']
+            + record['sales_tax']
+            - record['eho_network_copay'])
+        adjustments = pricing.cps_timely_adjustments(tx,
+            record['sponsor_cost_allowed'],
+            record['sponsor_dispense_fee'],
+            record['sponsor_processing_fee'])
+
+        if adjustments.total:
+            R.log.info("Applying adjustments to tx totaling %s", adjustments.total)
+
+        record['cost_allowed'] = record['sponsor_cost_allowed']
+        record['dispense_fee'] = record['sponsor_dispense_fee']
+        record['processing_fee'] = record['sponsor_processing_fee'] + adjustments.total
+        record['total'] = eho_sponsor_total + adjustments.total
+        record['balance'] = record['total']
+
+        # Populate the savings, based off the client savings formula
+        cursor.execute("SELECT savings_formula FROM client WHERE group_number=%s",
+            (record['group_number'],))
+        savings_formula, = cursor.fetchone()
+
+        if savings_formula == 'AWP':
+            record['savings'] = record['awp'] - record['total']
+        elif savings_formula == 'UC' and record['usual_customary']:
+            record['savings'] = record['usual_customary'] - record['total']
+        else:
+            record['savings'] = record['state_fee'] - record['total']
+
+        cursor.execute(U.insert_sql('trans', record, ['trans_id']))
+        trans_id, = cursor.fetchone()
+
+        R.log.info('INSERT trans %s: %s:%s, %s total: %s',
+                    trans_id,
+                    record['group_number'],
+                    record['group_auth'],
+                    trans_id,
+                    record['total'])
+        R.log.debug("trans %s: cost=%s fee=%s processing=%s tax=%s copay=%s",
+            trans_id,
+            record["cost_allowed"],
+            record["dispense_fee"],
+            record["processing_fee"],
+            record["sales_tax"],
+            record["eho_network_copay"])
+
+        # Create Distribution Records
+        for rec in tx.distributions + adjustments:
+            account, amount = rec[:2]
+            insert_distribution(trans_id, account, amount)
+
+        if record['compound_code'] == '2':
+            self._update_ingredient_costs(trans_id, record['total'])
+        error.trans = None
+
+    def _update_ingredient_costs(self, trans_id, trans_total):
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            SELECT history_ingredient.ingredient_id, history_ingredient.awp
+            FROM history_ingredient
+            JOIN trans ON trans.history_id = history_ingredient.history_id
+            WHERE trans.trans_id=%s
+            ORDER BY ingredient_nbr""", (trans_id,))
+        if not cursor.rowcount:
+            return
+
+        ingredients = list(map(dict, cursor))
+        sum_awp = sum(i['awp'] for i in ingredients)
+        for ingredient in ingredients:
+            ratio = old_div(ingredient['awp'], sum_awp)
+            ingredient['cost'] = U.count_money(trans_total * ratio)
+
+        # calulate fudge factor for rounding
+        adjustment = trans_total - sum(i['cost'] for i in ingredients)
+        ingredients[0]['cost'] += adjustment
+        for ingredient in ingredients:
+            cursor.execute("""
+                update history_ingredient set cost=%s
+                where ingredient_id=%s""",
+            (ingredient['cost'], ingredient['ingredient_id']))
+
+def valid_group_number(gn, _lookup={}):
+    """ Is the given group number in the database? """
+    if not _lookup:
+        cursor = R.db.cursor()
+        cursor.execute("SELECT group_number, TRUE FROM client")
+        _lookup.update(cursor)
+    return gn in _lookup
+
+def insert_distribution(trans_id, account, amount):
+    cursor = R.db.cursor()
+    cursor.execute("""
+        INSERT INTO distribution
+            (trans_id, distribution_account, amount)
+        VALUES (%s, %s, %s)
+        RETURNING distribution_id""",
+        (trans_id, account, amount))
+    distribution_id, = cursor.fetchone()
+    R.log.info('INSERT distribution %s: %s %s', distribution_id, account,
+               amount)
+    return distribution_id
+
+###############################################################################
+## Setting the Dispense Fee of a transaction
+def set_dispense_fee(trans):
+    """ Calculate the dispensing fee billed to the sponsor from the dispense
+    fee paid to the EHO.
+    """
+    override = _dispense_fee_override(trans['group_number'],
+                                      trans['tx_type'])
+
+    if override:
+        trans['dispense_fee'] = U.count_money(override)
+
+@U.memoize
+def _dispense_fee_override(group_number, tx_type):
+    lup = {}
+    cursor = R.db.cursor()
+    cursor.execute("""
+        SELECT amount
+        FROM client_dispense_fee_rule
+        WHERE group_number=%s
+          AND tx_type=%s
+    """, (group_number, tx_type))
+    if not cursor.rowcount:
+        return None
+    return cursor.fetchone()[0]
+
+###############################################################################
+## Setting the Cost Allowed of a transaction
+def set_cost_allowed(record):
+    """ Calculate the cost allowed that is to be billed to the sponsor. We
+    sometime use the cost allowed given by EHO or sometimes calculate it based
+    on AWP. We implement the logic using a table of procedures based on the rule
+    type.
+    """
+    key = (record['group_number'], record['tx_type'])
+    lookup = _cost_allowed_calc_map()
+    if key not in lookup:
+        return
+    set_cost_proc = lookup[key]
+    set_cost_proc(record)
+
+@U.memoize
+def _cost_allowed_calc_map():
+    calc_cost_allowed_proc_map = {
+        'AP': _calc_awp_cost_allowed,
+        'CF': _calc_factor_of_cost_allowed,
+        'GB': _calc_gb_cost_allowed,
+        'GG': _calc_gg_cost_allowed
+    }
+
+    cursor = R.db.cursor()
+    cursor.execute("""
+       SELECT group_number, tx_type, rule_type, amount
+       FROM client_bill_rule
+       ORDER BY group_number, tx_type""")
+
+    lookup = {}
+    for group_number, tx_type, rule_type, amount in cursor:
+        if rule_type not in calc_cost_allowed_proc_map:
+            continue
+        calc_cost_factory = calc_cost_allowed_proc_map[rule_type]
+        key = (group_number, tx_type)
+        lookup[key] = calc_cost_factory(amount)
+        R.log.debug("Registered cost allowed rule for group: %s, tx: %s - %s",
+            group_number, tx_type, calc_cost_factory)
+    return lookup
+
+def _calc_factor_of_cost_allowed(factor):
+    """ The cost allowed is calculated as a markup of EHO's cost
+    allowed.
+    """
+    def calc(record):
+        record['cost_allowed'] = factor * record['cost_allowed']
+    return calc
+
+def _calc_awp_cost_allowed(factor):
+    """ Calculate AWP PERCENT """
+    def calc(record):
+        awpm = record['awp']*factor
+        if awpm > record['cost_allowed']:
+            record['cost_allowed'] = U.count_money(awpm)
+    return calc
+
+def _calc_gb_cost_allowed(ignored):
+    """ GB - AWP-16% + 20% """
+    def calc(record):
+        awpm = (record['awp'] * Decimal(".84"))
+        awpm += awpm * Decimal(".20")
+        if awpm > record['cost_allowed']:
+            record['cost_allowed'] = U.count_money(awpm)
+    return calc
+
+def _calc_gg_cost_allowed(ignored):
+    """ GG - AWP-65% + 20% """
+    def calc(record):
+        awpm = (record['awp'] * Decimal(".35"))
+        awpm += awpm * Decimal(".20")
+        if awpm > record['cost_allowed']:
+            record['cost_allowed'] = U.count_money(awpm)
+    return calc
+
+@U.memoize
+def _groups_that_wont_pay_over_state_fee():
+    cursor = R.db.cursor()
+    cursor.execute("""
+        SELECT group_number
+        FROM client
+        WHERE force_under_state_fee=TRUE
+        """)
+    return [c[0] for c in cursor]
+
+###############################################################################
+## Setting the total of a transaction
+def set_total(record):
+    """ Set the total amount for the transaction """
+    record['total'] = (
+        record['cost_allowed'] +
+        record['dispense_fee'] +
+        record['sales_tax'] +
+        record['processing_fee'] -
+        record['eho_network_copay'] 
+    )
+
+    R.log.debug('Calculated total: cost:%(cost_allowed)s + df:%(dispense_fee)s '
+        '+ st:%(sales_tax)s + pf:%(processing_fee)s '
+        '- cp:%(eho_network_copay)s = %(total)s' % record)
+
+###############################################################################
+
+class ErrorReporter(object):
+    def __init__(self):
+        self.reset()
+
+    def __call__(self, msg, *a):
+        if a:
+            msg %= a
+        if self.file_name:
+            msg = f"{self.file_name} {msg}"
+        if self.trans:
+            t = self.trans
+            msg = f"{t['group_number']:>8}:{t['group_auth']} {msg}"
+        self.errors.append(msg)
+        R.log.error(msg)
+
+    def reset(self):
+        self.errors = []
+        self.file_name = None
+        self.trans = None
+
+error = ErrorReporter()
+
+if __name__ == '__main__':
+    Program().run()

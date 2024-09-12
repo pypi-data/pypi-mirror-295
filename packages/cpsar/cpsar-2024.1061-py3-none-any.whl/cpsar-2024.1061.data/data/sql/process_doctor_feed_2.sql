@@ -1,0 +1,69 @@
+/* Discard duplicate update/inserts for the same doctors */
+DELETE FROM doctor_feed WHERE doctor_feed_id NOT IN (
+  SELECT MAX(doctor_feed_id) AS doctor_feed_id
+  FROM doctor_feed
+  GROUP BY doctor_id);
+
+INSERT INTO cobol.doctor (
+    doctor_id,
+    modify_datetime,
+    name,
+    status,
+    bac,
+    bac_description,
+    drug_schedule,
+    expiration_date,
+    address_1,
+    address_2,
+    address_3,
+    city,
+    state,
+    zip_code,
+    phone,
+    specialty,
+    med_school,
+    graduation_yr,
+    last_name,
+    first_name)
+SELECT 
+    doctor_id::int,
+    modify_datetime,
+    name,
+    status,
+    bac,
+    bac_description,
+    drug_schedule,
+    expiration_date,
+    address_1,
+    address_2,
+    address_3,
+    city,
+    state,
+    zip_code,
+    phone,
+    specialty,
+    med_school,
+    graduation_yr,
+    last_name,
+    first_name
+FROM doctor_feed
+ON CONFLICT (doctor_id) DO UPDATE SET
+    modify_datetime=EXCLUDED.modify_datetime,
+    name=EXCLUDED.name,
+    status=EXCLUDED.status,
+    bac=EXCLUDED.bac,
+    bac_description=EXCLUDED.bac_description,
+    drug_schedule=EXCLUDED.drug_schedule,
+    expiration_date=EXCLUDED.expiration_date,
+    address_1=EXCLUDED.address_1,
+    address_2=EXCLUDED.address_2,
+    address_3=EXCLUDED.address_3,
+    city=EXCLUDED.city,
+    state=EXCLUDED.state,
+    zip_code=EXCLUDED.zip_code,
+    phone=EXCLUDED.phone,
+    specialty=EXCLUDED.specialty,
+    med_school=EXCLUDED.med_school,
+    graduation_yr=EXCLUDED.graduation_yr,
+    last_name=EXCLUDED.last_name,
+    first_name=EXCLUDED.first_name;

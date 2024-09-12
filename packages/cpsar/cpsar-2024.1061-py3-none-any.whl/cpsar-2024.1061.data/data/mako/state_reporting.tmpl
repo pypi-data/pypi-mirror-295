@@ -1,0 +1,144 @@
+<%! import cpsar.runtime as R %>
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+    <title>State Reporting</title>
+    <link rel='stylesheet' type='text/css' href='/css/form.css' />
+    <link rel='stylesheet' type='text/css' href='/css/launchpad.css' />
+    <link rel='stylesheet' type='text/css' href='/css/state_reporting.css' />
+</%block>
+<%block name='header'>
+   <a href="/state_reporting">State Reporting</a> &rarr; File Entry From Trans
+</%block>
+<%def name='scripts()'>
+    ${parent.scripts()}
+    <script src='/js/jquery.blockUI.js'></script>
+    <script src='/js/state_reporting.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(stateReportingSetup);
+        $(document).ready(function() {
+          $(".hold_all").click(function() {
+              $(".hold").each(function() {
+                  var $this = $(this);
+                  $.ajax({
+                    url: '/state_reporting/set_hold',
+                    data: {
+                      trans_id: $this.attr('trans'),
+                      reversal_id: $this.attr('reversal'),
+                      hold: $this.is(':checked') ? '0': '1'
+                    },
+                    type: 'POST',
+                    dataType: 'text',
+                    success: function() {
+                      if($this.attr("checked")) {
+                          $this.removeAttr("checked");
+
+                      } else {
+                          $this.attr("checked", "checked");
+                      }
+                    }
+                  });
+
+              });
+          });
+        });
+    </script>
+</%def>
+
+<%block name="content_header">
+  <table cellspacing='0' cellpadding='0' border='0' class='content_header'>
+  <tr>
+    <td>
+      <button class='load_new_pending'>Mark Unsent</button>
+      <button class='reset_pending'>Reset</button>
+      Transactions
+      <span id='pending_trans_count'>
+        ${q.pending_trans_count()}
+      </span>
+
+      Reversals
+      <span id='pending_reversal_count'>
+        ${q.pending_reversal_count()}
+      </span>
+    </td>
+    <td align='right'>
+      <form action='/state_reporting/save' method='post'>
+        <select name='status_flag'>
+          <option value=''>File Mode</option>
+          <option value='T'>Test</option>
+          <option value='P'>Production</option>
+        </select>
+        <select name='bill_group'>
+          <option value='O'>Many Bills</option>
+          <option value='B'>One Bill</option>
+        </select>
+        <label>Add To File ID
+          <input type="text" name="sr_file_id" size="6" />
+        </label>
+        <input type='submit' value='Create Bill' name='save' />
+      </form>
+    </td>
+  </tr>
+  </table>
+</%block>
+
+
+
+<table class='grid'>
+<thead>
+  <tr>
+    <th>Trans</th>
+    <th>Reversal</th>
+    <th>Age</th>
+    <th>Juris</th>
+    <th>Patient</th>
+    <th>Time Processed</th>
+    <th>Rx Number</th>
+    <th>Drug</th>
+    <th title='Existing Report Count'>E</th>
+    <th><button type="button" class="hold_all">Hold</button></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  % for t in q.pending_trans():
+  <tr>
+    <td><a href='/view_trans?trans_id=${t['trans_id']}'>${t['trans_id']}</a></td>
+    <td></td>
+    <td>${t['age']}</td>
+    <td>${t['juris']}</td>
+    <td>${t['patient_name']}</td>
+    <td>${t['date_processed']}</td>
+    <td>${t['rx_number']}-${t['refill_number']}</td>
+    <td>${t['drug_name']}</td>
+    <td>${t['existing_report_count']}</td>
+    <td><input type='checkbox' class='hold' trans='${t["trans_id"]}'
+      % if t['sr_mark'] == 'H':
+        checked='checked'
+      % endif
+      /></td>
+    <td><button class='unmark' trans='${t["trans_id"]}'>Unmark</button></td>
+  </tr>
+  % endfor
+  % for t in q.pending_reversals():
+  <tr style='background-color: #FFFFEE'>
+    <td><a href='/view_trans?trans_id=${t['trans_id']}'>${t['trans_id']}</a></td>
+    <td>${t['reversal_id']}</td>
+    <td>${t['age']}</td>
+    <td>${t['juris']}</td>
+    <td>${t['patient_name']}</td>
+    <td>${t['date_processed']}</td>
+    <td>${t['rx_number']}-${t['refill_number']}</td>
+    <td>${t['drug_name']}</td>
+    <td>${t['existing_report_count']}</td>
+    <td><input type='checkbox' class='hold' reversal='${t["reversal_id"]}'
+      % if t['sr_mark'] == 'H':
+        checked='checked'
+      % endif
+      /></td>
+    <td><button class='unmark' trans='${t["trans_id"]}'>Unmark</button></td>
+  </tr>
+  % endfor
+</tbody>
+</table>
+
+

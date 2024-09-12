@@ -1,0 +1,8 @@
+#!/bin/sh
+year=$( date +%Y )
+cd /data/group_health
+files=$(find . -mtime +14 -name 'gh-hist-*.txt' -o -name 'gh-except-*.txt')
+
+if [ -n "$files" ]; then
+    zip -m "archive-$( date +%Y ).zip" $files
+fi

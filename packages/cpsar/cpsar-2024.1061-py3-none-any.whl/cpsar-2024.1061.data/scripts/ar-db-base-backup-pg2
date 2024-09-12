@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# IMPORTANT only run this after ar-db-maintenance
+
+#shutdown postgres on pg2 so we're not streaming
+#during the nightly jobs
+ssh pg2 service postgresql stop
+
+# initalize backup process
+psql postgres -c "select pg_start_backup('backup')" > /dev/null
+
+# rsync the copy to the standby host
+rsync -a --delete --exclude pg_xlog \
+    /var/lib/postgresql/9.1/main/* \
+    pg2:/data/postgresql/archive/base_backup
+
+# once finished stop the backup process
+psql postgres -c "select pg_stop_backup()" > /dev/null
+
+# load base backup on pg2 
+ssh pg2 -t '
+# Clean up old data
+
+# Remove all directories and contents under the postgres data dir
+rm -rf /var/lib/postgresql/9.1/main/*
+
+# Restore the files from a base backup and ensure correct ownsership (postgres)
+cp -ar /data/postgresql/archive/base_backup/* /var/lib/postgresql/9.1/main/
+
+mkdir /var/lib/postgresql/9.1/main/pg_xlog
+
+# cp the recovery.conf to the postgres data dir
+cp /data/postgresql/archive/etc/recovery.conf /var/lib/postgresql/9.1/main/
+'
+ssh pg2 service postgresql start

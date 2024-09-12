@@ -1,0 +1,30 @@
+<%!
+layout = 'layout-2'
+%>
+<%inherit file="page.tmpl" />
+<div class='content_header'>
+  <%block name="content_header">
+  </%block>
+</div>
+
+<%block name="left_menu">
+    <table class='form top' id='left_menu_table'>
+    <tr>
+      <td class='sidemenu'>
+        <ul class='smenu'>
+          <li><a href='/sr_manual/files'>File List</a></li>
+          <li><a href='/search_sr'>File Search</a></li>
+          <li><a href='/state_reporting'>File Entry From Trans</a></li>
+          <li><a href='/sr_manual'>Manual File Entry</a></li>
+          <li><a href='/xy_recon'>Reconcile Entries</a></li>
+          <li><a href='/sr_submission_report'>Submission Report</a></li>
+        </ul>
+        <ul class='smenu'>
+          <li><a href='/sr_bsr'>BSR Search</a></li>
+       </ul>
+      </td>
+    </tr>
+    </table>
+</%block>
+
+${next.body()}

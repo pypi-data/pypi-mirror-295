@@ -1,0 +1,9 @@
+The invoicing system allows for specific processing fees to be displayed in a
+processing fee column on the invoice. By default, the processing fees are
+included in the transaction amount.
+
+To show the processing fees for a particular account on the invoice, check the
+"Show on Invoice" Check box next to the processing fee rule on the "View Client"
+screen.
+
+This will 

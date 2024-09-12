@@ -1,0 +1,47 @@
+#!python
+""" Loads the EHO bd-pharmacist.txt file into the blue diamond
+pharmacist table.  """
+
+import cpsar.runtime as R
+
+from cpsar.fwimport import ListFWParser, path_for_resource, copybuf_from_list
+from cpsar.shell import Program
+
+class MyProgram(Program):
+    def setup_options(self):
+        self.add_option('-f', '--file', default=None, help='File to Load')
+        super(MyProgram, self).setup_options()
+
+    def main(self):
+        fd = open(self._input_file_path, 'rb')
+        parser = pharmacist_parser()
+        records = parser.parse_file(fd)
+        sql = copybuf_from_list(records)
+        cursor = R.db.cursor()
+        cursor.copy_from(sql, 'stage.pharmacist_load', columns=parser.field_names)
+        cursor.execute("SELECT process_pharmacist_load()")
+        R.db.commit()
+
+    @property
+    def _input_file_path(self):
+        if self.opts.file:
+            return R.dpath(self.opts.file)
+        else:
+            return path_for_resource('bd-pharmacist')
+
+def pharmacist_parser():
+    return ListFWParser([
+        ('lic_state', 2),
+        ('lic_number', 20),
+        ('last_name', 15),
+        ('first_name', 12),
+        ('middle_init', 1),
+        ('address_1', 30),
+        ('address_2', 30),
+        ('city', 20),
+        ('state', 2),
+        ('zip_code', 10),
+        ('phone_nbr', 10)
+    ])
+
+if __name__ == '__main__': MyProgram().run()

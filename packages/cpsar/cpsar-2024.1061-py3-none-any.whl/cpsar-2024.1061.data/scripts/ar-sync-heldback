@@ -1,0 +1,109 @@
+#!python
+"""
+Responsibilities:
+ - Process trans-blue-pending.* files
+ - Insert records into heldback table
+ - Ensure not to duplicate file loads
+
+There is a small issue with selecting whether or not to import a file. The
+pending file is created at a time that the transactions have not been
+billed, obviously. So no transactions matching the current week's file
+exist.
+
+Oh wait, so this means I should use the history table, not the trans table.
+History records should exist.
+"""
+import logging
+import os
+import re
+import sys
+
+import cpsar.fwimport as FW
+import cpsar.runtime as R
+import cpsar.shell as shell
+import cpsar.util as util
+import reclib.parse.fw as P
+
+log = logging.getLogger('')
+
+class HistoryCache(dict):
+    def setup(self):
+        """ Create group_number, group_auth -> history_id
+        Lookup for quick searching.
+        """
+        log.debug("Populating history cache")
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT group_number, group_auth, history_id
+            FROM history
+        """)
+        for n, a, t in cursor:
+            self[(n, a)] = t
+history_cache = HistoryCache()
+del HistoryCache
+
+class Program(shell.Program):
+    def main(self):
+        history_cache.setup()
+        self.import_files()
+
+    def import_files(self):
+        for file in self.file_list():
+            log.debug("Loading %s", file.name)
+            file.load()
+            if not self.opts.dry_run:
+                FW.archive(file.path)
+                R.db.commit()
+
+    def file_list(self):
+        """ Provide a list of the current trans-blue-pending files
+        """
+        for path in FW.paths_for_glob("ready/trans-blue-pending.*"):
+            f = PendingFile(path)
+            if not f.batch_date:
+                log.warning("Skipping file with invalid name %s", f.name)
+            else:
+                yield f
+
+class PendingFile:
+    file_pat = re.compile("trans-blue-pending.(\d{8})")
+    def __init__(self, fpath):
+        self.path = fpath
+        self.name = os.path.basename(fpath)
+        mat = self.file_pat.match(self.name)
+        if mat:
+            self.batch_date = mat.groups()[0]
+        else:
+            self.batch_date = None
+
+    def load(self):
+        parser = RecordParser()
+        parser.load(self)
+
+class RecordParser(P.Parser):
+    fields = [
+        P.String('pharmacy_nabp', 7),
+        P.String('rx_number', 7),
+        P.String('refill_number', 2),
+        P.String('group_number', 8),
+        P.String('group_auth', 7)
+    ]
+
+    def load(self, pfile):
+        """ Load the text file off the disk and populate the heldback table.
+        If no transaction is found matching the group number, group auth then
+        the record is skipped.
+        """
+        cursor = R.db.cursor()
+        for rec in self.parse(open(pfile.path), 'rb'):
+            key = (rec['group_number'], int(rec['group_auth']))
+            if key not in history_cache:
+                log.warning("Skipping %s, no matching transaction record", key)
+                continue
+            history_id = history_cache[key]
+            cursor.execute(util.insert_sql("heldback", {
+                "history_id": history_id,
+                "batch_date": pfile.batch_date}))
+            
+if __name__ == '__main__':
+    Program().run()
