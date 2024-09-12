@@ -1,0 +1,9 @@
+requests==2.31.0
+openfeature-sdk==0.4.2
+typing_extensions==4.9.0
+
+[dev]
+pytest
+black
+flake8
+requests_mock
