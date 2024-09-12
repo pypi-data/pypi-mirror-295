@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: ontopascii
+Version: 1.0.0
+Summary: more information on the github page
+Home-page: https://github.com/frantisek-lucius-tomas/ontopascii
+Author: frantisek tomas
+Author-email: wfrantisektomas@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Pillow >=9.0.0
+
