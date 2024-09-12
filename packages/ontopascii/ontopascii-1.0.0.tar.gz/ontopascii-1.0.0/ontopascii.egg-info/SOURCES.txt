@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+ontopascii/__init__.py
+ontopascii/ontopascii.py
+ontopascii.egg-info/PKG-INFO
+ontopascii.egg-info/SOURCES.txt
+ontopascii.egg-info/dependency_links.txt
+ontopascii.egg-info/requires.txt
+ontopascii.egg-info/top_level.txt
+ontopascii/fonts/lucon.ttf
