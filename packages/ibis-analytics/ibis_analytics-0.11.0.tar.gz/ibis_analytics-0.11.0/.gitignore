@@ -1,0 +1,14 @@
+.venv
+.env
+datalake
+
+.quarto
+pres.html
+pres.ipynb
+pres_files
+
+_output
+
+dist
+
+tmp*

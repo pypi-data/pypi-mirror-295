@@ -1,0 +1,10 @@
+ruff
+build
+twine
+ipython
+jupyter
+nbclient
+ipykernel
+
+-e .
+#-r requirements.txt

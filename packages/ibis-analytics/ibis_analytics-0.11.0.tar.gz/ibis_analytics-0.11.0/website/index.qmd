@@ -1,0 +1,73 @@
+---
+title: "Ibis analytics"
+about:
+  template: solana
+  links:
+    - icon: github
+      text: github
+      href: https://github.com/ibis-project/ibis-analytics
+    - icon: laptop
+      text: dashboard
+      href: https://connect.posit.cloud/lostmygithubaccount/content/0191ce7f-f54a-40f7-a6d4-3e555a40128c
+---
+
+***Ibis analytics with Ibis.***
+
+## Overview
+
+We use Ibis for analytics about Ibis.
+
+![Source: [Voltron Data Composable Codex](https://voltrondata.com/codex)](img/layers.png)
+
+This project uses:
+
+1. **User interface**: [Ibis](https://github.com/ibis-project/ibis) (Python dataframe code and/or SQL)
+2. **Execution engine**: [DuckDB](https://github.com/duckdb/duckdb) (local) and [ClickHouse](https://github.com/clickhouse/clickhouse) (remote)
+3. **Data storage**: [Delta Lake](https://github.com/delta-io/delta) tables (local and/or cloud object storage) and ClickHouse tables (remote)
+
+You can mix and match execution engines and data storage via Ibis.
+
+## Setup
+
+::: {.panel-tabset}
+
+## Development
+
+Install [`gh`](https://github.com/cli/cli) and [`just`](https://github.com/casey/just) and [`uv`](https://github.com/astral-sh/uv), then:
+
+```bash
+gh repo clone ibis-project/ibis-analytics
+cd ibis-analytics
+just setup
+. .venv/bin/activate
+```
+
+## Pip
+
+```bash
+pip install ibis-analytics
+```
+
+:::
+
+## Usage
+
+Use the CLI:
+
+```bash
+ia
+```
+
+Open the dashboard:
+
+```bash
+ia dash
+```
+
+## Development
+
+Format your code:
+
+```bash
+just fmt
+```

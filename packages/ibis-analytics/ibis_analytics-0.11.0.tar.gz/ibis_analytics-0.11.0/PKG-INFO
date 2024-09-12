@@ -1,0 +1,37 @@
+Metadata-Version: 2.3
+Name: ibis-analytics
+Version: 0.11.0
+Summary: Ibis analytics with Ibis
+Project-URL: Homepage, https://github.com/ibis-project/ibis-analytics
+Project-URL: Bug Tracker, https://github.com/ibis-project/ibis-analytics/issues
+Author-email: Cody <cody@dkdc.dev>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: gcsfs
+Requires-Dist: great-tables
+Requires-Dist: httpx
+Requires-Dist: ibis-framework[clickhouse,deltalake,duckdb,polars]==9.3.0
+Requires-Dist: plotly
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: shiny>=1.0.0
+Requires-Dist: shinyswatch>=0.7.0
+Requires-Dist: shinywidgets>=0.3.3
+Requires-Dist: typer
+Requires-Dist: zulip
+Description-Content-Type: text/markdown
+
+# Ibis analytics
+
+***Ibis analytics with Ibis.***
+
+## Getting started
+
+[See the documentation](https://ibis-project.github.io/ibis-analytics).
+
+## Contributing
+
+Contributions welcome.
