@@ -1,0 +1,39 @@
+Metadata-Version: 2.3
+Name: testsolar-testtool-sdk-py2
+Version: 0.4.2
+Summary: Python2 SDK for TestSolar testtool
+Project-URL: repository, https://github.com/OpenTestSolar/testtool-sdk-python-py2
+Author-email: asiazhang <asiazhang2002@gmail.com>
+License: Apache License 2.0
+License-File: LICENSE
+Keywords: testsolar
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=2.7
+Requires-Dist: enum34>=1.1.10
+Requires-Dist: simplejson>=3.19.3
+Requires-Dist: six>=1.16.0
+Requires-Dist: typing>=3.10; python_version < '3.5'
+Description-Content-Type: text/markdown
+
+# testtool-sdk-python-py2
+
+TestSolar Python测试工具SDK，用于支持`Python2`。由于公司内部还有在使用`Python2`的场景，因此SDK也需要适配`Python2`。
+
+注意：
+
+- 如果需要使用`Python3`，请访问：https://github.com/OpenTestSolar/testtool-sdk-python
+
+## 开发注意事项
+
+- setup.py仅用于github action上python2的测试使用，不用于构建包
+
+## 如何使用
+
+```shell
+pip install testsolar-testtool-sdk-py2
+```
