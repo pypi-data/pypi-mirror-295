@@ -1,0 +1,143 @@
+# coding: utf-8
+
+import six
+
+from huaweicloudsdkcore.utils.http_utils import sanitize_for_serialization
+
+
+class ConfirmFileUploadRequestBody:
+
+    """
+    Attributes:
+      openapi_types (dict): The key is attribute name
+                            and the value is attribute type.
+      attribute_map (dict): The key is attribute name
+                            and the value is json key in definition.
+    """
+    sensitive_list = []
+
+    openapi_types = {
+        'state': 'str',
+        'auto_meta_analysis': 'bool'
+    }
+
+    attribute_map = {
+        'state': 'state',
+        'auto_meta_analysis': 'auto_meta_analysis'
+    }
+
+    def __init__(self, state=None, auto_meta_analysis=None):
+        """ConfirmFileUploadRequestBody
+
+        The model defined in huaweicloud sdk
+
+        :param state: 文件上传状态。 - CREATED：上传完成 - FAILED：上传失败 - CANCELLED：取消上传
+        :type state: str
+        :param auto_meta_analysis: 元数据自动解析,仅支持图片，视频，音频主文件
+        :type auto_meta_analysis: bool
+        """
+        
+        
+
+        self._state = None
+        self._auto_meta_analysis = None
+        self.discriminator = None
+
+        self.state = state
+        if auto_meta_analysis is not None:
+            self.auto_meta_analysis = auto_meta_analysis
+
+    @property
+    def state(self):
+        """Gets the state of this ConfirmFileUploadRequestBody.
+
+        文件上传状态。 - CREATED：上传完成 - FAILED：上传失败 - CANCELLED：取消上传
+
+        :return: The state of this ConfirmFileUploadRequestBody.
+        :rtype: str
+        """
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        """Sets the state of this ConfirmFileUploadRequestBody.
+
+        文件上传状态。 - CREATED：上传完成 - FAILED：上传失败 - CANCELLED：取消上传
+
+        :param state: The state of this ConfirmFileUploadRequestBody.
+        :type state: str
+        """
+        self._state = state
+
+    @property
+    def auto_meta_analysis(self):
+        """Gets the auto_meta_analysis of this ConfirmFileUploadRequestBody.
+
+        元数据自动解析,仅支持图片，视频，音频主文件
+
+        :return: The auto_meta_analysis of this ConfirmFileUploadRequestBody.
+        :rtype: bool
+        """
+        return self._auto_meta_analysis
+
+    @auto_meta_analysis.setter
+    def auto_meta_analysis(self, auto_meta_analysis):
+        """Sets the auto_meta_analysis of this ConfirmFileUploadRequestBody.
+
+        元数据自动解析,仅支持图片，视频，音频主文件
+
+        :param auto_meta_analysis: The auto_meta_analysis of this ConfirmFileUploadRequestBody.
+        :type auto_meta_analysis: bool
+        """
+        self._auto_meta_analysis = auto_meta_analysis
+
+    def to_dict(self):
+        """Returns the model properties as a dict"""
+        result = {}
+
+        for attr, _ in six.iteritems(self.openapi_types):
+            value = getattr(self, attr)
+            if isinstance(value, list):
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
+            elif isinstance(value, dict):
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
+            else:
+                if attr in self.sensitive_list:
+                    result[attr] = "****"
+                else:
+                    result[attr] = value
+
+        return result
+
+    def to_str(self):
+        """Returns the string representation of the model"""
+        import simplejson as json
+        if six.PY2:
+            import sys
+            reload(sys)
+            sys.setdefaultencoding("utf-8")
+        return json.dumps(sanitize_for_serialization(self), ensure_ascii=False)
+
+    def __repr__(self):
+        """For `print`"""
+        return self.to_str()
+
+    def __eq__(self, other):
+        """Returns true if both objects are equal"""
+        if not isinstance(other, ConfirmFileUploadRequestBody):
+            return False
+
+        return self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        """Returns true if both objects are not equal"""
+        return not self == other
