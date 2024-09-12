@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: surfpack
+Version: 1.0.0
+Summary: Density Functional Theory for surfaces and interfaces
+Home-page: https://github.com/thermotools/surfpack
+Author: Vegard Gjeldvik Jervell
+Author-email: Vegard Gjeldvik Jervell <vegard.g.jervell@ntnu.no>, Morten Hammer <morten.hammer@ntnu.no>
+Maintainer-email: Vegard Gjeldvik Jervell <vegard.g.jervell@ntnu.no>, Morten Hammer <morten.hammer@ntnu.no>
+Project-URL: Homepage, https://thermotools.github.io/surfpack
+Project-URL: Bug Tracker, https://github.com/thermotools/surfpack/issues
+Keywords: physics,thermodynamics,equations_of_state,phase_equilibria,SAFT,DFT,density_functional_theory
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Fortran
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# SurfPack 
+
+SurfPack is a library for computation of interfacial properties of fluids, and the properties of fluids at interfaces
+and in confined systems. The library includes an interface to Classical Density Functional theory, with implementations
+of several SAFT-based functionals. The package is implemented in pure python, building on the
+[ThermoPack](https://thermotools.github.io/thermopack/) python interface.
+
+For documentation, installation- and getting started guides, see the [SurfPack homepage](https://thermotools.github.io/SurfPack).
+
+
+# References
+* J. Mairhofer, J. Gross, Fluid Phase Equilib., 444, 1-12, 2017.
+* E. Sauer, J. Gross, Ind. Eng. Chem. Res., 56, 4119, 2017.
+* Heier et al., Mol. Phys., 116, 2018. (10.1080/00268976.2018.1447153)
