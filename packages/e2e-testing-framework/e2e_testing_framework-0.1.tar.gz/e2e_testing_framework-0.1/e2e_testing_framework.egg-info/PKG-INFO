@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: e2e_testing_framework
+Version: 0.1
+Summary: testing platform for unittest test cases
+Author: Neethukrishnan P
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: fastapi
+Requires-Dist: pytest
+
+# E2E Testing Framework
+
+## Setup
+
+1. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. Ensure `chromedriver` is installed and added to your `PATH`.
+
+3. Update `utils/config.py` with your front-end and back-end URLs.
+
+## Running Tests
+
+Execute the following command to run the tests:
+```bash
+pytest

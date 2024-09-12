@@ -1,0 +1,12 @@
+LICENSE.txt
+README.md
+setup.py
+e2e_testing_framework/__init__.py
+e2e_testing_framework/basemanager.py
+e2e_testing_framework/exception.py
+e2e_testing_framework/manager.py
+e2e_testing_framework.egg-info/PKG-INFO
+e2e_testing_framework.egg-info/SOURCES.txt
+e2e_testing_framework.egg-info/dependency_links.txt
+e2e_testing_framework.egg-info/requires.txt
+e2e_testing_framework.egg-info/top_level.txt
