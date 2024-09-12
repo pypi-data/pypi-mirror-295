@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "make87_messages"
+version = "0.0.2"
+authors = [
+    { name = "Nisse Knudsen", email = "nisse@make87.com" },
+]
+dependencies = [
+    "protobuf==5.28.0",
+]
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+
+[tool.setuptools.packages.find]
+include = ["make87_messages", "make87_messages.*"]
