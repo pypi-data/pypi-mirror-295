@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: aspose-ocr-python-cpp
+Version: 24.9.0
+Summary: Aspose.OCR for Python via CPP is a powerful, while easy-to-use optical character recognition (OCR) engine for your Python applications and notebooks.
+Home-page: https://products.aspose.com/ocr/
+Author: Aspose
+Author-email: aleksander.golshtain@aspose.com
+Project-URL: GitHub, https://github.com/aspose-ocr/Aspose.OCR-for-Python-via-CPP
+Keywords: aspose,ocr,c++
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: Other/Proprietary License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Aspose.OCR for Python via C++
+
+
+[Product Page](https://products.aspose.com/ocr/python-cpp/) | [Documentation](https://docs.aspose.com/ocr/python-cpp/) | [Demos](https://products.aspose.app/ocr/family) | [Blog](https://blog.aspose.com/categories/aspose.ocr-product-family/) | [API Reference](https://reference.aspose.com/ocr/python-cpp/) | [Search](https://search.aspose.com/) | [Free Support](https://forum.aspose.com/c/ocr/16) | [Temporary License](https://purchase.aspose.com/temporary-license)
+
+Try our [Free Online Apps](https://products.aspose.app/ocr/family) demonstrating some of the most popular Aspose.OCR functionality.
+
+**Aspose.OCR for Python via CPP** is a powerful, while easy-to-use optical character recognition (OCR) engine for your Python applications and notebooks. In less than **10** lines of code, you can recognize text in **130** languages based on Latin, Cyrillic, and Asian scripts, returning results in the most popular document and data interchange formats.
+There is no need to learn complex mathematical models, build machine learning algorithms and train neural networks — our simple and robust API will do everything for you.
+
+The library works equally well with all sources, from a high-quality scan to a quick photo on a smartphone. Whether the image is rotated, distorted or noisy — automatic pre- and post-processing filters provide the highest recognition accuracy in the shortest time.
+
+
+Check out the [Landing Pages](https://products.aspose.com/ocr/python-cpp/) of **Aspose.OCR for Python via CPP** for a more detailed description of the features and possibilities of the library.
+
+## Key features
+
+- Recognizes text in 28 languages based on Latin, Cyrillic and Asian scrips, including texts in mixed languages.
+- Accurately extracts texts regardless of the original image quality - work with rotated, distorted and noisy pictures and photos.
+- Supports most file formats you can get from a scanner or camera, as well as web links.
+- Automatically corrects spelling errors to further improve the results without manual intervention.
+- Reads multi-page documents, folders, and even ZIP archives in bulk and returns results in the most popular document and data exchange formats.
+
+
+## Get Started
+
+Run ```pip install aspose-ocr-python-cpp``` to fetch the package. If you already have **Aspose.OCR for Python via CPP** and want to get the latest version, please run ```pip install --upgrade aspose-ocr-python-cpp```.
+
+To learn more about **Aspose.OCR for Python via CPP** and explore the basic requirements and features of the library, check out the following [Aspose.OCR for Python via CPP Documentation](https://docs.aspose.com/ocr/python-cpp/) pages for other use cases.
+
+### Code snippet
+
+**Aspose.OCR for Python via CPP** is extremely easy to use, regardless of the application's scale and complexity. Let's try to create a very simple application that can extract text from images and output it to the console.
+
+1. Install  the latest version of the *aspose-ocr-python-cpp* package using pip.
+2. Import `aspose.asposeocr` module into the application.
+3. Extract text from the image using `AsposeOCRRecognize` method.
+4. Output the extracted text to the console.
+
+Full code:
+
+```python
+
+from aspose.asposeocr import *
+
+settings = RecognitionSettings()
+recognition_batch = [AsposeOCRInput()]
+recognition_batch[0].url = 'scan.png'
+recognition_result = AsposeOCRRecognize(recognition_batch, settings)
+
+recognize_result_txt = AsposeOCRSerializeResult(recognition_result, ExportFormat.json)
+print(recognize_result_txt)
+```
+
+[Product Page](https://products.aspose.com/ocr/python-cpp/) | [Documentation](https://docs.aspose.com/ocr/python-cpp/) | [Demos](https://products.aspose.app/ocr/family) | [Blog](https://blog.aspose.com/categories/aspose.ocr-product-family/) | [API Reference](https://reference.aspose.com/ocr/python-cpp/) | [Search](https://search.aspose.com/) | [Free Support](https://forum.aspose.com/c/ocr/16) | [Temporary License](https://purchase.aspose.com/temporary-license)
