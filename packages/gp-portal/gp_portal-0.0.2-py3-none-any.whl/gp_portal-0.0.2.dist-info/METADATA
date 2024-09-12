@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: gp-portal
+Version: 0.0.2
+Summary: gp-portal
+Author: hil
+Author-email: hil@carota.ai
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown; charset=UTF-8
+License-File: AUTHORS
+Requires-Dist: flask
+Requires-Dist: flask-caching
+Requires-Dist: loguru
+Requires-Dist: requests
+Requires-Dist: python-dotenv
+Requires-Dist: gp-flask-ext
+
+# gp-portal
+
+## Description
+
+gp-portal
+
+## Quickstart
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python run.py
+
+# Run the tests
+pip install pytest pytest-cov
+python -m pytest --cov=gp.portal --cov-report=term --cov-report=html --cov-report=xml:coverage.xml tests/
+
+# git
+git init
+git add .
+git commit -m "Initial commit"
+
+# Build wheel
+pip install build
+python -m build --wheel .
+```
+
