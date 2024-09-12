@@ -1,0 +1,5 @@
+nomad-lab>=1.3.6.dev1
+nomad-schema-plugin-run>=1.0.1
+mdanalysis==2.7.0
+scipy>=1.7.1
+networkx>=2.6.3

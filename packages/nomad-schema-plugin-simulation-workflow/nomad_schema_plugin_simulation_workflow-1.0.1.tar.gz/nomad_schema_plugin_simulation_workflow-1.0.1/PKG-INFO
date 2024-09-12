@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: nomad-schema-plugin-simulation-workflow
+Version: 1.0.1
+Summary: Simulation workflow schema plugin for NOMAD.
+Author: The NOMAD Authors
+License: Apache-2.0
+Project-URL: homepage, https://github.com/nomad-coe/nomad-schema-simulation-workflow-plugin
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: nomad-lab>=1.3.6.dev1
+Requires-Dist: nomad-schema-plugin-run>=1.0.1
+Requires-Dist: mdanalysis==2.7.0
+Requires-Dist: scipy>=1.7.1
+Requires-Dist: networkx>=2.6.3
+
+This is a collection of schemas for various types of simulation workflows.
