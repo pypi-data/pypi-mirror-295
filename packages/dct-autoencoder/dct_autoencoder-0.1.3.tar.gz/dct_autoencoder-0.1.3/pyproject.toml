@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "dct-autoencoder"
+version = "0.1.3"
+description = ""
+authors = ["Dariush Bahrami <dariushbahrami1993@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^2.1.1"
+matplotlib = {version = "^3.9.2", optional = true}
+torch = "^2.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
