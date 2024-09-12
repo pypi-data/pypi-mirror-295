@@ -1,0 +1,3 @@
+[console_scripts]
+river-codegen-py=replit_river.codegen.run:main
+
