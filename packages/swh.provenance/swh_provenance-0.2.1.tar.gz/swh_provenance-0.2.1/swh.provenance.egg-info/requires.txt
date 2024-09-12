@@ -1,0 +1,16 @@
+swh.core[db,http]>=2
+swh.model>=2.6.1
+swh.storage
+swh.graph>=2.0.0
+
+[testing]
+swh.core[db,http]>=2
+swh.model>=2.6.1
+swh.storage
+swh.graph>=2.0.0
+grpcio
+pytest>=8.1
+swh.graph[testing]>=1.0.1
+types-click
+types-PyYAML
+types-Deprecated
