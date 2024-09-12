@@ -1,0 +1,120 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toyml"
+version = "0.3.0.rc0"
+description = "ToyML: Machine Learning from Scratch"
+keywords=["machine learning", "statistics", "engineering"]
+license = {text = "Apache 2.0"}
+readme = "README.md"
+authors = [
+    {name = "Xiangzhuang Shen", email = "datahonor@gmail.com"},
+]
+
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+#    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+requires-python = ">= 3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "ipython",
+    "black",
+    "flake8",
+    "mypy",
+    "isort",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "hypothesis>=6.112.0",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocs-material-extensions",
+    "mkdocs-bibtex",
+    "mkdocstrings-python",
+    "mkdocs-autorefs",
+    "mkdocs-git-committers-plugin-2",
+    "mkdocs-git-revision-date-localized-plugin",
+]
+plot = [
+    "matplotlib",
+    "networkx",
+    "scipy",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ai-glimpse/toyml"
+"Bug Tracker" = "https://github.com/ai-glimpse/toyml/issues"
+"Documentation" = "https://ai-glimpse.github.io/toyml/"
+"Source Code" = "https://github.com/ai-glimpse/toyml"
+"Release Notes" = "https://ai-glimpse.github.io/toyml/changelog/"
+
+
+[tool.setuptools]
+zip-safe = true
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["toyml*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+plugins = ["numpy.typing.mypy_plugin"]
+strict = true
+
+[tool.ruff]
+# Allow lines to be as long as 120.
+line-length = 120
+
+# Development tool configuration
+[tool.isort]
+profile = "black"
+lines_between_types = 1
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=toyml --cov-fail-under 90 --cov-report=term --cov-report=xml --cov-report=html"
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.run]
+omit = [
+    "./toyml/utils/*",  # TODO: remove from omit
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    'pragma: no cover',
+    'raise AssertionError',
+    'raise NotImplementedError',
+    'if __name__ == .__main__.:',
+    'def __repr__',
+]
+fail_under = 90
+precision = 1
+skip_empty = true
+sort = "-Cover"
