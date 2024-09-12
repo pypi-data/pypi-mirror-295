@@ -1,0 +1,10 @@
+*~
+.#*
+*.pyc
+build
+*.egg-info
+dist
+newversion.sh
+.history
+.mypy_cache
+*/.mypy_cache
