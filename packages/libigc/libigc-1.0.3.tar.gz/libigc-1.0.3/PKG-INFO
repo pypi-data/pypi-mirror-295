@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: libigc
+Version: 1.0.3
+Summary: A library for parsing IGC files and extracting thermals
+Home-page: https://github.com/surajmandalcell/libigc
+Author: Suraj Mandal
+Author-email: dev@mandalsuraj.com
+Keywords: igc gliding soaring flight-analysis thermal-detection
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering :: GIS
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: simplekml>=1.3.1
+Requires-Dist: pathlib2>=2.1.0
+
+### A simple library to parse IGC logs and extract thermals.
+
+Uses ground speed to detect flight and aircraft bearing rate of
+change to detect thermalling. Both are smoothed using the
+Viterbi algorithm.
+
+The code has been battle-tested against a couple hundred thousand
+IGC files. Detects various anomalies in the logs and marks files
+as suspicious/invalid, providing an explaination for the decision.
+If you find an IGC file on which the library misbehaves please
+open a GitHub issue, we'd be happy to investigate.
+
+Example usage:
+
+```
+  python libigc_demo.py some_file.igc
+```
+
+Should work both on Python 2.7 and on Python 3.
+
+### Installation
+
+```
+pip install libigc
+```
+
+### Additional information
+
+To publish to PyPI, you'll need to:
+
+- Register an account on PyPI
+- Install twine: `pip install twine`
+- Do `bumpversion patch --allow-dirty` (or minor/major) to update the version number in `setup.py`
+- Build your distribution: `python setup.py sdist bdist_wheel`
+- Upload to PyPI: `twine upload dist/*`
+
+### Original author
+
+- [Marcin Osowski](https://github.com/marcin-osowski)
