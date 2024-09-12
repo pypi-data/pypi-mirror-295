@@ -1,0 +1,11 @@
+scHDeepInsight/__init__.py,sha256=wH94ehUej5TNcxZSVGm_3ipdPksinwtemE7LHlnFw5U,57
+scHDeepInsight/immune.py,sha256=IkKmCgWmm7U35x_kvEPDpzddYiBtHi-yGc4kQY3mI6Q,11245
+scHDeepInsight/pretrained_files_immune/checkpoint_model_immune.pth,sha256=Daens0eI0hSD5iEYhE73fe0evrUZv7HhzDmjJHKQb9M,114791061
+scHDeepInsight/pretrained_files_immune/img_transformer_immune.obj,sha256=n1gws-Cc6B8IputvTVP6SrYpeYvlz9M0g1UQhJEhwgQ,10545554
+scHDeepInsight/pretrained_files_immune/label_encoder_immune_base.obj,sha256=3KoTgRwmXnDldaiu5pdCg15WNd5-KcRjp1W9D45Wqx4,1679
+scHDeepInsight/pretrained_files_immune/label_encoder_immune_detailed.obj,sha256=LykItOaswKtejEikRmW74EXh75QwqbY7ou-gFMRgDRU,5039
+scHDeepInsight/pretrained_files_immune/pretrained_genes_immune.csv,sha256=xGXm0-hy-Z6HiDy1_7mWoYzV8cLzuS-b2kuPh20F9pU,65718
+scHDeepInsight-0.1.10.dist-info/METADATA,sha256=UbILJfTM39GsBKZo257iMIk7ecl7MEUiLFSiPrVnS8c,2128
+scHDeepInsight-0.1.10.dist-info/WHEEL,sha256=yQN5g4mg4AybRjkgi-9yy4iQEFibGQmlz78Pik5Or-A,92
+scHDeepInsight-0.1.10.dist-info/top_level.txt,sha256=Ima3OsZ9twcURcyLPKDDPWDCdDpIq2ZmuYF8-hYYGlI,15
+scHDeepInsight-0.1.10.dist-info/RECORD,,
