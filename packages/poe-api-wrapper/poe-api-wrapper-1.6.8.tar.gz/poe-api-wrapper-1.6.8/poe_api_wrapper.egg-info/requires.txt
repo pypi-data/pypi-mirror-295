@@ -1,0 +1,27 @@
+httpx[http2]
+websocket-client
+requests_toolbelt
+loguru
+rich==13.3.4
+beautifulsoup4
+quickjs
+nest-asyncio
+orjson
+aiofiles
+
+[llm]
+fastapi
+pydantic
+nltk
+daphne
+openai
+Twisted[http2,tls]
+tiktoken
+
+[proxy]
+
+[proxy:python_version >= "3.9"]
+ballyregan
+
+[tests]
+tox
