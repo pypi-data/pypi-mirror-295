@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: mypymake
+Version: 0.1.0
+Summary: PyMake is a simple, Python-based build system designed to simplify the process of compiling and running C++ projects. It provides an intuitive API for configuring your build process and executing compiled programs.
+Author-email: me <superdeveloper43@gmail.com>
+License: The MIT License (MIT)
+        
+        Copyright (c) 2024 me
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in
+        all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.
+        
+Project-URL: Home, https://github.com/fresh-milkshake/pymake
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PyMake
+
+PyMake is a simple, Python-based build system designed to simplify the process of compiling and running C++ projects. It provides an intuitive API for configuring your build process and executing compiled programs.
+
+## Features
+
+- Easy-to-use Python API for build configuration
+- Support for multiple source files and directories
+- Include directory management
+- Macro definitions
+- Library linking and path configuration
+- Compiler, linker, assembler, and preprocessor flag customization
+- Verbose output option for debugging
+- Flexible output directory setting
+- Run compiled programs with custom arguments and environment variables
+
+## Installation
+
+To install PyMake, you can use pip:
+
+```bash
+pip install git+https://github.com/fresh-milkshake/pymake.git
+```
+
+## Usage
+
+Here's a simple example to get you started:
+
+```python
+from pymake import *
+
+add_sources_directory("src")
+add_includes_directory("inc")
+
+set_verbose(True)
+
+build(compiler="g++")
+run()
+```
+
+This script will compile all the source files in the `src` directory, link them into an executable, and then run the executable.
+
+## Documentation
+
+For more details on the API and its usage, please refer to the [documentation](docs.md).
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

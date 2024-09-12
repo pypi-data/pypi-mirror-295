@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mypymake"
+authors = [{ name = "me", email = "superdeveloper43@gmail.com" }]
+readme = "readme.md"
+license = { file = "LICENSE" }
+classifiers = ["License :: OSI Approved :: MIT License"]
+description = "PyMake is a simple, Python-based build system designed to simplify the process of compiling and running C++ projects. It provides an intuitive API for configuring your build process and executing compiled programs."
+version = "0.1.0"
+
+[project.urls]
+Home = "https://github.com/fresh-milkshake/pymake"
