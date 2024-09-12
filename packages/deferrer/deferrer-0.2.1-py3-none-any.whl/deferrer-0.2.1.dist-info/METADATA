@@ -1,0 +1,108 @@
+Metadata-Version: 2.1
+Name: deferrer
+Version: 0.2.1
+Summary: Fancy `defer` in python 3.12
+Author-email: Chris Fu <17433201@qq.com>
+License: MIT License
+        
+        Copyright (c) 2024 傅立业（Chris Fu）
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/Azureblade3808/py-deferrer
+Project-URL: Bug Tracker, https://github.com/Azureblade3808/py-deferrer/issues
+Keywords: defer,sugar
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 4 - Beta
+Requires-Python: <3.13,>=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Fancy `defer` in Python 3.12
+
+[![Python package](https://github.com/Azureblade3808/py-deferrer/actions/workflows/python-package.yml/badge.svg)](https://github.com/Azureblade3808/py-deferrer/actions/workflows/python-package.yml)
+[![Coverage Status](https://coveralls.io/repos/github/Azureblade3808/py-deferrer/badge.svg)](https://coveralls.io/github/Azureblade3808/py-deferrer)
+
+## Installation and usage
+
+### Installation
+
+You may install `deferrer` by running `pip install deferrer`.
+
+### Usage
+
+There are two designed ways to use `defer`. You may use either of them, or mix them up.
+
+#### Sugarful
+
+```python
+>>> from deferrer import defer
+
+>>> def f():
+...     defer and print(0)
+...     defer and print(1)
+...     print(2)
+...     defer and print(3)
+...     defer and print(4)
+
+>>> import sys
+>>> if sys.version_info < (3, 12):
+...     from deferrer import defer_scope
+...     f = defer_scope(f)
+
+>>> f()
+2
+4
+3
+1
+0
+
+```
+
+#### Sugarless
+
+```python
+>>> from deferrer import defer
+
+>>> def f():
+...     defer(print)(0)
+...     defer(print)(1)
+...     print(2)
+...     defer(print)(3)
+...     defer(print)(4)
+
+>>> import sys
+>>> if sys.version_info < (3, 12):
+...     from deferrer import defer_scope
+...     f = defer_scope(f)
+
+>>> f()
+2
+4
+3
+1
+0
+
+```
