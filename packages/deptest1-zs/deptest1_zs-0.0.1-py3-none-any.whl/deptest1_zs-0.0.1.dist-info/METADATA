@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: deptest1-zs
+Version: 0.0.1
+Summary: python项目的**********工具
+Home-page: 
+Author: zs
+Author-email: 123456@yeah.net
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml
+
