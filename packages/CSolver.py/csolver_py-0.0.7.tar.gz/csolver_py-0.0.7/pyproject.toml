@@ -1,0 +1,18 @@
+[project]
+name = "CSolver.py"
+version = "0.0.7"
+authors = [
+  { name="AG597", email="cypherservicess@proton.me" },
+]
+description = "Official API wrapper for https://csolver.xyz"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/AG-597/CSolver"
+Issues = "https://github.com/AG-597/CSolver/issues"
