@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: PyEncodeVis
+Version: 0.0.1
+Summary: Here gonna be something special ...
+Home-page: https://github.com/urniaz/
+Author: Rafal Urniaz
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# Description
+
+[PyEncodeVis](https://pypi.org/project/PyEncodeVis/) the visualization package for Python 3
+
+## Installation
+
+```python
+
+# Install from PyPI 
+
+pip install PyEncodeVis
+
+```
+
+## Documentation and tutorials 
+
+The documentation and tutorials are included in the package.

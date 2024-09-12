@@ -1,0 +1,10 @@
+README.md
+setup.py
+PyEncodeVis/__init__.py
+PyEncodeVis/general_heatmap.py
+PyEncodeVis/kmers_heatmap.py
+PyEncodeVis.egg-info/PKG-INFO
+PyEncodeVis.egg-info/SOURCES.txt
+PyEncodeVis.egg-info/dependency_links.txt
+PyEncodeVis.egg-info/top_level.txt
+tests/test_script.py
