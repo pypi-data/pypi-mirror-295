@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: sdcf
+Version: 0.1.0
+Summary: Shankar Dutt's Carbon Fibre Strength Testing Platform
+Author: Shankar Dutt
+Author-email: shankar.dutt@anu.edu.au
+Requires-Python: >=3.6
+Requires-Dist: streamlit
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: plotly
+Requires-Dist: scipy
+Requires-Dist: pdfkit

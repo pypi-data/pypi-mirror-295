@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+setup.py
+src/sdcf/__init__.py
+src/sdcf/cli.py
+src/sdcf/main.py
+src/sdcf.egg-info/PKG-INFO
+src/sdcf.egg-info/SOURCES.txt
+src/sdcf.egg-info/dependency_links.txt
+src/sdcf.egg-info/entry_points.txt
+src/sdcf.egg-info/requires.txt
+src/sdcf.egg-info/top_level.txt
