@@ -1,0 +1,109 @@
+.leaflet-popup-pane tr:has(td:empty){
+    display: none;
+}
+
+@keyframes flashGreen {
+    0% {background-color: initial;}
+    50% {background-color: green;}
+    100% {background-color: initial;}
+}
+
+.flashGreen {
+    animation: flashGreen 0.6s;
+}
+@keyframes flashRed {
+    0% {background-color: initial;}
+    50% {background-color: red;}
+    100% {background-color: initial;}
+}
+
+.flashRed {
+    animation: flashRed 0.2s;
+}
+.mystyle {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+.animateVisibilityNone{
+        animation:hide forwards;
+        animation-duration: 5s;
+        animation-play-state: paused;
+
+}
+.animateVisibilityNone:hover { 
+        animation-play-state: running;
+}
+
+.animateVisibilityNone:not(:hover){
+    animation-play-state: paused;
+}
+
+@keyframes hide {
+    0% {
+        opacity:1;
+    }
+    50%{
+        opacity:0.8;
+
+    }
+    99%{
+        opacity:0;
+    }
+    100% {
+        opacity:0;
+        display:none;
+    }
+}
+
+.noFill {
+    fill:none;
+}
+
+
+
+.mystyle tr:hover {
+    background: silver;
+    cursor: pointer;
+}
+
+
+.mystyle thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+
+.mystyle tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.mystyle tbody tr:nth-of-type(odd) {
+    background-color: #f3f3f3;
+}
+
+.mystyle tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+.mystyle tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+.custom-container {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    z-index: 1000;
+    font-size: 14px;
+}
+#sliderContainer {
+    margin-left: 10px;
+}
