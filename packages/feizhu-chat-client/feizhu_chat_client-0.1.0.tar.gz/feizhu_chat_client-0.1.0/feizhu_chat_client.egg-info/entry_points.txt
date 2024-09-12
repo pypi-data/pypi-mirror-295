@@ -1,0 +1,2 @@
+[console_scripts]
+websocket-chat = websocket_chat.main:main
