@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/tomlhold/__init__.py
+src/tomlhold.egg-info/PKG-INFO
+src/tomlhold.egg-info/SOURCES.txt
+src/tomlhold.egg-info/dependency_links.txt
+src/tomlhold.egg-info/requires.txt
+src/tomlhold.egg-info/top_level.txt
