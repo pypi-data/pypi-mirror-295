@@ -1,0 +1,3 @@
+[console_scripts]
+mtmflow=mtmflow.__main__:main
+
