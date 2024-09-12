@@ -1,0 +1,100 @@
+Metadata-Version: 2.1
+Name: proxystore-ex
+Version: 0.1.4
+Summary: ProxyStore extensions.
+Author: Globus Labs
+Author-email: Greg Pauloski <jgpauloski@uchicago.edu>
+Maintainer-email: Greg Pauloski <jgpauloski@uchicago.edu>, Valerie Hayot-Sasson <vhayot@uchicago.edu>
+License: MIT
+Project-URL: Homepage, https://proxystore.dev
+Project-URL: Documentation, https://extensions.proxystore.dev
+Project-URL: Source, https://github.com/proxystore/extensions
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: proxystore>=0.6.5
+Requires-Dist: pyzmq
+Provides-Extra: dev
+Requires-Dist: covdefaults>=2.2; extra == "dev"
+Requires-Dist: coverage; extra == "dev"
+Requires-Dist: dask; extra == "dev"
+Requires-Dist: distributed; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23.2; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: pytest-timeout; extra == "dev"
+Requires-Dist: ruff>=0.2.0; extra == "dev"
+Requires-Dist: tox; extra == "dev"
+Requires-Dist: virtualenv; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: black==24.4.2; extra == "docs"
+Requires-Dist: mkdocs-click==0.8.1; extra == "docs"
+Requires-Dist: mkdocs-gen-files==0.5.0; extra == "docs"
+Requires-Dist: mkdocs-literate-nav==0.6.1; extra == "docs"
+Requires-Dist: mkdocs-material==9.5.32; extra == "docs"
+Requires-Dist: mkdocs-section-index==0.3.9; extra == "docs"
+Requires-Dist: mkdocstrings==0.25.2; extra == "docs"
+Requires-Dist: mkdocstrings-python==1.10.8; extra == "docs"
+Requires-Dist: mike==2.1.3; extra == "docs"
+
+# ProxyStore Extensions
+
+![PyPI - Version](https://img.shields.io/pypi/v/proxystore-ex)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/proxystore-ex)
+![GitHub License](https://img.shields.io/github/license/proxystore/extensions)
+
+[![docs](https://github.com/proxystore/extensions/actions/workflows/docs.yml/badge.svg)](https://github.com/proxystore/extensions/actions)
+[![tests](https://github.com/proxystore/extensions/actions/workflows/tests.yml/badge.svg)](https://github.com/proxystore/extensions/actions)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/proxystore/extensions/main.svg)](https://results.pre-commit.ci/latest/github/proxystore/extensions/main)
+
+Extensions for the [ProxyStore](https://github.com/proxystore/proxystore/) package.
+
+This extensions package contains experimental features, features with
+non-Python dependencies, and plugins for third-party tools.
+
+## Installation
+
+The extensions package can be installed alongside
+[ProxyStore](https://github.com/proxystore/proxystore/).
+```bash
+$ pip install proxystore[extensions]
+```
+
+Alternatively, the package can be installed directly.
+```bash
+$ pip install proxystore-ex
+```
+
+See the [Installation](https://extensions.proxystore.dev/main/installation)
+guide for more information about features which require extra dependencies.
+See the [Contributing](https://extensions.proxystore.dev/main/contributing)
+guide to get started with local development.
+
+## Documentation
+
+ProxyStore's documentation is available at [docs.proxystore.dev](https://docs.proxystore.dev) and supplemental documentation for the extensions package is available at [extensions.proxystore.dev](https://extensions.proxystore.dev).
+
+## Usage
+
+Features in the `proxystore_ex` package can be imported from within
+`proxystore` via the [`proxystore.ex`](https://docs.proxystore.dev/latest/api/ex/)
+module. This is the recommended method for import extension features. E.g.,
+
+```python
+from proxystore_ex.connectors.daos import DAOSConnector  # Direct
+from proxystore.ex.connectors.daos import DAOSConnector  # Recommended
+```
+
+## Citation
+
+The preferred citations for this code are provided at https://docs.proxystore.dev/latest/publications/.
