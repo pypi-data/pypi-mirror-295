@@ -1,0 +1,2 @@
+[console_scripts]
+jansbrainfuckkernel = jansbrainfuckkernel.install_kernelspec:install_kernelspec

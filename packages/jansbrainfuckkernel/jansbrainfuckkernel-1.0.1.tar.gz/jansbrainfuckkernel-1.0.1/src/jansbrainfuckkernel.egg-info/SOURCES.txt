@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+src/jansbrainfuckkernel/__init__.py
+src/jansbrainfuckkernel/__main__.py
+src/jansbrainfuckkernel/install_kernelspec.py
+src/jansbrainfuckkernel/kernel.py
+src/jansbrainfuckkernel.egg-info/PKG-INFO
+src/jansbrainfuckkernel.egg-info/SOURCES.txt
+src/jansbrainfuckkernel.egg-info/dependency_links.txt
+src/jansbrainfuckkernel.egg-info/entry_points.txt
+src/jansbrainfuckkernel.egg-info/requires.txt
+src/jansbrainfuckkernel.egg-info/top_level.txt
