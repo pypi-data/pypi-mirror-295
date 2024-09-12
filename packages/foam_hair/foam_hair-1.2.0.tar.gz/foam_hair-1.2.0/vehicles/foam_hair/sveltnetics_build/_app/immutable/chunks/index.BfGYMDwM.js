@@ -1,0 +1,2 @@
+const a=({wait:l,action:s,wait_for_response:n="no"})=>{let e="no",o="";const i=async()=>{if(e==="yes")if(n==="yes")try{await s()}catch(t){console.error(t)}else setTimeout(()=>{s()});await new Promise(t=>{o=setTimeout(()=>{t()},l)}),e==="yes"&&(clearTimeout(o),i())};return{play:()=>{e==="no"&&(e="yes",i())},stop:()=>{clearTimeout(o),e="no"}}};export{a as l};
+//# sourceMappingURL=index.BfGYMDwM.js.map
