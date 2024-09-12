@@ -1,0 +1,24 @@
+Metadata-Version: 2.3
+Name: pystics
+Version: 1.2.4
+Summary: STICS in Python
+Project-URL: Homepage, https://github.com/OmbreaPV/pySTICS
+Project-URL: Documentation, https://OmbreaPV.github.io/pySTICS
+Author-email: Etienne Perez <eperez@ombrea.fr>
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: <3.12,>=3.8
+Requires-Dist: matplotlib
+Requires-Dist: pandas
+Requires-Dist: unidecode
+Requires-Dist: xmltodict
+Provides-Extra: test
+Requires-Dist: pytest-cov; extra == 'test'
+Requires-Dist: pytest>=5.0.0; extra == 'test'
