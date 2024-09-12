@@ -1,0 +1,3 @@
+[console_scripts]
+cat-year-calculator=cat_year_calculator.bin.cat_year_calc:main
+
