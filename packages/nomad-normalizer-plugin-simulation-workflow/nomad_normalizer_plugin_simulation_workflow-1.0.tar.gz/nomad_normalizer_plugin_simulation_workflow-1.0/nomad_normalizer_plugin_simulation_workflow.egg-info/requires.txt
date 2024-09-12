@@ -1,0 +1,9 @@
+nomad-lab>=1.2.0
+nomad-schema-plugin-simulation-workflow>=1.0.1
+
+[dev]
+mypy==1.0.1
+pytest==3.10.0
+pytest-timeout==1.4.2
+pytest-cov==2.7.1
+ruff==0.1.4

@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+nomad_normalizer_plugin_simulation_workflow.egg-info/PKG-INFO
+nomad_normalizer_plugin_simulation_workflow.egg-info/SOURCES.txt
+nomad_normalizer_plugin_simulation_workflow.egg-info/dependency_links.txt
+nomad_normalizer_plugin_simulation_workflow.egg-info/entry_points.txt
+nomad_normalizer_plugin_simulation_workflow.egg-info/requires.txt
+nomad_normalizer_plugin_simulation_workflow.egg-info/top_level.txt
+simulationworkflownormalizer/__init__.py
+simulationworkflownormalizer/normalizer.py
+tests/test_simulationworkflownormalizer.py
