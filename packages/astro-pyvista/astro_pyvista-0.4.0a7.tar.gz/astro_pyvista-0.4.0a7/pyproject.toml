@@ -1,0 +1,54 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name="astro-pyvista"
+version="0.4.0a7"   
+authors=[
+  { name="Jon Holtzman", email="holtzmanjon@gmail.com" },
+]
+description="Astronomical image processing"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers=[
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",  
+    "Operating System :: OS Independent",        
+    "Programming Language :: Python :: 3",
+]
+dependencies =[
+    "ipython",
+    "jupyter",
+    "holtz-tools",
+    "astropy",
+    "astroscrappy",
+    "gaiaxpy",
+    "photutils",
+    "astroplan",
+    "pyyaml",
+    "pyautogui",
+    "pydl",
+    "astroquery",
+    "importlib_resources",
+    "sphinx",
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "scikit-learn",
+    "scikit-image",
+    "esutil",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/holtzmanjon/pyvista"
+
+
+[tool.setuptools.packages.find]
+where = ["python"]  # list of folders that contain the packages (["."] by default)
+
