@@ -1,0 +1,3 @@
+[console_scripts]
+labnotebook = pylabnotebook.main:main
+
