@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+nomad_normalizer_plugin_system.egg-info/PKG-INFO
+nomad_normalizer_plugin_system.egg-info/SOURCES.txt
+nomad_normalizer_plugin_system.egg-info/dependency_links.txt
+nomad_normalizer_plugin_system.egg-info/entry_points.txt
+nomad_normalizer_plugin_system.egg-info/requires.txt
+nomad_normalizer_plugin_system.egg-info/top_level.txt
+systemnormalizer/__init__.py
+systemnormalizer/normalizer.py
+tests/test_systemnormalizer.py
