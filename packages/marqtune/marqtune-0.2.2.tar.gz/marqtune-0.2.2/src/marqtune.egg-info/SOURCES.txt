@@ -1,0 +1,12 @@
+README.md
+setup.py
+src/marqtune/__init__.py
+src/marqtune/client.py
+src/marqtune/config.py
+src/marqtune/enums.py
+src/marqtune/httprequests.py
+src/marqtune.egg-info/PKG-INFO
+src/marqtune.egg-info/SOURCES.txt
+src/marqtune.egg-info/dependency_links.txt
+src/marqtune.egg-info/requires.txt
+src/marqtune.egg-info/top_level.txt
