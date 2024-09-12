@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: ameriopt
+Version: 0.1.1
+Summary: Extension of pandera type checking
+Home-page: https://github.com/Peymankor/AmeriOpt
+License: MIT
+Keywords: pandera,schema,pandas
+Author: Peyman Kor
+Author-email: kor.peyman@gmail.com
+Requires-Python: >=3.10,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering
+Requires-Dist: pandas
+Requires-Dist: pandera (>=0.19.3)
+Requires-Dist: pytest (>=7.4.0)
+Project-URL: Repository, https://github.com/Peymankor/AmeriOpt
+Description-Content-Type: text/markdown
+
+# AmeriOpt
+A Python Package for Pricing American Option
+
+## Installation
+```bash
+pip install AmeriOpt
+```
+
+## Usage
+```python
+from AmeriOpt import AmeriOpt
+
+```
