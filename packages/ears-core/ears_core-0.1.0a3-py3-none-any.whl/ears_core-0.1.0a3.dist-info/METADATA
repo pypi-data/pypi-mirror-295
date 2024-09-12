@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ears-core
+Version: 0.1.0a3
+Summary: Core design for EARS architecture
+Home-page: https://github.com/mazard-records/ears-core
+License: MIT
+Author: fvoituret
+Author-email: contact@mazard-records.fr
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: httpx (>=0.27.2,<0.28.0)
+Requires-Dist: pydantic (>=2.9.1,<3.0.0)
+Project-URL: Repository, https://github.com/mazard-records/ears-core
+Description-Content-Type: text/markdown
+
+# ears-core
+
+![PyPI - Version](https://img.shields.io/pypi/v/ears-core) [![tests](https://github.com/mazard-records/ears-core/actions/workflows/tests.yaml/badge.svg)](https://github.com/mazard-records/ears-core/actions/workflows/tests.yaml)
+
+> TBD
+
