@@ -1,0 +1,17 @@
+xpmtd
+lmtracker
+looming_spots
+daq_loader
+magicgui
+napari[all]
+PyQt5==5.14
+
+[dev]
+pytest
+pytest-cov
+coverage
+tox
+mypy
+pre-commit
+ruff
+setuptools_scm
