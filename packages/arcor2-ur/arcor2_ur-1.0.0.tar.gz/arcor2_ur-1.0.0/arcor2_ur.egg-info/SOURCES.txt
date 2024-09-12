@@ -1,0 +1,17 @@
+MANIFEST.in
+backend_shim.py
+setup.py
+arcor2_ur/VERSION
+arcor2_ur/__init__.py
+arcor2_ur/exceptions.py
+arcor2_ur/py.typed
+arcor2_ur.egg-info/PKG-INFO
+arcor2_ur.egg-info/SOURCES.txt
+arcor2_ur.egg-info/dependency_links.txt
+arcor2_ur.egg-info/entry_points.txt
+arcor2_ur.egg-info/namespace_packages.txt
+arcor2_ur.egg-info/requires.txt
+arcor2_ur.egg-info/top_level.txt
+arcor2_ur/data/moveit.yaml
+arcor2_ur/scripts/__init__.py
+arcor2_ur/scripts/ur.py
