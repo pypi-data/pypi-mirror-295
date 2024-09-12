@@ -1,0 +1,13 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+.github/workflows/publish.yml
+SQLSimplify/__init__.py
+SQLSimplify/sqlsimplify.py
+SQLSimplify/test.py
+SQLSimplify.egg-info/PKG-INFO
+SQLSimplify.egg-info/SOURCES.txt
+SQLSimplify.egg-info/dependency_links.txt
+SQLSimplify.egg-info/requires.txt
+SQLSimplify.egg-info/top_level.txt

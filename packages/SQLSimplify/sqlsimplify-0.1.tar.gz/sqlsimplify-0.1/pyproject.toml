@@ -1,0 +1,31 @@
+[project]
+name = "SQLSimplify"
+authors = [
+  { name="Ankush Kumar", email="ankush1611996@gmail.com" },
+]
+description = "A Python library for easy SQl operations"
+keywords = ["pysql", "sqlite", "python sql", "quicksql","sql", 'mysql','SQLSimplify']
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "mysql-connector-python"
+]
+
+version = "0.1"
+
+[tool.setuptools_scm]
+
+[project.urls]
+"Homepage" = "https://github.com/AnkushRozra/quicksql"
+"Bug Tracker" = "https://github.com/AnkushRozra/quicksql/issues"
+
+
+[build-system]
+requires = ["setuptools","setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
