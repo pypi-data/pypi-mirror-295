@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+bandstructurenormalizer/__init__.py
+bandstructurenormalizer/normalizer.py
+nomad_normalizer_plugin_bandstructure.egg-info/PKG-INFO
+nomad_normalizer_plugin_bandstructure.egg-info/SOURCES.txt
+nomad_normalizer_plugin_bandstructure.egg-info/dependency_links.txt
+nomad_normalizer_plugin_bandstructure.egg-info/entry_points.txt
+nomad_normalizer_plugin_bandstructure.egg-info/requires.txt
+nomad_normalizer_plugin_bandstructure.egg-info/top_level.txt
+tests/test_band_structure.py
