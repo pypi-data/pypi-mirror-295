@@ -1,0 +1,12 @@
+django_acdhch_functions/.gitignore,sha256=jfH6tNXrfNhrKiiIaELfL52n_55FBQ1dH_X9Xz5STgY,15
+django_acdhch_functions/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+django_acdhch_functions/templates/acdhch_functions/imprint.html,sha256=juOqq6yzT9FMhjPjhbofDPZxRNO2fhOLlS478reFjE0,254
+django_acdhch_functions/templates/base.html,sha256=p7ybeN5v4Zt3AvUvVkRQXUTwoH_yyMUaO4Kfs6E5CM0,394
+django_acdhch_functions/templates/matomo.html,sha256=CNObeqj_zrYSh5zUpL4Rh8MPMzMZqQh73NTOCzLnXfI,756
+django_acdhch_functions/templatetags/django_acdhch_functions.py,sha256=U3Vrk2C4GuVP5zMgDZi1t7gGDuwRWXjibt3LjySW3R8,381
+django_acdhch_functions/urls.py,sha256=IEb4NPR5K5UhHQk94EQmqfXUpNd1BYNvY_G-DKSoPH0,162
+django_acdhch_functions/utils.py,sha256=C79H8HuJNxoC7S6sQww61RBui7cya42ydiU4jv358BA,648
+django_acdhch_functions/views.py,sha256=Qf8sSd1-_ZGjdp5vb-VWu6F9SKYYVz2XN7iiKEIgccE,308
+django_acdhch_functions-0.1.4.dist-info/METADATA,sha256=1iIUodOEMw7w5Ci7l6vq0FzCU0GF_Qo1izFl9mHEzaw,1264
+django_acdhch_functions-0.1.4.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+django_acdhch_functions-0.1.4.dist-info/RECORD,,
