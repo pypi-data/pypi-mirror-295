@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly Tuesday 6 AM build
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 6 * * 2'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  initial_checks:
+    name: Mandatory checks before CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check base branch
+      uses: actions/github-script@v7
+      if: github.event_name == 'pull_request'
+      with:
+        script: |
+          const allowed_basebranch = 'master';
+          const pr = context.payload.pull_request;
+          if (pr.base.ref !== allowed_basebranch) {
+            core.setFailed(`PR opened against ${pr.base.ref}, not ${allowed_basebranch}`);
+          } else {
+            core.info(`PR opened correctly against ${allowed_basebranch}`);
+          }
+
+  tests:
+    needs: initial_checks
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      setenv: |
+        jref: "https://ssb.stsci.edu/trds_open/jref"
+      submodules: false
+      coverage: ''
+      envs: |
+        - name: Lint with flake8
+          linux: codestyle
+
+        # Make sure that packaging will work
+        - name: pep517 build
+          linux: twine
+
+        - name: Security audit
+          linux: bandit
+
+        - name: Check links
+          linux: linkcheck
+
+        - name: Python 3.9 with remote data and all dependencies
+          linux: py39-test-alldeps
+          posargs: --remote-data -v
+
+        - name: Python 3.12 with remote data and dev dependencies
+          linux: py312-test-devdeps
+          posargs: --remote-data -v

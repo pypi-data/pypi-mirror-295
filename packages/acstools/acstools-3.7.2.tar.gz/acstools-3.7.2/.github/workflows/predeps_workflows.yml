@@ -1,0 +1,25 @@
+name: rc-testing
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  rc_tests:
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      setenv: |
+        jref: "https://ssb.stsci.edu/trds_open/jref"
+      submodules: false
+      coverage: ''
+      # TODO: Enable more OSes when possible.
+      envs: |
+        - name: Python 3.11 with pre-release
+          linux: py311-test-predeps
+          posargs: --remote-data -v

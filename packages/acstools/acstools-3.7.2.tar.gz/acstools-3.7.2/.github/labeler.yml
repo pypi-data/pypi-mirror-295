@@ -1,0 +1,61 @@
+docs:
+- changed-files:
+  - any-glob-to-any-file:
+    - .github/**/*.md
+    - .readthedocs.yaml
+    - doc/**/*
+    - '*.md'
+  - all-globs-to-any-file:
+    - '*.rst'
+    - '!CHANGES.rst'
+
+testing:
+- changed-files:
+  - any-glob-to-any-file:
+    - .bandit.yaml
+    - .github/**/*.yml
+    - conftest.py
+    - acstools/tests/**/*
+
+CALACS:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/acs2d.py
+    - acstools/acsccd.py
+    - acstools/acscteforwardmodel.py
+    - acstools/acscte.py
+    - acstools/acsrej.py
+    - acstools/acssum.py
+    - acstools/calacs.py
+    - acstools/utils_calib.py
+
+CTE:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/acscteforwardmodel.py
+    - acstools/acscte.py
+    - acstools/acsphotcte.py
+
+Destripe:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/acs_destripe_plus.py
+    - acstools/acs_destripe.py
+
+Polarization:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/polarization_tools.py
+    - acstools/data/polarizer_tables.yaml
+
+Satellite Detection:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/satdet.py
+    - acstools/findsat_mrt.py
+    - acstools/utils_findsat_mrt.py
+
+Zeropoints:
+- changed-files:
+  - any-glob-to-any-file:
+    - acstools/acszpt.py
