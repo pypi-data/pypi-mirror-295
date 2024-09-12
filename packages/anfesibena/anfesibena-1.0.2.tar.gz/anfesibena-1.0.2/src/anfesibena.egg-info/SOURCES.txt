@@ -1,0 +1,10 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/anfesibena/__init__.py
+src/anfesibena.egg-info/PKG-INFO
+src/anfesibena.egg-info/SOURCES.txt
+src/anfesibena.egg-info/dependency_links.txt
+src/anfesibena.egg-info/top_level.txt
