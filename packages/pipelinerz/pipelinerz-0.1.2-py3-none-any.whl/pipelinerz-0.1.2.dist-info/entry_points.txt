@@ -1,0 +1,2 @@
+[console_scripts]
+pipelinerz_gui = pipelinerz.process_data_gui:main
