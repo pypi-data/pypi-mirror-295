@@ -1,0 +1,18 @@
+[project]
+name = "aw_service_grpc_protos"
+version = "0.2.8"
+authors = [
+  { name="Juan M. Fermin", email="jmdnbvsjm@gmail.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/aw_service_protos_juanfermin29test"
+Issues = "https://github.com/pypa/aw_service_protos_juanfermin29test/issues"
