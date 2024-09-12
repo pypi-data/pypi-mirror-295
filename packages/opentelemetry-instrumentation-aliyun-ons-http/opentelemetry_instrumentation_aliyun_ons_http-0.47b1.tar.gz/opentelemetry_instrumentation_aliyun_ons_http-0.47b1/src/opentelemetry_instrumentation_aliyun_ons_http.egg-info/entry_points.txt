@@ -1,0 +1,2 @@
+[opentelemetry_instrumentor]
+aliyun-ons-http = opentelemetry.instrumentation.aliyun_ons_http:AliyunOnsHttpInstrumentor

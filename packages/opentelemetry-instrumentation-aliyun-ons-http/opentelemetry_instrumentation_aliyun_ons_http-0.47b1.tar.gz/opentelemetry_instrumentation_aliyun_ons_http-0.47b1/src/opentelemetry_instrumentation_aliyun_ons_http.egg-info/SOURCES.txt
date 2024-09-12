@@ -1,0 +1,13 @@
+LICENSE
+README.rst
+pyproject.toml
+src/opentelemetry/instrumentation/aliyun_ons_http/__init__.py
+src/opentelemetry/instrumentation/aliyun_ons_http/package.py
+src/opentelemetry/instrumentation/aliyun_ons_http/version.py
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/PKG-INFO
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/SOURCES.txt
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/dependency_links.txt
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/entry_points.txt
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/requires.txt
+src/opentelemetry_instrumentation_aliyun_ons_http.egg-info/top_level.txt
+tests/test_instrumentation.py

@@ -1,0 +1,36 @@
+[project]
+name = "opentelemetry-instrumentation-aliyun-ons-http"
+authors = [{ name = "fcfangcc", email = "swjfc22@live.com" }]
+description = "Aliyun ons http api instrumentation for OpenTelemetry"
+readme = "README.rst"
+requires-python = ">=3.10"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "opentelemetry-api ~= 1.12",
+    "opentelemetry-instrumentation == 0.47b0",
+    "opentelemetry-semantic-conventions == 0.47b0",
+    "wrapt >= 1.0.0, < 2.0.0",
+]
+
+[project.optional-dependencies]
+instruments = ["mq_http_sdk>1.0.0,<2.0.0"]
+dev = ["build"]
+
+[project.entry-points.opentelemetry_instrumentor]
+aliyun-ons-http = "opentelemetry.instrumentation.aliyun_ons_http:AliyunOnsHttpInstrumentor"
+
+[build-system]
+requires = ["setuptools>=70.0"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.dynamic]
+version = { attr = "opentelemetry.instrumentation.aliyun_ons_http.version.__version__" }
