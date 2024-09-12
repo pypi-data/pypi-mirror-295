@@ -1,0 +1,6 @@
+pymobiledevice3<5.0.0,>=4.11.20
+zeroconf==0.132.2
+
+[dev]
+build
+pylint
