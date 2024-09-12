@@ -1,0 +1,4 @@
+include src/exifScan/generateHTML/styles.css
+include src/exifScan/generateHTML/info.jpg
+include src/exifScan/generateHTML/nouislider.min.css
+include src/exifScan/generateHTML/nouislider.min.js
