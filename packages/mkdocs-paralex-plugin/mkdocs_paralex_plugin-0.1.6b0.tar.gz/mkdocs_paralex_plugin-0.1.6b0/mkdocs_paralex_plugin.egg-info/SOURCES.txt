@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+mkdocs_paralex_plugin/__init__.py
+mkdocs_paralex_plugin/paralex.png
+mkdocs_paralex_plugin/plugin.py
+mkdocs_paralex_plugin.egg-info/PKG-INFO
+mkdocs_paralex_plugin.egg-info/SOURCES.txt
+mkdocs_paralex_plugin.egg-info/dependency_links.txt
+mkdocs_paralex_plugin.egg-info/entry_points.txt
+mkdocs_paralex_plugin.egg-info/requires.txt
+mkdocs_paralex_plugin.egg-info/top_level.txt
+mkdocs_paralex_plugin/css/paralex_styles.css
+mkdocs_paralex_plugin/templates/paradigm.md
+mkdocs_paralex_plugin/templates/table.md

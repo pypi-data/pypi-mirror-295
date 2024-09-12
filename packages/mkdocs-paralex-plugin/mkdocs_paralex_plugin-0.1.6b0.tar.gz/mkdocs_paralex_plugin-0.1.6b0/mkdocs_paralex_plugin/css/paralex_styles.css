@@ -1,0 +1,133 @@
+
+tr td.table_id {
+    font-family: var(--md-code-font-family);
+}
+
+
+tr td.lexeme, tr td.cell {
+    font-variant: small-caps;
+}
+
+
+tr td.phon_form .form:before, tr td.analysed_phon_form .form:before,
+tr td.phon_form .form:after, tr td.analysed_phon_form .form:after {
+    content: "/"
+}
+tr td .defective {
+    font-style: italic;
+    color: var(--md-accent-fg-color);
+}
+
+tr td span.paralex_tag {
+    border-radius: .8em;
+    padding: .5em;
+    line-height:2.5em;
+    font-size:90%;
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+}
+
+tr td span.paralex_tag a {
+    color: var(--md-primary-bg-color);
+}
+
+.paradigm_table caption {
+    font-size: 110%;
+}
+
+.paradigm_table {
+    border: .05rem solid var(--md-typeset-table-color);
+    border-radius: .1rem;
+    font-size: 80%;
+    margin: 10px;
+    display: inline-block;
+}
+
+.paradigm_table th,
+.paradigm_table td {
+    padding: 2px 5px;
+}
+
+
+/** Indicate that rows (lexemes) are clickable **/
+#lexemes.dataTable > tbody > tr > td.lexeme_id {
+    cursor: pointer;
+}
+
+#lexemes.dataTable > tbody > tr > td.lexeme_id::before {
+    content: "+ ";
+    color: var(--md-primary-fg-color);
+    font-weight: bolder;
+    font-size: 110%;
+}
+
+#lexemes.dataTable > tbody > tr > td.lexeme_id::before {
+    content: "+ ";
+    color: var(--md-primary-fg-color);
+    font-weight: bolder;
+    font-size: 110%;
+}
+
+#lexemes.dataTable > tbody > tr.selected > td.lexeme_id::before {
+    color: var(--dt-row-selected-text);
+}
+
+.dataTables_wrapper {
+    overflow: scroll;
+}
+
+.md-typeset .paradigm_table caption,
+.paradigm_table th {
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+
+*[title] {
+    cursor: help;
+}
+
+.md-typeset ul.form_sets {
+    margin: 0;
+    list-style-type: none;
+}
+
+.md-typeset ul li.form_set {
+    margin: 0;
+}
+
+
+.formtype ~ .formtype {
+    padding-left: .4em;
+}
+
+/* Styling search bar */
+
+.dataTables_wrapper .dataTables_filter {
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+    box-shadow: 0 1px 5px 3px var(--md-accent-fg-color--transparent);
+}
+
+
+.dataTables_wrapper .dataTables_filter:focus {
+  border: 2px solid var(--md-primary-fg-color--light);
+}
+
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 0 !important;;
+    padding: 0 !important;
+    background-color: transparent;
+    margin-left: 10px !important;
+    width: 400px;
+    font-size: 100%;
+}
+
+.dataTables_filter .fa.fa-search {
+    color: var(--md-accent-fg-color);
+}
+

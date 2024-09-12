@@ -1,0 +1,7 @@
+mkdocs
+pandas>=2.0.3
+frictionless==5.16.0
+unidecode
+tqdm
+paralex
+minify_html
