@@ -1,0 +1,3 @@
+[console_scripts]
+gen_libvirt_polkit_acl = vmtui.gen_libvirt_polkit_acl:main
+vmtui = vmtui.vmtui:main
