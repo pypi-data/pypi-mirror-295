@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: nxml2txt
+Version: 0.1.7
+Summary: XML formatted full-text articles to text format conversion. Standoff annotations for text and entities. Originally written by Sampo Pyysalo: https://github.com/spyysalo/nxml2txt
+License: MIT
+Author: Gully Burns
+Author-email: gully.burns@chanzuckerberg.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: beautifulsoup4 (>=4.12.3,<5.0.0)
+Requires-Dist: lxml (>=5.2.2,<6.0.0)
+Requires-Dist: pandas (>=2.1.4,<3.0.0)
+Requires-Dist: requests (>=2.32.3,<3.0.0)
+Description-Content-Type: text/markdown
+
+nxml2txt
+========
+
+NLM .nxml to text format conversion with added features for building agent-based systems with JATS-formatted files. 
+
+This project was originally developed by Sampo Pyysalo as part of the UK's National Center for Text Mining (NaCTeM). The core functionality of the library renders the XML of a full text paper formatted under the JATS standard as a basic text with standoff annotations that provides access to the document structure and formatting labels. 
+
+We are repurposing that original functionality to provide access to the internal structure of the document with section headings, citation sentences, and figure references in a flexible open source compute environment.  
