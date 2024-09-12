@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: hudu_api_ctek
+Version: 0.0.42
+Summary: A few functions for the Hudu API
+Author-email: Dan S <dan@cybertek.systems>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Scripts rely on .env file with the required variables defined
+
+
+Available functions:
+
+- get_assets_by_layout_id(api_baseurl, api_key, asset_layout_id)
+- create_magic_dash(api_baseurl, api_key, dash_name, dash_message, dash_shade, dash_content, company_name):
+
