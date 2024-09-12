@@ -1,0 +1,99 @@
+Metadata-Version: 2.1
+Name: meinsweeper
+Version: 0.1.6
+Summary: MeinSweeper is a light-weight framework for running experiments on arbitrary compute nodes
+Author-email: Alex Spies <alex@afspies.com>
+License: The MIT License (MIT)
+        
+        Copyright (c) 2022, Alex Spies
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/afspies/meinsweeper
+Project-URL: Bug Tracker, https://github.com/afspies/meinsweeper/issues
+Project-URL: Icon, https://raw.githubusercontent.com/afspies/meinsweeper/master/meinsweeper/logo.png
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: asyncssh
+Requires-Dist: rich
+Requires-Dist: psutil
+Requires-Dist: duecredit
+
+# MeinSweeper
+<img src="meinsweeper/logo.png" align="right"
+     alt="Minesweeper image taken from https://www.pngwing.com/en/free-png-vxhwi" width="80" height="80">
+
+MeinSweeper is a light-weight framework for running experiments on arbitrary compute nodes
+
+```diff
+- This is still in alpha, and was written for research
+- I.e. expect bugs and smelly code!
+```
+
+## Installation
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install MeinSweeper.
+
+```bash
+pip install meinsweeper
+```
+
+## Usage
+### MeinSweeper consists of four components
+### Using Provided Node-types
+```python
+import meinsweeper
+
+cfg = {'target': 'ssh', ...} 
+
+meinsweeper.run(cfg)
+```
+
+
+### With Custom Nodes
+#### Subclass and existing node
+Override the initialization, running or logging behaviour of an existing node type.
+If you would like to establish a generic, and robust, communication class which systematically utilizes STDOUT, that would be nice!.
+
+#### Create a node class
+```python
+class MyNode(Node):
+
+
+```
+
+Specify new target as pascal_case version of class name 
+
+```python
+
+cfg = {'target':'my_node', ....}
+
+meinsweeper.run(cfg)
+
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
