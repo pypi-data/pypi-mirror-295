@@ -1,0 +1,17 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/dependency_groups/__init__.py
+src/dependency_groups/__main__.py
+src/dependency_groups/_implementation.py
+src/dependency_groups/_lint_dependency_groups.py
+src/dependency_groups/py.typed
+src/dependency_groups.egg-info/PKG-INFO
+src/dependency_groups.egg-info/SOURCES.txt
+src/dependency_groups.egg-info/dependency_links.txt
+src/dependency_groups.egg-info/entry_points.txt
+src/dependency_groups.egg-info/requires.txt
+src/dependency_groups.egg-info/top_level.txt
+tests/test_lint_cli.py
+tests/test_resolve_func.py
+tests/test_resolver_class.py
