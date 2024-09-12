@@ -1,0 +1,172 @@
+[tool.poetry]
+name = "aba-cli-scrapper"
+version = "0.6.3"
+description = "Create your own Alibaba dataset and interact with it in plain English. "
+authors = ["poneoneo <onealzero@gmail.com>"]
+readme = "docs/index.md"
+license = "GNU GENERAL PUBLIC LICENSEVersion 3, 29 June 2007"
+homepage = "https://aba-cli-scrapper.readthedocs.io/en/latest/"
+repository = "https://github.com/poneoneo/Alibaba-CLI-Scraper"
+keywords = ["cli", "scrapping", "alibaba", "scraper", "alibaba-cli-scrapper","dataset","ai-agent","RAG"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Natural Language :: English",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Terminals",
+    "Typing :: Typed",
+]
+include = [
+    "COPYING",
+]
+
+packages = [{include = "aba_cli_scrapper"},{include = "images"}, {include="pyproject.toml"}]
+
+[tool.poetry.dev-dependencies]
+pytest = "8.2.2"
+python-semantic-release = "^9.8.6"
+sphinx = "^8.0.2"
+myst-parser = "^4.0.0"
+coverage = "^7.6.1"
+
+
+[tool.poetry.scripts]
+text-mode = "aba_cli_scrapper.__main__:app"
+aba-run = "aba_cli_scrapper.__main__:app_t"
+
+[tool.poetry.dependencies]
+python = ">=3.11.0,<4.0.0"
+
+python-dotenv = "^1.0.1"
+sqlalchemy = "^2.0.32"
+typer = "^0.12.5"
+sqlmodel = "^0.0.21"
+selectolax = "^0.3.21"
+playwright = "1.45.0"
+pymysql = "^1.1.1"
+loguru = "^0.7.2"
+aiosignal = {version = "1.3.1", markers = "python_version >= \"3.7\""}
+annotated-types = {version = "0.7.0", markers = "python_version >= \"3.8\""}
+attrs = {version = "23.2.0", markers = "python_version >= \"3.7\""}
+certifi = {version = "2024.7.4", markers = "python_version >= \"3.6\""}
+cffi = {version = "1.16.0", markers = "platform_python_implementation != \"PyPy\""}
+charset-normalizer = {version = "3.3.2", markers = "python_full_version >= \"3.7.0\""}
+click = {version = "8.1.7", markers = "python_version >= \"3.7\""}
+colorama = {version = "0.4.6", markers = "sys_platform == \"win32\""}
+cryptography = {version = "43.0.1", markers = "python_version >= \"3.7\""}
+frozenlist = {version = "1.4.1", markers = "python_version >= \"3.8\""}
+greenlet = {version = "3.0.3", markers = "python_version >= \"3.7\""}
+idna = {version = "3.7", markers = "python_version >= \"3.5\""}
+markdown-it-py = {version = "3.0.0", markers = "python_version >= \"3.8\""}
+mdurl = {version = "0.1.2", markers = "python_version >= \"3.7\""}
+multidict = {version = "6.0.5", markers = "python_version >= \"3.7\""}
+mypy-extensions = {version = "1.0.0", markers = "python_version >= \"3.5\""}
+nodeenv = {version = "1.9.1", markers = "python_version >= \"2.7\" and python_version not in \"3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6\""}
+packaging = {version = "24.1", markers = "python_version >= \"3.8\""}
+pathspec = {version = "0.12.1", markers = "python_version >= \"3.8\""}
+platformdirs = {version = "4.2.2", markers = "python_version >= \"3.8\""}
+pycparser = {version = "2.22", markers = "python_version >= \"3.8\""}
+pydantic = {version = "2.8.2", markers = "python_version >= \"3.8\""}
+pydantic-core = {version = "2.20.1", markers = "python_version >= \"3.8\""}
+pyee = {version = "11.1.0", markers = "python_version >= \"3.8\""}
+pygments = {version = "2.18.0", markers = "python_version >= \"3.8\""}
+requests = {version = "2.32.3", markers = "python_version >= \"3.8\""}
+rich = {version = "13.7.1", markers = "python_full_version >= \"3.7.0\""}
+shellingham = {version = "1.5.4", markers = "python_version >= \"3.7\""}
+typing-extensions = {version = "4.12.2", markers = "python_version >= \"3.8\""}
+urllib3 = {version = "2.2.2", markers = "python_version >= \"3.8\""}
+win32-setctime = {version = "1.1.0", markers = "sys_platform == \"win32\""}
+yarl = {version = "1.9.4", markers = "python_version >= \"3.7\""}
+trogon = "^0.5.0"
+plotnine = "^0.13.6"
+datahorse = "^0.0.3"
+tabulate = "^0.9.0"
+prettytable = "^3.11.0"
+furo = "^2024.8.6"
+pandas = "^2.2.2"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_variable = "pyproject.toml:version"
+branch = "main"
+changelog_file = "CHANGELOG.md"
+build_command = "rm -r dist ; poetry build ; poetry publish ;"
+
+[tool.semantic_release.branches.dev]
+match = "main"
+prerelease_token = "rc"
+prerelease = false
+
+[tool.coverage.run]
+command_line = "-m pytest"
+
+[tool.coverage.report]
+include = ["aba_cli_scrapper/*.py"]
+show_missing = true
+
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 100
+target-version = "py311"
+preview = true
+
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+docstring-code-format = true
+docstring-code-line-length = 20
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint]
+# Allow `E4`, `E7`, `E9`, and `F`.
+select = ["E4", "E7", "E9", "F",]
+
+# On top of the Google convention, disable `D417`, which requires
+# documentation for every function parameter.
+ignore = ["D417"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+
+[tool.pytest.ini_options]
+addopts = "-p no:warnings:DeprecationWarning"
