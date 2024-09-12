@@ -1,0 +1,31 @@
+[project]
+name = "jelver-cli"
+version = "1.0.22"
+authors = [
+  { name="Jelver dev team", email="info@jelver.com" },
+]
+dependencies = [
+  "requests",
+  "emoji",
+  "colorama",
+  "tqdm",
+  "tabulate",
+  "docopt",
+  "Pillow",
+  "playwright"
+]
+description = "Jelver CLI is a command line interface for Jelver. It allows you to interact with Jelver to conduct end to end frontend testing from the terminal."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["setuptools", "wheel", "cython"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+jelver = "jelver:main"
