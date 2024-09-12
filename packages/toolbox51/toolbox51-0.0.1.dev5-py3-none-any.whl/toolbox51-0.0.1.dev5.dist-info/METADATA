@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: toolbox51
+Version: 0.0.1.dev5
+Author-email: crasylph <crasylph@gmail.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: section_divider
+Requires-Dist: pydantic <2 ; extra == 'section_divider'
+
+# toolbox51
