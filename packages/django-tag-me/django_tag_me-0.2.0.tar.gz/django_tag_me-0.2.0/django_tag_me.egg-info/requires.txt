@@ -1,0 +1,8 @@
+Django>=4.0
+
+[dev]
+django-extensions
+django-tag-me
+hypothesis
+pyright
+pytest
