@@ -1,0 +1,733 @@
+.gitattributes
+.gitignore
+.readthedocs.yml
+LICENSE.md
+MANIFEST.in
+README.md
+cla-1.0.md
+pyproject.toml
+pytest.ini
+requirements.txt
+setup.cfg
+setup.py
+sign-cla.md
+.github/workflows/publish-to-pypi.yml
+.github/workflows/pytest.yml
+PV_ICE/__init__.py
+PV_ICE/debug_degradation.py
+PV_ICE/main.py
+PV_ICE.egg-info/PKG-INFO
+PV_ICE.egg-info/SOURCES.txt
+PV_ICE.egg-info/dependency_links.txt
+PV_ICE.egg-info/requires.txt
+PV_ICE.egg-info/top_level.txt
+PV_ICE/TEMP/.gitignore
+PV_ICE/baselines/baseline_bifaciality_factor.csv
+PV_ICE/baselines/baseline_material_energy_aluminium_frames.csv
+PV_ICE/baselines/baseline_material_energy_backsheet.csv
+PV_ICE/baselines/baseline_material_energy_cadmium.csv
+PV_ICE/baselines/baseline_material_energy_copper.csv
+PV_ICE/baselines/baseline_material_energy_encapsulant.csv
+PV_ICE/baselines/baseline_material_energy_glass.csv
+PV_ICE/baselines/baseline_material_energy_silicon.csv
+PV_ICE/baselines/baseline_material_energy_silver.csv
+PV_ICE/baselines/baseline_material_energy_tellurium.csv
+PV_ICE/baselines/baseline_material_mass_WAMBACH.csv
+PV_ICE/baselines/baseline_material_mass_aluminium_frames.csv
+PV_ICE/baselines/baseline_material_mass_aluminium_frames_cdte.csv
+PV_ICE/baselines/baseline_material_mass_backsheet.csv
+PV_ICE/baselines/baseline_material_mass_cadmium.csv
+PV_ICE/baselines/baseline_material_mass_copper.csv
+PV_ICE/baselines/baseline_material_mass_copper_cdte.csv
+PV_ICE/baselines/baseline_material_mass_encapsulant.csv
+PV_ICE/baselines/baseline_material_mass_encapsulant_cdte.csv
+PV_ICE/baselines/baseline_material_mass_glass.csv
+PV_ICE/baselines/baseline_material_mass_glass_cdte.csv
+PV_ICE/baselines/baseline_material_mass_silicon.csv
+PV_ICE/baselines/baseline_material_mass_silver.csv
+PV_ICE/baselines/baseline_material_mass_tellurium.csv
+PV_ICE/baselines/baseline_modules_energy.csv
+PV_ICE/baselines/baseline_modules_mass_US.csv
+PV_ICE/baselines/baseline_modules_mass_US_CdTe.csv
+PV_ICE/baselines/baseline_modules_mass_US_HistoryUtilCommOnly.csv
+PV_ICE/baselines/baseline_modules_mass_US_updatedT50T90.csv
+PV_ICE/baselines/baseline_modules_mass_World.csv
+PV_ICE/baselines/perovskite_material_energy_glass.csv
+PV_ICE/baselines/perovskite_material_mass_glass.csv
+PV_ICE/baselines/perovskite_modules_energy.csv
+PV_ICE/baselines/perovskite_modules_mass_US_linear.csv
+PV_ICE/baselines/ABM/abm_input_new_installs_cumulative.csv
+PV_ICE/baselines/ABM/abm_outputs_mass_cumulative.csv
+PV_ICE/baselines/ABM/abm_outputs_mass_fractions.csv
+PV_ICE/baselines/CarbonLayer/Ember-PVEmissionsWorld2000-2022.csv
+PV_ICE/baselines/CarbonLayer/WorldInData-annual-co2-emissions-per-country.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_aluminium_frames_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_backsheet_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_copper_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_encapsulant_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_glass_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_module_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_silicon_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline2100_silver_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_aluminium_frames_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_backsheet_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_copper_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_countrygridmix.csv
+PV_ICE/baselines/CarbonLayer/baseline_electricityemissionfactors.csv
+PV_ICE/baselines/CarbonLayer/baseline_encapsulant_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_glass_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_materials_processCO2.csv
+PV_ICE/baselines/CarbonLayer/baseline_module_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_silicon_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/baseline_silver_MFGing_countrymarketshare.csv
+PV_ICE/baselines/CarbonLayer/dummy_baseline_material_energy_silicon.csv
+PV_ICE/baselines/CarbonLayer/dummy_baseline_material_mass_silicon.csv
+PV_ICE/baselines/CarbonLayer/dummy_baseline_modules_energy.csv
+PV_ICE/baselines/CarbonLayer/dummy_baseline_modules_mass_US.csv
+PV_ICE/baselines/ElectrificationFutures_2021/EF-CapacityByState-LowREHighElec.csv
+PV_ICE/baselines/ElectrificationFutures_2021/EF-CapacityByState-basecase.csv
+PV_ICE/baselines/ElectrificationFutures_2021/EF-CapacityByState.xlsx
+PV_ICE/baselines/ElectrificationFutures_2021/NREL_Electrification_Futures_2021_ANALYSIS.xlsx
+PV_ICE/baselines/ElectrificationFutures_2021/baseline_modules_US_NREL_Electrification_Futures_2021_LowREHighElec.csv
+PV_ICE/baselines/ElectrificationFutures_2021/baseline_modules_US_NREL_Electrification_Futures_2021_basecase.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/NREL_Energy_Futures_2018.xlsx
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/NREL_Energy_Futures_2018_DECONFLICTWITHHEATHER.xlsx
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_material_glass_Reeds_OLDMfg_Values.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2018_LowREHighElec.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2018_LowREHighElec_noKittyCat.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2018_basecase.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2018_basecase_noKittyCat.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2021_LowREHighElec.csv
+PV_ICE/baselines/ElectrificationFutures_2021/old_to_delete/baseline_modules_US_NREL_Energy_Futures_2021_basecase.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/DEBUGINREA.xlsx
+PV_ICE/baselines/Energy_CellModuleTechCompare/DEBUGIRENA.pptx
+PV_ICE/baselines/Energy_CellModuleTechCompare/ag_gpm2_bytech.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/baseline_material_mass_backsheet.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/baseline_material_mass_copper.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/baseline_material_mass_encapsulant.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/bifi_perc.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/bifi_shj.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/bifi_topcon.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/debugMfgingScrap.pptx
+PV_ICE/baselines/Energy_CellModuleTechCompare/ember-world-electricity-demand.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/evolve_weibull.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_aluminium_frames_improvedRecycle.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_glass_improvedRecycle.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_glass_r_perovskite.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_silicon_improvedRecycle.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_silicon_r_perovskite.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/material_mass_silver_improvedRecycle.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_50PERC.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_EffLife.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_IRENAregloss.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_PERC.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_PERCrecycleSi.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_SHJ.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_TOPCon.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_perovskite_eff.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/mod_r_perovskite_life.csv
+PV_ICE/baselines/Energy_CellModuleTechCompare/sensitivity_test_energy.xlsx
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_bifaciality_factor.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_bifaciality_factor100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_copper.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_copper100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_glass.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_glass100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_silicon.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_silicon100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_silver.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_energy_silver100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_copper_EU.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_copper_EU100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_copper_EU_extreme.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_copper_EU_extreme100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_glass_EU.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_glass_EU100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_glass_EU_extreme.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_glass_EU_extreme100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silicon_EU.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silicon_EU100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silicon_EU_extreme.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silicon_EU_extreme100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silver_EU.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silver_EU100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silver_EU_extreme.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silver_EU_extreme100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_material_mass_silver_EU_extreme100_test.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_energy.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_energy100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_baseline.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_baseline100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_baseline2.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_baseline2100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_extreme.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_extreme100.csv
+PV_ICE/baselines/European_baselines_Nagle_2024/baseline_modules_mass_EU_recyc_extreme.csv
+PV_ICE/baselines/IRENA/baseline_material_mass_glass_Irena.csv
+PV_ICE/baselines/IRENA/baseline_material_mass_glass_Irena_A_MassBased.csv
+PV_ICE/baselines/IRENA/baseline_material_mass_glass_Irena_B_PowerBased.csv
+PV_ICE/baselines/IRENA/baseline_modules_mass_World_Irena_2016.csv
+PV_ICE/baselines/IRENA/baseline_modules_mass_World_Irena_2019.csv
+PV_ICE/baselines/IRENA/baseline_modules_mass_World_Irena_2019_A_MassBased.csv
+PV_ICE/baselines/IRENA/baseline_modules_mass_World_Irena_2019_B_PowerBased.csv
+PV_ICE/baselines/PVSC_2021/Supporting Material for Installs_by_MonoandTrueBifacial and Bifaciality Factor.xlsx
+PV_ICE/baselines/PVSC_2021/baseline_material_mass_aluminium_frames_bifacialTrend.csv
+PV_ICE/baselines/PVSC_2021/baseline_material_mass_aluminium_frames_hold2020.csv
+PV_ICE/baselines/PVSC_2021/baseline_material_mass_glass_bifacialTrend.csv
+PV_ICE/baselines/PVSC_2021/baseline_material_mass_glass_hold2020.csv
+PV_ICE/baselines/PVSC_2021/baseline_modules_mass_US_ITRPVPrediction_bifacialModules.csv
+PV_ICE/baselines/PVSC_2021/baseline_modules_mass_US_ITRPVPrediction_monofacialModules.csv
+PV_ICE/baselines/PVSC_2021/landfilllmopdata_ANALYSIS.xlsx
+PV_ICE/baselines/SolarFutures_2021/BaselineGraphs-Reeds.xlsx
+PV_ICE/baselines/SolarFutures_2021/MineSupply.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_aluminium_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_backsheet_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_copper_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_encapsulant_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_glass_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_silicon_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_material_mass_silver_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_modules_mass_US_Reeds.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_modules_mass_US_Reeds_EF.csv
+PV_ICE/baselines/SolarFutures_2021/baseline_modules_mass_World_Bogdanov.csv
+PV_ICE/baselines/SupportingMaterial/100REby2035-annuals.csv
+PV_ICE/baselines/SupportingMaterial/100REby2035-cumulative.csv
+PV_ICE/baselines/SupportingMaterial/2020-10-baselineDev-Si_mfg_eff.xlsx
+PV_ICE/baselines/SupportingMaterial/3_3_Solar_Y2021.xlsx
+PV_ICE/baselines/SupportingMaterial/BaselineGraphs.xlsx
+PV_ICE/baselines/SupportingMaterial/Calculations-Installs-Subset-CommUtility.xlsx
+PV_ICE/baselines/SupportingMaterial/December Core Scenarios ReEDS Outputs Solar Futures v3a.xlsx
+PV_ICE/baselines/SupportingMaterial/EnergyFlowsMath.xlsx
+PV_ICE/baselines/SupportingMaterial/Harmonize_graphs.xlsx
+PV_ICE/baselines/SupportingMaterial/HistoricalCapacityWorld-QueryResult-PVCumCap.xlsx
+PV_ICE/baselines/SupportingMaterial/Installs-WoodMac-ByState.csv
+PV_ICE/baselines/SupportingMaterial/InternationalAluminumInst-1995-2021-PrimaryAlSmeltEnergy-kWhpTonne.csv
+PV_ICE/baselines/SupportingMaterial/InternationalAluminumInst-1995-2021-PrimaryAluminaRefineEnergy-MJpTonne.csv
+PV_ICE/baselines/SupportingMaterial/InternationalAluminumInst-2019-LCI-energyGLO.xlsx
+PV_ICE/baselines/SupportingMaterial/LiteratureInstallationProjections.csv
+PV_ICE/baselines/SupportingMaterial/LiteratureInstallationProjections.xlsx
+PV_ICE/baselines/SupportingMaterial/MarketShare_Busbars.csv
+PV_ICE/baselines/SupportingMaterial/MarketShare_CellSize.csv
+PV_ICE/baselines/SupportingMaterial/MarketShare_US_siliconVSthinfilm.csv
+PV_ICE/baselines/SupportingMaterial/MarketShare_global_c-SiVSthinfilm.csv
+PV_ICE/baselines/SupportingMaterial/MarketShare_moduleSize_Peeters2017.csv
+PV_ICE/baselines/SupportingMaterial/Marketshare-Backsheet.csv
+PV_ICE/baselines/SupportingMaterial/Marketshare_glass.csv
+PV_ICE/baselines/SupportingMaterial/MaterialCompositionAnnual-Graph.xlsx
+PV_ICE/baselines/SupportingMaterial/ModuleProjectLife.csv
+PV_ICE/baselines/SupportingMaterial/ModuleType_MarketShare.csv
+PV_ICE/baselines/SupportingMaterial/Module_BackGlassThickness_ITRPV.csv
+PV_ICE/baselines/SupportingMaterial/Module_Conformation_ITRPV.csv
+PV_ICE/baselines/SupportingMaterial/Module_FrontGlassThickness_ITRPV.csv
+PV_ICE/baselines/SupportingMaterial/PVICEMethodsCheck.xlsx
+PV_ICE/baselines/SupportingMaterial/PVInstalls_USA_AllSources.csv
+PV_ICE/baselines/SupportingMaterial/PVInstalls_World_AllSources.csv
+PV_ICE/baselines/SupportingMaterial/RELOG_PV_ICE.xlsx
+PV_ICE/baselines/SupportingMaterial/SF_reeds_alternates.xlsx
+PV_ICE/baselines/SupportingMaterial/US_Historical_AreaEQandNoModules.xlsx
+PV_ICE/baselines/SupportingMaterial/US_Historical_PV_Decomissioning.csv
+PV_ICE/baselines/SupportingMaterial/Wafer_thickness.csv
+PV_ICE/baselines/SupportingMaterial/Wambach-USAInstalls-History.xlsx
+PV_ICE/baselines/SupportingMaterial/ag_g_per_cell.csv
+PV_ICE/baselines/SupportingMaterial/al_kg_per_m.csv
+PV_ICE/baselines/SupportingMaterial/backsheets-marketshare-global.csv
+PV_ICE/baselines/SupportingMaterial/cd_te_properties_calculations.xlsx
+PV_ICE/baselines/SupportingMaterial/encapsulants-marketshares-global.csv
+PV_ICE/baselines/SupportingMaterial/encapsulants-thickness-micron.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-aluminum-CED.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-aluminum-formanodize.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-aluminum-mining.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-aluminum-recycle.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-aluminum-refinesmelt.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-backsheet-mfging.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-backsheetPET-mfging.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-batchglass.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-CED.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-hydro.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-mining.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-pyro.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-recycle.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-copper-wireDraw.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-glass-meltrefine.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-glass-postforming.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-glassforming.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-miningsilica.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-plastic-HQrecycling.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-plastic-LQrecycling.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-plastic-forming.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-plastics-mfging.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-cellProcess.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-ingotgrowing.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-marketshareMGSiProdRegion.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-reduceSilicaSi.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-refineMGtoSo.csv
+PV_ICE/baselines/SupportingMaterial/energy-input-silicon-wafering.csv
+PV_ICE/baselines/SupportingMaterial/energy-inputs-copper-maths.xlsx
+PV_ICE/baselines/SupportingMaterial/energy-module-install-frischknecht2020Table50.xlsx
+PV_ICE/baselines/SupportingMaterial/gis_centroid_n.csv
+PV_ICE/baselines/SupportingMaterial/glass-mfg-eff-raw.xlsx
+PV_ICE/baselines/SupportingMaterial/input-Keiner2023-globalElecDemandSSP15.csv
+PV_ICE/baselines/SupportingMaterial/input-backsheetThickness.csv
+PV_ICE/baselines/SupportingMaterial/input-expotoflatGlobalInstallsProjection.csv
+PV_ICE/baselines/SupportingMaterial/input-fraunhoferise-globalpvproductionmarketshare.xlsx
+PV_ICE/baselines/SupportingMaterial/input-globalDeploymentProjection-HieslmairPlus.csv
+PV_ICE/baselines/SupportingMaterial/kerf_loss_microns.csv
+PV_ICE/baselines/SupportingMaterial/lbnl_thinfilm.xlsx
+PV_ICE/baselines/SupportingMaterial/marketshare_frame-noframe.csv
+PV_ICE/baselines/SupportingMaterial/marketshare_moduleSize_al_frames.csv
+PV_ICE/baselines/SupportingMaterial/module-HistoryInstalls-ThinFilm.csv
+PV_ICE/baselines/SupportingMaterial/module_eff.csv
+PV_ICE/baselines/SupportingMaterial/output-Backsheet-gpm2.csv
+PV_ICE/baselines/SupportingMaterial/output-CountryInstalls-alltech.csv
+PV_ICE/baselines/SupportingMaterial/output-CountryInstalls-cSi.csv
+PV_ICE/baselines/SupportingMaterial/output-RegionInstalls-alltech.csv
+PV_ICE/baselines/SupportingMaterial/output-RegionInstalls-cSi.csv
+PV_ICE/baselines/SupportingMaterial/output-celltech-Agusageimprovements.csv
+PV_ICE/baselines/SupportingMaterial/output-celltech-modeffimprovements.csv
+PV_ICE/baselines/SupportingMaterial/output-energy-aluminumframes.csv
+PV_ICE/baselines/SupportingMaterial/output-energy-module-mfg.csv
+PV_ICE/baselines/SupportingMaterial/output-globalInstallsProjection.csv
+PV_ICE/baselines/SupportingMaterial/output-installationProjection-World-50TW.csv
+PV_ICE/baselines/SupportingMaterial/output_Global_SiPV_installs.csv
+PV_ICE/baselines/SupportingMaterial/output_Global_allPV_installs.csv
+PV_ICE/baselines/SupportingMaterial/output_RELOG_cSi_CdTe_capacity_reeds.csv
+PV_ICE/baselines/SupportingMaterial/output_USA_SiPV_installs.csv
+PV_ICE/baselines/SupportingMaterial/output_USA_Si_marketshare.csv
+PV_ICE/baselines/SupportingMaterial/output_USA_TFPV_installs.csv
+PV_ICE/baselines/SupportingMaterial/output_USA_allPV_installs.csv
+PV_ICE/baselines/SupportingMaterial/output_ag_g_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/output_al_g_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/output_al_g_per_m2_bifacial.csv
+PV_ICE/baselines/SupportingMaterial/output_avg_module_cdte_eff_final.csv
+PV_ICE/baselines/SupportingMaterial/output_avg_module_eff_final.csv
+PV_ICE/baselines/SupportingMaterial/output_cell_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/output_cu_g_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_CdTe_installs_utility.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_all_pv.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_c-Si_installs_utility.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_market_share_c-Si_CdTe_all.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_market_share_c-Si_CdTe_utility.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_tidy_cSi_CdTe_market_share_all.csv
+PV_ICE/baselines/SupportingMaterial/output_eia860_tidy_cSi_CdTe_market_share_utility.csv
+PV_ICE/baselines/SupportingMaterial/output_encapsulant_gpm2.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_Cu_Mfging.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_backsheet_MFGing.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_encapsulant_MFGing.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_glass_MFG_FUEL.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_glass_formflat.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_glass_meltrefine.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_plastics_LQrecycle.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_silicon_MFG_mcSi.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_silicon_eol_recycleHQ.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_silicon_eol_recycleHQ_ALT.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_silicon_mfg.csv
+PV_ICE/baselines/SupportingMaterial/output_energy_silicon_mfg_STEPS.csv
+PV_ICE/baselines/SupportingMaterial/output_glass_g_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/output_glass_g_per_m2_cdte.csv
+PV_ICE/baselines/SupportingMaterial/output_glass_g_per_m2_projection.csv
+PV_ICE/baselines/SupportingMaterial/output_marketshare_glassVbacksheet.csv
+PV_ICE/baselines/SupportingMaterial/output_mfg_eff_si.csv
+PV_ICE/baselines/SupportingMaterial/output_module_eff_perovskite.csv
+PV_ICE/baselines/SupportingMaterial/output_scaledmrktshr_mcSi_mono.csv
+PV_ICE/baselines/SupportingMaterial/output_si_g_per_cell.csv
+PV_ICE/baselines/SupportingMaterial/output_si_g_per_m2.csv
+PV_ICE/baselines/SupportingMaterial/utilization_g_perwafer.csv
+PV_ICE/baselines/SupportingMaterial/wafering_marketshare.csv
+PV_ICE/baselines/SupportingMaterial/~$RELOG_PV_ICE.xlsx
+PV_ICE/baselines/SupportingMaterial/~$cd_te_properties_calculations.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/DOE-CritMat-AlProdbyCountry.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/Dummy_test.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/EIA-electricitybycountry.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/IAI-al_production_by_country.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/IEA-SpecialReportPVSupplyChains-PVmoduleMFGing.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/IEA-WorldEnergyBalancesHighlights2022.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-CarbonEmitProjections-SSP15.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-USGS-Cu-MinePrimaryCountries.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-USGS-Cu-RefinePrimaryCountries.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-USGS-Cu-SmeltPrimaryCountries.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-USGS-silverminebycountry.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-backsheetMFGers-ENFData.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-bp-stats-review-2022-all-data.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Argentina-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Australia-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Austria-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Bahrain_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Bolivia-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Bosnia_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Brazil-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Canada-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-CongoDRC-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-EUgridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-ElSalvador-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-France_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Germany-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-HongKong-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Iceland_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-India- gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Indonesia-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Italy-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Japan-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Kazakhstan_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Laos_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Malaysia-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Mexico-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Morocco-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Netherlands-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Norway_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-OECD-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-OECD-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Peru-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Philippines-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Poland-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Qatar_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Russia_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-SKorea-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-SaudiArabia-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Singapore-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Slovakia_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-SouthAfrica-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Spain_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Sweden-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Switzerland-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Taiwan-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Thailand-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Turkey-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-UAE-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-USA-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Ukraine_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-UnitedKingdom_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Uzbekistan_gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Venezuela-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-VietNam-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-World-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-Zambia-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-china-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-china-gridshare.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ember-countries-gco2pkwh.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-encapsulantMFGers-ENFData.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-iea-china-gridshare.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-modules-countryMarketshare-Mfging-bnef.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-ourWorldinData-CO2perfuelsource.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-cell.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-ingot-mono.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-ingot-multi.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-mgSi.xlsx
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-mgsi.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-polysilicon.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-silicon-CountryMarketshare-wafer.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-worldindataBPember-carbon-intensity-electricity-country.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-worldsilversurvey2014-silverminebycountry.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/input-worldsilversurvey2023-silverminebycountry.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/output-copper-CountryMarketshare-MFGing.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/output-silicon-CountryMarketshare-MFGing.csv
+PV_ICE/baselines/SupportingMaterial/CarbonIntensities/output-silver-MFGingByCountry.csv
+PV_ICE/baselines/SupportingMaterial/CellTechCompare/ITRPV_celltech_marketshare.csv
+PV_ICE/baselines/SupportingMaterial/CellTechCompare/PERCvSHJvTOPCon-LitData.xlsx
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/23-01-27-DecommissionsAllWastes_now20302050-Cumulative.xlsx
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/23-01-30-DecommissionsAllWastes_now20302050-Cumulative.xlsx
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/DecommissionsAllWastes_now20302050.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/DecommissionsAllWastes_now20302050_perfMFG.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/US_Historical_AreaDisposed_EQ.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/US_Historical_NoModulesDisposed.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/US_Historical_PV_Decomissioning20302050_Sectorwise.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/US_Historical_PV_Decomissioning_Sectorwise.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/US_Historical_PV_cSiWaste20302050_Sectorwise.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/historicalUS-cumulative.csv
+PV_ICE/baselines/SupportingMaterial/USHistoryResults/historicalUS-yearly.csv
+contributors/heathermirletz.md
+contributors/shirubana.md
+docs/baseline development documentation/(baseline dev) Carbon - Aluminium Frames.html
+docs/baseline development documentation/(baseline dev) Carbon - Aluminium Frames.ipynb
+docs/baseline development documentation/(baseline dev) Carbon - Aluminium Frames.py
+docs/baseline development documentation/(baseline dev) Energy - Copper.html
+docs/baseline development documentation/(baseline dev) Energy - Copper.ipynb
+docs/baseline development documentation/(baseline dev) Energy - Copper.py
+docs/baseline development documentation/(baseline dev) PV Installations - Global.html
+docs/baseline development documentation/(baseline dev) PV Installations - Global.ipynb
+docs/baseline development documentation/(baseline dev) PV Installations - Global.py
+docs/baseline development documentation/(baseline development documentation) Create Alternate Module Technology Baselines.html
+docs/baseline development documentation/(baseline development documentation) Create Alternate Module Technology Baselines.py
+docs/baseline development documentation/(baseline development) Aluminum Frames per m2.html
+docs/baseline development documentation/(baseline development) Aluminum Frames per m2.ipynb
+docs/baseline development documentation/(baseline development) Aluminum Frames per m2.py
+docs/baseline development documentation/(baseline development) Carbon - Copper.html
+docs/baseline development documentation/(baseline development) Carbon - Copper.ipynb
+docs/baseline development documentation/(baseline development) Carbon - Copper.py
+docs/baseline development documentation/(baseline development) Carbon - Plastics.html
+docs/baseline development documentation/(baseline development) Carbon - Plastics.ipynb
+docs/baseline development documentation/(baseline development) Carbon - Plastics.py
+docs/baseline development documentation/(baseline development) Carbon - Silicon.html
+docs/baseline development documentation/(baseline development) Carbon - Silicon.ipynb
+docs/baseline development documentation/(baseline development) Carbon - Silicon.py
+docs/baseline development documentation/(baseline development) Carbon - Silver.html
+docs/baseline development documentation/(baseline development) Carbon - Silver.ipynb
+docs/baseline development documentation/(baseline development) Carbon - Silver.py
+docs/baseline development documentation/(baseline development) CdTe Installations - US.html
+docs/baseline development documentation/(baseline development) CdTe Installations - US.ipynb
+docs/baseline development documentation/(baseline development) CdTe Installations - US.py
+docs/baseline development documentation/(baseline development) Copper per module m2.html
+docs/baseline development documentation/(baseline development) Copper per module m2.ipynb
+docs/baseline development documentation/(baseline development) Copper per module m2.py
+docs/baseline development documentation/(baseline development) EIA860 Processing - cSi CdTe Installation.html
+docs/baseline development documentation/(baseline development) EIA860 Processing - cSi CdTe Installation.ipynb
+docs/baseline development documentation/(baseline development) EIA860 Processing - cSi CdTe Installation.py
+docs/baseline development documentation/(baseline development) Encapsulants and Backsheets.html
+docs/baseline development documentation/(baseline development) Encapsulants and Backsheets.ipynb
+docs/baseline development documentation/(baseline development) Encapsulants and Backsheets.py
+docs/baseline development documentation/(baseline development) Energy Aluminum Frames.html
+docs/baseline development documentation/(baseline development) Energy Aluminum Frames.ipynb
+docs/baseline development documentation/(baseline development) Energy Aluminum Frames.py
+docs/baseline development documentation/(baseline development) Energy Glass Batch Prep - Post Forming.html
+docs/baseline development documentation/(baseline development) Energy Glass Batch Prep - Post Forming.ipynb
+docs/baseline development documentation/(baseline development) Energy Glass Batch Prep - Post Forming.py
+docs/baseline development documentation/(baseline development) Energy Mining Silica.html
+docs/baseline development documentation/(baseline development) Energy Mining Silica.ipynb
+docs/baseline development documentation/(baseline development) Energy Mining Silica.py
+docs/baseline development documentation/(baseline development) Energy Plastics.html
+docs/baseline development documentation/(baseline development) Energy Plastics.ipynb
+docs/baseline development documentation/(baseline development) Energy Plastics.py
+docs/baseline development documentation/(baseline development) Energy Silicon Manufacturing.html
+docs/baseline development documentation/(baseline development) Energy Silicon Manufacturing.ipynb
+docs/baseline development documentation/(baseline development) Energy Silicon Manufacturing.py
+docs/baseline development documentation/(baseline development) Energy-ModuleMFG.html
+docs/baseline development documentation/(baseline development) Energy-ModuleMFG.ipynb
+docs/baseline development documentation/(baseline development) Energy-ModuleMFG.py
+docs/baseline development documentation/(baseline development) Glass per M2 Calculations.html
+docs/baseline development documentation/(baseline development) Glass per M2 Calculations.ipynb
+docs/baseline development documentation/(baseline development) Glass per M2 Calculations.py
+docs/baseline development documentation/(baseline development) MFG losses Si - calcs.html
+docs/baseline development documentation/(baseline development) MFG losses Si - calcs.ipynb
+docs/baseline development documentation/(baseline development) MFG losses Si - calcs.py
+docs/baseline development documentation/(baseline development) Module Efficiency CdTe.html
+docs/baseline development documentation/(baseline development) Module Efficiency CdTe.ipynb
+docs/baseline development documentation/(baseline development) Module Efficiency CdTe.py
+docs/baseline development documentation/(baseline development) Module Efficiency.html
+docs/baseline development documentation/(baseline development) Module Efficiency.ipynb
+docs/baseline development documentation/(baseline development) Module Efficiency.py
+docs/baseline development documentation/(baseline development) PV Installations - Global.html
+docs/baseline development documentation/(baseline development) PV Installations - Global.py
+docs/baseline development documentation/(baseline development) PV Installations - USA.html
+docs/baseline development documentation/(baseline development) PV Installations - USA.ipynb
+docs/baseline development documentation/(baseline development) PV Installations - USA.py
+docs/baseline development documentation/(baseline development) Silicon per m2.html
+docs/baseline development documentation/(baseline development) Silicon per m2.ipynb
+docs/baseline development documentation/(baseline development) Silicon per m2.py
+docs/baseline development documentation/(baseline development) Silver per m2.html
+docs/baseline development documentation/(baseline development) Silver per m2.ipynb
+docs/baseline development documentation/(baseline development) Silver per m2.py
+docs/baseline development documentation/(baseline development)Flows_Aluminium_Frames.txt
+docs/baseline development documentation/(baseline development)Flows_Copper.txt
+docs/baseline development documentation/(baseline development)Flows_Silver.txt
+docs/baseline development documentation/(baseline development)SiliconRecyclingEnergy.txt
+docs/baseline development documentation/(baseline development)Silver_Energy_Demands.txt
+docs/baseline development documentation/(baseline development)VirginMatEff_Silicon.txt
+docs/baseline development documentation/(dev) AltInputsGenerationScripts.html
+docs/baseline development documentation/(dev) AltInputsGenerationScripts.ipynb
+docs/baseline development documentation/(dev) AltInputsGenerationScripts.py
+docs/baseline development documentation/EnergyofManufacturing_Module_Material.html
+docs/baseline development documentation/EnergyofManufacturing_Module_Material.ipynb
+docs/baseline development documentation/EnergyofManufacturing_Module_Material.py
+docs/images_wiki/2_15vs50Overview.PNG
+docs/images_wiki/CE-MFC.png
+docs/images_wiki/EOLLogic.png
+docs/images_wiki/EOLPaths.csv
+docs/images_wiki/GARVIN_2020.PNG
+docs/images_wiki/IRENA_projections.PNG
+docs/images_wiki/ITRPV_GlassDeduction.PNG
+docs/images_wiki/Linear-Economy.PNG
+docs/images_wiki/MFC-Diagram.PNG
+docs/images_wiki/MassEnergyFlowChart.png
+docs/images_wiki/NREL_EnergyFuturesInstallatios.PNG
+docs/images_wiki/PV_ICE_Diagram-AltLegend.png
+docs/images_wiki/PV_ICE_Diagram-Legend.png
+docs/images_wiki/PV_ICE_Diagram-withPPTLegend.png
+docs/images_wiki/PV_ICE_diagram-simpleAltUpdate.png
+docs/images_wiki/Thumbs.db
+docs/images_wiki/material_baselineInput.PNG
+docs/images_wiki/module_baselineInput.PNG
+docs/publications/00 - PVSC 2021 Fig. 3.html
+docs/publications/00 - PVSC 2021 Fig. 3.ipynb
+docs/publications/00 - PVSC 2021 Fig. 3.py
+docs/publications/01 - Duramat REMADE.html
+docs/publications/01 - Duramat REMADE.ipynb
+docs/publications/01 - Duramat REMADE.py
+docs/publications/02 - Duramat Webinar Simulations.html
+docs/publications/02 - Duramat Webinar Simulations.ipynb
+docs/publications/02 - Duramat Webinar Simulations.py
+docs/publications/03 - Electric Futures Simulations.html
+docs/publications/03 - Electric Futures Simulations.ipynb
+docs/publications/03 - Electric Futures Simulations.py
+docs/publications/04 - PV ICE Journal.html
+docs/publications/04 - PV ICE Journal.ipynb
+docs/publications/04 - PV ICE Journal.py
+docs/publications/05a - Electric Futures REMADE.html
+docs/publications/05a - Electric Futures REMADE.ipynb
+docs/publications/05a - Electric Futures REMADE.py
+docs/publications/05b - Electric Futures by State.html
+docs/publications/05b - Electric Futures by State.ipynb
+docs/publications/05b - Electric Futures by State.py
+docs/publications/05c - Electric Futures Simulations BIFACIAL (PVSC) CLEANUP.html
+docs/publications/05c - Electric Futures Simulations BIFACIAL (PVSC) CLEANUP.ipynb
+docs/publications/05c - Electric Futures Simulations BIFACIAL (PVSC) CLEANUP.py
+docs/publications/05d - Electric Futures by STATE BIFACIAL (PVSC).html
+docs/publications/05d - Electric Futures by STATE BIFACIAL (PVSC).ipynb
+docs/publications/05d - Electric Futures by STATE BIFACIAL (PVSC).py
+docs/publications/06 - Terawatt Workshop 2021 Lifetime Effects.html
+docs/publications/06 - Terawatt Workshop 2021 Lifetime Effects.ipynb
+docs/publications/06 - Terawatt Workshop 2021 Lifetime Effects.py
+docs/publications/07 - LifetimeVsRecycling Analysis - PLOS ONE.html
+docs/publications/07 - LifetimeVsRecycling Analysis - PLOS ONE.ipynb
+docs/publications/07 - LifetimeVsRecycling Analysis - PLOS ONE.py
+docs/publications/08 - PVSC 2022 - Perovskite ReMFG vs Recycle.html
+docs/publications/08 - PVSC 2022 - Perovskite ReMFG vs Recycle.ipynb
+docs/publications/08 - PVSC 2022 - Perovskite ReMFG vs Recycle.py
+docs/publications/09 - PERC vs SHJ vs TOPCon.html
+docs/publications/09 - PERC vs SHJ vs TOPCon.ipynb
+docs/publications/09 - PERC vs SHJ vs TOPCon.py
+docs/publications/10a - Energy Results Paper.html
+docs/publications/10a - Energy Results Paper.ipynb
+docs/publications/10a - Energy Results Paper.py
+docs/publications/10b - Energy Sensitivity - Lifetime, Efficiency, Material Circularity.html
+docs/publications/10b - Energy Sensitivity - Lifetime, Efficiency, Material Circularity.ipynb
+docs/publications/10b - Energy Sensitivity - Lifetime, Efficiency, Material Circularity.py
+docs/publications/11a - PVRW 2023.html
+docs/publications/11a - PVRW 2023.ipynb
+docs/publications/11a - PVRW 2023.py
+docs/publications/11b - PVRW 2023-DJordan.html
+docs/publications/11b - PVRW 2023-DJordan.ipynb
+docs/publications/11b - PVRW 2023-DJordan.py
+docs/publications/12 - Carbon Intensities Analysis.html
+docs/publications/12 - Carbon Intensities Analysis.ipynb
+docs/publications/12 - Carbon Intensities Analysis.py
+docs/publications/13 - Bifaciality effect on Sustainability Metrics.html
+docs/publications/13 - Bifaciality effect on Sustainability Metrics.ipynb
+docs/publications/13 - Bifaciality effect on Sustainability Metrics.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Output Munging.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Output Munging.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Output Munging.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting Update November 2022.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting Update November 2022.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting Update November 2022.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - PCA simulation and plotting.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - STATE simulation and plotting.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - STATE simulation and plotting.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - STATE simulation and plotting.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA + Circular Economy Pathways.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA + Circular Economy Pathways.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA + Circular Economy Pathways.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA - SIMPLIFIED.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA - SIMPLIFIED.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA - SIMPLIFIED.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - USA.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - WORLD.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - WORLD.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios - WORLD.py
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios Baseline Creation Updated.html
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios Baseline Creation Updated.ipynb
+docs/publications/Solar Futures Simulations/(development) ReEDS Scenarios Baseline Creation Updated.py
+docs/publications/Solar Futures Simulations/PVICE & Relog - PCA baselines for Si & CdTe & MassFlows Calculations.html
+docs/publications/Solar Futures Simulations/PVICE & Relog - PCA baselines for Si & CdTe & MassFlows Calculations.ipynb
+docs/publications/Solar Futures Simulations/PVICE & Relog - PCA baselines for Si & CdTe & MassFlows Calculations.py
+docs/publications/Solar Futures Simulations/output_reeds4PVICE.csv
+docs/sphinx/Makefile
+docs/sphinx/make.bat
+docs/sphinx/source/.api.rst.un~
+docs/sphinx/source/.index.rst.un~
+docs/sphinx/source/.installation.rst.un~
+docs/sphinx/source/.package_overview.rst.un~
+docs/sphinx/source/.whatsnew.rst.un~
+docs/sphinx/source/api.rst
+docs/sphinx/source/api.rst~
+docs/sphinx/source/conf.py
+docs/sphinx/source/contributing.rst
+docs/sphinx/source/data.rst
+docs/sphinx/source/index.rst
+docs/sphinx/source/index.rst~
+docs/sphinx/source/installation.rst
+docs/sphinx/source/installation.rst~
+docs/sphinx/source/package_overview.rst
+docs/sphinx/source/whatsnew.rst
+docs/sphinx/source/whatsnew.rst~
+docs/sphinx/source/_static/.gitignore
+docs/sphinx/source/_static/no_scrollbars.css
+docs/sphinx/source/whatsnew/v0.1.0.rst
+docs/sphinx/source/whatsnew/v0.1.1.rst
+docs/sphinx/source/whatsnew/v0.2.0.rst
+docs/sphinx/source/whatsnew/v0.2.1.rst
+docs/sphinx/source/whatsnew/v0.3.0.rst
+docs/sphinx/source/whatsnew/v0.3.2.rst
+docs/sphinx/source/whatsnew/v0.4.0.rst
+docs/tutorials/0 - quickStart Example.html
+docs/tutorials/0 - quickStart Example.ipynb
+docs/tutorials/0 - quickStart Example.py
+docs/tutorials/0b - new Energy Flows.html
+docs/tutorials/0b - new Energy Flows.ipynb
+docs/tutorials/0b - new Energy Flows.py
+docs/tutorials/1 - Beginner Example.html
+docs/tutorials/1 - Beginner Example.ipynb
+docs/tutorials/1 - Beginner Example.py
+docs/tutorials/10 - Duramat Webinar Simulations Apr 2021.html
+docs/tutorials/10 - Duramat Webinar Simulations Apr 2021.ipynb
+docs/tutorials/10 - Duramat Webinar Simulations Apr 2021.py
+docs/tutorials/10 - Geographically distributed installs from ReEDS.html
+docs/tutorials/10 - Geographically distributed installs from ReEDS.ipynb
+docs/tutorials/10 - Geographically distributed installs from ReEDS.py
+docs/tutorials/12 - Evaluating Agent-Based-Modeling waste-management scenarios using PV ICE.html
+docs/tutorials/12 - Evaluating Agent-Based-Modeling waste-management scenarios using PV ICE.ipynb
+docs/tutorials/12 - Evaluating Agent-Based-Modeling waste-management scenarios using PV ICE.py
+docs/tutorials/14 - Historical US Installs Waste Projection.html
+docs/tutorials/14 - Historical US Installs Waste Projection.ipynb
+docs/tutorials/14 - Historical US Installs Waste Projection.py
+docs/tutorials/2 - 50 Year vs 15 Year.html
+docs/tutorials/2 - 50 Year vs 15 Year.ipynb
+docs/tutorials/2 - 50 Year vs 15 Year.py
+docs/tutorials/3 - Advanced - Explore Repair and Reuse.html
+docs/tutorials/3 - Advanced - Explore Repair and Reuse.ipynb
+docs/tutorials/3 - Advanced - Explore Repair and Reuse.py
+docs/tutorials/4 - Exploring Weibull.html
+docs/tutorials/4 - Exploring Weibull.ipynb
+docs/tutorials/4 - Exploring Weibull.py
+docs/tutorials/5 - Global Installations and Waste Literature Comparisons.html
+docs/tutorials/5 - Global Installations and Waste Literature Comparisons.ipynb
+docs/tutorials/5 - Global Installations and Waste Literature Comparisons.py
+docs/tutorials/6 - Sensitivity Analysis.html
+docs/tutorials/6 - Sensitivity Analysis.ipynb
+docs/tutorials/6 - Sensitivity Analysis.py
+docs/tutorials/7 - Exploring Baselines by Plots.html
+docs/tutorials/7 - Exploring Baselines by Plots.ipynb
+docs/tutorials/7 - Exploring Baselines by Plots.py
+docs/tutorials/8 - Monte Carlo Analysis.html
+docs/tutorials/8 - Monte Carlo Analysis.ipynb
+docs/tutorials/8 - Monte Carlo Analysis.py
+docs/tutorials/9 - Ideal Waste vs. Waste considering Manufacturing and Virgin Material Losses.html
+docs/tutorials/9 - Ideal Waste vs. Waste considering Manufacturing and Virgin Material Losses.ipynb
+docs/tutorials/9 - Ideal Waste vs. Waste considering Manufacturing and Virgin Material Losses.py
+docs/tutorials/13 - US Spatial Analysis for US Si & CdTe/1 - PCA baselines for Si & CdTe.ipynb
+docs/tutorials/13 - US Spatial Analysis for US Si & CdTe/2 - MassFlows Calculations.ipynb
+tests/__init__.py
+tests/baseline_material_mass_silicon_test_degradation.csv
+tests/baseline_material_test.csv
+tests/baseline_material_test_2.csv
+tests/baseline_material_test_3.csv
+tests/baseline_module_test.csv
+tests/baseline_module_test_2.csv
+tests/baseline_modules_mass_test_degradation.csv
+tests/baseline_modules_test_3.csv
+tests/sensitivity_test.xlsx
+tests/test_main.py
+training/PV_ICE_logo.png
+training/README.md
+training/_config.yml
+training/_toc.yml
+training/intro.md
+training/requirements.txt
+training/tutorials/1 - Basic run.html
+training/tutorials/1 - Basic run.ipynb
+training/tutorials/1 - Basic run.py
+training/tutorials/2 - Comparison Run.html
+training/tutorials/2 - Comparison Run.ipynb
+training/tutorials/2 - Comparison Run.py
