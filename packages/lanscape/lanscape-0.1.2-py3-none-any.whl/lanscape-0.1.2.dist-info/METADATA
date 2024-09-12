@@ -1,0 +1,39 @@
+Metadata-Version: 2.3
+Name: lanscape
+Version: 0.1.2
+Summary: A python based local network scanner
+Project-URL: Homepage, https://github.com/mdennis281/py-lanscape
+Project-URL: Issues, https://github.com/mdennis281/py-lanscape/issues
+Author-email: Michael Dennis <michael@dipduo.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Requires-Dist: flask==3.0.3
+Requires-Dist: psutil==6.0.0
+Requires-Dist: pywebview>=4.2
+Requires-Dist: scapy>=2.3.2
+Description-Content-Type: text/markdown
+
+# LANscape
+A python based local network scanner.
+
+![screenshot](https://github.com/mdennis281/py-lanscape/raw/main/src/lanscape/static/img/readme1.png)
+
+## Local Run
+```sh
+pip install lanscape
+python -m lanscape
+```
+
+## Flags
+ - `--port <port number>` port of the flask app (default: 5001)
+ - `--nogui` run in web mode (default: false)
+ - `--debug` verbose logging (default: false)
+
+Examples:
+```shell
+python -m lanscape --debug
+python -m lanscape --nogui --port 5002
+```
