@@ -1,0 +1,498 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">Validation Tests Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.34.0.min.js" charset="utf-8"></script>
+<script>
+  function getElt(id) { return document.getElementById(id) }
+  function getRadio(form,name) { return document.forms[form].elements[name].value }
+</script>
+<script>
+  const actions = {
+    toogle: function(id) {
+      const x = getElt(id);
+      x.style.display = (x.style.display === "none") ? "" : "none";
+    },
+    open: function (route) {
+      const arr = window.location.pathname.split('/');
+      arr.pop();arr.pop();
+      const root = arr.join('/');
+      const url = root + '/' +  route;
+      switch (getRadio("parameters", "open_type")) {
+        case "browser": window.open(url, '_blank'); break;
+        case "vscode":  window.open('vscode://file' + url, '_blank'); break;
+      }
+    },
+  }
+</script>
+<script>
+  const chartlib = {
+    // LIB ECHARTS
+    echarts: function(elt, data) {
+      const echarts_options = {
+        //color:    null, // Custom color palette
+        legend:  { left: 'right' },
+        tooltip: { trigger: 'item', formatter: '{a}<br/>{b}<br/>{c}' },
+        title:   { text: data.title },
+        xAxis:   { name: data.xaxis },
+        yAxis:   { name: data.yaxis },
+        series:  [],
+      }
+      // series
+      data.series.forEach(item => {
+        echarts_options.series.push({
+          type: 'line',
+          name: item.name,
+          data: item.data,
+        })
+      });
+      // colors
+      if (data.series[0].color) {
+        echarts_options.color = data.series.map((e) => e.color)
+      }
+      // create
+      echarts.init(elt).setOption(echarts_options);
+    },
+    // LIB PLOTLY
+    plotly: function(elt, data) {
+      const series = []
+      data.series.forEach(item => {
+        series.push({
+          name: item.name,
+          x:    item.data.map((e) => e[0]),
+          y:    item.data.map((e) => e[1]),
+          mode: 'lines+markers',
+          line:   { color: item.color, width: 3 },
+          marker: { color: item.color, size: 6 },
+        })
+      });
+      Plotly.newPlot(
+        elt,
+        series,
+        {
+          title: { text: data.title, font: { weight: 800 } },
+          xaxis: { title: data.xaxis },
+          yaxis: { title: data.yaxis },
+        }
+      );
+    },
+  };
+  const curvemgmt = {
+    // GENERIC
+    curve_add_chart: function(element_parent, data) {
+      // create div
+      const div = document.createElement('div');
+      div.style.cssText = "width: 600px; height: 400px;";
+      element_parent.appendChild(div);
+      // chart
+      const parameter = getRadio("parameters", "js_lib")
+      switch (parameter) {
+        case "plotly":  chartlib.plotly(div, data); break;
+        case "echarts": chartlib.echarts(div, data); break;
+      }
+    },
+    // SIMPLE
+    // GROUPS
+    curve_add_group: function(test_index, group_index) {
+
+      // context
+      const curves = {
+        test:      global_curves.test[test_index],
+        reference: global_curves.reference[test_index],
+      }        
+      const chart = curves.test.charts[chart_index]
+
+      // elements mgmt
+      const test_element_id = `curves_${parseInt(test_index)+1}`
+      const group_element_id = `${test_element_id}_${parseInt(group_index)}`
+      let group_element = getElt(group_element_id)
+      if (! group_element ) {
+        group_element = document.createElement('div');
+        group_element.id = group_element_id
+        getElt(test_element_id).appendChild(group_element);
+      } else {
+        group_element.innerHTML = "";
+      }
+      group_element.innerHTML = '<div style="margin:10px 0px;"><strong>' + chart.title + '</strong></div>';
+      
+      group_element_charts = document.createElement('div');
+      group_element_charts.style.cssText = "display: flex;flex-wrap: wrap;";
+      group_element.appendChild(group_element_charts);
+
+      // display test vs reference
+      const curve_0 = curves.test.curves[chart.curves[0]]
+      const labels = { test: "Test", reference: "Reference" }
+      for (type in labels) {
+
+        const series = []
+        chart.curves.forEach(curve_index => {
+          const curve = curves[type].curves[curve_index]
+          series.push({
+            name:  curve.short_title,
+            data:  curve.series,
+            color: null,
+          })
+        });
+        
+        const data = {
+          title: chart.title + " - " + labels[type],
+          xaxis: chart.xaxis,
+          yaxis: chart.yaxis,
+          series : series,
+        }
+        this.curve_add_chart(group_element_charts, data)
+      }
+
+      group_element_charts = document.createElement('div');
+      group_element_charts.style.cssText = "display: flex;flex-wrap: wrap;";
+      group_element.appendChild(group_element_charts);
+
+      // display ecah curve test vs reference
+      for (index_curve in chart.curves) {
+        real_index = chart.curves[index_curve]
+
+        const series = [
+          {
+            name:  "Test",
+            data:  curves["test"].curves[real_index].series,
+            color: '#1982c4',
+          },
+          {
+            name:  "Reference",
+            data:  curves["reference"].curves[real_index].series,
+            color: '#6a4c93',
+          },
+        ]
+        const data = {
+          title: curves["test"].curves[real_index].title,
+          xaxis: chart.xaxis,
+          yaxis: chart.yaxis,
+          series : series,
+        }
+        this.curve_add_chart(group_element_charts, data)
+      }
+    },
+    load_group_curves: function() {
+      // call chart group
+      for (i in global_curves.test) {
+        for (chart_index in global_curves.test[i].charts) {
+          this.curve_add_group(i, chart_index)
+        }
+      }
+    },
+  };
+  // GEN
+  function load_curves() {
+    curvemgmt.load_group_curves()
+  }
+</script>
+<style type="text/css">
+  *:not(code):not(pre):not(td):not(th) {
+      font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+      font-family-monospace: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  }
+  h1, h2, h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  h4 {
+    margin-bottom: 0px;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: 1px solid #aaa;
+    font-size:0.8rem;
+    padding:1px 4px;
+    font-family: monospace;
+    white-space: nowrap;
+  }
+  .errors   { background-color:#c52a0f20;color:#c52a0f; }
+  .warnings { background-color:#bcbc0620;color:#bcbc06; }
+  .success  { background-color:#16840020;color:#168400; }
+  .test-bg-80 { background-color:#{{ meta.color_test }}80; }
+  .test-bg-50 { background-color:#{{ meta.color_test }}50; }
+  .test-bg-20 { background-color:#{{ meta.color_test }}20; }
+  .refe-bg-80 { background-color:#{{ meta.color_reference }}80; }
+  .refe-bg-50 { background-color:#{{ meta.color_reference }}50; }
+  .refe-bg-20 { background-color:#{{ meta.color_reference }}20; }
+  th {
+    background-color:#eee;color:#333;
+  }
+  .number {
+    text-align: right;
+  }
+  .center {
+    text-align: center;
+  }
+  a, a:link, a:visited, a:hover, a:active { color: #666; }
+  .footer {text-align: center; font-size: 0.9rem; color:#999; padding:40px;}
+</style>
+  </head>
+  <body>
+
+    <!--TITLE-->
+    <h1>
+      <img height="40" src="{{ meta.image }}"/>
+      {{ meta.title }}
+      {{ data.name }}
+    </h1>
+
+    <!--PARAMETERS-->
+    <div id="section_parameters"s style="font-size:0.9rem;color:#777;">
+      <form name="parameters">
+        {% set parameters={
+          'open_type':    { 'label': 'Open in',   'vals': ['browser', 'vscode'] },
+          'js_lib':       { 'label': 'Chart Lib', 'vals': ['plotly', 'echarts'] , 'action': 'load_curves()' },
+        } %}
+        {% for id, item in parameters.items() %}
+          <fieldset style="display: inline-block;">
+            <legend>{{ item.label }}</legend>
+            {% for value in item.vals %}
+              <div>
+                <input type="radio" id="{{ id }}_{{ value }}" name="{{ id }}" value="{{ value }}"  {% if loop.index == 1 %} checked {% endif %} {% if item.action %} onclick="{{ item.action }}" {% endif %}/>
+                <label for="{{ id }}_{{ value }}">{{ value }}</label>
+              </div>
+            {% endfor %}
+          </fieldset>
+        {% endfor %}
+      </form>
+    </div>
+    
+    <!--SUMMARY-->
+    <h2>Summary</h2>
+
+    <h3>Files <button onclick="actions.toogle('section_summary_files')">Show/Hide</button></h3>
+    <div id="section_summary_files">
+      <table>
+        <tr>
+          <th rowspan="2">#</th>
+          <th rowspan="2">Status</th>
+          <th rowspan="2">Name</th>
+          <th rowspan="2">Details</th>
+          <th rowspan="2" class="test-bg-50">Open test</th>
+          <th rowspan="2" class="refe-bg-50">Open Ref</th>
+          <th rowspan="2">Error nb</th>
+          <th rowspan="2">Warning nb</th>
+          <th rowspan="2">Information</th>
+          <th colspan="2">Nb Lines - Raw&nbsp;&nbsp;&nbsp;</th>
+          <th colspan="2">Nb Lines - Ignore</th>
+          <th colspan="2">Nb Lines - Number</th>
+        </tr>
+        <tr>
+          <th class="test-bg-50">Test</th>
+          <th class="refe-bg-50">Ref.</th>
+          <th class="test-bg-50">Test</th>
+          <th class="refe-bg-50">Ref.</th>
+          <th class="test-bg-50">Test</th>
+          <th class="refe-bg-50">Ref.</th>
+        </tr>
+        {% for file in data.files %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          {% if file.error %}
+              <td class="errors">ERROR</td>
+          {% elif file.warnings_nb > 0 %}
+              <td class="warnings">WARNING</td>
+          {% else %}
+              <td class="success">SUCCESS</td>
+          {% endif %}
+          <td>{{ file.name }}</td>
+          <td class="center"><a href="#{{ file.name }}">[...]</a></td>
+          <td class="center test-bg-20"><button onclick="actions.open('test/{{ file.name }}')">[...]</button></td>
+          <td class="center refe-bg-20"><button onclick="actions.open('reference/{{ file.name }}')">[...]</button></td>
+          <td class="number">{{ file.errors_nb }}</td>
+          <td class="number">{{ file.warnings_nb }}</td>
+          <td>
+            {% if file.error %}<span>{{ file.error }}</span>{% endif %}
+          </td>
+          <td class="number test-bg-20">{{ file.file_1.raw_lines_number }}</td>
+          <td class="number refe-bg-20">{{ file.file_2.raw_lines_number }}</td>
+          <td class="number test-bg-20">{{ file.file_1.ignore_lines_number }}</td>
+          <td class="number refe-bg-20">{{ file.file_2.ignore_lines_number }}</td>
+          <td class="number test-bg-20">{{ file.file_1.floats_lines_number }}</td>
+          <td class="number refe-bg-20">{{ file.file_2.floats_lines_number }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+
+    <h3>Variables and Rules <button onclick="actions.toogle('section_variables_and_rules')">Show/Hide</button></h3>
+    <div id="section_variables_and_rules" style="display:none;">
+      <table>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+        <tr><td>Threshold - Relative vs Absolute Error Min</td><td class="number">{{ data.thresholds.relative_vs_absolute_min }}</td></tr>
+        <tr><td>Threshold - Relative Error Min</td><td class="number">{{ data.thresholds.relative_error_min }}</td></tr>
+        <tr><td>Threshold - Relative Error Max</td><td class="number">{{ data.thresholds.relative_error_max }}</td></tr>
+        <tr><td>Threshold - Absolute Error Min</td><td class="number">{{ data.thresholds.absolute_error_min }}</td></tr>
+        <tr><td>Threshold - Absolute Error Max</td><td class="number">{{ data.thresholds.absolute_error_max }}</td></tr>
+      </table>
+    </div>
+
+    <h2>Details</h2>
+    {% for file in data.files %}
+    <div id="{{ file.name }}">
+
+      <h3>
+        {{ file.name }}
+        {% if file.error %}
+            <span class="errors">ERROR</span>
+        {% elif file.warnings_nb > 0 %}
+            <span class="warnings">WARNING</span>
+        {% else %}
+            <span class="success">SUCCESS</span>
+        {% endif %}
+
+        <span style="font-size:0.9rem;color:#666;">(#{{ loop.index }})</span>
+
+        <button onclick="actions.toogle('file_content_{{ loop.index }}')">Show/Hide</button>
+        -
+        <button onclick="actions.open('test/{{ file.name }}')" >Open Test</button>
+        <button onclick="actions.open('reference/{{ file.name }}')" >Open Ref.</button>
+
+
+      </h3>
+
+      <div id="file_content_{{ loop.index }}" style="{% if not file.error %} display:none;{% endif %}">
+      
+        <!--GENERAL ERROR-->
+        {% if file.error %}
+          <div>
+            <h4>Error</h4>
+            <span class="errors"><code>{{ file.error }}</code></span>
+          </div>
+        {% endif %}
+
+        <!--CURVES-->
+        {% if file.file_1.curves %}
+        <h4>Curves <button onclick="actions.toogle('curves_{{ loop.index }}')">Show/Hide</button></h4>
+        <div id="curves_{{ loop.index }}" style="display: flex;flex-wrap: wrap;"></div>
+        {% endif %}
+
+        <!--ignore_lines-->
+        {% if file.file_1.ignore_lines or file.file_2.ignore_lines %}
+          <div>
+            <h4>Ignoring lines <button onclick="actions.toogle('ignore_{{ loop.index }}')">Show/Hide</button></h4>
+            <div id="ignore_{{ loop.index }}">
+              <table>
+                <tr>
+                  <th>File</th>
+                  <th>Patterns</th>
+                  <th>Nb</th>
+                  <th>Lines</th>
+                </tr>
+                <tr>
+                  <td class="test-bg-50">Test</td>
+                  <td class="test-bg-20">{{ file.file_1.ignore_patterns }}</td>
+                  <td class="test-bg-20 number">{{ file.file_1.ignore_lines_number }}</td>
+                  <td class="test-bg-20">{{ file.file_1.ignore_lines }}</td>
+                </tr>
+                <tr>
+                  <td class="refe-bg-50">Ref.</td>
+                  <td class="refe-bg-20">{{ file.file_2.ignore_patterns }}</td>
+                  <td class="refe-bg-20 number">{{ file.file_2.ignore_lines_number }}</td>
+                  <td class="refe-bg-20">{{ file.file_2.ignore_lines }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        {% endif %}
+
+        <!--error_rule_patterns-->
+        {% if file.file_1.error_rule_patterns %}
+          <div>
+            <h4>Error on string pattern search <button onclick="actions.toogle('error_rule_patterns_{{ loop.index }}')">Show/Hide</button></h4>
+            <div id="error_rule_patterns_{{ loop.index }}" style="{% if not file.file_1.error_rule_patterns.found %} display:none;{% endif %}">
+              <table>
+                <tr>
+                  <th>Pattern</th>
+                  <th>Lines</th>
+                </tr>
+                {% for item in file.file_1.error_rule_patterns.data %}
+                <tr>
+                  <td>{{ item.pattern }}</td>
+                  <td>{{ item.lines }}</td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        {% endif %}
+
+
+        <!--Comparison Errors or Warnings-->
+        {% if  file.errors or file.warnings %}
+          <div>
+            <h4>Comparison Numbers Errors or Warnings</h4>
+            <table>
+              <tr>
+                <th rowspan="2">Type</th>
+                <th rowspan="2">Message</th>
+                <th colspan="2">Value</th>
+                <th colspan="2">Line Number</th>
+                <th rowspan="2">Error</th>
+                <th rowspan="2">Visu</th>
+                <th colspan="2">Line(s)</th>
+              </tr>
+              <tr>
+                <th class="test-bg-50">Test</th>
+                <th class="refe-bg-50">Ref.</th>
+                <th class="test-bg-50">Test</th>
+                <th class="refe-bg-50">Ref.</th>
+                <th class="test-bg-50">Test</th>
+                <th class="refe-bg-50">Ref.</th>
+              </tr>
+
+
+              {% for class_item in [{"key": "errors"}, {"key": "warnings"}] %}
+              {% for item in file[class_item.key] %}
+              <tr>
+                <td class="{{class_item.key}}">{{class_item.key}}</td>
+                <td>{{ item.message }}</td>
+                <td class="number test-bg-20">{{ item.test }}</td>
+                <td class="number refe-bg-20">{{ item.reference }}</td>
+                <td class="number test-bg-20">{{ item.line_nb_1 }}</td>
+                <td class="number refe-bg-20">{{ item.line_nb_1 }}</td>
+                <td class="number">
+                  {% if item.error_type == 'relative' %}{{ '%0.2f' % (item.error*100)|float}}%{% endif %}
+                  {% if item.error_type == 'absolute' %}{{ item.error }}{% endif %}
+                </td>
+              <td>
+                <div style="width:200px;height:20px">
+                  <div class="test-bg-80" style="width:{{100*(item.test|abs)/([(item.test|abs), (item.reference|abs)]|max)}}%;height:10px"></div>
+                  <div class="refe-bg-80" style="width:{{100*(item.reference|abs)/([(item.test|abs), (item.reference|abs)]|max)}}%; height:10px"></div>
+                </div>
+              </td>
+              <td class="test-bg-20"><pre>{{ item.line_1 }}</pre></td>
+              <td class="refe-bg-20"><pre>{{ item.line_2 }}</pre></td>
+              </tr>
+              {% endfor %}
+              {% endfor %}
+              
+            </table>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+    {% endfor %}
+
+    <!--FOOTER-->
+    <div class="footer">
+      Powered by CesGensLaB
+    </div>
+    <script type="text/javascript">
+      const global_curves = {
+        test :      [ {% for file in data.files %} {{ file.file_1.curves }} , {% endfor %} ],
+        reference : [ {% for file in data.files %} {{ file.file_2.curves }} , {% endfor %} ],
+      }
+      load_curves()
+    </script>
+  </body>
+</html>
