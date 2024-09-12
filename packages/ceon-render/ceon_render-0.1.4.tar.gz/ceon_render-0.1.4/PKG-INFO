@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ceon-render
+Version: 0.1.4
+Summary: Rendering Pipeline management for VFX apps with support for third party rendering providers.
+Author: Dayne Kolk
+Author-email: daynekolk@hotmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# ceon_render
+Rendering Pipeline management for VFX apps with support for third party rendering providers.
+
