@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<PhysEngMaterialDB>
+  
+  <OrthotropicMaterial>
+    <Name>NGF YS-90A Fiber</Name>
+    <Title>NGF YS-90A Fiber</Title>
+    <Category>Composites</Category>
+    <Groups>
+      <Group>Composites</Group>
+      <Group>Thermal Management</Group>
+    </Groups>
+    <Properties>
+      <Density Value="2180" Unit="kg/m^3"/>
+      <ThermalConductivityX Value="500" Unit="W/(m*K)"/>
+      <ThermalConductivityY Value="10" Unit="W/(m*K)"/>
+      <ThermalConductivityZ Value="10" Unit="W/(m*K)"/> 
+    </Properties>
+  </OrthotropicMaterial>
+
+  <OrthotropicMaterial>
+    <Name>CFRP Woven Laminate</Name>
+    <Title>CFRP Woven Laminate</Title>
+    <Category>Composites</Category>
+    <Groups>
+      <Group>Composites</Group>
+    </Groups>
+    <Properties>
+      <Density Value="2.0" Unit="g/cm^3"/>
+      <ThermalConductivityX Value="10" Unit="W/(m*K)"/>
+      <ThermalConductivityY Value="10" Unit="W/(m*K)"/>
+      <ThermalConductivityZ Value="0.5" Unit="W/(m*K)"/> 
+    </Properties>
+  </OrthotropicMaterial>
+  
+</PhysEngMaterialDB>

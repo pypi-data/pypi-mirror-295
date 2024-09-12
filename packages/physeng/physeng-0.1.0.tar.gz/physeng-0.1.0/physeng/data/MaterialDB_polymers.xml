@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<PhysEngMaterialDB>
+  
+  <IsotropicMaterial>
+    <Name>Kapton</Name>
+    <Title>Kapton</Title>
+    <Category>Polymers</Category>
+    <Properties>
+      <Density Value="1420" Unit="kg/m^3"/>
+      <ThermalConductivity T="20" Tunit="°C" Value="0.120" Unit="W/(m*K)"/>
+    </Properties>
+  </IsotropicMaterial>
+
+  <IsotropicMaterial>
+    <Name>PEEK</Name>
+    <Title>PEEK</Title>
+    <Category>Polymers</Category>
+    <Properties>
+      <Density Value="1.32" Unit="g/cm^3"/>
+      <ThermalConductivity T="20" Tunit="°C" Value="0.17" Unit="W/(m*K)"/>
+    </Properties>
+  </IsotropicMaterial>
+
+  <IsotropicMaterial>
+    <Name>NGF NM35 Resin</Name>
+    <Title>NGF NM35 Resin</Title>
+    <Category>Polymers</Category>
+    <Groups>
+      <Group>Composites</Group>
+    </Groups>
+    <Properties>
+      <Density Value="1.17" Unit="g/cm^3"/>
+      <ThermalConductivity T="20" Tunit="°C" Value="0.3" Unit="W/(m*K)"/>
+    </Properties>
+  </IsotropicMaterial>
+   
+</PhysEngMaterialDB>
