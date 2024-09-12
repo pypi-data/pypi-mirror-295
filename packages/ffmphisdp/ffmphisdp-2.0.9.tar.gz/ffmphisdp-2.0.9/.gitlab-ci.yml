@@ -1,0 +1,45 @@
+image: python:3.12
+
+include:
+  - project: 'public-corner/skillcorner-CICD'
+    ref: stable
+    file: '.skillcorner-ci-common.yml'
+
+stages:
+  - test
+  - build_and_publish
+  - prepare_release
+  - release
+
+variables:
+  PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip
+  NAME: ffmphisdp
+
+cache:
+  key: one-key-to-rule-them-all
+  paths:
+    - .cache/pip
+
+# test:
+#   image: ubuntu-slim
+#   before_script:
+#     - !reference [.init_public_poetry]
+#     - apt update && apt install -y ffmpeg
+#   extends: .poetry_test_with_coverage
+#   rules:
+#     - !reference [.default_test_rules, rules]
+
+
+package:
+  stage: build_and_publish
+  extends: .uv_build_and_publish
+
+
+prepare_job:
+  stage: prepare_release
+  extends: .gitlab_release_prepare
+
+
+release_job:
+  stage: release
+  extends: .gitlab_release_job

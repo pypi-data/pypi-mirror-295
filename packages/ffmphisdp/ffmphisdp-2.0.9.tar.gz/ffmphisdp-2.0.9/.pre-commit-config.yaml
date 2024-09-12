@@ -1,0 +1,22 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-toml
+  - id: check-json
+  - id: check-yaml
+    args: ['--unsafe']
+  - id: double-quote-string-fixer
+  - id: end-of-file-fixer
+  - id: pretty-format-json
+    args: ['--autofix']
+  - id: requirements-txt-fixer
+  - id: sort-simple-yaml
+  - id: trailing-whitespace
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.5.5
+  hooks:
+  - id: ruff
+  - id: ruff-format
