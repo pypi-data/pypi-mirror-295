@@ -1,0 +1,11 @@
+scikit-learn
+scipy
+torch
+tqdm
+matplotlib
+numpy
+
+[scripts]
+nlb_tools
+allen_sdk
+jupyter
