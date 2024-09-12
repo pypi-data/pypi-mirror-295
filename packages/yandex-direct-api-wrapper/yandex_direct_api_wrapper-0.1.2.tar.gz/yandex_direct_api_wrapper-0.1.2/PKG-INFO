@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: yandex-direct-api-wrapper
+Version: 0.1.2
+Summary: 
+Author: Oleg Ionov
+Author-email: ionov.dpmn@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# yandex-direct-api-wrapper
+Python-обёртка для получения статистики рекламных кампаний Yandex Direct через API.
+
+
+## Получение токена
+https://yandex.ru/dev/id/doc/ru/tokens/debug-token
+
