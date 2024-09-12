@@ -1,0 +1,2 @@
+[console_scripts]
+robo_transformers = robo_transformers.cli:main
