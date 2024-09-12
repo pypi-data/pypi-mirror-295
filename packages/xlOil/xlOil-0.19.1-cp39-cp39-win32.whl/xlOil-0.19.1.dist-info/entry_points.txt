@@ -1,0 +1,6 @@
+[console_scripts]
+xloil = xloil.command_line:main
+
+[pyinstaller40]
+hook-dirs = xloil._pyinstaller:get_hook_dirs
+
