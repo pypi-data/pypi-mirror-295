@@ -1,0 +1,26 @@
+[project]
+name = "postman-cli-transformer"
+version = "0.1"
+description = "This package will take as input the STDOUT from a Postman CLI collection run and transform the output text to a JSON doc which may in turn be transformed."
+readme = "README.md"
+authors = [{name = "Craig Erdmann"}]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "click"
+]
+
+[project.urls]
+Homepage = "https://github.com/cerdmann/postman-cli-transformer"
+Changelog = "https://github.com/cerdmann/postman-cli-transformer/releases"
+Issues = "https://github.com/cerdmann/postman-cli-transformer/issues"
+CI = "https://github.com/cerdmann/postman-cli-transformer/actions"
+
+[project.scripts]
+postman-cli-transformer = "postman_cli_transformer.cli:cli"
+
+[project.optional-dependencies]
+test = ["pytest"]
