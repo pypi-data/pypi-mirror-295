@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django_ulidx"
+version = "1.0.2"
+description = ""
+authors = ["Poetry User <pypi.clock071@passinbox.com>"]
+readme = "README.md"
+license = "MIT"
+package-mode = true
+packages = [
+    {include = "django_ulidx/__init__.py"},
+    {include = "django_ulidx/models.py"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.1"
+psycopg = {extras = ["binary", "pool"], version = "^3.2.1"}
+mysqlclient = "^2.2.4"
+python-ulid = "^2.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
