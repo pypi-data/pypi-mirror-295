@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "PyCAMPS"
+version = "0.0.4"
+description = "Centralized Automated Modeling of Power Systems in Python"
+authors = ["Anish Ravichandran <anishrav@mit.edu>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "*"
+mpmath = "*"
+numpy = "*"
+pytest = "*"
+scipy = "*"
+sympy = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
