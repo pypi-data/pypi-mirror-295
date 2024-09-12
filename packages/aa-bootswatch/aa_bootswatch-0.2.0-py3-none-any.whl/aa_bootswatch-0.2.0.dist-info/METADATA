@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: aa-bootswatch
+Version: 0.2.0
+Summary: AA Bootswatch Themes
+Keywords: allianceauth,eveonline
+Author-email: Joel Falknau <joel.falknau@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Celery
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 4.2
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Dist: allianceauth>=4.3,<5
+Project-URL: Homepage, https://gitlab.com/tactical-supremacy/aa-bootswatch
+Project-URL: Source, https://gitlab.com/tactical-supremacy/aa-bootswatch
+Project-URL: Tracker, https://gitlab.com/tactical-supremacy/aa-bootswatch/-/issues
+
+# AA Bootswatch
+
+A Simple collection of Bootswatch themes for users to explore. This repo also acts as an example of the new Theming options in Alliance Auth v4.x
+
+## Installation
+
+### Step One - Install
+
+Install the app with your venv active
+
+```shell
+pip install aa-bootswatch
+```
+
+### Step Two - Configure
+
+- Add as many, or as little of the following lines to `INSTALLED_APPS` as required.
+
+```python
+'bootswatch.theme.cerulean',
+'bootswatch.theme.cosmo',
+'bootswatch.theme.cyborg',
+'bootswatch.theme.journal',
+'bootswatch.theme.litera',
+'bootswatch.theme.lumen',
+'bootswatch.theme.lux',
+'bootswatch.theme.minty',
+'bootswatch.theme.morph',
+'bootswatch.theme.pulse',
+'bootswatch.theme.quartz',
+'bootswatch.theme.sandstone',
+'bootswatch.theme.simplex',
+'bootswatch.theme.sketchy',
+'bootswatch.theme.slate',
+'bootswatch.theme.solar',
+'bootswatch.theme.spacelab',
+'bootswatch.theme.superhero',
+'bootswatch.theme.united',
+'bootswatch.theme.vapor',
+'bootswatch.theme.yeti',
+'bootswatch.theme.zephyr',
+```
+
+### Step Three - Update Project
+
+- Run migrations `python manage.py migrate` (There should be none )
+- Gather your staticfiles `python manage.py collectstatic`
+
