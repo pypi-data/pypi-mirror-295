@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "psdm2pp"
+version = "0.1.0"
+description = ""
+authors = ["Thomas <thomas.oberliessen@googlemail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "<3.12,>3.11"
+pypsdm = "^0.0.3"
+pandapower = "^2.14.11"
+simbench = "^1.5.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+flake8 = "^6.0.0"
+flake8-black = "^0.3.6"
+flake8-isort = "^6.0.0"
+pre-commit = "^2.21.0"
+PyYAML = "^6.0"
+jupyter = "^1.1.1"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
