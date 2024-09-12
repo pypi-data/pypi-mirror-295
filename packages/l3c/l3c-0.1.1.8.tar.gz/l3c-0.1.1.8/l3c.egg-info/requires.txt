@@ -1,0 +1,6 @@
+Pillow>=6.2.2
+gym>=0.18.0
+numba>=0.58.1
+numpy>=1.24.4
+pygame>=2.6.0
+six>=1.12.0
