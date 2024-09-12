@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+pytest_cleanuptotal.egg-info/PKG-INFO
+pytest_cleanuptotal.egg-info/SOURCES.txt
+pytest_cleanuptotal.egg-info/dependency_links.txt
+pytest_cleanuptotal.egg-info/entry_points.txt
+pytest_cleanuptotal.egg-info/top_level.txt
+src/pytest_cleanuptotal/__init__.py
+src/pytest_cleanuptotal/cleanup.py
+src/pytest_cleanuptotal/cleanuptotal.py
