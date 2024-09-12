@@ -1,0 +1,17 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+.github/workflows/release.yaml
+.github/workflows/test.yaml
+taskiq_sqs/__init__.py
+taskiq_sqs/aws.py
+taskiq_sqs/broker.py
+taskiq_sqs.egg-info/PKG-INFO
+taskiq_sqs.egg-info/SOURCES.txt
+taskiq_sqs.egg-info/dependency_links.txt
+taskiq_sqs.egg-info/requires.txt
+taskiq_sqs.egg-info/top_level.txt
+tests/test_broker.py
