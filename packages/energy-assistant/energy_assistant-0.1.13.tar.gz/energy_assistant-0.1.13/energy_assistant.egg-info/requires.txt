@@ -1,0 +1,15 @@
+SQLAlchemy==2.0.34
+requests==2.32.3
+fastapi[standard]==0.114
+pydantic-settings==2.4.0
+pyyaml>=6.0.2
+alembic==1.13.2
+aiosqlite==0.20.0
+python-dotenv
+apscheduler==3.10.4
+paho-mqtt==2.1.0
+jinja2==3.1.4
+colorlog==6.8.2
+emhass==0.10.6
+energy_assistant_frontend==0.0.59
+hass-client==1.2.0
