@@ -1,0 +1,2 @@
+const i=e=>{if(e.length%2!==0)throw new Error(`The hexadecimal string "${e}" does not divide by 2.`);const n=[];let t=-2;for(;(t+=2)<e.length;){const o=+("0x"+e[t+1]),b=+("0x"+e[t])*16,r=o+b;if(isNaN(r))throw new Error(`The nibbles at indexes ${t} & ${t+1} did not convert into a byte integer.`);n.push(r)}return Uint8Array.from(n)};export{i as U};
+//# sourceMappingURL=Uint8Array_from_string.8TrDoKM4.js.map
