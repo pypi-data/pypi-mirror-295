@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/RustyMonad.egg-info/PKG-INFO
+src/RustyMonad.egg-info/SOURCES.txt
+src/RustyMonad.egg-info/dependency_links.txt
+src/RustyMonad.egg-info/top_level.txt
+src/rustymonad/__init__.py
+src/rustymonad/monad.py
+src/rustymonad/option.py
+src/rustymonad/result.py
+src/rustymonad/utils.py
