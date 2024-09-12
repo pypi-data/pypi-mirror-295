@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: insta-scrape-py
+Version: 0.0.30
+Summary: A Python package to scrape and download Instagram Reels from any Instagram page.
+Author: djalti
+Author-email: abdeldjalilselamnia@gmail.com
+Keywords: python,instagram,scrape,download,reels,pages
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: tqdm
+Requires-Dist: requests
+
+insta-scrape-py is a Python package designed to help you easily scrape and download Instagram Reels from any public Instagram page. With simple and efficient functionality, insta-scrape-py allows you to extract Reels links from a page, Downlaod reels and downlaod full page reels by providing the username only.
