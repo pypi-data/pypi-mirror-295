@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Record Notification</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #544FBA;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #544FBA; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="650px" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; box-shadow: rgba(50, 50, 93, 0.758) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.745) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.758) -2px -2px 6px 0px inset; ;border-radius: 15px; padding: 40px 20px;">
+                    <tr>
+                        <td align="left" style="padding-bottom: 50px;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 20px; height: 20px; background-color: #544FBA; border-radius: 50%; margin-right: 10px;"></div>
+                                <span style="font-family: Arial, sans-serif; font-size: 16px;">django_logging</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-bottom: 15%;">
+                            <p style="font-family: Arial, sans-serif; font-size: 20px; margin: 0;"><b>Log Message:</b><br>{{ message }}</p>
+                            {% if ip_address != "Unknown" %}
+                                <p style="font-family: Arial, sans-serif; font-size: 16px;"><b>IP Address:</b> {{ ip_address }}</p>
+                            {% endif %}
+                            {% if browser_type != "Unknown" %}
+                                <p style="font-family: Arial, sans-serif; font-size: 16px;"><b>Browser Type:</b> {{ browser_type }}</p>
+                            {% endif %}
+                            <p style="font-family: Arial, sans-serif; font-size: 14px;">This email was prepared to send at {{ time }}</p>
+                        </td>
+<!--                        <td align="right" style="padding-bottom: 30px;">-->
+<!--                            <img src="data:image/svg+xml;base64," alt="Character" width="170px" height="300px" style="display: block;">-->
+<!--                        </td>-->
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="2">
+                            <p style="font-family: Arial, sans-serif; font-size: 12px;color: #555454; margin: 0;">This is an automated message.</p><p style="font-family: Arial, sans-serif; font-size: 12px;color: #555454; margin: 0;">Please do not reply.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
