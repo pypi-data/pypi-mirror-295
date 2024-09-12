@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: datacrosswayspy
+Version: 0.0.3
+Summary: Datacrossways package to access API propgramatically.
+Home-page: https://github.com/maayanlab/datacrosswayspy
+Author: Alexander Lachmann
+Author-email: alexander.lachmann@mssm.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas>=1.1.5
+Requires-Dist: numpy
+Requires-Dist: tqdm
+
+# datacrosswayspy
+Datacrossways Python package, for programmatic access to datacrossways API

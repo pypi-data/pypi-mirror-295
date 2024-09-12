@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.py
+datacrosswayspy/__init__.py
+datacrosswayspy/collection.py
+datacrosswayspy/file.py
+datacrosswayspy/policy.py
+datacrosswayspy/role.py
+datacrosswayspy/user.py
+datacrosswayspy/utils.py
+datacrosswayspy.egg-info/PKG-INFO
+datacrosswayspy.egg-info/SOURCES.txt
+datacrosswayspy.egg-info/dependency_links.txt
+datacrosswayspy.egg-info/requires.txt
+datacrosswayspy.egg-info/top_level.txt
