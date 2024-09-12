@@ -1,0 +1,2 @@
+[console_scripts]
+geoca = geoca.cli:main
