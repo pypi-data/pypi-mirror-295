@@ -1,0 +1,3 @@
+[console_scripts]
+auto-clash = auto_clash.main:main
+
