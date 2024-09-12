@@ -1,0 +1,94 @@
+networks:
+  quackamollie:
+
+services:
+  quackamollie_postgres:
+    image: postgres:${POSTGRES_DOCKER_TAG:-16}
+    container_name: quackamollie_postgres
+    environment:
+      POSTGRES_DB: ${QUACKAMOLLIE_DB_NAME:-quackamollie}
+      POSTGRES_USER: ${QUACKAMOLLIE_DB_USERNAME}
+      POSTGRES_PASSWORD: ${QUACKAMOLLIE_DB_PASSWORD}
+    # ports:
+    #   - ${QUACKAMOLLIE_DB_PORT:-5432}:5432
+    expose:
+      - 5432
+    hostname: ${QUACKAMOLLIE_DB_HOST:-quackamollie-postgres}
+    networks:
+      - quackamollie
+    restart: unless-stopped
+    volumes:
+      - quackamollie_postgres:/var/lib/postgresql/data
+
+  quackamollie_ollama:
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG:-latest}
+    # pull_policy: always
+    container_name: quackamollie_ollama
+    tty: true
+    entrypoint: ["/usr/bin/bash", "/ollama_entrypoint.sh"]
+    environment:
+      OLLAMA_KEEP_ALIVE: 24h
+    expose:
+      - 11434
+    hostname: ${QUACKAMOLLIE_OLLAMA_HOST:-quackamollie-ollama}
+    networks:
+      - quackamollie
+    restart: unless-stopped
+    volumes:
+      - quackamollie_ollama:/root/.ollama
+      - ./scripts/ollama/ollama_entrypoint.sh:/ollama_entrypoint.sh:ro
+
+  quackamollie_db_migration:
+    image: registry.gitlab.com/forge_of_absurd_ducks/quackamollie/quackamollie:${QUACKAMOLLIE_DOCKER_TAG:-latest}
+    # pull_policy: always
+    container_name: quackamollie_db_migration
+    command: "quackamollie -vvvv db alembic upgrade head"
+    environment:
+      QUACKAMOLLIE_DB_HOST: ${QUACKAMOLLIE_DB_HOST:-quackamollie-postgres}
+      QUACKAMOLLIE_DB_PORT: ${QUACKAMOLLIE_DB_PORT:-5432}
+      QUACKAMOLLIE_DB_NAME: ${QUACKAMOLLIE_DB_NAME:-quackamollie}
+      QUACKAMOLLIE_DB_USERNAME: ${QUACKAMOLLIE_DB_USERNAME}
+      QUACKAMOLLIE_DB_PASSWORD: ${QUACKAMOLLIE_DB_PASSWORD}
+    networks:
+      - quackamollie
+    restart: no
+    depends_on:
+      quackamollie_postgres:
+        condition: service_started
+
+  quackamollie:
+    image: registry.gitlab.com/forge_of_absurd_ducks/quackamollie/quackamollie:${QUACKAMOLLIE_DOCKER_TAG:-latest}
+    # pull_policy: always
+    container_name: quackamollie
+    command: "quackamollie -vvvv serve"
+    environment:
+      USER_ID: ${USER_ID:-942}
+      GROUP_ID: ${GROUP_ID:-942}
+      QUACKAMOLLIE_DB_HOST: ${QUACKAMOLLIE_DB_HOST:-quackamollie-postgres}
+      QUACKAMOLLIE_DB_PORT: ${QUACKAMOLLIE_DB_PORT:-5432}
+      QUACKAMOLLIE_DB_NAME: ${QUACKAMOLLIE_DB_NAME:-quackamollie}
+      QUACKAMOLLIE_DB_USERNAME: ${QUACKAMOLLIE_DB_USERNAME}
+      QUACKAMOLLIE_DB_PASSWORD: ${QUACKAMOLLIE_DB_PASSWORD}
+      QUACKAMOLLIE_DATA_DIR: ${QUACKAMOLLIE_DATA_DIR:-/quackamollie/data}
+      QUACKAMOLLIE_OLLAMA_BASE_URL: http://${QUACKAMOLLIE_OLLAMA_HOST:-quackamollie-ollama}:11434
+      QUACKAMOLLIE_BOT_TOKEN: ${QUACKAMOLLIE_BOT_TOKEN:-}
+      QUACKAMOLLIE_ADMIN_IDS: ${QUACKAMOLLIE_ADMIN_IDS:-}
+      QUACKAMOLLIE_MODERATOR_IDS: ${QUACKAMOLLIE_MODERATOR_IDS:-}
+      QUACKAMOLLIE_USER_IDS: ${QUACKAMOLLIE_USER_IDS:-}
+    networks:
+      - quackamollie
+    restart: unless-stopped
+    depends_on:
+      quackamollie_postgres:
+        condition: service_started
+      quackamollie_ollama:
+        condition: service_started
+      quackamollie_db_migration:
+        condition: service_completed_successfully
+    volumes:
+      - quackamollie_data:${QUACKAMOLLIE_DATA_DIR:-/quackamollie/data}
+
+volumes:
+  quackamollie_postgres: {}
+  quackamollie_ollama: {}
+  quackamollie_data: {}
