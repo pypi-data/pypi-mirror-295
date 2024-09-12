@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Restart database to kill all connections
+#sudo /etc/init.d/postgresql-8.4 restart
+
+pg_dump cpsar | gzip > /backup/postgresql/cpsar.sql.gz
+
+# Optimize the database
+/usr/lib/postgresql/9.1/bin/vacuumdb --all --analyze 2> /dev/null > /dev/null
+

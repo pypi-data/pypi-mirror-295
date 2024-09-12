@@ -1,0 +1,210 @@
+#!/usr/bin/env python
+""" Create a daily trans file that will be billed for a private label. right
+now no private label does any "holding" so we just push it all out. Every run.
+
+This program also has to ignore transactions that aren't in the particular
+private label by filtering the group numbers on what group numbers we have in
+the batch file.
+"""
+import os
+import datetime
+import sys
+import time
+import warnings
+from decimal import Decimal
+from six import StringIO
+
+import cpsar.runtime as R
+from cpsar import pricing
+from cpsar import shell
+from cpsar.config import import_dir
+
+from stypes import Dict, Integer, Numeric, String
+
+class Program(shell.PrivateLabelProgram):
+
+    def main(self):
+        if not pending_file_openable():
+            R.log.critical("Can not open pending file %s" % pending_path())
+            return
+        if not has_pending_trans_lines():
+            R.log.debug("No transactions ready to be billed. exiting.")
+            return
+        write_daily_trans()
+        if not self.opts.dry_run:
+            rewrite_pending()
+
+def write_daily_trans():
+    R.log.debug("Writing %s", daily_trans_path())
+    with open(daily_trans_path(), 'wb') as fd:
+        fd.write('Transactions - Version # 001\n')
+        for line in pending_trans_lines():
+            fd.write("%s\n" % line)
+
+def pending_file_openable():
+    try:
+        f = open(pending_path())
+    except (IOError, OSError):
+        return False
+    f.close()
+    return True
+
+def has_pending_trans_lines():
+    try:
+        next(pending_trans_lines())
+        return True
+    except StopIteration:
+        return False
+
+def pending_trans_lines():
+    """ transaction lines needing to be written to the daily trans file """
+    with open(pending_path()) as fd:
+        for line in fd:
+            if bill_group(line) and trans_ready(line) and not has_been_billed(line) \
+               and not has_been_reversed(line):
+                yield line.rstrip()
+
+def rewrite_pending():
+    """ rewrite the pending file, effectively removing the transactions that
+    we have pulled out for the daily transaction file. """
+    buf = StringIO()
+    with open(pending_path()) as fd:
+        for line in fd:
+            if not bill_group(line):
+                buf.write(line)
+                continue
+            if not trans_ready(line) and not has_been_billed(line) \
+               and not has_been_reversed(line):
+                buf.write(line)
+    ### CRITICAL SECTION
+    with open(pending_path(), 'w') as fd:
+        fd.write(buf.getvalue())
+    ### END CRITICAL
+
+def bill_group(line):
+    """ Do we bill this group? """
+    return group_number(line) in group_list()
+
+def trans_ready(line):
+    """ Is the transaction ready to be written to the daily trans file? """
+    return trans_reference(line) not in blocked_trans_references()
+
+def trans_reference(line):
+    """ the key portion of the transaction. group number and claim reference
+    number """
+    return line[:15]
+
+class memoize(object):
+    def __init__(self, func):
+        self._func = func
+        self._called = False
+        self._return = None
+
+    def __call__(self):
+        if self._called:
+            return self._return
+        self._return = self._func()
+        self._called = True
+        return self._return
+
+@memoize
+def group_list():
+    cursor = R.db.cursor()
+    cursor.execute("""
+        SELECT group_number
+        FROM group_info
+        """)
+    return [c[0] for c in cursor]
+
+@memoize
+def blocked_trans_references():
+    """ We dont currently have any blocked trans logic for PLs """
+    return []
+
+def has_been_billed(line):
+    return line_dbkey(line) in billed_trans_refs()
+
+@memoize
+def billed_trans_refs():
+    """ Transactions that have already been billed in blue diamond that
+    are also stored in the daily trans file """
+    cursor = R.db.cursor()
+    cursor.execute("""
+      CREATE TEMP TABLE strans (group_number VARCHAR(8), group_auth INT)
+    """)
+    cursor.copy_from(_bt_copy_buffer(), "strans", sep=",")
+    cursor.execute("""
+      SELECT strans.group_number, strans.group_auth
+      FROM strans
+      JOIN trans ON
+            trans.group_number = strans.group_number
+            AND trans.group_auth = strans.group_auth
+    """)
+    res = dict((tuple(c), True) for c in cursor)
+    cursor.execute("DROP TABLE strans")
+    return res
+
+def has_been_reversed(line):
+    return line_dbkey(line) in reversed_trans_refs()
+
+@memoize
+def reversed_trans_refs():
+    """ transactions that have been reversed """
+    cursor = R.db.cursor()
+    cursor.execute("""
+      CREATE TEMP TABLE strans (group_number VARCHAR(8), group_auth INT)
+    """)
+    cursor.copy_from(_bt_copy_buffer(), "strans", sep=",")
+    cursor.execute("""
+      SELECT strans.group_number, strans.group_auth
+      FROM strans
+      JOIN reversal ON
+            reversal.group_number = strans.group_number
+            AND reversal.group_auth = strans.group_auth
+    """)
+    res = dict((tuple(c), True) for c in cursor)
+    cursor.execute("DROP TABLE strans")
+    return res
+        
+def _bt_copy_buffer():
+    buf = StringIO()
+    with open(pending_path()) as fd:
+        for line in fd:
+            buf.write("%s,%s\n" % (line_dbkey(line)))
+    buf.seek(0)
+    return buf
+
+def line_dbkey(line):
+    return (group_number(line), group_auth(line)) 
+
+def group_number(line):
+    return line[:8].strip()
+
+def group_auth(line):
+    return int(line[8:8+7].strip())
+
+#def cutoff_date():
+#    # We bill all!
+#    return datetime.date.today() # - datetime.timedelta(days=6)
+
+def pending_path():
+    return os.path.join(import_dir(), 'files', 'sp-daily-trans.txt')
+
+def daily_trans_path():
+    today = datetime.date.today()
+    fname = today.strftime("sp-daily-trans.%Y%m%d")
+    return os.path.join(import_dir(), 'ready', fname)
+
+###############################################################################
+## Debug Procedure
+
+def print_formatted_daily_trans(fpath):
+    import pprint
+    R.db.setup()
+    with open(fpath) as fd:
+        for line in fd:
+            trans = new_trans_type.unpack(line)
+            pprint.pprint((trans['group_number'], trans['group_auth'], trans['state_fee']))
+
+if __name__ == '__main__':
+    Program().run()

@@ -1,0 +1,18 @@
+#!/bin/bash
+# copy all the eho invoice data files out to atlas for Lindsay to pick them up
+YEAR=$( date +%Y )
+fname="eho-invoice-data.${YEAR}.zip"
+
+cd /server/corporate/bd-archive
+if [ ! -e "$fname" ]; then
+    echo "$PWD/$fname does not exist"
+    exit
+fi
+
+scp -q "$fname" atlas:/tmp
+ssh -T atlas > /dev/null <<EOF
+cd /data/eho-invoice-data
+/usr/bin/unzip -qn /tmp/$fname
+/bin/rm /tmp/$fname
+EOF
+

@@ -1,0 +1,213 @@
+<%!
+import cpsar.clientlib
+import kcontrol as K
+
+%>
+<%namespace file="functions.tmpl" import="*" />
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+  <title>State Reporting Search</title>
+  <link type='text/css' href='/css/form.css' rel='stylesheet' />
+  <link type='text/css' rel='stylesheet' href='/css/state_reporting.css' />
+  <style type='text/css'>
+    .checkmenu {
+        width: 400px;
+        float: right;
+        margin: 20px;
+    }
+  </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script type='text/javascript' src='/js/jquery.numeric.js'></script>
+  <script type='text/javascript' src='/js/search_sr.js'></script>
+  <script src='/js/jquery.tablesorter.min.js'></script>
+  <script>
+  $(document).ready(function() {
+      $("TABLE.left_search_results").tablesorter();
+  });
+  </script>
+</%def>
+<%block name="header">
+    State Reporting Entry Search
+</%block>
+
+
+<% K.from_fs(q.fs) %>
+<form action='/search_sr' method='get'>
+<table class='form'>
+  <tr><th colspan='5'>State Report File</th></tr>
+  <tr>
+      <td class='entry-caption'>File Send Date</td>
+      <td class='entry-value'>
+         <table>
+         <tr>
+          <td>
+            ${K.DatePicker('state_report_file.send_date_after', class_='dt')}
+          </td>
+          <td>
+            ${K.DatePicker('state_report_file.send_date_before', class_='dt')}
+          </td>
+         </tr>
+         </table>
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'></td>
+      <td class='entry-value'></td>
+  </tr>
+  <tr><th colspan='5'>State Report Bill</th></tr>
+  <tr>
+      <td class='entry-caption'>Bill ID</td>
+      <td class='entry-value'>
+          ${K.TextBox('state_report_bill.bill_id', maxlength=10, _class='numeric')}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Claim #</td>
+      <td class='entry-value'>${K.TextBox('state_report_bill.claim_number')}</td>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Patient First Name</td>
+      <td class='entry-value'>
+          ${K.TextBox('state_report_bill.patient_first_name')}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Patient Last Name</td>
+      <td class='entry-value'>
+          ${K.TextBox('state_report_bill.patient_last_name')}
+      </td>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Claim Frequency Code</td>
+      <td class='entry-value'>
+          ${K.ListBox('state_report_bill.claim_freq', values=[
+                              ('1', '1 - original claim'),
+                              ('6', '6 - correction'),
+                              ('7', '7 - replacement'),
+                              ('8', '8 - voided/canceled')])}
+
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+  </tr>
+  <tr><th colspan='5'>State Report Entry</th></tr>
+  <tr>
+      <td class='entry-caption'>Entry ID (SRID)</td>
+      <td class='entry-value'>
+          ${K.TextBox('state_report_entry.srid', maxlength=10, _class='numeric')}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Controll Number</td>
+      <td class='entry-value'>${K.TextBox('state_report_entry.control_number')}</td>
+  </tr>
+  <tr>
+    <th colspan="5">Internal Fields</th>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Trans #</td>
+      <td class='entry-value'>
+          ${K.TextBox('trans.trans_id', maxlength=10)}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Patient ID</td>
+      <td class='entry-value'>${K.TextBox('trans.patient_id')}</td>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Group #</td>
+      <td class='entry-value'>
+          ${cpsar.clientlib.GroupListBox('trans.group_number',
+                                        id='trans_group_number', 
+                                        blankOption=True)}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'></td>
+      <td class='entry-value'></td>
+  </tr>
+  <tr>
+    <td class='entry-caption'><label for='limit'>Limit</label></td>
+    <td class='entry-value'>${K.TextBox('limit', default='500')}</td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'></td>
+      <td class='entry-value'>
+          <input type='submit' name='action' value='Search' />
+          <input type='reset' />
+      </td>
+  </tr>
+</table>
+</form>
+
+% if q.search_results:
+<table border='1' cellspacing='0' cellpadding='2' class='left_search_results'>
+<thead>
+<tr>
+    <th></th>
+    <th>SRID</th>
+    <th>Bill ID</th>
+    <th>Bill Number</th>
+    <th>File ID</th>
+    <th>Send Time</th>
+    <th>Control Number</th>
+    <th>CPS Paid Date</th>
+    <th>Trans</th>
+    <th>Reversal</th>
+    <th>Client</th>
+    <th>Marked?</th>
+    <th>Pharmacy Paid Date</th>
+    <th><input type='button' class='iprint_all' value='All' /></th>
+</tr>
+</thead>
+% for line_no, c in enumerate(q.search_results):
+<tr class=''>
+    <td align='right'>${line_no+1}</td>
+    <td>${c['srid']}</td>
+    <td>
+      % if c['bill_id']:
+        <a href="/sr_manual/report_file?sr_file_id=${c['sr_file_id']}&bill_id=${c['bill_id']}">${c['sr_file_id']}</a>
+      % endif
+    </td>
+    <td>${c['bill_number']}</td>
+    <td><a href="/sr_manual/report_file?sr_file_id=${c['sr_file_id']}">${c['sr_file_id']}</a></td>
+    <td>
+      % if c['send_time']:
+        ${c['send_time'].strftime("%m/%d/%Y %I:%M %p")}
+      % endif
+    </td>
+    <td>${c['control_number']}</td>
+    <td>
+     % if c['cps_paid_date']:
+        ${c['cps_paid_date'].strftime('%m/%d/%Y')}
+     % endif
+    </td>
+    <td>
+      % if c['trans_id']:
+        <a href='/view_trans?trans_id=${c['trans_id']}'>${c['trans_id']}</a>
+      % endif
+    </td>
+    <td>${c['reverse_date']}</td>
+    <td><a href='/view_client?group_number=${c['group_number']}'>
+            ${c['group_number']}</a></td>
+    <td align='center'>
+      % if c['sr_mark']:
+        Y
+      % endif
+    </td>
+    <td>
+     % if c['pharmacy_payment_date']:
+        ${c['pharmacy_payment_date'].strftime('%m/%d/%Y')}
+     % endif
+    </td>
+    <td align='center'>
+      % if c['trans_id']:
+        <input value='${c['trans_id']}' title='${c['trans_id']}'
+               type='checkbox' class='iprint' />
+      % endif
+    </td>
+</tr>
+% endfor
+</table>
+
+<div class='checkmenu'>
+  <div>With all checked transactions:</div>
+  <input type='button' class='mark_for_state_reporting' value='Remark Trans For State Reporting' />
+</div>
+
+% endif
+

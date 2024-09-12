@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+""" Syncronize the employer file with EHO's data """
+import reclib.parse.fw as P
+
+from cpsar.fwimport import ClearInsertProgram
+
+class EmployerLoader(ClearInsertProgram):
+    resource = 'bd-employer'
+    parser = P.Parser(
+        P.String('group_number', 8, required=True),
+        P.String('tin', 15, required=True),
+        P.String('name', 30, required=True),
+        P.String('address_1', 30),
+        P.String('address_2', 30),
+        P.String('city', 20),
+        P.String('state', 2),
+        P.String('zip_code', 10),
+        P.String('phone', 10),
+        P.String('fax', 10),
+        P.String('email', 50),
+        P.String('id_number', 15),
+        P.String('policy_number', 20),
+        P.String('insurer_code', 8)
+    )
+
+    table_name = 'employer'
+    table_fields = [
+        'name',
+        'address_1',
+        'address_2',
+        'city',
+        'state',
+        'zip_code',
+        'phone',
+        'fax',
+        'email',
+        'id_number',
+        'policy_number',
+        'insurer_code',
+        'tin',
+        'group_number']
+
+if __name__ == '__main__':
+    EmployerLoader().run()

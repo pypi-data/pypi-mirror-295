@@ -1,0 +1,52 @@
+BODY { font-family: sans-serif; }
+#header {
+ margin-bottom: 20px; 
+ margin-top: 10px;
+}
+#report_body {
+    border-spacing: 3px;
+    width: 100%;
+}
+#report_body TD {
+    padding: 1px;
+}
+#report_body TD.amount {
+    text-align: right;
+}
+#report_body TH {
+    padding: 1px;
+    text-align: left;
+}
+#report_body TH.days {
+    text-align: right;
+}
+#report_body TD.doc_date {
+    padding-right: 20px;
+}
+#report_body TD.customer_total {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 2em;
+
+}
+#report_body TD.pat_total {
+    border-top: medium solid #000000;
+    text-align: right;
+}
+.bb {
+    border-bottom: medium solid #000000;
+}
+SPAN.doc_type {
+    padding: 0px 10px 10px 20px;
+}
+SPAN.doc_no {
+    padding: 0px 10px 10px 0px;
+
+}
+SPAN.apptype {
+    padding-right: 10px;
+}
+TD.group_header {
+    font-weight: bold;
+    border-bottom: 1px dashed #000000;
+}

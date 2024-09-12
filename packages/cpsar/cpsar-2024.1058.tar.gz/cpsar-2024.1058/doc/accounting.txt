@@ -1,0 +1,55 @@
+Accounts
+--------
+
+Asset
+    Accounts Receivable
+
+Liabilities
+    Distributions
+
+Expenses
+    Write Offs
+
+Revenue
+    Transaction Post Date
+
+
+We did the service, so we record the revenue and reduce the inventory
+
+
+
+
+
+Scenarios
+-----
+Here are a list of scenarios that occur in the system. Use Cases is
+requirements gathering parlance. I'd like to know the T account transactions
+for each one of them (if any) as well as the date the transaction items should
+have.
+
+Joe the Pharmacist submits a new prescription claim to EHO for $100.00 on 11/3
+for a prescription that will filled on 10/26.
+
+CPS creates an invoice totaling $200 for a claim on 11/4 and mails it to
+Companion. Companion receives the invoice on 11/7.
+
+Joe the Pharmacist submits a reversal for a prescription claim on 10/4. The
+original submission occured on 9/30 and was for $20.00. At this time, the
+sponsor has not paid the claim to CPS.
+
+Companion mails CPS a check for $400.00 on 4/5. CPS receives the check on 4/8.
+The transaction that that the check is for has been reversed. It was reversed
+on 4/6. The invoice was sent out on 3/31.
+
+Georgia Administrative Services mails CPS a check for $200.00 on 3/10. CPS 
+receives the check on 3/13. The check is for a $200.00 claim that occured on
+2/28. This claim has not been paid when the check arrives.
+
+Joe the Pharmacist submits a reversal for a prescription claim on 11/5. The
+original submission occured on 10/20 for $40. An invoice was sent to Companion
+on 10/24 for $40. Companion has mailed CPS a check for $40 on 10/26, which was
+received by CPS on 10/28 and applied to the transaction on 10/29.
+
+
+# vim: filetype=rst
+

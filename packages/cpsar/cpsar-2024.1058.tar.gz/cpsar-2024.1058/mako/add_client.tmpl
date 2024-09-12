@@ -1,0 +1,37 @@
+<%!
+import kcontrol 
+kcontrol.store['mode'] = 'FORM' 
+%>
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+</%block>
+<%block name="header">
+    Add Client
+</%block>
+<% kcontrol.from_fs() %>
+<form action='add_client' method='POST'>
+  <table class='form'>
+  <tr>
+    <td class='entry-caption'><label for='group_number'>Group Number</label>
+    </td>
+    <td class='entry-value'>${kcontrol.TextBox('group_number', maxlength=8)}
+    </td>
+  </tr>
+  <tr>
+    <td class='entry-caption'><label for='client_name'>Client Name</label></td>
+    <td class='entry-value'>${kcontrol.TextBox('client_name')}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'><label for=''>Clone</label></td>
+    <td class='entry-value'>${q.clone}
+        <input type='hidden' name='clone' value='${q.clone}' />
+      </td>
+  </tr>
+  <tr>
+      <td class='entry-caption'></td>
+      <td class='entry-value'>
+        <input type='submit' value='Add Client' /></td>
+  </tr>
+  </table>
+</form>

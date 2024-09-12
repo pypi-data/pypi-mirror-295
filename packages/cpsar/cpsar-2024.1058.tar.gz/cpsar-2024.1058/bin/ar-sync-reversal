@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+import logging; log=logging.getLogger('')
+import os
+
+import cpsar.runtime as R
+import cpsar.shell as S
+
+from cpsar.fwimport import path_for_resource, create_fw_table
+
+class MyProgram(S.Program):
+    def main(self):
+        sync_reversal_file(path_for_resource('bd-reversal'))
+
+def sync_reversal_file(fpath):
+    with open(fpath, 'rb') as fd:
+        create_fw_table('reversal_load', [
+            ('group_number', 8),
+            ('group_auth', 7),
+            ('reversal_date', 6)], fd)
+
+    cursor = R.db.cursor()
+    cursor.execute("""
+    DELETE FROM reversal_load
+    WHERE group_number NOT IN (
+        select group_number from group_info );
+    """)
+    log.info("Deleted %s reversals with unknown group number", cursor.rowcount)
+
+    cursor.execute("""
+    UPDATE reversal_load SET reversal_date = NULL
+    WHERE reversal_date='000000';
+
+    INSERT INTO reversal (
+        group_number, group_auth, reversal_date)
+    SELECT L.group_number,
+           L.group_auth::int,
+           to_date(L.reversal_date, 'YYMMDD')
+    FROM reversal_load AS L
+    WHERE NOT EXISTS (
+        SELECT *
+        FROM reversal
+        WHERE 
+          L.group_number = reversal.group_number AND
+          L.group_auth::int = reversal.group_auth
+    ); """)
+    log.info("Inserted %s reversal records", cursor.rowcount)
+    cursor.execute("DROP TABLE reversal_load")
+
+    cursor.execute("""
+        update reversal set trans_id=trans.trans_id,
+            total=trans.total,balance=trans.total
+        from trans
+        where trans.group_number = reversal.group_number
+          and trans.group_auth = reversal.group_auth
+          and reversal.trans_id IS NULL
+    """)
+    log.info("Set trans_id from %s reversals", cursor.rowcount)
+    R.db.commit()
+
+if __name__ == '__main__':
+    MyProgram().run()

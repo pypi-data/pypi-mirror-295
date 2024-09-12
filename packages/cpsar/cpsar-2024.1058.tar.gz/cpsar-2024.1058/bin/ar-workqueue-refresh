@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar.workqueue import WorkQueue
+
+class Program(shell.Program):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-r', '--reset', action='store_true')
+
+    def main(self):
+        if self.opts.reset:
+            WorkQueue.reset()
+        WorkQueue.refresh()
+        if self.opts.dry_run:
+            R.log.debug("Not commiting changes")
+        else:
+            R.log.debug("Committing changes")
+            R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()

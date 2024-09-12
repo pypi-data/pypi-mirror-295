@@ -1,0 +1,58 @@
+<%import math%>
+<html>
+<head>
+<title>${q.label}</title>
+<link rel='stylesheet' type='text/css' href='/css/sales_report.css' />
+<style type='text/css'>
+${q.query_css}
+</style>
+
+</head>
+<body>
+<h1>${q.label}</h1>
+% if q.debug:
+    <em>(${duration} seconds)
+    %if hasattr(cursor, 'rowcount'):
+        Rows Affected: ${cursor.rowcount}
+    % endif
+    </em>
+
+    <div><a href='javascript:void()' onclick='{
+        var elem=document.getElementById("sql");
+        if(elem.style.display == "none") {
+            elem.style.display = "block";
+        } else {
+            elem.style.display = "none";
+        }}'>Show SQL</a></div>
+    <div id='sql' style='display:none'><pre>${sql}</pre></div>
+% endif
+
+<div style='margin-bottom:5px'>${q.print_params()}</div>
+<table border='1' cellspacing='0' id='report_body'>
+<thead>
+<tr>
+<% fields = q.record_fields() %>
+% for col in fields:
+    % if col is not None:
+      <th>${col}</th>
+    % endif
+% endfor
+</tr>
+</thead>
+<%
+for rec in cursor:
+    context.write("<tr>")
+
+    rec = [r for r, c in zip(rec, fields) if c is not None]
+    for j, value in enumerate(rec):
+        if value is None:
+            context.write("<td class='data%s'></td>" % (j+1,))
+        else:
+            context.write("<td class='data%s'>%s</td>" % (j+1, value))
+    context.write("</tr>")
+%>
+</table>
+
+${q.legend()}
+</body>
+</html>

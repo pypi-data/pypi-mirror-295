@@ -1,0 +1,231 @@
+#!/usr/bin/env python
+""" Create a file that goes to MSQ for their dashboard they have on their
+website.
+
+msq-trans-YYYYMMDD.csv
+"""
+import csv
+import datetime
+import os
+
+import paramiko
+
+from cpsar import config
+from cpsar import db
+from cpsar import shell
+from cpsar import util
+
+class Program(shell.PrivateLabelProgram):
+
+    def main(self):
+
+        cursor = db.cursor()
+        cursor.execute("""
+         create temp table report as
+         SELECT
+                history.group_number,
+                history.group_auth AS "Claim Ref #",
+                patient.first_name AS "First Name",
+                patient.last_name AS "Last Name",
+                claim.claim_number AS "Claim number",
+                soj.abbr as "Jurisdiction State",
+                to_char(patient.dob, 'YYYYMMDD') as DOB,
+                to_char(claim.doi, 'YYYYMMDD') as DOI,
+                claim.email1 as Adjuster,
+                history.rx_number as "Rx Number",
+                history.refill_number % 20 as "Fill Number",
+                case when history.compound_code = '2' then 'C'
+                     when pharmacy.nabp = '0123682' then 'HD'
+                     else 'R'
+                end as "Bill Type Indicator",
+                drug.name as "Drug",
+                drug.ndc_number as "NDC Number",
+                drug.brand,
+                drug.gpi_code,
+                to_char(history.rx_date, 'YYYYMMDD') as "Rx Date",
+                history.quantity as Quantity,
+                history.days_supply as "Day Supply",
+                history.doctor_dea_number as "Doctor DEA Number",
+                history.doctor_npi_number as "Doctor NPI Number",
+                doctor.name as "Doctor Name",
+                pharmacy.name as "Pharmacy",
+                pharmacy.nabp,
+                pharmacy.chain_code,
+                history.state_fee as "State Fee",
+                history.sponsor_cost_allowed + history.sponsor_dispense_fee as "Client Billed Amount",
+                history.state_fee - (history.sponsor_cost_allowed + history.sponsor_dispense_fee) as "Client Savings",
+                history.pbm_cost_2 + history.pbm_fee_2  + history.pbm_sales_tax_2 - history.pbm_cost_2 as "Broker Billed Amount",
+                history.awp as AWP,
+                history.compound_code,
+                0::Decimal(10, 2) as dispense_fee,
+                0::Decimal(10, 2) as admin_fee,
+                gpi_class.description as "Therapeutic Class",
+                false as on_formulary,
+                group_info.formulary_report_code,
+                to_char(history.date_processed, 'YYYYMMDD') as "Processed Date",
+                pharmacist.lic_number as "Pharmacist License",
+                drug.class as "Schedule",
+                history.daw as "DAW",
+                drug.n_drug_status as "ODG N Drug",
+                patient.ssn as patient_id,
+                history.reverse_date,
+                false as marked
+         FROM history
+         left join pharmacist using(pharmacist_id)
+         LEFT JOIN claim ON history.claim_id = claim.claim_id
+         JOIN patient ON history.patient_id = patient.patient_id
+         JOIN drug ON history.drug_id = drug.drug_id
+         JOIN soj on patient.jurisdiction = soj.jurisdiction
+         JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+         join group_info on history.group_number = group_info.group_number
+         LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+         left join gpi_class on
+             substring(drug.gpi_code from 1 for 6) = gpi_class.prefix
+
+         WHERE history.reverse_date is null
+
+
+        UNION
+         SELECT
+                history.group_number,
+                history.group_auth AS "Claim Ref #",
+                patient.first_name AS "First Name",
+                patient.last_name AS "Last Name",
+                claim.claim_number AS "Claim number",
+                soj.abbr as "Jurisdiction State",
+                to_char(patient.dob, 'YYYYMMDD') as DOB,
+                to_char(claim.doi, 'YYYYMMDD') as DOI,
+                claim.email1 as Adjuster,
+                history.rx_number as "Rx Number",
+                history.refill_number % 20 as "Fill Number",
+                case when history.compound_code = '2' then 'C'
+                     when pharmacy.nabp = '0123682' then 'HD'
+                     else 'R'
+                end as "Bill Type Indicator",
+                drug.name as "Drug",
+                drug.ndc_number as "NDC Number",
+                drug.brand,
+                drug.gpi_code,
+                to_char(history.rx_date, 'YYYYMMDD') as "Rx Date",
+                history.quantity as Quantity,
+                history.days_supply as "Day Supply",
+                history.doctor_dea_number as "Doctor DEA Number",
+                history.doctor_npi_number as "Doctor NPI Number",
+                doctor.name as "Doctor Name",
+                pharmacy.name as "Pharmacy",
+                pharmacy.nabp,
+                pharmacy.chain_code,
+                history.state_fee as "State Fee",
+                history.sponsor_cost_allowed + history.sponsor_dispense_fee as "Client Billed Amount",
+                history.state_fee - (history.sponsor_cost_allowed + history.sponsor_dispense_fee) as "Client Savings",
+                history.pbm_cost_2 + history.pbm_fee_2  + history.pbm_sales_tax_2 - history.pbm_cost_2 as "Broker Billed Amount",
+                history.awp as AWP,
+                history.compound_code,
+                0::Decimal(10, 2) as dispense_fee,
+                0::Decimal(10, 2) as admin_fee,
+                gpi_class.description as "Therapeutic Class",
+                false as on_formulary,
+                group_info.formulary_report_code,
+                to_char(history.date_processed, 'YYYYMMDD') as "Processed Date",
+                pharmacist.lic_number as "Pharmacist License",
+                drug.class as "Schedule",
+                history.daw as "DAW",
+                drug.n_drug_status as "ODG N Drug",
+                patient.ssn as patient_id,
+                history.reverse_date,
+                false as marked
+
+         FROM history
+         left join pharmacist using(pharmacist_id)
+         LEFT JOIN claim ON history.claim_id = claim.claim_id
+         JOIN patient ON history.patient_id = patient.patient_id
+         JOIN drug ON history.drug_id = drug.drug_id
+         JOIN soj on patient.jurisdiction = soj.jurisdiction
+         JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+         join group_info on history.group_number = group_info.group_number
+         LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+         left join gpi_class on
+             substring(drug.gpi_code from 1 for 6) = gpi_class.prefix
+
+         """)
+
+        cursor.execute("""
+          -- Walgreens Generic
+          update report set marked=true, dispense_fee = 2.50, admin_fee = 8.00
+              where marked = false and chain_code = '590' and brand = 'G';
+
+          -- Walgreens Brand
+          update report set marked=true, dispense_fee = 2.50, admin_fee = 0
+              where marked = false and chain_code = '590' and brand != 'G';
+
+          -- CVS Generic
+          update report set marked = true, dispense_fee = 2.50, admin_fee = 8.00
+              where marked = false and chain_code = '039' and brand = 'G';
+          -- CVS Brand
+          update report set marked = true, dispense_fee = 2.50, admin_fee = 0
+              where marked = false and chain_code = '039' and brand != 'G';
+
+          -- Mail Order Compound
+          update report set marked = true, dispense_fee = 470, admin_fee = 0
+              where marked = false and nabp = '0123682' and compound_code = '2';
+          -- Mail Order Generic
+          update report set marked = true, dispense_fee = 2.50, admin_fee = 8.00
+              where marked = false and nabp = '0123682' and brand = 'G';
+
+          -- Retail Compound
+          update report set marked = true, dispense_fee = 470, admin_fee = 3.50
+              where marked = false and compound_code = '2';
+          -- Retail Generic
+          update report set marked = true, dispense_fee = 4.00, admin_fee = 8.00
+              where marked = false and brand = 'G';
+          -- Retail Brand
+          update report set marked = true, dispense_fee = 4.00, admin_fee = 0
+              where marked = false and brand != 'G';
+
+          alter table report drop column marked;
+            """)
+
+        cursor.execute("""
+            update report set on_formulary = true
+            from group_formulary
+            where formulary_report_code = group_formulary.name
+              and gpi_code ~ gpi_regexp
+            """)
+
+        cursor.execute("""
+            update report set
+                dispense_fee=-dispense_fee,
+                admin_fee=-admin_fee,
+                "Client Billed Amount"=-"Client Billed Amount",
+                "Broker Billed Amount"=-"Broker Billed Amount",
+                "State Fee"=-"State Fee",
+                AWP=-AWP,
+                "Client Savings"=-"Client Savings"
+            where reverse_date is not null
+            """)
+
+        cursor.execute("""
+            select * from report
+            order by  group_number, "Claim Ref #"
+            """)
+
+        fpath = "/server/msq/msq-trans-all.csv"
+        fname = os.path.basename(fpath)
+        with open(fpath, "w") as fd:
+            wr = csv.writer(fd)
+            wr.writerow([c[0].replace("_", " ").title() for c in cursor.description])
+            list(map(wr.writerow, cursor))
+
+        if not self.opts.dry_run:
+            with open(fpath) as fd:
+                hostname = 'admin.medicalservicequotes.com'
+                username = 'ftpEHO'
+                password = 'EHOMSQ!!!'
+                t = paramiko.Transport((hostname, 22))
+                t.connect(username=username, password=password)
+                sftp = paramiko.SFTPClient.from_transport(t)
+                sftp.putfo(fd, fname)
+                sftp.close()
+                t.close()
+
+Program().run()

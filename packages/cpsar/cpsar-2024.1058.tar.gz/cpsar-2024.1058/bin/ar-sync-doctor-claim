@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+"""
+Doctor Claim ETL Text -> PostgreSQL Load
+---
+DEPENDS ON postgresql is_date user-defined function
+
+create or replace function is_date(s varchar) returns boolean as $$
+begin
+  perform s::date;
+  return true;
+exception when others then
+  return false;
+end;
+$$ language plpgsql;
+
+https://stackoverflow.com/questions/25374707/check-whether-string-is-a-date-postgresql
+
+"""
+from __future__ import print_function
+from cpsar import shell
+from cpsar.runtime import db
+
+class Program(shell.Command):
+    def do_create(self, _):
+        """ Create the target table where this data is stored """
+        cursor = db.cursor()
+        cursor.execute("""
+            CREATE TABLE doctor_claim (
+                claim_id int references claim(claim_id)
+                    on delete cascade on update cascade,
+                dea varchar(10),
+                UNIQUE(claim_id, dea)
+            )
+        """)
+        db.commit()
+    def do_load(self, fpath):
+        if not fpath:
+            print("Provide a file name")
+            return -1
+        fd = open(fpath, 'rb')
+        cursor = db.cursor()
+        cursor.execute("""\
+            CREATE TEMP TABLE doctor_feed (
+                data varchar,
+                group_nbr varchar(8),
+                cardholder_nbr varchar(11),
+                dob varchar(8),
+                doi varchar(6),
+                dea varchar(10),
+                err varchar,
+                claim_id int
+            )""")
+        cursor.copy_from(file=fd, table="doctor_feed", columns=["data"])
+        fd.close()
+        cursor.execute("""\
+            UPDATE doctor_feed SET
+                group_nbr      = trim(substring(data for 8)),
+                cardholder_nbr = trim(substring(data from  9 for 11)),
+                dob            = trim(substring(data from 20 for 8)),
+                doi            = trim(substring(data from 28 for 6)),
+                dea            = trim(substring(data from 34 for 10))
+        """)
+        cursor.execute("""
+            UPDATE doctor_feed SET err='INVALID dob ' || dob
+            WHERE NOT is_date(dob)
+        """)
+        cursor.execute("""
+            UPDATE doctor_feed SET err='INVALID doi ' || doi
+            WHERE NOT is_date(doi)
+        """)
+        # Big slow query
+        cursor.execute("""
+            UPDATE doctor_feed SET claim_id=claim.claim_id
+            FROM claim, patient
+            WHERE doctor_feed.err IS NULL
+              AND doctor_feed.group_nbr = patient.group_number
+              AND doctor_feed.cardholder_nbr = patient.ssn
+              AND doctor_feed.dob::date = patient.dob
+              AND doctor_feed.doi::date = claim.doi
+              AND claim.patient_id = patient.patient_id
+        """)
+        cursor.execute("""
+            TRUNCATE doctor_claim;
+            INSERT INTO doctor_claim (claim_id, dea)
+            SELECT claim_id, dea
+            FROM doctor_feed
+            WHERE claim_id IS NOT NULL and err is NULL
+            ON CONFLICT DO NOTHING
+        """)
+        db.commit()
+
+if __name__ == '__main__': Program().run()

@@ -1,0 +1,4 @@
+#!/bin/bash
+# runs on terra
+hbs-dump-patient > /server/corporate/files-in/group-health-patient.txt
+ar-sync-patient -f /server/corporate/files-in/group-health-patient.txt -v

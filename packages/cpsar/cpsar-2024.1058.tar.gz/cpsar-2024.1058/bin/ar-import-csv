@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+""" A general purpose program to import data from CSV files into the backend
+database. Right now, you give it a CSV file with the first row being field
+names. The program will import the data (INSERT) into the table given on the
+-t option. I have a feeling this is going to be getting some insert/update
+matching logic based on key fields at some point.
+"""
+import csv
+import logging
+import sys
+
+from cpsar import shell
+from cpsar.runtime import db
+from cpsar.util import qstr
+
+class Program(shell.Program):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-t', '--table', help='table to load data into')
+        self.add_option('-n', '--null-blanks', help='turn empty columns into NULLs',
+                         action='store_true', default=False)
+        self.add_option('-o', '--one', action='store_true',
+                        help='load records one at a time. Useful for debugging'
+                             ' errors.')
+
+    def main(self):
+        if self.args:
+            files = [open(a) for a in self.args]
+        else:
+            files = [sys.stdin]
+
+        for fd in files:
+            if self.opts.one:
+                self.load_one(fd)
+            else:
+                self.load(fd)
+
+        if not self.opts.dry_run:
+            db.commit()
+
+    def load(self, fd):
+        reader = csv.reader(fd)
+
+        fields = ", ".join(next(reader))
+        val_frag = []
+        for line in reader:
+            values = ", ".join(self.fixup_values(line))
+            val_frag.append("(%s)" % values)
+
+        val_frag = ",\n".join(val_frag)
+        sql = "INSERT INTO %s (%s) VALUES\n%s"
+        sql %= (self.opts.table, fields, val_frag)
+        logging.debug("Running %s", sql)
+        cursor = db.cursor()
+        cursor.execute(sql)
+
+    def load_one(self, fd):
+        """ Load the records from fd one at a time. """
+        reader = csv.reader(fd)
+
+        fields = ", ".join(next(reader))
+
+        cursor = db.cursor()
+        for line in reader:
+            values = ", ".join(self.fixup_values(line))
+            sql = "INSERT INTO %s (%s) VALUES\n(%s)"
+            sql %= (self.opts.table, fields, values)
+            logging.debug("Running %s", sql)
+            cursor.execute(sql)
+
+    def fixup_values(self, values):
+        if self.opts.null_blanks:
+            nvalues, values = values, []
+            for v in nvalues:
+                if not v.strip():
+                    v = None
+                values.append(v)
+        return list(map(qstr, values))
+
+if __name__ == '__main__':
+    Program().run()

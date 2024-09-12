@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>${q.label}</title>
+<link rel='stylesheet' type='text/css' href='/css/sales_report.css' />
+<style type='text/css'>
+${q.query_css}
+
+DIV.header { text-align: center; font-weight: bold; font-size: 1.1em; }
+TABLE.report {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+TABLE.report TD {
+  border: 1px solid #000;
+}
+TABLE.report TH {
+  border: 1px solid #000;
+}
+TD.total { font-weight: bold; text-align: right; }
+TD.cur { text-align: right; }
+@media print {
+      TABLE.report {page-break-after: always;}
+}
+
+</style>
+
+</head>
+<body>
+<h1>${q.label}</h1>
+% if q.debug:
+    <em>(${duration} seconds)
+    %if hasattr(cursor, 'rowcount'):
+        Rows Affected: ${cursor.rowcount}
+    % endif
+    </em>
+
+    <div><a href='javascript:void()' onclick='{
+        var elem=document.getElementById("sql");
+        if(elem.style.display == "none") {
+            elem.style.display = "block";
+        } else {
+            elem.style.display = "none";
+        }}'>Show SQL</a></div>
+    <div id='sql' style='display:none'><pre>${sql}</pre></div>
+% endif
+
+<div style='margin-bottom:5px'>${q.print_params()}</div>
+
+% for phcy in q.pharmacies():
+<div class='header'>
+  ${phcy['name']}<br />
+  ${phcy['address_1']}<br />
+  % if phcy['address_2']:
+   ${phcy['address_2']}
+  % endif
+  % if phcy['city']:
+  ${'%(city)s, %(state)s %(zip_code)s' % phcy}
+  % endif
+  NABP #:${phcy['nabp']}
+</div>
+
+<table class='report grid'>
+<thead>
+ <tr>
+  <th>Patient Name</th>
+  <th>DOB</th>
+  <th>Date Disp.</th>
+  <th>RX Number</th>
+  <th>Refill #</th>
+  <th>Qty</th>
+  <th>Doctor</th>
+  <th>Commission</th>
+ </tr>
+</thead>
+<tbody>
+% for distribution in phcy['distributions']:
+<tr>
+ <td>${distribution['patient_name']}</td>
+ <td>${distribution['patient_dob']}</td>
+ <td>${distribution['rx_date']}</td>
+ <td>${distribution['rx_number']}</td>
+ <td>${distribution['refill_number']}</td>
+ <td>${distribution['quantity']}</td>
+ <td>${distribution['doctor_name']}</td>
+ <td class='cur'>${distribution['amount']}</td>
+</tr>
+% endfor
+</tbody>
+<tfoot>
+<tr>
+ <td colspan='7' class='total'>Total Count: ${phcy['total_count']}</td>
+ <td class='total'>${phcy['total_amount']}</td>
+</tr>
+</tfoot>
+</table>
+% endfor
+
+${q.legend()}
+</body>
+</html>

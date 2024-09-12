@@ -1,0 +1,57 @@
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link rel='stylesheet' type='text/css' href='/css/screen.css' />
+    <style type='text/css'>
+        TABLE.grid {
+            margin-bottom: 20px;
+        }
+    </style>
+</%block>
+<%block name="header">
+    Batch Statistics for ${q.batch['file_name']}
+</%block>
+<%def name="record_table1(header, record)">
+    <table class='grid'>
+    <tr>
+        <td class='header' colspan='2'>${header}</td>
+    </tr>
+    % for k, v in record.items():
+      % if k.endswith('_fmt') :
+        <tr>
+            <th>${k[:-4]}</th>
+            <td align='right'>${v}</td>
+        </tr>
+      % endif
+    % endfor
+    </table>
+</%def>
+
+<%def name="records_table(header, cursor)">
+    <table class='grid'>
+    <tr>
+        <td class='header' colspan='2'>${header}</td>
+    </tr>
+    <tr>
+    % for d in cursor.description:
+        <th>${d[0]}</th>
+    % endfor
+    </tr>
+    % for rec in cursor:
+        <tr>
+        % for field in rec:
+            <td>${field}</td>
+        % endfor
+        </tr>
+    % endfor
+    </table>
+</%def>
+
+
+${record_table1('Batch', q.batch)}
+
+<form action='/rpt_batch_stat' method='POST' style='margin-bottom: 2em'>
+  <input type='hidden' name='batch_file_id' value='${q.batch_file_id}' />
+  <input type='submit' name='reset_invoice_print_time' value='Recreate Print File' />
+</form>
+
+${record_table1('Transaction Totals', q.trans_totals())}

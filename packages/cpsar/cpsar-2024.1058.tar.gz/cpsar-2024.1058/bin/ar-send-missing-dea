@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+""" Create a text file of all the DEA #'s we have on file that we do
+not have doctors for. Send this file to EHO. EHO will attempt to load all
+of the DEA #'s into their drug file, making the doctors that are found
+available for the doctor sync and linking.
+
+The DEA #'s that haven't been found are stored in a bad_dea_number table.
+We exclude DEA's from this.
+
+"""
+import logging
+import os
+import cpsar.runtime as R
+from cpsar import shell
+
+DEA_OUT_FILE = R.dpath('export', 'missing_dea_numbers.txt')
+REMOTE_PATH = "/server/spc/files-in/missing_dea_numbers.txt"
+
+class Program(shell.Program):
+    def main(self):
+        cursor = R.db.cursor()
+
+        cursor.execute("""
+            SELECT DISTINCT doctor_dea_number
+            FROM trans
+            WHERE doctor_id IS NULL AND
+                batch_date > '20110101' AND
+                doctor_dea_number SIMILAR TO '[A-Z][A-Z][0-9]+' AND
+                doctor_dea_number NOT IN (
+                    SELECT dea_number
+                    FROM bad_dea_number
+                    )
+            ORDER BY doctor_dea_number
+            """)
+
+        f = open(DEA_OUT_FILE, 'w')
+        for dea, in cursor:
+            f.write("%s\n" % dea)
+        f.close()
+
+        os.system("scp -q %s bd-data:%s" % (DEA_OUT_FILE, REMOTE_PATH))
+
+    def last_attempt(self):
+        """ Get the set of last attempted DEA #'s """
+
+        # Get the bad dea #'s so we can be sure to not try a duplicate
+        # insert.
+        cursor.execute("SELECT dea_number FROM bad_dea_number")
+        bad = dict((c, True) for c, in cursor)
+
+        # Get what dea #'s we attempted last so we can filter out the
+        # ones that are still bad.
+        last = self.last_attempt()
+        last = dict((c, True) for c in last)
+        try:
+            f = open(DEA_OUT_FILE)
+        except (IOError, OSError):
+            logging.warning("Could not open %s for reading: %s", 
+                        DEA_OUT_FILE, e)
+            return []
+        data = list(f)
+        f.close()
+        return [l.strip() for l in data]
+
+if __name__ == '__main__':
+    Program().run()

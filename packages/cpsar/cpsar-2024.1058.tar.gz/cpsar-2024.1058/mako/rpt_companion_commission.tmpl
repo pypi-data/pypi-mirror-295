@@ -1,0 +1,44 @@
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link rel='stylesheet' type='text/css' href='/css/report.css' />
+    <link rel='stylesheet' type='text/css' href='css/ccr.css' />
+</%block>
+<h1 align='center'>Companion Comission Report</h1>
+<div align='center'>
+    ${start_date} - ${end_date}
+</div>
+
+<table class='ccr_report' cellspacing='0' cellpadding='0' align='center'>
+<tr>
+    <th>SCSAF Paid</th>
+    <th>EHO Fee</th>
+    <th>CPS Fee</th>
+    <th>Companion Fee</th>
+    <th>Pharmacy</th>
+    <th>Net</th>
+    <th>No. of Scripts</th>
+</tr>
+    <tr>
+        <td class='scsaf_paid'>
+            ${scsaf_paid_fmt}
+        </td>
+        <td class='eho_fee'>
+            ${eho_fmt}
+        </td>
+        <td class='cps_fee'>  
+            ${cps_fmt}
+        </td>
+        <td class='companion_fee'>
+            ${comp_fmt}
+        </td>
+        <td class='net'>
+            ${pharmacy_fmt}
+        </td>
+        <td class='net'>
+            ${net_fmt}
+        </td>
+        <td class='number_of_scripts'>
+            ${count}
+        </td>
+    </tr>
+</table>

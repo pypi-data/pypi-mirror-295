@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+""" Syncronize the EHO Bill file with EHO's data. """
+import reclib.parse.fw as P
+
+from cpsar.fwimport import UpdateInsertProgram
+
+class Program(UpdateInsertProgram):
+    resource = 'bd-bill'
+    parser = P.Parser(
+        P.String('group_number', 8),
+        P.Date('bill_date', 6, format='%y%m%d'),
+        P.Currency('amount', 9, implicit=2),
+        P.Date('date_paid', 6, format='%y%m%d'))
+
+    table_name = "eho_bill"
+    key_fields = ["group_number", "bill_date"]
+    non_key_fields = [
+        'amount',
+        'date_paid'
+    ]
+
+if __name__ == '__main__':
+    Program().run()

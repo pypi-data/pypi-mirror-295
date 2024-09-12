@@ -1,0 +1,19 @@
+#!/bin/bash
+# master shell script that loads all of EHO's data files into blue diamond
+
+trun() { echo "$*"; time eval "$@"; }
+
+trun ar-sync-client
+trun ar-sync-drug 
+trun ar-sync-patient 
+trun ar-sync-patient-plus
+trun ar-sync-patient-drug-list
+trun ar-sync-pharmacy 
+trun ar-sync-employer 
+trun ar-sync-claim
+trun ar-sync-formulary
+trun ar-sync-history
+trun ar-sync-history-ingredient
+trun ar-sync-bill 
+trun ar-sync-card-print-log
+trun ar-sync-eho-invoice-data

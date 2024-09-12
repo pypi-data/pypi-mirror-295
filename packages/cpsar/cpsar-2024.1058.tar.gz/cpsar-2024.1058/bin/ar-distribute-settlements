@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+""" This is a program to automatically create negative distributions for
+settlements that have went out.
+
+All of these transactions should end up having 0 distributed, so we have to 
+back everything out.
+"""
+import logging
+
+import cpsar.runtime as R
+from cpsar.runtime import db
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        cursor = db.cursor()
+
+        # Give us all of the transactions that have settled the full amount that
+        # has been distributed.
+        cursor.execute("""
+            CREATE TEMPORARY TABLE candidate_dist_trans
+            ON COMMIT DELETE ROWS
+            AS
+            SELECT trans.trans_id, distributed_amount
+            FROM trans
+            JOIN (
+                SELECT trans_id, SUM(amount) AS dist_record_amount
+                FROM distribution
+                WHERE amount > 0
+                GROUP BY trans_id
+            ) AS positive USING(trans_id)
+            WHERE
+                create_date > now() - interval '1 year' AND
+                distributed_amount + settled_amount != paid_amount AND
+                settled_amount != 0 AND
+                distributed_amount = settled_amount AND
+                positive.dist_record_amount = distributed_amount
+            """)
+
+        ## Insert negative distributions for all positive distributions to get
+        ## back to zero
+        cursor.execute("""
+          INSERT INTO distribution (trans_id, distribution_account, amount)
+          SELECT trans_id, distribution_account, 0-amount
+            FROM distribution
+            WHERE trans_id IN (
+                SELECT trans_id
+                FROM candidate_dist_trans
+            ) AND distribution.amount > 0
+            """)
+
+        ## Make Log entries
+        cursor.execute("""
+         INSERT INTO trans_log
+          (trans_id, message, username)
+         SELECT trans_id, 'Created distribution records for settlement of $' || distributed_amount, %s
+         FROM candidate_dist_trans
+         """, (R.username(),))
+
+        cursor.execute("DROP TABLE candidate_dist_trans")
+
+        if not self.opts.dry_run:
+            db.commit()
+
+if __name__ == '__main__':
+    Program().run()

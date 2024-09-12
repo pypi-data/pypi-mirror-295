@@ -1,0 +1,95 @@
+#!/usr/bin/env python
+""" Syncronize the claim download file every night from SPC
+"""
+import csv
+import io
+import logging; log=logging.getLogger('')
+import os
+
+import cpsar.runtime as R
+
+from cpsar import config
+from cpsar import shell
+from cpsar.fwimport import create_fw_table, path_for_resource
+from cpsar.mail import Mailer
+
+class ClaimSyncProgram(shell.Program):
+    @property
+    def fpath(self):
+        if self.args:
+            return self.args[0]
+        return os.path.join(config.import_dir(), 'files/bd-claims.txt')
+
+    def main(self):
+        fd = open(self.fpath, 'rb')
+        cursor = R.db.cursor()
+        create_fw_table('claim_load', claim_colspec(), fd,
+                        pk_field='claim_load_id')
+        cursor.execute("""
+            ALTER TABLE claim_load ADD COLUMN patient_id BIGINT;
+            ALTER TABLE claim_load ADD COLUMN claim_id BIGINT;
+            ALTER TABLE claim_load ADD COLUMN adjuster1_id INT;
+            ALTER TABLE claim_load ADD COLUMN adjuster2_id INT;
+            ALTER TABLE claim_load ADD COLUMN error_msg TEXT;
+            ALTER TABLE claim_load ADD COLUMN doi DATE;
+            ALTER TABLE claim_load ADD COLUMN username VARCHAR(50);
+        """)
+        cursor.execute_file("ar/process_claim_load.sql")
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM claim_load
+            WHERE error_msg IS NULL
+            """)
+        log.info("Successfully loaded %s claim records", cursor.fetchone()[0])
+        email_errors()
+        cursor.execute("DROP TABLE claim_load")
+        R.db.commit()
+
+def email_errors():
+    cursor = R.db.cursor()
+    cursor.execute("""
+        SELECT *
+        FROM claim_load
+        JOIN client on client.group_number = claim_load.group_nbr
+        WHERE error_msg IS NOT NULL
+        """)
+    if not cursor.rowcount:
+        return
+
+    log.error("Could not load %s claim records", cursor.rowcount)
+    mail = Mailer()
+    mail.recipients = [mail.sender]
+    mail.subject = "cpsar: %s Errors Loading Claim File From EHO"
+    buf = io.StringIO()
+    writer = csv.writer(buf)
+    writer.writerow([c[0] for c in cursor.description])
+    for rec in cursor:
+        writer.writerow(rec)
+    mail.add_attachment('exception.csv', buf.getvalue())
+    mail.send()
+
+def claim_colspec():
+    return [
+    ('group_nbr', 8),
+    ('cardholder_nbr', 11),
+    ('dob', 8),
+    ('injury_date', 6),
+    ('claim_nbr', 30),
+    ('policy_nbr', 10),
+    ('claim_status', 1),
+    ('deas', 60),
+    ('email_address1', 50),
+    ('email_address2', 50),
+    ('reference_1', 30),
+    ('reference_2', 20),
+    ('effective_date', 6),
+    ('expiration_date', 6),
+    ('injury_desc', 38),
+    ('doctor_on_file_required', 1),
+    ('employer_tin', 15),
+    ('jurisdiction_code', 2),
+    ('keep_open', 1)]
+
+if __name__ == '__main__':
+    ClaimSyncProgram().run()
+ 

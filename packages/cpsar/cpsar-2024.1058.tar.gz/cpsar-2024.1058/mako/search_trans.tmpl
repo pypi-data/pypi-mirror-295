@@ -1,0 +1,492 @@
+<%!
+import cpsar.clientlib
+import kcontrol as K
+
+from cpsar.controls import GroupCodeListBox, ReportZoneListBox, SOJListBox
+
+%>
+<%namespace file="functions.tmpl" import="*" />
+<%inherit file="page.tmpl" />
+<%block name="head">
+  <title>Transaction Search</title>
+  <link type='text/css' href='/css/form.css' rel='stylesheet' />
+  <style type='text/css'>
+    .checkmenu {
+        width: 400px;
+        float: right;
+        margin: 20px;
+    }
+    .sqlb {
+        clear: both;
+    }
+    INPUT.dt {
+        width: 80px;
+    }
+    SPAN.collapse:HOVER, TH.collapse:HOVER {
+        color: blue;
+        cursor: pointer;
+    }
+    TABLE.form {
+        width: 800px;
+        }
+    TD.entry-caption {
+        width: 135px;
+        }
+    TD.entry-value {
+        width: 200px;
+    }
+    TD.entry-gutter {
+        width: 30px;
+    }
+    #trans_group_number {
+        width: 150px;
+    }
+    #trans_report_status {
+        width: 150px;
+    }
+  </style>
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script type='text/javascript' src='/js/jquery.numeric.js'></script>
+  <script type='text/javascript' src='/js/search_trans.js'></script>
+  <script src='/js/jquery.tablesorter.min.js'></script>
+  <script>
+  $(document).ready(function() {
+      $("TABLE.search_results").tablesorter();
+  });
+  </script>
+</%def>
+<%block name="header">
+    Transaction Search
+</%block>
+<% K.from_fs(q.fs) %>
+<form action='/search_trans' method='get'>
+<table class='form' align='center'>
+    <tr>
+        <td class='entry-caption'>Trans #</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.trans_id', maxlength=10)}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Create Date</td>
+        <td class='entry-value'>
+           <table>
+           <tr>
+            <td>
+              ${K.DatePicker('trans.create_date_after', class_='dt')}
+            </td>
+            <td>
+              ${K.DatePicker('trans.create_date_before', class_='dt')}
+            </td>
+           </tr>
+           </table>
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Group #</td>
+        <td class='entry-value'>
+            ${cpsar.clientlib.GroupListBox('trans.group_number',
+                                          id='trans_group_number', 
+                                          blankOption=True)}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Claim Ref #</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.group_auth')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Invoice #</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.invoice_id', maxlength=10)}
+        </td>
+
+        <td class='entry-gutter'>&nbsp;</td>
+
+        <td class='entry-caption'>Claim #</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.claim_number')}
+        </td>
+    </tr>
+
+    <tr>
+        <td class='entry-caption'>NABP</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.pharmacy_nabp')}
+        </td>
+
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Batch Date</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.batch_date', title='YYYYMMDD',
+                value=q.fs.getvalue('trans.batch_date'))}
+        </td>
+    </tr>
+
+    <tr>
+        <td class='entry-caption'>Patient First Name</td>
+        <td class='entry-value'>
+            ${K.TextBox('patient.first_name')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Patient Last Name</td>
+        <td class='entry-value'>
+            ${K.TextBox('patient.last_name')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Patient ID</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.patient_id')}</td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Jurisdiction</td>
+        <td class='entry-value'>
+          ${SOJListBox('patient.jurisdiction', blankOption=True)}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>User E-mail</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.email')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Rx Date</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.rx_date', title='YYYYMMDD',
+                value=q.fs.getvalue('trans.rx_date'))}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption' rowspan='3'>Status</td>
+        <td class='entry-value' rowspan='3'>
+            ${K.ListBox('trans.status', size=5,
+                               multiple=True, values=[
+                ('collect', 'Collect'),
+                ('overdue', 'Overdue'),
+                ('current', 'Current'),
+                ('paid', 'Paid'),
+                ('overpaid', 'Over Paid')
+                ],
+                value=q.fs.getlist('trans.status')
+                )}
+        </td>
+        <td class='entry-gutter' rowspan='3'>&nbsp;</td>
+        <td class='entry-caption'>Reconciled</td>
+        <td class='entry-value'>
+            ${K.ListBox('trans.reconciled', values=[
+                ('', ''),
+                ('no', 'No'),
+                ('yes', 'Yes'),
+                ])}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>
+            <label for='trans.rebill'>Rebill Marked</label></td>
+        <td class='entry-value'>
+            ${K.CheckBox('trans.rebill')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Processing Fee</td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.processing_fee', class_='numeric')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Has Reversal?</td>
+        <td class='entry-value'>
+            ${K.ListBox('reversal.exists', values=[
+                ('', ''),
+                ('Y', 'Yes'),
+                ('N', 'No')])}</td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Has Settlement?</td>
+        <td class='entry-value'>
+            ${K.ListBox('trans.has_settlement', values=[
+                ('', ''),
+                ('Y', 'Yes'),
+                ('N', 'No')])}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Reversal ID</td>
+        <td class='entry-value'>
+            ${K.TextBox('reversal.reversal_id')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Reversal Balanced</td>
+        <td class='entry-value'>
+            ${K.ListBox('reversal.balanced', values=[
+                ('', ''),
+                ('Y', 'Yes'),
+                ('N', 'No')])}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Has Overpayment?</td>
+        <td class='entry-value'>
+            ${K.ListBox('overpayment.overpaid', values=[
+                ('', ''),
+                ('Y', 'Yes'),
+                ('N', 'No')])}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>PUC ID</td>
+        <td class='entry-value'>${K.TextBox('overpayment.puc_id')}</td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>Report Status</td>
+        <td class='entry-value'>
+            ${K.ListBox('trans.report_status', id='trans_report_status',
+              values=[
+                ('', ''),
+                ('N', 'Not set for reporting'),
+                ('P', 'P - Pending first report to agency'),
+                ('S', 'S - Sucessfully reported to agency'),
+                ('U', 'U - Pending update report to agency'),
+                ('X', 'X - Transaction rejected by agency'),
+                ('R', 'R - Pending cancel report to agency'),
+                ('C', 'C - Sucessfully reported as canceled')
+            ])}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Sort By</td>
+        <td class='entry-value'>
+            ${K.ListBox('sort_by', values=[
+                ('last_name', 'Patient'),
+                ('age', 'Age'),
+                ('invoice_id', 'Invoice #'),
+                ('trans_id', 'Trans #')])}
+            ${K.ListBox('sort_order', values=[
+                ('ASC', 'Ascending'),
+                ('DESC', 'Descending')])}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>
+            <label for='limit'>Limit</label>
+        </td>
+        <td class='entry-value'>
+            ${K.TextBox('limit', class_='numeric')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>
+            <label for='history.payer_code'>Payer Code</label>
+        </td>
+        <td class='entry-value'>
+            ${K.TextBox('history.payer_code')}
+        </td>
+    </tr>
+        <td class='entry-caption'>
+            <label for='trans.rx_number'>RX Number</label>
+        </td>
+        <td class='entry-value'>
+            ${K.TextBox('trans.rx_number')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>
+            <label for='report_code'>Report Code</label>
+        </td>
+        <td class='entry-value'>
+            ${K.TextBox('report_code')}
+        </td>
+    </tr>
+    <tr>
+        <td class='entry-caption'>TX Type</td>
+        <td class='entry-value'>
+            ${K.ListBox('trans.tx_type', values=[
+                ('', ''),
+                ('retail', 'Retail'),
+                ('mail_order', 'Mail Order'),
+                ('compound', 'Compound')])}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'>Invoice Code</td>
+        <td class='entry-value'>
+          ${K.ListBox('client.invoice_processor_code',
+                           values=[('', ''),
+                                   ('INTERNET', 'INTERNET'),
+                                   ('PRINT', 'PRINT')])}
+        </td>
+      </tr>
+      <tr>
+        <td class='entry-caption'>Pharmacy Payment Date</td>
+        <td class='entry-value'>
+        
+              ${K.DatePicker('history.pharmacy_payment_date', class_='dt')}
+        </td>
+        <td class='entry-gutter'>&nbsp;</td>
+        <td class='entry-caption'></td>
+        <td class='entry-value'>
+            <input type='submit' name='action' value='Search' />
+            <input type='reset' />
+        </td>
+    </tr>
+</table>
+</form>
+
+% if q.search_results:
+<div align='center'>
+    <em>${len(q.search_results)} results</em>
+    <br />
+    <span class='box collect'>&nbsp;&nbsp;</span> - Collect
+    <span class='box due'>&nbsp;&nbsp;</span> - Overdue
+    <span class='box current'>&nbsp;&nbsp;</span> - Current
+    <span class='box paid'>&nbsp;&nbsp;</span> - Paid
+    <span class='box overpaid'>&nbsp;&nbsp;</span> - Over Paid
+</div>
+<table border='1' cellspacing='0' cellpadding='2' class='search_results'>
+<thead>
+<tr>
+    <th></th>
+    <th>Trans</th>
+    <th>Client</th>
+    <th>Invoice</th>
+    <th>Line</th>
+    <th>Batch Date</th>
+    <th>Paid Date</th>
+    <th>Credit Date</th>
+    <th>Group</th>
+    <th>Auth</th>
+    <th>Patient</th>
+    <th>Drug</th>
+    <th>RX Date</th>
+    <th>Adjuster</th>
+    <th>RX</th>
+    <th>Payer Code</th>
+    <th>Claim</th>
+    <th>Total</th>
+    <th>Adj</th>
+    <th>Paid</th>
+    <th>Bal</th>
+    <th>Set</th>
+    <th>Age</th>
+    <th><input type='button' class='iprint_all' value='All' /></th>
+</tr>
+</thead>
+% for line_no, c in enumerate(q.search_results):
+<tr class='${age_css(c['balance'], c['age'])}'>
+    <td align='right'>${line_no+1}</td>
+    <td><a href='/view_trans?trans_id=${c['trans_id']}'>${c['trans_id']}</a></td>
+    <td><a href='/view_client?group_number=${c['group_number']}'>
+            ${c['group_number']}</a></td>
+    <td align='right'>
+        <a href='/view_invoice?invoice_id=${c['invoice_id']}'>
+                ${c['invoice_id']}</a></td>
+    <td align='center'>${c['line_no']}</td>
+    <td>${c['batch_date'].strftime('%m/%d/%Y')}</td>
+    <td>
+     % if c['paid_date']:
+        ${c['paid_date'].strftime('%m/%d/%Y')}
+     % endif
+    </td>
+    <td>
+     % if c['credit_date']:
+        ${c['credit_date'].strftime('%m/%d/%Y')}
+     % endif
+    </td>
+    <td>${c['group_number']}</td>
+    <td>${c['group_auth']}</td>
+    <td><a href='/patient?patient_id=${c['patient_id']}'>
+        ${c['first_name']} ${c['last_name']}</a></td>
+    <td>${c['drug_name']}</td>
+    <td>${c['rx_date'].strftime('%m/%d/%Y')}</td>
+    <td>${c['adjuster1_email']}</td>
+    <td>${c['rx_number']}</td>
+    <td>${c['payer_code']}</td>
+    <td>${c['claim_number']}</td>
+    <td align='right'>${c['total']}</td>
+    <td align='right'>${c['adjustments']}</td>
+    <td align='right'>${c['paid']}</td>
+    <td align='right'>${c['balance']}</td>
+    <td align='right'>${c['settled_amount']}</td>
+    <td align='center'>
+        % if c['age'] is not None:
+            ${c['age']}
+        % endif
+    </td>
+    <td align='center'>
+        <input value='${c['trans_id']}' title='${c['trans_id']}'
+               type='checkbox' class='iprint' />
+    </td>
+</tr>
+% endfor
+<tfoot>
+<tr>
+    <td>Totals</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align='right'>${q.search_totals['total']}</td>
+    <td align='right'>${q.search_totals['adjustments']}</td>
+    <td align='right'>${q.search_totals['paid']}</td>
+    <td align='right'>${q.search_totals['balance']}</td>
+    <td>&nbsp;</td>
+</tr>
+</tfoot>
+</table>
+
+<div class='checkmenu'>
+<div>With all checked transactions:</div>
+
+<input type='button' class='mark_for_rebill' value='Change Rebill Flag' />
+<input type='button' class='mark_for_state_reporting' value='Change State Reporting Flag' />
+
+<h3>Print Invoices</h3>
+<form class='iprint_form' action='/print_invoice' method='post'>
+<table class='form' style='width: auto'>
+ <tr>
+    <td class='entry-caption'>
+        <label for='show_paid'>Show Transactions with 0 balance</label></td>
+    <td class='entry-value'>
+        ${K.CheckBox('show_paid', value=True)}
+    </td>
+ </tr>
+
+ <tr>
+    <td class='entry-caption'><label for='show_past_due_stamp'>
+        Show Past Due Stamp</label></td>
+    <td class='entry-value'>
+        ${K.CheckBox('show_past_due_stamp')}
+    </td>
+ </tr>
+ <tr>
+    <td></td>
+    <td><input type='submit' name='generate' value='Generate' /></td>
+ </tr>
+</table>
+</form>
+
+<form class='print_hcfa_form' action='/print_hcfa' method='POST'
+    style='margin-top: 30px'>
+    <input type='submit' value='Print HCFA Forms' />
+</form>
+
+</div>
+
+<div class='sqlb'>
+<hr />
+<div align='center' onclick='$("#sql").toggle()'>
+    <em>Show SQL</em>
+</div>
+<div id='sql' style='display: none'>
+<pre>${q.sql}</pre>
+</div>
+
+</div>
+
+% endif
