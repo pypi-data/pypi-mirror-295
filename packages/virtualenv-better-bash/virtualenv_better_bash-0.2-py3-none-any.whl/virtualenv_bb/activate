@@ -1,0 +1,129 @@
+
+## Enhanced virtualenv bash activator, must be called with 'source bin/activate' *from bash*
+### extending from virtualenv/src/virtualenv/activation/bash/activate.sh
+## https://github.com/pypa/virtualenv/blob/main/src/virtualenv/activation/bash/activate.sh
+
+
+if [ "${BASH_SOURCE-}" = "$0" ]; then
+    echo "The is a sourcable script, not executable: \$ source $0" >&2
+    exit 33
+fi
+
+care_handle="_OLD_MONKEY_"
+care_for=(
+    "PS1"
+    "PATH"
+    "LIBRARY_PATH"
+    "LD_LIBRARY_PATH"
+    "PKG_CONFIG_PATH"
+    "C_INCLUDE_PATH"
+    "CPLUS_INCLUDE_PATH"
+    "PYTHONHOME"
+    "PYTHONPATH"
+    "GRC_BLOCKS_PATH"
+)
+
+function protect() {
+    for care in ${care_for[@]}; do
+        # echo ${care}
+        # echo ${!care}
+        new_care="${care_handle}${care}"
+        export ${new_care}="${!care-}"
+        # echo ${new_care}
+        # echo ${!new_care}
+    done
+}
+
+deactivate(){
+    unset -f pydoc >/dev/null 2>&1 || true
+
+    for care in ${care_for[@]}; do
+        old_care="${care_handle}${care}"
+        if ! [ -z "${!old_care+x}" ]; then
+            export ${care}="${!old_care-}"
+            unset ${!old_care}
+        fi
+    done    
+
+    # The hash command must be called to get it to forget past
+    # commands. Without forgetting past commands the $PATH changes
+    # we made may not be respected
+    hash -r 2>/dev/null
+
+    unset VIRTUAL_ENV VIRTUAL_ENV_PROMPT
+    unset care
+    unset old_care
+    if [ ! "${1-}" == "nondestructive" ]; then
+        # Self destruct!
+        unset -f deactivate
+        unset care_for care_handle
+    fi
+}
+
+# unset irrelevant variables
+deactivate nondestructive
+
+VIRTUAL_ENV='__VIRTUAL_ENV__'
+if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath $> /dev/null) ; then
+    VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
+fi
+export VIRTUAL_ENV
+
+protect
+
+export PATH="${VIRTUAL_ENV}/__BIN_NAME__:${PATH}"
+
+if [ "x__VIRTUAL_PROMPT__" != x ]; then
+    VIRTUAL_ENV_PROMPT="__VIRTUAL_PROMPT__"
+else
+    VIRTUAL_ENV_PROMPT=$(basename "${VIRTUAL_ENV}")
+fi
+
+# unset PYTHONHOME if set
+if ! [ -z "${PYTHONHOME+_}" ] ; then
+    _OLD_VIRTUAL_PYTHONHOME="$PYTHONHOME"
+    unset PYTHONHOME
+fi
+
+if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ]; then
+    # Use the exetend prompt
+    PS1="(\[\e[38;5;219m\]${VIRTUAL_ENV_PROMPT}\[\e[m\]) ${PS1-}"
+    export PS1
+fi
+
+
+
+# Make sure to unalias pydoc if it's already there
+alias pydoc 2>/dev/null >/dev/null && unalias pydoc || true
+
+pydoc () {
+    python -m pydoc "$@"
+}
+
+if [[ "${LD_LIBRARY_PATH,,}" == *"matlab"* ]]; then
+    #### matlab libraries can cause lots of headaches... so adjust
+    if [ ! -z "$(find ${VIRTUAL_ENV}/lib/python* -type d -name 'nvidia')" ]; then
+        dp="$(find ${VIRTUAL_ENV}/lib/python* -type d -name 'nvidia')"
+        LD_LIBRARY_PATH = ""
+        for lib in $(find $dp -type f,l -name "*.so*"); do
+            if ! [[ "LD_LIBRARY_PATH" == *"$(dirname $lib)"* ]]; then
+                LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$(dirname $lib)"
+            fi
+        done
+    fi
+    export LD_LIBRARY_PATH="${VIRTUAL_ENV}/lib:${VIRUTAL_ENV}/lib64${LD_LIBRARY_PATH+:$LD_LIBRARY_PATH}${_OLD_VIRTUAL_LD_LIBRARY_PATH:+:$_OLD_VIRTUAL_LD_LIBRARY_PATH}"
+else
+    export LD_LIBRARY_PATH="${VIRTUAL_ENV}/lib:${VIRTUAL_ENV}/lib64${LD_LIBRARY_PATH+:$LD_LIBRARY_PATH}"
+fi
+export LIBRARY_PATH="${VIRTUAL_ENV}/lib:${VIRTUAL_ENV}/lib64${LIBRARY_PATH:+:$LIBRARY_PATH}"
+export PKG_CONFIG_PATH="${VIRTUAL_ENV}/lib/pkgconfig:${VIRTUAL_ENV}/lib64/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+export C_INCLUDE_PATH="${VIRTUAL_ENV}/include${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}"
+export CPLUS_INCLUDE_PATH="${VIRTUAL_ENV}/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}"
+export PYTHONPATH="$(find ${VIRTUAL_ENV}/lib -type d -name site-packages)${PYTHONPATH:+:$PYTHONPATH}"
+export GRC_BLOCKS_PATH="${VIRTUAL_ENV}/share/gnuradio/grc/blocks${GRC_BLOCKS_PATH:+:$GRC_BLOCKS_PATH}"
+
+
+# The hash command must be called to get it to forget past
+# commands. Without forgetting past commands the $PATH changes
+# we made may not be respected
+hash -r 2>/dev/null

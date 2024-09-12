@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: virtualenv-better-bash
+Version: 0.2
+Summary: Add in custom modifications to virtualenv
+Author: Bill Clark
+License-File: LICENSE
+Requires-Dist: virtualenv >=20.0
+
