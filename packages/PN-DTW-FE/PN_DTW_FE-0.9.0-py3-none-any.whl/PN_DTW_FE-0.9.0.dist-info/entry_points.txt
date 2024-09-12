@@ -1,0 +1,3 @@
+[console_scripts]
+PNdtwFE = PN_DTW_FE.main:run_pndtwfe
+SeedConsistency = PN_DTW_FE.main:run_seedconsistency
