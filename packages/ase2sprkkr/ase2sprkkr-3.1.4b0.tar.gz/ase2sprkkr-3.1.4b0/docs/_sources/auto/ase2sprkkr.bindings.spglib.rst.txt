@@ -1,0 +1,58 @@
+spglib
+======
+
+Full name: **ase2sprkkr.bindings.spglib**
+
+
+
+.. rubric:: Module class hierarchy
+
+.. inheritance-diagram::  ase2sprkkr.bindings.spglib.SpacegroupInfo 
+      :parts: 1
+
+|
+
+
+.. rubric:: Description
+
+.. automodule:: ase2sprkkr.bindings.spglib
+
+   
+   
+   
+
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+      :template: custom-base-template.rst
+   
+      possibly_equivalent_sites
+   
+   
+
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      SpacegroupInfo
+   
+   
+
+
+   
+   
+   
+
+
+  
+  
+  
