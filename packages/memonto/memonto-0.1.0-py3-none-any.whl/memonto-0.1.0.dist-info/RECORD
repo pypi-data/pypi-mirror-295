@@ -1,0 +1,10 @@
+memonto/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+memonto/memonto.py,sha256=pjPpS9utMG817Xm5wVbxadBxqtIMnb5E7K0NCfakUbw,53
+memonto/prompts/bisect_memory_type.prompt,sha256=RN-cuYSViTBPiBV4Nkidykxogvd20SE0kfzwIAnCNrA,1946
+memonto/prompts/chat.prompt,sha256=ctTEa6aPkL9fgxBmVjhGdcYAmv5Gw_yAIzZVZcXtvPI,190
+memonto/prompts/commit_to_memory.prompt,sha256=Q6JNgXRYj7G3fzcpT3ic3TEJ3lbAC0E-eCbkoyrVsKQ,1071
+memonto/prompts/summarize_memory.prompt,sha256=cZrWGdbW-6bh32b-9R6GSMSSOMQglU34f9i9xiYHXO4,463
+memonto-0.1.0.dist-info/LICENSE,sha256=ieYOwFDioxbs9WYAb8GYikF1CfMfg-hd1c07wk-dBVg,11312
+memonto-0.1.0.dist-info/METADATA,sha256=t7WcWZWIs9lg7Adzw1wDEzMsk6P7u3BOXjqD_haBphw,343
+memonto-0.1.0.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+memonto-0.1.0.dist-info/RECORD,,
