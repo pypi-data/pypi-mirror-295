@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+python_serviceplatformen/__init__.py
+python_serviceplatformen/authentication.py
+python_serviceplatformen/date_helper.py
+python_serviceplatformen/digital_post.py
+python_serviceplatformen.egg-info/PKG-INFO
+python_serviceplatformen.egg-info/SOURCES.txt
+python_serviceplatformen.egg-info/dependency_links.txt
+python_serviceplatformen.egg-info/requires.txt
+python_serviceplatformen.egg-info/top_level.txt
+tests/test_auth.py
+tests/test_digital_post.py
