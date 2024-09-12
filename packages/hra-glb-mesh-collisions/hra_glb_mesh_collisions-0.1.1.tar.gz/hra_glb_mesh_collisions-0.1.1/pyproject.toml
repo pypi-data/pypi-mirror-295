@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hra-glb-mesh-collisions"
+dynamic = ["version", "dependencies"]
+description = 'A command-line interface to extract mesh-mesh collision information from GLB files'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["glb", "collision detection"]
+authors = [
+  { name = "Chenran Li", email = "chenran.li@stonybrook.edu" },
+  { name = "Bruce W. Herr II", email = "bherr@iu.edu" },
+]
+maintainers = [
+  { name = "Bruce W. Herr II", email = "bherr@iu.edu" },
+]
+
+[project.urls]
+Homepage = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions"
+Documentation = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions"
+Repository = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions.git"
+Issues = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions/issues"
+Changelog = "https://github.com/hubmapconsortium/hra-glb-mesh-collisions/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/hra_glb_mesh_collisions/__about__.py"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
+
+[project.scripts]
+hra-glb-mesh-collisions = "hra_glb_mesh_collisions:main"
