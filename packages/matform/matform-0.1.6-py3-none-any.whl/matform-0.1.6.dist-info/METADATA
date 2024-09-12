@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: matform
+Version: 0.1.6
+Summary: Matrix transform library written by Jaehak Lee
+Home-page: https://github.com/jaehakl/matform
+Author: Jaehak Lee
+Author-email: leejaehak87@gmail.com
+Keywords: data,database,array,matrix
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+
+# TurtleTree
+
+### Installation
+
+```
+pip install matform
+```
