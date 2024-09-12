@@ -1,0 +1,2 @@
+[console_scripts]
+poly-match=poly_match_rs.__main__:main
