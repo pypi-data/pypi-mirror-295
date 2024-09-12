@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: exb-sdk
+Version: 0.2.1
+Summary: SDK for working with ExB (app.exb.de)
+Author-Email: Riccardo Padoan <riccardo.padoan@exb.de>, Lukas Jesche <lukas.jesche@exb.de>, Andreas Kohl <andreas.kohl@exb.de>
+Maintainer-Email: Riccardo Padoan <riccardo.padoan@exb.de>, Lukas Jesche <lukas.jesche@exb.de>, Andreas Kohl <andreas.kohl@exb.de>
+License: MIT
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Typing :: Typed
+Project-URL: Homepage, https://github.com/ExB-Group/exb-sdk
+Project-URL: Documentation, https://ExB-Group.github.io/exb-sdk
+Project-URL: Changelog, https://github.com/ExB-Group/exb-sdk/releases
+Project-URL: Repository, https://github.com/ExB-Group/exb-sdk
+Project-URL: Issue tracker, https://github.com/ExB-Group/exb-sdk/issues
+Requires-Python: <3.13,>=3.11
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: loguru>=0.7.2
+Requires-Dist: tenacity>=8.5.0
+Description-Content-Type: text/markdown
+
+# exb-sdk
+
+[![ci](https://img.shields.io/github/actions/workflow/status/ExB-Group/exb-sdk/ci-main.yaml?style=for-the-badge&branch=main&logo=github&logoColor=white)](https://github.com/ExB-Group/exb-sdk/actions/workflows/ci-main.yaml?query=branch%3Amain)
+
+[![version](https://img.shields.io/pypi/v/exb-sdk?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/exb-sdk)
+[![pyversions](https://img.shields.io/pypi/pyversions/exb-sdk?style=for-the-badge&logo=python&logoColor=white)](https://github.com/ExB-Group/exb-sdk)
+[![license](https://img.shields.io/pypi/l/exb-sdk?style=for-the-badge)](https://github.com/ExB-Group/exb-sdk/LICENSE)
+
+[![docs](https://img.shields.io/badge/docs-blue?style=for-the-badge&label=sphinx&logo=sphinx&logoColor=white)](https://ExB-Group.github.io/exb-sdk)
+[![pdm](https://img.shields.io/badge/managed-blue?style=for-the-badge&logo=pdm&logoColor=white&label=pdm&color=%237e56c2)](https://pdm-project.org)
+[![ruff](https://img.shields.io/badge/formatted-blue?style=for-the-badge&logo=ruff&logoColor=white&label=ruff&color=%23d7ff64)](https://astral.sh/ruff)
+
+## What is exb-sdk?
+<!-- start description -->
+
+SDK for working with ExB (app.exb.de)
+
+<!-- end description -->
+
+## Features
+<!-- start features -->
+
+<!-- end features -->
+
+## Installation
+<!-- start installation -->
+
+exb-sdk can be installed with `pip`:
+
+```text
+pip install exb-sdk
+```
+
+<!-- end installation -->
+
+## Quickstart
+<!-- start quickstart -->
+
+<!-- end quickstart -->
+
+## Contributing
