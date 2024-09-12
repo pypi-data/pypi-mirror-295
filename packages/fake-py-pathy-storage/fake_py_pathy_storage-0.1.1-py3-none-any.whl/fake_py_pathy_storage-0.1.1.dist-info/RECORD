@@ -1,0 +1,13 @@
+fakepy/pathy_storage/__init__.py,sha256=hlM8OcUSsH4B1nS0fc-mr8mNiXCfR3Ck81GkDc1b9r4,179
+fakepy/pathy_storage/aws_s3.py,sha256=BebPodh75PSUQIsL1lNX5odqqxA2Y8lR-lzTDytqvEs,932
+fakepy/pathy_storage/azure_cloud_storage.py,sha256=5lwg8dDLpQ3HmrIxv2MdQsbnSVp9qEIuow7-GA8BB1A,994
+fakepy/pathy_storage/cloud.py,sha256=1TA2r0pX_u_Wst0LuR9Bq_2frj-JFSpUpkEZ64mqk2U,4975
+fakepy/pathy_storage/google_cloud_storage.py,sha256=KDKTnokDGwwFiSwR_fPJeaBUL-0DKGc6YiqdEVA0jnE,1120
+fakepy/pathy_storage/tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+fakepy/pathy_storage/tests/data.py,sha256=3gOHBb4Qi4POajmFLqE05tG7XX9fwa2OjRuilRtiiAk,2547
+fakepy/pathy_storage/tests/test_storages.py,sha256=rHVtMswUo5N08PltWw-3jQmDnMSYI6DICZxl1Jxy50g,10158
+fake_py_pathy_storage-0.1.1.dist-info/LICENSE,sha256=aZqnoG2MwIln_7rO_EX7H9sWtUiupnZlKT6ZD0Gr9j8,1073
+fake_py_pathy_storage-0.1.1.dist-info/METADATA,sha256=ZY7VzVxKcQop_7WddnvXL7YcKQ4UeRzSN2hEDftSa38,7513
+fake_py_pathy_storage-0.1.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+fake_py_pathy_storage-0.1.1.dist-info/top_level.txt,sha256=f5HkHtYqOPA3SWqrwWoQ4jaeYYUDnRJbh5AHDw064GY,7
+fake_py_pathy_storage-0.1.1.dist-info/RECORD,,
