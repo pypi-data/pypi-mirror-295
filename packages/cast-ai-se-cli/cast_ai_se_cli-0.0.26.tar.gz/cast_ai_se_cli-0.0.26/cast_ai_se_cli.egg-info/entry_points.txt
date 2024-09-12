@@ -1,0 +1,2 @@
+[console_scripts]
+se-cli = cli.shell:main

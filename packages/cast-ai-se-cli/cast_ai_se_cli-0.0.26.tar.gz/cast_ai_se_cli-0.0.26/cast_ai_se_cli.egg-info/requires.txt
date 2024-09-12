@@ -1,0 +1,10 @@
+python-dotenv==1.0.0
+requests==2.31.0
+boto3==1.33.10
+yaspin==3.0.1
+docopt-ng==0.9.0
+cast-ai-se-tools==0.0.67
+regex==2023.10.3
+yolk==0.4.3
+requests==2.31.0
+packaging==24.0
