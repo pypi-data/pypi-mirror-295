@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: yooncloud-core
+Version: 0.0.18
+Requires-Python: >=3.8
+Requires-Dist: boto3
+Requires-Dist: pydantic
+Requires-Dist: urllib3 <2,>=1.26.2
+Requires-Dist: pydash
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: datetimerange
+
