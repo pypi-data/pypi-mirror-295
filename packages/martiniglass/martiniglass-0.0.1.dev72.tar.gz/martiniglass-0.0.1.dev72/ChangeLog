@@ -1,0 +1,66 @@
+CHANGES
+=======
+
+* update name
+* update name
+* add license
+* fixed possible error in secondary structure stuff and added an example
+* fixed possible error in secondary structure stuff and added an example
+* Secondary structure functionality
+* added external bond file writing
+* added external bond file writing
+* Fix index writing import and file copying
+* Update README.md
+* updating cg\_bonds
+* refactoring and data writing
+* refactoring
+* - move system reading to own function - stop rewriting all input topologies to vis.top - general neatening to martini\_vis
+* fixed go related mess
+* go model error handling - if we have a system with several molnames, then at the moment the go\_nbparams get read in for all loops, which throws an error when the current molecule isn't the one actually with the go model attached. Just ignore the error for now
+* handle itps with #defines for bonds properly
+* improve error handling message for reading itps into force field
+* change help formatter
+* updated requirements
+* improved constraint handling - change them to bonds and then remove
+* Update README.md
+* cleaned things up, added requirements
+* fixed excess en bonds handling, update readme to reflect package
+* Package the program
+* gave bonded virtualsites some mass
+* updated README.md
+* removed excessive EN bonds VMD can't handle > 12 bonds per atom. If we find atoms in a molecule with > 12 bonds, remove some and write them to another file to note that they've been taken out
+* improved docstrings
+* Update README.md
+* added cleaned up reading - can now handle files with #defines for bonds and angles through the misc\_file\_reader, which will capture all #defines then read the rest of the file in to the force field as appropriate. - improve topol file handling. Read and write have changed how they handle the includes and molecules sections. More is included in what is written out for the includes, but it doesn't really matter, because more being included only holds up the reading during cg\_bonds processing, and then isn't actually applied to the molecules really present in the system
+* added go network description
+* added go network functionality
+* added go network functionality
+* finish en description in readme
+* add some detail about how to visualise elastic networks separately from direct bonds
+* tidy up, move bits into own functions: - topol writer, so that it can write for \_vis and \_en files separately if required - index writer for cleanliness - add some more comments
+* add image
+* Add image
+* Add illustration
+* add conditions for beta secondary structure
+* enforced args.en\_force type as float
+* Write out EN to external topology
+* corrected constraints handling
+* changed how constraints are handled. - make all constraints which don't have ifndef meta bonds, then remove them
+* update README
+* fixed arg naming, removed mdanalysis imports
+* added virtual site writing functionality
+* update README
+* added gromacs index writing functionality
+* Update README.md
+* Update README.md
+* Update README.md
+* added more virtual\_sites
+* add virtual\_sitesn bonds for visualisation
+* Update README.md
+* Update README.md
+* added latest
+* added functionality for pairs
+* added gitignore
+* Add files via upload
+* Update README.md
+* Initial commit
