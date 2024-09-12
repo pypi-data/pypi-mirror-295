@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "python-fastfs"
+version = "0.1.1"
+description = ""
+authors = ["jc_nana <joshuakt.mit@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastfs", from = "src"}]
+
+[tool.poetry.scripts]
+fastfs = 'fastfs.main:main'
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-fasthtml = "^0.5.2"
+pydantic = "^2.9.1"
+pydantic-settings = "^2.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
