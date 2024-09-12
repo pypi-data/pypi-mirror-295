@@ -1,0 +1,12 @@
+vbll/__init__.py,sha256=M9z3dE5KyBIu9iVKp4c3D0QAlWW2t365pabHemwLgHg,22
+vbll/jax/__init__.py,sha256=eo1qQFwonHVGxoNMsJmQT2-AELjUzhokgFYo-bmavrQ,21
+vbll/jax/layers/__init__.py,sha256=MwSflMCaQMmqy93YVSvngBVVhsrqHD1lMfCYmr8SM9c,48
+vbll/jax/layers/regression.py,sha256=McFKIMocb96-QC1DM23UrDiNjrK9M3B7q5Xl3YV5yDc,3361
+vbll/jax/utils/distributions.py,sha256=UNkWz_qNPrtiq1mRg4r3CqUYx3hT0P6BzT1Yv4UfAvU,6083
+vbll/layers/__init__.py,sha256=73QYJdoAovXCV4aov0GkuTh2h16cfST_V4J_4d92Rtk,135
+vbll/layers/classification.py,sha256=lafPZ8Xohyhs7KYWLdCMi9CFwdrtU3OGTlBPmB5x-r8,17898
+vbll/layers/regression.py,sha256=OoNcJ1Nr6ncJEmCj2DVmBgENl8HnAKcV2DJ5C5qRpyo,10837
+vbll/utils/distributions.py,sha256=B-u-Ksgp0X9xeO-JrSXGu28mv3At-aEfm_KOyJnjIw4,9415
+vbll-0.2.6.dist-info/METADATA,sha256=2hAAiqcC5eKHaT_IoHPDFQsKD0ieWRO-tSzk-ubptv0,3197
+vbll-0.2.6.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+vbll-0.2.6.dist-info/RECORD,,
