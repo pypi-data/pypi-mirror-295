@@ -1,0 +1,2 @@
+[console_scripts]
+flozz-daily-mix = flozz_daily_mix.__main__:main
