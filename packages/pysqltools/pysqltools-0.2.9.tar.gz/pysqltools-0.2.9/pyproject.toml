@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "pysqltools"
+version = "0.2.9"
+description = "PySQLTools"
+authors = ["Pablo Minué"]
+license = "None"
+readme = "README.md"
+packages = [{include = "pysqltools"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^8.2.0"
+pytest-cov = "*"
+pylint = "*"
+mypy = "*"
+black = "*"
+coverage  = "*"
+pillow = "^10.3.0"
+pre-commit = "^3.7.1"
+pandas = "^2.2.2"
+multimethod = "^1.11.2"
+sqlparse = "^0.5.0"
+psycopg2-binary = "^2.9.9"
+pymysql = "^1.1.1"
+mysql-connector-python = "^9.0.0"
+pyodbc = "^5.1.0"
+pymssql = "^2.3.0"
+cx-oracle = "^8.3.0"
+ibm-db = "^3.2.3"
+sqlalchemy = "^2.0.31"
+trino = "^0.328.0"
+sphinx = "^7.3.7"
+alabaster = "^0.7.16"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint]
+extension-pkg-allow-list = [
+    'ibm_db',
+    'pyodbc',
+    'pymssql',
+]
+disable = [
+    "C0114",  # Missing module docstring
+    "C0116",  # Missing function or method docstring
+    "C0301",
+    "E0102",
+]
+
+[tool.pylint.MASTER]
+ignore-paths = '^pysqltools/src/__pycache__'
+
