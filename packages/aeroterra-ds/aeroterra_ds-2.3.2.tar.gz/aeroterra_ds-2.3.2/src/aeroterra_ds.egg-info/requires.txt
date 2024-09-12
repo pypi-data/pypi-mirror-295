@@ -1,0 +1,11 @@
+gssapi
+dask
+dask[dataframe]
+arcgis
+pyproj
+shapely
+matplotlib
+geopandas
+pandas
+haversine
+rtree
