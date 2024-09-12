@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+nomad_normalizer_plugin_soap.egg-info/PKG-INFO
+nomad_normalizer_plugin_soap.egg-info/SOURCES.txt
+nomad_normalizer_plugin_soap.egg-info/dependency_links.txt
+nomad_normalizer_plugin_soap.egg-info/entry_points.txt
+nomad_normalizer_plugin_soap.egg-info/requires.txt
+nomad_normalizer_plugin_soap.egg-info/top_level.txt
+soapnormalizer/__init__.py
+soapnormalizer/normalizer.py
+tests/test_soapnormalizer.py
