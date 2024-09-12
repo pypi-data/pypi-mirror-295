@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "TeleBotPlus"
+version = "0.1.0"
+description = "\u041d\u0435\u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0435 \u0434\u043e\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043a \u0431\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0435 pyTelegramBotAPI"
+authors = ["MainPlay TG <xbox.roman6666666666@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/MainPlay-TG/TeleBotPlus.py"
+packages = [
+    { include = "TeleBotPlus", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+MainShortcuts2 = "^2.1.2"
+pyTelegramBotAPI = "^4.20.0"
+requests = "^2.32.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
