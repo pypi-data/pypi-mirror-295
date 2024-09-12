@@ -1,0 +1,23 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "sfisop"
+version = "0.1.6"
+description = ""
+authors = [ "Yo581515 <581515@stud.hvl.no>",]
+readme = "README.md"
+include = [ "src/sfisop/tsdatamodel/*",]
+exclude = [ "src/sfisop/merge_function/*",]
+[[tool.poetry.packages]]
+include = "sfisop"
+from = "src"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0.0"
+pytest = ">=8.3.2,<9.0.0"
+pydantic = ">=1.10.9,<2.0.0"
+typing-extensions = ">=4.6.3,<5.0.0"
+
+[tool.poetry.dev-dependencies]
