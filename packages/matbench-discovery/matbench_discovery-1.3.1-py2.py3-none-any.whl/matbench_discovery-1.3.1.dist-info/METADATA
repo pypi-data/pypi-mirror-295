@@ -1,0 +1,104 @@
+Metadata-Version: 2.1
+Name: matbench-discovery
+Version: 1.3.1
+Summary: A benchmark for machine learning energy models on inorganic crystal stability prediction from unrelaxed structures
+Author-email: Janosh Riebesell <janosh.riebesell@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2022 Janosh Riebesell
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        The software is provided "as is", without warranty of any kind, express or
+        implied, including but not limited to the warranties of merchantability,
+        fitness for a particular purpose and noninfringement. In no event shall the
+        authors or copyright holders be liable for any claim, damages or other
+        liability, whether in an action of contract, tort or otherwise, arising from,
+        out of or in connection with the software or the use or other dealings in the
+        software.
+        
+Project-URL: Homepage, https://janosh.github.io/matbench-discovery
+Project-URL: Repo, https://github.com/janosh/matbench-discovery
+Project-URL: Package, https://pypi.org/project/matbench-discovery
+Keywords: Bayesian optimization,convex hull,high-throughput search,inorganic crystal stability,interatomic potential,machine learning,materials discovery
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: ase >=3.23
+Requires-Dist: matplotlib >=3.9.2
+Requires-Dist: numpy >=1.26
+Requires-Dist: pandas >=2.2.2
+Requires-Dist: plotly >=5.23
+Requires-Dist: pymatgen >=2024.8.9
+Requires-Dist: pymatviz[df-pdf-export,df-svg-export,export-figs] >=0.11
+Requires-Dist: scikit-learn >=1.5
+Requires-Dist: scipy >=1.13
+Requires-Dist: seaborn >=0.13
+Requires-Dist: tqdm >=4.66
+Requires-Dist: wandb >=0.17
+Provides-Extra: 3d-structures
+Requires-Dist: crystal-toolkit >=2023.11.3 ; extra == '3d-structures'
+Provides-Extra: fetch-wbm-data
+Requires-Dist: gdown >=5.1 ; extra == 'fetch-wbm-data'
+Provides-Extra: make-wbm-umap
+Requires-Dist: umap-learn >=0.5.5 ; extra == 'make-wbm-umap'
+Provides-Extra: running-models
+Requires-Dist: alignn >=2024.1.14 ; extra == 'running-models'
+Requires-Dist: chgnet >=0.3.0 ; extra == 'running-models'
+Requires-Dist: jarvis-tools ; extra == 'running-models'
+Requires-Dist: m3gnet >=0.2.4 ; extra == 'running-models'
+Requires-Dist: mace-torch >=0.3.6 ; extra == 'running-models'
+Requires-Dist: maml >=2023.9.9 ; extra == 'running-models'
+Requires-Dist: megnet >=1.3.2 ; extra == 'running-models'
+Provides-Extra: test
+Requires-Dist: pytest-cov >=5 ; extra == 'test'
+Requires-Dist: pytest >=8.1 ; extra == 'test'
+
+<h1 align="center" style="line-height: 0; margin: 0 auto 1em;">
+  <img src="https://github.com/janosh/matbench-discovery/raw/main/site/static/favicon.svg" alt="Logo" width="60px"><br>
+  Matbench Discovery
+</h1>
+
+<h4 align="center" class="toc-exclude" style="display: none;">
+
+[![arXiv](https://img.shields.io/badge/arXiv-2308.14920-blue?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2308.14920)
+[![Tests](https://github.com/janosh/matbench-discovery/actions/workflows/test.yml/badge.svg)](https://github.com/janosh/matbench-discovery/actions/workflows/test.yml)
+[![GitHub Pages](https://github.com/janosh/matbench-discovery/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/janosh/matbench-discovery/actions/workflows/gh-pages.yml)
+[![Requires Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
+[![PyPI](https://img.shields.io/pypi/v/matbench-discovery?logo=pypi&logoColor=white)](https://pypi.org/project/matbench-discovery?logo=pypi&logoColor=white)
+
+</h4>
+
+> Disclaimer: We evaluate how accurately ML models predict solid-state thermodynamic stability. Although this is an important aspect of high-throughput materials discovery, the ranking cannot give a complete picture of a model's general applicability to materials. A high ranking does not constitute endorsement by the Materials Project.
+
+Matbench Discovery is an [interactive leaderboard](https://janosh.github.io/matbench-discovery/models) and associated [PyPI package](https://pypi.org/project/matbench-discovery) which together make it easy to rank ML energy models on a task designed to simulate high-throughput discovery of new stable inorganic crystals.
+
+We've tested <slot name="model-count" />models covering multiple methodologies including graph neural network (GNN) interatomic potentials, GNN one-shot predictors, iterative Bayesian optimizers and random forests with shallow-learning structure fingerprints.
+
+<slot name="best-report" />
+
+Our results show that ML models have become robust enough to deploy them as triaging steps to more effectively allocate compute in high-throughput DFT relaxations. This work provides valuable insights for anyone looking to build large-scale materials databases.
+
+<slot name="metrics-table" />
+
+If you'd like to refer to Matbench Discovery in a publication, please cite the [preprint](https://doi.org/10.48550/arXiv.2308.14920):
+
+> Janosh Riebesell, Rhys E. A. Goodall, Philipp Benner, Yuan Chiang, Bowen Deng, Alpha A. Lee, Anubhav Jain, and Kristin A. Persson. "Matbench Discovery -- A Framework to Evaluate Machine Learning Crystal Stability Predictions." arXiv, August 28, 2023. https://doi.org/10.48550/arXiv.2308.14920.
+
+We welcome new models additions to the leaderboard through GitHub PRs. See the [contributing guide](https://janosh.github.io/matbench-discovery/contribute) for details and ask support questions via [GitHub discussion](https://github.com/janosh/matbench-discovery/discussions).
+
+For detailed results and analysis, check out the [preprint](https://janosh.github.io/matbench-discovery/preprint).
