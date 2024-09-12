@@ -1,0 +1,9 @@
+{
+    "send_sms": {
+        "trigger_word": ["send a message", "set a demo", "set up a demo", "send sms", "appointment"],
+        "sample_payload": {
+            "name": "string"
+        },
+        "prerequisite": null
+    }
+}
