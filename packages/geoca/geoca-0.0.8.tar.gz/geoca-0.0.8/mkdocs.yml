@@ -1,0 +1,128 @@
+site_name: geoca
+site_description: A Python module for CA models based on geo-raster data
+site_author: Haorui-Jiang
+site_url: https://Haorui-Jiang.github.io/geoca
+repo_url: https://github.com/Haorui-Jiang/geoca
+
+copyright: "Copyright &copy; 2024 Haorui Jiang"
+
+theme:
+    palette:
+        - scheme: default
+          #   primary: blue
+          #   accent: indigo
+          toggle:
+              icon: material/toggle-switch-off-outline
+              name: Switch to dark mode
+        - scheme: slate
+          primary: indigo
+          accent: indigo
+          toggle:
+              icon: material/toggle-switch
+              name: Switch to light mode
+    name: material
+    icon:
+        repo: fontawesome/brands/github
+    logo: assets/logo.png
+    favicon: assets/favicon.png
+    features:
+        - navigation.instant
+        - navigation.tracking
+        - navigation.top
+        - search.highlight
+        - search.share
+    custom_dir: "docs/overrides"
+    font:
+        text: Google Sans
+        code: Regular
+
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    - mkdocs-jupyter:
+        include_source: True
+        ignore_h1_titles: True
+        execute: False
+        allow_errors: false
+        ignore: ["conf.py"]
+        execute_ignore: ["*ignore.ipynb"]
+    - i18n:
+        languages:
+          zh: "简体中文"
+          en: "English"
+        default_language: "en"
+        no_translation:
+          zh: "此页面未翻译为简体中文。"
+          en: "This page isn't translated to English."
+        translate_nav:
+          zh:
+            Home: "首页"
+            Installation: "安装"
+            Usage: "使用方法"
+            Contributing: "贡献"
+            FAQ: "常见问题解答"
+            Changelog: "更新日志"
+            Report Issues: "报告议题"
+            Examples: "代码示例"
+            API Reference: "API参考"
+          en:
+            Home: "Home"
+            Installation: "Installation"
+            Usage: "Usage"
+            Contributing: "Contributing"
+            FAQ: "FAQ"
+            Changelog: "Changelog"
+            Report Issues: "Report Issues"
+            Examples: "Examples"
+            API Reference: "API Reference"
+    - git-revision-date-localized:
+        enable_creation_date: true
+        type: timeago
+
+markdown_extensions:
+    - admonition
+    - abbr
+    - attr_list
+    - def_list
+    - footnotes
+    - meta
+    - md_in_html
+    - pymdownx.superfences
+    - pymdownx.highlight:
+          linenums: true
+    - toc:
+          permalink: true
+
+extra:
+    # analytics:
+    #     provider: google
+    #     property: UA-XXXXXXXXX-X
+    alternate:
+        - name: "English"
+          link: ""
+          lang: en
+        - name: "简体中文"
+          link: index.zh/
+          lang: zh
+
+nav:
+    - Home:
+        - index.md
+        - index.zh.md
+    - Installation: installation.md
+    - Usage: usage.md
+    - Contributing: contributing.md
+    - FAQ: faq.md
+    - Changelog:
+        - changelog.md
+        - changelog.zh.md
+    - Report Issues: https://github.com/Haorui-Jiang/geoca/issues
+    - Examples:
+        - examples/01_CA.ipynb
+        - examples/01_CA.zh.ipynb
+        - examples/02_multiRaster_listDict.ipynb
+        - examples/02_multiRaster_listDict.zh.ipynb
+    - API Reference:
+        - rasterconvert module: rasterconvert.md
+        - cellularautomata module: cellularautomata.md

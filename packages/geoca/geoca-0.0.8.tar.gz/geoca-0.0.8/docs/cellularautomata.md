@@ -1,0 +1,3 @@
+# cellularautomata module
+
+::: geoca.cellularautomata
