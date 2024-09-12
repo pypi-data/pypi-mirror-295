@@ -1,0 +1,2 @@
+[console_scripts]
+lint-dependency-groups = dependency_groups._lint_dependency_groups:main
