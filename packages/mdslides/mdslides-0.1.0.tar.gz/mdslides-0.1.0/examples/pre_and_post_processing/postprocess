@@ -1,0 +1,19 @@
+#! /bin/bash
+#
+output="$1"
+output_dir=$(dirname "${output}")
+
+echo "Postprocessing"
+# disable pageup/pagedown
+sed -i "s/key == 33/key == 01/" "${output_dir}/data/scripts/slidy.js"
+sed -i "s/key == 34/key == 01/" "${output_dir}/data/scripts/slidy.js"
+# let pageup/pagedown act as right/left
+sed -i "s/key == 37/key == 37 | key == 33/" "${output_dir}/data/scripts/slidy.js"
+sed -i "s/key == 39/key == 39 | key == 34/" "${output_dir}/data/scripts/slidy.js"
+# tack on a function to ignore f5
+
+echo 'document.onkeydown = function(e) { if(e.keyCode == 116){return false;} };' >> "${output_dir}/data/scripts/slidy.js"
+echo '$(document.links).filter(function(){ return this.hostname != window.location.hostname; }).attr("target", "_blank");' >> "${output_dir}/data/scripts/slidy.js"
+
+# copy videos to html directory
+# cp *mp4 html
