@@ -1,0 +1,2 @@
+Add validation in linearity_correction task to ensure that the value of NUM_FRAMES_IN_RAMP is the same
+across all frames in a ramp, and that the value of NUM_FRAMES_IN_RAMP actually matches the number of frames found.
