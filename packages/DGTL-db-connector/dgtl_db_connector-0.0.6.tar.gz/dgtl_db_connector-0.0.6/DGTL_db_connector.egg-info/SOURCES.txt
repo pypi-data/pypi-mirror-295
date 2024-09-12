@@ -1,0 +1,12 @@
+README.md
+setup.py
+DGTL_db_connector.egg-info/PKG-INFO
+DGTL_db_connector.egg-info/SOURCES.txt
+DGTL_db_connector.egg-info/dependency_links.txt
+DGTL_db_connector.egg-info/requires.txt
+DGTL_db_connector.egg-info/top_level.txt
+dgtl_db_connector/__init__.py
+dgtl_db_connector/client.py
+dgtl_db_connector/inventory.py
+dgtl_db_connector/model.py
+dgtl_db_connector/quality_control.py
