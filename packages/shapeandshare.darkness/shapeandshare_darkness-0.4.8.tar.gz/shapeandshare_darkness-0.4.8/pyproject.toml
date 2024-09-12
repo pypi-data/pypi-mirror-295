@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.isort]
+py_version = "all"
+line_length = 120
+profile = "black"
+src_paths = ["src","test"]
+known_first_party = "shapeandshare"
+
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+
+
+[project]
+name = "shapeandshare.darkness"
+version = "0.4.8"
+authors = [
+  { name="Joshua C. Burt", email="joshburt@shapeandshare.com" },
+]
+license.file = "LICENSE"
+description = "Darkness"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = ["fastapi", "fastapi-utils[all]", "typing_inspect", "pydantic", "uvicorn", "requests", "click", "pymongo"]
+
+
+[project.scripts]
+darkness-state = "shapeandshare.darkness.server.api.state.main:main"
+darknesss-chrono = "shapeandshare.darkness.server.workers.chrono.main:main"
+
+[project.urls]
+Homepage = "https://github.com/shapeandshare/darkness"
+Issues = "https://github.com/shapeandshare/darkness/issues"

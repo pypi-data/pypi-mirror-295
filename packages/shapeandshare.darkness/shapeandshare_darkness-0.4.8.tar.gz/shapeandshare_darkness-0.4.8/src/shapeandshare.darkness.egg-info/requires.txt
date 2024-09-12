@@ -1,0 +1,8 @@
+fastapi
+fastapi-utils[all]
+typing_inspect
+pydantic
+uvicorn
+requests
+click
+pymongo
