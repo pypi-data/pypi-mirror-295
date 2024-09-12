@@ -1,0 +1,14 @@
+.gitignore
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+.github/workflows/docs_build_and_deploy.yml
+.github/workflows/test_and_deploy.yml
+xpmtd/__init__.py
+xpmtd/sorting_metadata.py
+xpmtd.egg-info/PKG-INFO
+xpmtd.egg-info/SOURCES.txt
+xpmtd.egg-info/dependency_links.txt
+xpmtd.egg-info/requires.txt
+xpmtd.egg-info/top_level.txt
