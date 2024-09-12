@@ -1,0 +1,88 @@
+#!python
+""" Heavily SQL-based implementation of loading the patient file from EHO into
+the blue diamond database. This is a rewrite of ar-sync-patient that performs
+exponentially faster.
+"""
+
+import io
+import logging
+import optparse
+import string
+import struct
+
+import cpsar.runtime as R
+
+from cpsar.fwimport import FWParser, path_for_resource
+from cpsar.shell import Program
+
+log = logging.getLogger('')
+
+class FWParser(object):
+    def __init__(self, fields):
+        self._field_names = [f[0] for f in fields]
+        widths = [f[1] for f in fields]
+        fmtstring = ''.join('%ds' % f for f in widths)
+        self._parse = struct.Struct(fmtstring).unpack_from
+
+    @property
+    def field_names(self):
+        return self._field_names
+
+    def parse_file(self, fd):
+        for line in fd:
+            yield self._parse(line)
+
+parser = FWParser([
+    ('group_number',   8),
+    ('ssn',           11),
+    ('dob',            8),
+    ('telephone_code1', 1),
+    ('telephone_nbr1', 20),
+    ('telephone_code2', 1),
+    ('telephone_nbr2', 20),
+    ('telephone_code3', 1),
+    ('telephone_nbr3', 20),
+    ('external_idx_1', 15),
+    ('external_idx_2', 15),
+])
+
+class MyProgram(Program):
+    def setup_options(self):
+        self.add_option('-f', '--file', default=None, help='File to Load')
+        super(MyProgram, self).setup_options()
+
+    def main(self):
+        sync_patient_file(input_file_path(self.opts))
+
+def input_file_path(opts):
+    if opts.file:
+        return R.dpath(opts.file)
+    else:
+        return path_for_resource('patient-plus')
+
+def sync_patient_file(fpath):
+    sql = io.BytesIO()
+    fd = open(fpath, 'rb')
+    for record in parser.parse_file(fd):
+        record = sql_clean_record(record)
+        sql.write(b"\t".join(record))
+        sql.write(b"\n")
+    sql.seek(0)
+    cursor = R.db.cursor()
+    cursor.copy_from(sql, 'stage.patient_plus_load', columns=parser.field_names)
+    cursor.execute("SELECT process_patient_plus_load()")
+    R.db.commit()
+
+def sql_clean_record(record):
+    nrecord = []
+    for idx, value in enumerate(record):
+        value = value.rstrip()
+        if b"\x00" in value:
+            value = value.replace(b"\x00", b"")
+        if not value:
+            value = b"\\N"
+
+        nrecord.append(value)
+    return nrecord
+
+if __name__ == '__main__': MyProgram().run()

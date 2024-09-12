@@ -1,0 +1,88 @@
+#!python
+""" Heavily SQL-based implementation of loading the history file from EHO into
+the blue diamond database. This is a rewrite of ar-sync-history that performs
+exponentially faster.
+"""
+ 
+import logging; log=logging.getLogger('')
+
+import cpsar.runtime as R
+from cpsar import shell
+from cpsar.fwimport import path_for_resource, copybuf_from_list, create_fw_table
+
+class MyProgram(shell.Program):
+    def main(self):
+        fd = open(path_for_resource('bd-tx'), 'rb')
+        cursor = R.db.cursor()
+        cursor.execute("set temp_buffers = '400MB'")
+        create_fw_table('history_load', file_layout(), fd)
+        cursor.execute("""
+            ALTER TABLE history_load ADD COLUMN error_msg TEXT;
+            ALTER TABLE history_load ADD COLUMN fixed_doi DATE;
+            ALTER TABLE history_load ADD COLUMN patient_id bigint;
+            ALTER TABLE history_load ADD COLUMN pharmacy_id bigint;
+            ALTER TABLE history_load ADD COLUMN doctor_id bigint;
+            ALTER TABLE history_load ADD COLUMN drug_id bigint;
+            ALTER TABLE history_load ADD COLUMN claim_id bigint;
+            ALTER TABLE history_load ADD COLUMN pharmacist_id int;
+            """)
+        cursor.execute_file("ar/process_history_load.sql")
+        cursor.execute("""
+            SELECT group_number, group_auth, error_msg
+            FROM history_load
+            WHERE error_msg IS NOT NULL
+            """)
+        for gn, ga, err in cursor:
+            log.warning("Could not load history record %s:%s from eho: %s", gn, ga, err)
+        cursor.execute("DROP TABLE history_load")
+        R.db.commit()
+
+def file_layout():
+    return [
+        ('group_number', 8),
+        ('group_auth', 7),
+        ('patient_cardholder_nbr', 11),
+        ('patient_dob', 8),
+        ('doi', 6),
+        ('rx_date', 6),
+        ('pharmacy_nabp', 10),
+        ('rx_number', 12),
+        ('refill_number', 2),
+        ('doctor_dea_number', 9),
+        ('doctor_npi_number', 10),
+        ('date_written', 6),
+        ('daw', 1),
+        ('drug_ndc_number', 11),
+        ('quantity', 9),
+        ('days_supply', 3),
+        ('compound_code', 1),
+        ('cost_allowed', 9),
+        ('dispense_fee', 9),
+        ('sales_tax', 9),
+        ('eho_network_copay', 9),
+        ('pbm_cost_2', 9),
+        ('pbm_fee_2', 9),
+        ('pbm_sales_tax_2', 9),
+        ('pbm_copay_2', 9),
+        ('processing_fee', 5),
+        ('cost_submitted', 9),
+        ('usual_customary', 9),
+        ('state_fee', 9),
+        ('awp', 9),
+        ('date_processed', 13),
+        ('reverse_date', 6),
+        ('generic_price', 9),
+        ('lic_state', 2),
+        ('lic_number', 20),
+        ('inv_class', 1),
+        ('level_of_effort', 2),
+        ('sponsor_cost_allowed', 9),
+        ('sponsor_dispense_fee', 9),
+        ('hit_id', 12),
+        ('soj', 2),
+        ('pharmacy_payment_date', 6),
+        ('pharmacy_cost_allowed', 9),
+        ('pharmacy_dispense_fee', 9)
+        ]
+
+if __name__ == '__main__': MyProgram().run()

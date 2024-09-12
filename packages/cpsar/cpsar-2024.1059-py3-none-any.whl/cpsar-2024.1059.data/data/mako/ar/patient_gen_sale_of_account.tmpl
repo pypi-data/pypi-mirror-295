@@ -1,0 +1,116 @@
+<style type='text/css'>
+    BODY, TD { font-size: 10pt; }
+    .hc { border-bottom: 1px solid #000000; font-weight: bold; }
+    .tc { border-bottom: 1px solid #000000; }
+</style>
+<table border='0'>
+<tr>
+    <td colspan='8' align='center'>
+        <strong>Corporate Pharmacy Services</strong>
+    </td>
+</tr>
+<tr>
+    <td colspan='8' align='center'>
+        <strong>319 Broad Street</strong>
+    </td>
+</tr>
+<tr>
+    <td colspan='8' align='center'>
+        <strong>Gadsden, AL 35901</strong>
+    </td>
+</tr>
+<tr>
+    <td colspan='2'>
+        <strong>Record of Sale of Account:</strong>
+    </td>
+    <td colspan='2'></td>
+    <td colspan='4' align='right'>
+        <strong>From: ${start_date} To: ${end_date} 
+    </td>
+</tr>
+<tr>
+    <td>Patient: ${patient['first_name']} ${patient['last_name']}</td>
+    <td>Birth Date: ${patient['dob'].strftime('%m/%d/%Y')}</td>
+    <td colspan='2'></td>
+    <td colspan='4'>Client: ${client['client_name']} ${client['group_number']}</td>
+</tr>
+<tr>
+    <td colspan='2'>${patient['address_1']} ${patient['address_2'] or ''}</td>
+    <td colspan='2'></td>
+    <td colspan='4'>${client['address_1']} ${client['address_2'] or ''}</td>
+</tr>
+<tr>
+    <td colspan='2'>
+        ${patient['city']}
+        % if patient['city'] and patient['state']:
+          ,
+        % endif
+        ${patient['state']}
+        ${patient['zip_code']}
+    </td>
+    <td colspan='2'></td>
+    <td colspan='4'>
+        ${client['city']}
+        % if client['city'] and client['state']:
+          ,
+        % endif
+        ${client['state']}
+        ${client['zip_code']}
+    </td>
+</tr>
+<tr>
+    <td></td>
+</tr>
+<tr>
+    <td class='hc'>Date</td>
+    <td class='hc'>Pharmacy</td>
+    <td class='hc'>Rx #</td>
+    <td class='hc'>Refill #</td>
+    <td class='hc'>Drug</td>
+    <td class='hc'>DS</td>
+    <td class='hc'>Qty</td>
+    <td class='hc'>Amount</td>
+</tr>
+% for t in transactions:
+<tr>
+    <td style='width: .75in'>${t['rx_date'].strftime('%m/%d/%Y')}</td>
+    <td>${t['pharmacy_name']}</td>
+    <td>${t['rx_number']}</td>
+    <td>${t['refill_number']}</td>
+    <td>${t['drug_name']}</td>
+    <td>${t['days_supply']}</td>
+    <td>${t['quantity']}</td>
+    <td>${t['total_fmt']}</td>
+</tr>
+<tr>
+    <td></td>
+    <td><strong>NDC: ${t['ndc_number']}</strong></td>
+    <td colspan='3'>
+        <strong>DR: ${t['doctor_name']}</strong>
+    </td>
+</tr>
+% endfor
+<tr>
+<td colspan='5' align='right'><strong>Total:</strong></td>
+<td></td>
+<td></td>
+<td>${grand_total_fmt}</td>
+</tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr>
+    <td colspan='2' align='right'>Signed by R.Ph:</td>
+    <td class='tc' colspan='4'></td>
+</tr>
+<tr><td></td></tr>
+<tr>
+    <td colspan='2' align='right'>License #:</td>
+    <td class='tc' colspan='4'></td>
+</tr>
+<tr><td></td></tr>
+<tr>
+    <td colspan='2' align='right'>Federal Tax ID:</td>
+    <td class='tc' colspan='4'></td>
+</tr>
+
+</table>

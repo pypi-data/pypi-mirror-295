@@ -1,0 +1,162 @@
+
+State Reporting System Technical Documentation
+==============================================================================
+
+The purpose of this document is to outline the technical implementation of
+the state reporting (SR) system to serve as reference for the time long after
+everyone has forgotten how the system works.
+
+The system is implemented as a suite of batch programs that work off of
+2 SR tables and the trans table. Each agency has its own set of batch programs
+that do the work but all of them follow a consistent data model.
+
+The trans table has a new field, report_status, that signals what reporting
+action needs to occur on the particular transaction. As activity occurs, this
+field is updated. The following values are identified for this field:
+
+   NULL - The trans is not ready to be reported at all
+   P - Pending first report to agency
+   S - Successfully reported to agency and update to date
+   U - The transaction balance been updated by a payment or a reversal
+       credit note and needs to be reported as an update
+   X - The transaction has been reported to the agency but the agency has
+       rejected the transaction for some reason
+   R - The transaction has been reversed and needs to be reported back to
+       the agency as a cancelation
+
+the following transitions are defined between values.
+
+  START -> NULL
+    Upon first import the report_status will be NULL
+    Performed by: ar-trans-sync
+  NULL -> P 
+    When a transaction must be reported to the state. This could occur when a
+    specific event happens, such as the transaction is paid, or based on
+    date logic.
+    Performed by: ar-sr-RZ-load
+  P -> S
+    When the file is generated and sent to the agency, signifying that the
+    transaction is up to date.
+    Performed by: ar-sr-RZ-init
+  S -> U
+    When a transaction is updated after it has been previously reported and
+    needs to be reported again. This occurs when the balance of a 
+    transaction is adjusted.
+    Performed by: cpsar.txlib
+  S -> X
+  C -> X
+    When a response comes back saying that the report was rejected.
+    Performed by ar-sr-RZ-handle
+  X -> P
+  X -> U
+    The blue diamond backend web interface allows for a transaction to be
+    remarked to send back to the agency. Some Logic will have to be in this
+    translation to determine if the transaction was rejected initially or
+    an update was rejected.
+  U -> S
+    When the update file is generated and sent to the agency, signifying
+    that the transaction is up to date.
+    Performed by: ar-sr-RZ-update
+  S -> R
+    When the transaction has been reported but has now been reversed.
+    Performed by: ar-sync-reversal
+  R -> C
+    The transaction is reported as canceled to the agency and is up to date.
+    Performed by: ar-sr-RZ-cancel
+
+MIG NCCI Notes
+--------------
+ P -> S reports with Transaction Code 001
+ U -> S reports with Transaction Code 003
+ R -> C reports with Transaction Code 002
+
+ar-sr-RZ-load
+ar-sr-RZ-init
+    create entries in the state_report_file table, create report files and
+    update the state_report_entry table entries. These programs can be quite
+    complex depending on the file type. X12 files, flat files, etc.
+
+    Also, some numbers are generated in the send files that are specific to the
+    report type. These numbers are inserted into the state_report_entry table
+    for reference. bill_id and control_number are examples of these filled in
+    files. These numbers are needed for matching responses.
+
+    state_report_entry.reason_code <- 'I'
+    trans.report_status <- 'S'
+
+ar-sr-RZ-update
+    state_report_entry.reason_code <- 'U'
+    trans.report_status <- 'S'
+ar-sr-RZ-cancel
+    state_report_entry.reason_code <- 'C'
+    trans.report_status <- 'C'
+ar-sr-RZ-send
+    Send programs transport files generated to remote hosts. It would be nice
+    to have a general solution to this problem, but for now we're going to do
+    individual scripts for each report zone to send files away.
+
+    Update state_report_file.send_status
+ar-sr-RZ-pull
+    Pull programs retrieve files from remote servers and store them on local
+    storage. These files are usually reply files to previously sent files or
+    traffic reports.
+ar-sr-RZ-handle
+    parse out files sent from the remote server and update state_report_entry
+    tuples. The ack_code field exists to store a reply code.
+
+
+Table Structure
+===============
+
+Two tables store state reporting information. One stores an entry for each
+transaction in each file, aclled state_report_file.
+
+The other, state_report_file stores a record for each file generated.
+
+state_report_file has the following schema:
+
+ - file_id - unique id
+ - reportzone - the reportzone that the file was generated for
+ - file_name - the name of the file generated
+ - file_type - a type field that will differ based on the report zone
+ - create_date - the datetime when the file was created on the local system
+ - report_date - the date assigned to the reporting. This will differ
+                 based on the reportzone and the file_type. This may not
+                 be meaningful for each report type.
+ - send_date - the datetime when the file was successfully sent to the
+    agency
+ - send_status
+    N - the file has not been sent yet
+    X - an attempt has been made to send the file but has failed
+    S - the file has been sent
+ - error_msg
+    If an attempt to send fails, the error message from the system
+
+
+Shared Facilities
+=================
+
+Summary Information
+-------------------
+
+The system provides a facility to generate a message for each report zone
+so that all of the reporting programs can write out to a common log.
+
+/tmp/sr-RZ-sum
+
+Each program can append lines to this file. The contents of the file will
+be emailed at the end of all state reporting programs.
+
+the programs ar-sr-sum-start and ar-sr-sum-end manage the creation and
+destruction of this file.
+
+the python module cpsar.srsum implements the facility
+
+RESOURCE STRUCTURE
+==================
+
+All reporting programs use a standard set of directories on the system
+to do their processing.
+
+
+

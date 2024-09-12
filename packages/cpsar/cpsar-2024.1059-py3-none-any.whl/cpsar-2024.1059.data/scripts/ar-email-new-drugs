@@ -1,0 +1,42 @@
+#!python
+""" Notify Customer Care of when a new drug is added to the backend so she can
+review the tylenol dosage and the special CPS daily dosage.
+"""
+import cpsar.runtime as R
+
+from cpsar import shell
+from cpsar import mail
+from cpsar.util import Mailer
+
+class Program(shell.Command):
+    def main(self):
+        drugs = newly_added_drugs()
+        if not drugs:
+            return
+        email_drugs(drugs)
+
+def newly_added_drugs():
+    cursor = R.db.dict_cursor()
+    cursor.execute("""
+        SELECT name, ndc_number, gpi_code, daily_dosage, cps_daily_dosage,
+        tylenol_mg_dose
+        FROM drug
+        WHERE ctime BETWEEN NOW() - '1 DAY'::interval AND NOW()
+        ORDER BY name
+        """)
+    return list(cursor)
+
+def email_drugs(drugs):
+    m = Mailer()
+    m.recipients = mail.email_for('new_drug_email')
+    m.subject = "Newly Added Drugs to Blue Diamond for your review"
+    m("Please be sure the following dosages are correct for the newly added drugs.")
+    m("This will impact Rx Intel Reports:\n")
+    for drug in drugs:
+        m("{name}: NDC {ndc_number} GPI {gpi_code}\n"
+             "\tDaily Dosage:{daily_dosage} CPS Daily Dosage:{cps_daily_dosage}"
+             " Tylenol MG Dose:{tylenol_mg_dose}".format(**drug))
+    m.send()
+
+if __name__ == '__main__':
+    Program().run()

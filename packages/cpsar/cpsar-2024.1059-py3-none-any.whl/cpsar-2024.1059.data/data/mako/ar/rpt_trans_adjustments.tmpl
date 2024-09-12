@@ -1,0 +1,161 @@
+<%inherit file='page.tmpl' />
+<%!
+import cpsar.controls as C
+import cpsar.runtime as R
+import kcontrol as K
+from cpsar.sales import ClientListBox, ReportCodeListBox
+%>
+<%block name='head'>
+    <title>Transaction Adjustments Report</title>
+    <link rel='stylesheet' type='text/css'
+          href='/repo/css/kcontrol/calendar.css' />
+    <link type='text/css' href='/css/rpt_trans_adjustments.css' rel='stylesheet' 
+          media='screen' />
+    <link type='text/css' href='/css/rpt_trans_adjustments_print.css' rel='stylesheet'
+          media='print' />
+    <script language='JavaScript' type='text/javascript' 
+            src='/repo/js/kcontrol/calendar.js'></script>
+    <script language='JavaScript' type='text/javascript' 
+            src='/repo/js/kcontrol/lang/calendar-en.js'></script>
+    <script language='JavaScript' type='text/javascript' 
+            src='/repo/js/kcontrol/calendar-setup.js'></script>
+    <script type='text/javascript' src='/js/jquery-1.5.1.min.js'></script>
+    <script type='text/javascript'>
+       $(document).ready(function() {
+        $("#grouping").change(onGroupingChange).change();
+        $("INPUT[name=record_types]").change(onRecordTypesChange).change();
+       });
+
+       function onGroupingChange() {
+          if($(this).val() === 'detail') {
+            $("#fields_to_show").removeClass("hidden_on_screen");
+          } else {
+            $("#fields_to_show").addClass("hidden_on_screen");
+          }
+       }
+
+       function onRecordTypesChange() {
+         $("INPUT[name=fields]").attr("checked", false);
+         $("INPUT[name=record_types]:checked").each(function() {
+           var $this = $(this);
+           var fields = default_selected_fields[$this.val()];
+           for(var i=0; i < fields.length; i++) {
+             var field_id = "#fields_" + fields[i];
+             $(field_id).attr("checked", true);
+           }
+         });
+       }
+
+       var default_selected_fields = {
+        adjudications: [
+          'adjust_id',
+          'amount',
+          'entry_date',
+          'trans_id',
+          'adj_trans_id',
+          'adj_invoice_id',
+          'void_date'
+        ],
+        writeoffs: [
+          'adjust_id',
+          'amount',
+          'entry_date',
+          'trans_id',
+          'void_date'
+        ],
+        rebill_credits: [
+          'adjust_id',
+          'amount',
+          'entry_date',
+          'trans_id'
+        ],
+        debit: [
+          'adjust_id',
+          'amount',
+          'entry_date',
+          'trans_id'
+        ],
+        payments: [
+          'trans_id',
+          'amount',
+          'entry_date',
+          'ref_no',
+          'payment_type_name'
+        ]
+
+       }
+    </script>
+</%block>
+<h1>Transaction Adjustments Report</h1>
+
+% for err in R.get_errors():
+    <div class='error'>${err}</div>
+% endfor
+<% R.reset_messages('error') %>
+<form method='POST' action='/rpt_trans_adjustments'>
+<table>
+<tr>
+  <td><label for='group_number'>Group Number</label></td>
+  <td>${ClientListBox('group_number')}</td>
+  <td><label for='report_code'>Report Code</label></td>
+  <td>${ReportCodeListBox('report_code')}</td>
+  <td class='gutter'>&nbsp;</td>
+  <td><label for='pharmacy'>Pharmacy Filter</label></td>
+  <td>${C.PharmacyFilterListBox('pharmacy')}</td>
+  <td><label for='patient_first_name'>Patient First Name</label></td>
+  <td>${C.TextBox('patient_first_name')}</td>
+  <td><label for='patient_last_name'>Patient Last Name</label></td>
+  <td>${C.TextBox('patient_last_name')}</td>
+  <td><label for='grouping'>Grouping</label>
+  <td>${K.ListBox('grouping', values=groupings)}</td>
+  <td><input type='submit' name='_q_submit' value="Run Report" /></td>
+</tr>
+<tr>
+  <td><label for='from_date'>From Entry Date</label></td>
+  <td>${K.DatePicker('from_entry_date')}</td>
+  <td><label for='to_date'>To Entry Date</label></label></td>
+  <td>${K.DatePicker('to_entry_date')}</td>
+  <td class='gutter'>&nbsp;</td>
+  <td><label id='export_as_csv_label' for='export_csv'>Export as CSV</label></td>
+  <td><input type='checkbox' name='export_csv' id='export_csv' /></td>
+</tr>
+</table>
+<fieldset id='adjustments_to_show'>
+ <legend>Adjustments to Show</legend>
+  ${C.ValueCheckBox('record_types', 'adjudications', 'Adjudications')}
+  ${C.ValueCheckBox('record_types', 'writeoffs', 'Write Offs')}
+  ${C.ValueCheckBox('record_types', 'rebill_credits', 'Rebill Credits')}
+  ${C.ValueCheckBox('record_types', 'rebate_credits', 'Rebate Credits')}
+  ${C.ValueCheckBox('record_types', 'debit', 'Debits')}
+  ${C.ValueCheckBox('record_types', 'payments', 'Payments')}
+</fieldset>
+<fieldset id='fields_to_show'>
+  <legend>Fields to Show</legend>
+  % for field, caption in fields:
+    <div class='fts'>${C.ValueCheckBox('fields', field, caption)}</div>
+  % endfor
+</fieldset>
+</form>
+
+% if records:
+<table class='report'>
+<thead>
+<tr>
+ % for field, caption in record_fields:
+  <th>${caption}</th>
+ % endfor
+</tr>
+</thead>
+<tbody>
+ % for record in records:
+  <tr>
+   % for field, caption in record_fields:
+    <td class='${field}'>${record[field]}</td>
+   % endfor
+  </tr>
+ % endfor
+</tbody>
+</table>
+% endif
+</body>
+</html>

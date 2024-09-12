@@ -1,0 +1,97 @@
+<%!
+import cpsar.controls as C
+
+show_notifications = False
+%>
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+  <title>BSR Records</title>
+  <link type='text/css' rel='stylesheet' href='/css/form.css'  />
+  <link type='text/css' rel='stylesheet' href='/css/state_reporting.css' />
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+</%def>
+
+<%block name="header">
+   <a href="/state_reporting">State Reporting</a> &rarr; Submission Report
+</%block>
+
+<% C.update_store(params) %>
+
+<form action="/sr_submission_report" method="POST">
+  <table class='form'>
+  <th colspan='5'>Submission Report</th>
+  <tr>
+    <td class='entry-caption'>Begin File Send Date</td></td>
+    <td class='entry-value'>
+      <input type="date" name="begin_send_date" value="${params['begin_send_date']}" />
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>End File Send Date</td></td>
+    <td class='entry-value'>
+      <input type="date" name="end_send_date" value="${params['end_send_date']}" />
+    </td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Incoming File Count</td></td>
+    <td class='entry-value'>${C.ListBox('incoming_file_count',
+      values=[
+        ('', ''),
+        ('0', '0 - No incoming files found'),
+        ('1', '1'),
+        ('2', '2'),
+        ('2+', 'More than 2')
+      ]
+    )}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td></td>
+    <td><input type='submit' value='Search' /></td>
+  </tr>
+  </table>
+</form>
+
+% if results:
+  <table class='grid'>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="5">Outbound</th>
+      <th colspan="4">Incoming</th>
+    </tr>
+    <tr>
+      <th>File ID</th>
+      <th>File Name</th>
+      <th>Create Date</th>
+      <th>Send Date</th>
+      <th>Bill ID</th>
+      <th>Control #</th>
+      <th>File Count</th>
+      <th>File Name</th>
+      <th>Load Time</th>
+      <th>Messages</th>
+    </tr>
+  </thead>
+  <tbody>
+  % for r in results:
+  <tr>
+    <td>
+      <a href='/sr_manual/report_file?sr_file_id=${r["sr_file_id"]}'>${r['sr_file_id']}</a>
+    </td>
+    <td>
+      <a href='/sr_manual/report_file?sr_file_id=${r["sr_file_id"]}'>${r['outbound_file_name']}</a>
+    </td>
+    <td> ${r['outbound_create_time']} </td>
+    <td> ${r['outbound_send_date']} </td>
+    <td> ${r['outbound_bill_id']} </td>
+    <td> ${r['outbound_control_number']} </td>
+    <td> ${r['incoming_file_count']} </td>
+    <td>
+      <a href="https://bd.corporatepharmacy.com/load_files/download_file?file_id=${r['incoming_file_id']}" target="_blank">
+    ${r['incoming_file_name']} </a></td>
+    <td> ${r['incoming_load_time']} </td>
+    <td> ${", ".join(filter(None, r['bsr_messages'] or [])) } </td>
+  </tr>
+  % endfor
+  </table>
+% endif

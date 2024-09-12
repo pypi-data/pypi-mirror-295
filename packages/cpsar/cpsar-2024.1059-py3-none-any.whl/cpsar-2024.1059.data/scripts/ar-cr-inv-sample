@@ -1,0 +1,178 @@
+#!python
+""" Program used to create sample invoices to give to propsective clients. We
+take the invoices of another group, go through and change the amounts and the
+names, and then create the file. This must only be ran on the test system.
+"""
+from builtins import zip
+import csv
+import os
+
+import cpsar.runtime as R
+import cpsar.print_invoice as P
+
+from cpsar import shell
+from cpsar.config import mako_template_dir
+from cpsar.util import update_sql2
+
+class Program(shell.Program):
+    def main(self):
+        #self._create_patient_edit_file()
+        self._change_client_info()
+        self._change_patients()
+        self._change_invoice_amounts()
+        self._change_client()
+        self._create_csv_file()
+        self._create_pdf_files()
+        
+    def _create_csv_file(self):
+        fpath = '/home/jeremy/data/gould-inv-sample/invoice-20121208.csv'
+        fd = open(fpath, 'w')
+        writer = csv.writer(fd)
+        cursor = csv_data_cursor('77701', '2012-12-08')
+        writer.writerow([f[0] for f in cursor.description])
+        list(map(writer.writerow, cursor))
+        fd.close()
+
+    def _create_pdf_files(self):
+        factory = P.Factory()
+        factory.print_options.show_past_due_stamp = False
+        invoice_factory = factory.invoice_factory(include_paid_items=False)
+        file_factory = factory.disk_file_factory()
+        
+        invoices = list(map(invoice_factory.for_invoice_id, self.invoice_ids()))
+        for invoice in invoices:
+            pdf_writer = factory.writer()
+            pdf_writer.add_invoice(invoice)
+            fpath = '/home/jeremy/data/gould-inv-sample/%s.pdf' % invoice.invoice_id
+            fd = open(fpath, 'wb')
+            pdf_writer.write(fd)
+            fd.close()
+
+    def _change_client_info(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            UPDATE client SET billing_name='NuQuest Bridgepoint'
+            WHERE group_number = '77701'
+        """)
+
+    def _create_patient_edit_file(sel):
+        cursor = R.db.cursor()
+        cursor.execute('''
+            SELECT patient.*
+            FROM patient
+            WHERE patient_id IN (
+                SELECT patient_id
+                FROM trans
+                WHERE group_number = '77701' AND batch_date = '2012-12-08'
+            )
+            ORDER BY patient_id
+        ''')
+        fpath = '/home/jeremy/data/patient.csv'
+        fd = open(fpath, 'w')
+        writer = csv.writer(fd)
+        writer.writerow([f[0] for f in cursor.description])
+        list(map(writer.writerow, cursor))
+        fd.close()
+
+    def _create_pharmacy_edit_file(sel):
+        cursor = R.db.cursor()
+        cursor.execute('''
+            SELECT pharmacy.*
+            FROM pharmacy
+            WHERE pharmacy_id IN (
+                SELECT pharmacy_id
+                FROM trans
+                WHERE group_number = '77701' AND batch_date = '2012-12-08'
+            )
+            ORDER BY pharmacy_id
+        ''')
+        fpath = '/home/jeremy/data/gould-inv-sample/pharmacy.csv'
+        fd = open(fpath, 'w')
+        writer = csv.writer(fd)
+        writer.writerow([f[0] for f in cursor.description])
+        list(map(writer.writerow, cursor))
+        fd.close()
+        
+    def invoice_ids(self):
+        cursor = R.db.cursor()
+        cursor.execute('''
+            SELECT DISTINCT invoice_id
+            FROM trans
+            WHERE group_number = '77701' AND batch_date = '2012-12-08'
+            ORDER BY invoice_id
+            ''')
+        return [c[0] for c in cursor]
+
+    def _change_patients(self):
+        fd = open('/home/jeremy/data/gould_patient_hipaa.csv')
+        reader = csv.reader(fd)
+        header = next(reader)
+        cursor = R.db.cursor()
+        for line in reader:
+            rec = dict(list(zip(header, line)))
+            sql = update_sql2('patient', rec, ['patient_id'])
+            cursor.execute(sql)
+        fd.close()
+
+    def _change_invoice_amounts(self):
+        cursor = R.db.cursor()
+        cursor.execute('''
+            UPDATE trans SET cost_allowed=10, dispense_fee=0, processing_fee=0,
+                total=10, balance=10, savings=5, state_fee=15,
+                awp=15, paid_amount=0
+            WHERE invoice_id IN (
+            SELECT DISTINCT invoice_id
+            FROM trans
+            WHERE group_number = '77701' AND batch_date = '2012-12-08'
+            ORDER BY invoice_id
+            ) ''') 
+
+    def _change_client(self):
+        cursor = R.db.cursor()
+        cursor.execute('''
+            UPDATE client SET show_sfs_on_invoice=TRUE
+            WHERE group_number = '77701'
+            ''')
+
+def csv_data_cursor(group_number, batch_date):
+    cursor = R.db.cursor()
+    cursor.execute('''
+      SELECT
+            to_char(batch_date, 'YYYYMMDD') AS "Batch Date",
+            patient.first_name AS "First Name",
+            patient.last_name AS "Last Name",
+            trans.invoice_id AS "Invoice #",
+            trans.line_no AS "Line no",
+            history.doctor_dea_number AS "DEA Number",
+            history.doctor_npi_number AS "NPI Number",
+            doctor.name AS "Doctor",
+            pharmacy.nabp AS "NABP",
+            drug.name AS "Drug",
+            drug.ndc_number AS "NDC Number",
+            to_char(history.rx_date, 'YYYYMMDD') AS "RX Date",
+            trans.claim_number AS "Claim number",
+            trans.quantity AS "Quantity",
+            trans.days_supply AS "Day's Supply",
+            u1.first_name || ' ' || u1.last_name AS "Adjuster 1",
+            u2.first_name || ' ' || u2.last_name AS "Adjuster 2",
+            trans.total AS "Amount",
+            trans.balance AS "Balance",
+            trans.state_fee AS "State Fee",
+            trans.savings AS "Savings"
+     FROM trans
+     JOIN patient ON trans.patient_id = patient.patient_id
+     JOIN history USING(history_id)
+     JOIN drug ON trans.drug_id = drug.drug_id
+     JOIN pharmacy ON trans.pharmacy_id = pharmacy.pharmacy_id
+     LEFT JOIN doctor ON trans.doctor_id = doctor.doctor_id
+     LEFT JOIN user_info AS u1 ON
+        trans.adjuster1_email = u1.email
+     LEFT JOIN user_info AS u2 ON
+        trans.adjuster2_email = u2.email
+     WHERE trans.group_number = '77701' AND trans.batch_date = '2012-12-08'
+     ORDER BY trans.trans_id
+    ''')
+    return cursor
+
+if __name__ == '__main__':
+    Program().run()

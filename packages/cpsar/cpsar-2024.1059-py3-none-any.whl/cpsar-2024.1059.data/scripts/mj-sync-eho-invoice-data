@@ -1,0 +1,33 @@
+#!python
+""" Load EHO Bill Files into MJoseph """
+import os
+
+import cpsar.runtime as R
+import cpsar.fwimport as FW
+import cpsar.shell as shell
+
+class Program(shell.Program):
+    def main(self):
+        for fpath in self._fpaths():
+            self._insert(fpath)
+
+    def _fpaths(self):
+        return FW.paths_for_glob("ready/mj-eho-invoice-data.*")
+
+    def _insert(self, fpath):
+        R.log.info("load: %s", fpath)
+        cursor = R.db.cursor()
+        cursor.execute("create temp table staging (data text, fname text) on commit delete rows")
+        with open(fpath) as fd:
+            cursor.copy_from(fd, 'staging', columns=['data'])
+        
+        fname = os.path.basename(fpath)
+        cursor.execute("update staging set fname=%s", (fname,))
+        cursor.execute_file("ar/mj-eho-invoice-data.sql")
+        cursor.execute('drop table staging')
+
+        if not self.opts.dry_run:
+            R.db.commit()
+
+if __name__ == '__main__':
+    Program().run()

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<%!
+import cpsar.runtime as R
+show_notifications = True
+layout = "layout-1"
+%>
+<html lang="en-US">
+  <head>
+    <link rel="icon" href="data:," />
+    <link type='text/css' rel='stylesheet' media='screen'
+          href='/repo/css/kcontrol/calendar.css' />
+    <link type='text/css' rel='stylesheet' media='screen'
+          href='/css/jquery.jgrowl.css' />
+    <link type='text/css' rel='stylesheet' media='screen'
+          href='/css/base.css'/>
+    <link type='text/css' rel='stylesheet' media='print'
+          href='/css/print.css' />
+    <script type='text/javascript'
+            src='/repo/js/kcontrol/calendar.js'></script>
+    <script type='text/javascript' 
+            src='/repo/js/kcontrol/lang/calendar-en.js'></script>
+    <script type='text/javascript' 
+            src='/repo/js/kcontrol/calendar-setup.js'></script>
+    <%block name="head">
+    </%block>
+    <style type="text/css">
+    #layout-1 {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, auto) 1fr;
+      grid-template-areas: "top_menu" "bcont";
+    }
+    #layout-1 DIV.left_menu {
+       display: none;
+    }
+    #layout-2 {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 14rem 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "top_menu top_menu"
+        "left_menu bcont";
+    }
+    #layout-3 {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 22% 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "top_menu top_menu"
+        "left_menu bcont";
+    }
+    DIV.bcont {
+      grid-area: bcont;
+      overflow: auto; 
+    }
+    DIV.top_menu {
+      grid-area: top_menu;
+    }
+    DIV.left_menu {
+      grid-area: left_menu;
+    };
+    </style>
+  </head>
+<body>
+<div id="${self.attr.layout}">
+  <div class='top_menu'>
+    <!-- BEGIN top_menu -->
+    <table class='top_menu'>
+    <tr>
+        <td colspan='2' class='top_menu_row1'>
+        <table border='0' cellpadding='0' cellspacing='0'
+               class='top_menu_slogan_row'>
+            <tr>
+                <td width='1'>
+                    <a href='/'><img src='/images/top_logo.png'
+                                     border='0' vspace='0' hspace='0'
+                                     title='Corporate Pharmacy' alt='' /></a>
+                </td>
+                <td align='right' style='color: #FFFFFF;'>
+                    <form action='/search_trans'>
+                    <input type='hidden' name='action' value='Search' />
+                    Trans # <input type='text' name='trans.trans_id'
+                                   onfocus='this.select()'
+                                   maxlength='10'
+                                   />
+                    Invoice # <input type='text' name='trans.invoice_id' 
+                                   onfocus='this.select()'
+                                   maxlength='10' />
+                    <input type='submit' value='Lookup' />
+                    </form>
+                </td>
+                <td style='padding-left:10px'>
+                    <a href='/search_trans'
+                       style='color: #FFFFFF'>Advanced</a>
+                </td>
+                <td>
+                  <div style="display: flex; gap: 1rem; justify-content: flex-end; align-items: center;padding-right:2rem;"><a href='/doc'>
+                    <img border='0' src='/images/help.png' /></a>
+                    <a href='/logout' style='color: white' title='Logout'>
+                      <svg width="24px" height="24px"
+                           xmlns="http://www.w3.org/2000/svg"
+                           fill="none" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+</svg></a>
+                    </div>
+                </td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class='top_menu_row2'>
+            <table class='top_menu_link_row'>
+            <tr>
+                <td><a class='top_menu_link' href='/'>Home</a></td>
+                <td class='page_header'>
+                    <%block name="header">
+                    </%block>
+                </td>
+            </tr>
+            </table>
+        </td>
+        <td class='top_menu_row2_ctx' align='right'>
+          <%block name='cmenu'>
+          </%block>
+        </td>
+    </tr>
+    </table>
+    <!-- END top_menu -->
+    <%block name="topcontextmenu">
+
+    </%block>
+  </div>
+  <div class='left_menu'>
+    <%block name="left_menu">
+    </%block>
+  </div>
+  <div class='bcont'>
+  % if self.attr.show_notifications:
+    ${self.notifications()}
+  % endif
+  ${next.body()}
+  </div>
+</div>
+${self.scripts()}
+</body>
+</html>
+<%def name='scripts()'>
+  <script type='text/javascript' src='/js/jquery.js'></script>
+  <script type='text/javascript' src='/js/jquery.jgrowl.js'></script>
+  <script type='text/javascript' src='/js/common.js'></script>
+</%def>
+<%def name="notifications()">
+  <% flash = R.flash() %>
+  % if flash:
+      <div class='msg'>${flash}</div>
+  % endif
+  % if msg:
+      <div class='msg'>${msg}</div>
+  % endif
+  % if q and hasattr(q, 'get_message') and q.get_message():
+      <div class='msg'>${q.get_message()}</div>
+  % endif
+  % for err in R.get_errors():
+      <div class='error'>${err}</div>
+  % endfor
+  % if errors:
+      % for err in errors:
+          <div class='error'>${err}</div>
+      % endfor
+  % endif
+  % if q and getattr(q, 'errors', None):
+      % for err in q.errors:
+          <div class='error'>${err}</div>
+      % endfor
+  % endif
+  % if error:
+      <div class='error'>${error}</div>
+  % endif
+</%def>

@@ -1,0 +1,28 @@
+<%inherit file="patient_page.tmpl" />
+<%block name="head">
+  <link rel='stylesheet' media='screen' type='text/css' href='/css/form.css' />
+  <link rel='stylesheet' media='screen' type='text/css' 
+        href='/css/jquery.jgrowl.css' />
+</%block>
+<%def name="pcontents()">
+
+<h2>Card Print Log</h2>
+% if not card_print_log:
+    <div>No cards have been printed for this patient.</div>
+
+% else:
+<table class='grid'>
+<thead>
+    <th>User</th>
+    <th>Time</th>
+</thead>
+<tbody>
+% for h in card_print_log:
+<tr>
+    <td>${h['username']}</td>
+    <td>${h['print_time'].strftime('%m/%d/%Y %H:%M')}</td>
+% endfor
+</tbody>
+</table>
+% endif
+</%def>

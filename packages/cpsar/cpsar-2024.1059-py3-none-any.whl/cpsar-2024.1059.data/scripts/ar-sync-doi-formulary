@@ -1,0 +1,62 @@
+#!python
+""" Loads the EHO bd-doi_formulary.txt file into the blue diamond doi_formulary table.
+"""
+import logging; log=logging.getLogger('')
+import cpsar.runtime as R
+
+from cpsar.fwimport import path_for_resource, create_fw_table
+from cpsar.shell import Program
+
+class MyProgram(Program):
+    def setup_options(self):
+        self.add_option('-f', '--file', default=None, help='File to Load')
+        super(MyProgram, self).setup_options()
+
+    def main(self):
+        fd = open(self._input_file_path, 'rb')
+        cursor = R.db.cursor()
+        cursor.execute("set temp_buffers = '400MB'")
+        create_fw_table('doi_formulary_load', file_layout(), fd)
+        cursor.execute("""
+            ALTER TABLE doi_formulary_load ADD COLUMN error_msg TEXT;
+            ALTER TABLE doi_formulary_load ADD COLUMN claim_id bigint;
+            ALTER TABLE doi_formulary_load ADD COLUMN doi_formulary_id bigint;
+            """)
+
+        cursor.execute_file("ar/process_doi_formulary_load.sql")
+        cursor.execute("""
+            SELECT group_number, ssn, dob, doi, gpi_code, error_msg
+            FROM doi_formulary_load
+            WHERE error_msg IS NOT NULL
+            """)
+        for r in cursor:
+            m = "Could not load doi_formulary record: " + repr(r)
+            log.debug(m)
+        cursor.execute("DROP TABLE doi_formulary_load")
+        R.db.commit()
+
+    @property
+    def _input_file_path(self):
+        if self.opts.file:
+            return self.opts.file
+        else:
+            return path_for_resource('doi-formulary')
+
+def file_layout():
+    return [
+        ('group_number', 8),
+        ('ssn', 11),
+        ('dob', 8),
+        ('doi', 8),
+        ('gpi_code', 14),
+        ('drug_name', 30),
+        ('invoice_class', 1),
+        ('effective_date', 8),
+        ('expiration_date', 8),
+        ('drug_class', 50),
+        ('brand_drug', 30),
+        ('fm_date', 8),
+        ('fm_user_name', 30),
+    ]
+
+if __name__ == '__main__': MyProgram().run()

@@ -1,0 +1,58 @@
+#!python
+import os
+import csv
+import cpsar.runtime as R
+import glob
+
+import stypes as S
+
+layout = [
+    ('group_number', 8),
+    ('group_auth', 7),
+    ('reversal', 1),
+    ('nabp', 7),
+    ('rx_number', 7),
+    ('refill_number', 2),
+    ('rx_date', 6),
+    ('process_date', 6),
+    ('ndc', 11),
+    ('quantity', 9),
+    ('cost_allowed', 10),
+    ('dispense_fee', 10),
+    ('sales_tax',    10),
+    ('copay',        10 ),
+    ('processing_fee', 10),
+    ('amount_due', 10)
+]
+
+cols = ['file'] + [f[0] for f in layout]
+spec = S.List([f[1] for f in layout])
+
+def main():
+    file_map = {}
+    for fname in glob.glob(R.dpath("eho-invoice-data/eho-invoice-data.*")):
+        try:
+            yr = int(fname[-6:-4])
+        except ValueError:
+            continue
+        csvfname = R.dpath("eho-invoice-data/%s-eho-invoice-data.csv" % yr)
+        if csvfname not in file_map:
+            file_map[csvfname] = create_csv(csvfname)
+        fd, wr = file_map[csvfname]
+        with open(fname) as infd:
+            for line in infd:
+                wr.writerow([os.path.basename(fname)] + spec.unpack(line))
+
+    for fd, _ in file_map.values():
+        fd.close()
+
+def create_csv(fname):
+    if os.path.exists(fname):
+        os.remove(fname)
+    fd = open(fname, "w")
+    wr = csv.writer(fd)
+    wr.writerow(cols)
+    return fd, wr
+
+if __name__ == '__main__':
+    main()

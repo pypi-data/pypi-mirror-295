@@ -1,0 +1,94 @@
+#!python
+import os
+
+import cpsar.print_invoice as P
+import cpsar.runtime as R
+
+from cpsar import config
+from cpsar import shell
+from cpsar.runtime import db
+
+class Program(shell.Program):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-g', '--debug-group', dest='debug_group',
+            help='Only generate for the given group number. Will still '
+                 'overwrite the print invoice file.')
+        self.add_option('-l', '--debug-limit', dest='debug_limit',
+            type='int', default=0,
+            help='When debugging it is helpful to limit the number of '
+                 'invoices generated because of the time it takes to '
+                 'run. Use this option to limit the number of invoices. '
+                 '30 is a good number.')
+
+    def main(self):
+        for batch in batches_to_be_printed():
+            self.create_pdf_file(batch)
+            self.mark_as_printed(batch['batch_file_id'])
+            if not self.opts.dry_run:
+                db.commit()
+
+    def create_pdf_file(self, batch):
+        factory = P.Factory()
+        clients = P.ClientFactory()
+
+        items = P.LineItemFactory(clients, include_paid_transactions=False)
+        invoices = P.InvoiceFactory(clients, items)
+
+        mitems = P.MultipliedLineItemFactory(clients, include_paid_transactions=False)
+        minvoices = P.InvoiceFactory(clients, mitems)
+
+        writer = factory.writer()
+        writer.use_group_separator = True
+
+        has_invoice = False
+        for client in clients.with_print_for_batch(batch['batch_file_id']):
+            for invoice in invoices.unpaid_for_client_on(client, batch['batch_date']):
+                if invoice.balance == 0:
+                    continue
+                if client.print_nonmultiplier_invoice:
+                    writer.add_invoice(invoice)
+                if client.print_multiplier_invoice:
+                    mul_invoice = minvoices.for_invoice_id(invoice.invoice_id)
+                    writer.add_invoice(mul_invoice)
+                has_invoice = True
+
+        if not has_invoice:
+            return
+
+        fpath = invoice_file_path(batch)
+        R.log.debug("Writing %s", fpath)
+        with open(fpath, 'wb') as fd:
+            writer.write(fd)
+            fd.close()
+
+    def mark_as_printed(self, batch_file_id):
+        # Mark the batch as processed in the log
+        cursor = db.cursor()
+        cursor.execute("""
+            update batch_file set invoice_print_time = NOW()
+            where batch_file_id = %s
+            """, (batch_file_id,))
+
+def batches_to_be_printed():
+    """ Provide a list of batch dates that have transaction which have not
+    been printed.
+    """
+    cursor = db.dict_cursor()
+    cursor.execute("""
+        select *
+        from batch_file
+        where invoice_print_time is null
+        order by batch_file_id
+        """)
+    return list(cursor)
+
+def invoice_file_path(batch):
+    fname = batch['file_name']
+    if fname.endswith('.txt') or fname.endswith('.csv'):
+        fname = os.path.splitext(fname)[0]
+    fname = '%s.pdf' % fname
+    return config.data_dir('invoice/print', fname)
+
+if __name__ == '__main__':
+    Program().run()

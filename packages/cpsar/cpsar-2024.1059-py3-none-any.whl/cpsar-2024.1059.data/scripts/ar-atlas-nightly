@@ -1,0 +1,75 @@
+#!/bin/bash
+SCRIPT=$( basename $0 )
+main() {
+    cd /usr/local/srv/bd3
+    . bin/activate
+    umask 0002
+
+    # Log what runs and when it runs
+    if [[ -z "${DEBUG}" ]]; then
+        PS4="\d \t $SCRIPT "
+        set -x
+    fi
+
+    # Create print file
+    ar-inv-print
+
+    # Generating any HCFA PDF files for printing
+    ar-gen-hcfa batch
+
+    # Send American Mining files to sftp.bluediamondrx.com for pickup
+    ar-am-out
+
+    # Reload the history edits table which is used by the workqueue
+    ar-reload-ehistory
+
+    # Clean up the work queue
+    ar-workqueue-refresh
+
+    # Refresh liberty transactions
+    ar-liberty-refresh
+
+    email-system-activity
+
+    ar-cr-eho-invoice-data-csv
+
+    # Files given to MSQ
+    PRIVATELABEL=msq ar-msq-reversals
+}
+
+email-system-activity() {
+    # Send email to bridge point
+    ar-email-daily-reversals
+
+    # Let customer care know about new drugs in bd
+    ar-email-new-drugs
+
+    # Notify customers of expiring patients
+    ar-email-expirations
+    PRIVATELABEL=mjoseph ar-email-expirations
+    PRIVATELABEL=sunrise ar-email-expirations
+
+    ar-email-expirations2
+    PRIVATELABEL=mjoseph ar-email-expirations2
+    PRIVATELABEL=sunrise ar-email-expirations2
+
+    # Send meadowbrook exception report
+    ar-send-meadow-exc-report
+
+    # Email customer of new invoice notifiation
+    ar-send-inv-notification-email
+
+    # Send out load profile inactivity
+    ar-email-inactive-load-profiles
+    PRIVATELABEL=msq ar-email-inactive-load-profiles
+    PRIVATELABEL=mjoseph ar-email-inactive-load-profiles
+    PRIVATELABEL=sunrise ar-email-inactive-load-profiles
+}
+
+trun() { echo "$*"; ( time eval "$@" ); }
+
+# If sh is passed in, only evaluate all of these functions so they can be
+# used interactively
+if [ "$1" != "sh" ]; then
+    main
+fi

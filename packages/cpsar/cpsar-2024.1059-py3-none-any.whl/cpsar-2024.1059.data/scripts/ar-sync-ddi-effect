@@ -1,0 +1,48 @@
+#!python
+import sys
+import cpsar.runtime as R
+from cpsar.fwimport import create_fw_table
+from cpsar.shell import Program
+
+class MyProgram(Program):
+    def main(self):
+        if not self.args:
+            sys.stderr.write("USAGE ar-sync-ddi PATH_TO_CC2CEF\n")
+            sys.exit(5)
+        sync_effect_file(self.args[0])
+
+def sync_effect_file(fpath):
+    fd = open(fpath)
+    create_fw_table('ddi_effect_load', effect_fields(), fd, pk_field='load_id')
+    cursor = R.db.cursor()
+    cursor.execute("""
+    -- We only want to have one record for each ddi_code.
+    -- We take the earliest one (smallest load_id)
+      CREATE TEMP TABLE effect_load_rank AS
+        SELECT load_id, ddi_code,
+               rank() OVER(PARTITION BY ddi_code ORDER BY load_id) AS ddi_rank
+        FROM ddi_effect_load;
+      DELETE FROM ddi_effect_load
+        WHERE load_id NOT IN (
+        SELECT load_id FROM effect_load_rank
+        WHERE ddi_rank = 1);
+      DROP TABLE effect_load_rank;
+
+    -- Perform Update
+      UPDATE ddi SET effect=ddi_effect_load.code
+      FROM ddi_effect_load
+      WHERE ddi.ddi_code=ddi_effect_load.ddi_code::int;
+
+    DROP TABLE ddi_effect_load;
+    """)
+    R.db.commit()
+
+def effect_fields():
+    return [
+        ('ddi_code', 5),
+        ('code', 3),
+        ('filler', 23),
+        ('trans_code', 1)
+    ]
+
+if __name__ == '__main__': MyProgram().run()

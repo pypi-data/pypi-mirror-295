@@ -1,0 +1,86 @@
+#!python
+import csv
+import datetime
+import io
+import os
+
+import paramiko
+
+from cpsar import config
+from cpsar import db
+from cpsar import shell
+from cpsar import util
+
+class Program(shell.PrivateLabelProgram):
+
+    def main(self):
+        today = datetime.date.today()
+        last_sunday = util.last_day(today, 'sunday')
+        previous_sunday = last_sunday - datetime.timedelta(days=7)
+
+        cursor = db.cursor()
+        cursor.execute("""
+         SELECT trans.trans_id AS "Trans",
+                to_char(invoice_date, 'YYYYMMDD') AS "Invoice Date",
+                patient.first_name AS "First Name",
+                history.group_number AS "Group Number",
+                history.group_auth AS "Claim Ref #",
+                patient.last_name AS "Last Name",
+                trans.invoice_id AS "Invoice #",
+                trans.line_no AS "Line no",
+                history.doctor_dea_number AS "DEA Number",
+                history.doctor_npi_number AS "NPI Number",
+                doctor.name AS "Doctor",
+                pharmacy.nabp AS "NABP",
+                case when history.compound_code = '2' then 'C'
+                     when pharmacy.nabp = '0123682' then 'HD'
+                     else 'R'
+                end as "Bill Type Indicator",
+                pharmacy.name AS "Pharmacy",
+                drug.name AS "Drug",
+                drug.ndc_number AS "NDC Number",
+                drug.brand as Brand,
+                to_char(history.rx_date, 'YYYYMMDD') AS "RX Date",
+                claim.claim_number AS "Claim number",
+                history.quantity AS "Quantity",
+                history.days_supply AS "Day's Supply",
+                claim.email1 AS "Adjuster 1",
+                claim.email2 AS "Adjuster 2",
+                trans.state_fee AS "State Fee",
+                trans.balance AS "Amount",
+                trans.savings AS "Savings"
+         FROM history
+         LEFT JOIN trans ON trans.history_id = history.history_id
+         LEFT JOIN claim ON history.claim_id = claim.claim_id
+         JOIN patient ON history.patient_id = patient.patient_id
+         JOIN drug ON history.drug_id = drug.drug_id
+         JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+         LEFT JOIN doctor ON history.doctor_id = doctor.doctor_id
+         WHERE history.reverse_date between %s and %s
+         ORDER BY history.history_id
+         """, (previous_sunday, last_sunday))
+
+        fd = io.StringIO()
+        writer = csv.writer(fd)
+        writer.writerow([c[0] for c in cursor.description])
+        list(map(writer.writerow, cursor))
+        fd.seek(0)
+
+        bbuf = io.BytesIO()
+        bbuf.write(fd.read().encode())
+        bbuf.seek(0)
+
+        fname = "msq-reversals-%s.csv" % last_sunday.strftime("%Y%m%d")
+
+        hostname = 'admin.medicalservicequotes.com'
+        username = 'ftpEHO'
+        password = 'EHOMSQ!!!'
+        t = paramiko.Transport((hostname, 22))
+        t.connect(username=username, password=password)
+        sftp = paramiko.SFTPClient.from_transport(t)
+        sftp.putfo(bbuf, fname)
+        sftp.close()
+        t.close()
+
+if __name__ == '__main__':
+    Program().run()

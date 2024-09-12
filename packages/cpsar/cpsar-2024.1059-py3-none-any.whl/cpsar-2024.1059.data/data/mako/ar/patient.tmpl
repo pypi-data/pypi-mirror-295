@@ -1,0 +1,182 @@
+<%inherit file="patient_page.tmpl" />
+<%def name="pcontents()">
+<h2>Patient Record</h2>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Name</td>
+    <td class='entry-value'>
+        ${patient['first_name']} ${patient['last_name']}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>SSN</td>
+    <td class='entry-value'>${patient['ssn']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Sex</td>
+    <td class='entry-value'>${patient['sex']}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>D.O.B.</td>
+    <td class='entry-value'>${patient['dob']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Group</td>
+    <td class='entry-value'>
+       <a href='/view_client?group_number=${patient['group_number']}'>
+        ${patient['group_number']}</a>
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Division</td>
+    <td class='entry-value'>${patient['division_code']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Status</td>
+    <td class='entry-value'>
+        ${patient['status']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Phone</td>
+    <td class='entry-value'>${patient['phone']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Status</td>
+    <td class='entry-value'>
+        ${patient['status']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Phone</td>
+    <td class='entry-value'>${patient['phone']}</td>
+</tr>
+
+<tr>
+    <td class='entry-caption'>Address</td>
+    <td class='entry-value'>
+        ${patient['address_1']}
+        % if patient['address_2']:
+            <div>${patient['address_2']}</div>
+        % endif
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>City/State/Zip</td>
+    <td class='entry-value'>
+        ${patient['city']},
+        ${patient['state']}
+        ${patient['zip_code']}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Jurisdiction</td>
+    <td class='entry-value'>
+        ${patient['jurisdiction']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>ID</td>
+    <td class='entry-value'>${patient['patient_id']}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Teamsupport Contact/Address ID</td>
+    <td class='entry-value'>
+        ${patient['teamsupport_contact_id']}/
+        ${patient['teamsupport_address_id']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>Teamsupport Update Time</td>
+    <td class='entry-value'>${patient['teamsupport_update_time'] |h}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>ctime</td>
+    <td class='entry-value'>
+        ${patient['ctime']}
+    </td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption'>mtime</td>
+    <td class='entry-value'>${patient['mtime']}</td>
+</tr>
+</table>
+
+<h2>Telephone Numbers</h2>
+<table class='form'>
+<thead>
+<tr>
+  <th>Type</th>
+  <th>Number</th>
+</tr>
+<tbody>
+% for i in range(1, 4):
+ % if patient['telephone_code%d' % i]:
+  <tr>
+    <td>${patient['telephone_code%d' % i]}</td>
+    <td>${patient['telephone_nbr%d' % i]}</td>
+  </td>
+ % endif
+%endfor
+</tbody>
+</table>
+
+<h2>Transactions</h2>
+% if not transactions:
+    <div>This patient has no transactions.</div>
+% else:
+<table class='grid'>
+<thead>
+<tr>
+    <th>Trans #</th>
+    <th>Drug</th>
+    <th>Pharmacy</th>
+    <th>RX Date</th>
+    <th>RX #</th>
+    <th>Process</th>
+    <th>Create</th>
+    <th>Invoice</th>
+    <th>Amount</th>
+    <th>Balance</th>
+</tr>
+</thead>
+<tbody>
+% for t in transactions:
+<tr>
+    <td>
+     <a href='/view_trans?trans_id=${t['trans_id']}'>${t['trans_id']}</a></td>
+    <td> ${t['drug_name']} </td>
+    <td> ${t['pharmacy_name']} </td>
+    <td> ${t['rx_date'].strftime('%m/%d/%Y')} </td>
+    <td> ${t['rx_number']}-${t['refill_number']} </td>
+    <td>
+        % if t['date_processed']:
+            ${t['date_processed'].strftime('%m/%d/%Y')}
+        % endif  
+    </td>
+    <td> ${t['create_date'].strftime('%m/%d/%Y')} </td>
+    <td class='right'> 
+     <a href='/view_invoice?invoice_id=${t['invoice_id']}'>
+        ${t['invoice_id']}-${t['line_no']}</a></td>
+    <td class='right'> ${t['total']} </td>
+    <td class='right'> ${t['balance']} </td>
+</tr>
+% endfor
+</tbody>
+</table>
+% endif
+
+<h2>Log Entries</h2>
+% if logs:
+<table class='grid'>
+<thead>
+<tr>
+    <th>Date</th>
+    <th>User</th>
+    <th>Message</th>
+</tr>
+</thead>
+<tbody>
+% for e in logs:
+<tr>
+    <td>${e['entry_date'].strftime('%m/%d/%Y %H:%M')}</td>
+    <td>${e['username']}</td>
+    <td>${e['message']}</td>
+</tr>
+% endfor
+</tbody>
+</table>
+% else:
+    <div>This patient has no log entries.</div>
+% endif
+</%def>

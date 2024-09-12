@@ -1,0 +1,5 @@
+#!/bin/sh
+ar-auto-load
+PRIVATELABEL=msq ar-auto-load
+PRIVATELABEL=sunrise ar-auto-load
+PRIVATELABEL=mjoseph ar-auto-load

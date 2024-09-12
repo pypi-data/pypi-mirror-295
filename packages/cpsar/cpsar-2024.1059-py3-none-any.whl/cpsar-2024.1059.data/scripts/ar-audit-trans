@@ -1,0 +1,289 @@
+#!python
+""" This program checks ensures that the calculated field values across
+the system are correct and fixes them if they are not. In effect, this is
+one big honking fixit program. This logic is duplicated on a per 
+transaction basis in cpsar.txlib.check These versions run across the entire
+database.
+"""
+import os
+import logging; log=logging.getLogger('')
+import psycopg2.extras
+import sys
+
+import cpsar.runtime as R
+import cpsar.shell
+
+from cpsar import txlib
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        log.info('Beginning Trans File Audit')
+
+        cursor = R.db.cursor()
+        mcursor = R.db.mako_cursor('ar/ar-audit-trans.sql')
+        mcursor.create_default_arg_table()
+        cursor.execute("""
+            SELECT COUNT(*) FROM trans""")
+        log.info("Total trans records: %s", cursor.fetchone()[0])
+        
+        ########################################################################
+        ## Referential Integrity Checks. We can't enforce this on a database
+        ## level because we must be able to deal with data from SPC GT which is
+        ## unlinked.
+
+        # Patient ID NULL Check
+        cursor.execute("""
+            SELECT COUNT(*) FROM trans WHERE patient_id IS NULL""")
+        missing_patient_id = cursor.fetchone()[0]
+        if missing_patient_id:
+            log.error("%s transactions missing patient ids",
+                      missing_patient_id)
+        else:
+            log.info("All transactions have patient ids")
+
+        # Patient ID Reference
+        # CST - patient_ssn > patient_cardholder_nbr 20111025
+        cursor.execute("""
+            SELECT trans_id, trans.patient_dob, trans.patient_cardholder_nbr
+            FROM trans
+            LEFT JOIN patient ON
+                trans.patient_id = patient.patient_id
+            WHERE patient.patient_id IS NULL
+            ORDER BY trans_id""")
+        if cursor.rowcount:
+            for trans_id, dob, ssn in cursor:
+                log.error("Transaction %08d: Unknown Patient %s %s", 
+                          trans_id, dob, ssn)
+        else:
+            log.info("All transactions have valid patients")
+
+        # Invoice ID NULL Check
+        cursor.execute("""
+            SELECT COUNT(*) FROM trans WHERE invoice_id IS NULL""")
+        missing_invoice_id = cursor.fetchone()[0]
+        if missing_invoice_id:
+            log.error("%s transactions missing invoice ids",
+                      missing_invoice_id)
+        else:
+            log.info("All transactions have invoice ids")
+
+        # Invoice ID Reference
+        cursor.execute("""
+            SELECT trans_id, trans.invoice_id
+            FROM trans
+            LEFT JOIN invoice ON trans.invoice_id = invoice.invoice_id
+            WHERE invoice.invoice_id IS NULL AND
+                  trans.invoice_id IS NOT NULL
+            ORDER BY trans.trans_id
+            """)
+        if cursor.rowcount:
+            for v in cursor:
+                msg = "Tranaction %08d has invalid invoice id %s" % v
+                log.error(msg)
+        else:
+            log.info('All transaction invoice ids are valid')
+
+        ########################################################################
+        ## Calculated Field Checks
+        ## There are numerous calculated fields on the trans table that are
+        ## used to simplify and speed up queries. These checks ensure that the
+        ## values of these fields match the source data.
+
+        mcursor.check_writeoff_total()
+        for trans_id, computed in mcursor:
+            msg = "trans %08d: fixing writeoff_total %s"
+            log.warning(msg, trans_id, computed)
+
+        mcursor.check_adjudication_total()
+        for trans_id, stored, computed in mcursor:
+            msg = "trans %08d: fixing adjudication_total stored: %s " \
+                  "computed: %s "  % (trans_id, stored, computed)
+            log.warning(msg)
+
+        for args in mcursor.check_rebill_credit_total():
+            msg = "trans %08d: fixing rebill_credit_total stored: %s " \
+                  "computed: %s " % args
+            log.warning(msg)
+
+        for args in mcursor.check_debit_total():
+            log.warning("trans %08d: fixing debit_total=%s " % args)
+        if not mcursor.rowcount:
+            log.info("All transactions have valid debit_totals")
+        
+        for args in mcursor.check_rebate_credit_total():
+            log.warning("trans %08d: fixing rebate_credit_total=%s" % args)
+        if not mcursor.rowcount:
+            log.info("All transactions have valid rebate_credit_totals")
+        
+        for args in mcursor.check_adjustments():
+            log.warning("trans %08d: fixing adjustments=%s " % args)
+        if not mcursor.rowcount:
+            log.info("All transactions have valid adjustments")
+        
+        for args in mcursor.check_paid_amount():
+            log.warning("trans %08d: fixing paid_amount=%s " % args)
+
+        for args in mcursor.check_transfered_amount():
+            log.warning("trans %08d: fixing paid_amount=%s " % args)
+
+        for args in mcursor.check_balance():
+            msg = "trans %08d: (total=%s) fixing balance=%s" % args
+            log.warning(msg)
+
+        mcursor.check_paid_date()
+        for args in mcursor:
+            log.warning('trans %08d: fixing paid_date=%s' % args)
+
+        # reversal.balance = reversal.total
+        #  - trans_adjudication.amount WHERE void_date IS NULL
+        #  - reversal_settlement.amount WHERE void_date IS NULL
+        cursor.execute("""
+            SELECT reversal.reversal_id,
+                   reversal.trans_id,
+                   reversal.total,
+                   reversal.balance,
+                   reversal.total - COALESCE(adj.amount, 0)
+                                  - COALESCE(settle.amount, 0)
+            FROM reversal
+            LEFT JOIN (
+                SELECT reversal_id, SUM(amount) AS amount
+                FROM trans_adjudication
+                WHERE void_date IS NULL
+                GROUP BY reversal_id) AS adj
+            ON reversal.reversal_id = adj.reversal_id
+            LEFT JOIN (
+                SELECT reversal_id, SUM(amount) AS amount
+                FROM reversal_settlement
+                WHERE reversal_settlement.void_date IS NULL
+                GROUP BY reversal_id) AS settle
+            ON reversal.reversal_id = settle.reversal_id
+            WHERE
+               reversal.balance <> reversal.total -
+                                   COALESCE(adj.amount, 0) -
+                                   COALESCE(settle.amount, 0)
+
+        """)
+        for rid, trans_id, total, given, calc in list(cursor):
+            msg = 'trans %08d: reversal %08d: fixing balance stored: %s ' \
+                  'computed: %s' % (trans_id, rid, given, calc)
+            log.warning(msg)
+            cursor.execute("""
+                UPDATE reversal SET balance=%s WHERE reversal_id=%s
+                """, (calc, rid))
+
+        # trans.settled_amount =
+        #       SUM(reversal_settlement.amount WITH void_date IS NULL)
+        cursor.execute("""
+            SELECT trans.trans_id, trans.settled_amount, COALESCE(rev.total, 0)
+            FROM trans
+            LEFT JOIN (
+                SELECT trans.trans_id, SUM(reversal_settlement.amount) AS total
+                FROM reversal_settlement
+                JOIN reversal USING(reversal_id)
+                JOIN trans USING(trans_id)
+                WHERE reversal_settlement.void_date IS NULL
+                GROUP BY trans.trans_id
+            ) AS rev ON rev.trans_id = trans.trans_id
+            WHERE
+                COALESCE(rev.total, 0) != trans.settled_amount
+            ORDER BY trans.trans_id
+            """)
+
+        for trans_id, given, calc in cursor:
+            msg = "Transaction %08d: Fixing settled_amount from %s to %s"
+            log.warning(msg, trans_id, given, calc)
+            assert txlib.check_settled_amount(trans_id), \
+                "Scan for trans.settled_amount reported inconsistency"
+
+        # Distributed Amount Check
+        txlib.check_distributed_amount_all()
+
+        ########################################################################
+        ### OVERPAYMENT BALANCE CHECK
+        # overpayment.balance = overpayment.amount
+        # - SUM(trans_payment.amount WITH puc_id)
+        # - SUM(overpayment_settlement.amount WITH puc_id and void_date IS NULL)
+        cursor.execute("""
+            SELECT overpayment.puc_id, overpayment.balance,
+                    overpayment.amount
+                    - COALESCE(payments.amount, 0)
+                    - COALESCE(settlements.amount, 0)
+            FROM overpayment
+            LEFT JOIN (
+                SELECT puc_id, SUM(trans_payment.amount) AS amount
+                FROM trans_payment
+                WHERE puc_id IS NOT NULL
+                GROUP BY puc_id
+            ) AS payments USING(puc_id)
+            LEFT JOIN (
+                SELECT puc_id, SUM(amount) AS amount
+                FROM overpayment_settlement
+                WHERE puc_id IS NOT NULL AND void_date IS NULL
+                GROUP BY puc_id
+            ) AS settlements ON overpayment.puc_id = settlements.puc_id
+            WHERE overpayment.balance !=
+                  overpayment.amount - COALESCE(payments.amount, 0)
+                                     - COALESCE(settlements.amount, 0)
+            """)
+
+        for puc_id, given, calc in list(cursor):
+            msg = "PUC %05d: Fixing balance form %s to %s"
+            log.warning(msg, puc_id, given, calc)
+            cursor.execute("""
+                UPDATE overpayment SET balance=%s
+                WHERE puc_id=%s
+                """, (calc, puc_id))
+
+        R.db.commit()
+
+        ########################################################################
+        ### TX REF CHECKS
+
+        # Transaction Reference check from SPC/GT
+
+        # Be sure group number, group auth key has values
+        cursor.execute("""
+            SELECT trans.trans_id, trans.group_number, trans.group_auth
+            FROM trans
+            LEFT JOIN history ON
+                trans.group_number = history.group_number AND
+                trans.group_auth = history.group_auth
+            LEFT JOIN reversal ON trans.trans_id = reversal.trans_id
+            WHERE history.group_number IS NULL AND
+                  reversal.trans_id IS NULL AND 
+                  trans.group_auth > 0
+            """)
+        for trans_id, gn, ga in cursor:
+            msg = "Transaction %08d: No matching entry in history for gn:ga %s:%s"
+            log.error(msg, trans_id, gn, ga)
+
+        def history_field_check(field):
+            sql = """
+                SELECT trans.trans_id, history.group_number, history.group_auth,
+                       trans.%(f)s, history.%(f)s
+                FROM trans
+                JOIN history ON
+                    trans.history_id = history.history_id
+                WHERE
+                    trans.%(f)s <> history.%(f)s AND 
+                    trans.batch_date > '20090101'
+                ORDER BY trans.trans_id
+            """ % {'f' : field}
+            
+            cursor.execute(sql)
+            if cursor.rowcount:
+                for v in cursor:
+                    args = tuple(v[:3]) + (field,) + tuple(v[3:])
+                    msg = ("Transaction %08d %s-%s: %s %s != %s") % args
+                    log.error(msg)
+            else:
+                log.info("All %s transaction values match SPC records" % field)
+
+        history_field_check("eho_network_copay")
+        history_field_check("cost_submitted")
+        history_field_check("days_supply")
+        history_field_check("quantity")
+
+
+if __name__ == '__main__':
+    Program().run()

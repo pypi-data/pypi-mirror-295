@@ -1,0 +1,18 @@
+#!python
+""" Match up the patient, drug, doctor and pharmacy ID's """
+import cpsar.runtime as R
+from cpsar.shell import Program
+
+class MyProgram(Program):
+    def main(self):
+        cursor = R.db.dict_cursor()
+        cursor.execute("""
+            SELECT trans_id, drug_ndc_number
+            FROM trans
+            WHERE drug_id IS NULL
+            """)
+        for trans_id, ndc_number in cursor:
+            R.log.error('TRANS #%s: NDC %s not linked.', trans_id, ndc_number)
+
+if __name__ == '__main__':
+    MyProgram().run()

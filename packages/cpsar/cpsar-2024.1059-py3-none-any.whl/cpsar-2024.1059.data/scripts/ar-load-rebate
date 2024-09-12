@@ -1,0 +1,48 @@
+#!python
+import logging
+import re
+import sys
+
+import stypes as st
+
+import cpsar.runtime as R
+import cpsar.shell
+
+log = logging.getLogger('')
+
+class Program(cpsar.shell.Program):
+    def main(self):
+        for arg in self.args:
+            rebates = rebates_from_file(arg)
+            load_in_database(rebates)
+        if not self.opts.dry_run:
+            R.db.commit()
+
+def load_in_database(rebates):
+    cursor = R.db.mako_cursor("ar/ar-load-rebate.sql")
+    cursor.execute_template(rebates=rebates)
+    if cursor.rowcount:
+        m = '%s rebates could not be loaded into the system:\n%s'
+        log.error(m, cursor.rowcount, cursor.as_text_table())
+
+def rebates_from_file(fpath):
+    spec = rebate_file_layout()
+    rebate_date = rebate_date_from_fpath(fpath)
+    with open(fpath) as fd:
+        for rec in map(spec.unpack, fd):
+            yield rec + (rebate_date,)
+
+def rebate_file_layout():
+    return st.Tuple([
+        st.String(8),
+        st.Integer(7),
+        st.Numeric('99V99')])
+    
+def rebate_date_from_fpath(fpath):
+    matches = re.findall('(\d{8})\.txt$', fpath)
+    if not matches:
+        raise ValueError('invalid file name %s' % fpath)
+    return matches[0]
+
+if __name__ == '__main__':
+    Program().run()

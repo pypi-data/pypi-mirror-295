@@ -1,0 +1,98 @@
+#!python
+""" Load EHO Bill Files into the BD Database
+
+"""
+import logging
+import os
+import pprint
+import re
+import sys
+
+import cpsar.runtime as R
+import cpsar.fwimport as FW
+import cpsar.keys as keys
+import reclib.parse.fw as P
+import cpsar.shell as shell
+import cpsar.util as U
+
+FPAT = re.compile("eho-invoice-data.(\d{6})")
+
+trans_lookup = None
+history_lookup = None
+
+class Program(shell.Program):
+    def main(self):
+        global trans_lookup
+        global history_lookup
+        trans_lookup = keys.TransLookup()
+        history_lookup = keys.HistoryLookup()
+        for path, batch_date in pending_files():
+            load_file(path, batch_date)
+        
+        fix_cps_mail_order_pf()
+        R.db.commit()
+
+def pending_files():
+    for fpath in FW.paths_for_glob("ready/eho-invoice-data.*"):
+        fname = os.path.basename(fpath)
+        match = FPAT.match(fname)
+        if not match:
+            logging.warning("Skipping file %s with invalid name", fname)
+        else:
+            batch_date = match.groups()[0]
+            yield fpath, batch_date
+
+def load_file(fpath, batch_date):
+    logging.info("Processing %s", fpath)
+    cursor = R.db.cursor()
+    parser = EHOInvoiceParser()
+    for record in parser.parse(open(fpath, 'rt')):
+        record['file_name'] = os.path.basename(fpath)
+        key = (record['group_number'], record['group_auth'])
+        record['trans_id'] = trans_lookup.get(key)
+        record['history_id'] = history_lookup.get(key)
+        record['batch_date'] = batch_date
+        if not record['reversal']: record['reversal'] = False
+        if not record['quantity']: record['quantity'] = 0
+        sql = U.insert_sql("eho_invoice_data", record)
+        try:
+            cursor.execute(sql)
+        except:
+            logging.exception("Exception occured running %s", sql)
+            logging.error(pprint.pformat(record))
+            sys.exit(1)
+    FW.archive(fpath)
+    R.db.commit()
+
+class EHOInvoiceParser(P.Parser):
+    fields = [
+        P.String('group_number', 8), 
+        P.Integer('group_auth', 7), 
+        P.String('reversal', 1), 
+        P.String('nabp', 7),
+        P.Integer('rx_number', 7),
+        P.Integer('refill_number', 2),
+        P.String('rx_date', 6),
+        P.String('process_date', 6),
+        P.String('ndc', 11),
+        P.String('quantity', 9),
+        P.Currency('cost_allowed', 10),
+        P.Currency('dispense_fee', 10),
+        P.Currency('sales_tax',    10),
+        P.Currency('copay',        10 ),
+        P.Currency('processing_fee', 10),
+        P.Currency('amount_due', 10)
+    ]
+
+def fix_cps_mail_order_pf():
+    cursor = R.db.cursor()
+    cursor.execute("""
+    UPDATE eho_invoice_data SET processing_fee = 1
+    WHERE
+    amount_due= 1 and cost_allowed = 0 and dispense_fee = 0 and copay = 0 and
+    processing_fee = 0
+    """)
+
+
+if __name__ == '__main__':
+    Program().run()

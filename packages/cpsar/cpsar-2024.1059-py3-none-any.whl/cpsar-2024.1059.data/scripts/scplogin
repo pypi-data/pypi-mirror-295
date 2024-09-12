@@ -1,0 +1,23 @@
+#!/usr/bin/expect -f
+# Since SCP doesn't allow password to be given on the command line, this
+# program wraps scp to allow that functionality.
+
+# In a perfect world, we could give our public key to all vendors and use
+# PPK authentication, but since it doesn't, we need to automate password
+# authentication.
+
+set password [lindex $argv 0]
+set arg1 [lrange $argv 1 end]
+join $arg1
+set timeout -1
+
+eval spawn scp $arg1
+
+match_max 100000
+# Look for passwod prompt
+expect "*?assword:*"
+# Send password aka $password
+send -- "$password\r"
+# send blank line (\r) to make sure we get back to shell
+send -- "\r"
+expect eof

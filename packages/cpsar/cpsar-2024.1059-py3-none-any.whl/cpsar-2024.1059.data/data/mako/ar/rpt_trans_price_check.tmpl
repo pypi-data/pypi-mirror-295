@@ -1,0 +1,94 @@
+<% from cpsar import controls %>
+<%inherit file="page.tmpl" />
+<%def name='scripts()'>
+  ${parent.scripts()}
+  <script type='text/javascript' src='/js/jquery.blockUI.js'></script>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $("FORM.fix").submit(onFixSubmit);
+    });
+
+    function onFixSubmit(e) {
+      e.preventDefault();
+      var $tr = $("TR." + this.trans_id.value);
+      $.please_wait();
+      $.post("/update_trans_total", $(this).serialize(),
+        mkFixSuccess($tr), 'json');
+    }
+
+    function mkFixSuccess($tr) {
+      return function(data) {
+        $.unplease_wait();
+        if(data.errors && data.errors.length > 0) {
+          showErrors(data.errors);
+        } else {
+          $.jGrowl("transaction updated"); 
+          $tr.remove();
+        }
+      }
+    }
+
+  </script>
+</%def>
+
+<form action="/rpt_trans_price_check" method="POST">
+  Batch:
+    ${controls.ListBox("batch_file_id", values=q.recent_batches(),
+      value=q.batch_file_id)}
+    <input type="checkbox" name="csv" id="csv">
+      <label for="csv">Export to CSV</label>
+<input type="submit" value="Check" />
+</form>
+
+% if q.results:
+  <table class='grid'>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan='4'>Existing</th>
+      <th colspan='4'>Calculated</th>
+      <th></th>
+    <tr>
+      <th>Trans ID</th>
+      <th>Pharmacy</th>
+      <th>Group #</th>
+      <th>Cost Allowed</th>
+      <th>Dispense Fee</th>
+      <th>Processing Fee</th>
+      <th>Total</th>
+      <th>Cost Allowed</th>
+      <th>Dispense Fee</th>
+      <th>Processing Fee</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  % for r in q.results:
+  <form action="/update_trans_total" class="fix" method="POST">
+  <input type="hidden" name="trans_id" value="${r['trans_id']}" />
+  <tr class="${r['trans_id']}">
+    <td><a href="/view_trans?trans_id=${r['trans_id']}">${r['trans_id']}</td>
+    <td>${r['pharmacy_name']}</td>
+    <td>${r['group_number']}</td>
+    <td>${r['existing_cost_allowed']}</td>
+    <td>${r['existing_dispense_fee']}</td>
+    <td>${r['existing_processing_fee']}</td>
+    <td>${r['existing_total']}</td>
+    <td><input type='text' name='cost_allowed' 
+               value="${r['calculated_cost_allowed']}" /></td>
+    <td><input type='text' name='dispense_fee'
+               value="${r['calculated_dispense_fee']}" /></td>
+    <td><input type="text" name="processing_fee"
+               value="${r['calculated_processing_fee']}" /></td>
+    <td><input type="text" name="total"
+               value="${r['calculated_total']}" /></td>
+    <!--
+    <td><input type='checkbox' name='trans_id' value='${r["trans_id"]}' /></td>
+    -->
+    <td><input type='submit' class='fix' value='Fix' /></td>
+  </tr>
+  </form>
+  % endfor
+  </table>
+% endif

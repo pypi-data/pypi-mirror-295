@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: cpsar
+Version: 2024.1059
+Summary: Blue Diamond Backend Web System
+Home-page: https://ar.corporatepharmacy.com
+Author: Jeremy Lowery
+Author-email: jeremy@bitrel.com
+Platform: POSIX
+Provides: cpsar
+Requires-Dist: attrs
+Requires-Dist: beaker ==1.10.0
+Requires-Dist: fpdf ==1.7.2
+Requires-Dist: humanize
+Requires-Dist: kcontrol
+Requires-Dist: markdown
+Requires-Dist: openpyxl >=2.0.5
+Requires-Dist: paramiko
+Requires-Dist: paste
+Requires-Dist: pexpect
+Requires-Dist: pytz
+Requires-Dist: reclib
+Requires-Dist: reportlab
+Requires-Dist: requests
+Requires-Dist: six
+Requires-Dist: stypes ==0.23.2
+Requires-Dist: twilio
+Requires-Dist: xlsxwriter
+Requires-Dist: webob
+Requires-Dist: werkzeug ==2.0.3
+Requires-Dist: mako ==1.0.7 ; python_version < "3.7"
+Requires-Dist: mako ==1.2.0 ; python_version >= "3.7"
+

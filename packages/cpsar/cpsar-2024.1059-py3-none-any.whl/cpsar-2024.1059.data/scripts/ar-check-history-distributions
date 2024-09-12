@@ -1,0 +1,36 @@
+#!python
+from __future__ import division
+from __future__ import print_function
+from future import standard_library
+standard_library.install_aliases()
+
+import csv
+
+import cpsar.runtime as R
+
+from cpsar import edi
+from cpsar import shell
+
+class Program(shell.Program):
+    def main(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            with ht as (
+                select history_id, sponsor_cost_allowed + sponsor_dispense_fee + sales_tax + processing_fee - eho_network_copay as sponsor_total
+                from history
+            ), dt as (
+                select history_id, sum(amount) as distribution_total
+                from history_distribution
+                group by history_id
+            )
+            select history.group_number, ht.history_id, sponsor_total, distribution_total
+            from ht, dt, history
+            where ht.history_id = dt.history_id
+              and history.history_id = ht.history_id
+              and sponsor_total != distribution_total
+            order by history.group_number, ht.history_id
+        """)
+        for group, history_id, sponsor_total, distribution_total in cursor:
+            print("%s %s: %s != %s (%s)" % (group, history_id, sponsor_total, distribution_total, sponsor_total - distribution_total))
+
+if __name__ == '__main__': Program().run()
