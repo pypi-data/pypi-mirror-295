@@ -1,0 +1,146 @@
+[project]
+name = "looming_spots"
+authors = [{name = "Stephen Lenzi", email= "stephen.lenzi@gmail.com"}]
+description = "looming experiment analysis"
+readme = "README.md"
+requires-python = ">=3.9.0"
+version = "0.1.0"
+
+dependencies = [
+        "numpy",
+        "configobj",
+        "matplotlib",
+        "seaborn",
+        "scipy",
+        "pandas",
+        "pims",
+        "scikit-video",
+        "pingouin",
+        "nptdms",
+        "cached-property",
+        "tqdm",
+        "scikit-image",
+        "opencv-python",
+        "tables",
+        "more_itertools",
+        "pims",
+        "fire",
+        "daq_loader",
+
+
+]
+
+license = {text = "MIT"}
+
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/stephenlenzi/looming_spots"
+"Bug Tracker" = "https://github.com/stephenlenzi/looming_spots/issues"
+"Documentation" = "https://stephenlenzi.github.io/looming_spots"
+
+"Source Code" = "https://github.com/stephenlenzi/looming_spots"
+"User Support" = "https://github.com/stephenlenzi/looming_spots/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "coverage",
+  "tox",
+  "mypy",
+  "pre-commit",
+  "ruff",
+  "setuptools_scm",
+]
+
+[build-system]
+requires = [
+    "setuptools>=45",
+    "wheel",
+    "setuptools_scm[toml]>=6.2",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+#
+#[tool.setuptools.package-data]
+#'*' = ["apollo_dlc_model_light/*"]
+
+[tool.setuptools.packages.find]
+include = ["looming_spots*"]
+exclude = ["tests", "docs*"]
+
+
+[tool.pytest.ini_options]
+addopts = "--cov=1"
+filterwarnings = [
+    "error",
+]
+
+[tool.setuptools_scm]
+
+[tool.check-manifest]
+ignore = [
+  ".yaml",
+  "tox.ini",
+  "tests/",
+  "tests/test_unit/",
+  "tests/test_integration/",
+  "docs/",
+  "docs/source/",
+]
+
+
+[tool.ruff]
+line-length = 79
+exclude = ["__init__.py", "build", ".eggs"]
+lint.select = [
+  "E",   # pycodestyle errors
+  "F",   # Pyflakes
+  "I",   # isort
+  # You can see what all the rules do here: https://docs.astral.sh/ruff/rules/
+  # Some additional ruff rules that might be useful (uncomment to enable)
+  #"UP",  # pyupgrade
+  #"B",   # flake8 bugbear
+  #"SIM", # flake8 simplify
+  #"C90", # McCabe complexity
+]
+fix = true
+
+[tool.ruff.format]
+docstring-code-format = true # Also format code in docstrings (e.g. examples)
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py{39,310,311}
+isolated_build = True
+
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310
+    3.11: py311
+
+[testenv]
+extras =
+    dev
+commands =
+    pytest -v --color=yes --cov=1 --cov-report=xml
+"""
+
+
+[tool.codespell]
+skip = '.git'
+check-hidden = true
