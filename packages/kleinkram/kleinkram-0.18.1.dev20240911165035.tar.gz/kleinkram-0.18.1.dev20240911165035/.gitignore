@@ -1,0 +1,10 @@
+.idea/**
+CLI/.idea
+CLI/dist
+**/__pycache__
+
+**/node_modules/**
+**/venv/**
+backend/migration/.env
+
+**/swagger-spec.json
