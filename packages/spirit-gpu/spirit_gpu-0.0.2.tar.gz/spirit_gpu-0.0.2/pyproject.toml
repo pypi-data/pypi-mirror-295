@@ -1,0 +1,45 @@
+[project]
+name = "spirit-gpu"
+dynamic = ["version", "dependencies"]
+description = "Python serverless framework for Datastone Spirit GPU."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+license = { text = "MIT License" }
+authors = [{ name = "Spirit", email = "pypi@datastone.cn" }]
+keywords = [
+    "serverless",
+    "ai",
+    "gpu",
+    "machine learning",
+    "SDK",
+    "library",
+    "python",
+    "API",
+]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Operating System :: OS Independent",
+    "Environment :: GPU",
+]
+
+[project.urls]
+Homepage = "https://github.com/datastone-spirit"
+Documentation = "https://github.com/datastone-spirit/spirit-gpu/blob/main/README.md"
+Repository = "https://github.com/datastone-spirit/spirit-gpu"
+BugTracker = "https://github.com/datastone-spirit/spirit-gpu/issues"
+
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "spirit_gpu/_version.py"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
