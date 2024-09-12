@@ -1,0 +1,54 @@
+[project]
+name = "ucla-datalabutils"
+version = "0.1.0"
+description = "Utility functions from UCLA Astrophysics Data Lab"
+readme = "README.rst"
+authors = [{name = "Tuan Do", email = "tdo@astro.ucla.edu"}]
+maintainers = [{name = "Tuan Do", email = "tdo@astro.ucla.edu"}]
+license = {text = "Not open source"}
+requires-python=">=3.10"
+
+
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "seaborn",
+  "tabulate",
+  "scikit-learn",
+  "astropy",
+  "scipy",
+  "tensorflow[tensorflow]>=2.17.0",
+]
+
+[optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "pytest",  # testing
+]
+
+[urls]
+bugs = "https://github.com/astrodatalab/datalabutils/issues"
+changelog = "https://github.com/astrodatalab/datalabutils/blob/master/changelog.md"
+homepage = "https://github.com/astrodatalab/datalabutils"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+[tool.mypy]
+files = "."
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

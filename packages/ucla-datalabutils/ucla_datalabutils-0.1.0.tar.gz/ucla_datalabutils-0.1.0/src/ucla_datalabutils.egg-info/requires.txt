@@ -1,0 +1,9 @@
+matplotlib
+numpy
+pandas
+seaborn
+tabulate
+scikit-learn
+astropy
+scipy
+tensorflow[tensorflow]>=2.17.0
