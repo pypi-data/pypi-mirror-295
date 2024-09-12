@@ -1,0 +1,14 @@
+ovos-utils<1.0.0,>=0.0.38
+ovos_bus_client<1.0.0,>=0.0.8
+ovos-config<1.0.0,>=0.0.12
+ovos-plugin-manager<1.0.0,>=0.0.26
+
+[extras]
+ovos-tts-plugin-server<1.0.0,>=0.0.2
+ovos_audio_plugin_simple<1.0.0,>=0.1.0
+ovos_plugin_common_play<1.0.0,>=0.0.7
+ovos-ocp-youtube-plugin>=0.0.1,~=0.0
+ovos-ocp-m3u-plugin<1.0.0,>=0.0.1
+ovos-ocp-rss-plugin<1.0.0,>=0.0.2
+ovos-ocp-files-plugin~=0.13
+ovos-ocp-news-plugin<1.0.0,>=0.0.3
