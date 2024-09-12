@@ -1,0 +1,13 @@
+README.md
+setup.py
+dynamic_manim_components/__init__.py
+dynamic_manim_components.egg-info/PKG-INFO
+dynamic_manim_components.egg-info/SOURCES.txt
+dynamic_manim_components.egg-info/dependency_links.txt
+dynamic_manim_components.egg-info/requires.txt
+dynamic_manim_components.egg-info/top_level.txt
+dynamic_manim_components/src/animation.py
+dynamic_manim_components/src/dynamic_mobject.py
+dynamic_manim_components/src/dynamic_tex_mobject.py
+dynamic_manim_components/src/numpy_mobject_array.py
+dynamic_manim_components/src/manim_src/composition.py
