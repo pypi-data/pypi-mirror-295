@@ -1,0 +1,4 @@
+[console_scripts]
+mbpip = mbpy.cli:cli
+mbpy = mbpy.cli:cli
+mpip = mbpy.cli:cli
