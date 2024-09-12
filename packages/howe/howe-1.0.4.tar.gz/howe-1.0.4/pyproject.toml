@@ -1,0 +1,32 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools>=61.0.0",
+]
+
+[project]
+authors = [
+    { email = "johannes-programming@mailfence.com", name = "Johannes" },
+    { email = "johannes-horler@posteo.org", name = "Johannes" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+description = "Stricter verion of zip."
+keywords = []
+name = "howe"
+readme = "README.rst"
+requires-python = ">=3.11"
+version = "1.0.4"
+
+[project.license]
+file = "LICENSE.txt"
+
+[project.urls]
+Documentation = "https://pypi.org/project/howe"
+Download = "https://pypi.org/project/howe/#files"
+Source = "https://github.com/johannes-programming/howe"

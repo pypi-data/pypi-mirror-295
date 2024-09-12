@@ -1,0 +1,10 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/howe/__init__.py
+src/howe.egg-info/PKG-INFO
+src/howe.egg-info/SOURCES.txt
+src/howe.egg-info/dependency_links.txt
+src/howe.egg-info/top_level.txt
