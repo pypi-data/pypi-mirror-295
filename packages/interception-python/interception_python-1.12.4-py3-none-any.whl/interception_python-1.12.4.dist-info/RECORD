@@ -1,0 +1,17 @@
+interception/__init__.py,sha256=FcH1TfHWYFB8TV27QsecxDFITG-fNYWucYz0vywXYsc,142
+interception/_ioctl.py,sha256=wVzzmPVWVp9sOYp5U6eturBptZi95t0EybTzt8s3kXM,1255
+interception/_keycodes.py,sha256=6BzFZU6tJk_Wh5OmpjTwTc7fiQP_OGC2D3s3PbBCnS4,9260
+interception/_utils.py,sha256=sGLF6Hf_V_xXDuGkoOIwibLhJXO9B4P7kaNoOuzmiKI,2349
+interception/beziercurve.py,sha256=bPH_jR4oIvMjY5-1NrXY2mTYH8qkNryV_CLIt8FTZ6I,989
+interception/constants.py,sha256=h8R6CZI2SM9H1maHNU0pZFEYeutaRIAZ_R8ylkhu7gs,4115
+interception/device.py,sha256=keY09c3mkifITQBZDIlahW_f75600CtE1_PZQzVK3MY,8341
+interception/exceptions.py,sha256=pPSiIDRd11zKBsbQsqYWW6BOdOtHV42zlZlHmTLAL7k,1302
+interception/inputs.py,sha256=Rj2QnQeRq6tA-4FJpc0_-zpeZBSjmn3ypYTxjV4Wf6s,15049
+interception/interception.py,sha256=tDJ5j6mAbonaQ5tpeOwQeoIIMhcgK83PaEgGl95c4wM,4363
+interception/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+interception/strokes.py,sha256=opIK9s63ndvM7kVusaJtG-o0BMIclKIzeTj4hvWuKn8,5201
+interception_python-1.12.4.dist-info/LICENSE,sha256=xjaVDecJS3aG0EXWR3mLZkXWHeQZoUk1I2ahm6sgi6A,1085
+interception_python-1.12.4.dist-info/METADATA,sha256=VayVPutoS6cZnwyZBBsHZrF6mG7_BrueFsdliwB1nmQ,4770
+interception_python-1.12.4.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+interception_python-1.12.4.dist-info/top_level.txt,sha256=L0eJUesoSSaXhIQ7XmZBzQbwA-YuofCGMoHebiTXGwo,13
+interception_python-1.12.4.dist-info/RECORD,,
