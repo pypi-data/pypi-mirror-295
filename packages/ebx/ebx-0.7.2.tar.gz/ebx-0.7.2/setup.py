@@ -1,0 +1,25 @@
+from setuptools import setup, find_packages
+
+NAME = "ebx"
+VERSION = "0.7.2"
+
+REQUIRES = [
+    "pydantic == 2.8.2",
+    "geojson-pydantic == 1.1.1",
+    "pandas >= 2.0.0",
+    "httpx >=0.24.1",
+    "leafmap >= 0.23.3",
+    "plotly >= 5.16.1"
+]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Earth Blox Client API",
+    author_email="j.wilkins@earthblox.io",
+    url="https://earthblox.io/",
+    keywords=["Earth Blox", "geospatial"],
+    install_requires=REQUIRES,
+    packages=find_packages("ebx"),
+    include_package_data=True,
+)
