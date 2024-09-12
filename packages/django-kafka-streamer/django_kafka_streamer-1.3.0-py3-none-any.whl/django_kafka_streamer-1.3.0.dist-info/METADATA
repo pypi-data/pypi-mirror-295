@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: django-kafka-streamer
+Version: 1.3.0
+Summary: Stream data to Apache Kafka.
+Author-email: Kostiantyn Korikov <lostclus@gmail.com>
+Project-URL: Repository, http://github.com/lostclus/django-kafka-streamer
+Keywords: Django,Kafka
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3
+Classifier: Framework :: Django :: 3.2
+Classifier: Framework :: Django :: 4
+Classifier: Framework :: Django :: 4.0
+Classifier: Framework :: Django :: 4.1
+Classifier: Framework :: Django :: 4.2
+Classifier: Framework :: Django :: 5.0
+Classifier: Framework :: Django :: 5.1
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: Django >=3.2
+Requires-Dist: kafka-python-ng >=2.2.2
+Requires-Dist: celery >=5.1.0
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-cov ; extra == 'tests'
+Requires-Dist: pytest-djangoapp ; extra == 'tests'
+
+django-kafka-streamer
+=====================
+
+.. image:: https://github.com/lostclus/django-kafka-streamer/actions/workflows/tests.yml/badge.svg
+    :target: https://github.com/lostclus/django-kafka-streamer/actions
+
+.. image:: https://img.shields.io/pypi/v/django-kafka-streamer.svg
+    :target: https://pypi.org/project/django-kafka-streamer/
+    :alt: Current version on PyPi
+
+.. image:: https://img.shields.io/pypi/pyversions/django-kafka-streamer
+    :alt: PyPI - Python Version
+
+.. image:: https://img.shields.io/pypi/djversions/django-kafka-streamer
+    :alt: PyPI - Django Version
+
+django-kafka-streamer is a Django application and library for streaming data to
+Apache Kafka.
+
+Features:
+
+* Setup signal handlers to ORM models to transparently send create/update/delete
+  events to Kafka
+* Handle database object relations
+* Celery task to stream large amount of data in background
+
+Links:
+
+* GitHub: https://github.com/lostclus/django-kafka-streamer/
+* PyPI: https://pypi.org/project/django-kafka-streamer/
