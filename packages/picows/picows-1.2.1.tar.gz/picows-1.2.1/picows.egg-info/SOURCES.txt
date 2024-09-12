@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.py
+picows/__init__.py
+picows/picows.pxd
+picows/picows.pyx
+picows/picows_compat.h
+picows.egg-info/PKG-INFO
+picows.egg-info/SOURCES.txt
+picows.egg-info/dependency_links.txt
+picows.egg-info/requires.txt
+picows.egg-info/top_level.txt
+tests/test_basics.py

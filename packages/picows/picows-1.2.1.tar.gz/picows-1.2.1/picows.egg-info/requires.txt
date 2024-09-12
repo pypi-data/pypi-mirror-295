@@ -1,0 +1,11 @@
+
+[benchmark]
+uvloop
+websockets
+aiohttp
+
+[test]
+pytest
+pytest-asyncio
+async_timeout
+uvloop
