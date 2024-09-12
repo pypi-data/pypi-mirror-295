@@ -1,0 +1,3 @@
+[console_scripts]
+osc-github-devops = devops_reusable_workflows.cli:run
+
