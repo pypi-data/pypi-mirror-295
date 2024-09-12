@@ -1,0 +1,75 @@
+<div>
+    <div>
+        <b>Coverage Name:</b> {{ coverage.name }}
+    </div>
+    <br/>
+    <div>
+        <b>Description:</b> {{ coverage.description }}
+    </div>
+    <br/>
+    <div>
+        <b>Attributes:</b>
+    </div>
+    <div>
+        <table>
+            <tr>
+            </tr>
+            <tr>
+                <th>name</th>
+                <th>common name</th>
+                <th>description</th>
+                <th>min</th>
+                <th>max</th>
+                <th>nodata</th>
+                <th>scale</th>
+                <th>center_wavelength</th>
+                <th>full_width_half_max</th>
+                <th>data_type</th>
+            </tr>
+            {% for attr in coverage['attributes'] -%}
+            <tr>
+                <td>{{ attr['name'] }}</td>
+                <td>{{ attr['common_name'] }}</td>
+                <td>{{ attr['description'] }}</td>
+                <td>{{ attr['min'] }}</td>
+                <td>{{ attr['max'] }}</td>
+                <td>{{ attr['nodata'] }}</td>
+                <td>{{ attr['scale'] }}</td>
+                <td>{{ attr['center_wavelength'] }}</td>
+                <td>{{ attr['full_width_half_max'] }}</td>
+                <td>{{ attr['data_type'] }}</td>
+            </tr>
+            {%- endfor %}
+        </table>
+    </div>
+    </br>
+    <div>
+        <b>Extent</b>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>xmin</th>
+                <th>ymin</th>
+                <th>xmax</th>
+                <th>ymax</th>
+            </tr>
+             <tr>
+                 <td>{{ coverage['spatial_extent'].bounds[0] }}</td>
+                 <td>{{ coverage['spatial_extent'].bounds[1] }}</td>
+                 <td>{{ coverage['spatial_extent'].bounds[2] }}</td>
+                 <td>{{ coverage['spatial_extent'].bounds[3] }}</td>
+             </tr>
+        </table>
+    </div>
+    <br/>
+    <div>
+        <b>Timeline</b>
+    </div>
+        <select id="timeline" size="10">
+        {% for d in coverage['timeline'] -%}
+            <option value="{d}">{{ d }}</option>
+        {%- endfor %}
+        </select>
+    </div>
+</div>
