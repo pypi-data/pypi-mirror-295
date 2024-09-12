@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+pyproject.toml
+src/Exia/__init__.py
+src/Exia/_tricks.py
+src/Exia/cerebro.py
+src/Exia/influxConn.py
+src/Exia/api/__init__.py
+src/Exia/api/data_api.py
+src/Exia/api/influx_api.py
+src/Exia/api/metaNeuron.py
+src/Saka.egg-info/PKG-INFO
+src/Saka.egg-info/SOURCES.txt
+src/Saka.egg-info/dependency_links.txt
+src/Saka.egg-info/requires.txt
+src/Saka.egg-info/top_level.txt
