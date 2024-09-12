@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "Cat-Year-Calculator"
+version = "1.0-dev.3"
+description = "A simple calculator to convert human years to cat years and vice-versa."
+authors = ["Taylor B. <t.blackstone@inspyre.tech>"]
+readme = "README.md"
+license= "MIT"
+homepage = "https://github.com/Inspyre-Softworks/Cat-Year-Calculator"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+inspyre-toolbox = "1.6.0-dev.6"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.27.0"
+ptipython = "^1.0.1"
+
+[tool.poetry.scripts]
+cat-year-calculator = "cat_year_calculator.bin.cat_year_calc:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
