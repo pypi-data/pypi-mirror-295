@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: openswitcher-proxy
+Version: 0.12.2
+Summary: Proxy for ATEM switchers
+Home-page: https://git.sr.ht/~martijnbraam/pyatem
+Author: Martijn Braam
+Author-email: martijn@brixit.nl
+License: LGPL3
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: POSIX :: Linux
+License-File: LICENSE
+License-File: LICENSE-gpl3.txt
+License-File: LICENSE-lgpl3.txt
