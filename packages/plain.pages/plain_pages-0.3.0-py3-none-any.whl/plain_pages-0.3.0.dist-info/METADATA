@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: plain.pages
+Version: 0.3.0
+Summary: Simplified Markdown-based content for Plain.
+Author: Dave Gaeddert
+Author-email: dave.gaeddert@dropseed.dev
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: mistune (>=3.0.0,<4.0.0)
+Requires-Dist: plain (<1.0.0)
+Requires-Dist: python-frontmatter (>=1.0.0,<2.0.0)
