@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+aniwatch_tr/__init__.py
+aniwatch_tr/fetch.py
+aniwatch_tr/main.py
+aniwatch_tr/watch.py
+aniwatch_tr.egg-info/PKG-INFO
+aniwatch_tr.egg-info/SOURCES.txt
+aniwatch_tr.egg-info/dependency_links.txt
+aniwatch_tr.egg-info/entry_points.txt
+aniwatch_tr.egg-info/requires.txt
+aniwatch_tr.egg-info/top_level.txt
