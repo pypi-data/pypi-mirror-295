@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: sl_ai_models
+Version: 0.0.12
+Summary: Code for Society Library AI Models
+Home-page: https://github.com/SocietyLibrary/sl_ai_models
+Author: SocietyLibrary
+Author-email: info@societylibrary.org
+License: Proprietary
+Keywords: ai models
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: Other/Proprietary License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: aiofiles~=23.2.1
+Requires-Dist: aiohttp~=3.9.3
+Requires-Dist: aiolimiter~=1.1.0
+Requires-Dist: asyncio~=3.4.3
+Requires-Dist: nest-asyncio~=1.5.8
+Requires-Dist: openai~=1.40.6
+Requires-Dist: pydantic~=2.6.3
+Requires-Dist: python-dotenv~=1.0.0
+Requires-Dist: regex~=2023.8.8
+Requires-Dist: requests~=2.32.3
+Requires-Dist: tiktoken~=0.7.0
+Requires-Dist: langchain-community~=0.2.12
+Requires-Dist: langchain-openai~=0.1.21
+Requires-Dist: langchain-core~=0.2.30
+Requires-Dist: langchain-anthropic~=0.1.23
+Requires-Dist: tenacity~=8.5.0
+Requires-Dist: pillow~=10.4.0
+Requires-Dist: transformers~=4.44.1
+Requires-Dist: deepgram-sdk~=3.5.0
