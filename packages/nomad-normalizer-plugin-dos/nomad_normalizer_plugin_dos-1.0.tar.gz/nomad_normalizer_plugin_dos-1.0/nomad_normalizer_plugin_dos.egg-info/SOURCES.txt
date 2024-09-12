@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+dosnormalizer/__init__.py
+dosnormalizer/dos_integrator.py
+dosnormalizer/normalizer.py
+nomad_normalizer_plugin_dos.egg-info/PKG-INFO
+nomad_normalizer_plugin_dos.egg-info/SOURCES.txt
+nomad_normalizer_plugin_dos.egg-info/dependency_links.txt
+nomad_normalizer_plugin_dos.egg-info/entry_points.txt
+nomad_normalizer_plugin_dos.egg-info/requires.txt
+nomad_normalizer_plugin_dos.egg-info/top_level.txt
+tests/test_dosnormalizer.py
