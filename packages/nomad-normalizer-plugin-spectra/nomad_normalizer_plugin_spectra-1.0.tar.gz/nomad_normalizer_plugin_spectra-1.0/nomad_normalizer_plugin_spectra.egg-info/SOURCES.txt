@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+nomad_normalizer_plugin_spectra.egg-info/PKG-INFO
+nomad_normalizer_plugin_spectra.egg-info/SOURCES.txt
+nomad_normalizer_plugin_spectra.egg-info/dependency_links.txt
+nomad_normalizer_plugin_spectra.egg-info/entry_points.txt
+nomad_normalizer_plugin_spectra.egg-info/requires.txt
+nomad_normalizer_plugin_spectra.egg-info/top_level.txt
+spectranormalizer/__init__.py
+spectranormalizer/normalizer.py
+tests/test_spectranormalizer.py
