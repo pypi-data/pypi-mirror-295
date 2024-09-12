@@ -1,0 +1,13 @@
+[console_scripts]
+free_gpa = freesas.app.auto_gpa:main
+free_guinier = freesas.app.auto_guinier:main
+free_rg = freesas.app.autorg:main
+cormapy = freesas.app.cormap:main
+supycomb = freesas.app.supycomb:main
+free_bift = freesas.app.bift:main
+extract_ascii = freesas.app.extract_ascii:main
+free_dnn = freesas.app.dnn:main
+
+[gui_scripts]
+freesas = freesas.app.plot_sas:main
+
