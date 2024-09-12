@@ -1,0 +1,9 @@
+numpy
+pandas
+pint
+
+[dev]
+pre-commit
+pytest
+ruff
+structlog

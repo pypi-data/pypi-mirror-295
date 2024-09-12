@@ -1,0 +1,30 @@
+.gitignore
+.pre-commit-config.yaml
+LICENSE
+README.md
+pyproject.toml
+.github/workflows/python-publish.yml
+.github/workflows/python-test.yml
+.vscode/launch.json
+.vscode/settings.json
+src/fairmat_readers_transmission/__init__.py
+src/fairmat_readers_transmission/_version.py
+src/fairmat_readers_transmission/perkin_elmers_asc.py
+src/fairmat_readers_transmission/readers.py
+src/fairmat_readers_transmission.egg-info/PKG-INFO
+src/fairmat_readers_transmission.egg-info/SOURCES.txt
+src/fairmat_readers_transmission.egg-info/dependency_links.txt
+src/fairmat_readers_transmission.egg-info/requires.txt
+src/fairmat_readers_transmission.egg-info/top_level.txt
+tests/test_perkin_elmer_asc.py
+tests/test_readers.py
+tests/data/3DM_test01.Probe.Raw.asc
+tests/data/3DM_test01.Probe.Raw.json
+tests/data/F4-P3HT 1-10 0,5 mgml.Probe.Raw.asc
+tests/data/F4-P3HT 1-10 0,5 mgml.Probe.Raw.json
+tests/data/KTF-D.Probe.Raw.asc
+tests/data/KTF-D.Probe.Raw.json
+tests/data/Sample5926.Probe.Raw.asc
+tests/data/Sample5926.Probe.Raw.json
+tests/data/sphere_test01.Probe.Raw.asc
+tests/data/sphere_test01.Probe.Raw.json
