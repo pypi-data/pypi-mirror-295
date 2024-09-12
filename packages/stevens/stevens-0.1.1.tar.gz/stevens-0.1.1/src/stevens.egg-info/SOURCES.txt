@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+src/stevens/__init__.py
+src/stevens.egg-info/PKG-INFO
+src/stevens.egg-info/SOURCES.txt
+src/stevens.egg-info/dependency_links.txt
+src/stevens.egg-info/requires.txt
+src/stevens.egg-info/top_level.txt
