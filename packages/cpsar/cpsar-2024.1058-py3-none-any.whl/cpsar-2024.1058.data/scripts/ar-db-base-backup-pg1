@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# IMPORTANT 
+#Only run this after ar-db-maintenance when in nightly job run this as 
+#postgres user on atlas you must complete all the work on atlas if you
+#run this manually
+
+#shutdown postgres on pg1 so we're not streaming
+#during the nightly jobs
+ssh pg1 service postgresql stop
+
+# initalize backup process
+psql postgres -c "select pg_start_backup('backup')" > /dev/null
+
+# rsync the copy to the standby host
+rsync -a --delete --exclude pg_xlog \
+    /var/lib/postgresql/9.1/main/* \
+    pg1:/data/postgresql/archive/base_backup
+
+# once finished stop the backup process
+psql postgres -c "select pg_stop_backup()" > /dev/null
+
+# load base backup on pg1 
+ssh pg1 -t '
+# Clean up old data
+
+# Remove all directories and contents under the postgres data dir
+rm -rf /var/lib/postgresql/9.1/main/*
+
+# Restore the files from a base backup and ensure correct ownsership (postgres)
+cp -ar /data/postgresql/archive/base_backup/* /var/lib/postgresql/9.1/main/
+
+mkdir /var/lib/postgresql/9.1/main/pg_xlog
+
+# cp the recovery.conf to the postgres data dir
+cp /data/postgresql/archive/etc/recovery.conf /var/lib/postgresql/9.1/main/
+'
+ssh pg1 service postgresql start

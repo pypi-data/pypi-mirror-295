@@ -1,0 +1,15 @@
+#!python
+import warnings; warnings.filterwarnings("ignore")
+try:
+    import urllib3
+    urllib3.disable_warnings()
+except (ImportError, AttributeError):
+    pass
+
+import cpsar.runtime as R
+from cpsar import liberty
+
+R.db.setup()
+api = liberty.API()
+api.refresh()
+R.db.commit()

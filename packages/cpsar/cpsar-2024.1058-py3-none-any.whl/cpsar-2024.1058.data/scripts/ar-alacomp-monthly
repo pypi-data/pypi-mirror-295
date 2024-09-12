@@ -1,0 +1,71 @@
+#!python
+import csv
+import datetime
+import os
+
+from cpsar import db
+from cpsar import shell
+import cpsar.runtime as R
+
+sql = """
+with sgroup as (
+    select '70588' as group_number
+    union
+    select managed_group_number
+    from managed_group where group_number = '70588'
+)
+select
+    to_char(now(), 'YYYYMMDD') as "EvaluationDate",
+    claim.claim_number         as "TPACurrentClaimNumber",
+    client.billing_name        as "PolicyNameInsured",
+    patient.division_code      as "InsuredClientCode",
+    patient.first_name         as "ClaimantFirstName",
+    patient.last_name          as "LastFirstName",
+    to_char(claim.doi, 'YYYYMMDD')              as AccidentDate,
+    trans.invoice_id                            as BillIdentificationNumber,
+    to_char(trans.rx_date, 'YYYYMMDD')          as ServiceDate,
+    to_char(trans.paid_date, 'YYYYMMDD')        as BillPaidDate,
+    trans.paid_amount                           as PaidCharges,
+    drug.ndc_number                             as NationalDrugCodeBilled,
+    drug.ndc_number                             as NationalDrugCodePaid,
+    history.doctor_dea_number                   as DEACode,
+    drug.brand                                  as NDCBrandGeneric,
+    pharmacy.name                               as ServiceFacilityPracticeName1,
+    pharmacy.zip_code                           as ServiceFacilityPracticeZipCode,
+    ''                                          as ServiceFacilityPrimarySpecialtyCodeCMS,
+    pharmacy.taxonomy_code                      as ServiceProviderTaxonomyCode,
+    pharmacy.tax_id                             as ServiceProviderFEIN,
+    to_char(history.date_processed, 'YYYYMMDD') as ServiceDate
+
+from trans
+join sgroup using(group_number)
+join client using(group_number)
+join drug using(drug_id)
+join patient using(patient_id)
+join pharmacy using(pharmacy_id)
+join history using(history_id)
+join claim using(claim_id)
+join batch_file on trans.batch_file_id = batch_file.batch_file_id
+where batch_file.batch_date between %s and %s
+order by trans.trans_id
+"""
+
+class Program(shell.Program):
+    def main(self):
+        cursor = db.cursor()
+        today = datetime.date.today()
+        t = datetime.date.today()
+        end_date = datetime.date(t.year, t.month, 1) - datetime.timedelta(days=1)
+        start_date = datetime.date(end_date.year, end_date.month, 1)
+
+        file_name = start_date.strftime("NON-MEC-FBFS-TM0054-%Y%m%d-RX-CPS.dt")
+        fpath = os.path.join(R.dpath('alacomp/pickup/outgoing'), file_name)
+        with open(fpath, 'wt') as fd:
+            cursor.execute(sql, (start_date, end_date))
+            wr = csv.writer(fd)
+            wr.writerow([c[0] for c in cursor.description])
+            [wr.writerow(r) for r in cursor]
+
+if __name__ == '__main__':
+    Program().run()
+

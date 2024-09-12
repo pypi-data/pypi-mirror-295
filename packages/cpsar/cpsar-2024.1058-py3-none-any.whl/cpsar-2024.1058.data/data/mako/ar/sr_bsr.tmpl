@@ -1,0 +1,118 @@
+<%!
+import cpsar.controls as C
+
+show_notifications = False
+%>
+<%inherit file="sr_page.tmpl" />
+<%block name="head">
+  <title>BSR Records</title>
+  <link type='text/css' rel='stylesheet' href='/css/form.css'  />
+  <link type='text/css' rel='stylesheet' href='/css/state_reporting.css' />
+</%block>
+<%def name='scripts()'>
+  ${parent.scripts()}
+</%def>
+
+<%block name="header">
+   <a href="/state_reporting">State Reporting</a> &rarr; BSR Records
+</%block>
+
+${self.notifications()}
+
+
+<form action="/sr_bsr" method="POST">
+  <table class='form'>
+  <th colspan='5'>BSR Search Terms</th>
+  <tr>
+    <td class='entry-caption'>Trans #</td>
+    <td class='entry-value'>${C.TextBox('trans_id')}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td class='entry-caption' title='State Control Number'>Source Reference #</td></td>
+    <td class='entry-value'>${C.TextBox('source_ref')}</td>
+  </tr>
+
+  <tr>
+      <td class='entry-caption'>Patient First Name</td>
+      <td class='entry-value'>
+          ${C.TextBox('patient_first_name')}
+      </td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Patient Last Name</td>
+      <td class='entry-value'>
+          ${C.TextBox('patient_last_name')}
+      </td>
+  </tr>
+  <tr>
+      <td class='entry-caption'>Claim #</td>
+      <td class='entry-value'>${C.TextBox('claim_number')}</td>
+      <td class='entry-gutter'>&nbsp;</td>
+      <td class='entry-caption'>Load Date</td></td>
+      <td class='entry-value'>${C.DatePicker('ctime')}</td>
+  </tr>
+  <tr>
+    <td class='entry-caption'>Bishop Reference #</td></td>
+    <td class='entry-value'>${C.TextBox('bishop_number')}</td>
+    <td class='entry-gutter'>&nbsp;</td>
+    <td></td>
+    <td><input type='submit' value='Search' /></td>
+  </tr>
+  </table>
+</form>
+
+% if results:
+  <table class='grid'>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Patient</th>
+      <th>Time</th>
+      <th>File</th>
+      <th>Bishop</th>
+      <th>Source Name</th>
+      <th>Source Ref #</th>
+      <th>Error Source</th>
+      <th>Bill Inv #</th>
+      <th>Status</th>
+      <th>Error</th>
+    <!--
+    % for f in fields:
+      <td>${f}</td>
+    % endfor
+    -->
+    </tr>
+  </thead>
+  <tbody>
+  % for r in results:
+  <tr>
+    <td>
+      % if r['trans_id']:
+        <a href='/view_trans?trans_id=${r["trans_id"]}'>TX: ${r["trans_id"]}</a>
+      % endif
+      % if r['bill_id']:
+        <a href='/sr_manual/report_file?bill_id=${r["bill_id"]}'>Bill: ${r["bill_id"]}</a>
+      % endif
+    </td>
+    <td>${r['patient_first_name']} ${r['patient_last_name']}</td>
+    <td>${r['ctime'].strftime("%m/%d/%Y %H:%M:%S")}</td>
+    <td>${r['file_name']}</td>
+    <td>${r['bishop_number']}</td>
+    <td>${r['source_name']}</td>
+    <td>${r['source_ref']}</td>
+    <td>${r['err_source']}</td>
+    <td>${r['bill_inv_nbr']}</td>
+    <td>${r["bsr_message"]}</td>
+    <td>${r['err_source']} ${r['stat_cat_code']} ${r['stat_code']}
+      % if r['ber_message']:
+         - ${r['ber_message']}
+      % endif
+    </td>
+
+    <!--
+    % for f in fields:
+      <td>${r[f]}</td>
+    % endfor
+    -->
+  </tr>
+  % endfor
+  </table>
+% endif

@@ -1,0 +1,121 @@
+<%import math%>
+<html>
+<head>
+<title>${q.label}</title>
+
+<style type='text/css'>
+BODY {
+    font-size: 9pt;
+}
+A {
+    text-decoration: none;
+    color: black;
+}
+A:HOVER {
+    text-decoration: underline;
+    color: blue;
+}
+TD {
+    font-size: 9pt;
+}
+H1 {
+    text-align: center;
+    font: bold 1.4em Arial;
+    color: #666666;
+    border-bottom: medium solid #bdcdef;
+}
+
+#report_body {
+    width: 100%;
+    margin-bottom: 10px 
+}
+
+${q.query_css}
+</style>
+
+</head>
+<body>
+<h1>${q.label}</h1>
+% if q.debug:
+    <em>(${duration} seconds)
+    %if hasattr(cursor, 'rowcount'):
+        Rows Affected: ${cursor.rowcount}
+    % endif
+    </em>
+
+    <div><a href='javascript:void()' onclick='{
+        var elem=document.getElementById("sql");
+        if(elem.style.display == "none") {
+            elem.style.display = "block";
+        } else {
+            elem.style.display = "none";
+        }}'>Show SQL</a></div>
+    <div id='sql' style='display:none'><pre>${sql}</pre></div>
+% endif
+
+<table width='100%'>
+<tr>
+<td width='300' nowrap='norap'>
+    Start Date :
+        ${q.fs['start_date'].value}
+    End Date :
+        ${q.fs['end_date'].value}
+</td>
+<td align='center' nowrap='nowrap'>
+    (Any prescription filled at Corporate Pharmacy for less than 90 days)
+</td>
+<td width='300'>
+&nbsp;
+</td>
+</table>
+
+% for cursor, client in zip(q.records(), q.get_clients()):
+    <h1>${client['group_number']}: ${client['client_name']}</h1>
+<table border='1' cellspacing='0' id='report_body'>
+<thead>
+<tr>
+% for col in q.record_fields():
+  <th>${col}</th>
+% endfor
+</tr>
+</thead>
+<%
+for rec in cursor:
+    context.write("<tr>")
+    for j, value in enumerate(rec):
+        context.write("<td class='data%s'>%s</td>" % (j+1, value))
+    context.write("</tr>")
+%>
+
+</table>
+
+% endfor
+
+
+<table border="1" align="center">
+<tr>
+    <th colspan='2'>Legend</th>
+</tr>
+<tr>
+    <td>Last Name</td>
+    <td>Last name of the patient</td>
+<tr>
+<tr>    
+    <td>First Name</td>
+    <td>First name of the patient</td>
+<tr>
+    <td>Drug</td>
+    <td>Name of the medication filled for less than a 90 day supply</td>
+<tr>
+    <td>Rx Date</td>
+    <td>The date the prescription was filled</td>
+</tr>
+<tr>
+    <td>Day's Supply</td>
+    <td>The day's supply for that prescription</td>
+</tr>
+</table>
+
+
+</body>
+</html>

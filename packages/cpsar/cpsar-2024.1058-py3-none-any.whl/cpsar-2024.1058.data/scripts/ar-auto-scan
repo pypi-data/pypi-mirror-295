@@ -1,0 +1,24 @@
+#!python
+from cpsar import shell
+from bd.load import scan
+
+class Program(shell.Program):
+
+    def setup_options(self):
+        self.add_option('-p', '--profile', default=None, help='The profile to run. If not given all are scanned.')
+        super(Program, self).setup_options()
+
+    def main(self):
+        if self.opts.profile:
+            p = scan.by_name(self.opts.profile)
+            if not p:
+                print("No profile named %s found" % p)
+                return
+            s = [p]
+        else:
+            s = list(scan.auto_scanners())
+
+        for p in s:
+            scan.scan(p)
+
+if __name__ == '__main__': Program().run()

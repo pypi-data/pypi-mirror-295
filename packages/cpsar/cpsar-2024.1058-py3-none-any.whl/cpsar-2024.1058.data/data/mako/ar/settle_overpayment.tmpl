@@ -1,0 +1,55 @@
+<%!
+import cpsar.controls
+import kcontrol as K
+%>
+<%inherit file="page.tmpl" />
+<%namespace file="functions.tmpl" import="*" />
+<%block name="head">
+    <title>Transaction ${trans_id}</title>
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+</%block>
+<%def name='scripts()'>
+  <script type='text/javascript' src='/js/shared.js'></script>
+  <script type='text/javascript' src='/js/jquery.js'></script>
+</%def>
+
+<%block name="header">
+    Settle Overpayment
+</%block>
+
+<form action='/settle_overpayment' method='POST'>
+<input type='hidden' name='puc_id' value='${puc_id}' />
+
+<table class='form record_view'>
+<tr>
+    <th colspan='11'>Transaction
+    </th>
+</tr>
+<tr>
+    <td class='entry-caption'>Trans #</td>
+    <td class='entry-value teal'>${trans_id}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>PUC #</td>
+    <td class='entry-value'>${puc_id}</td>
+</tr>
+<tr>
+    <td class='entry-caption'>Balance</td>
+    <td class='entry-value'>${balance}</td>
+</tr>
+<tr>
+
+    <td class='entry-caption'>Check #</td>
+    <td class='entry-value'>
+        ${K.TextBox('check_no')}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Entry Date</td>
+    <td class='entry-value'>${K.DatePicker('entry_date', defaultToday=True)}</td>
+</tr>
+<tr>
+    <td></td>
+    <td><input type='submit' value='Settle Overpayment' /></td>
+</tr>
+</table>

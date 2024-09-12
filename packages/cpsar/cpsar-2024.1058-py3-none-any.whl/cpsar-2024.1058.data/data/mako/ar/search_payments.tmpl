@@ -1,0 +1,79 @@
+<%!
+import kcontrol as K
+from cpsar.pg import format_currency, format_date
+%>
+<%namespace file="functions.tmpl" import="*" />
+<%inherit file="page.tmpl" />
+<%block name="head">
+    <link type='text/css' href='/css/form.css' rel='stylesheet' />
+    <title>Payment Search</title>
+</%block>
+<%block name="header">
+    Payment Search
+</%block>
+
+<form action='/search_payments'>
+<table class='form'>
+<tr>
+    <td class='entry-caption'>Ref #:</td>
+    <td class='entry-value'>
+        ${K.TextBox('ref_no', value=q.ref_no)}
+    </td>
+</tr>
+<tr>
+    <td class='entry-caption'>Client</td>
+    <td class='entry-value'>
+        ${K.ListBox('group_number', values=q.client_values(),
+                    value=q.group_number)}
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+    <input type='submit' value='Search' />
+    </td>
+</tr>
+</table>
+</form>
+
+
+<table class='form'>
+<thead>
+<tr>
+    <th>Trans</th>
+    <th>Invoice</th>
+    <th>Entry</th>
+    <th>Ref</th>
+    <th>Type</th>
+    <th>Amount</th>
+</tr>
+<tbody>
+% for c in q.results:
+<tr>
+    <td><a href='/view_trans?trans_id=${c['trans_id']}'>${c['trans_id']}</a></td>
+    <td><a href='/view_invoice?invoice_id=${c['invoice_id']}'>
+            ${c['invoice_id']}-${c['line_no']}
+        </a>
+    </td>
+    <td>${format_date(c['entry_date'])}</td>
+    <td>${c['type_name']}: ${c['ref_no']}</td>
+    <td>
+    % if c['overpayment'] is True:
+          Overpayment
+    % else:
+         Payment
+    % endif
+    </td>
+    <td align='right'>${format_currency(c['amount'])}</td>
+</tr>
+% endfor
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td align='right'>${format_currency(q.total)}</td>
+</tr>
+</tbody>
+</html>

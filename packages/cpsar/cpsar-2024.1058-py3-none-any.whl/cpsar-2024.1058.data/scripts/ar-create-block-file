@@ -1,0 +1,62 @@
+#!python
+""" The block text file is supposed to include transactions that should not
+be billed because they have been blocked. This program exists only so that
+we can steal the code and integrate it into the nightly billing program as
+workqueue blocker.
+"""
+import sys
+
+import cpsar.runtime as R
+
+from cpsar import shell
+from cpsar import util
+
+class Program(shell.Program):
+    def main(self):
+        file = BlockFile(self.fd())
+        for nabp, rx_nbr, refill_nbr, msg in WorkQueueCursor():
+            file.write_block(nabp, rx_nbr, refill_nbr, msg)
+
+    def fd(self):
+        if len(sys.argv) == 1:
+            return sys.stdout
+        else:
+            return open(sys.argv[1], "w")
+
+class BlockFile:
+    """ File containg all the blocked transactions. """
+    def __init__(self, handle):
+        self._h = handle
+
+    def write_block(self, nabp, rx_nbr, refill_nbr, reason):
+        self.write(nabp.ljust(7))
+        self.write_int(rx_nbr, 7)
+        self.write_int(refill_nbr, 2)
+        self.write(reason.ljust(50))
+        self.write('\n')
+
+    def write(self, v):
+        self._h.write(v)
+
+    def write_int(self, nbr, size):
+        self.write(str(nbr).rjust(size, '0'))
+
+def WorkQueueCursor():
+    """ Cursor that contains all items above a priority of 7 """
+    cursor = R.db.dict_cursor()
+    cursor.execute("""
+        SELECT pharmacy.nabp,
+               history.rx_number,
+               history.refill_number::int % 20 AS refill_number,
+               work_queue.item_description
+        FROM work_queue
+        JOIN history ON work_queue.group_number = history.group_number AND
+                        work_queue.group_auth = history.group_auth
+        JOIN pharmacy ON history.pharmacy_id = pharmacy.pharmacy_id
+        WHERE work_queue.priority > 7
+        """)
+    return cursor
+
+
+if __name__ == '__main__':
+    Program().run()

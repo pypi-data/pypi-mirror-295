@@ -1,0 +1,62 @@
+#!python
+""" send out secure email links to MSQ adjusters. If no adjuster on file we send
+to rx@medicalservicequotes.com
+
+We send out one email per adjuster and that link goes to a PDF of all invoices
+for them in the batch.
+"""
+import syslog
+
+from cpsar import config
+from cpsar import db
+from cpsar import mail
+from cpsar import shell
+from cpsar import util
+import cpsar.runtime as R
+
+class Program(shell.MSQProgram):
+
+    def main(self):
+        syslog.openlog("ar-msq-inv-email", facility=syslog.LOG_LOCAL3)
+        cur = db.dict_cursor()
+        syslog.syslog("Begin Batch Process")
+        cur.execute_file('ar/ar-msq-inv-email.sql')
+        syslog.syslog("Processing %s email records" % cur.rowcount)
+        list(map(self.send_email, cur))
+        if not self.opts.dry_run:
+            db.commit()
+
+    def send_email(self, rec):
+        m = mail.Mailer()
+        m.subject = f"Invoices for {rec['invoice_date']} Group {rec['group_number']}"
+        url = "%s/iview?t=%s" % (config.production_url(), rec['token'])
+        m.write("The following link provides all invoices for %s on %s with group %s" %
+                (rec['email'], rec['invoice_date'], rec['group_number']))
+        m.write(url)
+        m.write("This link will expire in 30 days on %s.\n" % rec['expires'].strftime("%m/%d/%Y"))
+        m.write("You can also log in to your account to view details at ")
+        m.write("https://portal.medicalservicequotes.com/Login.aspx")
+        m.recipients = [rec['email']]
+        m.bcc = ["sheri.holden@medicalservicequotes.com", "accounting@medicalservicequotes.com"]
+        syslog.syslog("INVMAIL: From %s to %s: %s" % (m.sender, rec['email'], m.subject))
+        if self.opts.dry_run:
+            print(f"Would send TO: {m.recipients} BCC: {m.bcc} SUBJECT: {m.subject}")
+        else:
+            try:
+                m.send()
+            except Exception as e:
+                self.send_failure(m, e)
+
+    def send_failure(self, m, e):
+        f = ', '.join(m.recipients)
+        m.write("This email could NOT be sent to the address on file of %s" % f)
+        m.write(str(e))
+        m.recipients = [config.customer_service_email()]
+        try:
+            m.send()
+        except Exception as e:
+            R.log.error("Could not send email! Check tokens around timestamp %s: %s",
+                datetime.datetime.now(), e)
+
+if __name__ == '__main__':
+    Program().run()

@@ -1,0 +1,100 @@
+#!python
+""" Send out an email to all CCMSI users that the Intel report is ready in
+blue diamond. To be ran only once a month from cron. It will give the dates
+in the email for the last month.
+"""
+from __future__ import print_function
+import datetime
+import smtplib
+
+from six import StringIO
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+import cpsar.runtime as R
+from cpsar.config import smtp_host, site_sender_email
+from cpsar import shell
+
+class Program(shell.Program):
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('--test-email', '-t',
+         help="test email address to send to")
+
+    def main(self):
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT DISTINCT user_info.email
+            FROM user_info
+            JOIN client_report_code USING(group_number)
+            WHERE report_code = 'CCMSI'
+            ORDER BY user_info.email
+        """)
+
+        if self.opts.dry_run:
+            mailer = print_email
+        else:
+            mailer = Mailer().send_email
+
+        if self.opts.test_email:
+            mailer(self.opts.test_email)
+            return
+
+        for email, in cursor:
+            mailer(email)
+
+class Mailer(object):
+    def __init__(self):
+        self._smtp = smtplib.SMTP(smtp_host(), 25)
+
+    def send_email(self, addr):
+        msg = mime_message(addr).as_string()
+        self._smtp.sendmail(site_sender_email(), [addr], msg)
+
+def print_email(addr):
+    print(mime_message(addr).as_string())
+    print()
+
+def mime_message(addr):
+    outer = MIMEMultipart()
+    outer["From"] = site_sender_email()
+    outer["To"] = addr 
+    outer["Subject"] = "CPS Rx Intel Report for %s" % report_month()
+    alt = MIMEMultipart('alternative')
+    alt.attach(_mime_plain_text())
+    alt.attach(_mime_html_text())
+    outer.attach(alt)
+    return outer
+
+def _mime_plain_text():
+    buf = StringIO()
+    buf.write("""\
+Your CPS Intel Report is ready for %s.
+Please select the following link and you will be directed to the CPS Rx Intel Report
+
+%s """ % (report_month(), report_link()))
+    return MIMEText(buf.getvalue(), _subtype='plain')
+
+def _mime_html_text():
+    buf = StringIO()
+    buf.write("""<html><body>
+<p>Your CPS Intel Report is ready for %(month)s.
+Please select the following link and you will be directed to the CPS Rx Intel Report</p>
+<p><a href='%(link)s'>%(link)s</a></p>
+</body>
+</html>
+    """ % {'month': report_month(), 'link': report_link()})
+    return MIMEText(buf.getvalue(), _subtype='html')
+
+def report_month():
+    today = datetime.date.today()
+    first_day_of_month = datetime.date(today.year, today.month, 1)
+    last_day_of_last_month = first_day_of_month - datetime.timedelta(days=1)
+    return last_day_of_last_month.strftime("%b %Y")
+
+def report_link():
+    return 'https://bd.corporatepharmacy.com/rx_intel_report'
+    # return 'http://test.bluediamondrx.com/rx_intel_report'
+
+if __name__ == '__main__':
+    Program().run()

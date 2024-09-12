@@ -1,0 +1,73 @@
+#!python
+""" Email adjusters that there are invoices for the given batch
+"""
+from __future__ import print_function
+import csv
+import logging
+import re
+
+import cpsar.runtime as R
+import cpsar.util as U
+from cpsar import shell
+
+class Program(shell.Command):
+    def main(self):
+        send_messages()
+        record_messages_sent()
+        R.db.commit()
+
+def send_messages():
+    cursor = R.db.cursor()
+    cursor.execute("""
+    WITH
+      sel_trans AS (
+        SELECT group_number, trans.batch_date, adjuster1_email, adjuster2_email
+        FROM trans
+        JOIN adjuster_inv_email_log USING(batch_file_id)
+        JOIN client USING(group_number)
+        WHERE adjuster_inv_email_log.send_time IS NULL
+            AND client.email_adjusters_inv_notification = TRUE
+        UNION    
+        SELECT group_number, trans.batch_date, client.billing_email, NULL
+        FROM trans
+        JOIN adjuster_inv_email_log USING(batch_file_id)
+        JOIN client USING(group_number)
+        WHERE adjuster_inv_email_log.send_time IS NULL
+            AND client.email_billing_inv_notification = TRUE
+            ), 
+      message_data AS (
+        SELECT group_number, batch_date, adjuster1_email AS email
+        FROM sel_trans
+        UNION
+        SELECT group_number, batch_date, adjuster2_email AS email
+        FROM sel_trans)
+      SELECT *
+      FROM message_data
+      WHERE email IS NOT NULL AND email != ''
+      ORDER BY batch_date, group_number, email""")
+    for group, batch, emails in cursor:
+        for email in emails.split(","):
+            send_message(group, batch, email)
+
+def send_message(group, batch_date, email):
+    mail = U.Mailer()
+    formatted_bd = batch_date.strftime("%m/%d/%Y")
+    mail.subject = "CPS Invoices for %s" % formatted_bd
+    mail.recipients = [email]
+    mail.write("Please login to the Corporate Pharmacy website to "
+               "print available invoices located under the billing "
+               "tab. http://www.corporatepharmacy.com")
+    mail.send()
+
+def print_send_message(group, batch_date, email):
+    print(batch_date, group, email)
+
+def record_messages_sent():
+    cursor = R.db.cursor()
+    cursor.execute("""
+        UPDATE adjuster_inv_email_log SET send_time = NOW()
+        WHERE send_time IS NULL
+        """)
+
+if __name__ == '__main__':
+    Program().run()

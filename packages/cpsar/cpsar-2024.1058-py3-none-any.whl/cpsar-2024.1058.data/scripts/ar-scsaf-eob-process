@@ -1,0 +1,387 @@
+#!python
+""" This program parses and loads EOB files sent from the SCSAF
+Group #56600. It applies payments to transactions and if it
+can't, adds it to unapplied cash.
+"""
+
+from builtins import zip
+from builtins import object
+import csv
+import datetime
+import decimal
+import logging
+import os
+import pprint
+import textwrap
+import re
+import shutil
+import stat
+import sys
+import zipfile
+
+from six import StringIO
+
+import cpsar.runtime as R
+import cpsar.shell
+
+from cpsar import txlib
+from cpsar import util
+
+log = logging.getLogger('')
+
+class Program(cpsar.shell.Program):
+    working_dir = R.dpath("scsaf/eob")
+
+    file_match_pattern = re.compile('saf.(\d{6}).eob')
+
+    def main(self):
+        # Scan the working directory for new files to load
+        a = Archiver()
+        for file_path in self.eob_file_paths():
+            if not os.path.exists(file_path):
+                log.error("%s does not exist. Skipping.", file_path)
+                continue
+            self.process_file(file_path)
+            if self.opts.dry_run:
+                continue
+
+            a.archive(file_path)
+            R.db.commit()
+            self.log.debug("Committed database changes")
+
+    def eob_file_paths(self):
+        if self.args:
+            return [os.path.join(self.working_dir, a) for a in self.args]
+        else:
+            file_paths = []
+            for file_name in os.listdir(self.working_dir):
+                if self.file_match_pattern.match(file_name):
+                    file_paths.append(os.path.join(self.working_dir, file_name))
+            return file_paths
+
+    def setup_options(self):
+        super(Program, self).setup_options()
+        self.add_option('-e', '--entry-date', type='date',
+            help='The entry date to post for the payment. Defaults to today')
+
+    @property
+    def entry_date(self):
+        if self.opts.entry_date:
+            return self.opts.entry_date
+        else:
+            return datetime.date.today()
+
+    def process_file(self, file_path):
+        log.debug("Process file %s", file_path)
+
+        mailer = self.mailer = EOBProcessMailer()
+        mailer.set_billing_recipients()
+        mailer.set_eob_fpath(file_path)
+
+        # Check for blank files. Why do they do even send these to us?
+        st = os.stat(file_path)
+        if not st[stat.ST_SIZE]:
+            mailer('The file received was empty. There is nothing to process.')
+            return mailer.send()
+            
+        reader = csv.reader(open(file_path))
+
+        # Fetch the column definitions 
+        record = next(reader)
+        self.columns = [y.upper().strip() for y in record]
+        log.debug("Found column definitions %s", " ".join(self.columns))
+        if not validate_columns(mailer, self.columns):
+            return mailer.send()
+
+        # Process each EOB posting
+        for i, line in enumerate(reader):
+            self.process_line(i+2, line, file_path)
+
+        mailer.write_epilogue()
+        mailer.send()
+
+    def process_line(self, line_no, line, file_path):
+        log.debug("Process line %05d", line_no)
+        mailer = self.mailer
+        fname = os.path.basename(file_path)
+        self.mailer.set_line(self.columns, line, line_no)
+
+        def find(*fields):
+            for field in fields:
+                try:
+                    return line[field]
+                except KeyError:
+                    continue
+
+        log.debug(line)
+        line = cleanup_row(self.columns, line)
+        cursor = R.db.dict_cursor()
+        tx = None
+
+        # Pull the invoice #
+        invoice_id = find('BILL_REF', 'CPS_BILL_REF_NO', 'BILL_REF_NO')
+        match = re.match('^CPS(\d+)$', invoice_id)
+        if not match:
+            return mailer.line_error("""\
+                The REF column is expected to be in the format CPS99999 where
+                999999 is a valid CPS invoice number. The REF column has value
+                %r.""", invoice_id)
+        invoice_id = match.groups()[0]
+
+        inv_line_no = find('LINE_ITEM')
+
+        paid = find('AMOUNT_PAID', 'PD_AMT')
+        log.debug("Paid amount given %s", paid)
+        log.debug(line)
+        try:
+            paid = decimal.Decimal(paid)
+        except decimal.InvalidOperation:
+            return mailer.line_error("""\
+                An invalid paid amount was found on line %s. The given value
+                was %r. This is expected to be a decimal number.""", paid)
+        
+        if paid == 0:
+            return mailer.line_error("SCSAF transmitted 0 payment")
+
+        # Pull the amount that was submitted to SCSAF by us. In case
+        # the file doesn't have it, use how much was paid.
+        try:
+            submitted = decimal.Decimal(line['AMOUNT_SUBMITTED'])
+        except KeyError:
+            submitted = paid
+
+        ref_no = find('CHECK_NUMBER', 'CHECK_NO')
+
+        ## Fetch the trans record
+        cursor.execute("""
+            SELECT *
+            FROM trans
+            WHERE invoice_id=%s AND line_no=%s""",
+            (invoice_id, inv_line_no))
+    
+        if cursor.rowcount !=1:
+            return mailer.line_error("""\
+                No transaction was found with invoice number %s and line number
+                %s in our system. The given line is being ignored.""",
+                invoice_id, inv_line_no)
+        tx = cursor.fetchone()
+        log.debug("Found matching TX: %08d", tx['trans_id'])
+
+        trans_id = tx['trans_id']
+        ## See if this record has any adjudications applied to it from the same
+        ## transaction. If it does, then we revoke the adjudication so that the
+        ## payment can be applied.
+        if paid != 0:
+            cursor.execute("""
+                SELECT trans_adjudication.adjudication_id 
+                FROM trans_adjudication
+                JOIN reversal USING(reversal_id)
+                WHERE trans_adjudication.trans_id = %s
+                  AND trans_adjudication.trans_id = reversal.trans_id
+                  AND trans_adjudication.amount = reversal.total
+                  AND trans_adjudication.void_date IS NULL
+                """, (trans_id,))
+
+            if cursor.rowcount == 1:
+                adjudication_id = cursor.fetchone()['adjudication_id']
+                txlib.void_adjudication(adjudication_id, datetime.date.today())
+                # Refetch the trans record because the balance will be updated
+                cursor.execute("SELECT * FROM trans WHERE trans_id=%s", (trans_id,))
+                tx = cursor.fetchone()
+
+        ## Fetch any payment records
+        cursor.execute("""
+            SELECT amount, payment_id
+            FROM trans_payment WHERE trans_id=%s AND ref_no=%s
+            """, (tx['trans_id'], ref_no))
+        payments = dict(list(cursor))
+
+        ## Fetch any existing overpayment records
+        cursor.execute("""
+            SELECT amount, puc_id
+            FROM overpayment
+            WHERE trans_id=%s AND ref_no=%s
+            """, (tx['trans_id'], ref_no))
+        overpayments = dict(list(cursor))
+
+        ## Calculate amount to pay and any overpayment to post if needed
+        if paid > tx['balance']:
+            amount_to_pay = tx['balance']
+            amount_to_overpay = paid - tx['balance']
+        else:
+            amount_to_pay = paid
+            amount_to_overpay = 0
+
+        ## Detect Duplicate Payment
+        if amount_to_pay in payments or paid in payments:
+            return mailer.line_error(
+                "A previous payment of %s with check %s was already found on "
+                "trans %s. Discarding duplicate.",
+                paid, ref_no, tx['trans_id'])
+
+        ## Detect Duplicate Overpayments
+        if amount_to_overpay in overpayments:
+            return mailer.line_error(
+                "A previous overpayment record of %s with check %s was "
+                "found on trans %s. Discarding duplicate.",
+                amount_to_overpay, ref_no, tx['trans_id'])
+
+        ## Record Entries
+        if amount_to_pay != 0:
+            note = "Added CK: %s payment for %s from EOB file %s"
+            note %= (ref_no, paid, fname)
+            txlib.add_payment(
+                tx['trans_id'],
+                1,          # payment_type.ptype_id for check
+                ref_no,
+                amount_to_pay,
+                self.entry_date,
+                note)
+            mailer.write(note)
+        if amount_to_overpay != 0:
+            note = "Added CK: %s overpayment for %s from EOB file %s"
+            note %= (ref_no, amount_to_overpay, fname)
+            txlib.add_overpayment(
+                tx['trans_id'],
+                1,
+                ref_no,
+                amount_to_overpay,
+                self.entry_date,
+                note)
+            mailer.write(note)
+
+        mailer.add_payment(amount_to_pay)
+        mailer.add_overpayment(amount_to_overpay)
+
+class Archiver(zipfile.ZipFile):
+    """ Archives EOB files to their zip file. """
+    archive_path = R.dpath('scsaf/eob/archive.zip')
+    def __init__(self):
+        zipfile.ZipFile.__init__(self, self.archive_path, 'a')
+
+    def archive(self, file_path):
+        file_name = os.path.basename(file_path)
+        self.write(file_path, file_name)
+        os.remove(file_path)
+
+class EOBProcessMailer(util.Mailer):
+    ## Interface
+    tx = None
+
+    def __init__(self):
+        self._eob_fpath = None
+        self._eob_fname = ''
+
+        self._total_payments = 0
+        self._total_overpayment = 0
+
+        util.Mailer.__init__(self)
+        self.error_buf = StringIO()
+
+    def set_eob_fpath(self, fpath):
+        self._eob_fpath = fpath
+        self._eob_fname = os.path.basename(fpath)
+
+    def set_line(self, columns, line, line_no):
+        self._columns = columns
+        self._line = line
+        self._line_no = line_no
+
+    def line_error(self, msg, *args):
+        msg = textwrap.dedent(msg).replace("\n", " ") % args
+        if self.tx:
+            msg = ("TX %08d " % self.tx['trans_id']) + msg
+        
+        msg = ("%05d " % self._line_no) + "ERROR OCCURED:" + msg + "\n"
+        self.error_buf.write(msg)
+        for col, val in zip(self._columns, self._line):
+            self.error_buf.write("\t%s:%s\n" % (col.rjust(15), val))
+
+    def add_overpayment(self, amt):
+        self._total_overpayment += amt
+
+    def add_payment(self, amt):
+        self._total_payments += amt
+
+    def write(self, msg, *args):
+        if self.tx:
+            msg = ("tx %08d" % tx['trans_id']) + msg
+        self(msg, *args)
+
+    def write_epilogue(self):
+        err = self.error_buf.getvalue()
+        if len(err):
+            self("Errors occured during processing. Please review.\n")
+            self.hr()
+            self(err)
+
+        self("\n")
+        self.hr()
+        self("Total transaction payments added: %s", self._total_payments)
+        self("Total overpayment entries added: %s",
+             self._total_overpayment)
+
+    def hr(self):
+        self("-"*80 + "\n")
+
+    ## Overrides
+    log_message = True
+
+    @property
+    def subject(self):
+        return 'cpsar: EOB file %s received from SCSAF' % self._eob_fname
+
+
+class ColumnValidator(object):
+    """ SCSAF does not always give us the same columns in the EOB
+    file. This procedure ensures that we have all of the columns that we
+    need to apply this file.
+    
+    Procedural interface/Object implementation
+    """
+    def __call__(self, mailer, columns):
+        self.has_error = False
+        self._mailer = mailer
+        self._columns = columns
+
+        self.check(('BILL_REF', 'CPS_BILL_REF_NO', 'BILL_REF_NO'), """\
+            The given file does not have BILL_REF, CPS_BILL_REF_NO or
+            BILL_REF_NO columns. There is no way to match up the line items
+            with records in our system.""")
+        self.check(('LINE_ITEM',), """\
+            No LINE_ITEM column was given in the file. This column is needed to
+            match up the transaction.""")
+        self.check(('AMOUNT_PAID', 'PD_AMT'), """\
+            The given file does not have an AMOUNT_PAID or PD_AMT column. We do
+            not know how much to apply to the transaction.""")
+        self.check(('CHECK_NUMBER', 'CHECK_NO'), """\
+            The given file does not have a CHECK_NO or CHECK_NUMBER column.
+            Contact SCSAF to have them recreate the file.""")
+
+        if self.has_error:
+            mailer('Contact SCSAF to have them recreate the file on their '
+                   'system.')
+
+        return not self.has_error
+
+    def check(self, fields, msg, *msg_args):
+        for f in fields:
+            if f in self._columns:
+                return
+        self.has_error = True
+        self._mailer(msg, *msg_args)
+validate_columns = ColumnValidator()
+
+
+def cleanup_row(columns, row):
+    nrow = []
+    for r in row:
+        mat = re.match("^'(.*?)'$", r)
+        if mat:
+            r = mat.groups()[0]
+        nrow.append(r)
+    return dict(list(zip(columns, nrow)))
+
+if __name__ == '__main__':
+    Program().run()
+

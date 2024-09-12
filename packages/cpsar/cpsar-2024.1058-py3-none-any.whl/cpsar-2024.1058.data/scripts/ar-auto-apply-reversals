@@ -1,0 +1,52 @@
+#!python
+import datetime
+import cpsar.runtime as R
+import cpsar.shell as shell
+import cpsar.txlib as txlib
+import cpsar.util as util
+
+class Program(shell.Program):
+    """ It is a lot of work to manually enter in adjudications for reversals on
+    transactions where everything matches up. This program was written to
+    help alieviate the manual entry.
+    
+    This program goes through all of the reversal balances that match up
+    with the balances of the transations they are for and applies them.
+    """
+    def main(self):
+        m = util.Mailer()
+        m.set_billing_recipients()
+        cursor = R.db.cursor()
+        cursor.execute("""
+            SELECT reversal.trans_id, reversal_id, trans.balance
+            FROM reversal
+            JOIN trans ON reversal.trans_id = trans.trans_id
+            WHERE reversal.balance = trans.balance AND
+                  reversal.balance != 0
+            ORDER BY reversal.trans_id
+        """)
+
+        if not cursor.rowcount:
+            R.log.info('No candidate reversals to apply')
+            return
+
+        m.subject = 'cpsar: Applied %s reversal adjudications to transactions' 
+        m.subject %= cursor.rowcount
+        R.log.debug(m.subject)
+
+        now = datetime.datetime.now()
+        note = "Automatic reversal applied by system"
+        for trans_id, reversal_id, amount in cursor:
+            txlib.add_adjudication(trans_id, reversal_id, amount, now, note)
+            m("TX #%08d: Adjudicated full balance of %s from reversal %s",
+              trans_id, amount, reversal_id)
+
+        if not self.opts.dry_run:
+            R.log.debug("Commited changes")
+            m.send()
+            R.db.commit()
+        else:
+            R.log.debug("Not committing. Dry run option given.")
+
+if __name__ == '__main__':
+    Program().run()

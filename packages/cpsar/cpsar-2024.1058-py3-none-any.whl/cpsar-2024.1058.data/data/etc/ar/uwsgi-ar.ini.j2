@@ -1,0 +1,48 @@
+; vim: filetype=cfg
+
+[uwsgi]
+; defaults for all processes
+enable-threads = true
+harakiri = 300                        ; Forcefully kill workers after 5 minutes
+gid=staff
+master = true
+need-app = true
+plugin=python3
+single-interpreter = true
+thunder-lock = true
+vacuum = true                          ; Delete sockets during shutdown
+uid=xhandler
+gid=staff
+
+auto-procname = true
+procname-prefix = ar-
+
+; log the real client IP
+{% raw %}
+log-format = [pid: %(pid)|app: -|req: -/-] %(var.HTTP_X_FORWARDED_FOR) (%(user)) {%(vars) vars in %(pktsize) bytes} [%(ctime)] %(method) %(uri) => generated %(rsize) bytes in %(msecs) msecs (%(proto) %(status)) %(headers) headers in %(hsize) bytes (%(switches) switches on core %(core))
+{% endraw %}
+
+; reloads
+max-requests = 1000                  ; Restart workers after this many requests
+max-worker-lifetime = 3600           ; Restart workers after this many seconds
+reload-on-rss = 2048                 ; Restart workers after this much resident memory
+worker-reload-mercy = 60             ; How long to wait before forcefully killing workers
+
+; application-specific
+http-socket = {{ ar.uwsgi_address }}
+processes = 10
+threads = 1
+thunder-lock = Y
+wsgi-file = {{ bd.virtualenv }}/etc/uwsgi-ar.wsgi
+virtualenv = {{ bd.virtualenv }}
+
+# Have to set HOME because reportlab does some funny business trying to import in some reportlab_mod
+# module from the HOME of the current user? yikes!
+env = HOME=/home/xhandler
+
+{% if DEBUG is defined %}
+; development
+env = DEBUG=1
+py-autoreload = 1
+{% endif %}
+
