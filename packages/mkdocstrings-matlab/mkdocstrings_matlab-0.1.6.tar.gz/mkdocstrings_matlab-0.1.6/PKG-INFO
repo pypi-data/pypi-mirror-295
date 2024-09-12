@@ -1,0 +1,19 @@
+Metadata-Version: 2.3
+Name: mkdocstrings-matlab
+Version: 0.1.6
+Summary: Add your description here
+Author-email: Mark Hu <watermarkhu@gmail.com>
+License-File: LICENSE
+Requires-Dist: charset-normalizer>=3.3.2
+Requires-Dist: griffe>=1.2.0
+Requires-Dist: markdown>=3.7
+Requires-Dist: mkdocs-material>=9.5.33
+Requires-Dist: mkdocs>=1.6.0
+Requires-Dist: mkdocstrings>=0.25.2
+Requires-Dist: mkdocstrings[python]>=0.18
+Requires-Dist: textmate-grammar-python>=0.6.1
+Description-Content-Type: text/markdown
+
+# mkdocstrings-matlab
+
+Describe your project here.
