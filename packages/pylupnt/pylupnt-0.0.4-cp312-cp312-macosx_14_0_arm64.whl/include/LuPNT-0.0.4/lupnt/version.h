@@ -1,0 +1,8 @@
+#pragma once
+
+#define LUPNT_VERSION "0.0.4"
+
+#define LUPNT_VERSION_MAJOR 0
+#define LUPNT_VERSION_MINOR 0
+#define LUPNT_VERSION_PATCH 4
+#define LUPNT_VERSION_TWEAK 0
