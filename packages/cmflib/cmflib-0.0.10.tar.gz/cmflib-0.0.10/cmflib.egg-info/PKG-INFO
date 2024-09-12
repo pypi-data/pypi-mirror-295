@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: cmflib
+Version: 0.0.10
+Summary: Metadata Python Package
+Home-page: UNKNOWN
+Author: Hewlett Packard Enterprise
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: Metadata framework storing AI metadata into MLMD
+Keywords: python,first package
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: POSIX :: Linux
