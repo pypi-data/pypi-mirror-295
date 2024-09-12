@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/testing_package_exedoc/__init__.py
+src/testing_package_exedoc/exedoc.py
+src/testing_package_exedoc.egg-info/PKG-INFO
+src/testing_package_exedoc.egg-info/SOURCES.txt
+src/testing_package_exedoc.egg-info/dependency_links.txt
+src/testing_package_exedoc.egg-info/top_level.txt

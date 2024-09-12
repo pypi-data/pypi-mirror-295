@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "django==3.2.15"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "testing_package_exedoc"
+version = "0.0.9"
+authors = [
+  { name="Rompni", email="andresnavarrodev@gmail.com" }
+]
+description = "A small package for testing exedoc"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
