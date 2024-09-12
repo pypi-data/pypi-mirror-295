@@ -1,0 +1,11 @@
+README.md
+setup.py
+bejoor/__init__.py
+bejoor.egg-info/PKG-INFO
+bejoor.egg-info/SOURCES.txt
+bejoor.egg-info/dependency_links.txt
+bejoor.egg-info/requires.txt
+bejoor.egg-info/top_level.txt
+bejoor/genetic/__init__.py
+bejoor/genetic/test_toy_genetic.py
+bejoor/genetic/toy_genetic.py
