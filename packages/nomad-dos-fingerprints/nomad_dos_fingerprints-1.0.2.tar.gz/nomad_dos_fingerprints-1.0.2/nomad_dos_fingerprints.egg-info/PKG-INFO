@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: nomad-dos-fingerprints
+Version: 1.0.2
+Summary: An implementation of DOS fingerprints for the NOMAD Laboratory.
+Home-page: https://gitlab.mpcdf.mpg.de/nomad-lab/nomad-dos-fingerprints
+Author: The NOMAD Authors
+Author-email: kuban@physik.hu-berlin.de
+License: Apache-2.0
+Project-URL: homepage, https://github.com/nomad-coe/nomad-dos-fingerprints
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: nomad-lab>=1.3.6.dev1
+Provides-Extra: dev
+Requires-Dist: mypy==1.0.1; extra == "dev"
+Requires-Dist: pytest==3.10.0; extra == "dev"
+Requires-Dist: pytest-timeout==1.4.2; extra == "dev"
+Requires-Dist: pytest-cov==2.7.1; extra == "dev"
+Requires-Dist: ruff==0.1.4; extra == "dev"
+Requires-Dist: uv>=0.2.35; extra == "dev"
+
+This package implements fingerprints of the electronic density-of-states (DOS) for the evaluation of similarity of materials based on their electronic structures.
+
+The fingerprints are based on a modification on the D-Fingerprints presented in Ref. [1].
+Our modification allows to target specific energy ranges for the evaluation of the similarity of the electronic structure.
+As a similarity measure we use the Tanimoto coefficient [2].
+
+# Usage
+
+Fingerprints are instances of the `DOSFingerprint()` class and can be calculated by providing the energy in [Joule] and the DOS in [states/unit cell/Joule] to the `calculate()` method. Furthermore, the parameters of a non-uniform grid can be chosen. The default grid is specialized on the energy range between -10 and 5 eV and emphasizes the upper valence region.
+
+```Python
+from nomad_dos_fingerprints import DOSFingerprint
+dos_fingerprint = DOSFingerprint().calculate(<dos_energies>,<dos_values>)
+```
+
+To evaluate the similarity, the function `tanimoto_similarity()` can be used:
+
+```Python
+from nomad_dos_fingerprints import tanimoto_similarity
+tc = tanimoto_similarity(dos_fingerprint_1, dos_fingerprint_2)
+```
+
+# References
+
+[1] Isayev _et al._, Chem. Mater. 2015, 27, 3, 735–743 (doi:10.1021/cm503507h)
+
+[2] P. Willet _et al._, J. Chem. Inf. Comput . 38 , 983 996 (1998) (doi:10.1021/ci9800211)
