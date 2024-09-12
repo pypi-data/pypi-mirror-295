@@ -1,0 +1,32 @@
+---
+model: gpt-4o-mini
+inputs:
+  ground_truth: str
+  prediction: str
+response_format:
+    type: json_schema
+    json_schema:
+        name: Response
+        schema:
+            type: object
+            properties:
+                score:
+                    type: integer
+            additionalProperties: false
+            required:
+            - score
+---
+<system>
+You are a binary judge. Please provide a score of 0 or 1.
+If Ground truth and Prediction are same enough, provide a score of 1.
+If Ground truth and Prediction are different, provide a score of 0.
+</system>
+<user>
+Ground truth:
+{ground_truth}
+
+Prediction:
+{prediction}
+
+Please provide a score of 0 or 1.
+</user>
