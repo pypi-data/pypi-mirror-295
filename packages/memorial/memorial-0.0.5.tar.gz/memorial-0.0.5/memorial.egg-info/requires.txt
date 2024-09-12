@@ -1,0 +1,8 @@
+numpy
+prefetch-generator
+
+[dev]
+pytest
+pytest-xdist
+pre-commit
+torch
