@@ -1,0 +1,20 @@
+[package]
+name = "c2048"
+version = "0.1.0"
+edition = "2021"
+description = "A Python implementation of the game 2048 written in rust"
+license = "MIT"
+readme = "./README.md"
+authors = ["Carlettos"]
+repository = "https://github.com/Carlettos1/c2048"
+keywords = ["2048"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "c2048"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.22.0", features = ["extension-module"]}
+rand = "*"
+colored = "*"
