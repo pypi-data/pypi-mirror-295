@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: pipelinerz
+Version: 0.1.1
+Summary: A package for running all data preprocessing pipelines.
+Author-email: Stephen Lenzi <stephen.lenzi@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/stephenlenzi/pipelinerz
+Project-URL: Bug Tracker, https://github.com/stephenlenzi/pipelinerz/issues
+Project-URL: Documentation, https://stephenlenzi.github.io/pipelinerz
+Project-URL: Source Code, https://github.com/stephenlenzi/pipelinerz
+Project-URL: User Support, https://github.com/stephenlenzi/pipelinerz/issues
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.9.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: xpmtd
+Requires-Dist: lmtracker
+Requires-Dist: looming-spots
+Requires-Dist: daq-loader
+Requires-Dist: magicgui
+Requires-Dist: napari[all]
+Requires-Dist: PyQt5==5.14
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: coverage; extra == "dev"
+Requires-Dist: tox; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: setuptools-scm; extra == "dev"
+
+# pipeliner
+
