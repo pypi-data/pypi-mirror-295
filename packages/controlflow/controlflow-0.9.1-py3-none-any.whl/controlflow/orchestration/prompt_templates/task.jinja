@@ -1,0 +1,6 @@
+- id: {{ task.id }}
+{% if task.name %}- name: {{ task.name }}{% endif %}
+- objective: {{ task.objective }}
+{% if task.instructions %}- instructions: {{ task.instructions }}{% endif %}
+{% if task.result_type %}- result type: {{ task.result_type }}{% endif %}
+{% if task.context %}- context: {{ task.context }}{% endif %}
