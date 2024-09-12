@@ -1,0 +1,208 @@
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[project]
+name = "exb-sdk"
+description = "SDK for working with ExB (app.exb.de)"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [
+    { name = "Riccardo Padoan", email = "riccardo.padoan@exb.de" },
+    { name = "Lukas Jesche", email = "lukas.jesche@exb.de" },
+    { name = "Andreas Kohl", email = "andreas.kohl@exb.de" },
+]
+maintainers = [
+    { name = "Riccardo Padoan", email = "riccardo.padoan@exb.de" },
+    { name = "Lukas Jesche", email = "lukas.jesche@exb.de" },
+    { name = "Andreas Kohl", email = "andreas.kohl@exb.de" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+dynamic = []
+dependencies = [
+    "httpx>=0.27.0",
+    "loguru>=0.7.2",
+    "tenacity>=8.5.0",
+]
+version = "0.2.1"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/ExB-Group/exb-sdk"
+Documentation = "https://ExB-Group.github.io/exb-sdk"
+Changelog = "https://github.com/ExB-Group/exb-sdk/releases"
+Repository = "https://github.com/ExB-Group/exb-sdk"
+"Issue Tracker" = "https://github.com/ExB-Group/exb-sdk/issues"
+
+[tool.pdm.dev-dependencies]
+docs = [
+    "furo>=2024.1.29",
+    "myst-parser>=2.0.0",
+    "sphinx-autoapi>=3.0.0",
+    "sphinx-autobuild>=2024.2.4",
+    "sphinx-copybutton>=0.5.2",
+    "sphinx>=7.2.6",
+]
+linting = [
+    "gitlint>=0.19.1",
+    "mypy>=1.8.0",
+    "pre-commit>=3.6.2",
+    "ruff>=0.2.2",
+]
+testing = [
+    "pytest-asyncio>=0.23.5",
+    "pytest-cov>=4.1.0",
+    "pytest-httpx>=0.30.0",
+    "pytest-mock>=3.14.0",
+    "pytest>=8.0.1",
+]
+
+[tool.pdm.options]
+lock = [
+    "--group=:all",
+]
+
+[tool.pdm.version]
+source = "scm"
+write_to = "exb_sdk/__version__.py"
+write_template = "__version__ = \"{}\"\n"
+
+[tool.pdm.scripts.install-git-hooks]
+help = "Install pre-commit hooks"
+cmd = "pre-commit install --install-hooks"
+
+[tool.pdm.scripts.lint]
+help = "Run pre-commit"
+cmd = "pre-commit run --all-files"
+
+[tool.pdm.scripts.test]
+help = "Run tests"
+cmd = "pytest"
+
+[tool.pdm.scripts.docs-build]
+help = "Build docs"
+cmd = "sphinx-build docs docs/_build"
+
+[tool.pdm.scripts.docs-serve]
+help = "Build and serve docs"
+cmd = "sphinx-autobuild --watch exb-sdk docs docs/_build"
+
+[tool.pdm.scripts._ci-lint-code]
+cmd = [
+    "pre-commit",
+    "run",
+    "--show-diff-on-failure",
+    "--from-ref",
+    "${FROM_REF}",
+    "--to-ref",
+    "${TO_REF}",
+]
+
+[tool.pdm.scripts._ci-lint-commits]
+cmd = [
+    "gitlint",
+    "--contrib",
+    "contrib-title-conventional-commits",
+    "--ignore",
+    "body-is-missing",
+    "--commits",
+    "${FROM_REF}..${TO_REF}",
+]
+
+[tool.semantic_release]
+tag_format = "{version}"
+
+[tool.semantic_release.changelog]
+exclude_commit_patterns = [
+    "Merge pull request.*",
+]
+
+[tool.mypy]
+python_executable = ".venv/bin/python"
+strict = true
+python_version = "3.11"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+preview = true
+
+[tool.ruff.lint]
+fixable = [
+    "ALL",
+]
+select = [
+    "ALL",
+]
+ignore = [
+    "ANN101",
+    "ANN102",
+    "CPY001",
+    "D100",
+    "D104",
+    "D105",
+    "PT004",
+    "PT005",
+    "TD002",
+    "TD003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/**/*" = [
+    "INP001",
+]
+"tests/**/*" = [
+    "C901",
+    "D",
+    "S",
+    "SIM",
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers --cov"
+asyncio_mode = "auto"
+xfail_strict = true
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+    "exb_sdk",
+]
+omit = [
+    "exb_sdk/__version__.py",
+]
+
+[tool.coverage.report]
+exclude_also = [
+    "if\\s+(typing\\.)?TYPE_CHECKING:",
+]
