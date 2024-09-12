@@ -1,0 +1,40 @@
+Screen {
+    layout: vertical;
+}
+
+VMList {
+    height: 1fr;
+    width: 25%;
+    border: solid green;
+}
+
+VMActions {
+    height: 0.5fr;
+    border: solid green;
+}
+
+VMStatus {
+    height: 0.5fr;
+    border: solid green;
+}
+
+PasswordInput {
+    align: center middle;
+    background: rgba(255,255,255,0.25);
+    
+}
+
+ISOSelection {
+    align: center middle;
+    background: rgba(255,255,255,0.25);
+    width: 50%;
+}
+
+#isolist {
+    min-width: 80;
+    width: 75%;
+}
+
+#pwbox {
+    width: 32;
+}
