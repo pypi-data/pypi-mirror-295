@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: neuroagent
+Version: 0.0.0
+Summary: Search agent for neuroscience.
+Author: Blue Brain Project, EPFL
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+First version of the neuroagent package.
