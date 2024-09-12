@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: slowstack-plus
+Version: 1.0.0
+Summary: Epic's Slowstack lib but with python 3.8+ support.
+Requires-Python: >=3.8
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: exceptiongroup (>=1.2.2,<2.0.0)
+Description-Content-Type: text/markdown
+
+> [!NOTE]
+> A fork of Epic's [Slowstack](https://github.com/TAG-Epic/slowstack) lib but with python 3.8+ support *and it's probably unstable*. 
+> Create an issue if you find any bugs but that aren't present in the official.
+
+# Slowstack
+Fuck it, overkill all the way.
+
+A rate limiting library for stacking multiple rate limiters on top of each other in an efficient way.
