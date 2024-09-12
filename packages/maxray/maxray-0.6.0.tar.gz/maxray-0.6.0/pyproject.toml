@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "maxray"
+version = "0.6.0"
+description = ""
+authors = ["blepabyte <255@blepabyte.me>"]
+readme = "README.md"
+
+[tool.poetry.urls]
+Homepage = "https://github.com/blepabyte/maxray"
+Source = "https://github.com/blepabyte/maxray"
+Tracker = "https://github.com/blepabyte/maxray/issues"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+result = "^0.16.1"
+loguru = "^0.7.2"
+pyarrow = "^16.1.0"
+watchfiles = "^0.22.0"
+click = "^8.1.7"
+rich = "^13.7.1"
+
+[tool.poetry.scripts]
+xpy = "maxray.runner.__main__:main"
+maxray = "maxray.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+
+branch = "master"
+upload_to_PyPI = false
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
+commit_author = "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
