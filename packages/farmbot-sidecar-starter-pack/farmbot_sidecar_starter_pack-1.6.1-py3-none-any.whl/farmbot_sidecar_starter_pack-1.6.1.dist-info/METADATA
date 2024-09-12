@@ -1,0 +1,24 @@
+Metadata-Version: 2.3
+Name: farmbot_sidecar_starter_pack
+Version: 1.6.1
+Summary: FarmBot Sidecar Starter Pack
+Project-URL: homepage, https://github.com/FarmBot-Labs/sidecar-starter-pack
+Project-URL: issues, https://github.com/FarmBot-Labs/sidecar-starter-pack/issues
+Author: FarmBot Inc.
+License-File: LICENSE
+Keywords: farmbot,sidecar
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Requires-Dist: paho-mqtt
+Requires-Dist: requests
+Description-Content-Type: text/markdown
+
+# sidecar-starter-pack
+
+[![Test Status](https://github.com/FarmBot-Labs/sidecar-starter-pack/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/FarmBot-Labs/sidecar-starter-pack/actions?query=branch%3Amain)
+[![Coverage Status](https://coveralls.io/repos/github/FarmBot-Labs/sidecar-starter-pack/badge.svg?branch=main)](https://coveralls.io/github/FarmBot-Labs/sidecar-starter-pack?branch=main)
+[![PyPI - Version](https://img.shields.io/pypi/v/farmbot-sidecar-starter-pack)](https://pypi.org/project/farmbot-sidecar-starter-pack/)
+
+See [Sidecar Starter Pack](https://developer.farm.bot/docs/sidecar-starter-pack) in the FarmBot developer documentation.
