@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+spec2flux/__init__.py
+spec2flux/emission_lines.py
+spec2flux/flux_calculator.py
+spec2flux/input_check.py
+spec2flux/spectrum_data.py
+spec2flux.egg-info/PKG-INFO
+spec2flux.egg-info/SOURCES.txt
+spec2flux.egg-info/dependency_links.txt
+spec2flux.egg-info/requires.txt
+spec2flux.egg-info/top_level.txt
