@@ -1,0 +1,7 @@
+-e . --config-settings editable_mode=compat
+
+# linting
+mypy
+pre-commit
+
+virtualenv
