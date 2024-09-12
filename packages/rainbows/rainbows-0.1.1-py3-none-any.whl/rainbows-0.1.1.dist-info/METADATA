@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: rainbows
+Version: 0.1.1
+Summary: A simple client for the Rainbows API
+Author: rainbow-coalition
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests<3.0.0,>=2.25.1
+
+This library provides a simple interface to interact with the Rainbows API.
