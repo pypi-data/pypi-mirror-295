@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: websockethost
+Version: 0.1.3
+Summary: Web and python socket host
+Home-page: https://github.com/lamalice20/websockethost
+Author: lamalice20
+Author-email: discord974a@gmail.com
+Requires-Python: >=3.12.5
+Description-Content-Type: text/markdown
+
+## Qu'est-que Websockethost ?
+
+Websockethost est un package qui vous permetera d'hÃ©berger des sites web(logs inclu)
+
+faire des socket tcp avec nimporte quoi que sa sois du camera chatting de l'Ã©change de message pas connections tcp cela et possible avec Websockethost et tout sa en seulement 10 ligne de code seulement !
