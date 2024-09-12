@@ -1,0 +1,3 @@
+[console_scripts]
+tammtoolbox = cli:cli
+ttb = cli:cli
