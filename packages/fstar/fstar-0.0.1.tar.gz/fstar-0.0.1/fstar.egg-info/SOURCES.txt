@@ -1,0 +1,9 @@
+LICENSE.txt
+README.md
+pyproject.toml
+fstar/__init__.py
+fstar/fstar.py
+fstar.egg-info/PKG-INFO
+fstar.egg-info/SOURCES.txt
+fstar.egg-info/dependency_links.txt
+fstar.egg-info/top_level.txt
