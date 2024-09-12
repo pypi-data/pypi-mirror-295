@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/pyaxml/__init__.py
+src/pyaxml/axml.py
+src/pyaxml/conf.py
+src/pyaxml/public.json
+src/pyaxml/public.py
+src/pyaxml/public.xml
+src/pyaxml.egg-info/PKG-INFO
+src/pyaxml.egg-info/SOURCES.txt
+src/pyaxml.egg-info/dependency_links.txt
+src/pyaxml.egg-info/requires.txt
+src/pyaxml.egg-info/top_level.txt
+src/pyaxml/proto/__init__.py
+src/pyaxml/proto/axml.proto
+tests/test_axml.py
