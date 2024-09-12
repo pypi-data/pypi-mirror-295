@@ -1,0 +1,21 @@
+***Starting server on port 53623 ***
+Loading net-file from '/home/julesbompard/Documents/Projets/sumo-experiments/src/sumo_experiments/preset_networks/bologna/acosta/acosta_buslanes.net.xml' ... done (24ms).
+Loading additional-files from '/home/julesbompard/Documents/Projets/sumo-experiments/src/sumo_experiments/preset_networks/bologna/acosta/acosta_tls.add.xml' ... done (0ms).
+Loading additional-files from '/home/julesbompard/Documents/Projets/sumo-experiments/src/sumo_experiments/preset_networks/bologna/acosta/acosta_vtypes.add.xml' ... done (1ms).
+Loading additional-files from '/home/julesbompard/Documents/Projets/sumo-experiments/src/sumo_experiments/preset_networks/bologna/acosta/acosta_detectors.add.xml' ... done (2ms).
+Loading additional-files from '/home/julesbompard/Documents/Projets/sumo-experiments/src/sumo_experiments/preset_networks/bologna/acosta/acosta_bus_stops.add.xml' ... done (1ms).
+Warning: Missing yellow phase in tlLogic '220', program '0' for tl-index 3 when switching to phase 1.
+Loading done.
+Simulation version 1.18.0 started with time: 0.00.
+Simulation ended at time: 3600.00
+Reason: TraCI requested termination.
+Performance: 
+ Duration: 186.25s
+ TraCI-Duration: 173.40s
+ Real time factor: 19.3292
+ UPS: 8506.821586
+Vehicles: 
+ Inserted: 6714 (Loaded: 6871)
+ Running: 474
+ Waiting: 150
+
