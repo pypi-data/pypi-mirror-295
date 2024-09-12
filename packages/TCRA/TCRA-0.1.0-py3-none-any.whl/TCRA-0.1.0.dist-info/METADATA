@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: TCRA
+Version: 0.1.0
+Summary: A Python package for estimating cyclone hazard parameters and calculating wind speeds at structure sites.
+Home-page: https://github.com/rxm562/TCRA.git
+Author: Ram Krishna Mazumder
+Author-email: rkmazumder@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: folium
+
