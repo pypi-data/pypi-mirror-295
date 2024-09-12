@@ -1,0 +1,33 @@
+Metadata-Version: 2.3
+Name: scouter-ml
+Version: 0.2.4rc4
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: pandas >=1.5.3, <3.0.0
+Requires-Dist: rusty-logger >=0.3.0, <1.0.0
+Requires-Dist: numpy >=1.23.0
+Requires-Dist: pydantic >=2.7.1, <3.0.0
+Requires-Dist: polars >=1.0.0, <2.0.0
+Requires-Dist: pyarrow >=15.0.0, <17.0.0
+Requires-Dist: confluent-kafka >=2.3.0, <3.0.0 ; extra == 'kafka'
+Requires-Dist: tenacity >=8.4.2, <9.0.0 ; extra == 'kafka'
+Requires-Dist: httpx >=0.27.0, <1.0.0 ; extra == 'httpx'
+Requires-Dist: tenacity >=8.4.2, <9.0.0 ; extra == 'httpx'
+Provides-Extra: kafka
+Provides-Extra: httpx
+License-File: LICENSE
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+<h1 align="center">
+  <br>
+  <img src="https://github.com/demml/scouter/blob/main/images/scouter-logo.png?raw=true"  width="1181" alt="scouter logo"/>
+  <br>
+</h1>
+
+<h2 align="center">Data Profiling and Monitoring for Machine Learning</h2>
+
+
+## Coming Soon
+
