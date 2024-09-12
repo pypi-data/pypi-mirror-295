@@ -1,0 +1,8 @@
+[build-system]
+requires = [
+  "pip",
+]
+
+[project]
+readme = "README.md"
+keywords=['wowsystem', 'IoT', 'WIP', 'IoT Platform', 'IoT Server', 'wowsystem', 'WOW IoT Platform']
