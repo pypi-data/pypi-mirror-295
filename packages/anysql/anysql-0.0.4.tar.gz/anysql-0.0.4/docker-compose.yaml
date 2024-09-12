@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+
+    mysql:
+      image:   docker.io/mariadb
+      restart: always
+      ports:
+        - '3306:3306'
+      environment:
+        MARIADB_USER: 'test-user'
+        MARIADB_PASSWORD: 'test-password'
+        MARIADB_DATABASE: 'test'
+        MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
+
+    postgres:
+      image:   docker.io/postgres
+      restart: always
+      ports:
+        - '5432:5432'
+      environment:
+        POSTGRES_USER: 'test-user'
+        POSTGRES_PASSWORD: 'test-password'
+        POSTGRES_DB: 'test'
+
