@@ -1,0 +1,2 @@
+[console_scripts]
+my_custom_app = my_custom_app.__main__:run
