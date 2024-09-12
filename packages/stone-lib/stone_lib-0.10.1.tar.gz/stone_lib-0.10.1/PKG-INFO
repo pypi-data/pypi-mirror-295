@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: stone-lib
+Version: 0.10.1
+Summary: This is a library used for sharing common code acorss all stone's projects.
+Home-page: https://github.com/stone-home/python-utility-SDK-stoneToolkit.git
+License: MIT
+Keywords: Personal Toolkit,utility,SDK
+Author: stone
+Author-email: github@stone-bo.com
+Requires-Python: >=3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: PyYAML (>=6.0.1,<7.0.0)
+Requires-Dist: pandas (>=2.2.2,<3.0.0)
+Requires-Dist: pynvml (>=11.5.3,<12.0.0)
+Requires-Dist: torchinfo (>=1.8.0,<2.0.0)
+Project-URL: Repository, https://github.com/stone-home/python-utility-SDK-stoneToolkit.git
+Description-Content-Type: text/markdown
+
+# python-utility-SDK-stoneToolkit
+
