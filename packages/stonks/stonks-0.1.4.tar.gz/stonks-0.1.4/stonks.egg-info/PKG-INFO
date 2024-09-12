@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: stonks
+Version: 0.1.4
+Summary: stonks stonks stonks
+Home-page: https://github.com/DanielLasota/Stonks
+Author: Daniel Lasota
+Author-email: grossmann.root@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8, <3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pytest
+Requires-Dist: pandas
+Requires-Dist: yfinance
+Requires-Dist: matplotlib
+Requires-Dist: mplfinance
+
+# Market Data Scraper and Analysis Tool
+
+This script is designed to scrape market data from the Yahoo Finance API, calculate base indicators, and visualize the results using various plots
+
+## Installation
+
+```bash
+pip install stonks
+```
+
+## Usage
+
+import the `run_stonks_analysis` function from the `stonks` module and run the script:
+
+```python
+from stonks import run_stonks_analysis
+
+if __name__ == '__main__':
+    run_stonks_analysis()
+```
+
+![Moving Average Example](https://github.com/user-attachments/assets/197e4219-a829-4aae-a785-52a60020a8ea)
+
+![RSI Indicator Example](https://github.com/user-attachments/assets/a8252ae8-071b-48b7-ab23-fd1f555d3d5a)
+
+![Candlestick Chart](https://github.com/user-attachments/assets/16833b84-a5ed-4d83-8ef5-ea1c5564d0a1)
