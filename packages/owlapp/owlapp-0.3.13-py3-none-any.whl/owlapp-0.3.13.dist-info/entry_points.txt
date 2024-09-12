@@ -1,0 +1,3 @@
+[console_scripts]
+owl=app.cli:cli
+
