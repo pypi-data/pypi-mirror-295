@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-git-versioning>=2.0,<3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eark-validator"
+dynamic = ["version"]
+authors = [
+  { name="E-ARK Foundation", email="admin@e-ark-foundation.eu" },
+]
+maintainers = [
+  { name="E-ARK Foundation", email="admin@e-ark-foundation.eu" },
+  { name="Carl Wilson", email="carl@openpreservation.org" },
+]
+license = {file = "LICENSE"}
+description = "E-ARK Python Information Package Validation"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "lxml==5.1.0",
+    "importlib_resources==5.12.0",
+    "pydantic>=2.5.3,<3.0.0",
+]
+
+[project.optional-dependencies]
+testing = [
+    "pre-commit",
+    "pytest",
+    "pylint",
+    "pytest-cov",
+    'pytest-runner',
+]
+
+[project.urls]
+"Homepage" = "https://www.e-ark-foundation.eu/e-ark-software-py-e-ark-ip-validator/"
+"Issues" = "https://github.com/E-ARK-Software/eark-validator/issues"
+"Repository" = "https://github.com/E-ARK-Software/eark-validator.git"
+
+[project.scripts]
+eark-validator = "eark_validator.cli.app:main"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.setuptools]
+packages = ["eark_validator", "eark_validator.cli", "eark_validator.infopacks", "eark_validator.ipxml", "eark_validator.model", "eark_validator.specifications" ]
+
+[tool.setuptools.package-data]
+"eark_validator" = ["ipxml/resources/profiles/*/*.xml", "ipxml/resources/schema/*.xsd", "ipxml/resources/schematron/*/*/*.xml", "ipxml/resources/vocabs/*.*"]
+
+[tool.setuptools-git-versioning]
+enabled = true
+dev_template = "{tag}.dev{env:GITHUB_RUN_NUMBER:{ccount}}"
+dirty_template = "{tag}.dev{env:GITHUB_RUN_NUMBER:{ccount}}+git.{sha}.dirty"
