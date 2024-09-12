@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "pydenticore"
+version = "0.1.0"
+description = ""
+authors = ["Udachin Ivan <pypi.udachin@yandex.ru>"]
+license = "MIT"
+homepage = "https://github.com/udachin077/pydentity"
+repository = "https://github.com/udachin077/pydentity.git"
+exclude = [
+    "tests",
+    "example"
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+email-validator = "^2.2.0"
+itsdangerous = "^2.2.0"
+cryptography = "43.0.*"
+pyotp = "^2.9.0"
+pwdlib = { version = "0.2.*", extras = ["argon2", "bcrypt"] }
+#pydentity-db-sqlalchemy = { version = "0.1.0", optional = true }
+#pydentity-db-tortoise = { version = "0.1.0", optional = true }
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-asyncio = "*"
+mypy = "1.11.0"
+types-passlib = "1.7.*"
+
+#[tool.poetry.extras]
+#sqlalchemy = ["pydentity-db-sqlalchemy"]
+#tortoise = ["pydentity-db-tortoise"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
