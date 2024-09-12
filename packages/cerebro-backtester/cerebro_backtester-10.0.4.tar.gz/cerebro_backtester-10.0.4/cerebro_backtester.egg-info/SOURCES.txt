@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+cerebro_backtester/__init__.py
+cerebro_backtester/backtester_cerebro.py
+cerebro_backtester/run.py
+cerebro_backtester.egg-info/PKG-INFO
+cerebro_backtester.egg-info/SOURCES.txt
+cerebro_backtester.egg-info/dependency_links.txt
+cerebro_backtester.egg-info/top_level.txt
