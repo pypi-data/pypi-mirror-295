@@ -1,0 +1,13 @@
+- id: "01"
+  description: "Check header length"
+  check: check_header # remove
+  component: HEADER # remove
+  severity: ERROR
+  dependencies: null 
+
+- id: "02"
+  description: "Check header chars"
+  check:  check_chars # remove
+  component: HEADER # remove
+  severity: WARNING
+  dependencies: ["00", "01"]
