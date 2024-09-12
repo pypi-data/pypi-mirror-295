@@ -1,0 +1,10 @@
+source_sendgrid/__init__.py,sha256=je8OjGozjKTkCjbWExIl5_PLFrtgDoBIbQESZ-mVR-4,65
+source_sendgrid/config_migrations.py,sha256=lvRkyig6GugCTFn_-rbMSvrtI8GyRfBw5n9BpGOa6eQ,3635
+source_sendgrid/manifest.yaml,sha256=IerPP1BpOpo74GhO7kNawssR1oW7M6ruKb_33u-BHdU,27268
+source_sendgrid/run.py,sha256=QDfd4El_RG7FcJI9Ub7ypsuRO_Xtc22PDrTjHONZhZY,362
+source_sendgrid/schemas/contacts.json,sha256=INGwHGwLG_WmWVz7_TVNVs9IiJXTm32ES2aa7lMFeSc,1362
+source_sendgrid/source.py,sha256=vh-pRWYzTA7ZvNdhZyASF-gAdFbdCmTSGomu3ThJzbA,294
+airbyte_source_sendgrid-1.1.0.dist-info/METADATA,sha256=bHEgNB2ThquHJxlUhKWnDZ5CdHb2CIJd4Tl3PM9XSvw,5245
+airbyte_source_sendgrid-1.1.0.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+airbyte_source_sendgrid-1.1.0.dist-info/entry_points.txt,sha256=wrkveXOlDEaF6V9p26qf_tNPr---DdUEuQjA74QIKN0,59
+airbyte_source_sendgrid-1.1.0.dist-info/RECORD,,
