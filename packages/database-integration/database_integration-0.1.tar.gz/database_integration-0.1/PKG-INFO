@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: database-integration
+Version: 0.1
+Requires-Dist: greenlet==3.1.0
+Requires-Dist: psycopg2==2.9.9
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: PyYAML==6.0.2
+Requires-Dist: SQLAlchemy==2.0.34
+Requires-Dist: typing_extensions==4.12.2
