@@ -1,0 +1,3 @@
+[console_scripts]
+enjam = enjam.main:app
+
