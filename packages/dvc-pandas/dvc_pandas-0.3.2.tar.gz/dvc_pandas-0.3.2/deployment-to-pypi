@@ -1,0 +1,6 @@
+pip install build
+pip install keyring
+python3 -m build
+keyring set https://test.pypi.org/legacy/ __token__
+python3 -m twine upload --repository testpypi dist/*
+python3 -m twine upload --repository pypi dist/*
