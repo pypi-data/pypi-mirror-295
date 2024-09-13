@@ -1,0 +1,3 @@
+include images/*.png
+include images/*.jpg
+include tests/*.py
