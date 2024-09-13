@@ -1,0 +1,3 @@
+[console_scripts]
+merph = merph.scripts.run_merph:run_merph
+merph-example = merph.scripts.example:run_example

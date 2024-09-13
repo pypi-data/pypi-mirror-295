@@ -1,0 +1,7 @@
+include README.md
+include merph/data/AubryData.csv
+include merph/data/SparksData.csv
+include merph/data/MastinData.csv
+include merph/data/IVESPAData.csv
+include merph/notebooks/merph_example1.ipynb
+include merph/notebooks/merph_example2.ipynb

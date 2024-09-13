@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "merph"
+version = "1.0.0"
+authors = [
+    { name = "Mark J. Woodhouse", email = "mark.woodhouse@bristol.ac.uk" },
+]
+description = "Bayesian methods for inferring mass eruption rate for column height (or vice versa) for volcanic eruptions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+    "pandas>=1.4.1",
+    "scipy>=1.8.0",
+    "click>=4.0",
+]
+
+[project.optional-dependencies]
+nb = ["notebook"]
+
+[project.urls]
+"Homepage" = "https://bitbucket.org/markwoodhouse/merph"
+"Bug Tacker" = "https://bitbucket.org/markwoodhouse/merph/admin/issues"
+
+[project.scripts]
+merph = "merph.scripts.run_merph:run_merph"
+merph-example = "merph.scripts.example:run_example"
+
