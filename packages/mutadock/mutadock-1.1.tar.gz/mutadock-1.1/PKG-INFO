@@ -1,0 +1,95 @@
+Metadata-Version: 2.3
+Name: mutadock
+Version: 1.1
+Summary: #MUTADOCK is a comprehensive library designed for mutation studies and multiple receptor-ligand docking.
+Project-URL: Repository, https://github.com/naisarg14/mutadock
+Project-URL: Issues, https://github.com/naisarg14/mutadock/issues
+Project-URL: Documentation, https://mutadock.readthedocs.io/en/latest/
+Author-email: Naisarg Patel <naisarg.patel14@hotmail.com>
+License: GPL-3.0
+License-File: LICENSE
+Keywords: bioinformatics,biology,docking,mutation,proteins
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Dist: meeko
+Requires-Dist: tqdm
+Requires-Dist: vina
+Description-Content-Type: text/markdown
+
+# MUTADOCK
+
+## Overview
+MUTADOCK is a comprehensive library designed for mutation studies and multiple receptor-ligand docking. It provides tools and methods to analyze and predict the effects of mutations on receptor-ligand interactions, enabling researchers to study protein function and drug binding affinity in a detailed manner.
+
+## Features
+- Mutation Studies: Analyze the impact of various mutations on protein structure and function.
+- Multiple Receptor-Ligand Docking: Perform docking simulations involving multiple receptor and ligand combinations.
+- User-Friendly Interface: Easy-to-use commands and functions for quick analysis and simulations.
+
+## Installation
+To install MUTADOCK, follow these steps:
+
+1. Clone the repository:
+```
+git clone https://github.com/naisarg14/mutadock.git
+```
+
+
+2. Navigate to the project directory:
+```
+cd MUTADOCK
+```
+
+
+3. Install dependencies including Pyrosetta:
+
+- For Linux:
+```
+./install.sh
+```
+
+- For Windows:
+```
+win_install.bat
+```
+
+
+3. Install dependencies without PyRosetta (PyRosetta is required and should be installed seperately):
+```
+pip install -r requirements.txt
+```
+
+
+## Usage
+Here's a brief guide to using MUTADOCK:
+
+1. Common Commands:
+```
+md_mutate --input <input_file> --output <output_file>
+```
+```
+md_dock --input <receptor_txt> --output <ligand_txt> --config <config_file>
+```
+
+
+<!-- 2. For more detailed usage options, see the [documentation](link-to-documentation). -->
+
+
+## License
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or feedback, please contact [naisarg.patel14@hotmail.com](mailto:naisarg.patel14@hotmail.com).
+
+## Acknowledgments
+- Thanks to the contributors and libraries that made this project possible.
