@@ -1,0 +1,3 @@
+[console_scripts]
+mdSlides = mdslides.scripts.mdslides:main
+mdslides = mdslides.scripts.mdslides:main
