@@ -1,0 +1,14 @@
+azure-storage-blob
+pymsteams==0.2.2
+PyYAML==6.0.1
+setuptools==68.2.2
+SQLAlchemy>1.4
+pyodbc>=5.0.0
+msal
+bcpandas==2.6.3
+
+[testing]
+pytest>=7.4.2
+pytest-cov>=4.10
+tox>=4.6
+pytest-mock==3.14.0
