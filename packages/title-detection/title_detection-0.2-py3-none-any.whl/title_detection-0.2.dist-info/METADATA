@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: title-detection
+Version: 0.2
+Summary: Title Detection using NN and XGBoost
+Author: Andrew Clayman
+Requires-Dist: torch
+Requires-Dist: xgboost
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+
