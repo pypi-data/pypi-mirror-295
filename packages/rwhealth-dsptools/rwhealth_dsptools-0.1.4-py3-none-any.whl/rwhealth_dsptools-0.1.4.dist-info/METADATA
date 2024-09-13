@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: rwhealth-dsptools
+Version: 0.1.4
+Summary: A set of commonly used ETL functions
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: azure-storage-blob
+Requires-Dist: pymsteams==0.2.2
+Requires-Dist: PyYAML==6.0.1
+Requires-Dist: setuptools==68.2.2
+Requires-Dist: SQLAlchemy>1.4
+Requires-Dist: pyodbc>=5.0.0
+Requires-Dist: msal
+Requires-Dist: bcpandas==2.6.3
+Provides-Extra: testing
+Requires-Dist: pytest>=7.4.2; extra == "testing"
+Requires-Dist: pytest-cov>=4.10; extra == "testing"
+Requires-Dist: tox>=4.6; extra == "testing"
+Requires-Dist: pytest-mock==3.14.0; extra == "testing"
+
