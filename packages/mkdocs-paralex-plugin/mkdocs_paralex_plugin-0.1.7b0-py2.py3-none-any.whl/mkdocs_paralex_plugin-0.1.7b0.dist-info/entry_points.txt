@@ -1,0 +1,2 @@
+[mkdocs.plugins]
+paralex = mkdocs_paralex_plugin.plugin:ParalexSite
