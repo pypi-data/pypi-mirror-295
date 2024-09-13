@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "krules-fastapi-env"
+version = "0.12.1"
+description = "KKRules environment for fastAPI "
+authors = ["Alberto Degli Esposti <alberto@arispot.tech>", "Lorenzo Campo <lorenzo@airspot.tech>"]
+license = "Apache Licence 2.0"
+readme = "README.md"
+repository = "https://github.com/airspot-dev/krules"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+]
+packages = [
+    { include = "krules_fastapi_env" }
+]
+
+
+[tool.poetry.dependencies]
+python = ">=3.11, <3.12"
+krules-env = "^0.12.0"
+fastapi = "^0.111.0"
+json-logging = "^1.3.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.2.2"
+pytest-runner = "^6.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest-mock = "^3.14.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
