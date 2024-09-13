@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: odoo14-addon-energy-communities-mass-mailing
+Version: 14.0.0.1.6
+Summary: Use mass_mailing on a energy communities setup
+Home-page: https://coopdevs.org
+Author: Som Comunitats
+License: AGPL-3
+Classifier: Programming Language :: Python
+Classifier: Framework :: Odoo
+Classifier: Framework :: Odoo :: 14.0
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Requires-Python: >=3.6
+Requires-Dist: odoo14-addon-energy-communities >=14.0.9.0.0
+Requires-Dist: odoo14-addon-mass-mailing-list-dynamic ==14.0.1.0.1.dev4
+Requires-Dist: odoo14-addon-mass-mailing-partner
+Requires-Dist: odoo <14.1dev,>=14.0a
+
+
+        Use mass_mailing on a energy communities setup
+    
