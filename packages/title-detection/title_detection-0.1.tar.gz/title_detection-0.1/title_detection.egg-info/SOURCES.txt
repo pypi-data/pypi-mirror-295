@@ -1,0 +1,11 @@
+setup.py
+title_detection/__init__.py
+title_detection/deep_nn.py
+title_detection/inference.py
+title_detection/model_loader.py
+title_detection/preprocess.py
+title_detection.egg-info/PKG-INFO
+title_detection.egg-info/SOURCES.txt
+title_detection.egg-info/dependency_links.txt
+title_detection.egg-info/requires.txt
+title_detection.egg-info/top_level.txt
