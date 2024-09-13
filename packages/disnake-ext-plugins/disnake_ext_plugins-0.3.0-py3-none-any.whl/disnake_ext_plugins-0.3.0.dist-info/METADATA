@@ -1,0 +1,91 @@
+Metadata-Version: 2.1
+Name: disnake-ext-plugins
+Version: 0.3.0
+Summary: An extension for disnake providing a robust alternative to cogs.
+Home-page: https://github.com/Chromosomologist/disnake-ext-plugins
+License: MIT
+Keywords: disnake,disnake.ext,discord,cogs
+Author: Chromosomologist
+Author-email: chromosomologist@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Dist: disnake (>=2.8,<3.0)
+Project-URL: Repository, https://github.com/Chromosomologist/disnake-ext-plugins
+Description-Content-Type: text/markdown
+
+disnake-ext-plugins
+===================
+
+An extension for disnake that serves as a robust replacement for cogs.
+No more pointless inheritance, no more singleton classes serving as little more
+than a namespace, and no more unexpected behaviour when you get anywhere near
+the inner workings of your extensions.
+
+Key Features
+------------
+- Smoothly integrates with [disnake](https://github.com/DisnakeDev/disnake),
+- Manage your extensions without inheritance,
+- Minimum boilerplate, maximum control.
+
+Installing
+----------
+**Python 3.8 or higher is required**
+
+To install the extension, run the following command in your command prompt/shell:
+
+``` sh
+# Linux/macOS
+python3 -m pip install -U disnake-ext-plugins
+
+# Windows
+py -3 -m pip install -U disnake-ext-plugins
+```
+
+After installing, disnake-ext-plugins can be imported as
+```py
+import disnake_plugins
+```
+
+Example
+-------
+```py
+import disnake
+import disnake_plugins
+
+
+plugin = disnake_plugins.Plugin()
+
+
+@plugin.slash_command()
+async def my_command(inter: disnake.CommandInteraction):
+    await inter.response.send_message("Woo!")
+
+
+setup, teardown = plugin.create_extension_handlers()
+```
+Further examples can be found in [the examples directory](https://github.com/Chromosomologist/disnake-ext-plugins/tree/master/examples).
+
+Why not disnake.ext.plugins?
+----------------------------
+Registering into the `disnake.ext` namespace brings with it a variety of issues, starting with being unable to properly make editable installs into `.../site-packages/disnake/ext/`. It also leads to inconsistencies with Sphinx autodoc & co., which are simply annoying to work around.
+This extension used to be part of the `disnake.ext` namespace, and there used to be a symlink script to get around the editable install limitation. However, we ultimately decided staying in the `disnake.ext` namespace for its "legacy" wasn't worth the headaches.
+
+Contributing
+------------
+Any contributions are welcome, feel free to open an issue or submit a pull request if you'd like to see something added. Contribution guidelines will come soon.
+

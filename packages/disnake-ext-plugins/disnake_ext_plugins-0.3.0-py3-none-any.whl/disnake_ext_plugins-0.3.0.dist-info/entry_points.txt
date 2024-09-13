@@ -1,0 +1,3 @@
+[console_scripts]
+dev-symlink=scripts.symlink:_main
+
