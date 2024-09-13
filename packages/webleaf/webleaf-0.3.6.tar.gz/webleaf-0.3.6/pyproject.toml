@@ -1,0 +1,42 @@
+[project]
+name = "webleaf"
+
+version = "0.3.6"
+
+description = "HTML DOM Tree Leaf Structure Identification Package"
+
+authors = [{name = "Matthew Thomson", email = "m7homson@gmail.com"}]
+
+dependencies = [
+    "lxml==5.2.2",
+    "cssselect==1.2.0",
+    "torch-geometric==2.5.3",
+    "torch==2.2.2",
+    "sentence-transformers==3.0.1",
+    "nltk==3.8.1",
+    "numpy==1.26.4"
+]
+
+license = {file = "LICENSE"}
+readme = "README.md"
+
+
+keywords = [
+    "dom",
+    "web",
+    "webscraping",
+    "leaf",
+    "beautifulsoup",
+    "html",
+    "tree",
+    "structure",
+    "embedding"
+]
+
+[project.urls]
+homepage = "https://thomsn.github.io/WebLeaf/webleaf.html"
+repository = "https://github.com/thomsn/WebLeaf"
+documentation = "https://thomsn.github.io/WebLeaf/webleaf.html"
+
+[tool.setuptools.packages.find]
+exclude = ["notebooks"]
