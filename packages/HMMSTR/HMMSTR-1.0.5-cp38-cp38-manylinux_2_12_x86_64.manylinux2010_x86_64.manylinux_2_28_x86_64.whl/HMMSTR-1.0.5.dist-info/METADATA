@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: HMMSTR
+Version: 1.0.5
+Summary: "HMMSTR is a bioinformatics software package for calling tandem reapeat copy number from raw, long-read, sequencing reads."
+Home-page: https://github.com/Boyle-Lab/HMMSTR
+Requires-Python: >=3.8.17
+License-File: LICENSE
+Requires-Dist: colorama
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pickleshare
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: seaborn
+Requires-Dist: importlib-resources
+Requires-Dist: mappy
+Requires-Dist: pysam
+
