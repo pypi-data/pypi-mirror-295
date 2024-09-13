@@ -1,0 +1,118 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "valohai-cli"
+dynamic = ["version"]
+description = "Command line client for Valohai"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    { name = "Valohai", email = "hait@valohai.com" },
+]
+dependencies = [
+    "click>=8.0",
+    "gitignorant>=0.2.0",
+    "requests-toolbelt>=0.7.1",
+    "requests>=2.0.0",
+    "valohai-utils>=0.3.0",
+    "valohai-yaml>=0.40.0",
+]
+
+[project.scripts]
+vh = "valohai_cli.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/valohai/valohai-cli"
+
+[tool.hatch.version]
+path = "valohai_cli/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/valohai_cli",
+]
+
+[tool.mypy]
+exclude = ".*test.*"
+
+[[tool.mypy.overrides]]
+module = "valohai.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "requests_toolbelt.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "requests_mock.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+norecursedirs = [".git", ".tox"]
+markers = ["slow: marks tests as slow (deselect with '-m \"not slow\"')"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 110
+preview = true
+
+[tool.ruff.lint]
+ignore = [
+    "E501",
+    "B904",
+    "B905",
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in classmethod
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "RET504", # Unnecessary variable assignment before `return` statement
+    "SIM105", # Use `contextlib.suppress(TypeError)` instead of try-except-pass
+]
+select = [
+    "ARG",
+    "ANN", # annotations
+    "B", # bugbear
+    "C", # complexity & comprehensions
+    "COM812",  # trailing comma
+    "E", # pycodestyle
+    "F", # pyflakes
+    "I", # isort
+    "SIM", # simplify
+    "UP", # pyupgrade
+    "W", # pycodestyle
+    # A bunch of NURSERY-level (as of Ruff 287) stylistic codes we need to explicitly enable
+    "E111",
+    "E112",
+    "E113",
+    "E114",
+    "E115",
+    "E116",
+    "E117",
+    "E201",
+    "E202",
+    "E203",
+    "E211",
+    "E221",
+    "E222",
+    "E223",
+    "E224",
+    "E225",
+    "E226",
+    "E227",
+    "E228",
+    "E231",
+    "E251",
+    "E252",
+    "E261",
+    "E262",
+    "E266",
+    "E271",
+    "E272",
+    "E273",
+    "E274",
+    "E275",
+]
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ARG", "ANN"]
