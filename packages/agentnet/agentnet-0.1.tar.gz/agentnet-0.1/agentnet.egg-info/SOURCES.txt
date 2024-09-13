@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.py
+agentnet/__init__.py
+agentnet/agentnet.py
+agentnet.egg-info/PKG-INFO
+agentnet.egg-info/SOURCES.txt
+agentnet.egg-info/dependency_links.txt
+agentnet.egg-info/top_level.txt
