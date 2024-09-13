@@ -1,0 +1,123 @@
+name: Publish labelmods package for test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release Tag"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      hashes: ${{ steps.hash.outputs.hashes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Install the latest version of rye
+        uses: eifinger/setup-rye@v2
+        with:
+          version: ${{ vars.RYE_VERSION }}
+          enable-cache: true
+      - name: Rye Setup
+        run: |
+          rye config --set-bool behavior.use-uv=true
+      - name: Create build
+        working-directory: src/labelmods
+        run: |
+          rye sync
+          rye build
+      - name: "Generate hashes"
+        id: hash
+        run: |
+          cd dist && echo "hashes=$(sha256sum * | base64 -w0)" >> $GITHUB_OUTPUT
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: ./dist
+  provenance_python:
+    needs: [build]
+    permissions:
+      actions: read
+      contents: write
+      id-token: write # Needed to access the workflow's OIDC identity.
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.hashes }}"
+      upload-assets: true
+      upload-tag-name: ${{ inputs.tag }} # Tag from the initiation of the workflow
+
+  test-build:
+    runs-on: ubuntu-latest
+    needs: ["build"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Install the latest version of rye
+        uses: eifinger/setup-rye@v2
+        with:
+          version: ${{ vars.RYE_VERSION }}
+          enable-cache: true
+      - name: Rye Setup
+        run: |
+          rye config --set-bool behavior.use-uv=true
+      - name: Python setup
+        run: rye pin 3.8
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: ./dist
+
+      - name: Prepare package and environment
+        run: |
+          rye sync -f --update-all
+          rye run toml unset --toml-path pyproject.toml tool.rye.workspace
+          rye sync -f --update-all
+      - name: Testing
+        run: |
+          rye add labelmods --path ./$(find ./dist/ -name *.tar.gz) --sync --absolute
+          cd src/labelmods
+          rm pyproject.toml
+          rye run pytest tests
+
+  publish-python-package-to-release:
+    runs-on: ubuntu-latest
+    needs: ["build"]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: ./artifact
+      - name: Upload dist to release
+        run: |
+          gh release upload ${{ inputs.tag }} ./artifact/*
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  pypi-publish-test:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/labelmods/
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: ./artifact
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: artifact/

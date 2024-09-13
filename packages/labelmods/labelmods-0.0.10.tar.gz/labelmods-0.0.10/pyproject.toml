@@ -1,0 +1,57 @@
+[project]
+name = "labelmods"
+version = "0.0.10"
+description = "Extend Labelbox with additional tools and converters"
+authors = [{ name = "Labelbox", email = "support@labelbox.com" }]
+dependencies = [
+    "labelbox[data] == 3.72.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.urls]
+Homepage = "https://labelbox.com/"
+Repository = "https://github.com/Labelbox/labelmods"
+Changelog = "https://github.com/Labelbox/labelmods/blob/develop/libs/labelbox/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye.workspace]
+members = ["src/*", "examples"]
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "twine>=5.1.0",
+    "pytest>=8.1.1",
+    "pytest-cases>=3.8.4",
+    "pytest-rerunfailures>=14.0",
+    "pytest-snapshot>=0.9.0",
+    "nbconvert>=7.16.2",
+    "nbformat>=5.10.3",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.5.0",
+    "toml-cli>=0.6.0",
+    "yapf>=0.40.2",
+    "mypy>=1.9.0",
+    "types-pillow>=10.2.0.20240311",
+    "types-python-dateutil>=2.9.0.20240316",
+    "types-requests>=2.31.0.20240311",
+    "types-tqdm>=4.66.0.20240106",
+]
+
+
+[tool.rye.scripts]
+unit = "pytest"
+
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/labelmods"]
+
+[project.scripts]
+labelmods = "labelmods.tools.command_line:main"
