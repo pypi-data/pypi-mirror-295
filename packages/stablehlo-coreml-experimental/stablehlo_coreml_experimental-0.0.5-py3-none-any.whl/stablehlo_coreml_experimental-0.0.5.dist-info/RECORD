@@ -1,0 +1,9 @@
+stablehlo_coreml/__init__.py,sha256=1NU5lT9IUvcb-SZVzbghlEkU2oItzNAYd-ShTvc8dLs,197
+stablehlo_coreml/converter.py,sha256=KWV3F6D7oj4_AYBiSCgyjLeYOA1i4m_8o3pIPxjDjg0,39473
+stablehlo_coreml/utils.py,sha256=77MarPn5PF53Qg5mJArFpF4omYUgwHO-bPZJgbzpwLw,8943
+stablehlo_coreml/passes/remove_noop_slice_update.py,sha256=Y5GV-jA9gjFtvx0Fy9jKgZdyVNSgmq5fZSfzG_ACOGk,2849
+stablehlo_coreml/passes/utils.py,sha256=2aU0vtaDJLqXS8zpQytpR3OtriTO8grgyT05aJFyd_I,351
+stablehlo_coreml_experimental-0.0.5.dist-info/METADATA,sha256=lQLNlGz1CLbydUkCXO6RteDy4SWIi9rGndc2-kjXAUk,2779
+stablehlo_coreml_experimental-0.0.5.dist-info/WHEEL,sha256=1yFddiXMmvYK7QYTqtRNtX66WJ0Mz8PYEiEUoOUUxRY,87
+stablehlo_coreml_experimental-0.0.5.dist-info/licenses/LICENSE,sha256=5LylfyAuEzvNYdLo5kybGO0Cb_s7epNLeIsRoog72jY,1071
+stablehlo_coreml_experimental-0.0.5.dist-info/RECORD,,
