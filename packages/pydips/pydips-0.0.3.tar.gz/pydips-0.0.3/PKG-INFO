@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: pydips
+Version: 0.0.3
+Summary: Multi-criteria Cantonese segmentation with dashes, intermediates, pipes, and spaces.
+Author-email: Kevin Xiang Li <kevinli020508@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/AlienKevin/pydips
+Project-URL: Bug Reports, https://github.com/AlienKevin/pydips/issues
+Project-URL: Source, https://github.com/AlienKevin/pydips
+Keywords: cantonese,chinese,natural-language-processing
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: Natural Language :: Cantonese
+Classifier: Natural Language :: Chinese (Traditional)
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: <4,>=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# pydips
+
+Multi-criteria Cantonese segmentation with **d**ashes, **i**ntermediates, **p**ipes, and **s**paces.
+
+Note: This package is still in beta, there might be breaking changes in the future.
+
+## Install
+
+```sh
+pip install pydips
+```
+
+## Usage
+
+```python
+>>> from pydips import BertModel
+>>> model = BertModel()
+
+>>> model.cut('阿張先生嗰時好nice㗎', mode='coarse')
+['阿張先生', '嗰時', '好', 'nice', '㗎']
+
+>>> model.cut('阿張先生嗰時好nice㗎', mode='fine')
+['阿', '張', '先生', '嗰', '時', '好', 'nice', '㗎']
+
+>>> model.cut('阿張先生嗰時好nice㗎', mode='dips_str')
+'阿-張|先生 嗰-時 好 nice 㗎'
+
+>>> model.cut('阿張先生嗰時好nice㗎', mode='dips')
+['S', 'D', 'P', 'I', 'S', 'D', 'S', 'S', 'I', 'I', 'I', 'S']
+```

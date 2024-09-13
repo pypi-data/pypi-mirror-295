@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/pydips/__init__.py
+src/pydips/api.py
+src/pydips/model.py
+src/pydips/utils.py
+src/pydips.egg-info/PKG-INFO
+src/pydips.egg-info/SOURCES.txt
+src/pydips.egg-info/dependency_links.txt
+src/pydips.egg-info/top_level.txt
+src/pydips/binaries/macos/libbert.dylib
+src/pydips/models/electra-small-6-layers-q4_0.gguf
