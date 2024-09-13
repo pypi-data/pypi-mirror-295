@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+data/data_file
+src/nvidia_dlprof_pytorch_nvtx.egg-info/PKG-INFO
+src/nvidia_dlprof_pytorch_nvtx.egg-info/SOURCES.txt
+src/nvidia_dlprof_pytorch_nvtx.egg-info/dependency_links.txt
+src/nvidia_dlprof_pytorch_nvtx.egg-info/entry_points.txt
+src/nvidia_dlprof_pytorch_nvtx.egg-info/requires.txt
+src/nvidia_dlprof_pytorch_nvtx.egg-info/top_level.txt
+tests/test_simple.py
