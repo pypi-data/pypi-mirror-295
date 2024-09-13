@@ -1,0 +1,142 @@
+[project]
+name = "vericlient"
+version = "0.1.6"
+description = "Provides a simple and robust interaction with the Veridas API."
+authors = [
+    { name = "Carlos Larriu", email = "larriucarlos@gmail.com" },
+]
+dependencies = [
+    "pydantic>=2.7.4",
+    "structlog>=24.2.0",
+    "requests>=2.32.3",
+    "dynaconf>=3.2.5",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://clarriu97.github.io/vericlient/"
+Documentation = "https://clarriu97.github.io/vericlient/api_docs/vericlient/"
+Repository = "https://github.com/clarriu97/vericlient"
+Issues = "https://github.com/clarriu97/vericlient/issues"
+Changelog = "https://github.com/clarriu97/vericlient/blob/master/CHANGELOG.md"
+
+[project.optional-dependencies]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.29",
+    "mkdocstrings[python]>=0.25.1",
+]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.5.0",
+    "pytest>=8.2.2",
+    "pytest-cov>=5.0.0",
+    "pytest-html>=4.1.1",
+    "requests-mock>=1.12.1",
+    "build>=1.2.2",
+    "twine>=5.1.1",
+]
+
+[tool.pdm.scripts]
+lint = "ruff check ."
+lint-fix = "ruff check . --fix"
+lint-tests = "ruff check tests"
+lint-tests-fix = "ruff check tests --fix"
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+test = "pytest tests --mock --cov src/vericlient --cov-report term --cov-fail-under 50 --cov-report html:docs/_build/coverage --cov-report xml:docs/_build/coverage/coverage.xml --html=docs/_build/test-reports/index.html --junitxml=docs/_build/test-reports/junit.xml -o junit_suite_name=test"
+test-eu-sandbox = "pytest tests --env EU_SANDBOX --cov src/vericlient --cov-report term --cov-fail-under 50 --cov-report html:docs/_build/coverage --cov-report xml:docs/_build/coverage/coverage.xml --html=docs/_build/test-reports/index.html --junitxml=docs/_build/test-reports/junit.xml -o junit_suite_name=test"
+test-us-sandbox = "pytest tests --env US_SANDBOX --cov src/vericlient --cov-report term --cov-fail-under 50 --cov-report html:docs/_build/coverage --cov-report xml:docs/_build/coverage/coverage.xml --html=docs/_build/test-reports/index.html --junitxml=docs/_build/test-reports/junit.xml -o junit_suite_name=test"
+test-eu-production = "pytest tests --env EU_PRODUCTION --cov src/vericlient --cov-report term --cov-fail-under 50 --cov-report html:docs/_build/coverage --cov-report xml:docs/_build/coverage/coverage.xml --html=docs/_build/test-reports/index.html --junitxml=docs/_build/test-reports/junit.xml -o junit_suite_name=test"
+test-us-production = "pytest tests --env US_PRODUCTION --cov src/vericlient --cov-report term --cov-fail-under 50 --cov-report html:docs/_build/coverage --cov-report xml:docs/_build/coverage/coverage.xml --html=docs/_build/test-reports/index.html --junitxml=docs/_build/test-reports/junit.xml -o junit_suite_name=test"
+build = "python -m build"
+publish = "twine upload dist/*"
+
+[tool.ruff]
+line-length = 130
+indent-width = 4
+target-version = "py310"
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "tests",
+    "scripts",
+]
+
+[tool.ruff.lint]
+fixable = [
+    "ALL",
+]
+select = [
+    "ALL",
+]
+ignore = [
+    "D107",
+    "D106",
+    "PTH123",
+    "PLR0913",
+    "PTH118",
+    "PTH120",
+    "D203",
+    "D213",
+    "UP038",
+    "D406",
+    "D407",
+]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = [
+    "S101",
+    "ANN001",
+    "D103",
+    "ANN201",
+    "D100",
+    "D104",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
