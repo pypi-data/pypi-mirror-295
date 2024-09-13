@@ -1,0 +1,12 @@
+{% extends "statusboard/base.html" %}
+
+{% load statusboard %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Create a new service group" %}</h1>
+    {% include "statusboard/servicegroup/form.html" %}
+</div>
+{% endblock %}
+
