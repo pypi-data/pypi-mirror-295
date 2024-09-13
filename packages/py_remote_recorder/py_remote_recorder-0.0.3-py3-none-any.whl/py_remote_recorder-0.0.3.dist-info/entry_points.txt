@@ -1,0 +1,3 @@
+[console_scripts]
+pyrecorder=py_remote_recorder.__main__:main
+
