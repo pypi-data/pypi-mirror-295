@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: user_vpetrov
+Version: 0.2.4
+Requires-Dist: fastapi
+Requires-Dist: pydantic
+Requires-Dist: sqlalchemy
+Requires-Dist: alembic
+Requires-Dist: email-validator
+Requires-Dist: python-dateutil
+Requires-Dist: passlib
+Requires-Dist: rut-chile
+
