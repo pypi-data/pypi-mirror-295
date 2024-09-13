@@ -1,0 +1,15 @@
+copernicusapi/__init__.py,sha256=ZdT2ZCfjFxATGbnG8hAZBXpcvqiKDUzLErtEaAb1ynE,97
+copernicusapi/src/__init__.py,sha256=cnGTIfSLghhFfr35wvo1EWzNPYz790u4VwAyEiVmmt4,93
+copernicusapi/src/_constants.py,sha256=XaY8H7A8R6rQ-gv8DCPgvC6BflhnoBMYGRPCf_bE7Dg,2317
+copernicusapi/src/query.py,sha256=f1MgYJiIr-URzbAanEai0B6_7pLK4enwRk3j8Lq6TR0,11640
+copernicusapi/src/query_constructor.py,sha256=ustT6d2jzY_PTYUhPlDgYA2nVuJW3sD_hGbKr-qJNIo,33497
+copernicusapi/src/response.py,sha256=FA7RUoEGCH7VBvw6yq0rLmVigi_18Lp39FpYVXXMuVA,4040
+copernicusapi/src/vector.py,sha256=F9G_-astKthZah_ouMlBRq1XF8jPljd9fvXKbvuViQ4,1197
+copernicusapi/tests/__init__.py,sha256=TLhDqu6wWZu_AxJxIvtefYqyaiS7F_7WklGsEwPb9rI,46
+copernicusapi/tests/query_constructor_test.py,sha256=o8RFb4puWSxwbMO-SvOIwUIxKTpjq67KtqX-ZZ9yZRI,9838
+copernicusapi/tests/query_test.py,sha256=m_Hy5pYAfu0MoBVO2F2qQ6lj_x54T6WYRUO93Lcs5Eg,6624
+copernicusapi-0.1.0.dist-info/LICENSE,sha256=HrhfyXIkWY2tGFK11kg7vPCqhgh5DcxleloqdhrpyMY,11558
+copernicusapi-0.1.0.dist-info/METADATA,sha256=EhmnSthnntfPxGB7i9U9EzlNdXI3yKLnavjTnny5g2E,33074
+copernicusapi-0.1.0.dist-info/WHEEL,sha256=Mdi9PDNwEZptOjTlUcAth7XJDFtKrHYaQMPulZeBCiQ,91
+copernicusapi-0.1.0.dist-info/top_level.txt,sha256=7HL5WfNf2UD-WtyTWDnKvZBHn-p2zueOvMZqsTCK85c,14
+copernicusapi-0.1.0.dist-info/RECORD,,
