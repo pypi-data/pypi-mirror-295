@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: py5canvas
+Version: 0.3
+Summary: Library to create drawings and animations with an interface similar to p5js and Processing.
+Author: Daniel Berio
+Author-email: drand48@gmail.com
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+License-File: LICENSE
