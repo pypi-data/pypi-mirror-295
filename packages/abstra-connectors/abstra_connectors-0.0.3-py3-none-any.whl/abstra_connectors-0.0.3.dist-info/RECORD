@@ -1,0 +1,15 @@
+connectors/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+connectors/airtable/__init__.py,sha256=O7u1N1MM97e815ai5kpMXSS_1el5k1BIqaBZ0GBewK8,400
+connectors/airtable/methods.py,sha256=rrvX21JTgm-Pb2HJ3ZBmyNffVtpdUjvjHgdrd9UIelM,5623
+connectors/airtable/methods_test.py,sha256=nTqmD0ADMwtnubeMPoNUHZxF4PJvxQlQitZ8Sq1C8h8,11670
+connectors/google_sheets/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+connectors/google_sheets/entities.py,sha256=10aGbh5KPHP-sgf3vofb3aH-WlNjzje5j5SdeUgO6Cw,18152
+connectors/monday/__init__.py,sha256=tBKp6qRc2kNfSodx-cdTNr1YbVC-eLF5LdF6qVTwAkA,420
+connectors/monday/monday.py,sha256=16QI0YkggEcdvG9SdNrPvv1T6fnPxbqf9cIbYpEIoIg,9139
+connectors/monday/monday_test.py,sha256=f4jvHHNsa0vcQHVSdofOiPfR_3HO9aS8S2_ZUejUkac,4490
+connectors/slack/__init__.py,sha256=3YUMw9bk6UY6D6uqTL6ToyoKDHpt7yixsZdVeIrTnB8,62
+connectors/slack/methods.py,sha256=ube_tTbg9pesFcmvb-2Y0r24FLpjwnF8zLUxP4NMW9c,1937
+abstra_connectors-0.0.3.dist-info/METADATA,sha256=gLVtTz4dHizJ-ww8Eef82o7PvAxWxhPZphC_tZhd-2o,1051
+abstra_connectors-0.0.3.dist-info/WHEEL,sha256=eOLhNAGa2EW3wWl_TU484h7q1UNgy0JXjjoqKoxAAQc,92
+abstra_connectors-0.0.3.dist-info/top_level.txt,sha256=y740K5kGIxBfMcSX3r294vKto757IGXdTj3yeN1xElE,11
+abstra_connectors-0.0.3.dist-info/RECORD,,
