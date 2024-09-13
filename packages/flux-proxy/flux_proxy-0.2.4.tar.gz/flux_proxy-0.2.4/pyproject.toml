@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "flux-proxy"
+version = "0.2.4"
+description = "A proxy to connect to Flux Configure Frontend"
+authors = ["David White <david@runonflux.io>"]
+license = "AGPL"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiohttp = "^3.10.5"
+dnspython = "^2.6.1"
+aiofiles = "^24.1.0"
+pycryptodomex = "^3.20.0"
+pymongo = "^4.8.0"
+python-bitcoinlib = "^0.12.2"
+rich = "^13.7.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
