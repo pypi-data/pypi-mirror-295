@@ -1,0 +1,214 @@
+23:23:10:837 | Run 0 | log.py | Line 95 | DEBUG | Debug message.
+23:23:10:838 | Run 0 | log.py | Line 95 | INFO | Info message.
+23:23:10:838 | Run 0 | log.py | Line 95 | SUCCESS | Success message.
+23:23:10:838 | Run 0 | log.py | Line 95 | WARNING | Warning message.
+23:23:10:838 | Run 0 | log.py | Line 95 | ERROR | Error message.
+23:23:10:839 | Run 0 | log.py | Line 95 | CRITICAL | Critical message.
+01:38:46.621 | Run 6 | __log.py | Line 88 | DEBUG | Debug message.
+01:38:46.622 | Run 6 | __log.py | Line 88 | INFO | Info message.
+01:38:46.622 | Run 6 | __log.py | Line 88 | SUCCESS | Success message.
+01:38:46.622 | Run 6 | __log.py | Line 88 | WARNING | Warning message.
+01:38:46.623 | Run 6 | __log.py | Line 88 | ERROR | Error message.
+01:38:46.623 | Run 6 | __log.py | Line 88 | CRITICAL | Critical message.
+01:39:17.719 | Run 6 | __log.py | Line 88 | DEBUG | Debug message.
+01:39:17.720 | Run 6 | __log.py | Line 88 | INFO | Info message.
+01:39:17.720 | Run 6 | __log.py | Line 88 | SUCCESS | Success message.
+01:39:17.720 | Run 6 | __log.py | Line 88 | WARNING | Warning message.
+01:39:17.720 | Run 6 | __log.py | Line 88 | ERROR | Error message.
+01:39:17.720 | Run 6 | __log.py | Line 88 | CRITICAL | Critical message.
+01:39:51.517 | Run 6 | __log.py | Line 88 | DEBUG | Debug message.
+01:39:51.518 | Run 6 | __log.py | Line 88 | INFO | Info message.
+01:39:51.518 | Run 6 | __log.py | Line 88 | SUCCESS | Success message.
+01:39:51.518 | Run 6 | __log.py | Line 88 | WARNING | Warning message.
+01:39:51.518 | Run 6 | __log.py | Line 88 | ERROR | Error message.
+01:39:51.518 | Run 6 | __log.py | Line 88 | CRITICAL | Critical message.
+01:40:42.013 | Run 6 | __log.py | Line 88 | DEBUG | Debug message.
+01:40:42.013 | Run 6 | __log.py | Line 88 | INFO | Info message.
+01:40:42.014 | Run 6 | __log.py | Line 88 | SUCCESS | Success message.
+01:40:42.014 | Run 6 | __log.py | Line 88 | WARNING | Warning message.
+01:40:42.014 | Run 6 | __log.py | Line 88 | ERROR | Error message.
+01:40:42.014 | Run 6 | __log.py | Line 88 | CRITICAL | Critical message.
+09:07:24.915 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:07:24.915 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:07:24.915 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:07:24.916 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:07:24.916 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:07:24.916 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:08:41.880 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:08:41.880 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:08:41.881 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:08:41.881 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:08:41.881 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:08:41.881 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:09:38.586 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:09:38.587 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:09:38.587 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:09:38.587 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:09:38.588 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:09:38.588 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:10:18.037 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:10:18.037 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:10:18.037 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:10:18.037 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:10:18.037 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:10:18.045 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:11:05.317 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:11:05.317 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:11:05.324 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:11:05.325 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:11:05.325 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:11:05.325 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:13:00.696 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:13:00.696 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:13:00.707 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:13:00.707 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:13:00.707 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:13:00.707 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:13:28.506 | Run 6 | log.py | Line 126 | DEBUG | Debug message.
+09:13:28.506 | Run 6 | log.py | Line 126 | INFO | Info message.
+09:13:28.507 | Run 6 | log.py | Line 126 | SUCCESS | Success message.
+09:13:28.507 | Run 6 | log.py | Line 126 | WARNING | Warning message.
+09:13:28.507 | Run 6 | log.py | Line 126 | ERROR | Error message.
+09:13:28.520 | Run 6 | log.py | Line 126 | CRITICAL | Critical message.
+09:19:30.944 | Run 6 | log.py | Line 313 | DEBUG | Debug message.
+09:19:30.944 | Run 6 | log.py | Line 314 | INFO | Info message.
+09:19:30.955 | Run 6 | log.py | Line 315 | SUCCESS | Success message.
+09:19:30.955 | Run 6 | log.py | Line 316 | WARNING | Warning message.
+09:19:30.955 | Run 6 | log.py | Line 317 | ERROR | Error message.
+09:19:30.956 | Run 6 | log.py | Line 318 | CRITICAL | Critical message.
+09:34:44.842 | Run 6 | log.py | Line 329 | DEBUG | Debug message.
+09:34:44.842 | Run 6 | log.py | Line 330 | INFO | Info message.
+09:34:44.853 | Run 6 | log.py | Line 331 | SUCCESS | Success message.
+09:34:44.854 | Run 6 | log.py | Line 332 | WARNING | Warning message.
+09:34:44.854 | Run 6 | log.py | Line 333 | ERROR | Error message.
+09:34:44.854 | Run 6 | log.py | Line 334 | CRITICAL | Critical message.
+09:34:59.723 | Run 6 | log.py | Line 329 | DEBUG | Debug message.
+09:34:59.723 | Run 6 | log.py | Line 330 | INFO | Info message.
+09:34:59.723 | Run 6 | log.py | Line 331 | SUCCESS | Success message.
+09:34:59.723 | Run 6 | log.py | Line 332 | WARNING | Warning message.
+09:34:59.724 | Run 6 | log.py | Line 333 | ERROR | Error message.
+09:34:59.735 | Run 6 | log.py | Line 334 | CRITICAL | Critical message.
+09:39:10.657 | Run 6 | log.py | Line 332 | DEBUG | Debug message.
+09:39:10.658 | Run 6 | log.py | Line 333 | INFO | Info message.
+09:39:10.658 | Run 6 | log.py | Line 334 | SUCCESS | Success message.
+09:39:10.658 | Run 6 | log.py | Line 335 | WARNING | Warning message.
+09:39:10.658 | Run 6 | log.py | Line 336 | ERROR | Error message.
+09:39:10.659 | Run 6 | log.py | Line 337 | CRITICAL | Critical message.
+09:41:39.684 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:41:39.684 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:41:39.684 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:41:39.684 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:41:39.684 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:41:39.685 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:43:25.928 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:43:25.928 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:43:25.929 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:43:25.929 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:43:25.929 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:43:25.929 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:43:25.929 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:44:19.870 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:44:19.872 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:44:19.872 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:44:19.872 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:44:19.873 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:44:19.873 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:44:19.873 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:44:34.916 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:44:34.917 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:44:34.917 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:44:34.917 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:44:34.917 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:44:34.918 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:44:34.918 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:44:47.244 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:44:47.245 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:44:47.245 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:44:47.246 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:44:47.246 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:44:47.246 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:44:47.246 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:44:57.956 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:44:57.957 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:44:57.957 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:44:57.965 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:44:57.965 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:44:57.966 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:44:57.966 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:45:11.122 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:45:11.134 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:45:11.134 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:45:11.134 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:45:11.135 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:45:11.135 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:45:11.135 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:45:28.917 | Run 6 |    log.py    | Line 331 | TRACE | Trace message.
+09:45:28.920 | Run 6 |    log.py    | Line 332 | DEBUG | Debug message.
+09:45:28.920 | Run 6 |    log.py    | Line 333 | INFO | Info message.
+09:45:28.921 | Run 6 |    log.py    | Line 334 | SUCCESS | Success message.
+09:45:28.921 | Run 6 |    log.py    | Line 335 | WARNING | Warning message.
+09:45:28.931 | Run 6 |    log.py    | Line 336 | ERROR | Error message.
+09:45:28.932 | Run 6 |    log.py    | Line 337 | CRITICAL | Critical message.
+09:58:21.280 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 355 | TRACE | Trace message.
+09:58:21.281 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 356 | DEBUG | Debug message.
+09:58:21.281 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 357 | INFO | Info message.
+09:58:21.281 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 358 | SUCCESS | Success message.
+09:58:21.281 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 359 | WARNING | Warning message.
+09:58:21.281 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 360 | ERROR | Error message.
+09:58:21.282 | Run <ludden_logging.run.Run object at 0x103a723c0> |    log.py    | Line 361 | CRITICAL | Critical message.
+09:58:57.573 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 355 | TRACE | Trace message.
+09:58:57.574 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 356 | DEBUG | Debug message.
+09:58:57.574 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 357 | INFO | Info message.
+09:58:57.574 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 358 | SUCCESS | Success message.
+09:58:57.574 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 359 | WARNING | Warning message.
+09:58:57.575 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 360 | ERROR | Error message.
+09:58:57.575 | Run <ludden_logging.run.Run object at 0x10597a3c0> |    log.py    | Line 361 | CRITICAL | Critical message.
+09:59:03.249 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 355 | TRACE | Trace message.
+09:59:03.250 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 356 | DEBUG | Debug message.
+09:59:03.250 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 357 | INFO | Info message.
+09:59:03.250 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 358 | SUCCESS | Success message.
+09:59:03.250 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 359 | WARNING | Warning message.
+09:59:03.250 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 360 | ERROR | Error message.
+09:59:03.251 | Run <ludden_logging.run.Run object at 0x104e76600> |    log.py    | Line 361 | CRITICAL | Critical message.
+10:06:58.107 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 355 | TRACE | Trace message.
+10:06:58.107 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 356 | DEBUG | Debug message.
+10:06:58.107 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 357 | INFO | Info message.
+10:06:58.108 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 358 | SUCCESS | Success message.
+10:06:58.108 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 359 | WARNING | Warning message.
+10:06:58.108 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 360 | ERROR | Error message.
+10:06:58.108 | Run <ludden_logging.run.Run object at 0x1052709e0> |    log.py    | Line 361 | CRITICAL | Critical message.
+10:07:04.364 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 355 | TRACE | Trace message.
+10:07:04.365 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 356 | DEBUG | Debug message.
+10:07:04.365 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 357 | INFO | Info message.
+10:07:04.365 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 358 | SUCCESS | Success message.
+10:07:04.365 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 359 | WARNING | Warning message.
+10:07:04.365 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 360 | ERROR | Error message.
+10:07:04.366 | Run <ludden_logging.run.Run object at 0x10393a8d0> |    log.py    | Line 361 | CRITICAL | Critical message.
+11:10:48.662 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 355 | TRACE | Trace message.
+11:10:48.663 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 356 | DEBUG | Debug message.
+11:10:48.663 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 357 | INFO | Info message.
+11:10:48.664 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 358 | SUCCESS | Success message.
+11:10:48.664 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 359 | WARNING | Warning message.
+11:10:48.664 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 360 | ERROR | Error message.
+11:10:48.664 | Run <ludden_logging.run.Run object at 0x1073766f0> |    log.py    | Line 361 | CRITICAL | Critical message.
+11:10:56.932 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 355 | TRACE | Trace message.
+11:10:56.933 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 356 | DEBUG | Debug message.
+11:10:56.933 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 357 | INFO | Info message.
+11:10:56.933 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 358 | SUCCESS | Success message.
+11:10:56.933 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 359 | WARNING | Warning message.
+11:10:56.934 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 360 | ERROR | Error message.
+11:10:56.934 | Run <ludden_logging.run.Run object at 0x107802030> |    log.py    | Line 361 | CRITICAL | Critical message.
+11:16:37.211 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 355 | TRACE | Trace message.
+11:16:37.211 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 356 | DEBUG | Debug message.
+11:16:37.212 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 357 | INFO | Info message.
+11:16:37.212 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 358 | SUCCESS | Success message.
+11:16:37.212 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 359 | WARNING | Warning message.
+11:16:37.212 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 360 | ERROR | Error message.
+11:16:37.212 | Run <ludden_logging.run.Run object at 0x107f89e50> |    log.py    | Line 361 | CRITICAL | Critical message.
+12:53:47.197 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 354 | TRACE | Trace message.
+12:53:47.198 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 355 | DEBUG | Debug message.
+12:53:47.198 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 356 | INFO | Info message.
+12:53:47.199 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 357 | SUCCESS | Success message.
+12:53:47.199 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 358 | WARNING | Warning message.
+12:53:47.199 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 359 | ERROR | Error message.
+12:53:47.199 | Run <ludden_logging.run.Run object at 0x101a2e7e0> |    log.py    | Line 360 | CRITICAL | Critical message.

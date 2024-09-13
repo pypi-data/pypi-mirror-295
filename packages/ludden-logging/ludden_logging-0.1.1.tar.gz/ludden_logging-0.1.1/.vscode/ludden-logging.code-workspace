@@ -1,0 +1,84 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "gitlens": {
+      "ai.experimental.openai.url": "",
+      "views.repositories.branches.layout": "list",
+      "rebaseEditor.ordering": "asc",
+      "graph": {
+        "minimap.enabled": false,
+        "minimap.additionalTypes": [
+          "localBranches",
+          "stashes",
+          "remoteBranches",
+          "tags"
+        ]
+      }
+    },
+    "remote": {
+      "SSH": {
+        "remotePlatform": {
+          "branch.tn24wx.maxludden.MaxGradient.draft---patient-microservice.csb": "linux",
+          "branch.h77627.maxludden.MaxGradient.main.csb": "linux"
+        },
+        "configFile": "C:\\Users\\MaxLudden\\.ssh\\config",
+        "defaultExtensions": ["One Dark Drop"]
+      },
+      "tunnels": {
+        "access.preventSleep": true,
+        "alwaysUpdateCLI": true
+      }
+    },
+    "sqltools": {
+      "useNodeRuntime": true,
+      "disableNodeDetectNotifications": true,
+      "connections": [
+        {
+          "name": "supergene",
+          "driver": "sqlite",
+          "server": "localhost",
+          "database": "/Users/maxludden/dev/py/supergene/db/supergene.db",
+          "username": "",
+          "password": "",
+          "port": 0,
+          "multipleStatements": true,
+          "ssl": false,
+          "isGlobal": true
+        }
+      ]
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "markdown": {
+      "styles": ["static/styles/ludden.css"],
+      "preview.breaks": true,
+      "updateLinksOnFileMove.include": [
+        "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}"
+      ],
+      "preview.fontFamily": "Urbanist, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif"
+    },
+    "explorer": {
+      "confirmDelete": false,
+      "confirmDragAndDrop": false,
+      "compactFolders": false,
+      "fileNesting.enabled": true,
+      "incrementalNaming": "smart"
+    },
+    "jupyter": {
+      "interactiveWindow.creationMode": "perFile",
+      "askForKernelRestart": false,
+      "pythonExportMethod": "commentMagics",
+      "defaultFormatter": "charliermarsh.ruff",
+      "gather.gatherToScript": true
+    },
+    "notebook": {
+      "output.wordWrap": true,
+      "output.scrolling": true
+    },
+    "1password.debug.enabled": true
+  }
+}
