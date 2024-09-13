@@ -1,0 +1,30 @@
+Metadata-Version: 2.3
+Name: sqliter-py
+Version: 0.1.0
+Summary: Interact with SQLite databases using Python and Pydantic
+Project-URL: Pull Requests, https://github.com/seapagan/sqliter-py/pulls
+Project-URL: Bug Tracker, https://github.com/seapagan/sqliter-py/issues
+Project-URL: Repository, https://github.com/seapagan/sqliter-py
+Author-email: Grant Ramsay <grant@gnramsay.com>
+License-Expression: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.9
+Requires-Dist: pydantic>=2.9.0
+Description-Content-Type: text/markdown
+
+# SQLiter
+
+An SQLite wrapper in Python using Pydantic and written primarily using ChatGPT,
+as an experiment in how viable it is to write working code using a LLM.
+
+The code was then cleaned up, typed and linted by hand.
