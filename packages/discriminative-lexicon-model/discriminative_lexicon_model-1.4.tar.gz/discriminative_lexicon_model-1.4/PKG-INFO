@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: discriminative_lexicon_model
+Version: 1.4
+Summary: Discriminative Lexicon Model in Python
+Home-page: https://github.com/msaito8623/discriminative_lexicon_model
+Author: Motoki Saito
+Author-email: motoki.saito@uni-tuebingen.de
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: xarray
+Requires-Dist: scipy
+Requires-Dist: fasttext
+Requires-Dist: tqdm
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx_rtd_theme; extra == "docs"
+
+=====================================================================
+discriminative_lexicon_model - Discriminative Lexicon Model in Python
+=====================================================================
+
+*discriminative_lexicon_model* provides several functions to perform mappings and accuracy calculations in the framework of Discriminative Lexicon Model (Baayen et al., 2019).
+
+
+Installation
+============
+
+*discriminative_lexicon_model* is available on PyPI.
+
+.. code:: bash
+
+    pip install --user discriminative_learning_model
+
+
+
+Documentation
+=============
+
+*discriminative_lexicon_model* uses ``sphinx`` to create a documentation manual. The documentation is hosted on `Read the Docs <http://discriminative_lexicon_model.readthedocs.io/en/latest/>`_.
+
+
+Authors and Contributers
+========================
+
+*discriminative_lexicon_model* is being developed and maintained by `Motoki Saito <https://github.com/msaito8623>`_.
+

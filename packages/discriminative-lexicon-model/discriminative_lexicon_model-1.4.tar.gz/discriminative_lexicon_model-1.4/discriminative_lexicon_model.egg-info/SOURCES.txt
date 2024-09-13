@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+requirements.txt
+setup.cfg
+setup.py
+discriminative_lexicon_model/__init__.py
+discriminative_lexicon_model/ldl.py
+discriminative_lexicon_model/mapping.py
+discriminative_lexicon_model/measures.py
+discriminative_lexicon_model/performance.py
