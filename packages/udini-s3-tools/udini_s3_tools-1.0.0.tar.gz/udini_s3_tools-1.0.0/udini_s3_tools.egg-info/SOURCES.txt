@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+udini_s3_tools/__init__.py
+udini_s3_tools/tools_module.py
+udini_s3_tools.egg-info/PKG-INFO
+udini_s3_tools.egg-info/SOURCES.txt
+udini_s3_tools.egg-info/dependency_links.txt
+udini_s3_tools.egg-info/requires.txt
+udini_s3_tools.egg-info/top_level.txt
