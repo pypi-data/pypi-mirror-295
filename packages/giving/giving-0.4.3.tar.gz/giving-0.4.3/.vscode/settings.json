@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/Users/breuleuo/miniconda3/envs/give/bin/python",
+    "restructuredtext.confPath": "${workspaceFolder}/docs",
+    "esbonio.server.enabled": true,
+    "esbonio.sphinx.confDir": "${workspaceFolder}/docs"
+}
