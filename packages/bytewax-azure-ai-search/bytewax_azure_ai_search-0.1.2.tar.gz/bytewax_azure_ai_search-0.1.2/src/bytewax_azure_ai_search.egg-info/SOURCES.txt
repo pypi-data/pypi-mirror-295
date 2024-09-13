@@ -1,0 +1,11 @@
+LICENSE.md
+README.md
+pyproject.toml
+src/bytewax/bytewax_azure_ai_search/__init__.py
+src/bytewax/bytewax_azure_ai_search/operators.py
+src/bytewax/bytewax_azure_ai_search/py.typed
+src/bytewax_azure_ai_search.egg-info/PKG-INFO
+src/bytewax_azure_ai_search.egg-info/SOURCES.txt
+src/bytewax_azure_ai_search.egg-info/dependency_links.txt
+src/bytewax_azure_ai_search.egg-info/requires.txt
+src/bytewax_azure_ai_search.egg-info/top_level.txt
