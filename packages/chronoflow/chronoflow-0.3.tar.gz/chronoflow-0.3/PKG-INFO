@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: chronoflow
+Version: 0.3
+Provides-Extra: datetime
+Requires-Dist: pytz; extra == "datetime"
+Requires-Dist: datetime; extra == "datetime"
+Requires-Dist: tzlocal; extra == "datetime"
+Provides-Extra: ginter
+Requires-Dist: gspread; extra == "ginter"
+Requires-Dist: oauth2client; extra == "ginter"
+Requires-Dist: google-api-python-client; extra == "ginter"

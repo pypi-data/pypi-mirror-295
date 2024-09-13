@@ -1,0 +1,10 @@
+
+[datetime]
+pytz
+datetime
+tzlocal
+
+[ginter]
+gspread
+oauth2client
+google-api-python-client
