@@ -1,0 +1,20 @@
+{
+  "_vue-abd19ffb.js": {
+    "file": "djing/js/vue-abd19ffb.js"
+  },
+  "main.css": {
+    "file": "djing/css/main-ed10de37.css",
+    "src": "main.css"
+  },
+  "main.jsx": {
+    "css": [
+      "djing/css/main-ed10de37.css"
+    ],
+    "file": "djing/js/main-09468d73.js",
+    "imports": [
+      "_vue-abd19ffb.js"
+    ],
+    "isEntry": true,
+    "src": "main.jsx"
+  }
+}
