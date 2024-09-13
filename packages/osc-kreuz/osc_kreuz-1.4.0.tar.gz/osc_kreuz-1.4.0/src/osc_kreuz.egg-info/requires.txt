@@ -1,0 +1,8 @@
+numpy
+oscpy
+click
+pyYAML
+
+[tests]
+pytest
+pyfar
