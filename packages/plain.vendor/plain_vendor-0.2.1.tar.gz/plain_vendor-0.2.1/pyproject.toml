@@ -1,0 +1,31 @@
+[tool.poetry]
+
+name = "plain.vendor"
+packages = [
+    { include = "plain" },
+]
+
+version = "0.2.1"
+description = "Vendor JS/CSS assets in Plain."
+authors = ["Dave Gaeddert <dave.gaeddert@dropseed.dev>"]
+license = "BSD-3-Clause"
+# readme = "README.md"
+
+# Make the CLI available without adding to INSTALLED_APPS
+[tool.poetry.plugins."plain.cli"]
+"vendor" = "plain.vendor:cli"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+plain = "<1.0.0"
+tomlkit = "^0.12.1"
+requests = "*"
+
+[tool.poetry.group.dev.dependencies]
+plain = { path = "../plain", develop = true }
+pytest = "^7.1.2"
+ipdb = "^0.13.9"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
