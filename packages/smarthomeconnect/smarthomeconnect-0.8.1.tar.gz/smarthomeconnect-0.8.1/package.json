@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "@jaames/iro": "^5.5.1",
+    "chart.js": "^4.4.1",
+    "fomantic-ui-css": "^2.9"
+  },
+  "scripts": {
+    "build": "parcel build web_ui_src/main.js --dist-dir shc/web/static/pack --public-url ./"
+  }
+}

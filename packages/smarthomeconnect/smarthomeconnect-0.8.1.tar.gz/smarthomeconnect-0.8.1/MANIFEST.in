@@ -1,0 +1,7 @@
+include NOTICE LICENSE README.md pyproject.toml py.typed package.json
+exclude .coveragerc
+graft shc/web/templates
+graft shc/web/static
+prune shc/web/static/pack
+graft web_ui_src
+graft patches
