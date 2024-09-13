@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: twinstop
+Version: 0.1.13
+Summary: twinstop identifies selenoproteins in close related transcriptomes
+Home-page: https://github.com/marco-mariotti/twinstop
+Author: Marco Mariotti and Sergio Sanchez Moragues
+Author-email: marco.mariotti@ub.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: biopython>=1.78
+Requires-Dist: easybioinfo>=0.3.1
+Requires-Dist: easyterm>=1.0.0
+Requires-Dist: file-chunk-iterators>=0.0.1
+Requires-Dist: pyranges1>=1.0.0
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: pyfaidx>=0.7.2
+Requires-Dist: multiprocess>=0.70.14
+Requires-Dist: numpy>=2.0.0
+Requires-Dist: scikit-learn>=1.3.0
+
+# twinstop
+Twinstop identifies selenoproteins in close related transcriptomes
+
+# Installation
+In a new conda environment, run::
+
+   conda install -c conda-forge -c bioconda -c mmariotti    twinstop
+
+## Installation troubleshooting
+If solving takes forever, we recommend switching to mamba instead.
+That is, uninstall conda; install mamba; create a new environment; then run the command::
+
+   mamba install -c conda-forge -c bioconda -c mmariotti    twinstop
+
+
+As of this writing, the command above correctly installs twinstop in a linux64 system.
+In case it fails of any unresolved conflicts, try to download the file requirements.txt,
+and run this to create a copy of a verified conda environment::
+
+  conda create --name twinstop --file requirements.txt
+
+Then activate the new env twinstop, then run the install command above.
+
+# Usage
+To see usage, run::
+
+  twinstop -h
+
+
+# Authors
+Sergio Sanchez Moragues and Marco Mariotti
