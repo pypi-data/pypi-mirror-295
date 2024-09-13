@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: odoo14-addon-energy-communities-cooperator
+Version: 14.0.1.2.2
+Summary: Energy communities cooperative membership management
+Home-page: https://coopdevs.org
+Author: Som Comunitats SCCL
+License: AGPL-3
+Classifier: Programming Language :: Python
+Classifier: Framework :: Odoo
+Classifier: Framework :: Odoo :: 14.0
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Requires-Python: >=3.6
+
+
+        Energy communities cooperative membership management
+    
