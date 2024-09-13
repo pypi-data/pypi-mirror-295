@@ -1,0 +1,61 @@
+Metadata-Version: 2.3
+Name: edwh-bonnes-plugin
+Version: 0.5.1
+Summary: The greatest project to be created from the edwh package.
+Project-URL: Documentation, https://github.com/educationwarehouse/edwh-bonnes-tasks-plugin#readme
+Project-URL: Issues, https://github.com/educationwarehouse/edwh-bonnes-tasks-plugin/issues
+Project-URL: Source, https://github.com/educationwarehouse/edwh-bonnes-tasks-plugin
+Author-email: Remco Boerma <remco.b@educationwarehouse.nl>, Robin van der Noord <robin.vdn@educationwarehouse.nl>, Bonne Lueks <bonne.l@educationwarehouse.nl>
+License-Expression: MIT
+License-File: LICENSE.txt
+Keywords: edwh
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.10
+Requires-Dist: edwh
+Provides-Extra: dev
+Requires-Dist: black; extra == 'dev'
+Requires-Dist: hatch; extra == 'dev'
+Requires-Dist: python-semantic-release<8; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# edwh-bonnes-plugin
+
+[![PyPI - Version](https://img.shields.io/pypi/v/edwh-bonnes-plugin.svg)](https://pypi.org/project/edwh-bonnes-plugin)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/edwh-bonnes-plugin.svg)](https://pypi.org/project/edwh-bonnes-plugin)
+
+-----
+
+**Table of Contents**
+
+- [Installation](#installation)
+- [License](#license)
+
+## USING THIS TEMPLATE REPOSITORY
+1. remove this markdown section;
+2. replace 'bonnes' in README.md, pyproject.toml and the name of the plugin in `src` to your actual plugin name;
+3. (add your actual plugin code of course);
+4. run `semantic-release publish`, `hatch build -c` and `hatch publish`.
+
+## Installation
+
+```console
+pip install edwh-bonnes-plugin
+```
+
+But probably you want to install the whole edwh package:
+
+```console
+pipx install edwh[bonnes]
+# or
+pipx install edwh[plugins,omgeving]
+```
+
+## License
+
+`edwh-bonnes-plugin` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
