@@ -1,0 +1,93 @@
+Metadata-Version: 2.1
+Name: unstructured-ingest
+Version: 0.0.14
+Summary: A library that prepares raw documents for downstream ML tasks.
+Home-page: https://github.com/Unstructured-IO/unstructured-ingest
+Author: Unstructured Technologies
+Author-email: devops@unstructuredai.io
+License: Apache-2.0
+Keywords: NLP PDF HTML CV XML parsing preprocessing
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.9.0,<3.13
+Description-Content-Type: text/markdown
+Provides-Extra: remote
+Provides-Extra: csv
+Provides-Extra: doc
+Provides-Extra: docx
+Provides-Extra: epub
+Provides-Extra: md
+Provides-Extra: msg
+Provides-Extra: odt
+Provides-Extra: org
+Provides-Extra: pdf
+Provides-Extra: ppt
+Provides-Extra: pptx
+Provides-Extra: rtf
+Provides-Extra: rst
+Provides-Extra: tsv
+Provides-Extra: xlsx
+Provides-Extra: airtable
+Provides-Extra: astradb
+Provides-Extra: azure
+Provides-Extra: azure-cognitive-search
+Provides-Extra: biomed
+Provides-Extra: box
+Provides-Extra: chroma
+Provides-Extra: clarifai
+Provides-Extra: confluence
+Provides-Extra: couchbase
+Provides-Extra: delta-table
+Provides-Extra: discord
+Provides-Extra: dropbox
+Provides-Extra: elasticsearch
+Provides-Extra: gcs
+Provides-Extra: github
+Provides-Extra: gitlab
+Provides-Extra: google-drive
+Provides-Extra: hubspot
+Provides-Extra: jira
+Provides-Extra: kafka
+Provides-Extra: kdbai
+Provides-Extra: milvus
+Provides-Extra: mongodb
+Provides-Extra: notion
+Provides-Extra: onedrive
+Provides-Extra: opensearch
+Provides-Extra: outlook
+Provides-Extra: pinecone
+Provides-Extra: postgres
+Provides-Extra: qdrant
+Provides-Extra: reddit
+Provides-Extra: s3
+Provides-Extra: sharepoint
+Provides-Extra: salesforce
+Provides-Extra: sftp
+Provides-Extra: slack
+Provides-Extra: wikipedia
+Provides-Extra: weaviate
+Provides-Extra: databricks-volumes
+Provides-Extra: singlestore
+Provides-Extra: vectara
+Provides-Extra: embed-huggingface
+Provides-Extra: embed-octoai
+Provides-Extra: embed-vertexai
+Provides-Extra: embed-voyageai
+Provides-Extra: embed-mixedbreadai
+Provides-Extra: openai
+Provides-Extra: bedrock
+License-File: LICENSE.md
+
+# Unstructured Ingest  
+
+For details, see the [Unstructured Ingest overview](https://docs.unstructured.io/ingestion/overview) in the Unstructured documentation.
