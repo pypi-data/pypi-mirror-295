@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+data/data_file
+src/jax_influence.egg-info/PKG-INFO
+src/jax_influence.egg-info/SOURCES.txt
+src/jax_influence.egg-info/dependency_links.txt
+src/jax_influence.egg-info/entry_points.txt
+src/jax_influence.egg-info/requires.txt
+src/jax_influence.egg-info/top_level.txt
+tests/test_simple.py
