@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: title-detection
+Version: 0.1
+Summary: Package for title detection using Neural Networks and XGBoost
+Author: Andrew Clayman
+Requires-Dist: torch
+Requires-Dist: xgboost
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+
