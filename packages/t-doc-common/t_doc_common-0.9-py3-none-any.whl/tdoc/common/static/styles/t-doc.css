@@ -1,0 +1,124 @@
+/* Copyright 2024 Remy Blank <remy@c-space.org> */
+/* SPDX-License-Identifier: MIT */
+
+:not(#_).hidden {
+    display: none;
+}
+:not(#_).line-height-normal .highlight pre {
+    line-height: normal;
+}
+
+/* Set the maximum width of sidebars instead of a fixed width. */
+div.sidebar, aside.sidebar {
+    max-width: 40%;
+    width: inherit;
+}
+
+/* Invert the even and odd row colors in tables, so that the first row below the
+   header has a different color than the header. */
+.table tbody tr:nth-child(even) {
+    background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+.table tbody tr:nth-child(odd) {
+    background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+.table tbody tr:hover {
+    background-color: var(--pst-color-table-row-hover-bg);
+}
+
+/* Code blocks */
+div.highlight pre {
+    padding: 0.7rem;
+}
+
+/* Editor */
+div.tdoc-exec.tdoc-editable div.highlight pre,
+div.tdoc-exec.tdoc-editable div.highlight button.copybtn {
+    display: none;
+}
+div.tdoc-exec.tdoc-editable div.cm-editor {
+    border-radius: 0.25rem;
+    border: 1px solid var(--pst-color-border);
+}
+html[data-theme=dark] div.tdoc-exec.tdoc-editable div.cm-editor {
+    background-color: var(--pst-color-surface);
+}
+div.cm-editor.cm-focused {
+    outline: none;
+}
+div.cm-editor div.cm-scroller {
+    font-family: var(--pst-font-family-monospace);
+    font-size: .875em;
+}
+
+/* Execution controls */
+div[class*=highlight-].tdoc-exec {
+    flex-direction: row;
+}
+div.tdoc-exec div.highlight {
+    flex-basis: 100%;
+}
+div.tdoc-exec-controls {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.3rem;
+}
+div.tdoc-exec-controls button {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--pst-color-border);
+    background-color: var(--pst-color-surface);
+    font: var(--fa-font-solid);
+    transition: background-color .3s;
+}
+div.tdoc-exec-controls button:hover {
+    background-color: var(--pst-color-shadow);
+}
+div.tdoc-exec-controls *:first-child {
+    margin-top: 0;
+}
+div.tdoc-exec-controls * {
+    margin-top: 0.3rem;
+}
+div.tdoc-exec-controls button.tdoc-exec-run::before {
+    content: '\f04b';
+}
+div.tdoc-exec-controls button.tdoc-exec-reset::before {
+    content: '\f2ea';
+}
+
+/* SQL execution results */
+.table tbody tr:nth-child(odd).tdoc-no-results {
+    background: repeating-linear-gradient(-45deg,
+        var(--pst-color-table-row-zebra-low-bg) 0px 2px,
+        var(--pst-color-table-row-zebra-high-bg) 2px 20px);
+}
+.tdoc-error {
+    margin-bottom: 1rem;
+    border: 1px solid var(--pst-color-danger);
+    padding: 0.5rem;
+    background: repeating-linear-gradient(-45deg,
+        var(--pst-color-table-row-zebra-low-bg) 0px 2px,
+        var(--pst-color-table-row-zebra-high-bg) 2px 20px);
+}
+
+/* Prevent the wrapper background from being visible if the wrapper is larger
+   than its content. */
+.highlight.highlight.highlight {
+    background: none;
+}
+
+/* Fix the gap left by pydata_sphinx_theme between the table and the
+   scrollbar. */
+div.pst-scrollable-table-container {
+    margin-bottom: 1rem;
+}
+.table {
+    margin-bottom: 0;
+}
+
+/* Reduce the bottom margin of directive definition list options. */
+dl[class]:not(.option-list,.field-list,.footnote,.glossary,.simple):not(._) {
+    margin-bottom: 1rem;
+}

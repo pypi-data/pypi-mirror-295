@@ -1,0 +1,9 @@
+# Copyright 2024 Remy Blank <remy@c-space.org>
+# SPDX-License-Identifier: MIT
+
+[theme]
+inherit = "sphinx_book_theme"
+stylesheets = [
+    "styles/sphinx-book-theme.css",
+    "styles/t-doc.css",
+]
