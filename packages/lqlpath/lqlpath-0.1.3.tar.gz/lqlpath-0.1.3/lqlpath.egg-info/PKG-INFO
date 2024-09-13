@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: lqlpath
+Version: 0.1.3
+Summary: A package for searching log query language path 
+Author: Harish Lohiya
+Author-email: harishlohiya@gmail.com
+Classifier: Programming Language :: Python :: 2.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+
+# lqlpath
+
+`lqlpath` is a Python package designed to search for paths in JSON files based on either keys or values. 
+## Features
+
+- **Search by Key**: Retrieve a list of field paths in the JSON where a specific key is found.
+- **Search by Value**: Retrieve a list of field paths in the JSON where a specific value is found.
+
+#EXAMPLE
+
+from lqlpath import get_byKey,get_byValue
+##
+print(get_byKey('bq.json','reservation'))
+##
+print(get_byValue('bq.json',"us-central1"))
+
+
+output:
+['protoPayload.serviceData.jobInsertResponse.resource.jobStatistics.reservation']
+['protoPayload.serviceData.jobInsertResponse.resource.jobName.location']
