@@ -1,0 +1,5 @@
+{
+    "SERVER": "az-sql-gdp-prod-uks.database.windows.net", 
+    "DATABASE": "az-syn-gdp-prod-uks", 
+    "AUTH": "ActiveDirectoryInteractive"      
+}
