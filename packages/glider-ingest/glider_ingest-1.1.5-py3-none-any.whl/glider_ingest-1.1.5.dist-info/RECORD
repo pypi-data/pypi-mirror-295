@@ -1,0 +1,13 @@
+glider_ingest/__init__.py,sha256=J-3hKgGmLJnoANZHO22kC89Yyt4o9CkCLq-VgoLyr6k,135
+glider_ingest/binary2asc.exe,sha256=xmdyrDVU-C9MCdksB7RQ62tVI2q1RiSCdmWE1J5TDzk,3113363
+glider_ingest/gridder.py,sha256=GqwEgj_UM1RbNVHOv_wYp7NgFqScyr8UtCVHwhihhF8,13904
+glider_ingest/ingest.py,sha256=C_WL9EfDlWo_tG1NryxI-X_ipdPBJjOEvI9ebGTv0uU,2426
+glider_ingest/processor.py,sha256=_Cnm9qWkPqoW-FcOyfaw22nzBIRqXA15w3SfY0fm_hw,14248
+glider_ingest/rename_files.exe,sha256=s2rorxiclsJYHL9SwSOvC-RiuUjUq5mz7ll-fPiMzEE,3092734
+glider_ingest/utils.py,sha256=UcXZcaUMdhrv-e-MB4IrsVg8IMSucKCwEj0nAA8s58k,27798
+glider_ingest/windows_binary2asc.exe,sha256=goA7I5g9KTL6FPjDMbJGcZwnyO40d4e6JBHVMJEmeEI,843820
+glider_ingest/windows_rename_files.exe,sha256=Arf_UAqovLvgXxWNs312TLiZOaEsG7eqyK3wnEYnKDc,720752
+glider_ingest-1.1.5.dist-info/LICENSE,sha256=2zjcqjxK1u8cd6mPZbVUldqpMlc2a2sTz4oKc2Xo1PA,1094
+glider_ingest-1.1.5.dist-info/METADATA,sha256=ZoAruRXRfWWQ5SoNSGszKEqkk9NjlmnXPDCqEaNR7Ss,5876
+glider_ingest-1.1.5.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+glider_ingest-1.1.5.dist-info/RECORD,,
