@@ -1,0 +1,15 @@
+six
+boto3
+tqdm
+Pillow
+entrypoints
+numpy
+pandas
+xarray<2022.6
+netcdf4
+
+[tests]
+pytest
+imageio
+unittest
+moto
