@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: quantgrid-cli
+Version: 0.1.3
+Summary: A CLI for managing QuantGrid projects and workflows
+Home-page: https://quantgrid.net
+Author: Anthony Martin
+Author-email: contact@quantgrid.net
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: beautifulsoup4==4.12.3
+Requires-Dist: certifi==2024.8.30
+Requires-Dist: charset-normalizer==3.3.2
+Requires-Dist: click==8.1.7
+Requires-Dist: frozendict==2.4.4
+Requires-Dist: html5lib==1.1
+Requires-Dist: idna==3.8
+Requires-Dist: lxml==5.3.0
+Requires-Dist: multitasking==0.0.11
+Requires-Dist: numpy==2.1.1
+Requires-Dist: pandas==2.2.2
+Requires-Dist: peewee==3.17.6
+Requires-Dist: platformdirs==4.2.2
+Requires-Dist: PyJWT==2.9.0
+Requires-Dist: python-dateutil==2.9.0.post0
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: pytz==2024.1
+Requires-Dist: PyYAML==6.0.2
+Requires-Dist: requests==2.32.3
+Requires-Dist: six==1.16.0
+Requires-Dist: soupsieve==2.6
+Requires-Dist: tzdata==2024.1
+Requires-Dist: urllib3==2.2.2
+Requires-Dist: webencodings==0.5.1
+Requires-Dist: yfinance==0.2.43
+
+# Quantgrid CLI
+
+Quantgrid CLI is a command-line interface tool for managing data science and machine learning workflows. It is designed to be the quickest way to deploy a hosted MLFlow tracking server with included boilerplate code for time series model development, tracking, and deployment.
+
+## Installation
+
+To install Quantgrid CLI, use pip:
+
+```bash
+pip install quantgrid-cli
+```
+
+## Usage
+
+To use Quantgrid CLI, run the following command:
+
+```bash
+quantgrid <command> [options]
+```
+
+### Commands
+
+#### `deploy`
+
+Deploy a new MLFlow tracking server and setup boilerplate code for a new project.
+
+```bash
+quantgrid deploy <project_name>
+```
