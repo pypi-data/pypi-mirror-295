@@ -1,0 +1,27 @@
+- job:
+    name: neutron-tempest-plugin-tap-as-a-service-wsgi
+    parent: neutron-tempest-plugin-tap-as-a-service
+    vars:
+      devstack_localrc:
+        NEUTRON_DEPLOY_MOD_WSGI: true
+
+- project:
+    templates:
+      - openstack-cover-jobs-neutron
+      - release-notes-jobs-python3
+      - build-openstack-docs-pti
+      - check-requirements
+      - openstack-python3-jobs-neutron
+    check:
+      jobs:
+        - neutron-tempest-plugin-tap-as-a-service
+        - neutron-tempest-plugin-tap-as-a-service-wsgi
+    gate:
+      jobs:
+        - neutron-tempest-plugin-tap-as-a-service
+    periodic-weekly:
+      jobs:
+        - openstack-tox-py39
+        - openstack-tox-py312
+        - openstack-tox-py39-with-oslo-master
+        - neutron-tempest-plugin-tap-as-a-service
