@@ -1,0 +1,16 @@
+brainio/__init__.py,sha256=j-fFpbO39dXSqN8sz4eBHVUe1z0oZ0ap0WWEB4QSdcY,135
+brainio/assemblies.py,sha256=UpFQwuuzYW-4XHbydMbzL7NFWOA4zoJ4Z6qz7fK8ZDk,22367
+brainio/catalogs.py,sha256=aKzfkDsiK6jB2MBdN05Nv3iE8KYNxrK2YK2FUyDp_1g,1252
+brainio/fetch.py,sha256=uzxrL2iGrS6gT0jqfrhyZ3mIqEhrRwrYEQv3AveAPRo,7928
+brainio/lookup.py,sha256=_rwFoBhwqtZNL4HXCDQvDdd_CiIqhpyTMA-pgkAQyO4,7036
+brainio/packaging.py,sha256=C7T-KaJ08yjYQUkvSean53WBmKHbwnInflpNQA5WfxE,16271
+brainio/stimuli.py,sha256=n4iMQSDVmRsHtMn7qAiS8GJRuABjIBAOMNKlZJMrBkg,2040
+brainio/transform.py,sha256=tkMH7AQfqOqujr8deP_O13cWxY9Xw7EoejftjG8Vx54,4581
+brainio-test/brainio_test/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+brainio-test/brainio_test/entrypoint.py,sha256=w67O8e--u9cbA39JiISeFZwq_KClXYDU78p8EyMswz0,930
+docs/packaging.rst,sha256=Bm766r1j-hmNXMZGnYt4xoO-zgUAmN_fCtQY9T2JfbI,2909
+brainscore_brainio-1.0.0.dist-info/LICENSE,sha256=LPWosyy21m4qZHpLMlWhEtbc3o9FcjjyA8GNX6O37ZU,1093
+brainscore_brainio-1.0.0.dist-info/METADATA,sha256=47h0Cafct341B3u024c4VmzCuBp4B7eFgzAnqn7uJbE,19941
+brainscore_brainio-1.0.0.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+brainscore_brainio-1.0.0.dist-info/top_level.txt,sha256=Qk8WO-NI9fDOTmNKDdOylapr0sCkRSOIJgiy2W4f7Cg,26
+brainscore_brainio-1.0.0.dist-info/RECORD,,
