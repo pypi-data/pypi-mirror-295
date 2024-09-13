@@ -1,0 +1,3 @@
+[console_scripts]
+yuquedd=yuquedd.cli:cli_execute
+
