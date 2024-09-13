@@ -1,0 +1,17 @@
+{
+    "": {
+        "domain": "notebook",
+        "language": "he-IL",
+        "plural_forms": "nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;",
+        "version": "jupyterlab"
+    },
+    "Advanced Tools": [
+        "\u05db\u05dc\u05d9\u05dd \u05de\u05ea\u05e7\u05d3\u05de\u05d9\u05dd"
+    ],
+    "Edit Notebook Metadata": [
+        "\u05e2\u05e8\u05d9\u05db\u05ea \u05e0\u05ea\u05d5\u05e0\u05d9 \u05e2\u05dc \u05e9\u05dc \u05de\u05d7\u05d1\u05e8\u05ea"
+    ],
+    "NbClassic": [
+        "NbClassic"
+    ]
+}
