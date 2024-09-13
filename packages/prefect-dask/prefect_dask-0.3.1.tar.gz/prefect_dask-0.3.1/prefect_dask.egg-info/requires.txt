@@ -1,0 +1,17 @@
+prefect>=3.0.0rc1
+distributed!=2023.3.2,!=2023.3.2.1,!=2023.4.*,!=2023.5.*,>=2022.5.0
+
+[dev]
+coverage
+interrogate
+mkdocs-gen-files
+mkdocs-material
+mkdocs
+mkdocstrings[python]
+mypy
+pillow
+pre-commit
+pytest-asyncio!=0.22.0,<0.23.0,>=0.18.2
+pytest
+pytest-env
+pytest-xdist
