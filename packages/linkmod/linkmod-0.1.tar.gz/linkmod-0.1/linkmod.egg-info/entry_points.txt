@@ -1,0 +1,2 @@
+[console_scripts]
+linkMod = linkmod.linkmod:create_custom_link
