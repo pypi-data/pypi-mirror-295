@@ -1,0 +1,137 @@
+Metadata-Version: 2.1
+Name: pai_lib
+Version: 1.0.0.1
+Summary: Visual Pseudo Anomaly Insertion Library for creating a Pseudo Anomaly Dataset.
+Author-email: Rizwan Ali Shah <rizwanaliqau@gmail.com>
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: torchvision ==0.18.1
+Requires-Dist: albumentations ==1.4.11
+Requires-Dist: numpy >=1.24.2
+Requires-Dist: scipy >=1.10.1
+Requires-Dist: opencv-python ==4.10.0.84
+Requires-Dist: patchify ==0.2.3
+Requires-Dist: pillow ==10.2.0
+Requires-Dist: opensimplex ==0.4.5.1
+Requires-Dist: noise ==1.2.2
+Requires-Dist: imgaug ==0.4.0
+Requires-Dist: einops ==0.8.0
+
+# Project Detail 
+```
+Industrial anomaly detection using AI-based vision systems is crucial for efficient, defect-free manufacturing in smart factories. We propose a novel framework that enhances self-supervised anomaly detection by integrating diverse synthetic anomalies, improving detection and segmentation performance.
+```
+# Example
+## Import library and read normal and anomaly source images
+``` from pail import pai
+    anom_inserton_time  =   {}
+    normal_img_paths    =   ['example_img/example_0.jpg'] #,
+    all_anom_images     =   []
+    anom_sourc_files                    =   'anom_source_imgs'
+    class_name                          =    'data'
+    try: anom_source_paths              =    [os.path.join(anom_sourc_files,file) for file in  os.listdir(anom_sourc_files)]
+    except Exception as e: print("Anom Source Data does not Exist")
+    ##############################################################################
+    hight            =   256
+    width            =   256
+    anom_extraction  =   np.zeros((12,hight,width,3))
+    anom_map         =   np.zeros((12,hight,width,3))  
+    try:
+        anom_source_index            =    np.random.choice(len(anom_source_paths),1)[0]
+        anom_source_img     =   cv2.imread(anom_source_paths[anom_source_index])
+        anom_source_img     =   cv2.resize(anom_source_img, (width, width))
+        anom_source_img_    =   Image.fromarray(anom_source_img)
+    except: anom_source_img_    =   Image.fromarray(np.ones((256,256,3),dtype=np.uint8))
+    try:
+        normal_image    =   cv2.imread(normal_img) # f'data/mvtech/{class_name}/train/good/000.png')
+        normal_image    =   cv2.resize(normal_image, (width, width))
+    except Exception as e: 
+        print("Normal Image data does not Exist")
+        normal_image    =   np.zeros((256,256,3),dtype=np.uint8)
+    image           =    Image.fromarray(normal_image)
+    anom_insertion  =    pai.Anomaly_Insertion() 
+
+```
+# Source Free Methods 
+
+## 1. Cut-Paste scar Example (CutPaste: Self-Supervised Learning for Anomaly Detection and Localization)
+## https://arxiv.org/pdf/2104.04015.pdf
+```
+    aug_img,msk     =    anom_insertion.cutpaste_scar(image, rotation=(20,100)) 
+```
+
+## 2. Simplex noise Anomaly Example (Revisiting Reverse Distillation for Anomaly Detection) 
+## https://openaccess.thecvf.com/content/CVPR2023/papers/Tien_Revisiting_Reverse_Distillation_for_Anomaly_Detection_CVPR_2023_paper.pdf
+```    
+    aug_img,msk     =    anom_insertion.simplex_noise_anomlay(image)
+```
+
+## 3. Random Perturbation Example (Collaborative Discrepancy Optimization for Reliable Image Anomaly Localization) 
+## https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10034849 ########################
+```    
+    aug_img,msk     =    anom_insertion.random_perturbation(image)
+```    
+
+## 4. hard_aug_cutpaste (ANOSEG: ANOMALY SEGMENTATION NETWORK USING SELF-SUPERVISED LEARNING)     
+## https://openreview.net/pdf?id=35-QqyfmjfP 
+```   
+   aug_img,msk     =    anom_insertion.hard_aug_cutpaste(image)
+```
+
+## 5. Cut and Paste Example (CutPaste: Self-Supervised Learning for Anomaly Detection and Localization)
+##    https://arxiv.org/pdf/2104.04015.pdf 
+```    
+    aug_img,msk                 =    anom_insertion.cutpaste(image)
+```
+
+## 6. Affined Anomalay 
+```
+    affied_anom,mask_affine      =    anom_insertion.affined_anomlay(image, resize=(hight,width))
+```
+
+## 7. Affined Anomalay with color ######################################
+```    
+    affied_anom_col,mask_affine_col =    anom_insertion.affine_anom_color_change(image,resize=(hight,width))
+```
+
+# Source Required Methods 
+
+## 8. Perlin Noise Example ######################################
+## DRÆM – A discriminatively trained reconstruction embedding for surface anomaly detection 
+## https://arxiv.org/pdf/2108.07610.pdf ##########################################
+```
+    anom_source_img           =    anom_source_img_ 
+    aug_img,msk               =    anom_insertion.perlin_noise_pattern(image, anom_source_img=anom_source_img)
+```
+
+## 9. Superpixel Anomaly Example (Two-Stage Coarse-to-Fine Image Anomaly Segmentation and Detection Model) 
+## https://www.sciencedirect.com/science/article/abs/pii/S0262885623001919
+```
+    anom_source_img             =    anom_source_img_ # color_anom_source(anom_source_img_)
+    aug_img,msk                 =    anom_insertion.superpixel_anomaly(image, anom_source_img=anom_source_img)
+```
+
+## 10.  Perlin ROI Anomaly Example 
+## MemSeg: A semi-supervised method for image surface defect detection using differences and commonalities 
+## https://arxiv.org/pdf/2205.00908.pdf ##########################################
+```
+    anom_source_img             =    anom_source_img_ 
+    aug_img,msk                 =    anom_insertion.perlin_with_roi_anomaly(image,anom_source_img=anom_source_img)
+```    
+
+## 11.  random augmented CutPaste Anomaly Example (Explicit Boundary Guided Semi-Push-Pull Contrastive Learning for Supervised Anomaly Detection ### 
+## https://arxiv.org/pdf/2207.01463.pdf ##########################################
+```
+    anom_source_img             =    anom_source_img_ 
+    aug_img,msk                 =    anom_insertion.rand_augmented_cut_paste(image,  anom_source_img=anom_source_img)
+
+```
+
+## 12. fractal anomaly generation (FAG) Example ########################
+## FRACTALAD: A SIMPLE INDUSTRIAL ANOMALY DETECTION METHOD USING FRACTAL ANOMALY GENERATION AND BACKBONE KNOWLEDGE DISTILLATION 
+## https://arxiv.org/pdf/2301.12739.pdf #######################################
+```
+    anom_source_img             =    anom_source_img_
+    aug_img,msk                 =    anom_insertion.fract_aug(image, anom_source_img=anom_source_img)
+```
