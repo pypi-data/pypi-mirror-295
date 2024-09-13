@@ -1,0 +1,10 @@
+# logrotate.d configuration
+# Used in rpm build.
+
+/var/log/barbican/*.log {
+    daily
+    missingok
+    compress
+    delaycompress
+    notifempty
+}
