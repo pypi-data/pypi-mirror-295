@@ -1,0 +1,13 @@
+numpy>=1.24.4
+odoo14-addon-contract-mandate==14.0.1.0.1
+odoo14-addon-contract-queue-job==14.0.1.0.1.dev3
+odoo14-addon-contract-variable-quantity==14.0.1.0.1.dev5
+odoo14-addon-contract==14.0.2.9.4.dev2
+odoo14-addon-energy-communities-cooperator>=14.0.1.0.2
+odoo14-addon-energy-communities>=14.0.9.4.0
+odoo14-addon-energy-project==14.0.3.4.4
+odoo14-addon-report-csv==14.0.1.0.1.dev5
+odoo14-addon-web-m2x-options==14.0.1.1.1
+odoo<14.1dev,>=14.0a
+openupgradelib>=3.6.1
+pandas>=2.0.3
