@@ -1,0 +1,126 @@
+Metadata-Version: 2.1
+Name: elf-checker
+Version: 1.0.1
+Summary: A tool to visualize and check where ELF sections are located in different types of binaries
+License: MPL-2.0
+Author: Thomas Wucher
+Author-email: thomas.wucher@gtd-gmbh.de
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pyelftools (>=0.31,<0.32)
+Description-Content-Type: text/markdown
+
+# GTD ELF Checker
+
+This repository contains GTD ELF checker, a tool to visualize and check where ELF sections are
+located in different types of binaries (ELF files, stripped ELF files, binary files).
+
+[!WARNING]
+> **WARNING**:
+>
+> **This tool is currently under development and in beta state It's not intended
+> to be complete and using is on your own risk.**
+
+## License
+
+The GTD ELF Checker source code implemented by GTD GmbH is subject to the Mozilla Public License 2.0
+as indicated by the headers of the corresponding source code files. Third party libraries used
+herein are subject to their own licence terms.
+
+## Installation from PyPI
+
+The ELF checker is published on PyPI and the latest release can be easily
+installed with `pipx`. If you're not using `pipx` yet, install it from your
+package manager. The package is usually called `pipx` or `python-pipx`.
+
+Then install the ELF checker:
+
+```
+pipx install elf-checker
+```
+
+## Development
+
+### System Dependencies
+
+On Debian based systems, install the necessary packages from APT:
+
+```
+sudo apt-get update
+sudo apt-get install python3 python3-poetry pandoc texlive-xetex
+```
+
+On Arch Linux, use pacman to install the necessary packages:
+
+```
+sudo pacman -Sy python python-poetry pandoc texlive-bin
+```
+
+The pandoc and latex packages are only required to generate the documentation in PDF format.
+
+### Setting up a virtual environment
+
+After cloning the repository, create and activate the Python virtualenv with
+the following commands:
+
+```
+poetry install
+```
+
+### Installing and updating Python dependencies
+
+All explicit dependencies are listed in `pyproject.toml`. Exact versions and dependencies of your
+dependencies are in `poetry.lock`.
+
+To install the packages into a virtualenv use:
+
+```
+poetry install
+```
+
+Adding or removing packages is done through the `poetry add` command or by
+editing the `pyproject.toml` file. Then use `poetry lock`.
+
+Updating all existing dependencies can be done by using `poetry update`.
+
+Then commit changes to all requirements files as usual.
+
+### Commit hooks
+
+This project uses git pre-commit hooks to ensure that no obvious errors are committed to the
+repository. To make use of the pre-commit hooks, you have to use Python 3.6 or newer on your
+development machine.
+
+Install the hooks with the following command, after enabling your virtualenv:
+
+```
+pre-commit install
+```
+
+Then commit as usual. Git will use Black in the background to let you know when your changes break
+the formatting rules, and even fix it for you automatically!
+
+Additionally, changes to Python and YAML files will be checked for correct syntax, trailing
+whitespace, accidentally committed merge conflict markers, ...
+
+### Building the Documentation
+
+The Sphinx HTML Documentation can be built with the following command:
+
+```
+poetry run sphinx-build -b html doc html
+```
+
+A PDF can be created with the following commands:
+
+```
+poetry run sphinx-build -b latex doc latex
+cd latex
+make
+```
+
