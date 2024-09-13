@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: ytsaurus-rpc-driver
+Version: 1.0.1
+Summary: C++ RPC driver.
+Author: YTsaurus
+Author-email: dev@ytsaurus.tech
+License: Apache 2.0
+Keywords: yt ytsaurus python bindings driver
+
+YTsaurus — is a platform for distributed storage and processing of large amounts of data with support of MapReduce, distributed file system and NoSQL key-value storage.
+
+This library provides C++ RPC driver.
