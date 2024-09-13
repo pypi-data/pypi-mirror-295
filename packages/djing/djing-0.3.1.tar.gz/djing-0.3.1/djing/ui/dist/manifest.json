@@ -1,0 +1,20 @@
+{
+  "_vue-200eb4cf.js": {
+    "file": "djing/js/vue-200eb4cf.js"
+  },
+  "main.css": {
+    "file": "djing/css/main-e3abcab5.css",
+    "src": "main.css"
+  },
+  "main.jsx": {
+    "css": [
+      "djing/css/main-e3abcab5.css"
+    ],
+    "file": "djing/js/main-13b8d0fe.js",
+    "imports": [
+      "_vue-200eb4cf.js"
+    ],
+    "isEntry": true,
+    "src": "main.jsx"
+  }
+}
