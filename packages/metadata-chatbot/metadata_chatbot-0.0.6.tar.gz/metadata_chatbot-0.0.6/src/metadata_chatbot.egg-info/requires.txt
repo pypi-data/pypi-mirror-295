@@ -1,0 +1,17 @@
+aind-data-access-api[full]>=0.15.0
+boto3
+langchain-aws
+langchain-community
+motor
+nest-asyncio
+pymongo
+ragas
+
+[dev]
+black
+coverage
+flake8
+interrogate
+isort
+Sphinx
+furo
