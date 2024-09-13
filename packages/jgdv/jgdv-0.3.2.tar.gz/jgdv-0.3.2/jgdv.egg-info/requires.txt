@@ -1,0 +1,14 @@
+tomlguard
+pyparsing
+networkx
+pydantic
+
+[dev]
+doot
+pipreqs
+
+[docs]
+sphinx
+
+[test]
+pytest>=8.3.0
