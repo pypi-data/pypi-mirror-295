@@ -1,0 +1,35 @@
+name: style-check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.9]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+          cache: 'pip'
+          cache-dependency-path: 'requirements*'
+      - name: check OS
+        run: cat /etc/os-release
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git make gcc
+      - name: Install/upgrade dev dependencies
+        run: python3 -m pip install -r requirements.dev.txt
+      - name: Lint check
+        run: |
+          make lint
