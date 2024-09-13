@@ -1,0 +1,15 @@
+.gitignore
+.pre-commit-config.yaml
+LICENSE
+README.md
+pyproject.toml
+.github/workflows/build.yaml
+.github/workflows/release.yaml
+ct_archived_tags/comet.py
+ct_archived_tags/comicbookinfo.py
+ct_archived_tags.egg-info/PKG-INFO
+ct_archived_tags.egg-info/SOURCES.txt
+ct_archived_tags.egg-info/dependency_links.txt
+ct_archived_tags.egg-info/entry_points.txt
+ct_archived_tags.egg-info/requires.txt
+ct_archived_tags.egg-info/top_level.txt

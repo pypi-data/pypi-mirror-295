@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: ct-archived-tags
+Version: 1.0.0
+Summary: Archived tag formats for ComicTagger
+Author-email: Timmy Welch <timmy@narnian.us>
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/comictagger/archived-tags
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typing-extensions>=4.3.0; python_version < "3.11"
+
+# Archived Tag plugins for Comic Tagger
+
+Tag plugins for [ComicTagger] that have been archived and are no-longer included in ComicTagger by default
+
+[ComicTagger]: https://github.com/comictagger/comictagger

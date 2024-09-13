@@ -1,0 +1,3 @@
+[comicapi.tags]
+cbi = ct_archived_tags.comicbookinfo:ComicBookInfo
+comet = ct_archived_tags.comet:CoMet
