@@ -1,0 +1,17 @@
+boto3
+python-dotenv
+beautifulsoup4
+boto3
+botocore
+bs4
+certifi
+charset-normalizer
+idna
+jmespath
+python-dateutil
+python-dotenv
+requests
+s3transfer==0.10.0
+six
+soupsieve
+urllib3
