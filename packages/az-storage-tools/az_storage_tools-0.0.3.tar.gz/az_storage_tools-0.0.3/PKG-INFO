@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: az_storage_tools
+Version: 0.0.3
+Summary: Azure Storage tools for various operations
+Author-email: Hakan Karaoguz <hakan.karaoguz@silo.ai>
+Project-URL: Homepage, https://github.com/pypa/sampleproject
+Project-URL: Issues, https://github.com/pypa/sampleproject/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: azure-storage-blob>=12.19.0
+
+## az_storage_tools
+
+This package is developed for simplifying various Azure Storage operations. 
+
+### Getting Started
+Make sure to include azure storage connection string or url and key as `env` variables. Namely
+```
+AZ_STORAGE_ACCOUNT_NAME
+AZ_STORAGE_KEY
+```
+or
+```
+AZ_CONNECTION_URL
+```
+#### Container Name
+If `AZStorageTools` is not initialized with a container name, then following `env` variable must be set:
+```
+AZ_STORAGE_CONTAINER_NAME
+```
