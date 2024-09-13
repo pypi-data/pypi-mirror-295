@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+mkdocs_open_in_new_tab.egg-info/PKG-INFO
+mkdocs_open_in_new_tab.egg-info/SOURCES.txt
+mkdocs_open_in_new_tab.egg-info/dependency_links.txt
+mkdocs_open_in_new_tab.egg-info/entry_points.txt
+mkdocs_open_in_new_tab.egg-info/requires.txt
+mkdocs_open_in_new_tab.egg-info/top_level.txt
+open_in_new_tab/__init__.py
+open_in_new_tab/plugin.py
+open_in_new_tab/js/open_in_new_tab.js
