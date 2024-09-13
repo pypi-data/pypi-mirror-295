@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: hotmail-flask-mailer
+Version: 0.1.0
+Summary: A Flask module for sending emails via Hotmail using the mailer package
+Home-page: https://github.com/prakhardoneria/hotmail-flask-mailer
+Author: Prakhar Doneria
+Author-email: prakhardoneria3@gmail.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Flask
+Requires-Dist: Flask>=2.0
+Requires-Dist: quick-mailer
