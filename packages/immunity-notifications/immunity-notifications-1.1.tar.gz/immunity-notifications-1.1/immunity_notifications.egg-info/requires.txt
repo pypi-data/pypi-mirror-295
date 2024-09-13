@@ -1,0 +1,5 @@
+channels~=3.0.2
+django-notifications-hq~=1.8.3
+immunity-users~=1.1
+markdown~=3.7.0
+openwisp-utils[celery,rest]~=1.1.0
