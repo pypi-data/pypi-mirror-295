@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+ripit/__init__.py
+ripit/document.py
+ripit/extractors.py
+ripit/filters.py
+ripit/marker.py
+ripit/parser.py
+ripit.egg-info/PKG-INFO
+ripit.egg-info/SOURCES.txt
+ripit.egg-info/dependency_links.txt
+ripit.egg-info/requires.txt
+ripit.egg-info/top_level.txt
