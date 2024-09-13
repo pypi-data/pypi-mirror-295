@@ -1,0 +1,8 @@
+fastapi
+pydantic
+sqlalchemy
+alembic
+email-validator
+python-dateutil
+passlib
+rut-chile
