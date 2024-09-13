@@ -1,0 +1,59 @@
+package:
+  name: artkit
+  version: {{ environ.get('ARTKIT_BUILD_ARTKIT_VERSION') }}
+
+source:
+  path: ../
+
+build:
+  noarch: python
+  script: "flit install --deps none"
+
+requirements:
+  host:
+    - pip >=21
+    - python {{ environ.get('ARTKIT_V_PYTHON') }}
+    - flit =3
+  run:
+    - matplotlib-base {{ environ.get('ARTKIT_V_MATPLOTLIB') }}
+    - pandas {{ environ.get('ARTKIT_V_PANDAS') }}
+    - python {{ environ.get('ARTKIT_V_PYTHON') }}
+    - fluxus {{ environ.get('ARTKIT_V_FLUXUS') }}
+    - gamma-pytools {{ environ.get('ARTKIT_V_GAMMA_PYTOOLS') }}
+    - typing_inspect {{ environ.get('ARTKIT_V_TYPING_INSPECT') }}
+
+test:
+  imports:
+    - artkit
+    - artkit.model
+  requires:
+    - pytest ~= 8.2
+    # The following packages are required for the tests to run; we will limit the
+    # versions only if they are specified in the corresponding environment variables,
+    # and will otherwise let conda decide the versions.
+    - aiohttp {{ environ.get('ARTKIT_V_AIOHTTP', '') }}
+    - anthropic {{ environ.get('ARTKIT_V_ANTHROPIC', '') }}
+    - google-generativeai {{ environ.get('ARTKIT_V_GOOGLE_GENERATIVEAI', '') }}
+    - groq {{ environ.get('ARTKIT_V_GROQ', '') }}
+    - openai {{ environ.get('ARTKIT_V_OPENAI', '') }}
+    - pytorch {{ environ.get('ARTKIT_V_TORCH', '') }}
+    - transformers {{ environ.get('ARTKIT_V_TRANSFORMERS', '') }}
+    - boto3 {{ environ.get('ARTKIT_V_BOTO3', '') }}
+    - moto {{ environ.get('ARTKIT_V_MOTO', '') }}
+    - google-cloud-aiplatform {{ environ.get('ARTKIT_V_GOOGLE_CLOUD_AIPLATFORM', '') }}
+  commands:
+    - conda list
+    - python -c "import artkit; import os; assert artkit.__version__ == os.environ['ARTKIT_BUILD_ARTKIT_VERSION']"
+    - cd "${ARTKIT_PATH}/artkit"
+    - pytest -vs test
+
+about:
+  home: https://github.com/BCG-X-Official/artkit
+  license: Apache Software License v2.0
+  license_file: LICENSE
+  description: |
+    A collection of generic ARTKIT extensions and tools, used across GAMMA's open-source
+    libraries.
+  dev_url: https://github.com/BCG-X-Official/artkit
+  doc_url: https://bcg-x-official.github.io/artkit/
+  doc_source_url: https://github.com/BCG-X-Official/artkit/tree/1.0.x/sphinx/source
