@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+settings.ini
+setup.py
+scholaris/__init__.py
+scholaris/_modidx.py
+scholaris/core.py
+scholaris/ui.py
+scholaris.egg-info/PKG-INFO
+scholaris.egg-info/SOURCES.txt
+scholaris.egg-info/dependency_links.txt
+scholaris.egg-info/entry_points.txt
+scholaris.egg-info/not-zip-safe
+scholaris.egg-info/requires.txt
+scholaris.egg-info/top_level.txt
