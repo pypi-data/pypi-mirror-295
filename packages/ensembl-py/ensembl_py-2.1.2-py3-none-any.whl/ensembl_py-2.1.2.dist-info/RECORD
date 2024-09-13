@@ -1,0 +1,14 @@
+ensembl/core/__init__.py,sha256=snOw89XvdlxwdL3dUTe6CVK1G6SwFCHy29OgwJYOukE,649
+ensembl/core/models.py,sha256=z3MPozou8lTxI6fPF98J5GAkefKwztl3mRokNkvw_hM,72023
+ensembl/ncbi_taxonomy/__init__.py,sha256=KwZ01cilG9kpOBM_d2AaN7AAZI19uge2B_6KzNpQ2hU,671
+ensembl/ncbi_taxonomy/models.py,sha256=hnTtONl2NhUbkf_16u72mKYvaeRtKKYG36ZJg11ewpM,2444
+ensembl/ncbi_taxonomy/api/__init__.py,sha256=8B-sYUmpoef2wqyARejYBW7ZXWyaprrIdM5GLxCowe0,697
+ensembl/ncbi_taxonomy/api/utils.py,sha256=geGyO0GaHyWZ7gTH2fjugbMW9rgwfplxjBmRvo9tJ0o,9221
+ensembl/xrefs/xref_source_db_model.py,sha256=y5YRiSKQ66VuMDJQOoRIdhJBFYy206oEgAKqUHsOWQY,2367
+ensembl/xrefs/xref_update_db_model.py,sha256=Xqzigq0VCMA4mcCEcy4yIC1s8EmmCsPapTICvsljWII,15248
+ensembl_py-2.1.2.dist-info/LICENSE,sha256=xx0jnfkXJvxRnG63LTGOxlggYnIysveWIZ6H3PNdCrQ,11357
+ensembl_py-2.1.2.dist-info/METADATA,sha256=VTHpGkL5WqM1I6FyABczRGRgCZWzKjkfSwOZ8hY7OAU,5598
+ensembl_py-2.1.2.dist-info/NOTICE,sha256=KHSQKu-izGR6AEiAg6YL3lA2tzDM5yWvhWEKxA_R66A,156
+ensembl_py-2.1.2.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+ensembl_py-2.1.2.dist-info/top_level.txt,sha256=dUgAetY5ISlvzCun8T6ZjOtrtyC-ULeGQOJL7Bx7n0g,8
+ensembl_py-2.1.2.dist-info/RECORD,,
