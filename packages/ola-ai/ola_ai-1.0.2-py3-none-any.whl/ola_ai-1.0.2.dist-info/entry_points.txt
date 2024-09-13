@@ -1,0 +1,2 @@
+[console_scripts]
+ola = ola_cli.cli:main
