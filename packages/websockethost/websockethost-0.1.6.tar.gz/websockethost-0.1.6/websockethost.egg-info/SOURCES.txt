@@ -1,0 +1,14 @@
+setup.py
+websockethost/__init__.py
+websockethost/basicCGIserver.py
+websockethost/basicserverhttp.py
+websockethost.egg-info/PKG-INFO
+websockethost.egg-info/SOURCES.txt
+websockethost.egg-info/dependency_links.txt
+websockethost.egg-info/top_level.txt
+websockethost/socketServerClient/SqlSys.py
+websockethost/socketServerClient/__init__.py
+websockethost/socketServerClient/client.py
+websockethost/socketServerClient/server.py
+websockethost/socketServerClient/ThreadScripts/ThreadForClient.py
+websockethost/socketServerClient/ThreadScripts/__init__.py
