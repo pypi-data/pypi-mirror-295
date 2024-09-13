@@ -1,0 +1,11 @@
+{% extends "statusboard/base.html" %}
+
+{% load statusboard %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Edit incident" %}</h1>
+    {% include "statusboard/incident/form.html" with form=form delete=False %}
+</div>
+{% endblock %}

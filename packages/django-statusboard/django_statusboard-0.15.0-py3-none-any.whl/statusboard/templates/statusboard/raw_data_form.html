@@ -1,0 +1,19 @@
+{% load statusboard %}
+{% load rest_framework %}
+
+{% include "statusboard/raw_data_form_errors.html" with errors=form.non_field_errors only %}
+
+{% for field in form %}
+<div class="form-group mb-3 {% if field.errors %}has-error{% endif %} {% if field.field.required %}required{% endif %}">
+    {% include "statusboard/raw_data_form_errors.html" with errors=field.errors only %}
+    {{ field.label_tag|add_class:"form-label" }}
+    <div>
+        {% if field|is_checkbox %}
+            {{ field|add_class:"from-check-input" }}
+        {% else %}
+            {{ field|add_class:"form-control" }}
+        {% endif %}
+        <span class="form-text">{{ field.help_text|safe }}</span>
+    </div>
+</div>
+{% endfor %}

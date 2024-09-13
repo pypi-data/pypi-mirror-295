@@ -1,0 +1,12 @@
+{% extends "statusboard/base.html" %}
+
+{% load statusboard %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Edit maintenance" %}</h1>
+    {% include "statusboard/service/form.html" %}
+</div>
+{% endblock %}
+
