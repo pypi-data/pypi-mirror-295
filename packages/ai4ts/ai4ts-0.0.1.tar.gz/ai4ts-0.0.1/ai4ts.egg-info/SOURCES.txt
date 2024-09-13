@@ -1,0 +1,11 @@
+LICENSE
+pyproject.toml
+ai4ts/__init__.py
+ai4ts/client.py
+ai4ts/config.py
+ai4ts/utils.py
+ai4ts/version.py
+ai4ts.egg-info/PKG-INFO
+ai4ts.egg-info/SOURCES.txt
+ai4ts.egg-info/dependency_links.txt
+ai4ts.egg-info/top_level.txt
