@@ -1,0 +1,3 @@
+[console_scripts]
+mle = mle.cli:cli
+mle-agent = mle.cli:cli
