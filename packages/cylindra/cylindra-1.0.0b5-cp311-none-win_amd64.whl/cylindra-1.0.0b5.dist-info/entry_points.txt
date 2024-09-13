@@ -1,0 +1,9 @@
+[console_scripts]
+cylindra=cylindra.__main__:main
+[napari.manifest]
+cylindra=cylindra:napari.yaml
+[cylindra.plugin]
+IMOD=cylindra_builtins.imod
+RELION=cylindra_builtins.relion
+[pytest11]
+cylindra=cylindra_builtins._pytest_fixtures
