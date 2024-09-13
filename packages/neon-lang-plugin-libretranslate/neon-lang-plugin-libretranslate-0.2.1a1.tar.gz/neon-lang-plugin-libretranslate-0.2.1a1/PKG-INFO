@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: neon-lang-plugin-libretranslate
+Version: 0.2.1a1
+Home-page: 
+Author: Neongecko
+Author-email: developers@neon.ai
+License: BSD-3-Clause
+Keywords: neon mycroft plugin language detection translation
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# NeonAI LibreTranslate Language Plugin
+Language Plugin for LibreTranslate language detection and translation
+
+# Configuration:
+
+```yaml
+keys:
+  libretranslate: {"libretranslate_host": "https://libretranslate.2022.us",
+           "key": "<LIBRETRANSLATE_API_KEY>"}
+```
