@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+src/cronos_chain_client/__init__.py
+src/cronos_chain_client/client.py
+src/cronos_chain_client.egg-info/PKG-INFO
+src/cronos_chain_client.egg-info/SOURCES.txt
+src/cronos_chain_client.egg-info/dependency_links.txt
+src/cronos_chain_client.egg-info/top_level.txt
+src/cronos_chain_client/tokens/__init__.py
+src/cronos_chain_client/tokens/tokens.py
+src/cronos_chain_client/tokens/__pycache__/__init__.cpython-312.pyc
+src/cronos_chain_client/tokens/__pycache__/tokens.cpython-312.pyc
+src/cronos_chain_client/tokens/mainnet/evm_token_list.json
+tests/test_client.py

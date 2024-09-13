@@ -1,0 +1,3 @@
+include src/cronos_chain_client/tokens/*.json
+include src/cronos_chain_client/tokens/*.json
+graft src/cronos_chain_client/tokens  # Ensure the tokens/ directory and its contents are included

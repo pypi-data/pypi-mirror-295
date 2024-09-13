@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "chain": "evm",
+    "contract_address": "0x66e428c3f67a68878562e79a0234c1f83c208770"
+  },
+  {
+    "id": 2,
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "chain": "evm",
+    "contract_address": "0xc21223249ca28397b4b6541dffaecc539bff0c59"
+  },
+  {
+    "id": 3,
+    "name": "Dogecoin",
+    "symbol": "DOGE",
+    "chain": "evm",
+    "contract_address": "0x1a8e39ae59e5556b56b76fcba98d22c9ae557396"
+  },
+  {
+    "id": 4,
+    "name": "ADA",
+    "symbol": "ADA",
+    "chain": "evm",
+    "contract_address": "0x0e517979c2c1c1522ddb0c73905e0d39b3f990c0"
+  },
+  {
+    "id": 5,
+    "name": "Wrapped BTC",
+    "symbol": "WBTC",
+    "chain": "evm",
+    "contract_address": "0x062e66477faf219f25d27dced647bf57c3107d52"
+  },
+  {
+    "id": 6,
+    "name": "SHIBA INU",
+    "symbol": "SHIB",
+    "chain": "evm",
+    "contract_address": "0xbed48612bc69fa1cab67052b42a95fb30c1bcfee"
+  },
+  {
+    "id": 7,
+    "name": "ChainLink Token",
+    "symbol": "LINK",
+    "chain": "evm",
+    "contract_address": "0xbc6f24649ccd67ec42342accdceccb2efa27c9d9"
+  },
+  {
+    "id": 8,
+    "name": "DOT",
+    "symbol": "DOT",
+    "chain": "evm",
+    "contract_address": "0x994047fe66406cbd646cd85b990e11d7f5db8fc7"
+  },
+  {
+    "id": 9,
+    "name": "Dai Stablecoin",
+    "symbol": "DAI",
+    "chain": "evm",
+    "contract_address": "0xf2001b145b43032aaf5ee2884e456ccd805f677d"
+  },
+  {
+    "id": 10,
+    "name": "XLM",
+    "symbol": "XLM",
+    "chain": "evm",
+    "contract_address": "0x747d6c858168b8cd6e537160320b5de58fd3367c"
+  },
+  {
+    "id": 11,
+    "name": "ATOM",
+    "symbol": "ATOM",
+    "chain": "evm",
+    "contract_address": "0xb888d8dd1733d72681b30c00ee76bde93ae7aa93"
+  },
+  {
+    "id": 12,
+    "name": "EOS",
+    "symbol": "EOS",
+    "chain": "evm",
+    "contract_address": "0xa37caa841072a305a0799718afa16cd504c52118"
+  },
+  {
+    "id": 13,
+    "name": "Pendle",
+    "symbol": "PENDLE",
+    "chain": "evm",
+    "contract_address": "0x49c3bbb239f4fb44327073510f4ba72d207a81d6"
+  },
+  {
+    "id": 14,
+    "name": "TrueUSD",
+    "symbol": "TUSD",
+    "chain": "evm",
+    "contract_address": "0x87efb3ec1576dec8ed47e58b832bedcd86ee186e"
+  },
+  {
+    "id": 15,
+    "name": "Enjin Coin",
+    "symbol": "ENJ",
+    "chain": "evm",
+    "contract_address": "0x0a92ea8a197919acb9bc26660ed0d43d01ed26b7"
+  },
+  {
+    "id": 16,
+    "name": "CorgiAI",
+    "symbol": "CORGIAI",
+    "chain": "evm",
+    "contract_address": "0x6b431b8a964bfcf28191b07c91189ff4403957d0"
+  },
+  {
+    "id": 17,
+    "name": "VVSToken",
+    "symbol": "VVS",
+    "chain": "evm",
+    "contract_address": "0x2d03bece6747adc00e1a131bba1469c15fd11e03"
+  },
+  {
+    "id": 18,
+    "name": "Dogelon",
+    "symbol": "ELON",
+    "chain": "evm",
+    "contract_address": "0x02dccaf514c98451320a9365c5b46c61d3246ff3"
+  },
+  {
+    "id": 19,
+    "name": "Artificial Liquid Intelligence Token",
+    "symbol": "ALI",
+    "chain": "evm",
+    "contract_address": "0x45c135c1cdce8d25a3b729a28659561385c52671"
+  },
+  {
+    "id": 20,
+    "name": "CroMoon",
+    "symbol": "CROMOON",
+    "chain": "evm",
+    "contract_address": "0x7d30c36f845d1dee79f852abf3a8a402fadf3b53"
+  },
+  {
+    "id": 21,
+    "name": "FUL",
+    "symbol": "FUL",
+    "chain": "evm",
+    "contract_address": "0x83afb1c32e5637acd0a452d87c3249f4a9f0013a"
+  },
+  {
+    "id": 22,
+    "name": "Cronos ID Token",
+    "symbol": "CROID",
+    "chain": "evm",
+    "contract_address": "0xcbf0adea24fd5f32c6e7f0474f0d1b94ace4e2e7"
+  },
+  {
+    "id": 23,
+    "name": "DappRadar",
+    "symbol": "RADAR",
+    "chain": "evm",
+    "contract_address": "0xa58e3aeaea3292c3e260378e55e9684c59e7a27a"
+  },
+  {
+    "id": 24,
+    "name": "FerroToken",
+    "symbol": "FER",
+    "chain": "evm",
+    "contract_address": "0x39bc1e38c842c60775ce37566d03b41a7a66c782"
+  },
+  {
+    "id": 25,
+    "name": "Minted Token",
+    "symbol": "MINTED",
+    "chain": "evm",
+    "contract_address": "0x0224010ba2d567ffa014222ed960d1fa43b8c8e1"
+  },
+  {
+    "id": 26,
+    "name": "Mad Meerkat Finance",
+    "symbol": "MMF",
+    "chain": "evm",
+    "contract_address": "0x97749c9b61f878a880dfe312d2594ae07aed7656"
+  }
+]
