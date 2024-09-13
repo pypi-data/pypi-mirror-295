@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: vault-monitor
+Version: 0.4.0
+Summary: A simple cli to monitor vault locked users
+Author: Michael MacKenna
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: hvac (>=2.3.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# Vault Monitor
+
+## Vault Monitor is a simple cli to monitor Vault lockouts
+
+
+### Installation
+"""
+``` bash
+pip install vault-monitor
+```
+

@@ -1,0 +1,3 @@
+[console_scripts]
+vault-monitor=vault_monitor.cli:main
+
