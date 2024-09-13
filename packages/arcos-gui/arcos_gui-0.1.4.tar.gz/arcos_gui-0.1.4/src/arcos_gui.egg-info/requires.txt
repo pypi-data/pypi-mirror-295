@@ -1,0 +1,31 @@
+arcos4py>=0.2.3
+matplotlib>=3.3.4
+napari>=0.4.14
+pandas>=1.3.5
+pyarrow>=11.0.0
+scipy>=1.7.3
+napari-timestamper
+
+[:python_version < "3.10"]
+numpy<2,>=1.22.2
+
+[:python_version < "3.12"]
+scikit-image>=0.20.0
+
+[:python_version >= "3.10"]
+numpy>=1.22.2
+
+[:python_version >= "3.12"]
+scikit-image>=0.22.0
+
+[doc]
+mkdocs
+mkdocs-include-markdown-plugin
+mkdocs-material
+mkdocs-material-extensions
+
+[testing]
+pyqt5
+pytest
+pytest-mock
+pytest-qt
