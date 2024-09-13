@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+fawern/__init__.py
+fawern/base_assistant.py
+fawern/chat_python.py
+fawern/save_to_md.py
+fawern.egg-info/PKG-INFO
+fawern.egg-info/SOURCES.txt
+fawern.egg-info/dependency_links.txt
+fawern.egg-info/requires.txt
+fawern.egg-info/top_level.txt
+tests/__init__.py
+tests/test_chat_python.py
