@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = storlets
+
+[report]
+ignore_errors = True
