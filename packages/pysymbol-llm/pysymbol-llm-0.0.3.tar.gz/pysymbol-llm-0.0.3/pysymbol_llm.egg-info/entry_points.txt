@@ -1,0 +1,5 @@
+[console_scripts]
+pysym2md = pysymbol_llm.core:pysym2md
+
+[nbdev]
+pysymbol_llm = pysymbol_llm._modidx:d
