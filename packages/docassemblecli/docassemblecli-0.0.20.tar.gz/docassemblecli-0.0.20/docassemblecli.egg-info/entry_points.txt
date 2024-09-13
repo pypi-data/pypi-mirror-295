@@ -1,0 +1,3 @@
+[console_scripts]
+dacreate = docassemblecli.commands:dacreate
+dainstall = docassemblecli.commands:dainstall
