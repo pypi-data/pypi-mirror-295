@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: sqlalchemy-query-helpers
+Version: 1.0.1
+Summary: Some helpers for SQLAlchemy
+Author-email: vladiscripts <blagopoluchie12@gmail.com>
+Project-URL: Homepage, https://github.com/vladiscripts/sqlalchemy-query-helpers
+Project-URL: Issues, https://github.com/vladiscripts/sqlalchemy-query-helpers/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: sqlalchemy
+
