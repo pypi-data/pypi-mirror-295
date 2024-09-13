@@ -1,0 +1,8 @@
+llm
+httpx
+requests
+pillow
+
+[test]
+pytest
+pytest-httpx

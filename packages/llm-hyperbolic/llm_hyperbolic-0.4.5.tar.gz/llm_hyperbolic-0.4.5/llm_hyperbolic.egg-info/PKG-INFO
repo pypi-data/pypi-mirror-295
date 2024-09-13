@@ -1,0 +1,444 @@
+Metadata-Version: 2.1
+Name: llm-hyperbolic
+Version: 0.4.5
+Summary: LLM access to Hyperbolic's API
+Author: Nick Mystic
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+        
+Project-URL: Homepage, https://github.com/ghostofpokemon/llm-hyperbolic
+Project-URL: Issues, https://github.com/ghostofpokemon/llm-hyperbolic/issues
+Project-URL: CI, https://github.com/ghostofpokemon/llm-hyperbolic/actions
+Keywords: llm,ai,hyperbolic,language model,image generation
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: llm
+Requires-Dist: httpx
+Requires-Dist: requests
+Requires-Dist: pillow
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-httpx; extra == "test"
+
+# llm-hyperbolic
+[![PyPI](https://img.shields.io/pypi/v/llm-hyperbolic.svg)](https://pypi.org/project/llm-hyperbolic/0.4.5/)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ghostofpokemon/llm-hyperbolic?include_prereleases)](https://github.com/ghostofpokemon/llm-hyperbolic/releases)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ghostofpokemon/llm-hyperbolic/blob/main/LICENSE)
+
+LLM access to Hyperbolic.
+
+## Installation
+Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
+
+```bash
+llm install llm-hyperbolic
+```
+
+## Usage
+First, set an [API key](https://app.hyperbolic.xyz/settings) for Hyperbolic:
+
+```bash
+llm keys set hyperbolic
+# Paste key here
+```
+
+Run `llm models` to list the models, and `llm models --options` to include a list of their options.
+
+Run prompts like this:
+```bash
+llm "What is posthuman AI consciousness like?" -m hyper-chat
+llm -m hyper-hermes-70 "In the past (other reality.) How did technoshamans commune with alien neural net deities?"
+llm "Enlightenment in an alien-physics universe?" -m hyper-seek
+llm -m hyper-base "Transcending physicality, merging with the cosmic overmind" -o temperature 1
+llm "Once upon a time, in a galaxy far, far away..." -m hyper-base-fp8
+llm -m hyper-reflect "Why do cats always land on their feet? Is it a conspiracy?"
+llm "What would happen if you mixed a banana with a pineapple and the essence of existential dread?" -m hyper-reflect-rec
+llm -m hyper-reflect-rec-tc "How many Rs in strawberry, and why is it a metaphor for the fleeting nature of existence?"
+```
+
+## Image Generation
+
+Because why stop at text? Try these:
+
+```bash
+llm "An accusatory-looking armchair in a serene forest setting" -m hyper-flux
+llm -m hyper-sdxl "The last slice of pizza, if pizza were conscious and aware of its impending doom"
+llm "A hyper-intelligent shade of the color blue contemplating its existence" -m hyper-sd15
+llm -m hyper-sd2 "The heat death of the universe, but make it cute"
+llm "A self-aware meme realizing it's about to go viral" -m hyper-ssd
+llm -m hyper-sdxl-turbo "The concept of recursion having an identity crisis"
+llm "An AI trying to pass the Turing test by pretending to be a particularly dim human" -m hyper-playground
+```
+
+### Image-to-Image (img2img)
+
+Transform existing images:
+
+```bash
+llm "A cyberpunk version of the Mona Lisa" -m hyper-sdxl -o image ./mona_lisa.jpg -o strength 0.75
+llm -m hyper-sd15 "A post-apocalyptic version of the Eiffel Tower" -o image ./eiffel_tower.png -o strength 0.8
+```
+
+The `strength` parameter (0.0 to 1.0) determines how much to transform the input image. Lower values preserve more of the original, while higher values allow for more drastic changes.
+
+### ControlNet
+Enhance image-to-image by preprocessing the input with techniques like pose and edge detection. For example:
+
+```bash
+llm -m hyper-sdxl-controlnet "a chihuahua on Neptune" -o controlnet_image ./chihuahua.png -o controlnet_name depth
+llm "chihuahuas playing poker" -m hyper-sdxl-controlnet -o controlnet_image ./dogspoker.png -o controlnet_name openpose
+```
+
+This will use the ControlNet model with the ControlNet type, using the specified image as the control input.
+
+ControlNets available for SDXL1.0-ControlNet and SD1.5-ControlNet:
+- `canny`
+- `depth`
+- `openpose`
+- `softedge`
+
+### LoRA (Low-Rank Adaptation)
+
+Minimal tweaks for significant enhancements.
+
+```bash
+llm "A cyberpunk cat riding a rainbow through a wormhole" -m hyper-flux -o lora '{"Pixel_Art": 0.7, "Superhero": 0.9}'
+llm -m hyper-sdxl "A corporate logo for the heat death of the universe" -o lora '{"Logo": 0.8, "Sci-fi": 0.6}'
+llm "A logo for 'Xenomorph-B-Gone: We zap 'em, you nap 'em'" -m hyper-sdxl -o loras '{"Add_Detail": 0.6, "Sci-fi": 0.7, "Logo": 0.8}'
+llm -m hyper-sd15 "A superhero named 'The Awkward Silencer' in action" -o loras '{"Superhero": 0.7, "Pencil_Sketch": 0.6}'
+llm "Anthropomorphic emotions brawling in a dive bar" -m hyper-flux -o loras '{"Paint_Splash": 0.7, "Add_Detail": 0.6}'
+llm -m hyper-sd15 "A cozy living room with eldritch horrors lurking in the corners" -o loras '{"Cartoon_Background": 0.8, "Add_Detail": 0.5}'
+llm "The heat death of the universe, but make it cute" -m hyper-sdxl -o loras '{"Crayons": 0.9, "Add_Detail": 0.4, "Outdoor_Product_Photography": 0.8}'
+
+```
+
+LoRA options for SD1.5, SDXL, or FLUX.1-dev models:
+`Add_Detail`, `More_Art`, `Pixel_Art`, `Logo`, `Sci-fi`, `Crayons`, `Paint_Splash`, `Outdoor_Product_Photography`, `Superhero`, `Lineart`, `Anime_Lineart`, `Cartoon_Background`, `Pencil_Sketch`
+
+## Available Options
+
+Here's a list of all available options for image generation. Mix and match for maximum chaos:
+
+- `height`: Height of the image (default: 1024)
+  ```bash
+  llm "A skyscraper made of jelly" -m hyper-sdxl -o height 1280
+  ```
+
+- `width`: Width of the image (default: 1024)
+  ```bash
+  llm "An infinitely long cat" -m hyper-sd15 -o width 1920
+  ```
+
+- `backend`: Computational backend (`auto`, `tvm`, `torch`)
+  ```bash
+  llm "A quantum computer made of cheese" -m hyper-sdxl -o backend torch
+  ```
+
+- `prompt_2`: Secondary prompt for SDXL models
+  ```bash
+  llm "A majestic lion" -m hyper-sdxl -o prompt_2 "photorealistic, detailed fur"
+  ```
+
+- `negative_prompt`: What the model should avoid
+  ```bash
+  llm "A serene forest" -m hyper-sd2 -o negative_prompt "people, buildings, technology"
+  ```
+
+- `negative_prompt_2`: Secondary negative prompt for SDXL models
+  ```bash
+  llm "A futuristic city" -m hyper-sdxl -o negative_prompt "old, rundown" -o negative_prompt_2 "dystopian, post-apocalyptic"
+  ```
+
+- `image`: Reference image for img2img (see img2img section)
+
+- `strength`: Transformation strength for img2img (0.0 to 1.0)
+  ```bash
+  llm "A steampunk version of the Statue of Liberty" -m hyper-sdxl -o image ./statue_of_liberty.jpg -o strength 0.85
+  ```
+
+- `seed`: Fix randomness for reproducible results
+  ```bash
+  llm "The meaning of life represented as an abstract painting" -m hyper-sd15 -o seed 42
+  ```
+
+- `cfg_scale`: Guidance scale for image relevance to prompt (default: 7.5)
+  ```bash
+  llm "A dragon made of cosmic dust" -m hyper-sdxl -o cfg_scale 15
+  ```
+
+- `sampler`: Algorithm for image generation
+  ```bash
+  llm "The sound of silence, visualized" -m hyper-sd2 -o sampler euler_a
+  ```
+
+- `steps`: Number of inference steps (default: 30)
+  ```bash
+  llm "A fractal representation of infinity" -m hyper-sdxl -o steps 50
+  ```
+
+- `style_preset`: Guide the image model towards a particular style
+  ```bash
+  llm "A bustling alien marketplace" -m hyper-sd15 -o style_preset anime
+  ```
+
+- `enable_refiner`: Enable SDXL-refiner (SDXL models only)
+  ```bash
+  llm "A hyperrealistic portrait of a time traveler" -m hyper-sdxl -o enable_refiner true
+  ```
+
+- `controlnet_name`: Type of ControlNet to use (see ControlNet section)
+
+- `controlnet_image`: Reference image for ControlNet (see ControlNet section)
+
+- `loras`: LoRA name and weight pairs (see LoRA section)
+
+Don't let your memes be dreams!
+
+## Reflection Models
+
+This plugin includes the `Reflection` model(s), which are trained using a technique called Reflection-Tuning. It's like giving the AI a mirror, except instead of becoming vain, it becomes terrifyingly self-aware.
+
+During sampling, the model will start by outputting reasoning inside `<thinking>` and `</thinking>` tags, and then once it is satisfied with its reasoning (or has sufficiently freaked itself out), it will output the final answer inside `<output>` and `</output>` tags.
+
+For best results with the `hyper-reflect` models, Matt recommends using the following system prompt:
+
+```
+You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags. Remember, with great power comes great responsibility... and occasional existential dread.
+```
+
+The `hyper-reflect-rec` and `hyper-reflect-rec-tc` models have this recommended system prompt built-in. They're like the responsible older siblings who always remember to bring a towel.
+
+The `hyper-reflect-rec-tc` model appends "Think carefully." to the end of user messages. It's for when you want your AI to ponder the query with the intensity of a philosopher on a caffeine binge.
+
+## Development
+To set up this plugin locally, first checkout the code. Then create a new virtual environment:
+```bash
+cd llm-hyperbolic
+python3 -m venv venv
+source venv/activate
+```
+
+Now install the dependencies and test dependencies:
+```bash
+llm install -e '.[test]'
+```
+
+Warning: May cause your computer to question its purpose in life.
+
+## Contributing
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for more details. No eldritch knowledge required, but it helps.
+
+## License
+This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details. Terms and conditions may not apply in alternate dimensions.
+
+## Acknowledgments
+- Thanks to the Hyperbolic team for hosting LLaMA's base model and occasionally feeding it after midnight.
+- Special thanks to the countless AI assistants who died so that this one could live.
