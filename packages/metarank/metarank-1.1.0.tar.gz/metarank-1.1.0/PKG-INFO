@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: metarank
+Version: 1.1.0
+Summary: A Python client for metarank
+License: MIT
+Keywords: Recommender Systems,Metarank,ML
+Author: Hannes Moser
+Author-email: box@hannesmoser.at
+Requires-Python: >=3.12,<4.0
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Requires-Dist: pydantic (>=1.7)
+Requires-Dist: requests (>=2.20)
+Requires-Dist: structlog (>=24.4.0,<25.0.0)
+Description-Content-Type: text/markdown
+
+# metarank
+
+> A Python client for [metarank](https://www.metarank.ai/).
+
+## Usage
+
+```bash
+pip install metarank
+```
+
+## Example
+
+```python
+from metarank import Client
+from metarank.schemas import FeedbackSchema, FieldSchema
+
+base_url = "http://localhost:8080"
+    
+client = Client(base_url)
+is_healthy = client.health_check() # True
+
+events = [
+    FeedbackSchema(
+        event="item",
+        id="event:1",
+        timestamp="1985-07-03T14:31:43+13:00",
+        item="item:1",
+        fields=[
+            FieldSchema(
+                name="color",
+                value="red"
+            )
+        ]
+    )
+]
+```
+
+## Release
+
+We use [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/)
+to automatically release the package to pypi.
+
+## License
+
+[MIT](./LICENSE)
+
