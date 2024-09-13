@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: gpt-pr
+Version: 0.6.1
+Summary: Automate your GitHub workflow with GPT-PR: an OpenAI powered library for streamlined PR generation.
+Home-page: http://github.com/alissonperez/gpt-pr
+Author: Alisson R. Perez
+Author-email: alissonperez@outlook.com
+License: MIT
+Requires-Python: >=3.7
