@@ -1,0 +1,151 @@
+DataTable > .datatable--header {
+  text-style: bold;
+  background: $accent 30%;
+  color: $text;
+}
+
+FitsTable {
+  height: 1fr;
+  border: round $secondary;
+  border-subtitle-align: right;
+  & :focus-within {
+    border: round $accent;
+  }
+}
+
+HeaderDialog {
+  width: 27; /* change HeaderDialog's ellipsis accordingly */
+  border: round $secondary;
+  background: $background;
+  & :focus-within {
+    border: round $accent;
+  }
+}
+
+TableDialog {
+  width: 1fr;
+}
+
+EmptyDialog {
+  width: 1fr;
+  height: 1fr;
+  border: round $secondary;
+  align: center middle;
+  hatch: right green 20%;
+}
+
+EmptyDialog Label {
+  width: auto;
+}
+
+TabbedContent {
+  height: 1fr;  /* keeps loading indicator at center */
+  background: $background;
+}
+
+TabPane {
+  padding: 0;
+  border: none;
+}
+
+HeaderEntry {
+  align: center middle;
+}
+
+HeaderEntry Container {
+  width: 48;
+  height: 12;
+  border: thick $background;
+  background: $surface;
+}
+
+HeaderEntry TextArea {
+  margin: 1;
+  border: none;
+}
+
+LogScreen RichLog {
+  background: $background;
+}
+
+InfoScreen {
+  align: center middle;
+}
+
+InfoScreen Container {
+  width: 76;
+  height: 18;
+  border: ascii $primary;
+  background: $surface;
+}
+
+FileExplorerScreen {
+  align: center middle
+}
+
+FileExplorerScreen Container {
+  align: center middle;
+  width: 60;
+  height: 18;
+  padding: 0 1;
+  border: thick $background;
+  background: $surface;
+}
+
+FileExplorerScreen DirectoryTree {
+  border: round $secondary;
+  background: $background;
+  &.error {
+    border: round $error;
+  }
+}
+
+FileInput {
+  /* will align prompt of FileInput to prompt of filter */
+  height: 3;
+  padding: 0 0 0 1;
+  background: $background;
+  border: round $primary;
+  & :focus-within {
+    border: round $accent;
+  }
+  &.error {
+    border: round $error;
+  }
+}
+
+FileInput Input {
+  height: 1;
+  width: 1fr;
+  border: none;
+}
+
+FilterInput {
+  border: round $secondary;
+  height: 3;
+  &:focus-within {
+    border: round $accent;
+  }
+  &.error {
+    border: round $error;
+  }
+}
+
+FilterInput Input {
+  height: 1;
+  width: 1fr;
+  border: none;
+}
+
+Header {
+  height: 1;
+  background: $primary 20%;
+}
+
+Header Static {
+  width: 1fr;
+}
+
+Header Label {
+  width: auto;
+}
