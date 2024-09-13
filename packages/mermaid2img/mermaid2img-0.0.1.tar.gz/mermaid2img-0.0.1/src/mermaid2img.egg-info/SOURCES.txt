@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/mermaid2image.py
+src/mermaid2img.egg-info/PKG-INFO
+src/mermaid2img.egg-info/SOURCES.txt
+src/mermaid2img.egg-info/dependency_links.txt
+src/mermaid2img.egg-info/entry_points.txt
+src/mermaid2img.egg-info/requires.txt
+src/mermaid2img.egg-info/top_level.txt
