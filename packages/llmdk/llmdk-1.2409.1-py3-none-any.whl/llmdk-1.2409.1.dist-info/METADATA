@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: llmdk
+Version: 1.2409.1
+Summary: LLM Development Kit for common APIs
+Home-page: https://github.com/EveripediaNetwork/llmdk
+Author: Rodrigo Martínez (brunneis)
+Author-email: dev@brunneis.com
+License: GNU General Public License v3 (GPLv3)
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.10
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: openai
+Requires-Dist: anthropic
+Requires-Dist: groq
+Requires-Dist: ollama
+Requires-Dist: huggingface-hub
+
