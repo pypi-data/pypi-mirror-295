@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zmc"
+dynamic = ["version"]
+description = "Zeta Mission Control python library"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [{ name = "Zeta Technologies Inc." }]
+dependencies = ["websockets"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    'Intended Audience :: Science/Research',
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    'Programming Language :: Python :: 3 :: Only',
+    "Operating System :: OS Independent",
+    'Topic :: Scientific/Engineering',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Libraries',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+]
+
+
+[tool.setuptools.dynamic]
+version = { attr = "zmc.version.__version__" }
+
+[tool.setuptools.packages.find]
+exclude = ["*_test.py"]
+
+
+# Pylint/formatting configuration
+
+[tool.pylint.main]
+load-plugins = ["pylint_per_file_ignores", "pylint_pytest"]
+
+[tool.pylint.messages_control]
+disable = ["fixme", "too-few-public-methods", "too-many-instance-attributes"]
+per-file-ignores = [
+    "(.*_test.py|.*/conftest.py):missing-function-docstring,missing-module-docstring,missing-class-docstring, attribute-defined-outside-init,protected-access",
+]
+
+[tool.pylint.format]
+max-line-length = 80
+
+[tool.pylint.logging]
+logging-modules = ["logging"]
+
+[tool.black]
+line-length = 80
+# preview = true   # Try "future" formatting style
+
+# MyPy configuration
+
+[tool.mypy]
+strict = false # enable once typing has been taken care of
