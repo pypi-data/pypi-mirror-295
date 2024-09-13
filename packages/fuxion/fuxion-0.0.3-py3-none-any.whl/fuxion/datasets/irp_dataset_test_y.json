@@ -1,0 +1,42 @@
+{
+  "dataset": {
+    "outputs": [
+      {
+        "generated_input": "title: Quantum Cognition: Merging Quantum Physics and Cognitive Science to Understand Decision-Making. Patel, Johnson, Lee. December 2024. Quantum Physics, Cognitive Science. Keywords: quantum cognition, decision-making, cognitive models\nabstract: Abstract: This research explores the intersection of quantum physics and cognitive science to develop a novel framework for understanding human decision-making processes. By applying principles of quantum mechanics to cognitive models, we investigate how superposition and entanglement can explain complex decision-making behaviors. Utilizing experimental psychology methods alongside quantum simulations, our study reveals that decision-making may not be strictly linear but influenced by probabilistic states. Conclusion: The integration of quantum theory into cognitive science offers a transformative perspective on human cognition, potentially leading to more accurate predictive models of behavior.",
+        "normalized_output": {
+          "irp": "title: Quantum Cognition: Merging Quantum Physics and Cognitive Science to Understand Decision-Making. Patel, Johnson, Lee. December 2024. Quantum Physics, Cognitive Science. Keywords: quantum cognition, decision-making, cognitive models\nabstract: Abstract: This research explores the intersection of quantum physics and cognitive science to develop a novel framework for understanding human decision-making processes. By applying principles of quantum mechanics to cognitive models, we investigate how superposition and entanglement can explain complex decision-making behaviors. Utilizing experimental psychology methods alongside quantum simulations, our study reveals that decision-making may not be strictly linear but influenced by probabilistic states. Conclusion: The integration of quantum theory into cognitive science offers a transformative perspective on human cognition, potentially leading to more accurate predictive models of behavior.",
+          "normalized": [
+            {
+              "title": "Quantum Cognition: Merging Quantum Physics and Cognitive Science to Understand Decision-Making",
+              "authors": "Patel, Johnson, Lee",
+              "publication_date": "December 2024",
+              "fields": "Quantum Physics, Cognitive Science",
+              "abstract": "This research explores the intersection of quantum physics and cognitive science to develop a novel framework for understanding human decision-making processes. By applying principles of quantum mechanics to cognitive models, we investigate how superposition and entanglement can explain complex decision-making behaviors. Utilizing experimental psychology methods alongside quantum simulations, our study reveals that decision-making may not be strictly linear but influenced by probabilistic states.",
+              "conclusion": "The integration of quantum theory into cognitive science offers a transformative perspective on human cognition, potentially leading to more accurate predictive models of behavior.",
+              "keywords": "quantum cognition, decision-making, cognitive models"
+            }
+          ]
+        }
+      },
+      {
+        "generated_input": "title: Sonic Landscapes: Integrating Acoustic Ecology and Urban Planning for Sustainable Cities. Martinez, Brown, Wang. July 2024. Acoustic Ecology, Urban Planning. Keywords: acoustic ecology, urban sustainability, soundscapes\nabstract: Abstract: This paper presents an innovative approach to urban planning by incorporating principles from acoustic ecology to design sustainable and livable cities. By analyzing urban soundscapes and their impact on human well-being, we propose new planning strategies that prioritize acoustic environments. Using field recordings, sound mapping, and urban design simulations, our research demonstrates that thoughtful acoustic planning can enhance urban quality of life and environmental health. Conclusion: The fusion of acoustic ecology with urban planning provides a holistic framework for creating cities that are not only functional but also acoustically harmonious.",
+        "normalized_output": {
+          "irp": "title: Sonic Landscapes: Integrating Acoustic Ecology and Urban Planning for Sustainable Cities. Martinez, Brown, Wang. July 2024. Acoustic Ecology, Urban Planning. Keywords: acoustic ecology, urban sustainability, soundscapes\nabstract: Abstract: This paper presents an innovative approach to urban planning by incorporating principles from acoustic ecology to design sustainable and livable cities. By analyzing urban soundscapes and their impact on human well-being, we propose new planning strategies that prioritize acoustic environments. Using field recordings, sound mapping, and urban design simulations, our research demonstrates that thoughtful acoustic planning can enhance urban quality of life and environmental health. Conclusion: The fusion of acoustic ecology with urban planning provides a holistic framework for creating cities that are not only functional but also acoustically harmonious.",
+          "normalized": [
+            {
+              "title": "Sonic Landscapes: Integrating Acoustic Ecology and Urban Planning for Sustainable Cities",
+              "authors": "Martinez, Brown, Wang",
+              "publication_date": "July 2024",
+              "fields": "Acoustic Ecology, Urban Planning",
+              "abstract": "This paper presents an innovative approach to urban planning by incorporating principles from acoustic ecology to design sustainable and livable cities. By analyzing urban soundscapes and their impact on human well-being, we propose new planning strategies that prioritize acoustic environments. Using field recordings, sound mapping, and urban design simulations, our research demonstrates that thoughtful acoustic planning can enhance urban quality of life and environmental health.",
+              "conclusion": "The fusion of acoustic ecology with urban planning provides a holistic framework for creating cities that are not only functional but also acoustically harmonious.",
+              "keywords": "acoustic ecology, urban sustainability, soundscapes"
+            }
+          ]
+        }
+      }
+    ],
+    "generator_prompt": "Your task is to generate an abstract for a fictional research paper that bridges two distinct academic disciplines, combining their methodologies, theories, and insights to explore a novel research question or hypothesis.\nEach abstract should clearly state the interdisciplinary fields involved, the research question or hypothesis, the methods used for investigation, key findings, potential implications of the research, and a consice conclusion.\nBe imaginative in linking the disciplines and ensure the research topic is innovative and thought-provoking.\nDo not return python code\nGuidelines:\n\nStart with a concise title that reflects the interdisciplinary nature of the paper.\nClearly mention the two (or more) fields being combined.\nDescribe the research question or hypothesis.\nOutline the methodology or approach taken.\nSummarize the key findings or results.\nDiscuss the implications or potential impact of the research.\nDo not confuse the conclusion for the abstract\nDo not repeat titles that have been generated, ALWAYS generate a new title every time\nNEVER return a nonetype abstract, and to ensure this, you need to be very creative about how you generate paper titles such that you can always provide an abstract\n\n\n{{few_shot}}\n\n\nList:\n",
+    "normalizer_prompt": "Format the following address as a list of python dictionaries of the form:\n[\n    { \n        \"title\": str,\n        \"authors\": str, \n        \"publication_date\": str,\n        \"fields\": str,\n        \"abstract\": str, \n        \"conclusion\": str,\n        \"keywords\": str\n\n    }\n]. \n\nBe sure to handle multiple authors, keywords and fields correctly\n\nInput:\n\"{{irp}}\"\n\nOutput:\n[{"
+  }
+}
