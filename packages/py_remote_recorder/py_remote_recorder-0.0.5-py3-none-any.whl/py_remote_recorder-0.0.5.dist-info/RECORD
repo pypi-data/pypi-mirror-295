@@ -1,0 +1,13 @@
+py_remote_recorder/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+py_remote_recorder/__main__.py,sha256=FyJmEWfv75lG-umSM1STmb1b7BiJ3l2xTurD617tLik,7007
+py_remote_recorder/backend/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+py_remote_recorder/backend/audio_record_functions.py,sha256=DwnQa0ZOJ5q72rzjjhu6nDKmdsMTjE7LW4_F8FT9SIw,1834
+py_remote_recorder/backend/call_apis.py,sha256=Pr4xXl5fHO62o5FwyKAgw5ZUNVds4TLiFR93NHJTjD0,4132
+py_remote_recorder/backend/record_functions.py,sha256=J62s24qLXBAWKIInKhLBCsE5HczCZ4puEpK2fft9jRQ,3129
+py_remote_recorder/backend/video_record_functions.py,sha256=tevo8ls5SVVDDnLNpp-0ay8-trrIVGPrvHiHPKPAsdg,2962
+py_remote_recorder/utils.py,sha256=KtQS2SGuk2xqQgm_rGdWd3najr7jKy_3W8Cr1UJsbho,678
+py_remote_recorder-0.0.5.dist-info/LICENSE,sha256=R87aT593FW0QGRmAEGlui0pWxRtCPKRPT7uNWAXwzbk,1065
+py_remote_recorder-0.0.5.dist-info/METADATA,sha256=jPGOYvjSbTdUwgpIt-zcyXBRlj73uEHZLDn_mttd43M,6777
+py_remote_recorder-0.0.5.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+py_remote_recorder-0.0.5.dist-info/entry_points.txt,sha256=qca9lS-VXswrksCbj-N6bc4sYrmbRaE_WyXjafPGcXI,63
+py_remote_recorder-0.0.5.dist-info/RECORD,,
