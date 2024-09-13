@@ -1,0 +1,18 @@
+[project]
+name = "ziplineio"
+version = "0.1.16.dev2"
+authors = [
+  { name="Cam Sima", email="cjsima@gmail.com" },
+]
+description = "The funnest ASGI Web Framework"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/CameronSima/ZipLine"
+Issues = "https://github.com/CameronSima/ZipLine/issues"
