@@ -1,0 +1,1 @@
+# hotmail_flask_mailer/__init__.py

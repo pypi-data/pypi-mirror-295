@@ -1,0 +1,2 @@
+[console_scripts]
+hotmail-flask-mailer = hotmail_flask_mailer.app:app.run
