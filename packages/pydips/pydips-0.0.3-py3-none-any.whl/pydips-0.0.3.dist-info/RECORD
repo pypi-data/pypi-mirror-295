@@ -1,0 +1,11 @@
+pydips/__init__.py,sha256=iK-TG4h7c_qcW97pzRV3jTEndRitqbtIyMOSSOdEzAs,54
+pydips/api.py,sha256=e7pfZdNwGHTKsfoVqb6ATzTfy0w1o4Ga_V5czK9Kcas,3804
+pydips/model.py,sha256=RKu5sEt5goUjdGJl8oKDmZ26uc_SHwWp8ITD1S_4QdY,3985
+pydips/utils.py,sha256=Dr394dw-2qPU9x1QiTFdhFYkH9H7dkzxPr2kGvJzq_U,4227
+pydips/binaries/macos/libbert.dylib,sha256=cnXhpU2IMVnAWFMuTIXX2Lajy3j4uZXKxFfbWH6O9yE,82176
+pydips/models/electra-small-6-layers-q4_0.gguf,sha256=N8Q-CZIoxGnaDnZY0FOH2eVRghjx3sheyhAfrDmrVN4,3488640
+pydips-0.0.3.dist-info/LICENSE,sha256=iYMbKUhE4vsSNk7NDnjRtb4LqLAjCKyZYWOIe8U61nQ,1064
+pydips-0.0.3.dist-info/METADATA,sha256=SRynK9dIoZ6hNPe9JyxzRiDZ6JD8LgQUw3gkftsUF9A,1978
+pydips-0.0.3.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+pydips-0.0.3.dist-info/top_level.txt,sha256=wvFe9hKdpeijHX06bn_-rqtUqzv1eQkYRa_ZPT4pMDA,7
+pydips-0.0.3.dist-info/RECORD,,
