@@ -1,0 +1,14 @@
+pydiscovergy/__init__.py,sha256=8obht9ISaxAmjkzK602Mff61QB5DRnEyDwowC-vGkTk,103
+pydiscovergy/authentication/__init__.py,sha256=aYTsZd8Q6sTntBznRZzOSHk1C133SA8Q4Eq4Ay1PhQs,330
+pydiscovergy/authentication/base.py,sha256=Tmq4RiwJFoBvDRaXpJZdTO6b9iw1gpL27RxNjTdv1tw,566
+pydiscovergy/authentication/basicauth.py,sha256=v97K27POKPEVLyEOu3vgPFDgjIQx40fnNUyexx1j_XY,720
+pydiscovergy/authentication/token.py,sha256=DZ5xNrPzycumCcHlfJcJXzr-bUM7JArOopkBGHSR6aM,7453
+pydiscovergy/const.py,sha256=SxgRwT3NqRxga6bvID_sxRe8-Urc6c0mAHyEwaGlIb4,678
+pydiscovergy/discovergy.py,sha256=mQPv2b87I7ZBxDOEgglW1dqFZzTEq7UuiUm0hFrKcNg,6661
+pydiscovergy/error.py,sha256=avdWMxC3U2ADd-eMZSfEXl2gCJOUGILx51fKFuFfy_E,593
+pydiscovergy/models.py,sha256=3r517-e7SOzvg7aG2rR0AVxn_ub5UtkWyFxcC_aTFT4,3251
+pydiscovergy/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pydiscovergy-3.0.2.dist-info/LICENSE,sha256=ypfrq8mDYLI5YCyZIfdn-xUVCjWs5wa55x01-yh4BdE,1081
+pydiscovergy-3.0.2.dist-info/METADATA,sha256=3yssQOHM2JfAuDHesvDDXWp2bxFp8dig6F8aXGjqpMI,6116
+pydiscovergy-3.0.2.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+pydiscovergy-3.0.2.dist-info/RECORD,,
