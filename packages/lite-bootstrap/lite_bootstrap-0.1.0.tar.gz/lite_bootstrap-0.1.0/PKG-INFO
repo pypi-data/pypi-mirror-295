@@ -1,0 +1,46 @@
+Metadata-Version: 2.3
+Name: lite-bootstrap
+Version: 0.1.0
+Summary: Lite package for bootstrapping new microservices
+Project-URL: repository, https://github.com/modern-python/lite-bootstrap
+Author-email: Artur Shiriev <me@shiriev.ru>
+License-Expression: MIT
+Keywords: bootstrap,error-tracing,fastapi,microservice,opentelemetry,python,sentry
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Typing :: Typed
+Requires-Python: <4,>=3.10
+Provides-Extra: fastapi
+Requires-Dist: fastapi; extra == 'fastapi'
+Requires-Dist: opentelemetry-api; extra == 'fastapi'
+Requires-Dist: opentelemetry-exporter-otlp; extra == 'fastapi'
+Requires-Dist: opentelemetry-instrumentation; extra == 'fastapi'
+Requires-Dist: opentelemetry-instrumentation-fastapi; extra == 'fastapi'
+Requires-Dist: opentelemetry-sdk; extra == 'fastapi'
+Requires-Dist: sentry-sdk; extra == 'fastapi'
+Provides-Extra: tracing
+Requires-Dist: opentelemetry-api; extra == 'tracing'
+Requires-Dist: opentelemetry-exporter-otlp; extra == 'tracing'
+Requires-Dist: opentelemetry-instrumentation; extra == 'tracing'
+Requires-Dist: opentelemetry-sdk; extra == 'tracing'
+Requires-Dist: sentry-sdk; extra == 'tracing'
+Description-Content-Type: text/markdown
+
+Lite-Bootstrap package
+==
+[![Test Coverage](https://codecov.io/gh/modern-python/lite-bootstrap/branch/main/graph/badge.svg)](https://codecov.io/gh/modern-python/lite-bootstrap)
+[![MyPy Strict](https://img.shields.io/badge/mypy-strict-blue)](https://mypy.readthedocs.io/en/stable/getting_started.html#strict-mode-and-configuration)
+[![Supported versions](https://img.shields.io/pypi/pyversions/lite-bootstrap.svg)](https://pypi.python.org/pypi/lite-bootstrap)
+[![downloads](https://img.shields.io/pypi/dm/lite-bootstrap.svg)](https://pypistats.org/packages/lite-bootstrap)
+[![GitHub stars](https://img.shields.io/github/stars/modern-python/lite-bootstrap)](https://github.com/modern-python/lite-bootstrap/stargazers)
+
+This package helps to build new microservices
+
+## Quickstart:
+### Installation
+
+```shell
+$ pip install lite-bootstrap
+```
