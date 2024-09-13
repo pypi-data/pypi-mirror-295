@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: binary-bci2000-processing
+Version: 1.0.1
+Summary: Binary Processing
+Home-page: https://github.com/s-n-1-0/binary-bci2000-processing
+Download-URL: https://github.com/s-n-1-0/binary-bci2000-processing
+Author: sn-10
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# binary-bci2000-processing
+
+https://github.com/s-n-1-0/MLA_BCI2000 から信号処理モジュールを分離してpypiパッケージにしたもの。
+できればBCPy2000は使いたくないので、このパッケージの使用をやめるようにしたい。
