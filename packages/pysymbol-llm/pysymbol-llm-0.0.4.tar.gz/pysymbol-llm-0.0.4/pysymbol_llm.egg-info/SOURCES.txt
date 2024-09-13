@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+settings.ini
+setup.py
+pysymbol_llm/__init__.py
+pysymbol_llm/_modidx.py
+pysymbol_llm/core.py
+pysymbol_llm.egg-info/PKG-INFO
+pysymbol_llm.egg-info/SOURCES.txt
+pysymbol_llm.egg-info/dependency_links.txt
+pysymbol_llm.egg-info/entry_points.txt
+pysymbol_llm.egg-info/not-zip-safe
+pysymbol_llm.egg-info/requires.txt
+pysymbol_llm.egg-info/top_level.txt
