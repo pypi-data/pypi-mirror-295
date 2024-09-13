@@ -1,0 +1,17 @@
+kpca_deeponet/__init__.py,sha256=daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA,2
+kpca_deeponet/kpca.py,sha256=hEJJCFoDKpsGV67Dcl11PJTvqKHHrhuHyOggQW3p3R0,3566
+kpca_deeponet/metrics.py,sha256=SOdSXBLzdPuTkAhodQUHfL4ttJUSwP97wC11kIIiK1k,164
+kpca_deeponet/nns.py,sha256=Z-7TEXyo7VKjWWNGVwdZkZuYYoAhoeEdTGKKRzMFZQk,3340
+kpca_deeponet/qdeim.py,sha256=uqBzJUnJOBKDSpo0DeVygjqNWjPVsMWWHgGm8KbNSrM,416
+kpca_deeponet/test_cases/__init__.py,sha256=daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA,2
+kpca_deeponet/test_cases/Cavity/__init__.py,sha256=daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA,2
+kpca_deeponet/test_cases/Cavity/utils.py,sha256=RAz6-cr-Dtn8qTJuRWrp8yBIpDsPkNTYw7XDwmyz7N4,1820
+kpca_deeponet/test_cases/NS/__init__.py,sha256=daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA,2
+kpca_deeponet/test_cases/NS/utils.py,sha256=whPuXXlbgfItMcvAPUTqEDZVg94qdjuqQ7wSR-w75qw,815
+kpca_deeponet/test_cases/nonlinear1D/__init__.py,sha256=daEdpEyAJIa8b2VkCqSKcw8PaExcB6Qro80XNes_sHA,2
+kpca_deeponet/test_cases/nonlinear1D/utils.py,sha256=91Af8TpF6upI2j4EQt3MHpS0BvPjEdGlZXZRYREWxrg,760
+kpca_deeponet-0.1.1.dist-info/LICENSE,sha256=FoyeRbKHVLivulISmK1FCbSS3I13iTmjBaDj0IlCnXU,1081
+kpca_deeponet-0.1.1.dist-info/METADATA,sha256=wtgYNUISy39jMuTytCNbh4a0nlkLNd8Ev40ftwIXLF0,2431
+kpca_deeponet-0.1.1.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+kpca_deeponet-0.1.1.dist-info/top_level.txt,sha256=ZDhQie87Db3f5btSxae-9sszG-tpW7mYwW3stlfIFIE,14
+kpca_deeponet-0.1.1.dist-info/RECORD,,
