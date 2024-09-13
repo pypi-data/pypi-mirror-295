@@ -1,0 +1,4 @@
+include README.rst
+include docs/build/latex/ashdisperse.pdf
+include ashdisperse/data/GVP_Volcano_List.csv
+include ashdisperse/notebooks/ashdisperse.ipynb
