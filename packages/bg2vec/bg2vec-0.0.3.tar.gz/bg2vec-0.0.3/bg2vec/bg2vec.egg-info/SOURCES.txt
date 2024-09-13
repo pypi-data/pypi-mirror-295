@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+bg2vec/bg2vec.egg-info/PKG-INFO
+bg2vec/bg2vec.egg-info/SOURCES.txt
+bg2vec/bg2vec.egg-info/dependency_links.txt
+bg2vec/bg2vec.egg-info/requires.txt
+bg2vec/bg2vec.egg-info/top_level.txt
+tests/test_preprocessing.py
+tests/test_simcse_collator.py
+tests/test_simcse_loss.py
