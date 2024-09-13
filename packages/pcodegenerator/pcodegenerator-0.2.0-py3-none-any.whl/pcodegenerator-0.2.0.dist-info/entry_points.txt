@@ -1,0 +1,4 @@
+[console_scripts]
+pcodegenerator=pcodegenerator:generate
+pcodeprepare=pcodegenerator:prepare
+
