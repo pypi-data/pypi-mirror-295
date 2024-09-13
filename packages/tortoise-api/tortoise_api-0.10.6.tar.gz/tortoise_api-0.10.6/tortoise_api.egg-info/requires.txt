@@ -1,0 +1,10 @@
+asyncpg
+python-dotenv
+fastapi
+tortoise-api-model
+orjson
+uvicorn
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+uvicorn
