@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: sage_lib
+Version: 0.1.5.18
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: imageio
