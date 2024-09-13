@@ -1,0 +1,7 @@
+lxml
+cssselect
+torch-geometric
+torch==2.2.2
+sentence-transformers
+nltk
+numpy
