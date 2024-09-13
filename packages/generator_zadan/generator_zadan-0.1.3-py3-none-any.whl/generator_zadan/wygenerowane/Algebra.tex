@@ -1,0 +1,4158 @@
+% !TeX spellcheck = pl_PL-Polish
+\documentclass[a4paper,10pt]{article}
+\linespread{1.3} %odstepy miedzy liniami
+\usepackage[a4paper, lmargin=2cm, rmargin=2cm, tmargin=2cm, bmargin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{ocgx}
+\usepackage{polski}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{most}
+\tcbuselibrary{skins}
+\tcbuselibrary{raster}
+% brak - bez odpowiedzi i bez miejsca, white - bez odpowiedzi z miejscem, red = odpowiedzi ukryte ale dostepne
+\newcommand{\kolorodpowiedzi}{red}
+
+\renewcommand{\footrulewidth}{0.4pt}% linia pozioma na końcu strony - default is 0pt
+\DeclareFontShape{OMX}{cmex}{m}{n}
+    {<-7.5> cmex7
+    <7.5-8.5> cmex8
+    <8.5-9.5> cmex9
+    <9.5-> cmex10}{}
+\DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n}
+
+
+\newcommand{\ukryte}{1}  % domyślnie odpowiedzi są do pokazywania po kliknięciu
+\ifthenelse{\equal{\kolorodpowiedzi}{red}}  % ukrywamy od pokazywania gdy kolor jest red
+	{\renewcommand{\ukryte}{0}}{}
+
+\newcommand{\zOdpowiedziami}[3]{
+	\ifthenelse{\equal{#1}{brak}}{}{
+		\ifthenelse{\equal{#1}{white}}{\vphantom{#3}}{\tcbox[rozwiazanie]{
+			\switchocg{#2}{\textcolor{\kolorodpowiedzi}{Rozwiązanie: }}
+				\begin{ocg}{Odp. \thesubsection.\thetcbrasternum}{#2}{\ukryte}
+					\textcolor{\kolorodpowiedzi}{#3}
+				\end{ocg}}}}}
+
+\tcbset{
+	zadanie/.style={size=small,
+		raster columns=1,
+		colframe=green!50!black,
+		colback=green!2!white,
+		colbacktitle=green!40!black,
+	title={Zadanie \thesubsection.\thetcbrasternum}}
+}
+\tcbset{
+	rozwiazanie/.style={size=small, capture=minipage}
+}
+\begin{document}
+    \author{\tcbox[colframe=blue!50!black,colback=blue!2!white,colbacktitle=blue!40!black]
+        {\Large Adam Bohonos \thanks{\href{https://github.com/DyonOylloug/generator_zadan}{GitHub}}}}
+    \title{\tcbox[colframe=green!50!black,colback=green!2!white,colbacktitle=green!40!black]
+        {\Huge Algebra - zadania uzupełniające}}
+    \date{\tcbox[colframe=green!50!black,colback=green!2!white,colbacktitle=green!40!black]
+        {\small 12 września 2024}}
+    \maketitle
+    \pagestyle{fancy}
+    \setlength{\headheight}{27.29453pt}
+    \fancyfoot[R]{\tiny\textbf{ 12 września 2024, 13:28}}
+    \tableofcontents
+	\section{Liczby zespolone}
+	\subsection{Równanie liniowe}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				-6 + 4i+\left(7 + 6i\right)z = \left(7 + 5i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg1}
+				{$z=-4 - 6i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				-4 - 3i+\left(7 - 6i\right)z = \left(5 - 5i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg2}
+				{$z=1 + 2i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				\left(2 + 4i\right)z = 2 + 6i+\left(2 + 5i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg3}
+				{$z=-6 + 2i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				5 - 5i+\left(7 - 3i\right)z = \left(6 - 5i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg4}
+				{$z=1 + 3i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				\left(2 + 8i\right)z = 8 - 6i+\left(4 + 9i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg5}
+				{$z=-2 + 4i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				\left(2 + 4i\right)z = -2 + 5i+\left(2 + 3i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg6}
+				{$z=5 + 2i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				8 - 6i+\left(6 + 2i\right)z = \left(7 + 3i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg7}
+				{$z=1 - 7i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				3 + 8i+\left(8 - 2i\right)z = \left(8 - i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg8}
+				{$z=8 - 3i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				\left(3 + 9i\right)z = -6 - 4i+\left(3 + 7i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg9}
+				{$z=-2 + 3i.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić rozwiązanie.
+			\[
+				\left(5 - 5i\right)z = -6 + 9i+\left(5 - 2i\right)z
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg10}
+				{$z=-3 - 2i.$}
+
+	\end{tcbitemize}
+	\subsection{Równanie ze sprzężeniem}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(2 - 2 i\right) + \left(-1 - 2 i\right) \overline{z} - 5 + 5 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg11}
+				{$\left(-1 - 2 i\right) \left(x - i y\right) + \left(2 - 2 i\right) \left(x + i y\right) - 5 + 5 i = 0,$ \\ 
+			$x \left(1 - 4 i\right) + 3 i y - 5 + 5 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x - 5 = 0\\
+					- 4 x + 3 y + 5 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 5, \  y : 5\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-3 + 3 i\right) + \left(-4 - 2 i\right) \overline{z} + 5 + i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg12}
+				{$\left(-4 - 2 i\right) \left(x - i y\right) + \left(-3 + 3 i\right) \left(x + i y\right) + 5 + i = 0,$ \\ 
+			$\left(-1 - i\right) \left(x \left(3 - 4 i\right) + y \left(2 - 3 i\right) - 3 + 2 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 7 x - 5 y + 5 = 0\\
+					x + y + 1 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 5, \  y : -6\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(6 + 6 i\right) + \left(7 + 5 i\right) \overline{z} + 4 + 4 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg13}
+				{$\left(7 + 5 i\right) \left(x - i y\right) + \left(6 + 6 i\right) \left(x + i y\right) + 4 + 4 i = 0,$ \\ 
+			$\left(1 + i\right) \left(x \left(12 - i\right) - y + 4\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					13 x - y + 4 = 0\\
+					11 x - y + 4 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 0, \  y : 4\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-4 + 4 i\right) + \left(-4 + 2 i\right) \overline{z} + 2 + 6 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg14}
+				{$\left(-4 + 2 i\right) \left(x - i y\right) + \left(-4 + 4 i\right) \left(x + i y\right) + 2 + 6 i = 0,$ \\ 
+			$- 2 \left(x \left(4 - 3 i\right) + y - 1 - 3 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 8 x - 2 y + 2 = 0\\
+					6 x + 6 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -1, \  y : 5\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-3 + 4 i\right) + \left(5 - 2 i\right) \overline{z} + 4 + 6 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg15}
+				{$\left(5 - 2 i\right) \left(x - i y\right) + \left(-3 + 4 i\right) \left(x + i y\right) + 4 + 6 i = 0,$ \\ 
+			$2 i \left(x \left(1 - i\right) + y \left(-4 + 3 i\right) + 3 - 2 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					2 x - 6 y + 4 = 0\\
+					2 x - 8 y + 6 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 1, \  y : 1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(5 + 2 i\right) + \left(1 - 4 i\right) \overline{z} - 6 + 6 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg16}
+				{$\left(1 - 4 i\right) \left(x - i y\right) + \left(5 + 2 i\right) \left(x + i y\right) - 6 + 6 i = 0,$ \\ 
+			$2 \left(x \left(3 - i\right) + y \left(-3 + 2 i\right) - 3 + 3 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					6 x - 6 y - 6 = 0\\
+					- 2 x + 4 y + 6 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -1, \  y : -2\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(4 + i\right) + \left(-5 + 6 i\right) \overline{z} + 6 + 2 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg17}
+				{$\left(-5 + 6 i\right) \left(x - i y\right) + \left(4 + i\right) \left(x + i y\right) + 6 + 2 i = 0,$ \\ 
+			$\left(-1 + i\right) \left(x \left(4 - 3 i\right) + y \left(2 - 7 i\right) - 2 - 4 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- x + 5 y + 6 = 0\\
+					7 x + 9 y + 2 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 1, \  y : -1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(1 + 3 i\right) + \left(2 - 3 i\right) \overline{z} + 6 - 3 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg18}
+				{$\left(2 - 3 i\right) \left(x - i y\right) + \left(1 + 3 i\right) \left(x + i y\right) + 6 - 3 i = 0,$ \\ 
+			$3 x + y \left(-6 - i\right) + 6 - 3 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					3 x - 6 y + 6 = 0\\
+					- y - 3 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -8, \  y : -3\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-2 - 4 i\right) + \left(2 - 5 i\right) \overline{z} + 6 + 6 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg19}
+				{$\left(2 - 5 i\right) \left(x - i y\right) + \left(-2 - 4 i\right) \left(x + i y\right) + 6 + 6 i = 0,$ \\ 
+			$- i \left(9 x + y \left(4 - i\right) - 6 + 6 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					6 - y = 0\\
+					- 9 x - 4 y + 6 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -2, \  y : 6\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-2 + 6 i\right) + \left(-4 + 5 i\right) \overline{z} - 1 + 3 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg20}
+				{$\left(-4 + 5 i\right) \left(x - i y\right) + \left(-2 + 6 i\right) \left(x + i y\right) - 1 + 3 i = 0,$ \\ 
+			$- x \left(6 - 11 i\right) - y \left(1 - 2 i\right) - 1 + 3 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 6 x - y - 1 = 0\\
+					11 x + 2 y + 3 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 1, \  y : -7\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-4 + 3 i\right) + \left(-5 - 3 i\right) \overline{z} + 5 + 4 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg21}
+				{$\left(-5 - 3 i\right) \left(x - i y\right) + \left(-4 + 3 i\right) \left(x + i y\right) + 5 + 4 i = 0,$ \\ 
+			$- 9 x - y \left(6 - i\right) + 5 + 4 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 9 x - 6 y + 5 = 0\\
+					y + 4 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : \frac{29}{9}, \  y : -4\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-2 - 6 i\right) + \left(-1 + 6 i\right) \overline{z} - 6 - i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg22}
+				{$\left(-1 + 6 i\right) \left(x - i y\right) + \left(-2 - 6 i\right) \left(x + i y\right) - 6 - i = 0,$ \\ 
+			$- 3 x - y \left(-12 + i\right) - 6 - i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 3 x + 12 y - 6 = 0\\
+					- y - 1 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -6, \  y : -1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(1 + 5 i\right) + \left(2 - 3 i\right) \overline{z} + 4 + 7 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg23}
+				{$\left(2 - 3 i\right) \left(x - i y\right) + \left(1 + 5 i\right) \left(x + i y\right) + 4 + 7 i = 0,$ \\ 
+			$\left(3 + 2 i\right) \left(x + y \left(-2 + i\right) + 2 + i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					3 x - 8 y + 4 = 0\\
+					2 x - y + 7 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -4, \  y : -1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-1 + 3 i\right) + \left(7 - 6 i\right) \overline{z} + 6 - 3 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg24}
+				{$\left(7 - 6 i\right) \left(x - i y\right) + \left(-1 + 3 i\right) \left(x + i y\right) + 6 - 3 i = 0,$ \\ 
+			$\left(2 - i\right) \left(3 x + y \left(-2 - 5 i\right) + 3\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					6 x - 9 y + 6 = 0\\
+					- 3 x - 8 y - 3 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -1, \  y : 0\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(1 + 6 i\right) + \left(4 + 6 i\right) \overline{z} - 5 - 4 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg25}
+				{$\left(4 + 6 i\right) \left(x - i y\right) + \left(1 + 6 i\right) \left(x + i y\right) - 5 - 4 i = 0,$ \\ 
+			$i \left(x \left(12 - 5 i\right) - 3 y - 4 + 5 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					5 x - 5 = 0\\
+					12 x - 3 y - 4 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 1, \  y : \frac{8}{3}\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-6 + 3 i\right) + \left(4 + 6 i\right) \overline{z} - 1 + i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg26}
+				{$\left(4 + 6 i\right) \left(x - i y\right) + \left(-6 + 3 i\right) \left(x + i y\right) - 1 + i = 0,$ \\ 
+			$- x \left(2 - 9 i\right) - y \left(-3 + 10 i\right) - 1 + i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 2 x + 3 y - 1 = 0\\
+					9 x - 10 y + 1 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 1, \  y : 1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(1 - i\right) + \left(-3 + i\right) \overline{z} - 4 + 4 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg27}
+				{$\left(-3 + i\right) \left(x - i y\right) + \left(1 - i\right) \left(x + i y\right) - 4 + 4 i = 0,$ \\ 
+			$- 2 \left(x + y \left(-1 - 2 i\right) + 2 - 2 i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 2 x + 2 y - 4 = 0\\
+					4 y + 4 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -3, \  y : -1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(-6 - i\right) + \left(-1 + 7 i\right) \overline{z} - 3 - 3 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg28}
+				{$\left(-1 + 7 i\right) \left(x - i y\right) + \left(-6 - i\right) \left(x + i y\right) - 3 - 3 i = 0,$ \\ 
+			$- x \left(7 - 6 i\right) - y \left(-8 + 5 i\right) - 3 - 3 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 7 x + 8 y - 3 = 0\\
+					6 x - 5 y - 3 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : 3, \  y : 3\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(1 - 3 i\right) + \left(-4 + 3 i\right) \overline{z} + 3 + 5 i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg29}
+				{$\left(-4 + 3 i\right) \left(x - i y\right) + \left(1 - 3 i\right) \left(x + i y\right) + 3 + 5 i = 0,$ \\ 
+			$- 3 x - y \left(-6 - 5 i\right) + 3 + 5 i = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					- 3 x + 6 y + 3 = 0\\
+					5 y + 5 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -1, \  y : -1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z \left(4 - i\right) + \left(-3 + 3 i\right) \overline{z} - 1 - i = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg30}
+				{$\left(-3 + 3 i\right) \left(x - i y\right) + \left(4 - i\right) \left(x + i y\right) - 1 - i = 0,$ \\ 
+			$i \left(x \left(2 - i\right) + y \left(7 - 4 i\right) - 1 + i\right) = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x + 4 y - 1 = 0\\
+					2 x + 7 y - 1 = 0
+				\end{array}
+			\right.$ \\
+			$z = \left\{ x : -3, \  y : 1\right\}.$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} + 2 \overline{z} + 6 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg31}
+				{$2 x - 2 i y + \left(x + i y\right)^{2} + 6 = 0,$ \\ 
+			$x^{2} + 2 i x y + 2 x - y^{2} - 2 i y + 6 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} + 2 x - y^{2} + 6 = 0\\
+					2 x y - 2 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : 1, \  y : -3\right\}, \  \left\{ x : 1, \  y : 3\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} - 2 \overline{z} + 3 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg32}
+				{$- 2 x + 2 i y + \left(x + i y\right)^{2} + 3 = 0,$ \\ 
+			$x^{2} + 2 i x y - 2 x - y^{2} + 2 i y + 3 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} - 2 x - y^{2} + 3 = 0\\
+					2 x y + 2 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -1, \  y : - \sqrt{6}\right\}, \  \left\{ x : -1, \  y : \sqrt{6}\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} - 6 \overline{z} + 7 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg33}
+				{$- 6 x + 6 i y + \left(x + i y\right)^{2} + 7 = 0,$ \\ 
+			$x^{2} + 2 i x y - 6 x - y^{2} + 6 i y + 7 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} - 6 x - y^{2} + 7 = 0\\
+					2 x y + 6 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -3, \  y : - \sqrt{34}\right\}, \  \left\{ x : -3, \  y : \sqrt{34}\right\}, \  \left\{ x : 3 - \sqrt{2}, \  y : 0\right\}, \  \left\{ x : \sqrt{2} + 3, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} + \overline{z} - 6 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg34}
+				{$x - i y + \left(x + i y\right)^{2} - 6 = 0,$ \\ 
+			$x^{2} + 2 i x y + x - y^{2} - i y - 6 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} + x - y^{2} - 6 = 0\\
+					2 x y - y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -3, \  y : 0\right\}, \  \left\{ x : 2, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} + \overline{z} - 6 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg35}
+				{$x - i y + \left(x + i y\right)^{2} - 6 = 0,$ \\ 
+			$x^{2} + 2 i x y + x - y^{2} - i y - 6 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} + x - y^{2} - 6 = 0\\
+					2 x y - y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -3, \  y : 0\right\}, \  \left\{ x : 2, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} - 6 \overline{z} - 2 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg36}
+				{$- 6 x + 6 i y + \left(x + i y\right)^{2} - 2 = 0,$ \\ 
+			$x^{2} + 2 i x y - 6 x - y^{2} + 6 i y - 2 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} - 6 x - y^{2} - 2 = 0\\
+					2 x y + 6 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -3, \  y : -5\right\}, \  \left\{ x : -3, \  y : 5\right\}, \  \left\{ x : 3 - \sqrt{11}, \  y : 0\right\}, \  \left\{ x : 3 + \sqrt{11}, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} - 2 \overline{z} + 7 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg37}
+				{$- 2 x + 2 i y + \left(x + i y\right)^{2} + 7 = 0,$ \\ 
+			$x^{2} + 2 i x y - 2 x - y^{2} + 2 i y + 7 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} - 2 x - y^{2} + 7 = 0\\
+					2 x y + 2 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -1, \  y : - \sqrt{10}\right\}, \  \left\{ x : -1, \  y : \sqrt{10}\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} + 2 \overline{z} - 1 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg38}
+				{$2 x - 2 i y + \left(x + i y\right)^{2} - 1 = 0,$ \\ 
+			$x^{2} + 2 i x y + 2 x - y^{2} - 2 i y - 1 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} + 2 x - y^{2} - 1 = 0\\
+					2 x y - 2 y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : 1, \  y : - \sqrt{2}\right\}, \  \left\{ x : 1, \  y : \sqrt{2}\right\}, \  \left\{ x : -1 + \sqrt{2}, \  y : 0\right\}, \  \left\{ x : - \sqrt{2} - 1, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} - \overline{z} - 6 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg39}
+				{$- x + i y + \left(x + i y\right)^{2} - 6 = 0,$ \\ 
+			$x^{2} + 2 i x y - x - y^{2} + i y - 6 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} - x - y^{2} - 6 = 0\\
+					2 x y + y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : -2, \  y : 0\right\}, \  \left\{ x : 3, \  y : 0\right\}\right].$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych
+			\[
+				z^{2} + \overline{z} - 4 = 0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg40}
+				{$x - i y + \left(x + i y\right)^{2} - 4 = 0,$ \\ 
+			$x^{2} + 2 i x y + x - y^{2} - i y - 4 = 0,$\\
+			$\left\{
+				\begin{array}{c}
+					x^{2} + x - y^{2} - 4 = 0\\
+					2 x y - y = 0
+				\end{array}
+			\right.$ \\
+			$z = \left[ \left\{ x : - \frac{1}{2} + \frac{\sqrt{17}}{2}, \  y : 0\right\}, \  \left\{ x : - \frac{\sqrt{17}}{2} - \frac{1}{2}, \  y : 0\right\}\right].$}
+
+	\end{tcbitemize}
+	\subsection{Obszar na płaszczyźnie zespolonej}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+3 + i\right|  =  3
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg41}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y + 1\right)^{2} = 9
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar41}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z-1 - 2 i\right|  =  \sqrt{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg42}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 1\right)^{2} + \left(y - 2\right)^{2} = 2
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar42}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+2 + 2 i\right|  =  3
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg43}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 2\right)^{2} + \left(y + 2\right)^{2} = 9
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar43}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+3 + 3 i\right|  =  \frac{3}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg44}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y + 3\right)^{2} = \frac{9}{4}
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar44}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z-3 - 2 i\right|  =  \sqrt{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg45}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 3\right)^{2} + \left(y - 2\right)^{2} = 2
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar45}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z-2 - 2 i\right|  < \frac{1}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg46}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 2\right)^{2} + \left(y - 2\right)^{2}<\frac{1}{4}
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar46}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+1 - i\right|  \geq \sqrt{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg47}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 1\right)^{2} + \left(y - 1\right)^{2}\geq2
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar47}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z-2 + 2 i\right|  > 3
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg48}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 2\right)^{2} + \left(y + 2\right)^{2}>9
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar48}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+2 - 3 i\right|  \geq \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg49}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 2\right)^{2} + \left(y - 3\right)^{2}\geq\frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar49}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\left|z+1 - 2 i\right|  \leq \frac{1}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg50}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 1\right)^{2} + \left(y - 2\right)^{2}\leq\frac{1}{4}
+				\end{gather*}		
+				&
+					\raisebox{-2.8cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar50}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				2< \left|z-1 - 3 i\right| < 3
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg51}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 1\right)^{2} + \left(y - 3\right)^{2}>4\\
+					\left(x - 1\right)^{2} + \left(y - 3\right)^{2}<9
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar51}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\sqrt{2}\leq \left|z+2 + 3 i\right| \leq 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg52}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 2\right)^{2} + \left(y + 3\right)^{2}\geq2\\
+					\left(x + 2\right)^{2} + \left(y + 3\right)^{2}\leq4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar52}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				1\leq \left|z+3 + i\right| \leq \frac{3}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg53}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y + 1\right)^{2}\geq1\\
+					\left(x + 3\right)^{2} + \left(y + 1\right)^{2}\leq\frac{9}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar53}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				\frac{3}{2}< \left|z+2 - 3 i\right| < 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg54}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 2\right)^{2} + \left(y - 3\right)^{2}>\frac{9}{4}\\
+					\left(x + 2\right)^{2} + \left(y - 3\right)^{2}<4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar54}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunek
+			\[
+				1< \left|z+3 - 2 i\right| \leq \frac{3}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg55}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y - 2\right)^{2}>1\\
+					\left(x + 3\right)^{2} + \left(y - 2\right)^{2}\leq\frac{9}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar55}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\frac{5}{2}\leq \left|z \right| < 4
+		 		\quad \textnormal{oraz} \quad
+				- \frac{\pi}{4} \leq \arg(z) \leq \frac{3 \pi}{4} 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg56}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\frac{25}{4}\leq x^{2} + y^{2}<16\\
+					- \frac{\pi}{4} \leq \varphi \leq \frac{3 \pi}{4} 
+				\end{gather*}		
+				&
+					\raisebox{-3.3cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar56}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				3\leq \left|z \right| \leq 5
+		 		\quad \textnormal{oraz} \quad
+				- \frac{\pi}{4} \leq \arg(z) < \frac{3 \pi}{4} 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg57}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					9\leq x^{2} + y^{2}\leq25\\
+					- \frac{\pi}{4} \leq \varphi < \frac{3 \pi}{4} 
+				\end{gather*}		
+				&
+					\raisebox{-3.3cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar57}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\frac{3}{2}\leq \left|z \right| \leq \frac{5}{2}
+		 		\quad \textnormal{oraz} \quad
+				\frac{\pi}{3} < \arg(z) \leq \frac{\pi}{2} 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg58}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\frac{9}{4}\leq x^{2} + y^{2}\leq\frac{25}{4}\\
+					\frac{\pi}{3} < \varphi \leq \frac{\pi}{2} 
+				\end{gather*}		
+				&
+					\raisebox{-3.3cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar58}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				1< \left|z \right| < \frac{5}{2}
+		 		\quad \textnormal{oraz} \quad
+				- \frac{\pi}{4} \leq \arg(z) < \frac{\pi}{4} 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg59}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					1 < x^{2} + y^{2}<\frac{25}{4}\\
+					- \frac{\pi}{4} \leq \varphi < \frac{\pi}{4} 
+				\end{gather*}		
+				&
+					\raisebox{-3.3cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar59}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				2\leq \left|z \right| < 3
+		 		\quad \textnormal{oraz} \quad
+				- \frac{\pi}{6} \leq \arg(z) < \frac{\pi}{3} 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg60}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					4\leq x^{2} + y^{2}<9\\
+					- \frac{\pi}{6} \leq \varphi < \frac{\pi}{3} 
+				\end{gather*}		
+				&
+					\raisebox{-3.3cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar60}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+2 + 2 i\right| \geq \frac{3}{2}
+		 		\quad \textnormal{oraz} \quad
+				\left|z+1 + i\right| > 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg61}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 2\right)^{2} + \left(y + 2\right)^{2} \geq \frac{9}{4}\\
+					\left(x + 1\right)^{2} + \left(y + 1\right)^{2} > 4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar61}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+1 - 3 i\right| \geq 3
+		 		\quad \textnormal{oraz} \quad
+				\left|z+2 - 2 i\right| \geq 1
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg62}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 1\right)^{2} + \left(y - 3\right)^{2} \geq 9\\
+					\left(x + 2\right)^{2} + \left(y - 2\right)^{2} \geq 1
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar62}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z-2 + i\right| > \frac{3}{2}
+		 		\quad \textnormal{oraz} \quad
+				\left|z-1 - 3 i\right| \leq \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg63}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 2\right)^{2} + \left(y + 1\right)^{2} > \frac{9}{4}\\
+					\left(x - 1\right)^{2} + \left(y - 3\right)^{2} \leq \frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar63}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z-3 - 2 i\right| \leq 2
+		 		\quad \textnormal{oraz} \quad
+				\left|z-1 - 2 i\right| > 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg64}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 3\right)^{2} + \left(y - 2\right)^{2} \leq 4\\
+					\left(x - 1\right)^{2} + \left(y - 2\right)^{2} > 4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar64}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+1 + i\right| \geq 3
+		 		\quad \textnormal{oraz} \quad
+				\left|z+2 + 3 i\right| \geq 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg65}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 1\right)^{2} + \left(y + 1\right)^{2} \geq 9\\
+					\left(x + 2\right)^{2} + \left(y + 3\right)^{2} \geq 4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar65}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+1 - i\right| \geq \frac{3}{2}
+		 		\quad \textnormal{oraz} \quad
+				\left|z-1 - i\right| < \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg66}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 1\right)^{2} + \left(y - 1\right)^{2} \geq \frac{9}{4}\\
+					\left(x - 1\right)^{2} + \left(y - 1\right)^{2} < \frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar66}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+3 - i\right| \geq 1
+		 		\quad \textnormal{oraz} \quad
+				\left|z+1 + i\right| \leq \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg67}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y - 1\right)^{2} \geq 1\\
+					\left(x + 1\right)^{2} + \left(y + 1\right)^{2} \leq \frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar67}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z+3 - i\right| < 2
+		 		\quad \textnormal{oraz} \quad
+				\left|z+3 - 2 i\right| \geq 2
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg68}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x + 3\right)^{2} + \left(y - 1\right)^{2} < 4\\
+					\left(x + 3\right)^{2} + \left(y - 2\right)^{2} \geq 4
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar68}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z-3 + 3 i\right| \leq \frac{1}{2}
+		 		\quad \textnormal{oraz} \quad
+				\left|z-1 - 2 i\right| \leq \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg69}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 3\right)^{2} + \left(y + 3\right)^{2} \leq \frac{1}{4}\\
+					\left(x - 1\right)^{2} + \left(y - 2\right)^{2} \leq \frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar69}}}
+				\end{tabular}
+			}
+
+		\tcbitem Zaznaczyć na płaszczyźnie zespolonej obszar spełniający warunki
+			\[
+				\left|z-1 - 3 i\right| > \frac{1}{2}
+		 		\quad \textnormal{oraz} \quad
+				\left|z-3 - 2 i\right| > \frac{5}{2}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg70}
+				{	\begin{tabular}{p{0.4\textwidth}p{0.3\textwidth}}
+				\begin{gather*}
+					\left(x - 1\right)^{2} + \left(y - 3\right)^{2} > \frac{1}{4}\\
+					\left(x - 3\right)^{2} + \left(y - 2\right)^{2} > \frac{25}{4}
+				\end{gather*}		
+				&
+					\raisebox{-3.1cm}{\resizebox{4cm}{!}{\includegraphics{../pics/obszar70}}}
+				\end{tabular}
+			}
+
+	\end{tcbitemize}
+	\subsection{Równanie kwadratowe}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(11 - 5 i\right) z + \left(24 - 2 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg71}
+				{$\Delta = 8-6i, \quad \sqrt{\Delta}=\pm( 3 - i) \quad z_{1}=-5 - 2 i \quad z_{2}=-3 - i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - 2 i\right)z^2 + \left(1 + 13 i\right) z + \left(-12 - 16 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg72}
+				{$\Delta = 8-6i, \quad \sqrt{\Delta}=\pm( 3 - i) \quad z_{1}=2 - 2 i \quad z_{2}=3 - i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(-5 - 13 i\right) z + \left(-36 - 2 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg73}
+				{$\Delta = 8-6i, \quad \sqrt{\Delta}=\pm( 3 - i) \quad z_{1}=-3 + 4 i \quad z_{2}=-1 + 5 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - 2 i\right)z^2 + \left(-7 - 11 i\right) z + \left(-18 + i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg74}
+				{$\Delta = -8+6i, \quad \sqrt{\Delta}=\pm( 1 + 3 i) \quad z_{1}=-2 + 3 i \quad z_{2}=-1 + 2 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - 2 i\right)z^2 + \left(9 - 3 i\right) z + \left(10 + 5 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg75}
+				{$\Delta = -8+6i, \quad \sqrt{\Delta}=\pm( 1 + 3 i) \quad z_{1}=-2 - i \quad z_{2}=-1 - 2 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(9 + 3 i\right) z + \left(4 + 16 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg76}
+				{$\Delta = -8+6i, \quad \sqrt{\Delta}=\pm( 1 + 3 i) \quad z_{1}=-2 - 2 i \quad z_{2}=-1 - 4 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(-13 - 3 i\right) z + \left(10 + 28 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg77}
+				{$\Delta = 8+6i, \quad \sqrt{\Delta}=\pm( 3 + i) \quad z_{1}=2 + 3 i \quad z_{2}=3 + 5 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(7 + i\right) z + \left(6 + 8 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg78}
+				{$\Delta = -8+6i, \quad \sqrt{\Delta}=\pm( 1 + 3 i) \quad z_{1}=-2 - i \quad z_{2}=-1 - 3 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - 2 i\right)z^2 + \left(-3 - 14 i\right) z + \left(-18 - 14 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg79}
+				{$\Delta = -3-4i, \quad \sqrt{\Delta}=\pm( 1 - 2 i) \quad z_{1}=-3 + 2 i \quad z_{2}=-2 + 2 i$}
+
+		\tcbitem Rozwiązać równanie w zbiorze liczb zespolonych.\ Sprawdzić jedno z rozwiązań.
+			\[
+				\left(1 - i\right)z^2 + \left(-1 - 13 i\right) z + \left(-24 - 16 i\right)=0
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg80}
+				{$\Delta = -8-6i, \quad \sqrt{\Delta}=\pm( 1 - 3 i) \quad z_{1}=-4 + 4 i \quad z_{2}=-2 + 3 i$}
+
+	\end{tcbitemize}
+	\subsection{Pierwiastek zespolony}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(1 + 2 \sqrt{5} i \right) \left(- \frac{16 \sqrt{15}}{21} - \frac{8}{21} + i \left(- \frac{8 \sqrt{3}}{21} + \frac{16 \sqrt{5}}{21}\right) \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg81}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 - 8 \sqrt{3} i} = \left\{ -1 - \sqrt{3} i, \  1 + \sqrt{3} i, \  - \sqrt{3} + i, \  \sqrt{3} - i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(- \frac{32 \sqrt{5}}{3} + \frac{32 i}{3} \right) \left(1 - \sqrt{5} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg82}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{64 i} = \left\{ - 4 i, \  - 2 \sqrt{3} + 2 i, \  2 \sqrt{3} + 2 i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(-1 + 2 \sqrt{5} i \right) \left(\frac{4}{21} + \frac{8 \sqrt{5} i}{21} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg83}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-4} = \left\{ -1 - i, \  -1 + i, \  1 - i, \  1 + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(- \frac{40}{7} + \frac{8 \sqrt{3} i}{7} \right) \left(2 - \sqrt{3} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg84}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 + 8 \sqrt{3} i} = \left\{ -1 + \sqrt{3} i, \  1 - \sqrt{3} i, \  - \sqrt{3} - i, \  \sqrt{3} + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(- \frac{8}{3} + \frac{8 \sqrt{6}}{3} + i \left(- \frac{8 \sqrt{3}}{3} - \frac{8 \sqrt{2}}{3}\right) \right) \left(1 - \sqrt{2} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg85}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 - 8 \sqrt{3} i} = \left\{ -1 - \sqrt{3} i, \  1 + \sqrt{3} i, \  - \sqrt{3} + i, \  \sqrt{3} - i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(1 + 2 \sqrt{2} i \right) \left(- \frac{16 \sqrt{6}}{9} - \frac{8}{9} + i \left(- \frac{8 \sqrt{3}}{9} + \frac{16 \sqrt{2}}{9}\right) \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg86}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 - 8 \sqrt{3} i} = \left\{ -1 - \sqrt{3} i, \  1 + \sqrt{3} i, \  - \sqrt{3} + i, \  \sqrt{3} - i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(\frac{8}{7} - \frac{4 \sqrt{3} i}{7} \right) \left(-2 - \sqrt{3} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg87}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-4} = \left\{ -1 - i, \  -1 + i, \  1 - i, \  1 + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(-1 + 2 \sqrt{5} i \right) \left(\frac{8}{21} + \frac{16 \sqrt{15}}{21} + i \left(- \frac{8 \sqrt{3}}{21} + \frac{16 \sqrt{5}}{21}\right) \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg88}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 + 8 \sqrt{3} i} = \left\{ -1 + \sqrt{3} i, \  1 - \sqrt{3} i, \  - \sqrt{3} - i, \  \sqrt{3} + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(1 + 2 \sqrt{5} i \right) \left(- \frac{16 \sqrt{15}}{21} - \frac{8}{21} + i \left(- \frac{8 \sqrt{3}}{21} + \frac{16 \sqrt{5}}{21}\right) \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg89}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 - 8 \sqrt{3} i} = \left\{ -1 - \sqrt{3} i, \  1 + \sqrt{3} i, \  - \sqrt{3} + i, \  \sqrt{3} - i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(1 - \sqrt{2} i \right) \left(- \frac{9}{64} - \frac{9 \sqrt{2} i}{64} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg90}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{- \frac{27}{64}} = \left\{ - \frac{3}{4}, \  \frac{3}{8} - \frac{3 \sqrt{3} i}{8}, \  \frac{3}{8} + \frac{3 \sqrt{3} i}{8}\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(\frac{64 \sqrt{2}}{3} - \frac{64 i}{3} \right) \left(-1 + \sqrt{2} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg91}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{64 i} = \left\{ - 4 i, \  - 2 \sqrt{3} + 2 i, \  2 \sqrt{3} + 2 i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(9 \sqrt{2} - 9 i \right) \left(1 - \sqrt{2} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg92}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{- 27 i} = \left\{ 3 i, \  - \frac{3 \sqrt{3}}{2} - \frac{3 i}{2}, \  \frac{3 \sqrt{3}}{2} - \frac{3 i}{2}\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(-2 + 2 \sqrt{2} i \right) \left(\frac{4}{3} + \frac{4 \sqrt{6}}{3} + i \left(- \frac{4 \sqrt{3}}{3} + \frac{4 \sqrt{2}}{3}\right) \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg93}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 + 8 \sqrt{3} i} = \left\{ -1 + \sqrt{3} i, \  1 - \sqrt{3} i, \  - \sqrt{3} - i, \  \sqrt{3} + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(2 - \sqrt{3} i \right) \left(- \frac{40}{7} + \frac{8 \sqrt{3} i}{7} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg94}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 + 8 \sqrt{3} i} = \left\{ -1 + \sqrt{3} i, \  1 - \sqrt{3} i, \  - \sqrt{3} - i, \  \sqrt{3} + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(-1 + 2 \sqrt{5} i \right) \left(\frac{4}{21} + \frac{8 \sqrt{5} i}{21} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg95}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-4} = \left\{ -1 - i, \  -1 + i, \  1 - i, \  1 + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(\frac{64 \sqrt{2}}{3} - \frac{64 i}{3} \right) \left(1 - \sqrt{2} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg96}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{- 64 i} = \left\{ 4 i, \  - 2 \sqrt{3} - 2 i, \  2 \sqrt{3} - 2 i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(- \frac{64 \sqrt{2}}{3} + \frac{64 i}{3} \right) \left(-1 + \sqrt{2} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg97}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{- 64 i} = \left\{ 4 i, \  - 2 \sqrt{3} - 2 i, \  2 \sqrt{3} - 2 i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{\left(-1 - 2 \sqrt{3} i \right) \left(- \frac{40}{13} - \frac{24 \sqrt{3} i}{13} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg98}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{4}]{-8 + 8 \sqrt{3} i} = \left\{ -1 + \sqrt{3} i, \  1 - \sqrt{3} i, \  - \sqrt{3} - i, \  \sqrt{3} + i\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(-1 + \sqrt{5} i \right) \left(\frac{32 \sqrt{5}}{81} - \frac{32 i}{81} \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg99}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\frac{64 i}{27}} = \left\{ - \frac{4 i}{3}, \  - \frac{2 \sqrt{3}}{3} + \frac{2 i}{3}, \  \frac{2 \sqrt{3}}{3} + \frac{2 i}{3}\right\}.$}
+
+		\tcbitem Wyznaczyć wszystkie zadane pierwiastki zespolone i zaznaczyć je na płaszczyźnie zespolonej
+			\[
+				\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{\left(- \frac{32 \sqrt{5}}{3} + \frac{32 i}{3} \right) \left(1 - \sqrt{5} i \right)}
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg100}
+				{$\sqrt[\leftroot{2}\uproot{-4} \displaystyle ^{3}]{64 i} = \left\{ - 4 i, \  - 2 \sqrt{3} + 2 i, \  2 \sqrt{3} + 2 i\right\}.$}
+
+	\end{tcbitemize}
+
+	\section{Macierze}
+	\subsection{Wyznacznik z parametrem}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x - 2 & x + 4\\x - 2 & -4\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg101}
+				{$\det A=- x^{2} - 6 x + 16 \neq 0, \quad x\neq -8, \ x\neq 2, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}1 & x + 2\\x - 3 & x - 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg102}
+				{$\det A=- x^{2} + 2 x + 3 \neq 0, \quad x\neq -1, \ x\neq 3, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-1 & x + 4\\x + 4 & x - 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg103}
+				{$\det A=- x^{2} - 9 x - 14 \neq 0, \quad x\neq -7, \ x\neq -2, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}3 & x + 3\\x - 2 & x - 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg104}
+				{$\det A=- x^{2} + 2 x \neq 0, \quad x\neq 0, \ x\neq 2, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x - 1 & x + 1\\x + 4 & -4\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg105}
+				{$\det A=- x^{2} - 9 x \neq 0, \quad x\neq -9, \ x\neq 0, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}2 & -1 & -3\\2 & 2 x - 1 & x - 4\\2 & x - 1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg106}
+				{$\det A=- 2 x^{2} + 22 x \neq 0, \quad x\neq 0, \ x\neq 11, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x + 1 & 2 & 1\\2 x - 2 & 2 & x - 2\\2 & 1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg107}
+				{$\det A=- x^{2} + 3 x \neq 0, \quad x\neq 0, \ x\neq 3, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}2 x + 2 & 0 & x - 1\\2 & 1 & -2\\-4 & 1 & x + 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg108}
+				{$\det A=2 x^{2} + 14 x \neq 0, \quad x\neq -7, \ x\neq 0, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x - 2 & x - 2 & x - 2\\3 & x - 3 & 3\\4 & 1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg109}
+				{$\det A=- x^{2} + 8 x - 12 \neq 0, \quad x\neq 2, \ x\neq 6, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}3 & 0 & -2\\3 & x + 1 & 1\\x + 4 & 2 x + 2 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg110}
+				{$\det A=2 x^{2} - 14 x - 16 \neq 0, \quad x\neq -1, \ x\neq 8, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-2 & 2 & 2\\-4 & x + 1 & 2 x - 2\\x + 4 & -1 & 4\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg111}
+				{$\det A=2 x^{2} - 10 x + 12 \neq 0, \quad x\neq 2, \ x\neq 3, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x & -4 & x - 2\\4 & -2 & 3\\x - 2 & x + 3 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg112}
+				{$\det A=3 x^{2} - 21 x - 24 \neq 0, \quad x\neq -1, \ x\neq 8, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x - 2 & x - 3 & 0\\x + 1 & 2 & 1\\x - 2 & -2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg113}
+				{$\det A=- x^{2} + 5 x \neq 0, \quad x\neq 0, \ x\neq 5, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x + 4 & x + 1 & 3\\x - 1 & -4 & 2\\1 & x + 3 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg114}
+				{$\det A=- x^{2} - 14 x - 49 \neq 0, \quad x\neq -7, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-4 & x + 1 & x + 3\\-4 & -2 & x + 3\\-2 & x - 1 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg115}
+				{$\det A=- 2 x^{2} - 12 x - 18 \neq 0, \quad x\neq -3, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-3 & x - 3 & -3 & x + 3\\x + 3 & x - 1 & -1 & x - 1\\2 & -2 & -3 & 2\\0 & 4 & 4 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg116}
+				{$\det A=- 2 x^{2} + 6 x \neq 0, \quad x\neq 0, \ x\neq 3, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x & 4 & 3 & 2 x + 4\\x + 4 & 2 & 3 & x + 2\\4 & -2 & 0 & -4\\-3 & 1 & -1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg117}
+				{$\det A=- 2 x^{2} - 6 x + 20 \neq 0, \quad x\neq -5, \ x\neq 2, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-1 & x + 2 & 3 & x - 2\\3 & x + 1 & 1 & 2\\-3 & x & x + 3 & -4\\2 & 2 & 3 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg118}
+				{$\det A=- 2 x^{3} - 6 x^{2} + 8 x + 24 \neq 0, \quad x\neq -3, \ x\neq -2, \ x\neq 2, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}x - 2 & -3 & -1 & x + 2\\-1 & -3 & -4 & -2\\0 & x - 1 & 3 & x + 4\\4 & -1 & x + 4 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg119}
+				{$\det A=2 x^{3} + 12 x^{2} + 28 x - 42 \neq 0, \quad x\neq 1, \ $}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ wyznacznik macierzy $A$ jest różny od zera?
+			\[
+				\textnormal{A=}
+				\left[\begin{matrix}-1 & 4 & x + 1 & -4\\x + 1 & -4 & -1 & 4\\x + 2 & x + 1 & -1 & 3\\1 & x + 4 & -2 & -4\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg120}
+				{$\det A=- 3 x^{3} - 30 x^{2} - 80 x \neq 0, \quad x\neq 0, \ $}
+
+	\end{tcbitemize}
+	\subsection{Macierz odwrotna z parametrem}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}4 & 2 x + 2\\x - 1 & x + 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg121}
+				{$\det A=- 2 x^{2} + 4 x + 6\neq 0, \quad 
+				x\neq -1\ \textnormal{oraz} \ x\neq 3,$\\
+				$A(2)= \left[\begin{matrix}4 & 6\\1 & 3\end{matrix}\right],\ 
+				\det A(2)=6,\ 
+				A^{-1}=\frac{1}{6}\left[\begin{matrix}3 & -6\\-1 & 4\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}2 x - 2 & x - 3\\x + 3 & 2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg122}
+				{$\det A=- x^{2} + 4 x + 5\neq 0, \quad 
+				x\neq -1\ \textnormal{oraz} \ x\neq 5,$\\
+				$A(-2)= \left[\begin{matrix}-6 & -5\\1 & 2\end{matrix}\right],\ 
+				\det A(-2)=-7,\ 
+				A^{-1}=- \frac{1}{7}\left[\begin{matrix}2 & 5\\-1 & -6\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}x - 1 & -3\\x - 1 & 2 x + 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg123}
+				{$\det A=2 x^{2} + 2 x - 4\neq 0, \quad 
+				x\neq -2\ \textnormal{oraz} \ x\neq 1,$\\
+				$A(2)= \left[\begin{matrix}1 & -3\\1 & 5\end{matrix}\right],\ 
+				\det A(2)=8,\ 
+				A^{-1}=\frac{1}{8}\left[\begin{matrix}5 & 3\\-1 & 1\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}x + 4 & -3\\x + 2 & 2 x + 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg124}
+				{$\det A=2 x^{2} + 12 x + 10\neq 0, \quad 
+				x\neq -5\ \textnormal{oraz} \ x\neq -1,$\\
+				$A(-2)= \left[\begin{matrix}2 & -3\\0 & -3\end{matrix}\right],\ 
+				\det A(-2)=-6,\ 
+				A^{-1}=- \frac{1}{6}\left[\begin{matrix}-3 & 3\\0 & 2\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}2 x - 2 & x - 3\\x - 1 & -4\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg125}
+				{$\det A=- x^{2} - 4 x + 5\neq 0, \quad 
+				x\neq -5\ \textnormal{oraz} \ x\neq 1,$\\
+				$A(2)= \left[\begin{matrix}2 & -1\\1 & -4\end{matrix}\right],\ 
+				\det A(2)=-7,\ 
+				A^{-1}=- \frac{1}{7}\left[\begin{matrix}-4 & 1\\-1 & 2\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}2 & 4 & -4 & 2 x - 2\\-2 & 2 & -1 & -1\\0 & -1 & 1 & 1\\x - 3 & 4 & 1 & x - 2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-1.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg126}
+				{$\det A=- 2 x^{2} - 14 x - 20\neq 0, \quad 
+				x\neq -5\ \textnormal{oraz} \ x\neq -2,$\\
+				$A(-1)= \left[\begin{matrix}2 & 4 & -4 & -4\\-2 & 2 & -1 & -1\\0 & -1 & 1 & 1\\-4 & 4 & 1 & -3\end{matrix}\right],\ 
+				\det A(-1)=-8,\ 
+				A^{-1}=- \frac{1}{8}\left[\begin{matrix}-4 & 0 & -16 & 0\\-8 & -8 & -40 & 0\\-2 & 2 & -12 & -2\\-6 & -10 & -36 & 2\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}x - 1 & 2 x - 1 & 1 & 1\\-1 & -3 & 2 & x + 2\\-1 & 0 & -1 & 1\\-3 & 1 & -4 & 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg127}
+				{$\det A=- x^{2} + 4 x + 5\neq 0, \quad 
+				x\neq -1\ \textnormal{oraz} \ x\neq 5,$\\
+				$A(2)= \left[\begin{matrix}1 & 3 & 1 & 1\\-1 & -3 & 2 & 4\\-1 & 0 & -1 & 1\\-3 & 1 & -4 & 1\end{matrix}\right],\ 
+				\det A(2)=9,\ 
+				A^{-1}=\frac{1}{9}\left[\begin{matrix}-3 & -11 & 71 & -24\\3 & 2 & -17 & 6\\3 & 8 & -50 & 15\\0 & -3 & 30 & -9\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}2 & 1 & 4 & -1\\-3 & -1 & x - 1 & x - 1\\x - 2 & 4 & x - 1 & -4\\-1 & -2 & -4 & 2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-1.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg128}
+				{$\det A=- x^{2} - 9 x + 22\neq 0, \quad 
+				x\neq -11\ \textnormal{oraz} \ x\neq 2,$\\
+				$A(-1)= \left[\begin{matrix}2 & 1 & 4 & -1\\-3 & -1 & -2 & -2\\-3 & 4 & -2 & -4\\-1 & -2 & -4 & 2\end{matrix}\right],\ 
+				\det A(-1)=30,\ 
+				A^{-1}=\frac{1}{30}\left[\begin{matrix}60 & 0 & 12 & 54\\-20 & -10 & 2 & -16\\-30 & 0 & -9 & -33\\-50 & -10 & -10 & -40\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}1 & -3 & x - 1 & -3\\1 & x - 3 & 2 & 1\\1 & x - 3 & 4 & -2\\0 & 0 & 4 & x - 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-1.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg129}
+				{$\det A=2 x^{2} + 10 x\neq 0, \quad 
+				x\neq -5\ \textnormal{oraz} \ x\neq 0,$\\
+				$A(-1)= \left[\begin{matrix}1 & -3 & -2 & -3\\1 & -4 & 2 & 1\\1 & -4 & 4 & -2\\0 & 0 & 4 & -2\end{matrix}\right],\ 
+				\det A(-1)=-8,\ 
+				A^{-1}=- \frac{1}{8}\left[\begin{matrix}-32 & -64 & 88 & -72\\-8 & -16 & 24 & -20\\0 & -2 & 2 & -3\\0 & -4 & 4 & -2\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}x - 2 & 3 & -4 & -1\\x & -1 & x - 3 & x - 2\\2 & 0 & -3 & -4\\2 & 3 & -3 & 2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg130}
+				{$\det A=- 3 x^{2} + 75 x - 198\neq 0, \quad 
+				x\neq 3\ \textnormal{oraz} \ x\neq 22,$\\
+				$A(2)= \left[\begin{matrix}0 & 3 & -4 & -1\\2 & -1 & -1 & 0\\2 & 0 & -3 & -4\\2 & 3 & -3 & 2\end{matrix}\right],\ 
+				\det A(2)=-60,\ 
+				A^{-1}=- \frac{1}{60}\left[\begin{matrix}30 & 15 & -20 & -25\\24 & 48 & -20 & -28\\36 & 42 & -20 & -22\\-12 & -24 & 20 & 4\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}1 & -2 & x + 2 & 3\\0 & -3 & x - 3 & -4\\0 & -2 & -1 & -1\\-1 & 1 & x + 3 & x + 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg131}
+				{$\det A=2 x^{2} + 16 x + 14\neq 0, \quad 
+				x\neq -7\ \textnormal{oraz} \ x\neq -1,$\\
+				$A(-2)= \left[\begin{matrix}1 & -2 & 0 & 3\\0 & -3 & -5 & -4\\0 & -2 & -1 & -1\\-1 & 1 & 1 & -1\end{matrix}\right],\ 
+				\det A(-2)=-10,\ 
+				A^{-1}=- \frac{1}{10}\left[\begin{matrix}13 & 7 & -12 & 23\\1 & -1 & 6 & 1\\5 & 5 & -10 & 5\\-7 & -3 & 8 & -7\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}-4 & 1 & x + 2 & -1\\-4 & 2 & 2 x - 4 & x + 3\\4 & 3 & -4 & 2\\2 & 2 & 0 & -1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg132}
+				{$\det A=2 x^{2} - 54 x + 52\neq 0, \quad 
+				x\neq 1\ \textnormal{oraz} \ x\neq 26,$\\
+				$A(2)= \left[\begin{matrix}-4 & 1 & 4 & -1\\-4 & 2 & 0 & 5\\4 & 3 & -4 & 2\\2 & 2 & 0 & -1\end{matrix}\right],\ 
+				\det A(2)=-48,\ 
+				A^{-1}=- \frac{1}{48}\left[\begin{matrix}48 & -24 & 48 & -72\\-24 & 8 & -24 & 16\\54 & -34 & 66 & -92\\48 & -32 & 48 & -64\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}4 & x & -2 & x + 2\\-1 & 1 & x - 4 & 4\\4 & 2 & -2 & -1\\-4 & -2 & x & 3\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-1.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg133}
+				{$\det A=- x^{2} + 14 x - 24\neq 0, \quad 
+				x\neq 2\ \textnormal{oraz} \ x\neq 12,$\\
+				$A(-1)= \left[\begin{matrix}4 & -1 & -2 & 1\\-1 & 1 & -5 & 4\\4 & 2 & -2 & -1\\-4 & -2 & -1 & 3\end{matrix}\right],\ 
+				\det A(-1)=-39,\ 
+				A^{-1}=- \frac{1}{39}\left[\begin{matrix}-11 & -9 & 22 & 23\\1 & -24 & 37 & 44\\-12 & -24 & 63 & 57\\-18 & -36 & 75 & 66\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}4 & x + 3 & -4 & -2\\-2 & -1 & 0 & 1\\4 & 1 & 2 & 1\\2 x - 1 & 2 & x - 3 & -4\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg134}
+				{$\det A=- 2 x^{2} + 14 x - 24\neq 0, \quad 
+				x\neq 3\ \textnormal{oraz} \ x\neq 4,$\\
+				$A(2)= \left[\begin{matrix}4 & 5 & -4 & -2\\-2 & -1 & 0 & 1\\4 & 1 & 2 & 1\\3 & 2 & -1 & -4\end{matrix}\right],\ 
+				\det A(2)=-4,\ 
+				A^{-1}=- \frac{1}{4}\left[\begin{matrix}2 & 49 & 11 & 14\\-4 & -84 & -20 & -24\\-2 & -61 & -15 & -18\\0 & 10 & 2 & 4\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}-3 & x - 2 & -2 & 4\\2 x - 1 & 0 & 1 & -1\\3 & 1 & 0 & -1\\x + 1 & 1 & 1 & 3\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg135}
+				{$\det A=- x^{2} - 6 x - 5\neq 0, \quad 
+				x\neq -5\ \textnormal{oraz} \ x\neq -1,$\\
+				$A(2)= \left[\begin{matrix}-3 & 0 & -2 & 4\\3 & 0 & 1 & -1\\3 & 1 & 0 & -1\\3 & 1 & 1 & 3\end{matrix}\right],\ 
+				\det A(2)=-21,\ 
+				A^{-1}=- \frac{1}{21}\left[\begin{matrix}-5 & -12 & -2 & 2\\12 & 33 & -12 & -9\\12 & 12 & 9 & -9\\-3 & -3 & 3 & -3\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}-4 & x & 2 x + 1 & 4\\-1 & -2 & x - 1 & -4\\1 & -1 & -3 & -2\\2 & -1 & -2 & -2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=3.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg136}
+				{$\det A=2 x^{2} + 12 x - 32\neq 0, \quad 
+				x\neq -8\ \textnormal{oraz} \ x\neq 2,$\\
+				$A(3)= \left[\begin{matrix}-4 & 3 & 7 & 4\\-1 & -2 & 2 & -4\\1 & -1 & -3 & -2\\2 & -1 & -2 & -2\end{matrix}\right],\ 
+				\det A(3)=22,\ 
+				A^{-1}=\frac{1}{22}\left[\begin{matrix}0 & -2 & -12 & 16\\22 & -6 & 30 & 26\\0 & 2 & -10 & 6\\-11 & -1 & -17 & -14\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}x + 1 & 1 & -4 & -3\\-3 & -1 & 1 & x - 4\\-3 & 0 & 0 & -1\\3 & -2 & x - 2 & x - 1\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg137}
+				{$\det A=2 x^{2} - 36 x + 112\neq 0, \quad 
+				x\neq 4\ \textnormal{oraz} \ x\neq 14,$\\
+				$A(2)= \left[\begin{matrix}3 & 1 & -4 & -3\\-3 & -1 & 1 & -2\\-3 & 0 & 0 & -1\\3 & -2 & 0 & 1\end{matrix}\right],\ 
+				\det A(2)=48,\ 
+				A^{-1}=\frac{1}{48}\left[\begin{matrix}2 & 8 & -25 & -3\\0 & 0 & -24 & -24\\-6 & 24 & -45 & -15\\-6 & -24 & 27 & 9\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}1 & 2 & 2 & 0\\-2 & -3 & x - 1 & -2\\x & x - 2 & -4 & 4\\2 & 1 & x - 1 & -3\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg138}
+				{$\det A=- x^{2} - 19 x - 18\neq 0, \quad 
+				x\neq -18\ \textnormal{oraz} \ x\neq -1,$\\
+				$A(2)= \left[\begin{matrix}1 & 2 & 2 & 0\\-2 & -3 & 1 & -2\\2 & 0 & -4 & 4\\2 & 1 & 1 & -3\end{matrix}\right],\ 
+				\det A(2)=-60,\ 
+				A^{-1}=- \frac{1}{60}\left[\begin{matrix}-28 & -24 & -24 & -16\\22 & 36 & 21 & 4\\-38 & -24 & -9 & 4\\-24 & -12 & -12 & 12\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}-3 & -3 & 3 & 2 x + 3\\-3 & -3 & 1 & -1\\3 & x + 3 & -1 & x + 1\\-1 & -1 & 0 & 0\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=-2.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg139}
+				{$\det A=- 2 x^{2} - 6 x\neq 0, \quad 
+				x\neq -3\ \textnormal{oraz} \ x\neq 0,$\\
+				$A(-2)= \left[\begin{matrix}-3 & -3 & 3 & -1\\-3 & -3 & 1 & -1\\3 & 1 & -1 & -1\\-1 & -1 & 0 & 0\end{matrix}\right],\ 
+				\det A(-2)=4,\ 
+				A^{-1}=\frac{1}{4}\left[\begin{matrix}2 & -4 & 2 & 8\\-2 & 4 & -2 & -12\\2 & -2 & 0 & 0\\2 & -6 & 0 & 12\end{matrix}\right].$}
+
+		\tcbitem Dla jakich rzeczywistych wartości parametru $x$ macierz $A$ posiada odwrotność?
+			\[
+				\textnormal{A=}\left[\begin{matrix}2 x + 3 & 2 & -4 & -1\\x & -2 & x - 1 & -1\\-3 & -2 & -4 & -3\\3 & 1 & 4 & 2\end{matrix}\right]
+			\]
+		Wyznaczyć macierz odwrotną dla $x=3.$ Wykonać sprawdzenie.\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg140}
+				{$\det A=2 x^{2} - 6 x - 36\neq 0, \quad 
+				x\neq -3\ \textnormal{oraz} \ x\neq 6,$\\
+				$A(3)= \left[\begin{matrix}9 & 2 & -4 & -1\\3 & -2 & 2 & -1\\-3 & -2 & -4 & -3\\3 & 1 & 4 & 2\end{matrix}\right],\ 
+				\det A(3)=-36,\ 
+				A^{-1}=- \frac{1}{36}\left[\begin{matrix}-2 & -8 & 14 & 16\\-6 & 48 & -102 & -132\\0 & 18 & -54 & -72\\6 & -48 & 138 & 168\end{matrix}\right].$}
+
+	\end{tcbitemize}
+	\subsection{Równanie macierzowe}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}0 & 2 & 1 & 0 & 0\\-1 & 1 & -1 & 2 & 0\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-2 & -1 & -1 & -2 & -2\\-1 & -1 & -1 & -1 & 0\end{matrix}\right]^T + 
+				3X=
+				X \cdot \left[\begin{matrix}-1 & 1\\0 & -1\\1 & 2\\2 & -1\\0 & -1\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}1 & 1\\0 & -2\\-1 & 0\\0 & 1\\1 & -1\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg141}
+				{$ \left[\begin{matrix}-3 & -3\\-2 & -1\end{matrix}\right] + 
+				3X=
+				X \cdot \left[\begin{matrix}-2 & 1\\-2 & 3\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-3 & -3\\-2 & -1\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}-5 & 1\\-2 & 0\end{matrix}\right] $ \\ 
+				$X=\frac{1}{2}\left[\begin{matrix}-6 & 18\\-2 & 7\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}0 & 1 & 2 & 2 & 0\\0 & -1 & 1 & 0 & 2\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-2 & -2 & -2 & 1 & -1\\-2 & 1 & 1 & -1 & 0\end{matrix}\right]^T + 
+				3X=
+				X \cdot \left[\begin{matrix}1 & -1\\2 & 1\\2 & -1\\2 & 0\\0 & 2\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}1 & 1\\1 & 0\\1 & 1\\-1 & 1\\0 & -1\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg142}
+				{$ \left[\begin{matrix}-4 & 1\\-2 & 0\end{matrix}\right] + 
+				3X=
+				X \cdot \left[\begin{matrix}3 & 5\\-1 & -4\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-4 & 1\\-2 & 0\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}0 & 5\\-1 & -7\end{matrix}\right] $ \\ 
+				$X=\frac{1}{5}\left[\begin{matrix}29 & 20\\14 & 10\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}-1 & 2 & 0 & 1 & -1\\1 & 1 & -1 & 0 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-2 & -2 & -2 & -2 & -2\\1 & 0 & 0 & 1 & 0\end{matrix}\right]^T + 
+				4X=
+				X \cdot \left[\begin{matrix}2 & 2\\0 & 1\\0 & 2\\-1 & 0\\0 & 0\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}0 & 1\\1 & -1\\1 & -1\\-1 & -2\\-1 & 0\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg143}
+				{$ \left[\begin{matrix}-2 & 0\\0 & 1\end{matrix}\right] + 
+				4X=
+				X \cdot \left[\begin{matrix}1 & 4\\3 & -1\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-2 & 0\\0 & 1\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}-3 & 4\\3 & -5\end{matrix}\right] $ \\ 
+				$X=\frac{1}{3}\left[\begin{matrix}10 & 8\\-3 & -3\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}2 & 1 & 0 & -1 & 0\\1 & 2 & 1 & 0 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-1 & 1 & -1 & 0 & 0\\-2 & 0 & -2 & 1 & -1\end{matrix}\right]^T + 
+				4X=
+				\left[\begin{matrix}-1 & -1\\2 & 0\\0 & 2\\-1 & -1\\-1 & 1\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}0 & 0\\0 & -2\\1 & -1\\-2 & -2\\-2 & 0\end{matrix}\right] \cdot X
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg144}
+				{$ \left[\begin{matrix}-1 & -5\\0 & -3\end{matrix}\right] + 
+				4X=
+				\left[\begin{matrix}4 & -2\\2 & 0\end{matrix}\right] \cdot X, \quad 
+				\left[\begin{matrix}-1 & -5\\0 & -3\end{matrix}\right] = 
+				\left[\begin{matrix}0 & -2\\2 & -4\end{matrix}\right] \cdot X $ \\ 
+				$X=\frac{1}{4}\left[\begin{matrix}4 & 14\\2 & 10\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}2 & -1 & 2 & -1 & -1\\-1 & 0 & 0 & 2 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-1 & -1 & -1 & -1 & -2\\-1 & 1 & -1 & -1 & 0\end{matrix}\right]^T + 
+				3X=
+				X \cdot \left[\begin{matrix}-1 & 1\\1 & -1\\0 & -1\\1 & 0\\0 & 0\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}-2 & -2\\1 & -1\\-2 & -2\\1 & -1\\-1 & -1\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg145}
+				{$ \left[\begin{matrix}0 & -4\\1 & -1\end{matrix}\right] + 
+				3X=
+				X \cdot \left[\begin{matrix}4 & 0\\-1 & 1\end{matrix}\right] , \quad 
+				\left[\begin{matrix}0 & -4\\1 & -1\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}1 & 0\\-1 & -2\end{matrix}\right] $ \\ 
+				$X=\frac{1}{-2}\left[\begin{matrix}-4 & -4\\-3 & -1\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}0 & 2 & 2 & 2 & 0\\1 & 2 & 2 & 2 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-2 & -2 & 1 & 0 & -1\\-2 & 0 & 1 & 1 & -1\end{matrix}\right]^T + 
+				2X=
+				X \cdot \left[\begin{matrix}2 & -1\\0 & 0\\0 & -1\\2 & 2\\2 & 1\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}1 & -1\\-1 & 1\\-2 & -2\\0 & 0\\1 & 1\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg146}
+				{$ \left[\begin{matrix}-2 & 4\\-3 & 3\end{matrix}\right] + 
+				2X=
+				X \cdot \left[\begin{matrix}4 & 0\\2 & 4\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-2 & 4\\-3 & 3\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}2 & 0\\2 & 2\end{matrix}\right] $ \\ 
+				$X=\frac{1}{4}\left[\begin{matrix}-12 & 8\\-12 & 6\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}-1 & 2 & -1 & 2 & -1\\-1 & 2 & 0 & 2 & 1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}0 & -2 & 1 & 0 & 1\\0 & 0 & -2 & 0 & 1\end{matrix}\right]^T + 
+				2X=
+				X \cdot \left[\begin{matrix}1 & 2\\0 & -1\\1 & 1\\1 & 0\\0 & 2\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}-1 & -1\\-2 & 0\\1 & 1\\-2 & -2\\-1 & 1\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg147}
+				{$ \left[\begin{matrix}-6 & 1\\-3 & 1\end{matrix}\right] + 
+				2X=
+				X \cdot \left[\begin{matrix}-2 & -2\\-1 & 1\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-6 & 1\\-3 & 1\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}-4 & -2\\-1 & -1\end{matrix}\right] $ \\ 
+				$X=\frac{1}{2}\left[\begin{matrix}7 & -16\\4 & -10\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}2 & -1 & 0 & 2 & -1\\0 & 2 & 1 & 2 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-1 & 1 & -1 & 1 & 0\\-2 & 0 & 0 & 1 & 0\end{matrix}\right]^T + 
+				4X=
+				\left[\begin{matrix}-1 & -1\\0 & 0\\-1 & 0\\0 & -1\\-1 & -1\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}-2 & -2\\0 & 1\\1 & 0\\-1 & 0\\-1 & 1\end{matrix}\right] \cdot X
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg148}
+				{$ \left[\begin{matrix}-1 & -2\\3 & 2\end{matrix}\right] + 
+				4X=
+				\left[\begin{matrix}2 & 1\\4 & 1\end{matrix}\right] \cdot X, \quad 
+				\left[\begin{matrix}-1 & -2\\3 & 2\end{matrix}\right] = 
+				\left[\begin{matrix}-2 & 1\\4 & -3\end{matrix}\right] \cdot X $ \\ 
+				$X=\frac{1}{2}\left[\begin{matrix}0 & 4\\-2 & 4\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}-1 & -1 & -1 & -1 & 2\\0 & -1 & 0 & -1 & -1\end{matrix}\right]\cdot 
+				\left[\begin{matrix}1 & 1 & 0 & -1 & 0\\-1 & -2 & -2 & 0 & -1\end{matrix}\right]^T + 
+				3X=
+				\left[\begin{matrix}2 & 2\\-1 & 0\\1 & 0\\0 & 2\\1 & 0\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}1 & 1\\0 & 0\\0 & 1\\0 & -2\\-1 & 1\end{matrix}\right] \cdot X
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg149}
+				{$ \left[\begin{matrix}-1 & 3\\0 & 3\end{matrix}\right] + 
+				3X=
+				\left[\begin{matrix}1 & 4\\2 & -2\end{matrix}\right] \cdot X, \quad 
+				\left[\begin{matrix}-1 & 3\\0 & 3\end{matrix}\right] = 
+				\left[\begin{matrix}-2 & 4\\2 & -5\end{matrix}\right] \cdot X $ \\ 
+				$X=\frac{1}{2}\left[\begin{matrix}5 & -27\\2 & -12\end{matrix}\right].$}
+
+		\tcbitem Rozwiązać równanie:
+			\[
+				\left[\begin{matrix}0 & 0 & 1 & 0 & -1\\1 & 2 & -1 & 1 & 2\end{matrix}\right]\cdot 
+				\left[\begin{matrix}-2 & -1 & -1 & -2 & 1\\1 & -2 & -1 & -1 & 0\end{matrix}\right]^T + 
+				2X=
+				X \cdot \left[\begin{matrix}0 & 2\\-1 & 0\\2 & -1\\0 & -1\\0 & 0\end{matrix}\right]^T \cdot
+				\left[\begin{matrix}-2 & 0\\0 & 1\\-2 & 0\\1 & -2\\-2 & -2\end{matrix}\right] 
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg150}
+				{$ \left[\begin{matrix}-2 & -1\\-3 & -3\end{matrix}\right] + 
+				2X=
+				X \cdot \left[\begin{matrix}-4 & -1\\-3 & 2\end{matrix}\right] , \quad 
+				\left[\begin{matrix}-2 & -1\\-3 & -3\end{matrix}\right] = 
+				X \cdot \left[\begin{matrix}-6 & -1\\-3 & 0\end{matrix}\right] $ \\ 
+				$X=\frac{1}{-3}\left[\begin{matrix}-3 & 4\\-9 & 15\end{matrix}\right].$}
+
+	\end{tcbitemize}
+	\subsection{Rząd macierzy}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0 & -1 & 2\\3 & 2 & 1 & 1\\3 & 2 & 3 & 0\\-2 & 1 & -1 & -1\\3 & -1 & 2 & 1\\3 & -1 & 1 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg151}
+				{$R(A)= 4$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2 & -2 & 0 & -2 & 1\\3 & 3 & 3 & 1 & 1 & -1\\1 & -2 & 2 & 0 & 2 & -1\\2 & 0 & -2 & 1 & 1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg152}
+				{$R(A)= 3$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & -1 & 0 & 1 & 1\\3 & 2 & 1 & 0 & -2\\1 & 1 & 1 & -1 & 3\\0 & 0 & 3 & 0 & -2\\-2 & -2 & 3 & 2 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg153}
+				{$R(A)= 4$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 3 & -1 & 1 & 1 & 3\\1 & 0 & 2 & 0 & 0 & -1\\-1 & 1 & 1 & 1 & 2 & 2\\3 & 3 & 3 & 1 & 1 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg154}
+				{$R(A)= 3$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 0 & 2 & -2 & 0\\0 & 2 & 2 & 0 & 1\\0 & 1 & 1 & 0 & 3\\0 & -2 & -1 & -1 & 3\\1 & 3 & 0 & 3 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg155}
+				{$R(A)= 4$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & -2 & 1 & 3\\2 & 1 & 2 & 1\\0 & -1 & 0 & 3\\3 & -1 & 3 & 1\\0 & -2 & 0 & -1\\2 & -2 & 2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg156}
+				{$R(A)= 3$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & -1 & 1 & 3 & -1\\-2 & 3 & 0 & 0 & -2\\3 & 2 & 0 & 3 & -1\\1 & -1 & 2 & 1 & 3\\2 & 2 & -2 & 0 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg157}
+				{$R(A)= 5$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 0 & -1 & 3 & -1 & 2\\2 & 3 & 1 & 3 & 2 & -1\\2 & 2 & 3 & 0 & 2 & 1\\2 & 2 & 3 & 0 & 2 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg158}
+				{$R(A)= 3$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 1 & -2 & -1 & -2 & -1\\-2 & -2 & 3 & 1 & 3 & 1\\-1 & 1 & 2 & 3 & 2 & 3\\-2 & 1 & 2 & 3 & 2 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg159}
+				{$R(A)= 3$}
+
+		\tcbitem Wyznaczyć rząd macierzy A
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2 & -1 & -1\\2 & 3 & 2 & 3\\-2 & -2 & -2 & 2\\2 & -2 & 2 & 1\\-2 & -1 & -2 & 0\\1 & 2 & 1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg160}
+				{$R(A)= 3$}
+
+	\end{tcbitemize}
+	\subsection{Wartości własne i wektory własne}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & -2\\1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg161}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}-2\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}-1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 3\\-1 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg162}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} + 3 \lambda + 5$, \quad 
+			Wartości własne:$ \left\{ - \frac{3}{2} - \frac{\sqrt{11} i}{2} : 1, \  - \frac{3}{2} + \frac{\sqrt{11} i}{2} : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( - \frac{3}{2} - \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2} + \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right), \  \left( - \frac{3}{2} + \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2} - \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & -1\\3 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg163}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 5 \lambda + 9$, \quad 
+			Wartości własne:$ \left\{ \frac{5}{2} - \frac{\sqrt{11} i}{2} : 1, \  \frac{5}{2} + \frac{\sqrt{11} i}{2} : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( \frac{5}{2} - \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}\frac{1}{6} - \frac{\sqrt{11} i}{6}\\1\end{matrix}\right]\right]\right), \  \left( \frac{5}{2} + \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}\frac{1}{6} + \frac{\sqrt{11} i}{6}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 0\\1 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg164}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 3\\-1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg165}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 3 \lambda + 5$, \quad 
+			Wartości własne:$ \left\{ \frac{3}{2} - \frac{\sqrt{11} i}{2} : 1, \  \frac{3}{2} + \frac{\sqrt{11} i}{2} : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( \frac{3}{2} - \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2} + \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right), \  \left( \frac{3}{2} + \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2} - \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0\\1 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg166}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 4 \lambda + 3$, \quad 
+			Wartości własne:$ \left\{ 1 : 1, \  3 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 1, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}2\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 2\\-2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg167}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 2 \lambda + 4$, \quad 
+			Wartości własne:$ \left\{ 1 - \sqrt{3} i : 1, \  1 + \sqrt{3} i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 1 - \sqrt{3} i, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2} + \frac{\sqrt{3} i}{2}\\1\end{matrix}\right]\right]\right), \  \left( 1 + \sqrt{3} i, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2} - \frac{\sqrt{3} i}{2}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2\\3 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg168}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} + \lambda - 6$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  2 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}\frac{2}{3}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 3\\-1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg169}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} + \lambda + 3$, \quad 
+			Wartości własne:$ \left\{ - \frac{1}{2} - \frac{\sqrt{11} i}{2} : 1, \  - \frac{1}{2} + \frac{\sqrt{11} i}{2} : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( - \frac{1}{2} - \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2} + \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right), \  \left( - \frac{1}{2} + \frac{\sqrt{11} i}{2}, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2} - \frac{\sqrt{11} i}{2}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 1\\0 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg170}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 5 \lambda + 6$, \quad 
+			Wartości własne:$ \left\{ 2 : 1, \  3 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 2, \  1, \  \left[ \left[\begin{matrix}-1\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\0\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & -2 & -2\\2 & 1 & 1\\-2 & 3 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg171}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 5 \lambda^{2} + 4 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 1, \  4 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\-1\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\-1\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}- \frac{8}{13}\\- \frac{1}{13}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & -1 & 1\\-2 & 2 & 1\\-1 & 0 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg172}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 3 \lambda^{2} + \lambda - 3$, \quad 
+			Wartości własne:$ \left\{ 3 : 1, \  - i : 1, \  i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 3, \  1, \  \left[ \left[\begin{matrix}-3\\7\\1\end{matrix}\right]\right]\right), \  \left( - i, \  1, \  \left[ \left[\begin{matrix}i\\i\\1\end{matrix}\right]\right]\right), \  \left( i, \  1, \  \left[ \left[\begin{matrix}- i\\- i\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0 & 0\\-1 & 0 & 1\\1 & -2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg173}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 5 \lambda^{2} + 8 \lambda - 6$, \quad 
+			Wartości własne:$ \left\{ 3 : 1, \  1 - i : 1, \  1 + i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\0\\1\end{matrix}\right]\right]\right), \  \left( 1 - i, \  1, \  \left[ \left[\begin{matrix}0\\\frac{1}{2} + \frac{i}{2}\\1\end{matrix}\right]\right]\right), \  \left( 1 + i, \  1, \  \left[ \left[\begin{matrix}0\\\frac{1}{2} - \frac{i}{2}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 1 & -1\\-1 & 3 & 3\\1 & -1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg174}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 4 \lambda^{2} + 6 \lambda - 4$, \quad 
+			Wartości własne:$ \left\{ 2 : 1, \  1 - i : 1, \  1 + i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 2, \  1, \  \left[ \left[\begin{matrix}4\\1\\1\end{matrix}\right]\right]\right), \  \left( 1 - i, \  1, \  \left[ \left[\begin{matrix}1 - i\\-1\\1\end{matrix}\right]\right]\right), \  \left( 1 + i, \  1, \  \left[ \left[\begin{matrix}1 + i\\-1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & -2 & -2\\1 & 3 & -1\\1 & 1 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg175}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 6 \lambda^{2} + 16 \lambda - 16$, \quad 
+			Wartości własne:$ \left\{ 2 : 1, \  2 - 2 i : 1, \  2 + 2 i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 2, \  1, \  \left[ \left[\begin{matrix}2\\-1\\1\end{matrix}\right]\right]\right), \  \left( 2 - 2 i, \  1, \  \left[ \left[\begin{matrix}- 2 i\\1\\1\end{matrix}\right]\right]\right), \  \left( 2 + 2 i, \  1, \  \left[ \left[\begin{matrix}2 i\\1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 3 & 3\\3 & -1 & -2\\-1 & -1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg176}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 11 \lambda + 20$, \quad 
+			Wartości własne:$ \left\{ -4 : 1, \  2 - i : 1, \  2 + i : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -4, \  1, \  \left[ \left[\begin{matrix}-1\\1\\0\end{matrix}\right]\right]\right), \  \left( 2 - i, \  1, \  \left[ \left[\begin{matrix}\frac{15}{37} + \frac{21 i}{37}\\- \frac{15}{37} + \frac{16 i}{37}\\1\end{matrix}\right]\right]\right), \  \left( 2 + i, \  1, \  \left[ \left[\begin{matrix}\frac{15}{37} - \frac{21 i}{37}\\- \frac{15}{37} - \frac{16 i}{37}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 3 & 3\\-1 & -1 & 1\\3 & 3 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg177}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 5 \lambda^{2} - 6 \lambda$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  0 : 1, \  6 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}1\\- \frac{7}{3}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}-1\\1\\0\end{matrix}\right]\right]\right), \  \left( 6, \  1, \  \left[ \left[\begin{matrix}1\\0\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & -1 & 3\\3 & 2 & 0\\3 & 0 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg178}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 7 \lambda^{2} + 10 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  2 : 1, \  5 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}- \frac{2}{3}\\1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}0\\3\\1\end{matrix}\right]\right]\right), \  \left( 5, \  1, \  \left[ \left[\begin{matrix}1\\1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 0 & 0\\2 & 1 & 2\\-2 & 1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg179}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 5 \lambda^{2} + 6 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  2 : 1, \  3 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\-2\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\1\\0\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}0\\1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & -1 & 2\\-2 & -2 & -1\\2 & 1 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg180}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} + 4 \lambda^{2} - \lambda - 4$, \quad 
+			Wartości własne:$ \left\{ -4 : 1, \  -1 : 1, \  1 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -4, \  1, \  \left[ \left[\begin{matrix}- \frac{3}{2}\\-1\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}-3\\5\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\-1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 0 & 3 & -2\\-2 & 0 & 3 & 3\\0 & 0 & 3 & 2\\0 & 0 & 3 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg181}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - \lambda^{3} - 12 \lambda^{2}$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  0 : 2, \  4 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}1\\0\\- \frac{1}{3}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  2, \  \left[ \left[\begin{matrix}0\\1\\0\\0\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}1\\\frac{7}{4}\\2\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 1 & -1 & 3\\2 & -2 & 3 & 3\\-2 & -1 & 3 & 1\\2 & 1 & -1 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg182}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - \lambda^{3} - 16 \lambda^{2} + 4 \lambda + 48$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  -2 : 1, \  2 : 1, \  4 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\1\\0\\0\end{matrix}\right]\right]\right), \  \left( -2, \  1, \  \left[ \left[\begin{matrix}0\\-4\\-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}\frac{4}{5}\\\frac{32}{5}\\7\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}\frac{6}{7}\\\frac{2}{7}\\-1\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 1 & 1 & 1\\2 & 1 & 0 & 2\\-2 & 0 & 1 & -2\\1 & 2 & 2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg183}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 6 \lambda^{3} + 12 \lambda^{2} - 10 \lambda + 3$, \quad 
+			Wartości własne:$ \left\{ 1 : 3, \  3 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 1, \  3, \  \left[ \left[\begin{matrix}0\\-1\\1\\0\end{matrix}\right], \  \left[\begin{matrix}-1\\0\\0\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\2\\-2\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 2 & -2 & 2\\1 & 0 & 3 & 0\\1 & 1 & -2 & 1\\-1 & 3 & 1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg184}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 2 \lambda^{3} - 7 \lambda^{2} - 4 \lambda$, \quad 
+			Wartości własne:$ \left\{ -1 : 2, \  0 : 1, \  4 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  2, \  \left[ \left[\begin{matrix}\frac{1}{2}\\- \frac{5}{4}\\\frac{1}{4}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\-1\\0\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}\frac{8}{11}\\\frac{5}{11}\\\frac{4}{11}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2 & 1 & -1\\2 & -1 & 1 & -1\\-2 & 3 & 1 & 1\\2 & 2 & 3 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg185}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - \lambda^{3} - 7 \lambda^{2} + 13 \lambda - 6$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  1 : 2, \  2 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}-1\\3\\-3\\1\end{matrix}\right]\right]\right), \  \left( 1, \  2, \  \left[ \left[\begin{matrix}-1\\-1\\1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}- \frac{3}{7}\\- \frac{3}{7}\\\frac{4}{7}\\1\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 1 & -1 & 2\\0 & 1 & 0 & 0\\3 & -1 & -1 & 2\\-2 & 3 & 2 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg186}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 4 \lambda^{3} + 5 \lambda^{2} - 2 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 2, \  2 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}- \frac{5}{4}\\0\\- \frac{7}{4}\\1\end{matrix}\right]\right]\right), \  \left( 1, \  2, \  \left[ \left[\begin{matrix}-2\\0\\-2\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}1\\0\\1\\0\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 1 & -1 & 1\\3 & -2 & 1 & 2\\-2 & 2 & -1 & 0\\2 & -2 & 0 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg187}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 5 \lambda^{3} + 3 \lambda^{2} - 9 \lambda$, \quad 
+			Wartości własne:$ \left\{ -3 : 2, \  0 : 1, \  1 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  2, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\0\\- \frac{1}{2}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}-2\\-3\\-2\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\1\\0\\0\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 3 & 2 & 1\\1 & -2 & -1 & 1\\-1 & 1 & 0 & -1\\3 & 0 & 3 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg188}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 4 \lambda^{3} + 5 \lambda^{2} + 2 \lambda$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  -1 : 2, \  0 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}- \frac{2}{3}\\- \frac{1}{3}\\\frac{1}{3}\\1\end{matrix}\right]\right]\right), \  \left( -1, \  2, \  \left[ \left[\begin{matrix}-1\\-1\\1\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}-1\\-1\\1\\0\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 2 & -2 & 2\\-2 & 0 & 1 & -2\\-1 & 2 & 0 & 0\\1 & 2 & -1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg189}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 6 \lambda^{3} + 11 \lambda^{2} - 6 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 1, \  2 : 1, \  3 : 1\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\\frac{1}{4}\\1\\0\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}-1\\-1\\-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}-1\\\frac{1}{2}\\1\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}-1\\1\\1\\0\end{matrix}\right]\right]\right)\right]$}
+
+		\tcbitem Wyznaczyć wartości własne i wektory własne macierzy 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 1 & 0 & 2\\2 & 1 & -2 & 1\\3 & -1 & 1 & -2\\1 & -1 & 2 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg190}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 2 \lambda^{3} - 4 \lambda^{2} - 2 \lambda + 3$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  -1 : 1, \  1 : 2\right\}, $\\
+				\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}-1\\1\\1\\0\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\- \frac{3}{2}\\- \frac{1}{2}\\1\end{matrix}\right]\right]\right), \  \left( 1, \  2, \  \left[ \left[\begin{matrix}1\\3\\1\\0\end{matrix}\right], \  \left[\begin{matrix}- \frac{1}{2}\\- \frac{7}{2}\\0\\1\end{matrix}\right]\right]\right)\right]$}
+
+	\end{tcbitemize}
+	\subsection{Diagonalizacja macierzy}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 2\\1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg191}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 5 \lambda + 4$, \quad 
+			Wartości własne:$ \left\{ 1 : 1, \  4 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 1, \  1, \  \left[ \left[\begin{matrix}-2\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-2 & 1\\1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}1 & 0\\0 & 4\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 0\\-2 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg192}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} + \lambda$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  0 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}0 & -1\\1 & 2\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-1 & 0\\0 & 0\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 3\\-1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg193}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 2 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  2 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}3\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}3 & 1\\1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}0 & 0\\0 & 2\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 0\\2 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg194}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 2 \lambda - 3$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}-2\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-2 & 0\\1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-1 & 0\\0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 0\\2 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg195}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} + 2 \lambda$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  0 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}0 & 1\\1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0\\0 & 0\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & -2\\0 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg196}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 3 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}\frac{2}{3}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\0\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}2 & 1\\3 & 0\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}0 & 0\\0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 1\\-2 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg197}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 3 \lambda + 2$, \quad 
+			Wartości własne:$ \left\{ 1 : 1, \  2 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}1 & 1\\1 & 2\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}1 & 0\\0 & 2\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 3\\0 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg198}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - \lambda - 2$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  2 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}1\\0\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-1 & 1\\1 & 0\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-1 & 0\\0 & 2\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 0\\-2 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg199}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - \lambda - 6$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}\frac{5}{2}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}5 & 0\\2 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0\\0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 0\\1 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg200}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{2} - 4 \lambda + 4$, \quad 
+			Wartości własne:$ \left\{ 2 : 2\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 2, \  2, \  \left[ \left[\begin{matrix}0\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 3 & 0\\0 & -2 & -2\\-2 & -2 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg201}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 7 \lambda - 6$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  -1 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}-1\\1\\0\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}3\\-2\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}- \frac{3}{5}\\- \frac{2}{5}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-1 & 3 & -3\\1 & -2 & -2\\0 & 1 & 5\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0 & 0\\0 & -1 & 0\\0 & 0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2 & 2\\0 & 0 & 0\\2 & 0 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg202}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - \lambda^{2} - 6 \lambda$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  0 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}-2\\0\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}-1\\- \frac{3}{2}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\0\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-2 & -2 & 1\\0 & -3 & 0\\1 & 2 & 2\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0 & 0\\0 & 0 & 0\\0 & 0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & -1 & 2\\-1 & 3 & 1\\0 & 0 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg203}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 9 \lambda^{2} + 26 \lambda - 24$, \quad 
+			Wartości własne:$ \left\{ 2 : 1, \  3 : 1, \  4 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 2, \  1, \  \left[ \left[\begin{matrix}1\\1\\0\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\2\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}-1\\1\\0\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}1 & 1 & -1\\1 & 2 & 1\\0 & 1 & 0\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}2 & 0 & 0\\0 & 3 & 0\\0 & 0 & 4\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 2 & -1\\3 & 3 & 0\\0 & 2 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg204}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 6 \lambda^{2} + 5 \lambda + 12$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  3 : 1, \  4 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}2\\- \frac{3}{2}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}0\\\frac{1}{2}\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}\frac{1}{3}\\1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}4 & 0 & 1\\-3 & 1 & 3\\2 & 2 & 3\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-1 & 0 & 0\\0 & 3 & 0\\0 & 0 & 4\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}1 & 2 & 0\\3 & 3 & 1\\3 & 2 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg205}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 2 \lambda^{2} - 13 \lambda - 10$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  -1 : 1, \  5 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}\frac{2}{9}\\- \frac{1}{3}\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}1\\-1\\1\end{matrix}\right]\right]\right), \  \left( 5, \  1, \  \left[ \left[\begin{matrix}1\\2\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}2 & 1 & 1\\-3 & -1 & 2\\9 & 1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0 & 0\\0 & -1 & 0\\0 & 0 & 5\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0 & 1\\0 & 0 & 3\\0 & 0 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg206}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 3 \lambda^{2}$, \quad 
+			Wartości własne:$ \left\{ 0 : 2, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  2, \  \left[ \left[\begin{matrix}0\\1\\0\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\0\\0\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 2 & 0\\3 & 1 & 0\\-1 & 2 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg207}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 4 \lambda^{2} - \lambda + 4$, \quad 
+			Wartości własne:$ \left\{ -1 : 1, \  1 : 1, \  4 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\- \frac{3}{4}\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}0\\0\\1\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}3\\3\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}2 & 0 & 3\\-3 & 0 & 3\\4 & 1 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 4\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & -1 & 1\\1 & 2 & -2\\1 & 2 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg208}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} - 2 \lambda^{2}$, \quad 
+			Wartości własne:$ \left\{ 0 : 2, \  2 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  2, \  \left[ \left[\begin{matrix}0\\1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}2\\1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 2 & -2\\3 & -2 & -2\\-2 & -1 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg209}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} + 3 \lambda^{2} - 10 \lambda - 24$, \quad 
+			Wartości własne:$ \left\{ -4 : 1, \  -2 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -4, \  1, \  \left[ \left[\begin{matrix}6\\-8\\1\end{matrix}\right]\right]\right), \  \left( -2, \  1, \  \left[ \left[\begin{matrix}\frac{2}{3}\\\frac{2}{3}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}-1\\-1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}6 & 2 & -1\\-8 & 2 & -1\\1 & 3 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-4 & 0 & 0\\0 & -2 & 0\\0 & 0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 0 & 0\\-2 & -1 & 3\\2 & 0 & 0\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg210}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{3} + 3 \lambda^{2} + 2 \lambda$, \quad 
+			Wartości własne:$ \left\{ -2 : 1, \  -1 : 1, \  0 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  1, \  \left[ \left[\begin{matrix}-1\\-5\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}0\\1\\0\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\3\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-1 & 0 & 0\\-5 & 1 & 3\\1 & 0 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-2 & 0 & 0\\0 & -1 & 0\\0 & 0 & 0\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0 & 0 & 2\\-2 & 3 & -1 & 1\\-1 & 3 & -1 & 1\\3 & 0 & 0 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg211}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 7 \lambda^{3} + 10 \lambda^{2}$, \quad 
+			Wartości własne:$ \left\{ 0 : 2, \  2 : 1, \  5 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  2, \  \left[ \left[\begin{matrix}0\\\frac{1}{3}\\1\\0\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}0\\1\\1\\0\end{matrix}\right]\right]\right), \  \left( 5, \  1, \  \left[ \left[\begin{matrix}1\\- \frac{2}{5}\\- \frac{1}{5}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 0 & -1 & -1\\-2 & 2 & 1 & -1\\2 & 1 & 2 & 1\\-1 & 0 & 1 & 1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg212}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 5 \lambda^{3} + 7 \lambda^{2} - 3 \lambda$, \quad 
+			Wartości własne:$ \left\{ 0 : 1, \  1 : 2, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( 0, \  1, \  \left[ \left[\begin{matrix}0\\1\\-1\\1\end{matrix}\right]\right]\right), \  \left( 1, \  2, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\\frac{1}{2}\\- \frac{1}{2}\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}- \frac{3}{4}\\\frac{7}{4}\\\frac{5}{4}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 1 & 0 & 0\\-2 & 0 & 1 & 2\\-2 & 3 & -2 & 2\\0 & 0 & 1 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg213}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 4 \lambda^{3} + 2 \lambda^{2} - 4 \lambda - 3$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  -1 : 2, \  1 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}0\\0\\-2\\1\end{matrix}\right]\right]\right), \  \left( -1, \  2, \  \left[ \left[\begin{matrix}1\\0\\0\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\2\\2\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & 0 & 2 & 2\\-2 & 2 & 2 & 0\\1 & 0 & -2 & -1\\2 & 0 & 0 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg214}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 2 \lambda^{3} - 13 \lambda^{2} + 14 \lambda + 24$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  -1 : 1, \  2 : 1, \  4 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}-1\\- \frac{6}{5}\\2\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}0\\\frac{2}{3}\\-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}0\\1\\0\\0\end{matrix}\right]\right]\right), \  \left( 4, \  1, \  \left[ \left[\begin{matrix}\frac{5}{2}\\- \frac{9}{4}\\\frac{1}{4}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-5 & 0 & 0 & 10\\-6 & 2 & 1 & -9\\10 & -3 & 0 & 1\\5 & 3 & 0 & 4\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-3 & 0 & 0 & 0\\0 & -1 & 0 & 0\\0 & 0 & 2 & 0\\0 & 0 & 0 & 4\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 1 & -1 & 2\\3 & 3 & -2 & -1\\3 & 1 & 0 & -1\\2 & 1 & -1 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg215}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + \lambda^{3} - 10 \lambda^{2} + 8 \lambda$, \quad 
+			Wartości własne:$ \left\{ -4 : 1, \  0 : 1, \  1 : 1, \  2 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -4, \  1, \  \left[ \left[\begin{matrix}-1\\\frac{4}{5}\\\frac{4}{5}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  1, \  \left[ \left[\begin{matrix}1\\-2\\-2\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}0\\1\\1\\0\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}1\\6\\4\\1\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-5 & 1 & 0 & 1\\4 & -2 & 1 & 6\\4 & -2 & 1 & 4\\5 & 1 & 0 & 1\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-4 & 0 & 0 & 0\\0 & 0 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 2\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-1 & 0 & -1 & -1\\1 & 2 & 1 & 1\\1 & 3 & -1 & 0\\2 & 0 & 1 & 3\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg216}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 3 \lambda^{3} - 3 \lambda^{2} + 7 \lambda + 6$, \quad 
+			Wartości własne:$ \left\{ -1 : 2, \  2 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  2, \  \left[ \left[\begin{matrix}- \frac{3}{2}\\\frac{1}{2}\\-1\\1\end{matrix}\right]\right]\right), \  \left( 2, \  1, \  \left[ \left[\begin{matrix}0\\-1\\-1\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{2}\\\frac{3}{2}\\1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}3 & -1 & -1 & 0\\0 & -1 & -1 & 1\\0 & -1 & 0 & 0\\0 & 2 & -1 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg217}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 10 \lambda^{2} + 9$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  -1 : 1, \  1 : 1, \  3 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}- \frac{2}{15}\\- \frac{3}{5}\\- \frac{1}{5}\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}\frac{1}{2}\\1\\1\\1\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}0\\1\\-1\\1\end{matrix}\right]\right]\right), \  \left( 3, \  1, \  \left[ \left[\begin{matrix}1\\0\\0\\0\end{matrix}\right]\right]\right)\right]$,\\
+			$A = P\,D\,P^{-1}: \quad P=\left[\begin{matrix}-2 & 1 & 0 & 1\\-9 & 2 & 1 & 0\\-3 & 2 & -1 & 0\\15 & 2 & 1 & 0\end{matrix}\right],$ \quad 
+			$D=\left[\begin{matrix}-3 & 0 & 0 & 0\\0 & -1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 3\end{matrix}\right]$}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}0 & 1 & 0 & 0\\-1 & 1 & 1 & 0\\1 & 1 & -1 & 2\\-1 & 0 & 1 & -2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg218}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 2 \lambda^{3} - 3 \lambda^{2}$, \quad 
+			Wartości własne:$ \left\{ -3 : 1, \  0 : 2, \  1 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -3, \  1, \  \left[ \left[\begin{matrix}- \frac{1}{12}\\\frac{1}{4}\\- \frac{13}{12}\\1\end{matrix}\right]\right]\right), \  \left( 0, \  2, \  \left[ \left[\begin{matrix}1\\0\\1\\0\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}1\\1\\1\\0\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}2 & 0 & 0 & 0\\1 & -2 & 1 & 3\\-2 & -1 & 0 & 3\\3 & 0 & 0 & 2\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg219}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} - 2 \lambda^{3} - 3 \lambda^{2} + 4 \lambda + 4$, \quad 
+			Wartości własne:$ \left\{ -1 : 2, \  2 : 2\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -1, \  2, \  \left[ \left[\begin{matrix}0\\1\\1\\0\end{matrix}\right]\right]\right), \  \left( 2, \  2, \  \left[ \left[\begin{matrix}0\\1\\1\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+		\tcbitem Przeprowadzić diagonalizację macierzy (jeśli możliwa) 
+			\[
+				\textnormal{A=} \left[\begin{matrix}-2 & 2 & 2 & 2\\-2 & 0 & 1 & 3\\2 & 0 & -1 & -1\\3 & -2 & -2 & -1\end{matrix}\right]
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg220}
+				{$\det\left(\lambda \mathbb{I} - A \right) = \lambda^{4} + 4 \lambda^{3} + 3 \lambda^{2} - 4 \lambda - 4$, \quad 
+			Wartości własne:$ \left\{ -2 : 2, \  -1 : 1, \  1 : 1\right\}, $\\
+			\parbox{4em}{Wektory\\własne:} $\left[ \left( -2, \  2, \  \left[ \left[\begin{matrix}-1\\-4\\3\\1\end{matrix}\right]\right]\right), \  \left( -1, \  1, \  \left[ \left[\begin{matrix}0\\-1\\1\\0\end{matrix}\right]\right]\right), \  \left( 1, \  1, \  \left[ \left[\begin{matrix}2\\\frac{1}{2}\\\frac{3}{2}\\1\end{matrix}\right]\right]\right)\right]$,\\
+			Macierz nie jest diagonalizowalna.}
+
+	\end{tcbitemize}
+
+	\section{Układy równań}
+	\subsection{Układy Cramera}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- x + 3 y = -3 \\ 
+						x - y = -2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg221}
+				{$\det(A) = -2,\ \det(A_x)=9,\ x = - \frac{9}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						3 x + 4 y = 3 \\ 
+						- 3 x - 3 y = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg222}
+				{$\det(A) = 3,\ \det(A_y)=6,\ y = 2$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						2 x + y = 1 \\ 
+						x + 4 y = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg223}
+				{$\det(A) = 7,\ \det(A_x)=7,\ x = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						x + y = 2 \\ 
+						- 2 x + 3 y = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg224}
+				{$\det(A) = 5,\ \det(A_y)=5,\ y = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 x + y = 1 \\ 
+						4 x - 3 y = 2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg225}
+				{$\det(A) = 5,\ \det(A_x)=-5,\ x = -1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						4 x - 2 y + 2 z = 2 \\ 
+						- x + 2 y - 2 z = -3 \\ 
+						x - z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg226}
+				{$\det(A) = -6,\ \det(A_x)=2,\ x = - \frac{1}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- x - y + z = -2 \\ 
+						y + z = -1 \\ 
+						x + 3 y - 2 z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg227}
+				{$\det(A) = 3,\ \det(A_x)=7,\ x = \frac{7}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 x + y + 4 z = 0 \\ 
+						3 x - 2 y - 2 z = -2 \\ 
+						3 x - y - 3 z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg228}
+				{$\det(A) = 3,\ \det(A_x)=-4,\ x = - \frac{4}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						x - 2 y - z = 0 \\ 
+						3 x - 3 y - 2 z = 1 \\ 
+						3 x - 2 y - z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg229}
+				{$\det(A) = 2,\ \det(A_z)=-7,\ z = - \frac{7}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						4 x - 2 y + 3 z = -2 \\ 
+						3 x - 2 z = 3 \\ 
+						- x + y - 3 z = 4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg230}
+				{$\det(A) = -5,\ \det(A_x)=3,\ x = - \frac{3}{5}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 x + y - z = 2 \\ 
+						3 x - 3 y + 2 z = -1 \\ 
+						- 3 x + 4 y - 3 z = -2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg231}
+				{$\det(A) = -3,\ \det(A_y)=-6,\ y = 2$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 x - 3 y - z = 1 \\ 
+						2 x + y - 2 z = 2 \\ 
+						- y = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg232}
+				{$\det(A) = 6,\ \det(A_z)=6,\ z = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						x - 3 y + z = 2 \\ 
+						- 2 x + 4 y = -1 \\ 
+						x + 3 y - 2 z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg233}
+				{$\det(A) = -6,\ \det(A_y)=-7,\ y = \frac{7}{6}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						x - z = 2 \\ 
+						4 x + 2 y - 3 z = 4 \\ 
+						3 x - 3 y - 2 z = 4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg234}
+				{$\det(A) = 5,\ \det(A_y)=-2,\ y = - \frac{2}{5}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 x - 2 y + 4 z = -2 \\ 
+						- 2 x - y + 2 z = -1 \\ 
+						2 x - 2 y + z = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg235}
+				{$\det(A) = 6,\ \det(A_z)=2,\ z = \frac{1}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 t - 2 x + 3 y = 0 \\ 
+						2 x - 3 y = -2 \\ 
+						- x + 2 y - 2 z = -2 \\ 
+						- t + 2 z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg236}
+				{$\det(A) = -6,\ \det(A_y)=-8,\ y = \frac{4}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t + y + 2 z = -1 \\ 
+						- 2 t - x + z = 1 \\ 
+						t + 4 x + z = -2 \\ 
+						4 t + 3 x - 2 y - 2 z = 0 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg237}
+				{$\det(A) = -5,\ \det(A_y)=5,\ y = -1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- t - 3 x + y - 2 z = -1 \\ 
+						- 2 x - y - 2 z = -1 \\ 
+						- 2 x + 3 y - 3 z = -3 \\ 
+						- t - x + y = 0 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg238}
+				{$\det(A) = -2,\ \det(A_z)=-4,\ z = 2$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						2 x - y - z = -1 \\ 
+						- 2 y = -1 \\ 
+						4 t + x - 3 y = 0 \\ 
+						2 t + 3 y = 2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg239}
+				{$\det(A) = 4,\ \det(A_x)=2,\ x = \frac{1}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t - x - z = -1 \\ 
+						3 t + 2 x + 2 z = 3 \\ 
+						4 t - 2 x - 3 y - 2 z = 4 \\ 
+						2 t - x - 3 z = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg240}
+				{$\det(A) = -6,\ \det(A_z)=6,\ z = -1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $t$
+			\[
+				\left\{
+					\begin{matrix}
+						- t - 2 y + 3 z = 2 \\ 
+						4 t + 3 x + y + z = -3 \\ 
+						- 2 t - 2 x + 3 y - 3 z = -2 \\ 
+						- 2 t - x - 2 y + 2 z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg241}
+				{$\det(A) = -2,\ \det(A_t)=-6,\ t = 3$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t + 4 y + 2 z = 0 \\ 
+						2 t + 2 x - 3 y = 1 \\ 
+						- 3 x + 4 y - 2 z = -2 \\ 
+						- t - 3 x - 2 z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg242}
+				{$\det(A) = -2,\ \det(A_x)=8,\ x = -4$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t - 2 x - y - 2 z = -2 \\ 
+						2 t - 3 x + 3 y + 2 z = 2 \\ 
+						t - x - 3 y = 2 \\ 
+						3 t - 3 x + 2 z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg243}
+				{$\det(A) = 4,\ \det(A_x)=-4,\ x = -1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						3 x - y + z = 2 \\ 
+						3 t - x + y + z = -3 \\ 
+						3 t + y + z = -3 \\ 
+						2 t - 2 x + 4 z = 4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg244}
+				{$\det(A) = -8,\ \det(A_y)=2,\ y = - \frac{1}{4}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						2 t - 2 y = -1 \\ 
+						- 2 t - 3 x + 4 y - z = 2 \\ 
+						3 t + 3 x + 3 y = -2 \\ 
+						- 2 t - 3 x + 3 y - z = 2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg245}
+				{$\det(A) = 6,\ \det(A_z)=-3,\ z = - \frac{1}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $u$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t - 2 u + 3 x - 2 y + 3 z = 2 \\ 
+						- 2 u - 3 x + 4 y - 2 z = 0 \\ 
+						t + 3 u + x + y + 4 z = 4 \\ 
+						- 2 t - u + 3 x + 3 z = 4 \\ 
+						2 t - x - 3 y + 4 z = -2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg246}
+				{$\det(A) = -9,\ \det(A_u)=-6,\ u = \frac{2}{3}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 t - x + z = -3 \\ 
+						- 3 t + 3 x + 3 y + z = -2 \\ 
+						4 t + 4 u + 3 x + y = -3 \\ 
+						2 t - 2 u + 2 x - 3 y + 4 z = -1 \\ 
+						t - u + 2 x + z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg247}
+				{$\det(A) = 6,\ \det(A_z)=6,\ z = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $u$
+			\[
+				\left\{
+					\begin{matrix}
+						- 3 t - 3 x - 2 y - z = -2 \\ 
+						4 t + u + x + 3 y + z = -1 \\ 
+						3 u + 3 x + z = 1 \\ 
+						4 t - u + x - 2 y - z = 3 \\ 
+						2 t - 3 u + 3 x + 3 y + z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg248}
+				{$\det(A) = -4,\ \det(A_u)=8,\ u = -2$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $u$
+			\[
+				\left\{
+					\begin{matrix}
+						- t + 4 u + 3 x + 4 y + 3 z = -3 \\ 
+						4 t - 3 u + 4 y + z = 2 \\ 
+						t + 3 u + 3 x + 4 y + 3 z = -3 \\ 
+						- t + u - x - 3 y = -3 \\ 
+						2 t - 2 u + x + 2 y - z = 4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg249}
+				{$\det(A) = 3,\ \det(A_u)=6,\ u = 2$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						2 t + u + x + y + z = -3 \\ 
+						- 3 t + 3 u + 2 x - z = -3 \\ 
+						- 3 u + 4 x - y + 2 z = -3 \\ 
+						4 t - 3 u - 2 x = 2 \\ 
+						- 2 t - 2 u - y + z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg250}
+				{$\det(A) = -1,\ \det(A_y)=7,\ y = -7$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $z$
+			\[
+				\left\{
+					\begin{matrix}
+						- t + x - 3 y + 3 z = 0 \\ 
+						- 2 t - 2 u + 2 x + 2 y - z = 4 \\ 
+						3 t + 4 u - v + x - y - 2 z = 4 \\ 
+						- 2 t - 2 u + 4 v - x + 4 y + 3 z = -3 \\ 
+						3 t + 4 u + v - x - y + z = -1 \\ 
+						- t - u - v + 2 x + 2 y + z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg251}
+				{$\det(A) = 2,\ \det(A_z)=2,\ z = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $v$
+			\[
+				\left\{
+					\begin{matrix}
+						2 t - v + 2 x + 2 y + 3 z = -3 \\ 
+						4 t + 4 u + 4 v + 3 x + 4 y - z = 2 \\ 
+						4 t - 2 u + 3 v - 2 x + 3 y - z = -2 \\ 
+						4 t + 4 u + 3 v + 3 x + 3 y - z = -2 \\ 
+						4 t + v + x + z = 1 \\ 
+						4 t + 3 u + 3 v + x - y - 3 z = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg252}
+				{$\det(A) = 2,\ \det(A_v)=-2,\ v = -1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						4 u + 2 v + 4 x - 2 y + 4 z = -3 \\ 
+						- 2 t - 2 v + 4 x - 3 y = 0 \\ 
+						- t + 2 u + v + 2 x - y + 3 z = -1 \\ 
+						- t + 3 u - v + 2 x - y + 2 z = 0 \\ 
+						3 u - v - 2 x + y + z = 2 \\ 
+						- 2 t + 2 u - v + x + 3 y + 4 z = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg253}
+				{$\det(A) = 8,\ \det(A_x)=8,\ x = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $y$
+			\[
+				\left\{
+					\begin{matrix}
+						- t - 2 u - 2 v + 2 y + 2 z = -2 \\ 
+						- 3 t - 3 u + v + 4 x + 4 y = 0 \\ 
+						u + 3 v + 2 x - y - z = 2 \\ 
+						- 3 t + 3 u - x + y + 2 z = -3 \\ 
+						- 3 u + 3 v - 2 x - 2 y + 3 z = 1 \\ 
+						- 3 t - u - 3 v - x + 4 y = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg254}
+				{$\det(A) = 3,\ \det(A_y)=-9,\ y = -3$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $x$
+			\[
+				\left\{
+					\begin{matrix}
+						- t - u - v + 3 x - y - 3 z = 3 \\ 
+						2 t - u + 3 v + x + y - 3 z = 4 \\ 
+						4 t + 3 u + 3 v + 4 x + 2 y + 2 z = -3 \\ 
+						2 t + 4 u + 4 x = 4 \\ 
+						- t - 2 u + 2 v - x - y - 3 z = 4 \\ 
+						- 3 u + x + y - z = -3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg255}
+				{$\det(A) = 8,\ \det(A_x)=8,\ x = 1$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $t$
+			\[
+				\left\{
+					\begin{matrix}
+						- 2 t + u + 3 v + 2 w - 3 x - 3 y + z = -3 \\ 
+						- 3 u + v + 2 w + 2 x - 3 y - 3 z = 2 \\ 
+						4 t + u + 2 v - 2 w - 3 x - y = 1 \\ 
+						t + 2 u - 2 v + w + 2 x + 4 y - 3 z = -1 \\ 
+						4 t + 4 u - 2 v + w - 3 y - z = 3 \\ 
+						- t + u - 2 v - 3 w + 2 x + 4 y - 2 z = 2 \\ 
+						2 t - 3 u - 2 v + w + 3 x - 3 y = 4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg256}
+				{$\det(A) = 2,\ \det(A_t)=-7,\ t = - \frac{7}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $w$
+			\[
+				\left\{
+					\begin{matrix}
+						4 t + u + v - w + 3 x - 2 y + 3 z = 2 \\ 
+						- 3 t - u - 3 v - w + 3 x + 3 y + 4 z = 2 \\ 
+						2 t - u + 2 v + w - x + y = 3 \\ 
+						4 t + 2 u + v + 4 w + 4 x - 3 y + 2 z = -1 \\ 
+						- 2 t + 4 u + 2 v - 2 w - y - 3 z = 0 \\ 
+						- t + 3 u - 2 v - 2 w + 2 x - y + z = 2 \\ 
+						2 t - u + v + 4 w - 2 x + y - z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg257}
+				{$\det(A) = 4,\ \det(A_w)=6,\ w = \frac{3}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $t$
+			\[
+				\left\{
+					\begin{matrix}
+						4 t + u - 3 v - 2 w - 3 x + 4 y + 4 z = -2 \\ 
+						- 3 t - 2 u - 2 v + 4 w - 2 x - 2 y + 3 z = -2 \\ 
+						4 t - 3 u - 3 v - 2 w + 4 x + 4 y - 2 z = 4 \\ 
+						- t + 4 u - 3 v + 3 w - 3 x + 3 y + z = 3 \\ 
+						t - 3 u - 3 v + 2 x - 3 y = 4 \\ 
+						- t + 2 u + 4 v - 3 w + x = -3 \\ 
+						- 3 t + 2 u - v + w + 2 z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg258}
+				{$\det(A) = 4,\ \det(A_t)=2,\ t = \frac{1}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $w$
+			\[
+				\left\{
+					\begin{matrix}
+						- t + u + 4 v + 2 w + 3 x - 3 y - 3 z = 2 \\ 
+						3 t - u + 2 v - 2 w - 2 x - 3 y - z = -1 \\ 
+						t - 2 u - 2 v - 2 x - 2 z = 4 \\ 
+						t - 2 u - 2 v - w + 4 x - z = 4 \\ 
+						t + u - v - w - 2 x + z = -3 \\ 
+						- 2 t + w - x + 3 y + 2 z = 2 \\ 
+						- 2 t + 2 u + 3 v + 3 w + 3 x - 2 y - 3 z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg259}
+				{$\det(A) = 6,\ \det(A_w)=3,\ w = \frac{1}{2}$}
+
+		\tcbitem Z układu równań wyznaczyć niewiadomą $v$
+			\[
+				\left\{
+					\begin{matrix}
+						4 u + 4 v + 3 w + 2 x - 2 y - z = -1 \\ 
+						2 t - 2 u + 3 v - 3 w + 2 x - y + 4 z = -2 \\ 
+						t - v + x - 2 y - 2 z = 1 \\ 
+						3 t + u + 2 w + 2 x - y + 3 z = 0 \\ 
+						- 2 t + 2 u + 2 v - w + 3 x - 2 y + z = -1 \\ 
+						- 3 t - 2 u - 3 w - 3 x - 2 y - 3 z = 1 \\ 
+						- 3 t + u + v - w + x + 4 y = -2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg260}
+				{$\det(A) = -9,\ \det(A_v)=9,\ v = -1$}
+
+	\end{tcbitemize}
+	\subsection{Metoda Gaussa}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- t - 2 x + y - 4 z = 6 \\ 
+						t + x + y + 5 z = 4 \\ 
+						t + y + 2 z = 6 \\ 
+						- 2 t - 2 x - y - 8 z = -4 \\ 
+						t + y + 2 z = 6 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg261}
+				{$\left\{ t  =  2, \  x  =  - 3 z - 2, \  y  =  4 - 2 z\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						6 t + 3 x - 3 y + 3 z = 9 \\ 
+						4 t + 2 x - 2 y + 2 z = 6 \\ 
+						- 4 t + y - z = -1 \\ 
+						2 t + x + z = 5 \\ 
+						2 t + x - y + z = 3 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg262}
+				{$\left\{ t  =  \frac{3}{4} - \frac{z}{4}, \  x  =  \frac{7}{2} - \frac{z}{2}, \  y  =  2\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						6 t + x - 2 y + z = -2 \\ 
+						- 2 t - x + y = 1 \\ 
+						- 8 t + 2 x + 3 y - 3 z = -3 \\ 
+						- 2 t + x + y - z = -2 \\ 
+						4 t - y + z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg263}
+				{$\left\{ t  =  - \frac{z}{4} - \frac{3}{4}, \  x  =  \frac{z}{2} - \frac{3}{2}, \  y  =  -2\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- 8 t - 2 y + 4 z = 8 \\ 
+						- 5 t - x + y + z = 6 \\ 
+						3 t + x - z = -4 \\ 
+						- 5 t - x - 2 y + 3 z = 6 \\ 
+						- 4 t - x - y + 2 z = 5 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg264}
+				{$\left\{ t  =  \frac{z}{3} - 1, \  x  =  -1, \  y  =  \frac{2 z}{3}\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- 4 t - 5 x + 3 y + 4 z = -8 \\ 
+						4 t + 3 x - 2 y - 2 z = 4 \\ 
+						x - z = 3 \\ 
+						4 t + 2 x - y - z = 3 \\ 
+						- 4 t - 4 x + 2 y + 3 z = -7 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg265}
+				{$\left\{ t  =  - \frac{z}{4} - \frac{1}{4}, \  x  =  z + 3, \  y  =  2\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- t - y + z = -2 \\ 
+						- 3 t - 5 x - 4 y - 6 z = 5 \\ 
+						- x - y - z = -1 \\ 
+						- 3 t - 5 x - 5 y - 5 z = 1 \\ 
+						2 t + 3 x + 3 y + 3 z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg266}
+				{$\left\{ t  =  -2, \  x  =  - 2 z - 3, \  y  =  z + 4\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						2 t - 2 x + 2 z = 6 \\ 
+						3 t + x + 2 y = 3 \\ 
+						6 t + 6 x + 2 y - 3 z = -8 \\ 
+						4 t + 4 x + y - 2 z = -6 \\ 
+						- 2 t - 2 x - y + z = 2 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg267}
+				{$\left\{ t  =  \frac{1}{2} - \frac{z}{4}, \  x  =  \frac{3 z}{4} - \frac{5}{2}, \  y  =  2\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						3 t - x + 3 y - 3 z = -2 \\ 
+						4 t + y - 2 z = -5 \\ 
+						t + x - 2 y + z = -3 \\ 
+						t - x + y - z = 0 \\ 
+						- 2 t + x - 2 y + 2 z = 1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg268}
+				{$\left\{ t  =  \frac{z}{3} - \frac{4}{3}, \  x  =  -1, \  y  =  \frac{2 z}{3} + \frac{1}{3}\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- t + 2 x - 4 z = -6 \\ 
+						- t + 2 x + 2 y + 4 z = -2 \\ 
+						3 x + 2 y + 2 z = -2 \\ 
+						t - x - y - 2 z = 2 \\ 
+						- t + 3 x + 2 y + 2 z = -4 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg269}
+				{$\left\{ t  =  2, \  x  =  2 z - 2, \  y  =  2 - 4 z\right\}$}
+
+		\tcbitem Rozwiązać układ równań.\ Jeśli możliwe podać trzy przykładowe rozwiązania.\ Jedno rozwiązanie sprawdzić. 
+			\[
+				\left\{
+					\begin{matrix}
+						- t - 2 x + y - z = -9 \\ 
+						2 t - 3 x - z = -9 \\ 
+						- t + x + y - z = -3 \\ 
+						3 t - 3 x - y = -4 \\ 
+						- t + 2 x + y - z = -1 \\ 
+					\end{matrix}
+				\right.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg270}
+				{$\left\{ t  =  \frac{z}{2} - \frac{3}{2}, \  x  =  2, \  y  =  \frac{3 z}{2} - \frac{13}{2}\right\}$}
+
+	\end{tcbitemize}
+
+	\section{Geometria analityczna}
+	\subsection{Kąty w trójkącie}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (3, 3, -1),\ B = (-1, 5, 4),\ C = (0, -3, -1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg271}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 45.00^{\circ},\  \gamma \approx 45.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (3, 3, 5),\ B = (-3, 3, -3),\ C = (4, 3, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg272}
+				{$\alpha \approx 45.00^{\circ},\  \beta \approx 45.00^{\circ},\  \gamma \approx 90.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (5, 5, 4),\ B = (-2, -2, 4),\ C = (-2, 5, -3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg273}
+				{$\alpha \approx 60.00^{\circ},\  \beta \approx 60.00^{\circ},\  \gamma \approx 60.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (4, 3, -2),\ B = (4, 0, 1),\ C = (2, 4, -1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg274}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 30.00^{\circ},\  \gamma \approx 60.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (4, 1, 2),\ B = (4, -2, -1),\ C = (2, 2, 1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg275}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 30.00^{\circ},\  \gamma \approx 60.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-1, -2, -1),\ B = (1, -1, -3),\ C = (0, 0, 1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg276}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 45.00^{\circ},\  \gamma \approx 45.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (2, 1, -3),\ B = (5, 0, -3),\ C = (3, 4, -3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg277}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 45.00^{\circ},\  \gamma \approx 45.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (1, 1, 3),\ B = (3, 3, 3),\ C = (1, 3, 5)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg278}
+				{$\alpha \approx 60.00^{\circ},\  \beta \approx 60.00^{\circ},\  \gamma \approx 60.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (5, -1, -1),\ B = (3, -2, 1),\ C = (1, 0, 0)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg279}
+				{$\alpha \approx 45.00^{\circ},\  \beta \approx 90.00^{\circ},\  \gamma \approx 45.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (0, -1, 1),\ B = (4, 3, 1),\ C = (0, 3, -3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg280}
+				{$\alpha \approx 60.00^{\circ},\  \beta \approx 60.00^{\circ},\  \gamma \approx 60.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (0, 0, 5),\ B = (3, 2, 5),\ C = (3, 2, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg281}
+				{$\alpha \approx 62.75^{\circ},\  \beta \approx 90.00^{\circ},\  \gamma \approx 27.25^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-3, -2, 0),\ B = (5, -3, 5),\ C = (-1, 0, -1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg282}
+				{$\alpha \approx 71.57^{\circ},\  \beta \approx 18.43^{\circ},\  \gamma \approx 90.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (1, 1, 5),\ B = (5, -1, -1),\ C = (5, 2, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg283}
+				{$\alpha \approx 22.91^{\circ},\  \beta \approx 90.00^{\circ},\  \gamma \approx 67.09^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (3, 2, 0),\ B = (5, 3, 0),\ C = (4, 5, -3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg284}
+				{$\alpha \approx 59.14^{\circ},\  \beta \approx 90.00^{\circ},\  \gamma \approx 30.86^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (4, 4, 1),\ B = (3, 1, 0),\ C = (-1, 1, 4)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg285}
+				{$\alpha \approx 59.62^{\circ},\  \beta \approx 90.00^{\circ},\  \gamma \approx 30.38^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-2, 1, -1),\ B = (-3, 4, 4),\ C = (3, 1, 0)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg286}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 40.76^{\circ},\  \gamma \approx 49.24^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (2, -3, 3),\ B = (-1, 0, -1),\ C = (3, -2, 3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg287}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 13.63^{\circ},\  \gamma \approx 76.37^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (0, -2, 3),\ B = (4, 1, 0),\ C = (0, -3, 2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg288}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 13.63^{\circ},\  \gamma \approx 76.37^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-2, 4, -3),\ B = (5, 4, -3),\ C = (-2, 5, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg289}
+				{$\alpha \approx 90.00^{\circ},\  \beta \approx 11.42^{\circ},\  \gamma \approx 78.58^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-2, 4, -2),\ B = (1, -2, 4),\ C = (-1, -1, 5)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg290}
+				{$\alpha \approx 15.79^{\circ},\  \beta \approx 74.21^{\circ},\  \gamma \approx 90.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (2, 5, -2),\ B = (1, 0, 0),\ C = (0, 0, 0)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg291}
+				{$\alpha \approx 9.85^{\circ},\  \beta \approx 100.52^{\circ},\  \gamma \approx 69.63^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (3, 2, 0),\ B = (2, 2, -1),\ C = (5, 2, 1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg292}
+				{$\alpha \approx 161.57^{\circ},\  \beta \approx 11.31^{\circ},\  \gamma \approx 7.13^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-1, 1, 5),\ B = (-3, 5, 4),\ C = (5, 2, 1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg293}
+				{$\alpha \approx 96.89^{\circ},\  \beta \approx 52.95^{\circ},\  \gamma \approx 30.16^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-3, -3, 3),\ B = (2, -3, 5),\ C = (1, -3, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg294}
+				{$\alpha \approx 73.14^{\circ},\  \beta \approx 60.07^{\circ},\  \gamma \approx 46.79^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (3, 4, 4),\ B = (4, 0, -2),\ C = (3, 3, -1)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg295}
+				{$\alpha \approx 23.66^{\circ},\  \beta \approx 38.10^{\circ},\  \gamma \approx 118.23^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (1, -1, -1),\ B = (0, 1, 2),\ C = (-3, 5, 2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg296}
+				{$\alpha \approx 31.19^{\circ},\  \beta \approx 126.01^{\circ},\  \gamma \approx 22.80^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (1, 0, -3),\ B = (-3, 3, 4),\ C = (0, 0, -2)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg297}
+				{$\alpha \approx 25.28^{\circ},\  \beta \approx 4.72^{\circ},\  \gamma \approx 150.00^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (4, 3, 3),\ B = (-1, 2, -2),\ C = (4, 1, 3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg298}
+				{$\alpha \approx 81.95^{\circ},\  \beta \approx 16.10^{\circ},\  \gamma \approx 81.95^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (-2, -1, 1),\ B = (-2, 1, 4),\ C = (5, 3, 3)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg299}
+				{$\alpha \approx 62.13^{\circ},\  \beta \approx 92.16^{\circ},\  \gamma \approx 25.71^{\circ}.$}
+
+		\tcbitem Wyznaczyć miary kątów wewnętrznych trójkąta $ABC,$ gdzie
+			\[
+				A = (2, -2, 0),\ B = (0, 3, -3),\ C = (2, 0, 5)
+			\]
+			Sprawdzić, czy sumują się do $180^{\circ}.$\\
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg300}
+				{$\alpha \approx 98.66^{\circ},\  \beta \approx 37.35^{\circ},\  \gamma \approx 43.99^{\circ}.$}
+
+	\end{tcbitemize}
+	\subsection{Pole trójkąta i wysokości}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka B dla
+			\[
+				A = (5, -1, 4),\ B = (3, 1, 3),\ C = (3, 5, 4)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg301}
+				{$P=\sqrt{26},\ \ h_B=\frac{\sqrt{65}}{5}$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka C dla
+			\[
+				A = (5, 2, -3),\ B = (3, -2, 1),\ C = (5, -2, -1)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg302}
+				{$P=6,\ \ h_C=2$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka A dla
+			\[
+				A = (5, 1, 3),\ B = (-1, -1, 4),\ C = (1, 1, 5)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg303}
+				{$P=6,\ \ h_A=4$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka B dla
+			\[
+				A = (4, -2, -3),\ B = (5, -1, -3),\ C = (2, -3, 2)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg304}
+				{$P=\frac{\sqrt{51}}{2},\ \ h_B=\frac{\sqrt{170}}{10}$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka A dla
+			\[
+				A = (1, -3, 4),\ B = (-1, 3, 4),\ C = (1, -3, 3)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg305}
+				{$P=\sqrt{10},\ \ h_A=\frac{2 \sqrt{410}}{41}$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka A dla
+			\[
+				A = (-3, 4, -2),\ B = (-2, -3, -3),\ C = (-1, 5, -3)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg306}
+				{$P=\frac{\sqrt{290}}{2},\ \ h_A=\frac{\sqrt{754}}{13}$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka C dla
+			\[
+				A = (-1, 2, 5),\ B = (-1, 1, 5),\ C = (4, 5, -3)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg307}
+				{$P=\frac{\sqrt{89}}{2},\ \ h_C=\sqrt{89}$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka A dla
+			\[
+				A = (2, 3, 1),\ B = (2, 4, 2),\ C = (4, 2, 1)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg308}
+				{$P=\frac{3}{2},\ \ h_A=1$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka B dla
+			\[
+				A = (-3, 3, 3),\ B = (3, -1, 2),\ C = (5, -1, 4)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg309}
+				{$P=9,\ \ h_B=2$}
+
+		\tcbitem Wyznaczyć pole trójkąta $ABC$ oraz długość wysokości opuszczonej z wierzchołka A dla
+			\[
+				A = (1, 4, -3),\ B = (-3, -3, 5),\ C = (1, 2, -1)
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg310}
+				{$P=\sqrt{33},\ \ h_A=\frac{2 \sqrt{21}}{7}$}
+
+	\end{tcbitemize}
+	\subsection{Równanie prostej}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (5, 5, 4), \quad P_2 = (5, -1, 1).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (5, -1, 1).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg311}
+				{$l\colon  \frac{x - 5}{0}= \frac{y - 5}{-6}= \frac{z - 4}{-3}; \qquad d(P_3,l) = 0$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (2, 3, 4), \quad P_2 = (-2, 5, 4).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (5, -1, 2).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg312}
+				{$l\colon  \frac{x - 2}{-4}= \frac{y - 3}{2}= \frac{z - 4}{0}; \qquad d(P_3,l) = 3$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (4, 2, 1), \quad P_2 = (1, 4, -3).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (-1, 5, -1).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg313}
+				{$l\colon  \frac{x - 4}{-3}= \frac{y - 2}{2}= \frac{z - 1}{-4}; \qquad d(P_3,l) = 3$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (-1, 1, 2), \quad P_2 = (5, 4, 2).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (-1, 1, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg314}
+				{$l\colon  \frac{x + 1}{6}= \frac{y - 1}{3}= \frac{z - 2}{0}; \qquad d(P_3,l) = 2$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (5, -3, 3), \quad P_2 = (3, 5, 1).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (5, 2, -1).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg315}
+				{$l\colon  \frac{x - 5}{-2}= \frac{y + 3}{8}= \frac{z - 3}{-2}; \qquad d(P_3,l) = 3$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (1, -3, 4), \quad P_2 = (2, 3, 4).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (1, -3, 3).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg316}
+				{$l\colon  \frac{x - 1}{1}= \frac{y + 3}{6}= \frac{z - 4}{0}; \qquad d(P_3,l) = 1$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (-2, 3, 1), \quad P_2 = (1, -1, 1).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (4, -2, 1).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg317}
+				{$l\colon  \frac{x + 2}{3}= \frac{y - 3}{-4}= \frac{z - 1}{0}; \qquad d(P_3,l) = \frac{9}{5}$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (1, 3, -2), \quad P_2 = (4, -1, -2).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (4, -1, 5).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg318}
+				{$l\colon  \frac{x - 1}{3}= \frac{y - 3}{-4}= \frac{z + 2}{0}; \qquad d(P_3,l) = 7$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (5, 2, 4), \quad P_2 = (3, 2, 2).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (1, 3, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg319}
+				{$l\colon  \frac{x - 5}{-2}= \frac{y - 2}{0}= \frac{z - 4}{-2}; \qquad d(P_3,l) = 3$}
+
+		\tcbitem Wyznaczyć równanie prostej przechodzącej przez punkty
+			\[
+				P_1 = (-3, -2, -3), \quad P_2 = (-3, 2, 1).
+			\]
+			Obliczyć odległość wyznaczonej prostej od punktu
+			\[
+				P_3 = (-2, -2, 1).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg320}
+				{$l\colon  \frac{x + 3}{0}= \frac{y + 2}{4}= \frac{z + 3}{4}; \qquad d(P_3,l) = 3$}
+
+	\end{tcbitemize}
+	\subsection{Równanie płaszczyzny}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (-1, 1, -2), \quad P_2 = (-1, 2, 0), \quad P_3 = (-3, 2, 4).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (1, 3, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg321}
+				{$\pi\colon 4 x - 4 y + 2 z + 12=0; \qquad d(P_4,\pi) = 2$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (-3, 5, 5), \quad P_2 = (5, -3, -3), \quad P_3 = (5, 4, -3).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-1, 5, 3).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg322}
+				{$\pi\colon 56 x + 56 z - 112=0; \qquad d(P_4,\pi) = 0$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (2, -1, 4), \quad P_2 = (1, -1, 4), \quad P_3 = (-2, -3, -1).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-1, -1, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg323}
+				{$\pi\colon - 5 y + 2 z - 13=0; \qquad d(P_4,\pi) = 0$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (3, 5, 3), \quad P_2 = (-1, 2, 0), \quad P_3 = (3, 4, 3).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (4, 5, 5).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg324}
+				{$\pi\colon - 3 x + 4 z - 3=0; \qquad d(P_4,\pi) = 1$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (-1, 1, 2), \quad P_2 = (-1, 1, -3), \quad P_3 = (1, 4, -3).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-3, -2, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg325}
+				{$\pi\colon 15 x - 10 y + 25=0; \qquad d(P_4,\pi) = 0$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (3, 3, 3), \quad P_2 = (-1, 5, -2), \quad P_3 = (1, -1, 3).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-1, 1, -3).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg326}
+				{$\pi\colon - 20 x + 10 y + 20 z - 30=0; \qquad d(P_4,\pi) = 2$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (4, 5, -3), \quad P_2 = (-2, 4, 3), \quad P_3 = (3, 1, -2).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-2, 5, 3).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg327}
+				{$\pi\colon 23 x + 23 z - 23=0; \qquad d(P_4,\pi) = 0$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (4, 1, 1), \quad P_2 = (3, -2, 5), \quad P_3 = (-1, -2, 5).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (1, 5, 4).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg328}
+				{$\pi\colon - 16 y - 12 z + 28=0; \qquad d(P_4,\pi) = 5$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (4, 0, 3), \quad P_2 = (-1, 4, -3), \quad P_3 = (-1, -1, -2).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (-1, -1, -2).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg329}
+				{$\pi\colon - 26 x + 5 y + 25 z + 29=0; \qquad d(P_4,\pi) = 0$}
+
+		\tcbitem Wyznaczyć równanie płaszczyzny przechodzącej przez punkty
+			\[
+				P_1 = (1, 1, -1), \quad P_2 = (-2, -3, -2), \quad P_3 = (1, 1, 0).
+			\]
+			Obliczyć odległość wyznaczonej płaszczyzny od punktu
+			\[
+				P_4 = (5, -1, -2).
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg330}
+				{$\pi\colon - 4 x + 3 y + 1=0; \qquad d(P_4,\pi) = \frac{22}{5}$}
+
+	\end{tcbitemize}
+	\subsection{Punkt symetryczny względem płaszczyzny}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-2, -1, 4)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - x - 2 y + z + 4  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg331}
+				{Prosta prostopadła: $ \frac{x + 2}{-1}= \frac{y + 1}{-2}= \frac{z - 4}{1}= t,$ \quad $t_p=-2$ \\
+			Punkt przecięcia to: $P_p =(0,3,2),$ \quad 
+			Punkt symetryczny to: $P_s = (2,7,0)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-2, 5, 2)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - x + 2 y - z + 2  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg332}
+				{Prosta prostopadła: $ \frac{x + 2}{-1}= \frac{y - 5}{2}= \frac{z - 2}{-1}= t,$ \quad $t_p=-2$ \\
+			Punkt przecięcia to: $P_p =(0,1,4),$ \quad 
+			Punkt symetryczny to: $P_s = (2,-3,6)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-1, 5, 2)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - x + y + z + 4  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg333}
+				{Prosta prostopadła: $ \frac{x + 1}{-1}= \frac{y - 5}{1}= \frac{z - 2}{1}= t,$ \quad $t_p=-4$ \\
+			Punkt przecięcia to: $P_p =(3,1,-2),$ \quad 
+			Punkt symetryczny to: $P_s = (7,-3,-6)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (5, 3, 4)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon x + y + z + 3  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg334}
+				{Prosta prostopadła: $ \frac{x - 5}{1}= \frac{y - 3}{1}= \frac{z - 4}{1}= t,$ \quad $t_p=-5$ \\
+			Punkt przecięcia to: $P_p =(0,-2,-1),$ \quad 
+			Punkt symetryczny to: $P_s = (-5,-7,-6)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-3, -2, 3)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon x + 2 y - z - 2  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg335}
+				{Prosta prostopadła: $ \frac{x + 3}{1}= \frac{y + 2}{2}= \frac{z - 3}{-1}= t,$ \quad $t_p=2$ \\
+			Punkt przecięcia to: $P_p =(-1,2,1),$ \quad 
+			Punkt symetryczny to: $P_s = (1,6,-1)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (3, 1, 1)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - x - y - z - 1  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg336}
+				{Prosta prostopadła: $ \frac{x - 3}{-1}= \frac{y - 1}{-1}= \frac{z - 1}{-1}= t,$ \quad $t_p=2$ \\
+			Punkt przecięcia to: $P_p =(1,-1,-1),$ \quad 
+			Punkt symetryczny to: $P_s = (-1,-3,-3)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (4, 3, 4)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - 2 x - 2 y - 2 z - 2  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg337}
+				{Prosta prostopadła: $ \frac{x - 4}{-2}= \frac{y - 3}{-2}= \frac{z - 4}{-2}= t,$ \quad $t_p=2$ \\
+			Punkt przecięcia to: $P_p =(0,-1,0),$ \quad 
+			Punkt symetryczny to: $P_s = (-4,-5,-4)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (5, 5, 3)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon 2 x + y + 2 z - 3  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg338}
+				{Prosta prostopadła: $ \frac{x - 5}{2}= \frac{y - 5}{1}= \frac{z - 3}{2}= t,$ \quad $t_p=-2$ \\
+			Punkt przecięcia to: $P_p =(1,3,-1),$ \quad 
+			Punkt symetryczny to: $P_s = (-3,1,-5)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (2, 2, 3)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon x + y + z + 2  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg339}
+				{Prosta prostopadła: $ \frac{x - 2}{1}= \frac{y - 2}{1}= \frac{z - 3}{1}= t,$ \quad $t_p=-3$ \\
+			Punkt przecięcia to: $P_p =(-1,-1,0),$ \quad 
+			Punkt symetryczny to: $P_s = (-4,-4,-3)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-2, -1, 4)
+			\]
+			względem płaszczyzny
+			\[
+				\pi\colon - x + y + z + 4  = 0.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg340}
+				{Prosta prostopadła: $ \frac{x + 2}{-1}= \frac{y + 1}{1}= \frac{z - 4}{1}= t,$ \quad $t_p=-3$ \\
+			Punkt przecięcia to: $P_p =(1,-4,1),$ \quad 
+			Punkt symetryczny to: $P_s = (4,-7,-2)$}
+
+	\end{tcbitemize}
+	\subsection{Punkt symetryczny względem prostej}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (3, -3, -1)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x + 1}{-1}= \frac{y - 5}{1}= \frac{z - 2}{1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg341}
+				{Płaszczyzna prostopadła: $\pi\colon - x + y + z + 7 = 0, \quad t_p=-5$ \\
+							Punkt przecięcia to: $P_p =(4,0,-3),$ \quad 
+							Punkt symetryczny to: $P_s = (5,3,-5)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (2, 3, 5)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 4}{1}= \frac{y - 5}{2}= \frac{z + 1}{-1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg342}
+				{Płaszczyzna prostopadła: $\pi\colon x + 2 y - z - 3 = 0, \quad t_p=-2$ \\
+							Punkt przecięcia to: $P_p =(2,1,1),$ \quad 
+							Punkt symetryczny to: $P_s = (2,-1,-3)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (1, -2, 4)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 2}{1}= \frac{y - 1}{2}= \frac{z + 1}{-1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg343}
+				{Płaszczyzna prostopadła: $\pi\colon x + 2 y - z + 7 = 0, \quad t_p=-2$ \\
+							Punkt przecięcia to: $P_p =(0,-3,1),$ \quad 
+							Punkt symetryczny to: $P_s = (-1,-4,-2)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (3, 2, -1)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 2}{-1}= \frac{y + 3}{1}= \frac{z - 5}{-3}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg344}
+				{Płaszczyzna prostopadła: $\pi\colon - x + y - 3 z - 2 = 0, \quad t_p=2$ \\
+							Punkt przecięcia to: $P_p =(0,-1,-1),$ \quad 
+							Punkt symetryczny to: $P_s = (-3,-4,-1)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-2, 5, 1)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 3}{-1}= \frac{y - 1}{1}= \frac{z + 2}{1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg345}
+				{Płaszczyzna prostopadła: $\pi\colon - x + y + z - 8 = 0, \quad t_p=4$ \\
+							Punkt przecięcia to: $P_p =(-1,5,2),$ \quad 
+							Punkt symetryczny to: $P_s = (0,5,3)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (5, 1, 5)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 2}{-1}= \frac{y + 2}{-1}= \frac{z - 5}{-1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg346}
+				{Płaszczyzna prostopadła: $\pi\colon - x - y - z + 11 = 0, \quad t_p=-2$ \\
+							Punkt przecięcia to: $P_p =(4,0,7),$ \quad 
+							Punkt symetryczny to: $P_s = (3,-1,9)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-3, 2, -2)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 5}{-1}= \frac{y - 4}{-3}= \frac{z - 5}{-2}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg347}
+				{Płaszczyzna prostopadła: $\pi\colon - x - 3 y - 2 z - 1 = 0, \quad t_p=2$ \\
+							Punkt przecięcia to: $P_p =(3,-2,1),$ \quad 
+							Punkt symetryczny to: $P_s = (9,-6,4)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (3, 2, -2)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 3}{-2}= \frac{y + 2}{-1}= \frac{z - 5}{2}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg348}
+				{Płaszczyzna prostopadła: $\pi\colon - 2 x - y + 2 z + 12 = 0, \quad t_p=-2$ \\
+							Punkt przecięcia to: $P_p =(7,0,1),$ \quad 
+							Punkt symetryczny to: $P_s = (11,-2,4)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (2, -3, 4)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 3}{1}= \frac{y - 4}{1}= \frac{z - 2}{-2}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg349}
+				{Płaszczyzna prostopadła: $\pi\colon x + y - 2 z + 9 = 0, \quad t_p=-2$ \\
+							Punkt przecięcia to: $P_p =(1,2,6),$ \quad 
+							Punkt symetryczny to: $P_s = (0,7,8)$}
+
+		\tcbitem Wyznaczyć punkt symetryczny do punktu
+			\[
+				P = (-3, 2, -1)
+			\]
+			względem prostej
+			\[
+				l\colon \frac{x - 5}{-2}= \frac{y - 2}{-1}= \frac{z - 1}{-1}.
+			\]
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg350}
+				{Płaszczyzna prostopadła: $\pi\colon - 2 x - y - z - 5 = 0, \quad t_p=3$ \\
+							Punkt przecięcia to: $P_p =(-1,-1,-2),$ \quad 
+							Punkt symetryczny to: $P_s = (1,-4,-3)$}
+
+	\end{tcbitemize}
+	\subsection{Odległość prostych skośnych}
+	\begin{tcbitemize}[zadanie]
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 3}{1}=\frac{y + 1}{-2}=\frac{z - 3}{-2}, \quad 
+				l_2\colon \frac{x - 2}{2}=\frac{y - 4}{2}=\frac{z - 5}{-1}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg351}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon 6 x - 3 y + 6 z - 30=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-4,1,5),\ P_4=(-2,0,7)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x - 3}{2}=\frac{y + 3}{-1}=\frac{z + 1}{2}, \quad 
+				l_2\colon \frac{x + 2}{2}=\frac{y - 1}{4}=\frac{z + 3}{-3}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg352}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon - 5 x + 10 y + 10 z + 10=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-1,-1,-5),\ P_4=(-2,1,-3)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x - 4}{4}=\frac{y - 4}{-3}=\frac{z - 5}{-3}, \quad 
+				l_2\colon \frac{x + 3}{4}=\frac{y - 3}{-3}=\frac{z + 2}{2}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg353}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon - 15 x - 20 y + 15=0$;\\$d(l_1,l_2)=5;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(8,1,2),\ P_4=(5,-3,2)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x - 5}{2}=\frac{y - 1}{-2}=\frac{z - 3}{-1}, \quad 
+				l_2\colon \frac{x - 3}{-3}=\frac{y + 3}{2}=\frac{z + 2}{2}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg354}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon - 2 x - y - 2 z - 1=0$;\\$d(l_1,l_2)=6;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(7,-1,2),\ P_4=(3,-3,-2)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 2}{2}=\frac{y - 5}{4}=\frac{z - 3}{-3}, \quad 
+				l_2\colon \frac{x - 5}{-2}=\frac{y - 2}{-3}=\frac{z - 5}{2}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg355}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon - x + 2 y + 2 z - 9=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-22,-35,33),\ P_4=(-21,-37,31)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 2}{-1}=\frac{y - 4}{-2}=\frac{z - 1}{-2}, \quad 
+				l_2\colon \frac{x - 1}{-2}=\frac{y - 3}{-2}=\frac{z + 1}{-3}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg356}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon 2 x + y - 2 z - 7=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-5,-2,-5),\ P_4=(-3,-1,-7)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 3}{4}=\frac{y + 2}{-3}=\frac{z + 2}{2}, \quad 
+				l_2\colon \frac{x - 4}{4}=\frac{y + 1}{-3}=\frac{z + 3}{5}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg357}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon - 9 x - 12 y + 24=0$;\\$d(l_1,l_2)=5;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(5,-8,2),\ P_4=(8,-4,2)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 2}{4}=\frac{y - 3}{3}=\frac{z + 2}{-1}, \quad 
+				l_2\colon \frac{x - 1}{4}=\frac{y - 4}{-1}=\frac{z - 3}{3}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg358}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon 8 x - 16 y - 16 z + 104=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-2,3,-2),\ P_4=(-3,5,0)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x + 2}{3}=\frac{y - 3}{-3}=\frac{z - 4}{4}, \quad 
+				l_2\colon \frac{x - 2}{4}=\frac{y + 1}{-3}=\frac{z - 1}{4}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg359}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon 4 y + 3 z + 1=0$;\\$d(l_1,l_2)=5;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(-14,15,-12),\ P_4=(-14,11,-15)$.
+			}
+
+		\tcbitem Obliczyć odległość prostych skośnych
+			\[
+				l_1\colon \frac{x - 1}{2}=\frac{y + 1}{1}=\frac{z + 2}{-2}, \quad 
+				l_2\colon \frac{x + 3}{-1}=\frac{y - 3}{1}=\frac{z - 5}{4}.
+			\]	Wyznaczyć punkty realizujące minimalną odległość.
+			\zOdpowiedziami{\kolorodpowiedzi}{ocg360}
+				{Płaszczyzna zawierająca $l_2$ i równoległa do $l_1$ to $\pi\colon 6 x - 6 y + 3 z + 21=0$;\\$d(l_1,l_2)=3;$\quad Punkty realizujące minimalną odległość to:\ $ P_3=(1,-1,-2),\ P_4=(-1,1,-3)$.
+			}
+
+	\end{tcbitemize}
+
+\end{document}
