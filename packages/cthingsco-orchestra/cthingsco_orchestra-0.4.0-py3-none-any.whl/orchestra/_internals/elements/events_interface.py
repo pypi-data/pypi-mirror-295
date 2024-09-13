@@ -1,0 +1,162 @@
+from typing import Any, AsyncIterable, Callable, Optional, Dict, List
+
+import grpc
+from orchestra._internals.common import utils
+from orchestra._internals.rpc.orchestra import events_pb2_grpc
+import orchestra._internals.rpc.orchestra.events_pb2 as events_pb2
+from orchestra._internals.watcher.watcher import Watcher
+
+from orchestra.elements.models.event import (
+    DeclareSubscriberResponse,
+    EventResponse,
+    UnsubscribeResponse,
+)
+
+
+class OrchestraEventsInterface:
+    """
+    This interface is used to interact with the Orchestra Events service.
+
+    Following API calls are available:
+    - push_event:
+        - Proto: `Push`
+        - This method is used to push an event to the Orchestra Communication Service.
+    - consume_events:
+        - Proto: `Watch`
+        - This method is used to consume events from the consumer in the Orchestra Communication Service.
+    - declare_consumer:
+        - Proto: `DeclareSubscriber`
+        - This method is used to declare a consumer to the Orchestra Communication Service. Could be used to bind a consumer to a set of event tags.
+    - unsubscribe_consumer:
+        - Proto: `Unsubscribe`
+        - This method is used to unsubscribe a consumer from a set of event tags in the Orchestra Communication Service.
+    """
+
+    def __init__(self, channel: grpc.Channel) -> None:
+        self._stub = events_pb2_grpc.EventsServiceStub(channel)
+
+    def push_event(
+        self,
+        event_tag: str,
+        data: Dict[str, Any],
+    ) -> EventResponse:
+        response: events_pb2.EventResponse = self._stub.Push(
+            events_pb2.PushEventRequest(
+                event_tag=event_tag,
+                data=utils._get_pb2_struct(data),
+            )
+        )
+        return EventResponse.from_protobuf_model(response)
+
+    def consume_events(
+        self,
+        consumer_name: str,
+        callback: Callable[[EventResponse], Any],
+    ) -> Callable[..., None]:
+        watcher = Watcher(
+            rpc=self._stub.Watch,
+            proto_request=events_pb2.WatchEventsRequest(
+                consumer_name=consumer_name,
+            ),
+            callback=callback,
+        )
+        return watcher.cancel
+
+    def declare_consumer(
+        self,
+        consumer_name: str,
+        event_tags: Optional[List[str]] = None,
+    ) -> DeclareSubscriberResponse:
+        response: events_pb2.DeclareSubscriberResponse = self._stub.DeclareSubscriber(
+            events_pb2.DeclareSubscriberRequest(
+                consumer_name=consumer_name,
+                event_tags=event_tags,
+            )
+        )
+        return DeclareSubscriberResponse.from_protobuf_model(response)
+
+    def unsubscribe_consumer(
+        self,
+        consumer_name: str,
+        event_tags: Optional[List[str]] = None,
+    ) -> UnsubscribeResponse:
+        response: events_pb2.UnsubscribeResponse = self._stub.Unsubscribe(
+            events_pb2.UnsubscribeRequest(
+                consumer_name=consumer_name,
+                event_tags=event_tags,
+            )
+        )
+        return UnsubscribeResponse.from_protobuf_model(response)
+
+
+class AsyncOrchestraEventsInterface:
+    """
+    This interface is used to interact with the Orchestra Events service.
+
+    Following API calls are available:
+    - push_event:
+        - Proto: `Push`
+        - This method is used to push an event to the Orchestra Communication Service.
+    - consume_events:
+        - Proto: `Watch`
+        - This method is used to consume events from the consumer in the Orchestra Communication Service.
+    - declare_consumer:
+        - Proto: `DeclareSubscriber`
+        - This method is used to declare a consumer to the Orchestra Communication Service. Could be used to bind a consumer to a set of event tags.
+    - unsubscribe_consumer:
+        - Proto: `Unsubscribe`
+        - This method is used to unsubscribe a consumer from a set of event tags in the Orchestra Communication Service.
+    """
+
+    def __init__(self, channel: grpc.aio.Channel) -> None:
+        self._stub = events_pb2_grpc.EventsServiceStub(channel)
+
+    async def push_event(
+        self,
+        event_tag: str,
+        data: Dict[str, Any],
+    ) -> EventResponse:
+        response: events_pb2.EventResponse = await self._stub.Push(
+            events_pb2.PushEventRequest(
+                event_tag=event_tag,
+                data=utils._get_pb2_struct(data),
+            )
+        )
+        return EventResponse.from_protobuf_model(response)
+
+    async def consume_events(
+        self,
+        consumer_name: str,
+    ) -> AsyncIterable[EventResponse]:
+        async for response in self._stub.Watch(
+            events_pb2.WatchEventsRequest(
+                consumer_name=consumer_name,
+            )
+        ):
+            yield EventResponse.from_protobuf_model(response)
+
+    async def declare_consumer(
+        self,
+        consumer_name: str,
+        event_tags: Optional[List[str]] = None,
+    ) -> DeclareSubscriberResponse:
+        response: events_pb2.DeclareSubscriberResponse = await self._stub.DeclareSubscriber(
+            events_pb2.DeclareSubscriberRequest(
+                consumer_name=consumer_name,
+                event_tags=event_tags,
+            )
+        )
+        return DeclareSubscriberResponse.from_protobuf_model(response)
+
+    async def unsubscribe_consumer(
+        self,
+        consumer_name: str,
+        event_tags: Optional[List[str]] = None,
+    ) -> UnsubscribeResponse:
+        response: events_pb2.UnsubscribeResponse = await self._stub.Unsubscribe(
+            events_pb2.UnsubscribeRequest(
+                consumer_name=consumer_name,
+                event_tags=event_tags,
+            )
+        )
+        return UnsubscribeResponse.from_protobuf_model(response)
