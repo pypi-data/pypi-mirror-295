@@ -1,0 +1,17 @@
+initializer/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+initializer/components.py,sha256=FVPy8sONa2WFD1CHO1b01774n29uAGUHUnGw9V-FiA4,4712
+initializer/lib_handling.py,sha256=qDR7ciZJ2B7m9UmkDNw3pApKMqqUPKY6n546DUhHIO4,1234
+initializer/odigos_sampler.py,sha256=AGn_Mn19idjdOY4p-6gfLZg1doC_Lwl-iBAjypk6VAc,5574
+initializer/sampling_operators.py,sha256=G4BqS7zcxFnrfQDJUqul4l651FYdkr_3a6QGDPaNVMI,163
+initializer/version.py,sha256=K1qI7nPdstg724kyNFVrbxtEbF6OBPY0eSHpXxNBsVU,109
+opamp/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+opamp/anyvalue_pb2.py,sha256=uYsUkAbknOtJz9vttYqEZj0xYoS1P-BmdLIuoeKybO4,3145
+opamp/health_status.py,sha256=UJCutxQIDkcY1EiqCAh3HBeumfjvD-4iglGVTKh-nLM,242
+opamp/http_client.py,sha256=mePZ3FLv8rrAq6POHYCn2ccd9LSaCAtnNDLf9Zw96JA,11991
+opamp/opamp_pb2.py,sha256=vRjVhYFM9OUoA7nfFRvLt4wjo9Qjpgq7La2mg3m_9rc,33120
+opamp/utils.py,sha256=tPza7EyalDSEE68KvuaVmAAK1T2PnhpnppJ69wMlwm8,957
+odigos_opentelemetry_python-0.1.9.dist-info/LICENSE,sha256=2lCZcLxPcgq6h2V4LuFubB-jNQsWzaf3g4M2fy22Bzc,11336
+odigos_opentelemetry_python-0.1.9.dist-info/METADATA,sha256=TN6O6FG5nhN4FkhrmXc5T_Po49VSpy60oUCaRtLoFHQ,3407
+odigos_opentelemetry_python-0.1.9.dist-info/WHEEL,sha256=eOLhNAGa2EW3wWl_TU484h7q1UNgy0JXjjoqKoxAAQc,92
+odigos_opentelemetry_python-0.1.9.dist-info/top_level.txt,sha256=_HVsa4JqWWNGY6QsUeZw_0MqdxZth0fRptSuwDtrsjU,18
+odigos_opentelemetry_python-0.1.9.dist-info/RECORD,,
