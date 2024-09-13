@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: ebes
+Version: 0.0.1
+Summary: EBES: Easy Benchmarking for Event Sequences.
+Author-email: Osin Dmitry <dima.tina2013@gmail.com>
+Project-URL: Homepage, https://github.com/xaosina
+Project-URL: Issues, https://github.com/xaosina
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: pandas ==2.2.0
+Requires-Dist: pyspark ==3.5.0
+Requires-Dist: seaborn ==0.13.2
+Requires-Dist: optuna ==3.5.0
+Requires-Dist: torcheval ==0.0.7
+Requires-Dist: omegaconf ==2.3.0
+Requires-Dist: lightgbm ==4.3.0
+Requires-Dist: mamba-ssm ==1.2.2
+Requires-Dist: torchcde ==0.2.5
+
+# EBES
+
+EBES: Easy Benchmarking for Event Sequences.
+
+EBES is an easy-to-use development and application toolkit for Event Sequence(EvS) Assesment, with key features in configurability, compatibility and reproducibility. We hope this project could benefit both researchers and practitioners with the goal of easily customized development and open benchmarking in EvS.
+## Usage
+>python main -d age -m gru -e correlation -s best
+
