@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: atpplots
+Version: 0.0.3
+Summary: Set of plots.
+Author-email: Andraz Polak <andrazpolak@gmail.com>
+Project-URL: homepage, https://github.com/atp-things/pkgpy-atp-plots
+Project-URL: repository, https://github.com/atp-things/pkgpy-atp-plots
+Project-URL: PyPI, https://pypi.org/project/atpplots/
+Keywords: records,csv,dataset,measurement
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: toml
+Requires-Dist: types-toml
+Requires-Dist: types-pyyaml
+Requires-Dist: pandas-stubs
+Requires-Dist: bokeh
+Requires-Dist: pandas
+Requires-Dist: holoviews
+Requires-Dist: panel
+
+# pkg-atp-plots
