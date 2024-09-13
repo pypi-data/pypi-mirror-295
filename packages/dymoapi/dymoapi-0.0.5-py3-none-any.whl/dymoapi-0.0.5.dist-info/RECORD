@@ -1,0 +1,16 @@
+dymoapi/__init__.py,sha256=Erk1VEWyquyM9vdrIPa1t8i04GsKUL1h8wGP1iEJQ1s,28
+dymoapi/dymoapi.py,sha256=Pg5CAzYe-aCpWt3JTypoSgf8kBrrIVoChbFaymB0KkM,4044
+dymoapi/exceptions.py,sha256=Ad4zIzltBHzaBZRF5kyG2Y8LriJBmCkU4iQpc5kU8dw,497
+dymoapi/response_models.py,sha256=1ZI3n1R0kxHFXWF9xFp8B3xW2Ti_IWyGzeqk9p2nHUI,4307
+dymoapi/branches/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+dymoapi/branches/private.py,sha256=ill_x9ajDEz825iHO4oopQ3MenO3AGv29CyxVBG0foQ,1279
+dymoapi/branches/public.py,sha256=RMyXX77ZgiAL7mNatvEp3mfJlrlKMY3UZQS_RBolSx4,3527
+dymoapi/utils/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+dymoapi/utils/basics.py,sha256=ZWX7j4V6XPijmITwnlRZxg7acwoNrbUYqdGJfXVtU10,579
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_dymoapi.py,sha256=_7dFoJ6WUmW2LeXkNU06cVjyc_svLivqR6C0hCf8tm4,3110
+dymoapi-0.0.5.dist-info/LICENSE,sha256=kxRYgP8wxEdbGS8u3Mv5NOyjbIPEkxlJdxywO95DsVU,11535
+dymoapi-0.0.5.dist-info/METADATA,sha256=hGk9SE427vLCgbU98cby1rGuYuKj6Lj2W5EE6jPb7ZU,702
+dymoapi-0.0.5.dist-info/WHEEL,sha256=cpQTJ5IWu9CdaPViMhC9YzF8gZuS5-vlfoFihTBC86A,91
+dymoapi-0.0.5.dist-info/top_level.txt,sha256=qUxZJwF5Rk7RW62L4OsgkzJgkfpsPktPqgvyj7F_sAI,14
+dymoapi-0.0.5.dist-info/RECORD,,
