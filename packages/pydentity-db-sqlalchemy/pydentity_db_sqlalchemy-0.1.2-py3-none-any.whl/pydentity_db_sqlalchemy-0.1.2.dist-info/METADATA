@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: pydentity-db-sqlalchemy
+Version: 0.1.2
+Summary: Database adapter for SQLAlchemy.
+Home-page: https://github.com/udachin077/pydentity-db-sqlalchemy
+License: MIT
+Author: Udachin Ivan
+Author-email: pypi.udachin@yandex.ru
+Requires-Python: >=3.12,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: sqlalchemy (>=2.0.34,<3.0.0)
+Project-URL: Repository, https://github.com/udachin077/pydentity-db-sqlalchemy.git

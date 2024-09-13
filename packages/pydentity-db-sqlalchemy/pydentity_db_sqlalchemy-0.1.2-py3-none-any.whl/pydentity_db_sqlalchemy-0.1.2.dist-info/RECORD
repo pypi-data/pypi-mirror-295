@@ -1,0 +1,11 @@
+pydentity_db_sqlalchemy/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pydentity_db_sqlalchemy/models/__init__.py,sha256=8BOszbWRK1S9mgEi4GBV2PajKqB9N0WrYO-O0fbyJJU,4449
+pydentity_db_sqlalchemy/models/abstract.py,sha256=UtzoAxbNFntsn_yRYK1ZLiiuxDy8Ha-hsETv34NqS-E,6519
+pydentity_db_sqlalchemy/models/fields.py,sha256=T9w0k3ZHdGzO-inFK3iJr40STu6MlJrQCSNVxdvlQh4,571
+pydentity_db_sqlalchemy/stores/__init__.py,sha256=flZovIcUX76kpXpsQpG4uY-Gdm4gTI7Ej9UFv8vxwoc,130
+pydentity_db_sqlalchemy/stores/role_store.py,sha256=uJBjqeemMX9JzLJHwano1k-GLhsUSHphAUfxvtdZmbA,5479
+pydentity_db_sqlalchemy/stores/user_store.py,sha256=UgHXs9ywaB-F7MVSxeaDXo5aNhrOXpdxIlwRB8n3cAE,23626
+pydentity_db_sqlalchemy-0.1.2.dist-info/LICENSE,sha256=queT1zdtOBRwPVCHYsXCk7Fpn37T2yGntngx9LZr38o,1086
+pydentity_db_sqlalchemy-0.1.2.dist-info/METADATA,sha256=-4-tEy1mbRw4x5yWxw1Gd6vo3s1d93DxKHQ1NtgqcZc,551
+pydentity_db_sqlalchemy-0.1.2.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+pydentity_db_sqlalchemy-0.1.2.dist-info/RECORD,,
