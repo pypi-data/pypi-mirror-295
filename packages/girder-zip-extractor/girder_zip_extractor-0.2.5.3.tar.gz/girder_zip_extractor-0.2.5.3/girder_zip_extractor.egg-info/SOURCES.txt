@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+girder_zip_extractor/__init__.py
+girder_zip_extractor.egg-info/PKG-INFO
+girder_zip_extractor.egg-info/SOURCES.txt
+girder_zip_extractor.egg-info/dependency_links.txt
+girder_zip_extractor.egg-info/entry_points.txt
+girder_zip_extractor.egg-info/not-zip-safe
+girder_zip_extractor.egg-info/requires.txt
+girder_zip_extractor.egg-info/top_level.txt
+tests/test_load.py
