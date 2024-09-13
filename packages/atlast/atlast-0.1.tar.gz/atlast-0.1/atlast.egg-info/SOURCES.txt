@@ -1,0 +1,9 @@
+.gitattributes
+README.md
+setup.cfg
+setup.py
+atlast.egg-info/PKG-INFO
+atlast.egg-info/SOURCES.txt
+atlast.egg-info/dependency_links.txt
+atlast.egg-info/requires.txt
+atlast.egg-info/top_level.txt

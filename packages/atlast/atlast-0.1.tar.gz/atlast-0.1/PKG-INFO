@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: atlast
+Version: 0.1
+Summary: cleaning ATLAS photometry
+Author: Thomas Moore
+Author-email: tmoore11@qub.ac.uk
+Requires-Python: >=3.9
+Requires-Dist: numpy
