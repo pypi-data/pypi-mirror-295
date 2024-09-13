@@ -1,0 +1,141 @@
+[build-system]
+requires = ["setuptools >= 42", "versioningit ~= 1.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atomate2-turbomole"
+description = "The atomate2-turbomole package is a workflow package for Turbomole"
+readme = "README.md"
+keywords = ["high-throughput", "automated", "workflow", "dft", "ab initio", "turbomole"]
+license = { text = "modified BSD" }
+authors = [{ name = "David Waroquiers", email = "david.waroquiers@matgenix.com" }]
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "Operating System :: OS Independent",
+    "Topic :: Other/Nonlisted Topic",
+    "Topic :: Scientific/Engineering",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pymatgen>=2022.2.10",
+    "custodian>=2024.3.12",
+    "jobflow>=0.1.11",
+    "emmet-core>=0.80.0",
+    "pydantic-settings>=2.2,!=2.5.0,!=2.5.1",
+    "turbomoleio==1.6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=2.12.1"
+]
+tests = [
+    "pytest==8.3.3",
+    "pytest-cov==5.0.0",
+    "pytest-mock==3.14.0",
+    "mongomock==4.1.2"
+]
+docs = [
+    "sphinx",
+    "sphinx_design",
+    "pydata-sphinx-theme",
+    "sphinx-copybutton",
+    "autodoc_pydantic>=2.0.0",
+    "sphinxcontrib-mermaid"
+]
+docs_erdantic = [
+    "autodoc_pydantic[erdantic]>=2.0.0",
+]
+
+[tool.versioningit.vcs]
+method = "git"
+default-tag = "0.0.1"
+
+[tool.flake8]
+max-line-length = 88
+max-doc-length = 88
+select = "C, E, F, W, B"
+extend-ignore = "E203, W503, E501, F401, RST21"
+min-python-version = "3.9.0"
+docstring-convention = "numpy"
+rst-roles = "class, func, ref, obj"
+
+[tool.mypy]
+ignore_missing_imports = true
+strict_optional = false
+#plugins = "pydantic.mypy"
+follow_imports = "skip"
+warn_redundant_casts = true
+warn_unused_ignores = true
+check_untyped_defs = false
+no_implicit_reexport = true
+disallow_untyped_defs = false
+
+#[tool.pydantic-mypy]
+#init_forbid_extra = true
+#init_typed = true
+#warn_required_dynamic_aliases = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --cov=atomate2.turbomole --cov-config=pyproject.toml --cov-report=html --cov-report=term"
+filterwarnings = []
+
+[tool.coverage.run]
+include = ["src/*"]
+parallel = true
+branch = true
+
+[tool.coverage.paths]
+source = ["src/"]
+
+[tool.coverage.report]
+skip_covered = true
+show_missing = true
+exclude_lines = [
+    '^\s*assert False(,|$)',
+    'if typing.TYPE_CHECKING:',
+    '^\s*@overload( |$)',
+    'pragma: no cover',
+    'NotImplementedError',
+]
+partial_branches = [
+    'pragma: no branch',
+]
+fail_under = 100
+
+[tool.ruff]
+target-version = "py38"
+lint.select = [
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "D",   # pydocstyle
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # isort
+    "PLE", # pylint error
+    "PLW", # pylint warning
+    "Q",   # flake8-quotes
+    "RUF", # Ruff-specific rules
+    "SIM", # flake8-simplify
+    "TID", # tidy imports
+    "UP",  # pyupgrade
+    "W",   # pycodestyle
+    "YTT", # flake8-2020
+]
+lint.pydocstyle.convention = "numpy"
+lint.isort.known-first-party = ["atomate2.turbomole"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"**/tests/*" = ["D"]
+
+[tool.setuptools.package-data]
+"atomate2.turbomole.schemas.calc_types" = ["*.yaml"]
