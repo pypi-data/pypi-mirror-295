@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: punicalab_core
+Version: 0.1.0
+Summary: A Python SDK for managing Status ENUMs and utilities.
+Home-page: https://github.com/punicaLab-fuzeAI/punicalab_core
+Author: punicalab
+Author-email: duzgun.ilaslan@punicalab.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# punicalab-core-sdk
+This repo contains core packets and utils
+
+
+
+# Using ENUM
+print(Status.ACTIVE.value)  # Output: "2"
+print(Status.list())  # Output: ['0', '1', '2', ...]
+
+# Using Utils
+print(get_status_name("2"))  # Output: "ACTIVE"
+print(get_status_value("ACTIVE"))  # Output: "2"
+
+## Installation
+
+You can install the package via pip:
+
+```sh
+pip install punicalab_core
+
