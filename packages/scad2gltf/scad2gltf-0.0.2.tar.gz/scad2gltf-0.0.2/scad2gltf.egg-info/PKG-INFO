@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: scad2gltf
+Version: 0.0.2
+Summary: Create GLTF files from OpenSCAD files.
+Home-page: https://gitlab.com/bath_open_instrumentation_group/scad2gltf
+Author: Julian Stirling
+Author-email: julian@julianstirling.co.uk
+License: GPLv3
+Project-URL: Bug Tracker, https://gitlab.com/bath_open_instrumentation_group/scad2gltf/issues
+Project-URL: Source Code, https://gitlab.com/bath_open_instrumentation_group/scad2gltf
+Description: # scad2gltf
+        
+        scad2gltf is a python library for converting openscad code into colour gltf files using OpenSCAD and [pygltflib](https://gitlab.com/dodgyville/pygltflib).
+        
+        scad2gltf was inspired by [colorscad](https://github.com/jschobben/colorscad) but does not use code from it.
+        
+Keywords: OpenSCAD,GLTF,conversion
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
