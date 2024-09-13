@@ -1,0 +1,3 @@
+[console_scripts]
+gpt-pr = gptpr.main:main
+gpt-pr-config = gptpr.main:run_config
