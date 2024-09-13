@@ -1,0 +1,14 @@
+icplot==0.0.4
+markdown-it-py
+mdit_py_plugins
+mdformat
+beautifulsoup4
+pyspelling
+jupyter-book
+
+[test]
+pytest
+pytest-cov
+pytest-sugar
+black
+mypy
