@@ -1,0 +1,14 @@
+Metadata-Version: 2.3
+Name: xboxbattery
+Version: 0.2.0
+Summary: Add your description here
+Author-email: DemonicSavage <gabrielhuwe@gmail.com>
+Requires-Python: >=3.8
+Requires-Dist: dasbus>=1.7
+Requires-Dist: pygobject>=3.48.2
+Requires-Dist: pyside6>=6.7.2
+Description-Content-Type: text/markdown
+
+# xboxbattery
+
+Describe your project here.
