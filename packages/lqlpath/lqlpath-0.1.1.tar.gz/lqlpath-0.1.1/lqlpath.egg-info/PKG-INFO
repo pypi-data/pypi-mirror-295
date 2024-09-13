@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: lqlpath
+Version: 0.1.1
+Summary: A package for searching log query language path 
+Author: Harish Lohiya
+Author-email: harishlohiya@gmail.com
+Classifier: Programming Language :: Python :: 2.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+
+# lqlpath
+
+lqlpath is a Python package that allows you to search path for log query langauge. You can search by eighter by specifiing key or value 
+## Installation
+
+To install the package, simply run:
+
+```bash
+pip install lqlpath
+
