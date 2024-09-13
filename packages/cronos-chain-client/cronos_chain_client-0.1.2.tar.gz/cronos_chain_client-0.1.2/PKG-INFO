@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: cronos_chain_client
+Version: 0.1.2
+Summary: A Python client for interacting with the Cronos Chains
+Home-page: https://github.com/cronos-labs/cronos-chain-client/tree/main/py
+Author: rarcifa
+Author-email: rarcifa <rarcifa@gmail.com>
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Cronos Chain Client
+
+The Cronos Chain Client is a Python library designed to facilitate easy and efficient interactions with the Cronos Chains. This client library provides methods to fetch CRC20 tokens, making it easy for developers to work with tokens on the Cronos chain.
+
+## Features
+
+- Simple and intuitive API for interacting with the Cronos blockchain.
+- Supports fetching a list of CRC20 tokens.
+- Configurable client instances tailored to your specific blockchain endpoint and API key needs.
+
+## Installation
+
+To install the package, run the following command in your project directory:
+
+```bash
+pip install cronos-chain-client
+```
+
+## Usage
+
+Here’s how you can use the Cronos Chain Client in your project:
+
+### Configuring the Client
+
+```python
+from client import create_client
+
+client = create_client({
+    'chain': 'evm',
+    'network': 'mainnet',
+    'explorer': {
+        'apiKey': 'OPPTIONAL_API_KEY', # Optional
+    }
+})
+```
+
+### Fetching CRC20 Token List
+
+To get a list of CRC20 tokens with their id, name, symbol, and contract_address, you can call the following method:
+
+```python
+tokens = client.tokens.getCRC20TokenList()
+print(tokens)
+```
+
+Example output:
+
+```python
+[
+{"id": 1, "name": "Tether USD", "symbol": "USDT", "contract_address": "0x66e428c3f67a68878562e79a0234c1f83c208770"},
+{"id": 2, "name": "USD Coin", "symbol": "USDC", "contract_address": "0xc21223249ca28397b4b6541dffaecc539bff0c59"},
+{"id": 3, "name": "Dogecoin", "symbol": "DOGE", "contract_address": "0x1a8e39ae59e5556b56b76fcba98d22c9ae557396"},
+]
+```
+
+# Print token information
+
+## API
+
+### CRC20 Methods
+
+- `getCRC20TokenList()`: Fetches the list of CRC20 tokens.
+
+## Licensing
+
+The code in this project is licensed under the MIT license.
+
+## Contact
+
+If you have any questions or comments about the library, feel free to open an issue or a pull request on our GitHub repository.

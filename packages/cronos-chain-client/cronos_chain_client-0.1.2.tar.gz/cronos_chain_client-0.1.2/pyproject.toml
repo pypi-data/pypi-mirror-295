@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cronos_chain_client"
+version = "0.1.2"
+description = "A Python client for interacting with the Cronos Chains"
+readme = { file = "README.md", content-type = "text/markdown" }  # Correct way to specify the readme content type
+license = { text = "MIT" }
+authors = [
+    { name = "rarcifa", email = "rarcifa@gmail.com" }
+]
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[tool.setuptools]
+packages = ["cronos_chain_client"]
+package-dir = {"" = "lib"}  # Point setuptools to the lib folder
+
+[tool.setuptools.package-data]
+"cronos_chain_client" = ["*.json"]  # If you're still including JSON files
