@@ -1,0 +1,14 @@
+numpy<2.0.0
+scipy
+pandas
+polars[pandas]
+msgpack
+opencv-python-headless==4.10.0.82
+ffpyplayer
+natsort
+matplotlib
+aiopath
+pathvalidate
+
+[GUI]
+imgui_bundle==1.5.2
