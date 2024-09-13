@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: golden-data
+Version: 0.0.3
+Summary: quantitative financial data collector.
+Home-page: UNKNOWN
+Author: gquant
+Author-email: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: akshare==1.14.63
+Requires-Dist: invoke==2.2.0
+Requires-Dist: pandas==2.2.2
+Requires-Dist: pytz==2024.1
+Requires-Dist: setuptools==49.2.1
+Requires-Dist: SQLAlchemy==2.0.32
+
+UNKNOWN
+
+
