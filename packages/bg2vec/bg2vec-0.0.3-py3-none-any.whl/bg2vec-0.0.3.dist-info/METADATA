@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: bg2vec
+Version: 0.0.3
+Summary: A text encoder for Bulgarian language
+Author-email: Martin Boyanov <mboyanov@gmail.com>
+Project-URL: Homepage, https://github.com/mboyanov/bg2vec
+Project-URL: Issues, https://github.com/mboyanov/bg2vec/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: llm2vec ==0.2.0
+
+# Bg2Vec
