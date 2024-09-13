@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/postgreasy/__init__.py
+src/postgreasy/postgres_connection.py
+src/postgreasy.egg-info/PKG-INFO
+src/postgreasy.egg-info/SOURCES.txt
+src/postgreasy.egg-info/dependency_links.txt
+src/postgreasy.egg-info/requires.txt
+src/postgreasy.egg-info/top_level.txt
+tests/test_generic.py
+tests/test_postgres_connection.py
