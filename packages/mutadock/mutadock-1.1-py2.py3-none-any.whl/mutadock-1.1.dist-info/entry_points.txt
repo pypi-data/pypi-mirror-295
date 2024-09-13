@@ -1,0 +1,9 @@
+[console_scripts]
+md_csv_generator = mutation.csv_generator.py:main
+md_csv_sort = mutation.csv_sort.py:main
+md_ddg_double = mutation.ddg_calc_double.py:main
+md_ddg_single = mutation.ddg_calc.py:main
+md_ddg_triple = mutation.ddg_calc_triple.py:main
+md_dock = docking.np_docking.py:main
+md_mutate = mutation.np_mutation.py:main
+md_vina_dock = docking.vina_dock.py:main
