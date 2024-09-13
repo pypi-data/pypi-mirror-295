@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: radiosunpy
+Version: 0.1.0
+Summary: RATAN-600 radioastronomical solar data and methods Python library
+Home-page: https://github.com/radiosunpy/RadioSunPy
+License: MIT
+Keywords: solar physics,radioastronomy,physics,data proccessing,ratan-600
+Author: Igor Lysov
+Author-email: iilysov.sci@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: PyWavelets (==1.7.0)
+Requires-Dist: astropy (==6.1.3)
+Requires-Dist: et-xmlfile (==1.1.0)
+Requires-Dist: numpy (==2.1.1)
+Requires-Dist: openpyxl (==3.1.5)
+Requires-Dist: pandas (==2.2.2)
+Requires-Dist: python-dateutil (==2.9.0.post0)
+Requires-Dist: requests (==2.32.3)
+Requires-Dist: scipy (==1.14.1)
+Project-URL: Documentation, https://radiosunpy.github.io/RadioSunPy/
+Project-URL: Repository, https://github.com/radiosunpy/RadioSunPy
+Description-Content-Type: text/markdown
+
+# ``RadioSun``
+``RadioSun`` - Python packahge that provides tools for receiving, downloading and processing radioastronomy data from the RATAN-600 radiotelescope
