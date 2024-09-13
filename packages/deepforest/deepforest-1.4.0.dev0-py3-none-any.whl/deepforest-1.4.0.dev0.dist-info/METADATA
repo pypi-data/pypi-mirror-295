@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: deepforest
+Version: 1.4.0.dev0
+Summary: Tree crown prediction using deep learning retinanets
+Home-page: https://github.com/Weecology/DeepForest
+Author: Ben Weinstein
+License: MIT
+Requires-Python: >3.5
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: albumentations >=1.0.0
+Requires-Dist: aiolimiter
+Requires-Dist: aiohttp
+Requires-Dist: docformatter
+Requires-Dist: huggingface-hub
+Requires-Dist: geopandas
+Requires-Dist: matplotlib
+Requires-Dist: nbqa
+Requires-Dist: numpy
+Requires-Dist: opencv-python-headless >=4.5.4
+Requires-Dist: pandas
+Requires-Dist: Pillow >6.2.0
+Requires-Dist: progressbar2
+Requires-Dist: pycocotools
+Requires-Dist: pydata-sphinx-theme
+Requires-Dist: Pygments
+Requires-Dist: pytorch-lightning >=1.5.8
+Requires-Dist: rasterio
+Requires-Dist: recommonmark
+Requires-Dist: rtree
+Requires-Dist: scipy >1.5
+Requires-Dist: six
+Requires-Dist: slidingwindow
+Requires-Dist: sphinx
+Requires-Dist: supervision
+Requires-Dist: torch
+Requires-Dist: torchvision >=0.13
+Requires-Dist: tqdm
+Requires-Dist: xmltodict
+
+
+# Deepforest
+
+## Full documentation
+[http://deepforest.readthedocs.io/en/latest/](http://deepforest.readthedocs.io/en/latest/)
+
+## Installation
+
+Compiled wheels have been made for linux, osx and windows
+
+```
+#Install DeepForest
+pip install deepforest
+```
+
+## Get in touch
+See the [GitHub Repo](https://github.com/Weecology/DeepForest) to see the
+source code or submit issues and feature requests.
+
+## Citation
+
+Most usage of DeepForest should cite two papers.
+
+The first is the DeepForest paper, which describes the package:
+
+[Weinstein, B.G., Marconi, S., Aubry‐Kientz, M., Vincent, G., Senyondo, H. and White, E.P., 2020. DeepForest: A Python package for RGB deep learning tree crown delineation. Methods in Ecology and Evolution, 11(12), pp.1743-1751. https://doi.org/10.1111/2041-210X.13472](https://doi.org/10.1111/2041-210X.13472)
+
+The second is the paper describing the model.
+
+For the tree detection model cite:
+
+[Weinstein, B.G.; Marconi, S.; Bohlman, S.; Zare, A.; White, E.P., 2019. Individual Tree-Crown Detection in RGB Imagery Using Semi-Supervised Deep Learning Neural Networks. Remote Sensing 11, 1309 https://doi.org/10.3390/rs11111309](https://doi.org/10.3390/rs11111309)
+
+For the bird detection model cite:
+
+[Weinstein, B.G., L. Garner, V.R. Saccomanno, A. Steinkraus, A. Ortega, K. Brush, G.M. Yenni, A.E. McKellar, R. Converse, C.D. Lippitt, A. Wegmann, N.D. Holmes, A.J. Edney, T. Hart, M.J. Jessopp, R.H. Clarke, D. Marchowski, H. Senyondo, R. Dotson, E.P. White, P. Frederick, S.K.M. Ernest. 2022. A general deep learning model for bird detection in high‐resolution airborne imagery. Ecological Applications: e2694 https://doi.org/10.1002/eap.2694](https://doi.org/10.1002/eap.2694)
+
+
+## Acknowledgments
+Development of this software was funded by
+[the Gordon and Betty Moore Foundation's Data-Driven Discovery Initiative](http://www.moore.org/programs/science/data-driven-discovery) through
+[Grant GBMF4563](http://www.moore.org/grants/list/GBMF4563) to Ethan P. White.
