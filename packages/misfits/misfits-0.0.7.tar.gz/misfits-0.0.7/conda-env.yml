@@ -1,0 +1,6 @@
+name: misfits
+dependencies:
+   - python>=3.12
+   - pip
+   - pip:
+     - misfits
