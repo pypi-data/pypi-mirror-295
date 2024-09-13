@@ -1,0 +1,7 @@
+numpy
+protobuf==5.28.0
+eclipse-zenoh==0.11.0
+pydantic
+
+[dev]
+pytest
