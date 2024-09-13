@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: prolm
+Version: 0.0.6
+Summary: ProLM model utilities
+Author: Mingchen Li
+Author-email: limc.19980301@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+
+# ProLM
+
+## 安装说明
+
+pip install prolm
+
+## 分词器使用说明
+
+### 1. Tokenize
+输入格式为 <tag>content</tag>...<tag>content</tag>这种格式的字符串，其中tag可以为aas(amino acid sequence), cds(密码子), ncds(非编码核酸)
+
+```python
+from prolm.prolm_tokenizer import ProLMTokenizer
+tokenizer = ProLMTokenizer()
+
+# 蛋白质tokenize
+protein_sequence = "<aas>MAVFGHVLNM</aas>"
+print(tokenizer.tokenize(protein_sequence))
+# ['<cls>', 'M', 'A', 'V', 'F', 'G', 'H', 'V', 'L', 'N', 'M', '<sep>']
+
+# 密码子tokenize
+cds_sequence = "<cds>ACGCGTACG</cds>"
+print(tokenizer.tokenize(cds_sequence))
+# ['<cls>', 'acg', 'cgt', 'acg', '<sep>']
+
+# 非编码核酸tokenize
+ncds_sequence = "<ncds>ACGCGTACG</ncds>"
+print(tokenizer.tokenize(ncds_sequence))
+# ['<cls>', 'a', 'c', 'g', 'c', 'g', 't', 'a', 'c', 'g', '<sep>']
+
+# 复合体tokenize
+complex_sequence = "<cds>ATCGCT</cds><ncds>atcg</ncds><aas>MAV</aas>"
+print(tokenizer.tokenize(complex_sequence))
+# ['<cls>', 'atc', 'gct', '<sep>', 'a', 't', 'c', 'g', '<sep>', 'M', 'A', 'V', '<sep>']
+
+# 不添加<cls>和<sep>
+ncds_sequence = "<ncds>ACGCGTACG</ncds>"
+print(tokenizer.tokenize(ncds_sequence, special_add=None))
+# ['a', 'c', 'g', 'c', 'g', 't', 'a', 'c', 'g']
+
+# 添加<bos>和<eos>(decoder专用)
+ncds_sequence = "<ncds>ACGCGTACG</ncds>"
+print(tokenizer.tokenize(ncds_sequence, special_add="decoder"))
+```
+
+### 2. Tokenize and to tensor (输入是列表)
+```python
+ncds_sequence = ["<ncds>ACGCGTACG</ncds>", ]
+print(tokenizer(ncds_sequence, special_add="decoder"))
+
+# {'input_ids': tensor([[ 4, 93, 94, 95, 94, 95, 96, 93, 94, 95,  5]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]), 'length': tensor([11]), 'special_tokens_mask': tensor([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]])}
+```
+
+### 3. 模型更新(0.0.4)
+
+
