@@ -1,0 +1,4 @@
+immunity-users~=1.1
+openwisp-utils[rest]~=1.1.0
+django-reversion~=5.1.0
+openpyxl~=3.1.5
