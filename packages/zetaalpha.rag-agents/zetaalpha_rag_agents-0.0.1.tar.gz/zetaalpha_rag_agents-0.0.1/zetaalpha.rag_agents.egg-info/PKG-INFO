@@ -1,0 +1,164 @@
+Metadata-Version: 2.1
+Name: zetaalpha.rag-agents
+Version: 0.0.1
+Summary: Agents SDK
+Home-page: https://github.com/zetaalphavector/backend/
+Author: Zeta Alpha Vector
+Author-email: zav@zeta-alpha.com
+Classifier: Topic :: Utilities
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: aiofiles==23.1.0
+Requires-Dist: aiohappyeyeballs==2.4.0
+Requires-Dist: aiohttp==3.10.5
+Requires-Dist: aiosignal==1.3.1
+Requires-Dist: altair==5.4.1
+Requires-Dist: anthropic[bedrock]==0.34.2
+Requires-Dist: anyio==3.7.1
+Requires-Dist: asgiref==3.8.1
+Requires-Dist: async-timeout==4.0.3
+Requires-Dist: attrs==24.2.0
+Requires-Dist: azure-core==1.30.2
+Requires-Dist: azure-identity==1.8.0
+Requires-Dist: azure-storage-blob==12.9.0
+Requires-Dist: blinker==1.8.2
+Requires-Dist: boto3==1.34.162
+Requires-Dist: botocore==1.34.162
+Requires-Dist: cachetools==5.5.0
+Requires-Dist: certifi==2024.8.30
+Requires-Dist: cffi==1.17.1
+Requires-Dist: charset-normalizer==3.3.2
+Requires-Dist: click==8.1.7
+Requires-Dist: cryptography==43.0.1
+Requires-Dist: defusedxml==0.7.1
+Requires-Dist: distro==1.9.0
+Requires-Dist: exceptiongroup==1.2.2
+Requires-Dist: fastapi==0.73.0
+Requires-Dist: filelock==3.16.0
+Requires-Dist: frozenlist==1.4.1
+Requires-Dist: fsspec==2024.9.0
+Requires-Dist: gitdb==4.0.11
+Requires-Dist: gitpython==3.1.43
+Requires-Dist: greenlet==3.1.0
+Requires-Dist: h11==0.14.0
+Requires-Dist: httpcore==1.0.5
+Requires-Dist: httpx==0.27.2
+Requires-Dist: huggingface-hub==0.24.6
+Requires-Dist: idna==3.8
+Requires-Dist: importlib-resources==6.4.5
+Requires-Dist: isodate==0.6.1
+Requires-Dist: jinja2==3.1.4
+Requires-Dist: jiter==0.5.0
+Requires-Dist: jmespath==1.0.1
+Requires-Dist: jsonpatch==1.33
+Requires-Dist: jsonpointer==3.0.0
+Requires-Dist: jsonschema==4.23.0
+Requires-Dist: jsonschema-specifications==2023.12.1
+Requires-Dist: langchain==0.2.16
+Requires-Dist: langchain-anthropic==0.1.23
+Requires-Dist: langchain-aws==0.1.18
+Requires-Dist: langchain-core==0.2.39
+Requires-Dist: langchain-openai==0.1.23
+Requires-Dist: langchain-text-splitters==0.2.4
+Requires-Dist: langsmith==0.1.117
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: markupsafe==2.1.5
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: msal==1.31.0
+Requires-Dist: msal-extensions==0.3.1
+Requires-Dist: msrest==0.7.1
+Requires-Dist: multidict==6.1.0
+Requires-Dist: narwhals==1.7.0
+Requires-Dist: numpy==1.24.4
+Requires-Dist: oauthlib==3.2.2
+Requires-Dist: openai==1.44.1
+Requires-Dist: orjson==3.10.7
+Requires-Dist: packaging==24.1
+Requires-Dist: pandas==2.0.3
+Requires-Dist: pillow==10.4.0
+Requires-Dist: pkgutil-resolve-name==1.3.10
+Requires-Dist: portalocker==2.10.1
+Requires-Dist: protobuf==5.28.1
+Requires-Dist: pyarrow==17.0.0
+Requires-Dist: pycparser==2.22
+Requires-Dist: pydantic==1.10.0
+Requires-Dist: pydeck==0.9.1
+Requires-Dist: pygments==2.18.0
+Requires-Dist: pyjwt[crypto]==2.9.0
+Requires-Dist: python-dateutil==2.9.0.post0
+Requires-Dist: python-json-logger==0.1.11
+Requires-Dist: pytz==2024.2
+Requires-Dist: pyyaml==6.0.2
+Requires-Dist: ragelo==0.1.6
+Requires-Dist: referencing==0.35.1
+Requires-Dist: regex==2024.9.11
+Requires-Dist: requests==2.32.3
+Requires-Dist: requests-oauthlib==2.0.0
+Requires-Dist: rich==13.8.1
+Requires-Dist: rpds-py==0.20.0
+Requires-Dist: s3transfer==0.10.2
+Requires-Dist: shellingham==1.5.4
+Requires-Dist: six==1.16.0
+Requires-Dist: smmap==5.0.1
+Requires-Dist: sniffio==1.3.1
+Requires-Dist: sqlalchemy==2.0.34
+Requires-Dist: sse-starlette==2.1.2
+Requires-Dist: starlette==0.17.1
+Requires-Dist: streamlit==1.38.0
+Requires-Dist: tenacity==8.5.0
+Requires-Dist: tiktoken==0.7.0
+Requires-Dist: tokenizers==0.20.0
+Requires-Dist: toml==0.10.2
+Requires-Dist: tornado==6.4.1
+Requires-Dist: tqdm==4.66.5
+Requires-Dist: typer[all]==0.12.5
+Requires-Dist: typing-extensions==4.12.2
+Requires-Dist: tzdata==2024.1
+Requires-Dist: urllib3==1.26.20
+Requires-Dist: uvicorn==0.17.1
+Requires-Dist: watchdog==4.0.2
+Requires-Dist: yarl==1.11.1
+Requires-Dist: zipp==3.20.1
+
+<p align="center">
+  <a href="https://zeta-alpha.com">
+    <source media="(prefers-color-scheme: dark)" srcset="https://search.zeta-alpha.com/assets/img/zeta-logo-full-white.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://search.zeta-alpha.com/assets/img/zeta-logo-full-black.svg">
+    <img src="https://search.zeta-alpha.com/assets/img/zeta-logo-full-black.svg" alt="Zeta Alpha">
+  </a>
+</p>
+<p align="center">
+  <b>Build Intelligence and Drive Results</b>
+</p>
+<p align="center">
+  <em>Advanced AI solutions for the enterprise</em>
+</p>
+
+The Agents SDK is designed to provide a flexible, scalable, and efficient framework for building, testing, and deploying LLM agents.
+
+# Quick Start
+
+Create your first conversational AI agent.
+
+```bash
+# Install the package
+pip install zetaalpha.rag-agents
+
+# Initialize a new project
+rag_agents init
+
+# Start the development UI
+rag_agents dev
+```
+
+https://github.com/user-attachments/assets/ecb56abe-d3b7-4d95-9f6c-78d1e92d864f
+
+For more detailed information and resources, check out the following:
+
+- [Tutorials](https://docs.zeta-alpha.com/gen-ai/customize/getting-started): Step-by-step tutorials to guide you through specific tasks and help you get started quickly.
+- [Guides](https://docs.zeta-alpha.com/gen-ai/customize/guides): Practical how-to guides that provide solutions to common problems and use cases.
+- [Advance Topics](https://docs.zeta-alpha.com/gen-ai/customize/advanced): In-depth explanations of concepts, features, and the underlying technology to help you understand how things work.
+- [Reference](https://docs.zeta-alpha.com/gen-ai/customize/reference): Detailed reference material, including API documentation, configuration options, and command-line tools.
