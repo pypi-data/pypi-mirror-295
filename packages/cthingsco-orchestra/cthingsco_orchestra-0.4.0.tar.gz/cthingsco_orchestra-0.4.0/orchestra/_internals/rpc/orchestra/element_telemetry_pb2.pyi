@@ -1,0 +1,214 @@
+from google.protobuf import empty_pb2 as _empty_pb2
+from google.protobuf import struct_pb2 as _struct_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
+import pagination_pb2 as _pagination_pb2
+import sort_pb2 as _sort_pb2
+import timeseries_granularity_pb2 as _timeseries_granularity_pb2
+from google.protobuf.internal import containers as _containers
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from typing import (
+    ClassVar as _ClassVar,
+    Iterable as _Iterable,
+    Mapping as _Mapping,
+    Optional as _Optional,
+    Union as _Union,
+)
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class SingleElementTelemetry(_message.Message):
+    __slots__ = ("ts", "data")
+    TS_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    ts: _timestamp_pb2.Timestamp
+    data: _struct_pb2.Struct
+    def __init__(
+        self,
+        ts: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+        data: _Optional[_Union[_struct_pb2.Struct, _Mapping]] = ...,
+    ) -> None: ...
+
+class MultipleElementTelemetry(_message.Message):
+    __slots__ = ("element_id", "telemetry")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    telemetry: SingleElementTelemetry
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        telemetry: _Optional[_Union[SingleElementTelemetry, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_id", "ts_from", "ts_to", "pagination", "sort", "granularity")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TS_FROM_FIELD_NUMBER: _ClassVar[int]
+    TS_TO_FIELD_NUMBER: _ClassVar[int]
+    PAGINATION_FIELD_NUMBER: _ClassVar[int]
+    SORT_FIELD_NUMBER: _ClassVar[int]
+    GRANULARITY_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    ts_from: _timestamp_pb2.Timestamp
+    ts_to: _timestamp_pb2.Timestamp
+    pagination: _pagination_pb2.PaginationRequest
+    sort: _sort_pb2.SortType
+    granularity: _timeseries_granularity_pb2.TimeseriesGranularityRequest
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        ts_from: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+        ts_to: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+        pagination: _Optional[_Union[_pagination_pb2.PaginationRequest, _Mapping]] = ...,
+        sort: _Optional[_Union[_sort_pb2.SortType, str]] = ...,
+        granularity: _Optional[
+            _Union[_timeseries_granularity_pb2.TimeseriesGranularityRequest, _Mapping]
+        ] = ...,
+    ) -> None: ...
+
+class GetElementTelemetryResponse(_message.Message):
+    __slots__ = ("element_id", "telemetry", "pagination")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    PAGINATION_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    telemetry: _containers.RepeatedCompositeFieldContainer[SingleElementTelemetry]
+    pagination: _pagination_pb2.PaginationResponse
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        telemetry: _Optional[_Iterable[_Union[SingleElementTelemetry, _Mapping]]] = ...,
+        pagination: _Optional[_Union[_pagination_pb2.PaginationResponse, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetManyElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_ids", "ts_from", "ts_to", "pagination", "sort", "granularity")
+    ELEMENT_IDS_FIELD_NUMBER: _ClassVar[int]
+    TS_FROM_FIELD_NUMBER: _ClassVar[int]
+    TS_TO_FIELD_NUMBER: _ClassVar[int]
+    PAGINATION_FIELD_NUMBER: _ClassVar[int]
+    SORT_FIELD_NUMBER: _ClassVar[int]
+    GRANULARITY_FIELD_NUMBER: _ClassVar[int]
+    element_ids: _containers.RepeatedScalarFieldContainer[str]
+    ts_from: _timestamp_pb2.Timestamp
+    ts_to: _timestamp_pb2.Timestamp
+    pagination: _pagination_pb2.PaginationRequest
+    sort: _sort_pb2.SortType
+    granularity: _timeseries_granularity_pb2.TimeseriesGranularityRequest
+    def __init__(
+        self,
+        element_ids: _Optional[_Iterable[str]] = ...,
+        ts_from: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+        ts_to: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+        pagination: _Optional[_Union[_pagination_pb2.PaginationRequest, _Mapping]] = ...,
+        sort: _Optional[_Union[_sort_pb2.SortType, str]] = ...,
+        granularity: _Optional[
+            _Union[_timeseries_granularity_pb2.TimeseriesGranularityRequest, _Mapping]
+        ] = ...,
+    ) -> None: ...
+
+class GetManyElementTelemetryResponse(_message.Message):
+    __slots__ = ("element_ids", "telemetry", "pagination")
+    ELEMENT_IDS_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    PAGINATION_FIELD_NUMBER: _ClassVar[int]
+    element_ids: _containers.RepeatedScalarFieldContainer[str]
+    telemetry: _containers.RepeatedCompositeFieldContainer[MultipleElementTelemetry]
+    pagination: _pagination_pb2.PaginationResponse
+    def __init__(
+        self,
+        element_ids: _Optional[_Iterable[str]] = ...,
+        telemetry: _Optional[_Iterable[_Union[MultipleElementTelemetry, _Mapping]]] = ...,
+        pagination: _Optional[_Union[_pagination_pb2.PaginationResponse, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetLatestElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_id", "ts_upper_bound")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TS_UPPER_BOUND_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    ts_upper_bound: _timestamp_pb2.Timestamp
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        ts_upper_bound: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetLatestElementTelemetryResponse(_message.Message):
+    __slots__ = ("element_id", "telemetry")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    telemetry: SingleElementTelemetry
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        telemetry: _Optional[_Union[SingleElementTelemetry, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetManyLatestElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_ids", "ts_upper_bound")
+    ELEMENT_IDS_FIELD_NUMBER: _ClassVar[int]
+    TS_UPPER_BOUND_FIELD_NUMBER: _ClassVar[int]
+    element_ids: _containers.RepeatedScalarFieldContainer[str]
+    ts_upper_bound: _timestamp_pb2.Timestamp
+    def __init__(
+        self,
+        element_ids: _Optional[_Iterable[str]] = ...,
+        ts_upper_bound: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...,
+    ) -> None: ...
+
+class GetManyLatestElementTelemetryResponse(_message.Message):
+    __slots__ = ("telemetry",)
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    telemetry: _containers.RepeatedCompositeFieldContainer[MultipleElementTelemetry]
+    def __init__(
+        self, telemetry: _Optional[_Iterable[_Union[MultipleElementTelemetry, _Mapping]]] = ...
+    ) -> None: ...
+
+class PushElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_id", "telemetry")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    telemetry: SingleElementTelemetry
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        telemetry: _Optional[_Union[SingleElementTelemetry, _Mapping]] = ...,
+    ) -> None: ...
+
+class PushElementTelemetryResponse(_message.Message):
+    __slots__ = ("document_id",)
+    DOCUMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    document_id: str
+    def __init__(self, document_id: _Optional[str] = ...) -> None: ...
+
+class PushManyElementTelemetryRequest(_message.Message):
+    __slots__ = ("element_id", "telemetry")
+    ELEMENT_ID_FIELD_NUMBER: _ClassVar[int]
+    TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    element_id: str
+    telemetry: _containers.RepeatedCompositeFieldContainer[SingleElementTelemetry]
+    def __init__(
+        self,
+        element_id: _Optional[str] = ...,
+        telemetry: _Optional[_Iterable[_Union[SingleElementTelemetry, _Mapping]]] = ...,
+    ) -> None: ...
+
+class GetAggregatedTelemetryRequest(_message.Message):
+    __slots__ = ("pipeline",)
+    PIPELINE_FIELD_NUMBER: _ClassVar[int]
+    pipeline: _containers.RepeatedCompositeFieldContainer[_struct_pb2.Struct]
+    def __init__(
+        self, pipeline: _Optional[_Iterable[_Union[_struct_pb2.Struct, _Mapping]]] = ...
+    ) -> None: ...
+
+class GetAggregatedTelemetryResponse(_message.Message):
+    __slots__ = ("result",)
+    RESULT_FIELD_NUMBER: _ClassVar[int]
+    result: _containers.RepeatedCompositeFieldContainer[_struct_pb2.Struct]
+    def __init__(
+        self, result: _Optional[_Iterable[_Union[_struct_pb2.Struct, _Mapping]]] = ...
+    ) -> None: ...
