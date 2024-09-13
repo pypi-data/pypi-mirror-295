@@ -1,0 +1,62 @@
+{
+    "name": "Energy Self-consumption Project",
+    "summary": """
+        Module for energetic self-consumption projects.
+        """,
+    "description": """
+        Module for energetic self-consumption projects.
+    """,
+    "author": "Coopdevs Treball SCCL & Som Energia SCCL",
+    "website": "https://coopdevs.org",
+    "category": "Customizations",
+    "version": "14.0.5.2.1",
+    "depends": [
+        "base",
+        "web",
+        "mail",
+        "account",
+        "contract",
+        "contract_variable_quantity",
+        "contract_queue_job",
+        "contract_mandate",
+        "energy_communities",
+        "energy_communities_cooperator",
+        "energy_project",
+        "web_m2x_options",
+        "l10n_es",
+        "report_csv",
+    ],
+    "external_dependencies": {
+        "python": ["pandas>=2.0.3", "numpy>=1.24.4", "openupgradelib>=3.6.1"]
+    },
+    "data": [
+        "security/ir.model.access.csv",
+        "security/ir_rule_data.xml",
+        "security/res_users_role_data.xml",
+        "data/project_type_data.xml",
+        "data/ir_sequence_data.xml",
+        "data/custom_paper_format_views.xml",
+        "data/contract_line_qty_formula_data.xml",
+        "data/mail_template.xml",
+        "data/ir_attachment_data.xml",
+        "data/ir_cron.xml",
+        "views/template_views.xml",
+        "views/contract_views.xml",
+        "views/selfconsumption_views.xml",
+        "views/supply_point_views.xml",
+        "views/res_partner_views.xml",
+        "views/distribution_table_views.xml",
+        "views/supply_point_assignation_views.xml",
+        "wizards/selfconsumption_import_wizard_views.xml",
+        "wizards/distribution_table_import_wizard_views.xml",
+        "wizards/contract_generation_wizard_views.xml",
+        "wizards/define_invoicing_mode_wizard_view.xml",
+        "wizards/invoicing_wizard_views.xml",
+        "wizards/clean_supply_point_assignation_wizard_views.xml",
+        "reports/selfconsumption_reports.xml",
+        "reports/invoice_template.xml",
+    ],
+    "demo": [
+        "demo/energy_selfconsumption_demo.xml",
+    ],
+}
