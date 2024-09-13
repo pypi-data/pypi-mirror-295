@@ -1,0 +1,31 @@
+# syntax = docker/dockerfile:experimental
+
+FROM python:3.12-alpine
+LABEL authors="Marceau-h"
+
+RUN mkdir -p /output && mkdir -p /logs
+
+COPY . /app
+WORKDIR /app
+
+RUN --mount=target=/var/cache/apk,type=cache,sharing=locked \
+    apk update \
+    && apk add --virtual .build-deps \
+    git curl wget unzip build-base openssl-dev libffi-dev libcurl libxml2-dev libxslt-dev \
+    libjpeg-turbo-dev zlib-dev rust cargo make gcc g++ cmake linux-headers \
+    && apk add apache-arrow-dev
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -U pip \
+    && pip install wheel setuptools cython numpy \
+    && pip install .
+
+RUN apk del .build-deps \
+    && apk add --no-cache python3 \
+
+ENV EUROPARSER_OUTPUT=/output
+EXPOSE 8000
+
+ENTRYPOINT ["python", "-m", "uvicorn", "src.europarser.api.api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "8", "--timeout-keep-alive", "1000", "--log-config", "docker_log.conf"]
