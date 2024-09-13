@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: styml
+Version: 0.0.1
+Summary: A Python library for editing *ML files while preserving style, formatting, and comments for consistent document structure.
+License: MIT
+Author: Max Dymond
+Author-email: cmeister2@gmail.com
+Requires-Python: >=3.8.2,<4.0.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# styml
+StyML is a Python library for editing *ML files while preserving style, formatting, and comments for consistent document structure.
+

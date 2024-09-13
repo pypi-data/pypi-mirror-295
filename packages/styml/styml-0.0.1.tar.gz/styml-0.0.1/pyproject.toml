@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "styml"
+version = "0.0.1"
+description = "A Python library for editing *ML files while preserving style, formatting, and comments for consistent document structure."
+authors = ["Max Dymond <cmeister2@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.2.7"
+mypy = "^1.11.2"
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
