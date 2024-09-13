@@ -1,0 +1,13 @@
+*.log
+*.pyc
+*.swp
+
+docs/develop/*.png
+site-html
+
+build
+dist
+.coverage
+
+.vagrant
+data/country_osm_grid.sql.gz
