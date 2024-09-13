@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: mkdocs-fix-github-wiki-url-plugin
+Version: 0.1.23
+Home-page: 
+Author: oaix222
+Author-email: oaix222@hotmail.fr
+License: MIT
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# mkdocs-fix-github-wiki-url-plugin
+
+# Install
+
+```
+pip install mkdocs-fix-github-wiki-url-plugin
+```
+
+Edit your mkdocs configuration file to enable the plugin:
+
+```
+plugins:
+  - search
+  - ezlinks
+  - mkdocs-fix-github-wiki-url-plugin
+```
