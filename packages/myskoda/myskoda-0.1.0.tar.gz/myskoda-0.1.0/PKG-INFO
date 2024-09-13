@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: myskoda
+Version: 0.1.0
+Summary: Library for interaction with the MySkoda APIs.
+Author: Frederick Gnodtke
+Author-email: frederick@gnodtke.net
+Requires-Python: >=3.12,<3.13
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: aiohttp (>=3.10.5,<4.0.0)
+Requires-Dist: asyncio (>=3.4.3,<4.0.0)
+Requires-Dist: beautifulsoup4 (>=4.12.3,<5.0.0)
+Requires-Dist: pyjwt (>=2.9.0,<3.0.0)
+Requires-Dist: pyyaml (>=6.0.2,<7.0.0)
+Description-Content-Type: text/markdown
+
+# MySkoda
+
+Library for interacting with the MySkoda APIs.
