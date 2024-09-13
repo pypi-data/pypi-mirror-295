@@ -1,0 +1,3 @@
+[gui_scripts]
+ollama-tk = ollamatk.__main__:main
+ollamatk = ollamatk.__main__:main
