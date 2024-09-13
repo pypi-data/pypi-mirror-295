@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+
+[project]
+name = "pyflow_acdc"
+version = "0.1.0"
+license = {file = "LICENSE.txt"}
+requires-python = ">= 3.8"
+
+authors = [
+   {name = "Bernardo Castro Valerio", email = "bernardo.castro@upc.edu"}]
+ 
+
+maintainers = [
+  {name ="Bernardo Castro Valerio", email = "bernardo.castro@upc.edu"}
+]
+
+description = "A python-based tool for the design and analysis of hybrid AC/DC grids"
+
+readme = "README.md"
+
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: BSD License',
+    'Programming Language :: C',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: Implementation :: CPython',
+    'Topic :: Scientific/Engineering',
+]
+
+
+
+dependencies = ["numpy",
+                "pandas",
+                "networkx",
+                "matplotlib",
+                "scipy",
+                "prettytable",
+                "plotly"]
+
+[project.optional-dependencies]
+OPF = ["pyomo",
+         "ipopt"]
+
+
+[project.urls]
+Repository = "https://github.com/BernardoCV/pyflow_acdc/archive/refs/tags/v0.0.4.1.tar.gz"
+
+
+
