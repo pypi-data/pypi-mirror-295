@@ -1,0 +1,132 @@
+---
+- name: Create working directory
+  ansible.builtin.file:
+    path: "{{ lunasa_client_working_dir }}"
+    state: directory
+    mode: '755'
+
+- name: Download Lunasa client tarball
+  ansible.builtin.get_url:
+    url: "{{ lunasa_client_tarball_location }}"
+    dest: "{{ lunasa_client_working_dir }}/{{ lunasa_client_tarball_name }}"
+    mode: '644'
+    force: false
+
+- name: Unpack tarball to working directory
+  ansible.builtin.unarchive:
+    src: "{{ lunasa_client_working_dir }}/{{ lunasa_client_tarball_name }}"
+    dest: "{{ lunasa_client_working_dir }}"
+    creates: "{{ lunasa_client_working_dir }}/{{ lunasa_client_installer_path }}"
+    mode: '644'
+    remote_src: true
+
+- name: Run the install.sh script
+  ansible.builtin.shell: |
+    set -o pipefail && echo y | bash {{ lunasa_client_working_dir }}/{{ lunasa_client_installer_path }} -p sa -c sdk
+  args:
+    creates: /usr/lib/libCryptoki2_64.so
+  become: true
+
+- name: Set client facts for fqdn
+  ansible.builtin.set_fact:
+    client_name: "{{ ansible_facts['fqdn'] }}"
+    client_reg_opt: "-hostname"
+    client_host: "{{ ansible_facts['fqdn'] }}"
+    client_cert_cn: "{{ ansible_facts['fqdn'] }}"
+  when: lunasa_client_ip is undefined
+
+- name: Set client facts for IP override
+  ansible.builtin.set_fact:
+    client_name: "{{ ansible_facts['fqdn'] }}"
+    client_reg_opt: "-ip"
+    client_host: "{{ lunasa_client_ip }}"
+    client_cert_cn: "{{ lunasa_client_ip }}"
+  when: lunasa_client_ip is defined
+
+- name: Check for existing client cert
+  ansible.builtin.stat:
+    path: "/usr/safenet/lunaclient/cert/client/{{ client_cert_cn }}.pem"
+  register: client_cert
+
+- name: Generate a new client cert for NTL
+  ansible.builtin.command: /usr/safenet/lunaclient/bin/vtl createCert -n "{{ client_cert_cn }}"
+  become: true
+  register: created_cert
+  when: not client_cert.stat.exists or lunasa_client_rotate_cert
+
+- name: Note when a new cert is created
+  ansible.builtin.set_fact:
+    client_new_cert: "{{ created_cert.changed }}"
+
+- name: Register the client on each HSM
+  ansible.builtin.include_tasks: register_client.yaml
+  vars:
+    hsm_hostname: "{{ item.hostname }}"
+    hsm_admin_password: "{{ item.admin_password }}"
+    hsm_partition: "{{ item.partition }}"
+  loop: "{{ lunasa_hsms }}"
+
+- name: Verify the NTL connection
+  ansible.builtin.command: /usr/safenet/lunaclient/bin/vtl verify
+  become: true
+  register: vtl_verify
+
+- name: Fail if NTL connection doesn't verify
+  ansible.builtin.fail:
+    msg: >
+      ERROR: 'vtl verify' failed.  This is commonly due to network NAT between
+      the client and the HSM.  Try disabling client IP checking in the HSM
+  when: "'Error: Unable to find any Luna SA slots/partitions' in vtl_verify.stdout"
+
+- name: Create hsm ha partition
+  when: lunasa_hsms | length > 1
+  become: true
+  block:
+    - name: Create ha partition
+      ansible.builtin.shell: |
+        set -o pipefail
+        echo 'copy' | /usr/safenet/lunaclient/bin/lunacm -c hagroup createGroup \
+          -label  {{ lunasa_ha_label }} \
+          -serialNumber {{ lunasa_hsms[0].partition_serial }} \
+          -password {{ lunasa_client_pin }}
+      register: result
+      failed_when:
+        - "'Command Result : No Error' not in result.stdout"
+        - "'for the new group has already been used' not in result.stdout"
+
+    - name: Add other hsms to the ha group
+      ansible.builtin.shell: |
+        set -o pipefail
+        echo 'copy' | /usr/safenet/lunaclient/bin/lunacm -c hagroup addMember \
+          -group {{ lunasa_ha_label }} \
+          -serialNumber {{ item.partition_serial }} \
+          -password {{ lunasa_client_pin }}
+      loop: "{{ lunasa_hsms }}"
+      loop_control:
+        extended: true
+      when: not ansible_loop.first
+      register: result
+      failed_when:
+        - "'Command Result : No Error' not in result.stdout"
+        - "'The member you specified is already part of an' not in result.stdout"
+
+    - name: Check the HA group
+      ansible.builtin.expect:
+        command: /usr/safenet/lunaclient/bin/lunacm -c hagroup listgroups
+        responses:
+          password: "\r"
+      register: result
+      failed_when: "'Command Result : No Error' not in result.stdout"
+
+    - name: Register the HA Slot ID
+      ansible.builtin.shell: |
+        set -o pipefail && echo "{{ result.stdout }}" | grep 'HA Group Slot ID' | awk '{ print $NF }'
+      register: slot_result
+
+    - name: Set HA Slot fact for use by the playbook calling this role
+      ansible.builtin.set_fact:
+        lunasa_ha_slot: "{{ slot_result.stdout }}"
+
+    - name: Log the HA Slot ID used
+      ansible.builtin.debug:
+        var: lunasa_ha_slot
