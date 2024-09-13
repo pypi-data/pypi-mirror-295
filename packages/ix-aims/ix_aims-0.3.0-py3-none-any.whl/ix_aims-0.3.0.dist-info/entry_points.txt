@@ -1,0 +1,3 @@
+[console_scripts]
+autoix=ix_aims.cli:main
+

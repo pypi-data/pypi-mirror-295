@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ix-aims
+Version: 0.3.0
+Summary: iX Capture automation with AIMS data
+License: MIT
+Author: Taylor Denouden
+Author-email: taylor.denouden@hakai.org
+Requires-Python: >=3.10,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: PyAutoGUI (>=0.9.53,<0.10.0)
+Requires-Dist: arrow (>=1.2.3,<2.0.0)
+Requires-Dist: hakai-api (>=1.5.1,<2.0.0)
+Requires-Dist: opencv-python (>=4.10.0.84,<5.0.0.0)
+Requires-Dist: pillow (>=10.3.0,<11.0.0)
+Requires-Dist: rich (>=13.3.5,<14.0.0)
+Requires-Dist: typer (>=0.12.5,<0.13.0)
+Description-Content-Type: text/markdown
+
+# auto-ix-capture
+
