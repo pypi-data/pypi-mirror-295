@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: TorturePhrases_Estimator
+Version: 0.1
+Summary: A Python package to identify tortured phrases in text
+Home-page: https://github.com/Usman761/TorturePhrases_Estimator
+Author: Usman Alot
+Author-email: usman.alot761@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# TorturePhrases_Estimator
+
+TorturePhrases_Estimator is a Python package that identifies tortured phrases in text using a pre-defined list of awkward or over-complicated phrases.
+
+## Installation
+
+You can install the package using pip:
+
+```bash
+pip install TorturePhrases_Estimator
+```
+
+## Usage
+
+```python
+from TorturePhrases_Estimator import identify_tortured_phrases
+
+text = "We need to commence the project subsequent to our meeting."
+tortured_phrases = identify_tortured_phrases(text)
+
+print(tortured_phrases)
+```

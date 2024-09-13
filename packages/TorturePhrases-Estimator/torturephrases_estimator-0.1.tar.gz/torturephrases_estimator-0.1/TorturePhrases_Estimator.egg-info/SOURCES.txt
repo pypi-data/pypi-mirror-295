@@ -1,0 +1,10 @@
+README.md
+setup.py
+TorturePhrases_Estimator/__init__.py
+TorturePhrases_Estimator/torture_phrases.py
+TorturePhrases_Estimator/tortured_phrases_list.txt
+TorturePhrases_Estimator.egg-info/PKG-INFO
+TorturePhrases_Estimator.egg-info/SOURCES.txt
+TorturePhrases_Estimator.egg-info/dependency_links.txt
+TorturePhrases_Estimator.egg-info/top_level.txt
+tests/test_torture_phrases.py
