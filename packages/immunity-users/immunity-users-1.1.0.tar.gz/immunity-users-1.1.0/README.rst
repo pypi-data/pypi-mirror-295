@@ -1,0 +1,66 @@
+immunity-users
+==============
+
+.. image:: https://github.com/openwisp/immunity-users/workflows/OpenWISP%20Users%20CI%20Build/badge.svg?branch=master
+    :target: https://github.com/openwisp/immunity-users/actions?query=workflow%3A%22OpenWISP+Users+CI+Build%22
+
+.. image:: https://coveralls.io/repos/openwisp/immunity-users/badge.svg
+    :target: https://coveralls.io/r/openwisp/immunity-users
+
+.. image:: https://img.shields.io/librariesio/release/github/openwisp/immunity-users
+    :target: https://libraries.io/github/openwisp/immunity-users#repository_dependencies
+    :alt: Dependency monitoring
+
+.. image:: https://badge.fury.io/py/immunity-users.svg
+    :target: http://badge.fury.io/py/immunity-users
+
+.. image:: https://pepy.tech/badge/immunity-users
+    :target: https://pepy.tech/project/immunity-users
+    :alt: downloads
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://pypi.org/project/black/
+    :alt: code style: black
+
+----
+
+Implementation of user management and multi-tenancy for OpenWISP (built
+with python & django).
+
+**Need a quick overview?** `Try the OpenWISP Demo
+<https://openwisp.org/demo.html>`_.
+
+.. image:: https://raw.githubusercontent.com/openwisp/openwisp2-docs/master/assets/design/openwisp-logo-black.svg
+    :target: http://openwisp.org
+
+----
+
+Documentation
+-------------
+
+- `Usage documentation <https://openwisp.io/docs/dev/users/>`_
+- `Developer documentation
+  <https://openwisp.io/docs/dev/users/developer/>`_
+
+Contributing
+------------
+
+Please refer to the `OpenWISP contributing guidelines
+<http://openwisp.io/docs/developer/contributing.html>`_.
+
+Support
+-------
+
+See `OpenWISP Support Channels <http://openwisp.org/support.html>`_.
+
+Changelog
+---------
+
+See `CHANGES
+<https://github.com/openwisp/immunity-users/blob/master/CHANGES.rst>`_.
+
+License
+-------
+
+See `LICENSE
+<https://github.com/openwisp/immunity-users/blob/master/LICENSE>`_.
