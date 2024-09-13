@@ -1,0 +1,147 @@
+Metadata-Version: 2.1
+Name: vericlient
+Version: 0.1.5
+Summary: Provides a simple and robust interaction with the Veridas API.
+Author-Email: Carlos Larriu <larriucarlos@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2024 Carlos Larriu
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Project-URL: Homepage, https://clarriu97.github.io/vericlient/
+Project-URL: Documentation, https://clarriu97.github.io/vericlient/api_docs/vericlient/
+Project-URL: Repository, https://github.com/clarriu97/vericlient
+Project-URL: Issues, https://github.com/clarriu97/vericlient/issues
+Project-URL: Changelog, https://github.com/clarriu97/vericlient/blob/master/CHANGELOG.md
+Requires-Python: >=3.10
+Requires-Dist: pydantic>=2.7.4
+Requires-Dist: structlog>=24.2.0
+Requires-Dist: requests>=2.32.3
+Requires-Dist: dynaconf>=3.2.5
+Requires-Dist: mkdocs>=1.6.0; extra == "docs"
+Requires-Dist: mkdocs-material>=9.5.29; extra == "docs"
+Requires-Dist: mkdocstrings[python]>=0.25.1; extra == "docs"
+Provides-Extra: docs
+Description-Content-Type: text/markdown
+
+# Welcome
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT) [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://clarriu97.github.io/vericlient/) [![CI](https://github.com/clarriu97/vericlient/actions/workflows/ci.yml/badge.svg)](https://github.com/clarriu97/vericlient/actions/workflows/ci.yml) [![codecov](https://codecov.io/github/clarriu97/vericlient/branch/master/graph/badge.svg?token=H361XPC52E)](https://codecov.io/github/clarriu97/vericlient) [![PyPI version](https://badge.fury.io/py/vericlient.svg)](https://badge.fury.io/py/vericlient) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/clarriu97/vericlient/graphs/commit-activity)
+
+Vericlient is a Python library designed to facilitate interaction with
+the [Veridas API](https://docs.veridas.com/).
+It provides a simple and robust interface for making API requests and
+handling responses efficiently.
+
+# Features
+
+- **Easy to Use**: Designed to be intuitive and easy to integrate into your projects.
+- **Exception Handling**: Includes error and exception handling for safer interaction with the API.
+- **Modular and Extensible**: Structured to easily add new functionalities and endpoints.
+- **Minimal Dependencies** to work.
+
+# Current APIs support
+
+- 🟢: fully supported.
+- 🟠: partly supported.
+- 🔴: not yet supported.
+
+| **API**  | **Status** | **Docs Link** |
+|----------|:-------------:|---|
+| [das-Peak](https://docs.veridas.com/das-peak/cloud/latest) | 🟢 | https://clarriu97.github.io/vericlient/api_docs/daspeak/client/ |
+| [VCSP](https://docs.veridas.com/vcsp/cloud/latest)         | 🔴 | None |
+| [das-Face](https://docs.veridas.com/das-face/cloud/latest) | 🔴 | None |
+
+# Installation
+
+To install the library, you can use pip:
+
+```bash
+pip install vericlient
+```
+
+# Basic Usage
+
+```python
+from vericlient import DaspeakClient
+from vericlient.daspeak.models import (
+    GenerateCredentialInput,
+    CompareCredential2AudioInput,
+)
+
+client = DaspeakClient(apikey="your_api_key")
+
+# check if the server is alive
+print(f"Alive: {client.alive()}")
+
+# generate a credential from a BytesIO object using the last model
+with open("/home/audio.wav", "rb") as f:
+    model_input = GenerateCredentialInput(
+        audio=f.read(),
+        hash=client.get_models().models[-1],
+    )
+generate_credential_output = client.generate_credential(model_input)
+print(f"Credential generated with virtual file: {generate_credential_output.credential}")
+
+# compare a credential with an audio file
+compare_input = CompareCredential2AudioInput(
+    audio_to_evaluate="/home/audio.wav",
+    credential_reference=generate_credential_output.credential,
+)
+compare_output = client.compare(compare_input)
+print(f"Similarity between the credential and the audio file: {compare_output.score}")
+
+# compare a credential with a BytesIO object
+with open("/home/audio.wav", "rb") as f:
+    compare_input = CompareCredential2AudioInput(
+        audio_to_evaluate=f.read(),
+        credential_reference=generate_credential_output.credential,
+    )
+compare_output = client.compare(compare_input)
+print(f"Similarity between the credential and the virtual file: {compare_output.score}")
+```
+
+You can also use the client against any self-hosted Veridas API:
+
+```python
+from vericlient import DaspeakClient
+
+# Create a client for the das-Peak API
+client = DaspeakClient(url="https://your-self-hosted-api.com")
+
+# Test the connection
+print(client.alive())
+```
+
+# Configuration
+
+The library can be configured using environment variables.
+The following variables are supported:
+
+- `VERICLIENT_ENVIRONMENT`: The environment to use for the requests (default: `sandbox`).
+- `VERICLIENT_APIKEY`: The API key to use for the requests against the Veridas Cloud API.
+- `VERICLIENT_LOCATION`: The location to use for the requests (default: `eu`).
+- `VERICLIENT_URL`: In case you want to use a self-hosted API, you can set the URL with this variable.
+- `VERICLIENT_TIMEOUT`: The timeout for the requests (default: `10`).
