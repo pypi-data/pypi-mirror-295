@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: zen_temple
+Version: 0.0.1
+Summary: The visualization plattform for ZEN Garden
+Author-email: Vinzenz Muser <muserv@ethz.ch>
+Project-URL: Homepage, https://github.com/ZEN-universe/ZEN-temple
+Project-URL: Issues, https://github.com/ZEN-universe/ZEN-temple/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: uvicorn
+Requires-Dist: fastapi
+Requires-Dist: fastapi-cache2
+Requires-Dist: python-dotenv
+Requires-Dist: sqlmodel
+Requires-Dist: python-multipart
+Requires-Dist: zen-garden
+
+## ZEN Suite
+
+Run with: `uvicorn src.main:app`
+Develop with: `uvicorn src.main:app --reload --host 0.0.0.0`
+
+If chnages to the models are made, alembic is responsible for the migrations. Use the following steps:
+
+Create change-scripts: `alembic revision --autogenerate -m "<message>"`
+Commit changes: `alembic upgrade head`
+
+Build Docker-Container with `docker build -t example --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" .`
+
+Watch out, this copies your private ssh-key to the container because the required repository (ZEN garden) is private and therefore you need git-authentification.
