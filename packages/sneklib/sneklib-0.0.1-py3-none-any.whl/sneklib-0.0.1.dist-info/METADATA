@@ -1,0 +1,23 @@
+Metadata-Version: 2.3
+Name: sneklib
+Version: 0.0.1
+Summary: Library with various libs, with type-safety and async support
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.12
+Provides-Extra: snektest
+Requires-Dist: colorama; extra == 'snektest'
+Description-Content-Type: text/markdown
+
+
+# TODOs:
+- sqlite orm:
+  - enforce strict tables (for inflexible datatypes)
+  - enforce foreign keys validation
+  - add not null constraint on primary key (even though it's not necessary if you have STRICT and WITHOUT_ROWIDS features)
+  - sqlite does not do unicode case folding, so better to disallow upper/lower entirely
+    - what does that mean for case insensitive search?
+  - make string literals use single quotes
+  - columns with INTEGER PRIMARY KEY should also allow an AUTOINCREMENT option (maybe you expect results to be chronologically sorted by id idk)
