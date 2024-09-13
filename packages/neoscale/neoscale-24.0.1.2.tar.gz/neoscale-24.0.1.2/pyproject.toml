@@ -1,0 +1,23 @@
+[project]
+name = "neoscale"
+version = "v24.0.1.2"
+authors = [
+  { name = "Author", email = "wanglei@matrixorigin.com" },
+]
+dependencies = []
+description = "Python SDK for MatrixDC NeoScale"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+"Homepage" = "https://github.com/matrixorigin/mdc-neoscale"
+"Bug Tracker" = "https://github.com/matrixorigin/mdc-neoscale/issues"
