@@ -1,0 +1,6 @@
+optuna>=3.0.1
+scikit-learn
+catboost
+graphviz
+xgboost
+numpy
