@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: discriminative_lexicon_model
+Version: 1.3
+Summary: Discriminative Lexicon Model in Python
+Home-page: https://github.com/msaito8623/discriminative_lexicon_model
+Author: Motoki Saito
+Author-email: motoki.saito@uni-tuebingen.de
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: xarray
+Requires-Dist: scipy
+Requires-Dist: fasttext
+Requires-Dist: tqdm
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx_rtd_theme; extra == "docs"
+
+=============================================================
+pyldl - Linear Discriminative Learning in Python
+=============================================================
+
+*pyldl* provides several functions to perform mappings and accuracy calculations in the framework of Linear Discriminative Learning (Baayen et al., 2019).
+
+
+Installation
+============
+
+*pyldl* is not available on PyPI yet. So, you need to clone it before installing it locally.
+
+.. code:: bash
+
+    git clone https://github.com/msaito8623/pyldl
+    pip install -e /path/to/the/repo
+
+
+
+Documentation
+=============
+
+*pyldl* uses ``sphinx`` to create a documentation manual. The documentation is hosted on `Read the Docs <http://pyldl.readthedocs.io/en/latest/>`_.
+
+
+Authors and Contributers
+========================
+
+*pyldl* is being developed and maintained by `Motoki Saito <https://github.com/msaito8623>`_.
+
