@@ -1,0 +1,3 @@
+[console_scripts]
+demo=copilotkit.demos.multi_agent.demo:main
+
