@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: cdk-codebuild-sonarcloud
+Version: 0.0.0
+Summary: cdk-codebuild-sonarcloud
+Home-page: https://github.com/cdklabs/cdk-codebuild-sonarcloud.git
+Author: Amazon Web Services<aws-cdk-dev@amazon.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/cdklabs/cdk-codebuild-sonarcloud.git
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved
+Requires-Python: ~=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aws-cdk-lib<3.0.0,>=2.147.1
+Requires-Dist: constructs<11.0.0,>=10.0.5
+Requires-Dist: jsii<2.0.0,>=1.103.1
+Requires-Dist: publication>=0.0.3
+Requires-Dist: typeguard<5.0.0,>=2.13.3
+
+This CDK construct creates an [AWS Codebuild](https://www.sonarsource.com/products/sonarcloud/) action to perform static code analysis using [Sonarcloud](https://www.sonarsource.com/products/sonarcloud/).
+
+# Getting started
+
+Here is how to include the construct in your CDK code :
+
+```javascript
+const sonarcloudScan = new CDKCodeBuildSonarcloud(this, 'SonarcloudBuildAction', {
+      sourceOutput: sourceOutput,
+      sonarOrganizationName: 'my-sonarcloud-organization-name',
+      sonarProjectName: 'my-sonarcloud-project-name',
+});
+```
+
+Check [Here](/examples/codepipeline-example.ts) for an example on how to use the construct.
+
+# Security
+
+A Sonarcloud account is required to use this construct. Create a Sonarcloud [token](https://docs.sonarsource.com/sonarcloud/advanced-setup/user-accounts/#user-tokens) to connect securely to Sonarcloud from AWS CodeBuild. Store this token in your AWS account in AWS Secret Manager, name the secret "sonar-token" and use "SONAR_TOKEN" as the secret key.
+
+Please review the [AWS Secret Manager security best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/secure-sensitive-data-secrets-manager-terraform/best-practices.html) in order to securely create and manage your secret.
