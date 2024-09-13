@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: liteshare
+Version: 0.1.3
+Summary: Data API for Quantitative Analysts.
+Author: Danene Tech Inc.
+Author-email: neneli@bignene123.com
+License: CC BY-NC
+Keywords: Data API for Quants
+Requires-Dist: requests
+Requires-Dist: pandas
+Requires-Dist: redis
+Requires-Dist: tqdm
+
