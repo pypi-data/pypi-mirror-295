@@ -1,0 +1,1 @@
+from .colorDetect import detectOrange, detectMerah, detectBiru
