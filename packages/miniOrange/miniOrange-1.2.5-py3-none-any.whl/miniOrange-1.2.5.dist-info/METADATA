@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: miniOrange
+Version: 1.2.5
+Summary: OAuth Implementation With SSo
+Author: Ayushi Agrawal
+Author-email: ashayuparth@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+
+A library for OAuth2 authorization with MiniOrange
