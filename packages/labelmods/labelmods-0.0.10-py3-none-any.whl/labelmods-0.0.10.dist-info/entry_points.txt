@@ -1,0 +1,2 @@
+[console_scripts]
+labelmods = labelmods.tools.command_line:main

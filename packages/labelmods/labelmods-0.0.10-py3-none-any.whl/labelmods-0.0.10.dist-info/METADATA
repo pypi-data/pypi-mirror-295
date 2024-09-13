@@ -1,0 +1,23 @@
+Metadata-Version: 2.3
+Name: labelmods
+Version: 0.0.10
+Summary: Extend Labelbox with additional tools and converters
+Project-URL: Homepage, https://labelbox.com/
+Project-URL: Repository, https://github.com/Labelbox/labelmods
+Project-URL: Changelog, https://github.com/Labelbox/labelmods/blob/develop/libs/labelbox/CHANGELOG.md
+Author-email: Labelbox <support@labelbox.com>
+License-File: LICENSE
+Requires-Python: >=3.8
+Requires-Dist: labelbox[data]==3.72.2
+Description-Content-Type: text/markdown
+
+# Status
+Work in Progress
+
+# Description
+
+This library provides various converters to use with the Labelbox SDK:
+
+- COCO
+- YOLO
+- Pascal VOC
