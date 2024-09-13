@@ -1,0 +1,15 @@
+ingress2qsirecon/__init__.py,sha256=_EEwEUQO1XfVa4YaQrXgLM6d0vLxBxx0UI7Xgs7x-yo,26
+ingress2qsirecon/cli/__init__.py,sha256=_EEwEUQO1XfVa4YaQrXgLM6d0vLxBxx0UI7Xgs7x-yo,26
+ingress2qsirecon/cli/main.py,sha256=T3TVw7C6mAfLyXxNU_gEO-bqXY0YKeN7ZGGjO5BDmSg,2481
+ingress2qsirecon/cli/parser.py,sha256=x59rw2YbOJbbsek9JBxYBUsONaVTXLroP3iXb4UKj5E,3285
+ingress2qsirecon/data/bids_scaffold/README,sha256=IawaKrOgl0wIV8gWoT9dDZL_5mFPLWpWYMCjmSKTJ8k,51
+ingress2qsirecon/data/bids_scaffold/dataset_description.json,sha256=vQPEKbedFMxll8QVJZlysZt4R04hRH4mHUljYFcE04g,393
+ingress2qsirecon/utils/__init__.py,sha256=_EEwEUQO1XfVa4YaQrXgLM6d0vLxBxx0UI7Xgs7x-yo,26
+ingress2qsirecon/utils/functions.py,sha256=99Yr1GLVevl-9DaezxmipVb3WMVkofOmmnetUpjls8k,9921
+ingress2qsirecon/utils/interfaces.py,sha256=em4SEYqGTGzgT-xlt9wjLXsQQNqg80W0HndfL9eFdug,24428
+ingress2qsirecon/utils/workflows.py,sha256=xJooHAMSoOclO7dbIS8QdDJ1F5Gid0lTPH3ESXMBcAU,12756
+ingress2qsirecon-0.1.3.dist-info/LICENSE.txt,sha256=xDgQuYo_EEqsUChHe50dV_BVXHXD75vtFDXwSpMdLU0,1062
+ingress2qsirecon-0.1.3.dist-info/METADATA,sha256=dSPDOliiqSvGx0KyPpA-XnMTpXbtTjYUXUMRFL5hLWE,2096
+ingress2qsirecon-0.1.3.dist-info/WHEEL,sha256=sP946D7jFCHeNz5Iq4fL4Lu-PrWrFsgfLXbbkciIZwg,88
+ingress2qsirecon-0.1.3.dist-info/entry_points.txt,sha256=94LAD90bFFRyjmDK45bQAE0N6lTzLh3MnPWSi_u5-tQ,67
+ingress2qsirecon-0.1.3.dist-info/RECORD,,

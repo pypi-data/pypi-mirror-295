@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: Ingress2QSIRecon
+Version: 0.1.3
+Summary: Tool to ingress data from other pipelines for use in QSIRecon
+Author: Steven Meisler
+Author-email: smeisler13@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: SimpleITK (>=2.4.0,<3.0.0)
+Requires-Dist: beartype (>=0.18.5,<0.19.0)
+Requires-Dist: icontract (>=2.6.6,<3.0.0)
+Requires-Dist: loguru (>=0.7.2,<0.8.0)
+Requires-Dist: nibabel (>=5.2.0,<6.0.0)
+Requires-Dist: nilearn (>=0.10.1,<0.11.0)
+Requires-Dist: nipype (>=1.8.6,<2.0.0)
+Requires-Dist: niworkflows (>=1.9.0,<2.0.0)
+Requires-Dist: pydantic (>=2.8,<3.0)
+Requires-Dist: templateflow (>=24.2.0,<25.0.0)
+Project-URL: homepage, https://github.com/PennLINC/ingress2qsirecon
+Project-URL: repository, https://github.com/PennLINC/ingress2qsirecon
+Description-Content-Type: text/markdown
+
+# Ingress2QSIRecon
+A tool for ingressing outputs from other processing pipelines (e.g., HCP, UKB) for use in QSIRecon.
+
+## Overview
+This tool can be used to import data from bespoke and widely-used DWI preprocessing pipelines (e.g., Human Connectome Project and UK Biobank) into QSIRecon for post-processing.
+
+## Installation
+This project can be installed via PyPi. In your virtual environment run
+```
+pip install Ingress2QSIRecon
+```
+For the master/development branch, you can clone the github repo, and run from within it:
+```
+pip install -e .
+```
+
+## Usage
+Assuming you have the data to ingress locally availble, you can run the following:
+```
+ingress2qsirecon \
+    /PATH/TO/INPUT/DATA \ # E.g., path to HCP1200 directory
+    /PATH/TO/OUTPUT \ # BIDS directory with ingressed data will be made here
+    PIPELINE_NAME \ # Currently support "hcpya" and "ukb" \
+    -w /PATH/TO/WORKING/DIR \ # Where intermediate files and workflow information will be stored
+    --participant-label 100307 # Name(s) of folder within /PATH/TO/INPUT/DATA. If not specified, will process everyone
+```

@@ -1,0 +1,3 @@
+[console_scripts]
+ingress2qsirecon=ingress2qsirecon.cli.main:main
+
