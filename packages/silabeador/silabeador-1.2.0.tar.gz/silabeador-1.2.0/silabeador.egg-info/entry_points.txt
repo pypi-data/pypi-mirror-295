@@ -1,0 +1,2 @@
+[console_scripts]
+silabeador = silabeador.__main__:main
