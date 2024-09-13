@@ -1,0 +1,3 @@
+[console_scripts]
+ca = code_assistant:app
+code-assistant = code_assistant.code_assistant:app
