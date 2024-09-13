@@ -1,0 +1,14 @@
+tsv/parser_plain.abi3.so,sha256=x2rHKEgpi4t3k3j4jVyylB_38R1hlNa11je73kSt-50,63128
+tsv/helper.py,sha256=qptwR9lfvJPraSvBFo8LvSKEyY2NnQ1mozU8fNkwheE,7110
+tsv/cpu_features.abi3.so,sha256=lqpcfTYTF3YOhNIremls8JOvsV3u1_6MOQ38MupZu40,24464
+tsv/cpu_features.pyi,sha256=dLg0j48ci4iWI-n6gyCvl06aOPdxm7M3oT5qbtGDMt0,165
+tsv/parser_avx2.abi3.so,sha256=-NGHFYEq_RlMoqp_EfGwi6uVhe0qUxeqeJy5u9FPTD8,87328
+tsv/__init__.py,sha256=HLBOghefk22wEHSSHUcO49msA1exwlUW5xjmLw1VYTg,506
+tsv/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tsv/parser.py,sha256=6sXrndwETGDhadBORDZb2Nh_PXZbpFIxGH1KgfaC5Ew,2536
+tsv2py-0.7.1.dist-info/LICENSE,sha256=85pV3xAbg8UyVlqMCim436QD865qa_i7z3MZdhsAlTk,1077
+tsv2py-0.7.1.dist-info/zip-safe,sha256=AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs,1
+tsv2py-0.7.1.dist-info/METADATA,sha256=vWgt_kL3zn-moeyDoAchyGHhg3oI-abNDeLF6pgOBVQ,8087
+tsv2py-0.7.1.dist-info/top_level.txt,sha256=ogcA1yYMsxYhH3oqCRdzI_keAp_2PT7I5b0FOjVLHYQ,4
+tsv2py-0.7.1.dist-info/RECORD,,
+tsv2py-0.7.1.dist-info/WHEEL,sha256=M9k5Hn_QlK8AEFxdL5DaA7TQwtFU70v1vZiAw63EtuU,111
