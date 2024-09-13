@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/securitycopilot/__init__.py
+src/securitycopilot/_model.py
+src/securitycopilot/api.py
+src/securitycopilot.egg-info/PKG-INFO
+src/securitycopilot.egg-info/SOURCES.txt
+src/securitycopilot.egg-info/dependency_links.txt
+src/securitycopilot.egg-info/requires.txt
+src/securitycopilot.egg-info/top_level.txt
