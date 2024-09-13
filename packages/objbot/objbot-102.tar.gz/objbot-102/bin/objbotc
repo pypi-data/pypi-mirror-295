@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+# This file is placed in the Public Domain.
+# pylint: disable=C0413,W0611
+
+
+"prompt"
+
+
+import os
+import readline
+import sys
+import termios
+import time
+
+
+sys.path.insert(0, os.getcwd())
+
+
+from objbot.broker  import Broker
+from objbot.command import command
+from objbot.main    import Config, debug, enable, forever, initer, modnames
+from objbot.main    import parse, spl
+from objbot.object  import Default
+from objbot.reactor import Client, errors
+from objbot.thread  import launch
+from objbot.modules import face
+
+
+Cfg = Config("objbot")
+Cfg.mod = "cmd,err,mod,thr"
+
+
+class Event(Default):
+
+    "Event"
+
+    def __init__(self):
+        Default.__init__(self)
+        self.orig    = ""
+        self.result  = []
+        self.txt     = ""
+
+    def reply(self, txt):
+        "add text to the result"
+        self.result.append(txt)
+
+
+class Console(Client):
+
+    "Console"
+
+    def __init__(self):
+        Client.__init__(self)
+        Broker.register(self)
+        self.register("command", command)
+
+    def poll(self):
+        "poll console and create event."
+        evt      = Event()
+        evt.txt  = input("> ")
+        evt.type = "command"
+        parse(evt)
+        return evt
+
+    def raw(self, txt):
+        print(txt)
+
+
+def banner():
+    tme = time.ctime(time.time()).replace("  ", " ")
+    debug(f"{Cfg.name.upper()} since {tme}")
+
+
+def wrap(func):
+    "reset console."
+    old3 = None
+    try:
+        old3 = termios.tcgetattr(sys.stdin.fileno())
+    except termios.error:
+        pass
+    try:
+        func()
+    except (KeyboardInterrupt, EOFError):
+        pass
+    finally:
+        if old3:
+            termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old3)
+
+
+def main():
+    "main"
+    parse(Cfg, " ".join(sys.argv[1:]))
+    if "v" in Cfg.opts:
+        enable(print)
+        banner()
+    if "i" in Cfg.opts:
+        Cfg.mod = ",".join(modnames(face))
+        for thr in initer(Cfg.mod, face):
+            thr.join()
+    csl = Console()
+    csl.start()
+
+
+if __name__ == "__main__":
+    wrap(main)
+    errors(print)
