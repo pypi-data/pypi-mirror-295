@@ -1,0 +1,3 @@
+[console_scripts]
+postinstall=scripts.install_dependencies:main
+
