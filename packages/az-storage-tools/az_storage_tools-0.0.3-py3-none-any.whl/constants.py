@@ -1,0 +1,15 @@
+"""Description: This file contains the constants used in the application."""
+from collections import defaultdict
+CONTENT_TYPES = defaultdict(lambda:"application/octet-stream")
+CONTENT_TYPES["gif"]="image/gif"
+CONTENT_TYPES["jpeg"]="image/jpeg"
+CONTENT_TYPES["png"]= "image/png"
+CONTENT_TYPES["tiff"]="image/tiff"
+CONTENT_TYPES["css"]="text/css"
+CONTENT_TYPES["csv"] = "text/csv"
+CONTENT_TYPES["html"] = "text/html"
+CONTENT_TYPES["xml"] = "text/xml"
+CONTENT_TYPES["pdf"] = "application/pdf"
+CONTENT_TYPES["svg"] = "image/svg+xml"
+CONTENT_TYPES["js"] = "text/javascript"
+CONTENT_TYPES["txt"] = "text/plain"
