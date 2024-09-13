@@ -1,0 +1,15 @@
+tests/test_web_leaf.py,sha256=5gwHFEtqQm6a9lAdY6hkatuw5CA-rcRX5uFHcPmBTzg,2039
+webleaf/Leaf.py,sha256=p-COM3ftgeB8L-mFrK1w0PK-5KbBlxVlQnaQoHYVG7M,2517
+webleaf/Web.py,sha256=SLB0bhkUX00lXQdxpFQm4S9a8dAdnP0mhYQloT7fh-A,4297
+webleaf/__init__.py,sha256=amer534BYArOqzlEV61Xh3z8a8-zqst_OWevciLjvPg,78
+webleaf/model/TagModel.py,sha256=U8NUEfPh2YN2VDBig3X8EUJsWibGwVQnUJDQcBbQUkc,4323
+webleaf/model/TextModel.py,sha256=L19fH7o8eVQ-3Bu5CUMUAoIEVby6S5-JxQrwqnGvwMI,2206
+webleaf/model/WebGraphAutoEncoder.py,sha256=UohJuHZZP_URTsu5KSbG8fT3DTr4cl9AiJHQJQaK6wQ,4708
+webleaf/model/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+webleaf/model/product_page_model_4_80.torch,sha256=LKmavRPUBGA-kQgug40Z954TcZp4Kc7oxRUTbtY7ulY,615640
+webleaf/model/tag_embeddings.torch,sha256=J1mouLKpemtFz8IMELJYQ7rD2m8IUD_jYeHeaELmdmU,4735
+webleaf-0.3.9.dist-info/LICENSE,sha256=tpSHoTVeXYeZ6hYTTEka3C87t6QowN19T6hj0VUGCNw,1069
+webleaf-0.3.9.dist-info/METADATA,sha256=s_A7XC6JBf-Dbp0BR6g8P0HmZRriHER1hLTXAXMnTaY,8598
+webleaf-0.3.9.dist-info/WHEEL,sha256=cVxcB9AmuTcXqmwrtPhNK88dr7IR_b6qagTj0UvIEbY,91
+webleaf-0.3.9.dist-info/top_level.txt,sha256=8yeZRFpHMKiiJxugvlepyDStkYlh_Bv9ggWTZwXvhaA,14
+webleaf-0.3.9.dist-info/RECORD,,
