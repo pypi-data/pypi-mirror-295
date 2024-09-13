@@ -1,0 +1,52 @@
+from setuptools import setup, find_packages
+
+with open("README.md", encoding="utf-8") as readme_file:
+    long_description = readme_file.read()
+
+
+setup(
+    name="murnitur",
+    version="1.1.7",
+    description="Murnitur empowers AI teams to seamlessly test, evaluate, deploy, monitor, and safeguard GenAI applications continuously.",
+    url="https://murnitur.ai",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author="Caleb Okpara",
+    author_email="support@murnitur.com",
+    packages=find_packages(),
+    install_requires=[
+        "requests",
+        "transformers>=4.39.3",
+        "pandas",
+        "vaderSentiment",
+        "openai",
+        "groq",
+        "anthropic",
+        "tqdm",
+        "pytest",
+        "tabulate",
+        "typer",
+        "rich",
+        "protobuf==4.25.1",
+        "pydantic",
+        "portalocker",
+        "langchain",
+        "langchain-core",
+        "langchain_openai",
+        "ragas",
+        "docx2txt~=0.8",
+        "importlib-metadata>=6.0.2",
+        "tenacity~=8.2.3",
+        "requests>=2.26.0",
+        "schedule>=1.2.2",
+        "tiktoken>=0.7.0",
+        "gpustat>=1.1.1",
+        "boto3>=1.34.0",
+        "botocore>=1.34.0",
+        "opentelemetry-api>=1.24.0",
+        "opentelemetry-sdk>=1.24.0",
+        "opentelemetry-exporter-otlp>=1.24.0",
+        "opentelemetry-instrumentation>=0.45b0",
+    ],
+    python_requires=">=3.7.1",
+)
