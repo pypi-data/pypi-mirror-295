@@ -1,0 +1,21 @@
+Metadata-Version: 2.3
+Name: killbill-xml-builder
+Version: 0.0.1
+Summary: killbill xml builder
+Project-URL: Homepage, https://github.com/raulodev/killbill-xml-builder
+Project-URL: Issues, https://github.com/raulodev/killbill-xml-builder/issues
+Author-email: Raul Cobiellas <raulodev@gmail.com>
+License-File: LICENSE
+Keywords: bill,kill,killbill
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# killbill-xml-builder
+
+#### TODO
+
+- rules
+- price lists
