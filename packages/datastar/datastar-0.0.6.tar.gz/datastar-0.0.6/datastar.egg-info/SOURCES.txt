@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+pyproject.toml
+datastar/__init__.py
+datastar/datastar.py
+datastar.egg-info/PKG-INFO
+datastar.egg-info/SOURCES.txt
+datastar.egg-info/dependency_links.txt
+datastar.egg-info/requires.txt
+datastar.egg-info/top_level.txt
