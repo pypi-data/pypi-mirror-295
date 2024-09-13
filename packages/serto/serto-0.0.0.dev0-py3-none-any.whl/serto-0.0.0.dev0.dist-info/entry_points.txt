@@ -1,0 +1,2 @@
+[console_scripts]
+swmmoptimizer = serto.cli:main
